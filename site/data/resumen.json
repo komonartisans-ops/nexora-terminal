@@ -33,9 +33,6 @@
  "sencillo": "Hoy la macro no ha cambiado. Si ves movimientos en el gráfico, se deben a flujos o noticias concretas, no a un cambio de fondo: no hay que leer en ellos más de lo que son.",
  "motores_significativos": [],
  "errores": {
-  "bce": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>",
-  "vix": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)>",
-  "spx": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)>",
   "lbma": "HTTPError: HTTP Error 403: Forbidden"
  },
  "detalle_viento": {
@@ -53,6 +50,16 @@
   "real": {
    "valor": 2.92,
    "delta": 0.9999999999999787,
+   "fecha": "2026-10-07"
+  },
+  "dxy": {
+   "valor": 102.35821191459671,
+   "delta": -0.04977200773202961,
+   "fecha": "2026-10-08"
+  },
+  "vix": {
+   "valor": 15.08,
+   "delta": 0.4663557628247883,
    "fecha": "2026-10-07"
   },
   "hy": {
@@ -73,6 +80,11 @@
    "delta": -0.2069195883129593,
    "fecha": "2026-10-07",
    "valor": 31160.08
+  },
+  "S&P 500": {
+   "delta": -0.21946736957614288,
+   "fecha": "2026-10-07",
+   "valor": 7801.77
   },
   "Oro": {
    "delta": -1.3461630752987341,
@@ -109,6 +121,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-08 14:41 UTC",
- "duracion_s": 88.5
+ "generado_utc": "2026-10-08 14:46 UTC",
+ "duracion_s": 51.9
 }

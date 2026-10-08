@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-08 16:43 Madrid",
+ "generado": "2026-10-08 16:47 Madrid",
  "desde": "2026-08-29",
  "hasta": "2026-10-29",
  "eventos": [
@@ -1060,6 +1060,19 @@
    "dia": "jue",
    "hora_ny": "",
    "hora_madrid": "",
+   "evento": "Decisión de política monetaria del BCE",
+   "importancia": "MEDIA",
+   "afecta": "oro · índices (vía EUR/DXY)",
+   "que_mirar": "Tipos del BCE → EUR → DXY (el euro pesa el 57,6 % del DXY).",
+   "fuente": "Banco Central Europeo",
+   "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+   "nota": "hora de publicación: ver BCE"
+  },
+  {
+   "fecha": "2026-10-29",
+   "dia": "jue",
+   "hora_ny": "",
+   "hora_madrid": "",
    "evento": "Resultados Eli Lilly (LLY)",
    "importancia": "MEDIA",
    "afecta": "índices",
@@ -1074,14 +1087,16 @@
    "fecha": "2026-10-28",
    "dias": 20
   },
+  "BCE": {
+   "fecha": "2026-10-29",
+   "dias": 21
+  },
   "Banco de Japón": {
    "fecha": "2026-10-30",
    "dias": 22
   }
  },
- "errores": {
-  "bce": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
- },
+ "errores": {},
  "nota": "Horas oficiales convertidas a Nueva York y Madrid con cambio de horario incluido. Las fechas de FRED las publican los organismos y pueden cambiar (p. ej., cierre del Gobierno).",
  "ultimos_publicados": {
   "IPC EE. UU. (CPI)": {
@@ -1165,6 +1180,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-08 14:41 UTC",
- "duracion_s": 66.6
+ "generado_utc": "2026-10-08 14:46 UTC",
+ "duracion_s": 37.4
 }

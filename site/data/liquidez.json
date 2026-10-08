@@ -1,10 +1,7 @@
 {
  "metricas": {
-  "generado_utc": "2026-10-08T14:32:44Z",
-  "errores": {
-   "ECB_FX": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>",
-   "GLOBAL": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)>"
-  },
+  "generado_utc": "2026-10-08T14:48:03Z",
+  "errores": {},
   "reservas": {
    "fecha": "2026-09-30",
    "valor_T": 2.94809,
@@ -132,6 +129,13 @@
     }
    ],
    "importe_proximas_B": 237.0
+  },
+  "dxy": {
+   "fecha": "2026-10-08",
+   "valor": 102.35821191459671,
+   "pct_4s": 3.4058374236463065,
+   "pct_1s": 0.6192275589732434,
+   "metodo": "Réplica DXY (fórmula ICE) sobre fixings BCE 14:15 CET"
   },
   "dolar_amplio": {
    "fecha": "2026-10-02",
@@ -276,6 +280,13 @@
     "media_7d_pct": -0.024670426026504204,
     "ultimo_pct": -0.05753513435666768,
     "fecha": "2026-10-07"
+   },
+   "mercado": {
+    "mcap_total_usd": 2811400470072.882,
+    "volumen_24h_usd": 100594732627.52646,
+    "dominancia_btc_pct": 58.886096160919024,
+    "dominancia_eth_pct": 10.964131375338152,
+    "mcap_cambio_24h_pct": -3.6834692616014215
    }
   },
   "contexto": {
@@ -327,29 +338,29 @@
    },
    "dvol": {
     "fecha": "2026-10-08",
-    "valor": 38.33,
-    "media_30d": 36.55233333333333,
-    "percentil_1a": 25.87601078167116
+    "valor": 38.06,
+    "media_30d": 36.54333333333334,
+    "percentil_1a": 24.528301886792452
    },
    "opciones": {
-    "put_call_oi": 0.5859778312540331,
-    "oi_total_btc": 377508.4,
-    "precio_ref": 82610.54,
+    "put_call_oi": 0.5863692486983832,
+    "oi_total_btc": 377604.9,
+    "precio_ref": 82591.06,
     "vencimientos": [
      {
       "fecha": "2026-10-30",
-      "oi_btc": 136519.1,
-      "nocional_B": 11.277916571314
+      "oi_btc": 136531.6,
+      "nocional_B": 11.276289567496
      },
      {
       "fecha": "2026-10-09",
-      "oi_btc": 22849.5,
-      "nocional_B": 1.8876095337299998
+      "oi_btc": 22849.4,
+      "nocional_B": 1.8871561663640002
      },
      {
       "fecha": "2026-10-16",
       "oi_btc": 11601.7,
-      "nocional_B": 0.9584227019179999
+      "nocional_B": 0.958196700802
      }
     ]
    },
@@ -532,6 +543,7 @@
    "t2y": "↑",
    "t10y": "↑↑",
    "nfci": "↑",
+   "dxy": "↑",
    "h41": "→",
    "fedwatch": "→"
   },
@@ -614,8 +626,8 @@
    {
     "n": 4,
     "paso": "DXY ↓",
-    "estado": "SIN DATO",
-    "detalle": ""
+    "estado": "NO CUMPLE",
+    "detalle": "réplica DXY 4s +3.41%"
    },
    {
     "n": 5,
@@ -714,15 +726,15 @@
     {
      "nombre": "Volatilidad implícita BTC (DVOL)",
      "estado": "NEUTRAL",
-     "valor": "38.3",
-     "lectura": "media 30d 36.6 · percentil 1 año 26",
+     "valor": "38.1",
+     "lectura": "media 30d 36.5 · percentil 1 año 25",
      "fuente": "Deribit"
     },
     {
      "nombre": "Opciones BTC: put/call (open interest)",
      "estado": "FAVORABLE",
      "valor": "0.59",
-     "lectura": "vencimientos grandes: 2026-10-30 136,519 BTC (~11.3 B$); 2026-10-09 22,850 BTC (~1.9 B$); 2026-10-16 11,602 BTC (~1.0 B$)",
+     "lectura": "vencimientos grandes: 2026-10-30 136,532 BTC (~11.3 B$); 2026-10-09 22,849 BTC (~1.9 B$); 2026-10-16 11,602 BTC (~1.0 B$)",
      "fuente": "Deribit"
     },
     {
@@ -8456,6 +8468,6 @@
  },
  "errores_historico": {},
  "ok": true,
- "generado_utc": "2026-10-08 14:28 UTC",
- "duracion_s": 75.2
+ "generado_utc": "2026-10-08 14:46 UTC",
+ "duracion_s": 56.3
 }
