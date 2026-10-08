@@ -1,6 +1,6 @@
 {
  "metricas": {
-  "generado_utc": "2026-10-08T14:48:03Z",
+  "generado_utc": "2026-10-08T14:52:43Z",
   "errores": {},
   "reservas": {
    "fecha": "2026-09-30",
@@ -282,11 +282,11 @@
     "fecha": "2026-10-07"
    },
    "mercado": {
-    "mcap_total_usd": 2811400470072.882,
-    "volumen_24h_usd": 100594732627.52646,
-    "dominancia_btc_pct": 58.886096160919024,
-    "dominancia_eth_pct": 10.964131375338152,
-    "mcap_cambio_24h_pct": -3.6834692616014215
+    "mcap_total_usd": 2811372882375.7036,
+    "volumen_24h_usd": 100601355471.38875,
+    "dominancia_btc_pct": 58.90260966384372,
+    "dominancia_eth_pct": 10.962224010445675,
+    "mcap_cambio_24h_pct": -3.7655575564985866
    }
   },
   "contexto": {
@@ -338,29 +338,29 @@
    },
    "dvol": {
     "fecha": "2026-10-08",
-    "valor": 38.06,
-    "media_30d": 36.54333333333334,
-    "percentil_1a": 24.528301886792452
+    "valor": 38.04,
+    "media_30d": 36.54266666666667,
+    "percentil_1a": 24.258760107816713
    },
    "opciones": {
-    "put_call_oi": 0.5863692486983832,
-    "oi_total_btc": 377604.9,
-    "precio_ref": 82591.06,
+    "put_call_oi": 0.5863574818504877,
+    "oi_total_btc": 377611.30000000005,
+    "precio_ref": 82664.88,
     "vencimientos": [
      {
       "fecha": "2026-10-30",
       "oi_btc": 136531.6,
-      "nocional_B": 11.276289567496
+      "nocional_B": 11.286368330208001
      },
      {
       "fecha": "2026-10-09",
       "oi_btc": 22849.4,
-      "nocional_B": 1.8871561663640002
+      "nocional_B": 1.8888429090720003
      },
      {
       "fecha": "2026-10-16",
       "oi_btc": 11601.7,
-      "nocional_B": 0.958196700802
+      "nocional_B": 0.9590531382960001
      }
     ]
    },
@@ -726,8 +726,8 @@
     {
      "nombre": "Volatilidad implícita BTC (DVOL)",
      "estado": "NEUTRAL",
-     "valor": "38.1",
-     "lectura": "media 30d 36.5 · percentil 1 año 25",
+     "valor": "38.0",
+     "lectura": "media 30d 36.5 · percentil 1 año 24",
      "fuente": "Deribit"
     },
     {
@@ -8468,6 +8468,6 @@
  },
  "errores_historico": {},
  "ok": true,
- "generado_utc": "2026-10-08 14:46 UTC",
- "duracion_s": 56.3
+ "generado_utc": "2026-10-08 14:50 UTC",
+ "duracion_s": 65.0
 }
