@@ -392,17 +392,33 @@ def etapa_resumen():
 
 # ------------------------------------------------------------------ ciclo y crédito
 def etapa_ciclo():
+    """Reglas y umbrales EXACTOS de ciclo.py (scripts originales de NEXORA). Aquí solo se añaden las series para los gráficos."""
     import ciclo
-    M = ciclo.medir()
-    cr = M["credito"]
-    fila = {"fecha_captura": dt.date.today().isoformat(), "fase": M["fase"], "encendidas": M["encendidas"], "validas": M["validas"],
-            "probit_12m_pct": (M.get("probit") or {}).get("probabilidad_12m_pct", ""), "ebp_pp": ((M.get("ebp") or {}).get("ultimo") or ["", ""])[1],
-            **{f"{k}_pb": (cr.get(k) or {}).get("valor_pb", "") for k in ("ig", "bbb", "hy", "ccc")},
-            "senales": "".join("1" if x["encendida"] else "0" if x["encendida"] is not None else "?" for x in M["senales"])}
+    S, err = ciclo.medir()
+    R = ciclo.construir(S, err)
+    if len(err) >= 6:
+        raise RuntimeError("ciclo: demasiadas fuentes sin dato: " + json.dumps(err)[:300])
+
+    def mm(m, n):  # serie mensual {AAAA-MM: v} → [[fecha, v]]
+        return [[k + "-01", round(m[k], 4)] for k in sorted(m)[-n:]]
+    curva = S.get("curva", {})
+    R["series"] = {
+        "oas": {k: serie_json(S[f"oas_{k}"]) for k in ("ig", "bbb", "hy", "ccc") if S.get(f"oas_{k}")},
+        "ebp": mm(S.get("ebp", {}), 240), "ebp_prob": mm(S.get("ebp_prob", {}), 240), "curva_mensual": mm(curva, 240),
+        "probit": [[k + "-01", round(ciclo.phi(-0.5333 - 0.6330 * curva[k]) * 100, 2)] for k in sorted(curva)[-240:]],
+        "curva_diaria": serie_json(S["curva_diaria"]) if S.get("curva_diaria") else [],
+        "nfci": serie_json(S["nfci_sem"][-260:]) if S.get("nfci_sem") else [], "sahm": mm(S.get("sahm", {}), 120),
+        "claims": serie_json(S["claims_sem"][-260:]) if S.get("claims_sem") else []}
+    R["umb_cred"] = ciclo.UMB_CRED
+    R["tono"] = "neg" if R["fase"].startswith(("RECESIÓN", "RIESGO")) else "amb" if R["fase"].startswith("DESACEL") else "pos"
+    cr = R["credito"]
+    fila = {"fecha_captura": dt.date.today().isoformat(), "fase": R["fase"], "adelantadas_encendidas": R["senales_adelantadas_encendidas"],
+            "adelantadas_total": R["senales_adelantadas_total"], "prob_curva_nyfed_pct": R["prob_recesion_curva_nyfed"] if R["prob_recesion_curva_nyfed"] is not None else "",
+            "prob_ebp_fed_pct": R["prob_recesion_ebp_fed"] if R["prob_recesion_ebp_fed"] is not None else "",
+            **{f"{k}_pb": (cr.get(k) or {}).get("pb", "") for k in ("ig", "bbb", "hy", "ccc")}, "estado_credito": R["estado_credito"],
+            "senales": "".join("1" if x["encendida"] else "0" if x["encendida"] is not None else "?" for x in R["senales"])}
     csvlog.anadir("historico_ciclo.csv", [fila], ("fecha_captura",))
-    if len(M["errores"]) >= 6:
-        raise RuntimeError("ciclo: demasiadas fuentes sin dato: " + json.dumps(M["errores"])[:300])
-    return M
+    return R
 
 
 # ------------------------------------------------------------------ datos publicados con revisiones
@@ -419,6 +435,8 @@ def etapa_regimen():
     R = regimen.medir(cripto=cripto)
     E = regimen.evaluar(R, cal if cal and cal.get("eventos") else None)
     E.pop("fedwatch", None)
+    if "respaldo: LBMA no respondió" in json.dumps(E, ensure_ascii=False):  # que la etiqueta no diga LBMA si el oro viene de COMEX
+        E = json.loads(json.dumps(E, ensure_ascii=False, default=str).replace("Oro (LBMA)", "Oro (COMEX GC=F, respaldo)"))
     csvlog.anadir("historico_regimen.csv", [{"fecha_captura": dt.date.today().isoformat(), "cuadrante": E["cuadrante"], "fuerza": E["fuerza"], "riesgo": E["riesgo"],
                                              "liquidez": E["liquidez"], "concordancia": E["concordancia"], "motor": E["motor_lectura"],
                                              "estados": " | ".join(f"{d['dimension']}={d['estado']}" for d in E["mapa"])}], ("fecha_captura",))

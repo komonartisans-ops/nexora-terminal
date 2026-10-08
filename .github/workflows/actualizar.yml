@@ -32,8 +32,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Dependencias (solo xlrd, para leer el xls del probit de la Fed de NY)
-        run: pip install xlrd==2.0.1
       - name: Elegir modo
         id: modo
         run: |

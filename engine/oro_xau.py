@@ -87,6 +87,26 @@ def lbma(metal: str = "gold_pm", col: int = 0):
             if r.get("v") and len(r["v"]) > col and r["v"][col]]
 
 
+def yahoo_gc(rango: str = "2y"):
+    """Respaldo del oro cuando LBMA no responde (403): futuros COMEX GC=F, cierre diario, Yahoo Finance (sin clave)."""
+    last = None
+    for host in ("query2", "query1"):
+        try:
+            import json as _json
+            import urllib.request as _ur
+            rq = _ur.Request(f"https://{host}.finance.yahoo.com/v8/finance/chart/GC%3DF?range={rango}&interval=1d",
+                             headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36", "Accept": "application/json"})
+            with _ur.urlopen(rq, timeout=30) as _r:
+                j = _json.loads(_r.read().decode("utf-8"))
+            r = j["chart"]["result"][0]
+            pts = [(dt.datetime.fromtimestamp(t, dt.timezone.utc).date(), float(c)) for t, c in zip(r["timestamp"], r["indicators"]["quote"][0]["close"]) if c is not None]
+            if len(pts) > 60:
+                return pts
+        except Exception as e:  # noqa: BLE001
+            last = e
+    raise last or RuntimeError("Yahoo GC=F sin datos")
+
+
 def ecb_ccy(ccy: str, days_back: int = 420):
     """Tipo de referencia BCE (divisa por EUR)."""
     start = (TODAY - dt.timedelta(days=days_back)).isoformat()
@@ -239,6 +259,10 @@ def medir():
         return v
 
     gold = grab("lbma_oro", lbma, "gold_pm")
+    oro_respaldo = False
+    if not gold:  # LBMA da 403 desde algunas IP: se usa el oro COMEX (GC=F) y se indica en la fuente
+        gold = grab("yahoo_gc_f", yahoo_gc)
+        oro_respaldo = bool(gold)
     silver = grab("lbma_plata", lbma, "silver")
     nom = grab("tesoro_nominal", treasury, "nominal")
     real = grab("tesoro_real", treasury, "real")
@@ -272,7 +296,8 @@ def medir():
                     "20d_pct": r2(pct_n(g, 20)), "60d_pct": r2(pct_n(g, 60)), "sma50": r2(sma(g, 50)), "sma200": r2(sma(g, 200)),
                     "max_52s": max(x[1] for x in g[-252:]), "min_52s": min(x[1] for x in g[-252:]),
                     "ytd_pct": r2((g[-1][1] / next(x[1] for x in g if x[0].year == g[-1][0].year) - 1) * 100),
-                    "fuente": "LBMA Gold Price PM (ICE Benchmark Administration), USD/oz"}
+                    "fuente": ("Futuros oro COMEX GC=F (Yahoo Finance), USD/oz · respaldo: LBMA no respondió" if oro_respaldo else "LBMA Gold Price PM (ICE Benchmark Administration), USD/oz"),
+                    "respaldo": oro_respaldo}
         M["oro"]["vs_max_52s_pct"] = r2((g[-1][1] / M["oro"]["max_52s"] - 1) * 100)
     if xaut_last or paxg_last:
         M["oro_intradia"] = {"xaut_okx": xaut_last, "paxg_coinbase": paxg_last,

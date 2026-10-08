@@ -161,22 +161,15 @@ def evaluar(D, estado):
     elif v["valor"] > U["vix_nivel"] or (v.get("cambio_1d_pct") or 0) >= U["vix_pct"]:
         al("vix", "Miedo (VIX)", f"El VIX está en {n(v['valor'], 1)} ({sg(v.get('cambio_1d_pct') or 0, 1)} % en la sesión; umbral: >25 o +20 %) (Cboe vía Yahoo Finance, {fecha_linea(v['fecha'])}).",
            significado("vix", True) + ".", SENCILLO["vix"])
-    # crédito (5 días)
-    cr = C.get("credito") or {}
-    for k, nombre in (("ig", "IG"), ("bbb", "BBB"), ("hy", "High yield"), ("ccc", "CCC")):
-        m = cr.get(k) or {}
-        if m.get("sin_dato") or m.get("d5_pb") is None:
-            no_eval[f"credito_{k}"] = "SIN DATO (FRED ICE BofA)"
-            continue
-        if m["d5_pb"] >= U[f"{k}_pb"]:
-            al(f"credito_{k}", f"Crédito {nombre}", f"El diferencial {nombre} se amplía {n(m['d5_pb'], 0)} pb en 5 días, hasta {n(m['valor_pb'], 0)} pb ({m['fuente']}, dato del {fecha_linea(m['fecha'])}).",
-               significado("hy", True) + ".", SENCILLO["hy"])
     # Fed
     if r0:
         hist = [h for h in (F.get("historial") or []) if h.get("reunion") == r0["reunion"]]
         s1, b1 = r0["prob_reunion"]["subida"], r0["prob_reunion"]["bajada"]
         if len(hist) >= 2:
             s0, b0 = hist[-2]["prox_subida"], hist[-2]["prox_bajada"]
+            ult = estado.get("fed_ultimo") or {}
+            if ult.get("reunion") == r0["reunion"]:  # como alertas_causas.py: también frente al último aviso
+                s0 = ult["subida"] if abs(s1 - ult["subida"]) > abs(s1 - s0) else s0
             dmax = max(abs(s1 - s0), abs(b1 - b0))
             rotulo = lambda s, b: max((s, "subida"), (100 - s - b, "mantener"), (b, "bajada"))[1]  # noqa: E731
             cambio = rotulo(s1, b1) != rotulo(s0, b0)
@@ -185,6 +178,7 @@ def evaluar(D, estado):
                 al("fed", "Fed", f"Fed {fecha_linea(r0['reunion'])}: subida {n(s0, 0)} % → {n(s1, 0)} %, bajada {n(b0, 0)} % → {n(b1, 0)} %; resultado más probable: {rotulo(s1, b1)}"
                    f"{' (cambia frente a ayer)' if cambio else ''} (FedWatch NEXORA, futuros ZQ, precios del {fecha_linea(F['fecha_precios'])}).",
                    significado("fed", sube) + ".", SENCILLO["fed"])
+            estado["fed_ultimo"] = {"reunion": r0["reunion"], "subida": s1}
         else:
             no_eval["fed"] = "sin sesión previa en el historial de FedWatch"
     else:
@@ -210,19 +204,17 @@ def evaluar(D, estado):
                "Los ETF son la vía por la que entra y sale el dinero institucional en bitcoin: si salen cantidades grandes, falta demanda.")
     except Exception as ex:  # noqa: BLE001
         no_eval["etf_btc"] = f"Farside: {type(ex).__name__}"
-    # ciclo: cambio de señal o de fase (se compara con el estado guardado; sin estado previo solo se registra)
+    # ciclo y crédito: reglas de ciclo.py (saltos IG/BBB/HY/CCC en 5 días, señales que se encienden/apagan, cambio de fase)
     if C.get("senales"):
-        act_c = {"fase": C["fase"], "senales": {str(s["n"]): s["estado"] for s in C["senales"]}}
+        import ciclo
         prev = estado.get("ciclo")
-        if prev:
-            cambios = [f"«{s['nombre']}» pasa a {s['estado']}" for s in C["senales"] if prev["senales"].get(str(s["n"])) not in (None, s["estado"])]
-            if prev["fase"] != C["fase"] or cambios:
-                al("ciclo", "Ciclo EE. UU.", f"Ciclo y crédito: fase {prev['fase']} → {C['fase']} ({C['encendidas']} de {C['validas']} señales encendidas). "
-                   + ("; ".join(cambios[:3]) if cambios else "") + " (NEXORA sobre FRED, Fed de NY y Fed).",
-                   "Más señales encendidas = más riesgo de desaceleración: suele pesar sobre índices y BTC y favorecer al oro (interpretación, no hecho)." if C["encendidas"] > (sum(1 for x in prev["senales"].values() if x == "ENCENDIDA")) else
-                   "Menos señales encendidas = menor riesgo de desaceleración: suele ayudar a índices y BTC (interpretación, no hecho).",
-                   "Las nueve señales miden curva, probit de la Fed de NY, paro, empleo, producción, crédito y condiciones financieras; cuantas más se encienden, más cerca estamos de una recesión.")
-        estado["ciclo"] = {**act_c, "fecha": dt.date.today().isoformat()}
+        Ac = ciclo.alertas(C, prev or {})
+        for x in Ac:
+            cred = x["tipo"] == "credito"
+            al(f"ciclo_{x.get('clave') or x['texto'][:40]}", "Crédito" if cred else "Ciclo EE. UU.", x["texto"],
+               (significado("hy", True) + "." if cred else "Más señales de recesión encendidas pesan sobre índices y BTC y favorecen al oro; si se apagan, al revés (interpretación, no hecho)."),
+               SENCILLO["hy"] if cred else "El ciclo mide si la economía real y el crédito avisan de una recesión: cuantas más señales se encienden, más riesgo.")
+        estado["ciclo"] = ciclo.nuevo_estado(C, prev, Ac)
     else:
         no_eval["ciclo"] = "SIN DATO (ciclo.json)"
     return out, no_eval

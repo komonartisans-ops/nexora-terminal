@@ -101,7 +101,10 @@ def medir(h=1, fw=None):
     fx = g("bce", ecb_fx, 40)
     vix, spx, ndx = g("vix", cboe, "VIX"), g("spx", cboe, "SPX"), g("ndx", nasdaq100)
     oro = g("lbma", lbma)
-    if not oro:  # LBMA falla a veces: proxy XAUT (OKX, oro tokenizado 1:1)
+    if not oro:  # LBMA da 403: primero el oro COMEX (GC=F, Yahoo); si tampoco, proxy XAUT (OKX)
+        from oro_xau import yahoo_gc
+        oro = g("yahoo_gc_f", yahoo_gc, "6mo")
+    if not oro:
         x = g("xaut", okx_ohlc, "XAUT-USDT", 30)
         oro = [(r[0], r[4]) for r in x] if x else None
     btc = g("btc", coinbase, "BTC-USD", 20)
@@ -274,7 +277,7 @@ def construir(D, foco="regimen", cal=None, fw=None):
             "detalle_viento": {a: [{"motor": k, "sube": sube, "peso": round(c, 2), "razon": RAZON[(k, sube)]} for c, k, sube in cs] for a, cs in contrib.items()},
             "motores": {k: {kk: vv for kk, vv in m.items() if kk in ("valor", "delta", "fecha", "antes", "reunion")} for k, m in M.items()},
             "activos": A,
-            "fuente": "Tesoro de EE. UU. (2Y, 10Y real), BCE (réplica del dólar), Cboe (VIX, S&P 500), Nasdaq (Nasdaq 100), LBMA o XAUT/OKX si LBMA falla (oro), Coinbase (bitcoin), ICE BofA vía FRED (crédito), FedWatch NEXORA (futuros ZQ)."}
+            "fuente": "Tesoro de EE. UU. (2Y, 10Y real), BCE (réplica del dólar), Cboe (VIX, S&P 500), Nasdaq (Nasdaq 100), LBMA o COMEX GC=F (Yahoo) si LBMA falla (oro), Coinbase (bitcoin), ICE BofA vía FRED (crédito), FedWatch NEXORA (futuros ZQ)."}
 
 
 def color(v):

@@ -502,73 +502,79 @@ function footIn(src, fecha, url, extra) { return `<div style="padding:0 16px 12p
 function pillAbs(v, dec, suf, inv) { return pill(v == null ? null : v, dec, suf, inv); }
 
 const FASE_TXT = {
-  'EXPANSIÓN': 'Casi ninguna de las nueve señales avisa de recesión: con estos umbrales el riesgo de ciclo es bajo. Es lo que dicen los datos hoy, no una garantía.',
-  'DESACELERACIÓN': 'Varias señales se han encendido: la economía pierde velocidad. Suele pesar sobre beneficios y favorecer a lo defensivo (interpretación, no hecho).',
-  'RIESGO ALTO': 'Cuatro o cinco señales encendidas: zona de riesgo elevado según el criterio NEXORA (hipótesis, no predicción).',
-  'RECESIÓN PROBABLE': 'Seis o más señales encendidas: el conjunto de datos es coherente con una recesión en marcha o inminente (hipótesis).',
+  'EXPANSIÓN': 'Ninguna o casi ninguna señal adelantada avisa de recesión y la regla de Sahm no ha saltado: el riesgo de ciclo es bajo con estas reglas. Es lo que dicen los datos hoy, no una garantía.',
+  'DESACELERACIÓN': 'Dos o tres señales adelantadas están encendidas: la economía pierde velocidad. Suele pesar sobre beneficios y favorecer a lo defensivo (interpretación, no hecho).',
+  'RIESGO ALTO': 'Cuatro o más señales adelantadas encendidas: zona de riesgo alto de recesión en 12-18 meses según las reglas de NEXORA (hipótesis, no predicción).',
+  'RECESIÓN PROBABLE': 'La regla de Sahm ya salta: el paro ha subido 0,5 puntos sobre su mínimo, lo que históricamente confirma que la recesión ha empezado (hecho medido; confirmación, no anticipo).',
 };
-const ESCALA_SENAL = { 1: 100, 2: 30, 3: 0.5, 4: 20, 5: 50, 6: 2, 7: 150, 8: 1, 9: 0.5 };
-const SENAL_MENSUAL = new Set([2, 3, 5, 6, 8]);
-function footSig(s) {
-  const m = String(s.fecha || '').match(/^(\d{4})-(\d{2})(?:-(\d{2}))?/);
-  if (!m) return foot(s.fuente, null, s.url);
-  const iso = `${m[1]}-${m[2]}-${m[3] || '01'}`;
-  return SENAL_MENSUAL.has(s.n) ? foot(s.fuente, false, s.url, `dato mensual · periodo ${esc(fdm(iso))}`) : foot(s.fuente, iso, s.url);
+const faseClave = (f) => Object.keys(FASE_TXT).find((k) => String(f).startsWith(k)) || '';
+const RULE = { curva: '10Y − 3M < 0 pp', desinversion: 'curva ≥ 0 tras ≥ 3 meses invertida en los 12 previos', ebp: 'EBP > 0,5', baa: 'Baa − 10Y sube ≥ 0,5 pp en 6 meses', sloos: '> 20 % neto de bancos endureciendo',
+  nfci: 'NFCI > 0', claims: 'media 4 sem. ≥ +20 % sobre su mínimo de 12 meses', permisos: '≤ −20 % interanual', temporal: '≤ −3 % interanual', sahm: '≥ 0,5 pp' };
+const TIPO_SEN = { adelantada: 'adelantada', coincidente: 'coincidente', 'confirmación': 'confirmación' };
+function fmtSen(h) {
+  const v = h.valor; if (v == null) return null;
+  if (h.id === 'claims') return num(v, 0);
+  const d = ['curva', 'desinversion', 'ebp', 'baa', 'nfci', 'sahm'].includes(h.id) ? 2 : 1;
+  const u = { curva: ' pp', desinversion: ' pp', baa: ' pp', sloos: ' % neto', sahm: ' pp', permisos: ' % a/a', temporal: ' % a/a' }[h.id] || '';
+  return num(v, d) + u;
 }
-const margenTxt = (s) => {
-  if (s.margen == null) return '';
-  const d = s.unidad === 'pb' || s.unidad === 'mil' ? 0 : 2;
-  return s.encendida ? `supera el umbral por ${num(Math.abs(s.margen), d)} ${s.unidad}`.trim() : `faltan ${num(s.margen, d)} ${s.unidad} para encenderse`.trim();
-};
-
 function pageCiclo() {
   const C = D.ciclo;
-  let h = head('Análisis', 'Ciclo y crédito EE. UU.', 'Nueve señales encendidas o apagadas frente a umbrales fijos, la fase del ciclo que resulta de contarlas, la probabilidad de recesión de la Fed de Nueva York y los diferenciales de crédito.',
-    `Actualizado: ${C && C.generado_utc ? esc(horaAct(C.generado_utc)) : 'SIN DATO'} · cada señal lleva la fecha de su dato`);
+  let h = head('Análisis', 'Ciclo y crédito EE. UU.', 'Diez señales de economía real y crédito con las reglas de ciclo.py de NEXORA: la regla de Sahm confirma la recesión; cuatro o más señales adelantadas encendidas = riesgo alto; dos o tres = desaceleración. Más el estrés diario del crédito (IG, BBB, HY, CCC).',
+    `Actualizado: ${C && C.generado_utc ? esc(horaAct(C.generado_utc)) : 'SIN DATO'} · cada señal lleva el mes de su dato`);
   h += fallo('ciclo');
   if (!C || !C.senales) return h + noData('Ciclo y crédito');
-  const enc = C.senales.filter((s) => s.encendida);
-  const cerca = C.senales.filter((s) => s.encendida === false && s.margen != null).map((s) => ({ s, r: s.margen / ESCALA_SENAL[s.n] })).sort((a, b) => a.r - b.r).slice(0, 2);
-  const hy = C.credito && C.credito.hy;
-  const pr = C.probit;
-  h += essential(`Fase <b style="color:${TONO_CSS[C.tono]}">${esc(C.fase)}</b>: ${C.encendidas} de ${C.validas} señales encendidas${enc.length ? ' (' + enc.map((s) => esc(s.nombre)).join('; ') + ')' : ''}. ${pr ? `Probit de la Fed de NY: ${num(pr.probabilidad_12m_pct, 1)} % de recesión a 12 meses (para ${esc(pr.para_mes)}).` : 'Probit: SIN DATO.'} ${hy && !hy.sin_dato ? `High yield ${num(hy.valor_pb, 0)} pb (${sg(hy.d5_pb, 0)} pb en 5 días).` : ''}`,
-    `${esc(FASE_TXT[C.fase] || '')}`,
-    cerca.length ? `Las más cercanas a encenderse: ${cerca.map((x) => `${esc(x.s.nombre)} (${esc(margenTxt(x.s))})`).join(' · ')}. Una señal nueva encendida o un cambio de fase dispara alerta en Telegram.` : 'Ninguna señal apagada tiene dato para medir su distancia.');
+  const sh = C.senales.find((s) => s.id === 'sahm');
+  const encendidas = C.senales.filter((s) => s.encendida);
+  const clave = faseClave(C.fase);
+  const S = C.series || {};
+  h += essential(`Fase <b style="color:${TONO_CSS[C.tono]}">${esc(C.fase)}</b>: ${C.senales_adelantadas_encendidas} de ${C.senales_adelantadas_total} señales adelantadas encendidas${encendidas.length ? ' (' + encendidas.map((s) => esc(s.senal)).join('; ') + ')' : ''}; regla de Sahm ${sh && sh.encendida ? 'ENCENDIDA' : sh && sh.encendida === false ? 'apagada' : 'SIN DATO'}. Probabilidad de recesión a 12 meses: ${C.prob_recesion_curva_nyfed != null ? num(C.prob_recesion_curva_nyfed, 1) + ' % (curva, modelo de la Fed de NY)' : 'SIN DATO'}${C.prob_recesion_ebp_fed != null ? ' · ' + num(C.prob_recesion_ebp_fed, 1) + ' % (EBP, Fed)' : ''}.`,
+    esc(FASE_TXT[clave] || ''),
+    `${esc(C.estado_credito)}. Un cambio de fase, una señal que se enciende o un salto de crédito (IG +10 / BBB +12 / HY +25 / CCC +60 pb en 5 días) dispara alerta en Telegram.`);
 
-  h += `<div class="state"><div class="card"><div class="eb">Fase del ciclo</div><div class="v" style="color:${TONO_CSS[C.tono]}">${esc(C.fase)}</div>
-    <div class="lamps">${C.senales.map((s) => `<i class="${s.encendida === true ? 'on' : s.encendida === false ? 'off' : 'nd'}" title="${esc(s.n + '. ' + s.nombre + ': ' + s.estado)}"></i>`).join('')}<span class="mono" style="margin-left:8px">${C.encendidas} / ${C.validas}</span></div>
-    <p style="margin-top:8px">Fases: 0-1 señales EXPANSIÓN · 2-3 DESACELERACIÓN · 4-5 RIESGO ALTO · 6 o más RECESIÓN PROBABLE (criterio NEXORA, no oficial).</p>${foot('NEXORA sobre FRED, Fed de NY y Fed', false, null, 'cuenta de señales')}</div>
-    <div class="card"><div class="eb">Probit de recesión · Fed de Nueva York</div><div class="v">${pr ? num(pr.probabilidad_12m_pct, 1) + ' %' : SD}</div>
-    <p>${pr ? `Probabilidad de que EE. UU. esté en recesión en ${esc(pr.para_mes)} (12 meses vista), calculada con el diferencial 10 años − 3 meses de ${esc(pr.ultimo_mes_dato)} (${num(pr.spread_ultimo_pp, 2)} pp). Es una probabilidad estadística, no una predicción.` : 'SIN DATO'}</p>${foot('Fed de Nueva York (modelo probit)', false, 'https://www.newyorkfed.org/research/capital_markets/ycfaq', pr ? 'dato mensual · último diferencial ' + esc(fdm(pr.ultimo_mes_dato + '-01')) : '')}</div></div>`;
+  h += `<div class="state" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="eb">Fase del ciclo</div><div class="v" style="color:${TONO_CSS[C.tono]};font-size:20px">${esc(C.fase)}</div>
+    <div class="lamps">${C.senales.map((s) => `<i class="${s.encendida === true ? 'on' : s.encendida === false ? 'off' : 'nd'}" title="${esc(s.senal + ': ' + (s.encendida === true ? 'ENCENDIDA' : s.encendida === false ? 'APAGADA' : 'SIN DATO'))}"></i>`).join('')}</div>
+    <p style="margin-top:8px">Reglas de ciclo.py: Sahm → RECESIÓN PROBABLE · ≥ 4 adelantadas → RIESGO ALTO · ≥ 2 → DESACELERACIÓN · resto EXPANSIÓN.</p>${foot('NEXORA ciclo.py sobre FRED, Fed y Fed de Chicago', false, null, 'cuenta de señales')}</div>
+    <div class="card"><div class="eb">Probabilidad de recesión a 12 meses</div><div class="v">${C.prob_recesion_curva_nyfed != null ? num(C.prob_recesion_curva_nyfed, 1) + ' %' : SD}</div>
+    <p>Según la curva 10Y−3M (${C.curva_10y3m != null ? num(C.curva_10y3m, 2) + ' pp' : 'SIN DATO'}), modelo probit de la Fed de Nueva York. Según la prima de riesgo de los bonos (EBP, Fed): <b style="color:var(--text)">${C.prob_recesion_ebp_fed != null ? num(C.prob_recesion_ebp_fed, 1) + ' %' : 'SIN DATO'}</b>${C.prob_ebp_mes ? ' (' + esc(fdm(C.prob_ebp_mes + '-01')) + ')' : ''}. Son probabilidades estadísticas, no predicciones.</p>${foot('Fed de Nueva York (probit) · Reserva Federal (EBP)', false, 'https://www.newyorkfed.org/research/capital_markets/ycfaq', 'dato mensual / diario')}</div>
+    <div class="card"><div class="eb">Estado del crédito</div><div class="v" style="font-size:20px;color:${/TENSI/.test(C.estado_credito) ? 'var(--neg)' : 'var(--pos)'}">${esc(C.estado_credito.split(':')[0])}</div>
+    <p>${esc(C.estado_credito.includes(':') ? C.estado_credito.split(':').slice(1).join(':').trim() : 'Ningún diferencial supera sus umbrales de 5 días ni de 1 mes.')}</p>${foot('ICE BofA vía FRED', (C.credito.hy || {}).fecha)}</div></div>`;
 
-  h += '<div class="sect"><h2>Las nueve señales</h2><span class="more">rojo = encendida (avisa) · verde = apagada · gris = SIN DATO (no cuenta)</span></div><div class="grid g3">';
-  h += C.senales.map((s) => `<div class="card sig ${s.encendida === true ? 'on' : s.encendida === false ? 'off' : 'nd'}"><div class="top"><div class="nm">${s.n} · ${esc(s.nombre)}</div><span class="ck ${s.encendida === true ? 'no' : s.encendida === false ? 'ok' : 'sd'}">${esc(s.estado)}</span></div>
-    <div class="big mono">${s.valor ? esc(s.valor) : SD}</div><div class="note" style="margin:6px 0 0">Se enciende si ${esc(s.umbral)}${margenTxt(s) ? ' · ' + esc(margenTxt(s)) : ''}</div>
-    ${footSig(s)}</div>`).join('') + '</div>';
-
-  h += '<div class="sect"><h2>Diferenciales de crédito</h2><span class="more">pb = puntos básicos · si suben, financiarse cuesta más (rojo)</span></div><div class="grid g4">';
-  h += ['ig', 'bbb', 'hy', 'ccc'].map((k) => {
-    const m = (C.credito || {})[k];
-    if (!m || m.sin_dato) return `<div class="card kpi"><div class="lab">${esc((m && m.nombre) || k)}</div><div class="big">${SD}</div>${foot((m && m.fuente) || 'FRED', null)}</div>`;
-    return `<div class="card kpi"><div class="lab">${esc(m.nombre)}</div><div class="exp">Diferencial de opciones (OAS) frente al Tesoro, ICE BofA</div><div class="big">${num(m.valor_pb, 0)}<small>pb</small></div>${spark(m.serie, 126)}
-      <table><tr><td>5 días</td><td>${pill(m.d5_pb, 0, ' pb', true)}</td></tr><tr><td>1 mes</td><td>${pill(m.d1m_pb, 0, ' pb', true)}</td></tr><tr><td>3 meses</td><td>${pill(m.d3m_pb, 0, ' pb', true)}</td></tr></table>
-      ${foot(m.fuente, m.fecha, m.url)}</div>`;
+  h += '<div class="sect"><h2>Las señales</h2><span class="more">rojo = encendida (avisa) · verde = apagada · gris = SIN DATO · «avisó» = recesiones precedidas desde que existe la señal</span></div><div class="grid g3">';
+  h += C.senales.map((s) => {
+    const v = (C.validacion || {})[s.id];
+    const val = v ? `Avisó ${v.avisadas}/${v.recesiones} recesiones · ${v.falsas_alarmas} falsas alarmas${v.antelacion_mediana_meses != null ? ' · ' + num(v.antelacion_mediana_meses, 0) + ' meses de antelación típica' : v.retraso_mediano_meses != null ? ' · salta ' + num(v.retraso_mediano_meses, 0) + ' meses tras el inicio' : ''} (desde ${esc(v.desde)})` : 'Sin historial de activaciones para validar';
+    const mes = s.mes ? s.mes + '-01' : null;
+    return `<div class="card sig ${s.encendida === true ? 'on' : s.encendida === false ? 'off' : 'nd'}"><div class="top"><div class="nm">${esc(s.senal)}</div><span class="ck ${s.encendida === true ? 'no' : s.encendida === false ? 'ok' : 'sd'}">${s.encendida === true ? 'ENCENDIDA' : s.encendida === false ? 'APAGADA' : 'SIN DATO'}</span></div>
+      <div class="big mono">${fmtSen(s) || SD}</div><div class="note" style="margin:6px 0 0">Se enciende si ${esc(RULE[s.id] || '')} · ${esc(TIPO_SEN[s.tipo] || s.tipo)}</div>
+      <div class="note" style="margin:4px 0 0">${esc(s.que_mide)}</div><div class="note" style="margin:4px 0 0;color:var(--dim)">${val}</div>
+      ${foot(s.fuente, false, null, mes ? 'dato ' + (s.id === 'claims' ? esc(fdm(mes)) + ' (semanal)' : esc(fdm(mes))) : 'SIN DATO')}</div>`;
   }).join('') + '</div>';
 
-  const mk = (a) => (a || []).map(([t, v]) => [t, v]);
-  const umb = (a, v) => (a || []).map(([t]) => [t, v]);
-  const cr = C.credito || {};
-  h += '<div class="sect"><h2>Gráficos</h2></div><div class="grid g2">';
-  h += `<div class="card"><h3>Grado de inversión y BBB</h3><div class="sub">pb · más alto = más estrés en el crédito de calidad</div>${lw('cIgBbb', [{ name: 'IG', color: COL.blue, data: mk(cr.ig && cr.ig.serie), prec: 0 }, { name: 'BBB', color: COL.amber, data: mk(cr.bbb && cr.bbb.serie), prec: 0 }])}${foot('FRED BAMLC0A0CM · BAMLC0A4CBBB (ICE BofA)', (lastOf(cr.ig && cr.ig.serie) || [])[0], 'https://fred.stlouisfed.org/series/BAMLC0A4CBBB')}</div>`;
-  h += `<div class="card"><h3>High yield y CCC</h3><div class="sub">pb · CCC en el eje izquierdo (escala mucho mayor)</div>${lw('cHyCcc', [{ name: 'CCC (eje izq.)', color: COL.neg, data: mk(cr.ccc && cr.ccc.serie), scale: 'left', prec: 0 }, { name: 'High yield', color: COL.amber, data: mk(cr.hy && cr.hy.serie), prec: 0 }, { name: 'Umbral HY 450 pb', color: COL.gray, data: umb(cr.hy && cr.hy.serie, C.umbrales.hy_pb), w: 1, prec: 0 }], { left: true })}${foot('FRED BAMLH0A0HYM2 · BAMLH0A3HYC (ICE BofA)', (lastOf(cr.hy && cr.hy.serie) || [])[0], 'https://fred.stlouisfed.org/series/BAMLH0A3HYC')}</div>`;
-  h += `<div class="card"><h3>Probit de recesión de la Fed de Nueva York</h3><div class="sub">% a 12 meses vista; la serie llega hasta 12 meses después del último dato · umbral NEXORA 30 %</div>${lw('cProbit', [{ name: 'Probabilidad', color: COL.amber, data: mk(pr && pr.serie), area: true, prec: 1 }, { name: 'Umbral 30 %', color: COL.neg, data: umb(pr && pr.serie, C.umbrales.probit_pct), w: 1, prec: 1 }])}${foot('Fed de Nueva York (modelo probit)', false, 'https://www.newyorkfed.org/research/capital_markets/ycfaq', pr ? 'dato mensual · último diferencial ' + esc(fdm(pr.ultimo_mes_dato + '-01')) : '')}</div>`;
-  h += `<div class="card"><h3>Prima de bono en exceso (EBP)</h3><div class="sub">pp · parte del diferencial de crédito que no explica el riesgo de impago: mide apetito de riesgo · umbral 0,5 pp</div>${lw('cEbp', [{ name: 'EBP', color: COL.amber, data: mk(C.ebp && C.ebp.serie), prec: 2 }, { name: 'Umbral 0,5 pp', color: COL.neg, data: umb(C.ebp && C.ebp.serie, C.umbrales.ebp_pp), w: 1, prec: 2 }])}${foot('Reserva Federal (Gilchrist-Zakrajšek)', false, 'https://www.federalreserve.gov/econres/notes/feds-notes/ebp_csv.csv', C.ebp && C.ebp.ultimo ? 'dato mensual · periodo ' + esc(fdm(C.ebp.ultimo[0])) : 'SIN DATO')}</div>`;
-  h += `<div class="card"><h3>Curva de tipos: 10Y − 3M y 10Y − 2Y</h3><div class="sub">pp · por debajo de 0 = curva invertida</div>${lw('cCurva', [{ name: '10Y − 3M', color: COL.amber, data: mk(C.curva && C.curva.t10y3m), prec: 2 }, { name: '10Y − 2Y', color: COL.blue, data: mk(C.curva && C.curva.t10y2y), prec: 2 }, { name: 'Cero', color: COL.gray, data: umb(C.curva && C.curva.t10y3m, 0), w: 1, prec: 2 }])}${foot('FRED T10Y3M · T10Y2Y', (lastOf(C.curva && C.curva.t10y3m) || [])[0], 'https://fred.stlouisfed.org/series/T10Y3M')}</div>`;
-  h += `<div class="card"><h3>Condiciones financieras (NFCI) y regla de Sahm</h3><div class="sub">NFCI &gt; 0 = más duras que la media · Sahm ≥ 0,5 = señal de recesión</div>${lw('cNfci2', [{ name: 'NFCI (eje izq.)', color: COL.amber, data: mk(C.nfci), scale: 'left', prec: 2 }, { name: 'Sahm', color: COL.neg, data: mk(C.sahm), prec: 2 }], { left: true })}${foot('FRED NFCI · SAHMREALTIME', (lastOf(C.nfci) || [])[0], 'https://fred.stlouisfed.org/series/SAHMREALTIME')}</div></div>`;
+  h += '<div class="sect"><h2>Diferenciales de crédito</h2><span class="more">pb · si suben, financiarse cuesta más (rojo) · umbrales de alerta UMB_CRED de ciclo.py</span></div><div class="grid g4">';
+  const U = C.umb_cred || {};
+  h += ['ig', 'bbb', 'hy', 'ccc'].map((k) => {
+    const m = (C.credito || {})[k];
+    if (!m) return `<div class="card kpi"><div class="lab">${k.toUpperCase()}</div><div class="big">${SD}</div>${foot('FRED (ICE BofA)', null)}</div>`;
+    const serie = (S.oas || {})[k];
+    return `<div class="card kpi"><div class="lab">${esc(m.nombre)}</div><div class="exp">Diferencial frente al Tesoro (OAS, ICE BofA) · percentil ${m.percentil_1a} del último año · mínimo 1 año ${num(m.min_1a_pb, 0)} pb</div><div class="big">${num(m.pb, 0)}<small>pb</small></div>${serie ? spark(serie, 126) : ''}
+      <table><tr><td>5 días <span style="color:var(--dim)">(alerta ≥ ${(U[k] || [])[0] ?? '—'})</span></td><td>${pill(m.d5_pb ?? m['5d_pb'], 0, ' pb', true)}</td></tr><tr><td>1 mes <span style="color:var(--dim)">(≥ ${(U[k] || [])[1] ?? '—'})</span></td><td>${pill(m['1m_pb'], 0, ' pb', true)}</td></tr><tr><td>3 meses</td><td>${pill(m['3m_pb'], 0, ' pb', true)}</td></tr></table>
+      ${foot('FRED ' + ({ ig: 'BAMLC0A0CM', bbb: 'BAMLC0A4CBBB', hy: 'BAMLH0A0HYM2', ccc: 'BAMLH0A3HYC' })[k] + ' (ICE BofA)', m.fecha, 'https://fred.stlouisfed.org/series/' + ({ ig: 'BAMLC0A0CM', bbb: 'BAMLC0A4CBBB', hy: 'BAMLH0A0HYM2', ccc: 'BAMLH0A3HYC' })[k])}</div>`;
+  }).join('') + '</div>';
 
-  h += '<div class="sect"><h2>Reglas y fuentes de cada señal</h2><span class="more">umbrales fijos · CRITERIO NEXORA</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Señal</th><th>Valor</th><th>Se enciende si</th><th>Estado</th><th>Dato</th><th style="text-align:left">Fuente</th></tr></thead><tbody>'
-    + C.senales.map((s) => `<tr><td>${s.n}. ${esc(s.nombre)}</td><td>${s.valor ? esc(s.valor) : 'SIN DATO'}</td><td>${esc(s.umbral)}</td><td>${s.encendida === true ? '<span class="ck no">ENCENDIDA</span>' : s.encendida === false ? '<span class="ck ok">APAGADA</span>' : '<span class="ck sd">SIN DATO</span>'}</td><td>${esc(s.fecha || '—')}</td><td style="text-align:left"><a class="src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.fuente)}</a></td></tr>`).join('')
-    + '</tbody></table></div><div class="note">Una señal es un hecho medido frente a un umbral; la fase es solo la cuenta de señales encendidas. Los umbrales son criterio de NEXORA, no cifras oficiales, y no predicen una recesión. Si una fuente falla la señal queda SIN DATO y no cuenta.</div>';
+  const oas = S.oas || {};
+  h += '<div class="sect"><h2>Gráficos</h2></div><div class="grid g2">';
+  h += `<div class="card"><h3>Grado de inversión y BBB</h3><div class="sub">pb · más alto = más estrés en el crédito de calidad</div>${lw('cIgBbb', [{ name: 'IG', color: COL.blue, data: oas.ig, prec: 0 }, { name: 'BBB', color: COL.amber, data: oas.bbb, prec: 0 }])}${foot('FRED BAMLC0A0CM · BAMLC0A4CBBB (ICE BofA)', (lastOf(oas.ig) || [])[0], 'https://fred.stlouisfed.org/series/BAMLC0A4CBBB')}</div>`;
+  h += `<div class="card"><h3>High yield y CCC</h3><div class="sub">pb · CCC en el eje izquierdo (escala mucho mayor)</div>${lw('cHyCcc', [{ name: 'CCC (eje izq.)', color: COL.neg, data: oas.ccc, scale: 'left', prec: 0 }, { name: 'High yield', color: COL.amber, data: oas.hy, prec: 0 }], { left: true })}${foot('FRED BAMLH0A0HYM2 · BAMLH0A3HYC (ICE BofA)', (lastOf(oas.hy) || [])[0], 'https://fred.stlouisfed.org/series/BAMLH0A3HYC')}</div>`;
+  const umb = (a, v) => (a || []).map(([t]) => [t, v]);
+  h += `<div class="card"><h3>Probabilidad de recesión según la curva (probit)</h3><div class="sub">% a 12 meses · probit de la Fed de Nueva York aplicado a la curva 10Y−3M mensual</div>${lw('cProbit', [{ name: 'Probabilidad (curva)', color: COL.amber, data: S.probit, area: true, prec: 1 }, { name: 'Según EBP (Fed)', color: COL.blue, data: S.ebp_prob, prec: 1 }])}${foot('Fed de Nueva York (probit) · FRED GS10, TB3MS · Fed (EBP)', false, 'https://www.newyorkfed.org/research/capital_markets/ycfaq', 'dato mensual')}</div>`;
+  h += `<div class="card"><h3>Prima de bono en exceso (EBP)</h3><div class="sub">pp · parte del diferencial de crédito que no explica el riesgo de impago · la señal se enciende por encima de 0,5</div>${lw('cEbp', [{ name: 'EBP', color: COL.amber, data: S.ebp, prec: 2 }, { name: 'Umbral 0,5', color: COL.neg, data: umb(S.ebp, 0.5), w: 1, prec: 2 }])}${foot('Reserva Federal (Gilchrist-Zakrajšek)', false, 'https://www.federalreserve.gov/econres/notes/feds-notes/ebp_csv.csv', C.prob_ebp_mes ? 'dato mensual · ' + esc(fdm(C.prob_ebp_mes + '-01')) : '')}</div>`;
+  h += `<div class="card"><h3>Curva de tipos 10Y − 3M</h3><div class="sub">pp · por debajo de 0 = curva invertida (señal encendida)</div>${lw('cCurva', [{ name: '10Y − 3M mensual', color: COL.amber, data: S.curva_mensual, prec: 2 }, { name: 'Diaria', color: COL.blue, data: S.curva_diaria, w: 1, prec: 2 }, { name: 'Cero', color: COL.gray, data: umb(S.curva_mensual, 0), w: 1, prec: 2 }])}${foot('FRED GS10 · TB3MS · T10Y3M', (lastOf(S.curva_diaria) || [])[0], 'https://fred.stlouisfed.org/series/T10Y3M')}</div>`;
+  h += `<div class="card"><h3>Condiciones financieras (NFCI) y regla de Sahm</h3><div class="sub">NFCI &gt; 0 = más duras que la media · Sahm ≥ 0,5 = recesión en marcha</div>${lw('cNfci2', [{ name: 'NFCI (eje izq.)', color: COL.amber, data: S.nfci, scale: 'left', prec: 2 }, { name: 'Sahm', color: COL.neg, data: S.sahm, prec: 2 }], { left: true })}${foot('FRED NFCI · SAHMREALTIME', (lastOf(S.nfci) || [])[0], 'https://fred.stlouisfed.org/series/SAHMREALTIME')}</div></div>`;
+
+  h += '<div class="sect"><h2>Reglas y fuentes de cada señal</h2><span class="more">ciclo.py · umbrales CRITERIO NEXORA salvo Sahm 0,5 y el probit de la Fed de NY</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Señal</th><th>Tipo</th><th>Valor</th><th style="text-align:left">Se enciende si</th><th>Estado</th><th>Mes</th><th style="text-align:left">Fuente</th></tr></thead><tbody>'
+    + C.senales.map((s) => `<tr><td>${esc(s.senal)}</td><td>${esc(s.tipo)}</td><td>${fmtSen(s) || 'SIN DATO'}</td><td style="text-align:left;color:var(--muted)">${esc(RULE[s.id] || '')}</td><td>${s.encendida === true ? '<span class="ck no">ENCENDIDA</span>' : s.encendida === false ? '<span class="ck ok">APAGADA</span>' : '<span class="ck sd">SIN DATO</span>'}</td><td>${esc(s.mes || '—')}</td><td style="text-align:left;color:var(--dim)">${esc(s.fuente)}</td></tr>`).join('')
+    + '</tbody></table></div><div class="note">' + esc(C.nota || '') + ' Si una fuente falla la señal queda SIN DATO y no cuenta.</div>';
   if (C.errores && Object.keys(C.errores).length) h += `<div class="note">Fuentes sin dato: ${Object.entries(C.errores).map(([k, v]) => esc(k + ': ' + String(v).slice(0, 90))).join(' · ')}</div>`;
   return h;
 }
@@ -636,21 +642,20 @@ function pageRegimen() {
 function pagePublicados() {
   const P = D.publicados, C = D.calendario;
   let h = head('Noticias', 'Datos publicados', 'Últimas publicaciones macro con su periodo, su fecha de publicación y sus revisiones (formato original → revisado). El periodo del dato no es la fecha en que se publica: se muestran las dos.',
-    `Actualizado: ${P && P.generado_utc ? esc(horaAct(P.generado_utc)) : 'SIN DATO'} · registro de revisiones desde ${P ? esc(horaAct(P.registro_desde_utc)) : 'SIN DATO'}`);
+    `Actualizado: ${P && P.generado_utc ? esc(horaAct(P.generado_utc)) : 'SIN DATO'} · registro de revisiones desde el ${P ? esc(fdy(P.registro_desde)) : 'SIN DATO'}`);
   h += fallo('publicados');
   if (!P || !P.series) return h + noData('Datos publicados');
   const S = Object.entries(P.series).filter(([, v]) => !v.sin_dato);
   const rev = P.revisiones || [];
+  const per = (v, p) => (v.serie === 'ICSA' ? fdy(p) : fdm(p));
   const prox = ((C && C.eventos) || []).filter((e) => e.fecha >= hoyISO() && e.importancia === 'ALTA').slice(0, 2);
-  h += essential(`${S.length} series oficiales seguidas; ${P.n_revisiones} revisión(es) detectada(s) desde el inicio del registro (${esc(fdy(P.registro_desde_utc.slice(0, 10)))}). ${rev.length ? 'Última: ' + esc(rev[0].serie) + ' (' + esc(fdm(rev[0].periodo)) + ') ' + num(rev[0].original, 2) + ' → ' + num(rev[0].revisado, 2) + '.' : 'Todavía ninguna: las revisiones aparecen cuando un periodo ya registrado cambia de valor.'}`,
+  h += essential(`${S.length} series oficiales mostradas (${P.filas_registro} filas en el registro); ${P.n_revisiones} revisión(es) detectada(s) desde el ${esc(fdy(P.registro_desde))}. ${rev.length ? 'Última: ' + esc(rev[0].serie) + ' (' + esc(fdm(rev[0].periodo)) + ') ' + num(rev[0].original, 2) + ' → ' + num(rev[0].revisado, 2) + '.' : 'Todavía ninguna: aparecen cuando un periodo ya guardado cambia de valor.'}`,
     'Hecho: cada cifra es la que publica la fuente oficial; «original» es el primer valor que NEXORA registró y «revisado» el último. Interpretación: si un dato se revisa, la lectura que se hizo del primer valor queda desfasada: compara siempre original → revisado.',
     prox.length ? `Próximas publicaciones de importancia alta: ${prox.map((e) => `${esc(fdh(e.fecha, e.hora_madrid))} ${esc(e.evento)}`).join(' · ')}.` : 'Sin publicaciones de importancia alta en el calendario próximo.');
-
-  h += '<div class="sect"><h2>Revisiones detectadas</h2><span class="more">original → revisado</span></div>';
+  h += '<div class="sect"><h2>Revisiones detectadas</h2><span class="more">dato original → revisado (nivel de la serie oficial)</span></div>';
   h += rev.length ? '<div class="card pad0 scroll"><table class="t"><thead><tr><th>Dato</th><th>Periodo</th><th>Original</th><th>Revisado</th><th>Cambio</th><th>Detectado</th></tr></thead><tbody>'
-    + rev.map((r) => `<tr><td>${esc(r.serie)}</td><td>${esc(fdm(r.periodo))}</td><td>${num(r.original, 2)}</td><td><b>${num(r.revisado, 2)}</b></td><td>${pill(r.revisado - r.original, 2, '', false)}</td><td>${esc(horaAct(r.visto_utc))}</td></tr>`).join('') + '</tbody></table>' + footIn('Registro NEXORA data/publicaciones_macro.csv sobre FRED', null, 'https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/publicaciones_macro.csv') + '</div>'
-    : `<div class="card"><div class="empty" style="height:90px">SIN REVISIONES DESDE EL INICIO DEL REGISTRO</div><div class="note">${esc(P.nota)} El registro (${P.filas_registro} filas) crece en cada ejecución sin duplicar nada.</div>${foot('Registro NEXORA data/publicaciones_macro.csv', null, 'https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/publicaciones_macro.csv')}</div>`;
-
+    + rev.map((r) => `<tr><td>${esc(r.serie)}</td><td>${esc(r.id === 'ICSA' ? fdy(r.periodo) : fdm(r.periodo))}</td><td>${num(r.original, 2)}</td><td><b>${num(r.revisado, 2)}</b></td><td>${pill(r.revisado - r.original, 2, '', false)}</td><td>${esc(fdy(r.visto))}</td></tr>`).join('') + '</tbody></table>' + footIn('Registro NEXORA data/publicaciones_macro.csv sobre FRED', false, 'https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/publicaciones_macro.csv', 'tipo REVISIÓN') + '</div>'
+    : `<div class="card"><div class="empty" style="height:90px">SIN REVISIONES DESDE EL INICIO DEL REGISTRO</div><div class="note">${esc(P.nota)} El registro (${P.filas_registro} filas) solo se añade y no duplica nada.</div>${foot('Registro NEXORA data/publicaciones_macro.csv', false, 'https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/publicaciones_macro.csv', 'registro desde ' + esc(fdy(P.registro_desde)))}</div>`;
   h += '<div class="sect"><h2>Series</h2><span class="more">último periodo · valor · variación frente al anterior · fecha de publicación</span></div><div class="grid g3">';
   h += Object.entries(P.series).map(([nombre, v]) => {
     if (v.sin_dato) return `<div class="card kpi"><div class="lab">${esc(nombre)}</div><div class="big">${SD}</div>${foot(v.fuente, null, v.url)}</div>`;
@@ -658,12 +663,12 @@ function pagePublicados() {
     const dec = v.decimales, u = v.unidad === '%' ? ' %' : v.unidad === 'mil' ? ' mil' : '';
     return `<div class="card kpi"><div class="lab">${esc(nombre)}</div><div class="exp">${esc(v.descripcion)}</div>
       <div class="big">${num(a.valor, dec)}<small>${esc(u.trim() || v.unidad)}</small></div>
-      <div class="chg">${b ? pill(a.valor - b.valor, dec, v.unidad === '%' ? ' pp' : '', false) : ''} <span style="color:var(--dim);font-size:10.5px">frente a ${esc(v.serie === 'ICSA' ? fdy(b && b.periodo) : fdm(b && b.periodo))}</span></div>
-      <table class="mini"><tr><th>Periodo</th><th>Valor</th><th>Original → revisado</th></tr>${ps.slice().reverse().map((p) => `<tr><td>${esc(v.serie === 'ICSA' ? fdy(p.periodo) : fdm(p.periodo))}</td><td>${num(p.valor, dec)}</td><td>${p.revisado ? `<span class="down">${num(p.original, dec)} → ${num(p.valor, dec)}</span>` : '<span style="color:var(--dim)">sin revisar</span>'}</td></tr>`).join('')}</table>
-      <div class="note" style="margin:8px 0 0">Periodo: <b style="color:var(--text)">${esc(v.serie === 'ICSA' ? fdy(a.periodo) : fdm(a.periodo))}</b> · Publicado: <b style="color:var(--text)">${v.fecha_publicacion_calendario ? esc(fdd(v.fecha_publicacion_calendario)) : 'sin fecha en el calendario'}</b> · Visto por NEXORA: ${esc(horaAct(a.visto_primera_vez_utc))}</div>
-      ${foot(v.fuente, false, v.url, 'periodo ' + esc(v.serie === 'ICSA' ? fdy(a.periodo) : fdm(a.periodo)))}</div>`;
+      <div class="chg">${b ? pill(a.valor - b.valor, dec, v.unidad === '%' ? ' pp' : '', false) : ''} <span style="color:var(--dim);font-size:10.5px">frente a ${esc(per(v, b && b.periodo))}</span></div>
+      <table class="mini"><tr><th>Periodo</th><th>Valor</th><th>Original → revisado</th></tr>${ps.slice().reverse().map((p) => `<tr><td>${esc(per(v, p.periodo))}</td><td>${num(p.valor, dec)}</td><td>${p.revisado ? `<span class="down">${num(p.nivel_original, 2)} → ${num(p.nivel_actual, 2)}</span>` : '<span style="color:var(--dim)">sin revisar</span>'}</td></tr>`).join('')}</table>
+      <div class="note" style="margin:8px 0 0">Periodo: <b style="color:var(--text)">${esc(per(v, a.periodo))}</b> · Publicado: <b style="color:var(--text)">${v.fecha_publicacion_calendario ? esc(fdd(v.fecha_publicacion_calendario)) : 'sin fecha en el calendario'}</b> · Registrado por NEXORA: ${a.visto_primera_vez ? esc(fdy(a.visto_primera_vez)) : '—'}${a.tipo_primer_registro && a.tipo_primer_registro.startsWith('HIST') ? ' (carga inicial)' : ''}</div>
+      ${foot(v.fuente, false, v.url, 'periodo ' + esc(per(v, a.periodo)))}</div>`;
   }).join('') + '</div>';
-  h += `<div class="note">${esc(P.nota)} «Visto por NEXORA» es la hora de nuestra captura, no la hora oficial de publicación; la fecha oficial sale del calendario económico. Memoria permanente: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/publicaciones_macro.csv" target="_blank" rel="noopener">data/publicaciones_macro.csv</a> (${P.filas_registro} filas).</div>`;
+  h += `<div class="note">${esc(P.nota)} «Registrado por NEXORA» es la fecha de nuestra captura, no la oficial de publicación; esa sale del calendario económico. En la tabla de cada serie, «original → revisado» está en el nivel de la serie oficial (p. ej. miles de empleos, índice de precios). Memoria permanente: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/publicaciones_macro.csv" target="_blank" rel="noopener">data/publicaciones_macro.csv</a> (${P.filas_registro} filas).</div>`;
   if (P.errores && Object.keys(P.errores).length) h += `<div class="note">Fuentes sin dato (SIN DATO): ${Object.entries(P.errores).map(([k, v]) => esc(k + ': ' + String(v).slice(0, 90))).join(' · ')}</div>`;
   return h;
 }

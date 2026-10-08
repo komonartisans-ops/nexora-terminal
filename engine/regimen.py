@@ -345,13 +345,19 @@ def evaluar(R, calendario=None):
     ev = []
     dx = I.get("dxy")
     dol = "SIN DATO"
+    dol_fuente = "BCE; Fed H.10 vía FRED"
+    if not dx:  # respaldo: la réplica del BCE no respondió → dólar amplio de la Fed (FRED DTWEXBGS), indicado en la fuente
+        bd0 = S.get("DTWEXBGS")
+        if bd0 and len(bd0) > 21:
+            dx = {"valor": bd0[-1][1], "5d_pct": (bd0[-1][1] / bd0[-6][1] - 1) * 100, "20d_pct": (bd0[-1][1] / bd0[-21][1] - 1) * 100, "respaldo": True}
+            dol_fuente = "Fed H.10 vía FRED DTWEXBGS (respaldo: la réplica del BCE no respondió)"
     if dx:
         dol = "SE FORTALECE" if dx["20d_pct"] > U["dxy_20d_pct"] else "SE DEBILITA" if dx["20d_pct"] < -U["dxy_20d_pct"] else "ESTABLE"
-        ev.append(f"DXY (réplica BCE) {dx['valor']:.2f} ({dx['5d_pct']:+.2f} % 5 sesiones, {dx['20d_pct']:+.2f} % 20 sesiones)")
+        ev.append(f"{'Dólar amplio (Fed, respaldo)' if dx.get('respaldo') else 'DXY (réplica BCE)'} {dx['valor']:.2f} ({dx['5d_pct']:+.2f} % 5 sesiones, {dx['20d_pct']:+.2f} % 20 sesiones)")
     bd = S.get("DTWEXBGS")
-    if bd and len(bd) > 63:
+    if bd and len(bd) > 63 and not (dx or {}).get("respaldo"):
         ev.append(f"Dólar amplio (Fed) {bd[-1][1]:.2f} ({(bd[-1][1] / bd[-64][1] - 1) * 100:+.1f} % en 3 meses)")
-    dim("DÓLAR", dol, "↑" if dol == "SE FORTALECE" else "↓" if dol == "SE DEBILITA" else "→", ev, "BCE; Fed H.10 vía FRED")
+    dim("DÓLAR", dol, "↑" if dol == "SE FORTALECE" else "↓" if dol == "SE DEBILITA" else "→", ev, dol_fuente)
 
     # 11 CROSS-ASSET (último mes)
     ix = I.get("indices") or {}
@@ -389,7 +395,7 @@ def evaluar(R, calendario=None):
     dominante = [p for p in patrones if p["pct"] >= U["patron_min"] * 100]
     ev = [f"{k}: semana {f1(v['semana'])} · mes {f1(v['mes'])} {v['unidad']}" for k, v in ca.items() if v["semana"] is not None or v["mes"] is not None]
     dim("CROSS-ASSET", ("PATRÓN: " + " + ".join(p["patron"] for p in dominante)) if dominante else "SIN PATRÓN DOMINANTE", "", ev,
-        "Cboe, FRED, LBMA, Coinbase, Tesoro, BCE (datos de los tres monitores)")
+        "Cboe, FRED, Coinbase, Tesoro, BCE; oro: " + (("COMEX GC=F (Yahoo Finance), respaldo: LBMA no respondió" if oro.get("respaldo") else "LBMA PM") if oro else "SIN DATO") + " (datos de los tres monitores)")
 
     # 12 RÉGIMEN (cuadrante crecimiento × inflación + superposición de liquidez y riesgo)
     NOMBRES = {(1, -1): "EXPANSIÓN DESINFLACIONISTA («goldilocks»)", (1, 1): "REFLACIÓN / SOBRECALENTAMIENTO",
@@ -432,7 +438,7 @@ def evaluar(R, calendario=None):
     # ------------- motor común
     MOT = []
     for id_, nm, val, tol, uni in (("t2y", "Bono a 2 años", (t2 or {}).get("5d_pb"), 5, "pb"), ("real", "10Y real", rl.get("5d_pb"), 5, "pb"),
-                                   ("dxy", "Dólar (DXY)", (dx or {}).get("5d_pct"), 0.3, "%"), ("nfci", "Condiciones financieras (NFCI)", ((I.get("nfci") or {}).get("4s")), 0.02, ""),
+                                   ("dxy", "Dólar (DXY)", ((I.get("dxy") or dx) or {}).get("5d_pct"), 0.3, "%"), ("nfci", "Condiciones financieras (NFCI)", ((I.get("nfci") or {}).get("4s")), 0.02, ""),
                                    ("vix", "VIX (aversión al riesgo)", vix5, 10, "%")):
         if val is None:
             MOT.append({"motor": nm, "valor": "SIN DATO", "efecto": "SIN DATO"})

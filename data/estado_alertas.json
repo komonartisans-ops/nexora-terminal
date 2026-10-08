@@ -2,19 +2,25 @@
  "enviadas": {
   "2026-10-08": {}
  },
+ "fed_ultimo": {
+  "reunion": "2026-10-28",
+  "subida": 20.0
+ },
  "ciclo": {
-  "fase": "EXPANSIÓN",
+  "fecha": "2026-10-08",
+  "fase": "EXPANSIÓN · RIESGO BAJO",
   "senales": {
-   "1": "APAGADA",
-   "2": "APAGADA",
-   "3": "APAGADA",
-   "4": "APAGADA",
-   "5": "APAGADA",
-   "6": "APAGADA",
-   "7": "APAGADA",
-   "8": "APAGADA",
-   "9": "APAGADA"
+   "curva": false,
+   "desinversion": false,
+   "ebp": false,
+   "baa": false,
+   "sloos": false,
+   "nfci": false,
+   "claims": false,
+   "permisos": false,
+   "temporal": false,
+   "sahm": false
   },
-  "fecha": "2026-10-08"
+  "avisado": []
  }
 }
