@@ -308,7 +308,7 @@ function pageBancos() {
   h += '<div class="sect"><h2>Tipos oficiales y calendario</h2></div><div class="grid g3">';
   h += bank('Fed', fed.rango && fed.rango[0] != null ? `${num(fed.rango[0], 2)}–${num(fed.rango[1], 2)}<small> %</small>` : null, `EFFR ${fed.effr != null ? num(fed.effr, 2) + ' %' : 'SIN DATO'} · rango objetivo`, nextOf(/Fed/i), 'balance_fed_T', 'FRED DFEDTARL/U · H.4.1');
   h += bank('BCE', ta.BCE && ta.BCE.valor != null ? `${num(ta.BCE.valor, 2)}<small> %</small>` : null, 'Facilidad de depósito', nextOf(/BCE|ECB/i), 'bce_T', 'FRED ECBDFR · ECBASSETSW');
-  h += bank('BoJ', ta.BoJ && ta.BoJ.valor != null ? `${num(ta.BoJ.valor, 2)}<small> %</small>` : null, 'Tipo de política (OCDE, mensual: puede ir con retraso)', nextOf(/Jap|BoJ/i), 'boj_T', 'FRED IRSTCB01JPM156N · JPNASSETS');
+  h += bank('BoJ', ta.BoJ && ta.BoJ.valor != null ? `${num(ta.BoJ.valor, 2)}<small> %</small>` : null, 'Tipo de política (OCDE, mensual). Sin dato reciente en FRED: no se estima', nextOf(/Jap|BoJ/i), 'boj_T', 'FRED IRSTCB01JPM156N · JPNASSETS');
   h += '</div>';
 
   h += '<div class="sect"><h2>FedWatch · probabilidades por reunión</h2><span class="more">futuros ZQ (CBOT) · EFFR · calendario FOMC</span></div><div class="grid g21">';
@@ -440,7 +440,7 @@ function evHtml(e) {
 function drawCalendario() {
   const ev = calEventos(); const el = $('#calList'); if (!el) return;
   const dias = [...new Set(ev.map((e) => e.fecha))].sort();
-  el.innerHTML = dias.length ? dias.map((d) => `<div class="day"><h4>${esc(fdd(d).toUpperCase())} <span>${diasHasta(d) === 0 ? 'HOY' : diasHasta(d) > 0 ? 'en ' + diasHasta(d) + ' días' : 'hace ' + -diasHasta(d) + ' días'}</span></h4>${ev.filter((e) => e.fecha === d).sort((a, b) => (a.hora_madrid || '99').localeCompare(b.hora_madrid || '99')).map(evHtml).join('')}</div>`).join('')
+  el.innerHTML = dias.length ? dias.map((d) => `<div class="day"><h4>${esc(fdd(d).toUpperCase())} <span>${diasHasta(d) === 0 ? 'HOY' : diasHasta(d) > 0 ? 'en ' + diasHasta(d) + (diasHasta(d) === 1 ? ' día' : ' días') : 'hace ' + -diasHasta(d) + ' días'}</span></h4>${ev.filter((e) => e.fecha === d).sort((a, b) => (a.hora_madrid || '99').localeCompare(b.hora_madrid || '99')).map(evHtml).join('')}</div>`).join('')
     : '<div class="card"><div class="empty" style="height:120px">SIN EVENTOS EN ESTE RANGO</div></div>';
   $$('input[data-k]', el).forEach((i) => i.addEventListener('change', () => lsSet(i.dataset.k, i.value)));
 }

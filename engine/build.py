@@ -185,7 +185,7 @@ def etapa_fedwatch():
     for clave, sid in (("fed_max", "DFEDTARU"), ("fed_min", "DFEDTARL"), ("effr", "EFFR"), ("bce_deposito", "ECBDFR"),
                        ("boj_politica", "IRSTCB01JPM156N")):
         try:
-            hist[clave] = serie_json(LQ.fred(sid, (hoy - dt.timedelta(days=900)).isoformat()))
+            hist[clave] = serie_json(LQ.fred(sid, (hoy - dt.timedelta(days=900)).isoformat()), 900) or None  # FRED ignora cosd en series muertas: se recorta aquí; sin datos recientes = SIN DATO
         except Exception as e:  # noqa: BLE001
             hist[clave] = None
             F.setdefault("errores", {})[sid] = f"{type(e).__name__}: {e}"
