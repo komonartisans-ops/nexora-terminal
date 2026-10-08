@@ -26,16 +26,16 @@
   {
    "activo": "US30 · Dow Jones",
    "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente."
+   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro."
   },
   {
    "activo": "Russell 2000",
    "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente."
+   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro."
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 20 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 18 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 14 oct · 14:30 · IPC EE. UU. (CPI): Subyacente m/m y servicios: inflación ↑ retrasa recortes (2Y ↑, real ↑).",
   "mié 21 oct · Resultados Tesla (TSLA): BPA estimado $0.24 · después del cierre"
  ],
@@ -43,12 +43,7 @@
  "sencillo": "Hoy la macro no ha cambiado. Si ves movimientos en el gráfico, se deben a flujos o noticias concretas, no a un cambio de fondo: no hay que leer en ellos más de lo que son.",
  "motores_significativos": [],
  "errores": {
-  "bce": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>",
-  "vix": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)>",
-  "spx": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)>",
-  "lbma": "HTTPError: HTTP Error 403: Forbidden",
-  "cboe_djx": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)>",
-  "cboe_rut": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)>"
+  "lbma": "HTTPError: HTTP Error 403: Forbidden"
  },
  "detalle_viento": {
   "Nasdaq 100": [],
@@ -69,16 +64,26 @@
    "delta": 0.9999999999999787,
    "fecha": "2026-10-07"
   },
+  "dxy": {
+   "valor": 102.35821191459671,
+   "delta": -0.04977200773202961,
+   "fecha": "2026-10-08"
+  },
+  "vix": {
+   "valor": 15.08,
+   "delta": 0.4663557628247883,
+   "fecha": "2026-10-07"
+  },
   "hy": {
    "valor": 309.0,
    "delta": 6.000000000000005,
    "fecha": "2026-10-07"
   },
   "fed": {
-   "valor": 20.0,
+   "valor": 18.0,
    "antes": 18.0,
    "reunion": "2026-10-28",
-   "delta": 2.0,
+   "delta": 0.0,
    "fecha": "2026-10-08"
   }
  },
@@ -88,15 +93,30 @@
    "fecha": "2026-10-07",
    "valor": 31160.08
   },
+  "S&P 500": {
+   "delta": -0.21946736957614288,
+   "fecha": "2026-10-07",
+   "valor": 7801.77
+  },
   "Oro": {
-   "delta": 0.3646631888996277,
+   "delta": 0.39123110264271954,
    "fecha": "2026-10-08",
-   "valor": 4155.7998046875
+   "valor": 4156.89990234375
   },
   "Bitcoin": {
    "delta": -2.6475521269229585,
    "fecha": "2026-10-07",
    "valor": 83275.06
+  },
+  "US30 · Dow Jones": {
+   "delta": -0.6618660352089467,
+   "fecha": "2026-10-07",
+   "valor": 51180.0
+  },
+  "Russell 2000": {
+   "delta": -1.3105796341606912,
+   "fecha": "2026-10-07",
+   "valor": 2793.204
   }
  },
  "fuente": "Tesoro de EE. UU. (2Y, 10Y real), BCE (réplica del dólar), Cboe (VIX, S&P 500), Nasdaq (Nasdaq 100), LBMA o COMEX GC=F (Yahoo) si LBMA falla (oro), Coinbase (bitcoin), ICE BofA vía FRED (crédito), FedWatch NEXORA (futuros ZQ).",
@@ -133,6 +153,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-08 17:54 UTC",
- "duracion_s": 113.9
+ "generado_utc": "2026-10-08 18:06 UTC",
+ "duracion_s": 53.9
 }

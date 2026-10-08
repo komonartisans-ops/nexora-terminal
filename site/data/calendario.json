@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-08 17:56 Madrid",
+ "generado": "2026-10-08 20:08 Madrid",
  "desde": "2026-08-29",
  "hasta": "2026-10-29",
  "eventos": [
@@ -614,19 +614,6 @@
   {
    "fecha": "2026-10-08",
    "dia": "jue",
-   "hora_ny": "13:00",
-   "hora_madrid": "19:00",
-   "evento": "Subasta del Tesoro Bond 29-Year 10-Month (22 MM$)",
-   "importancia": "MEDIA",
-   "afecta": "índices · oro",
-   "que_mirar": "Demanda débil (cola) → yields ↑.",
-   "fuente": "TreasuryDirect (U.S. Treasury)",
-   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
-   "nota": ""
-  },
-  {
-   "fecha": "2026-10-08",
-   "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "22:30",
    "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
@@ -1096,7 +1083,9 @@
    "dias": 22
   }
  },
- "errores": {},
+ "errores": {
+  "subastas": null
+ },
  "nota": "Horas oficiales convertidas a Nueva York y Madrid con cambio de horario incluido. Las fechas de FRED las publican los organismos y pueden cambiar (p. ej., cierre del Gobierno).",
  "ultimos_publicados": {
   "IPC EE. UU. (CPI)": {
@@ -1180,6 +1169,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-08 15:54 UTC",
- "duracion_s": 39.8
+ "generado_utc": "2026-10-08 18:06 UTC",
+ "duracion_s": 38.0
 }

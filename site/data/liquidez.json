@@ -1,6 +1,6 @@
 {
  "metricas": {
-  "generado_utc": "2026-10-08T15:57:33Z",
+  "generado_utc": "2026-10-08T18:09:38Z",
   "errores": {},
   "reservas": {
    "fecha": "2026-09-30",
@@ -23,9 +23,9 @@
    "deuda_neta_B": 41.852
   },
   "rrp": {
-   "fecha": "2026-10-07",
-   "valor_B": 2.338,
-   "delta_4s_B": 1.9060000000000001
+   "fecha": "2026-10-08",
+   "valor_B": 0.335,
+   "delta_4s_B": -4.401
   },
   "m2": {
    "mes": "2026-08",
@@ -75,6 +75,16 @@
   "subastas": {
    "cupon": [
     {
+     "fecha": "2026-10-08",
+     "tipo": "Bond",
+     "plazo": "29-Year 10-Month",
+     "importe_mm": 22000.0,
+     "bid_to_cover": 2.54,
+     "media_6_previas": 2.4074999999999998,
+     "rendimiento": "5.6180",
+     "primary_dealers_pct": 6.617816245580488
+    },
+    {
      "fecha": "2026-10-07",
      "tipo": "Note",
      "plazo": "9-Year 10-Month",
@@ -107,14 +117,8 @@
    ],
    "letras_n": 15,
    "debiles": [],
-   "importe_14d_B": 1464.0,
+   "importe_14d_B": 1486.0,
    "proximas": [
-    {
-     "fecha": "2026-10-08",
-     "tipo": "Bond",
-     "plazo": "29-Year 10-Month",
-     "importe_mm": 22000.0
-    },
     {
      "fecha": "2026-10-13",
      "tipo": "Bill",
@@ -134,7 +138,7 @@
      "importe_mm": 95000.0
     }
    ],
-   "importe_proximas_B": 294.0
+   "importe_proximas_B": 272.0
   },
   "dxy": {
    "fecha": "2026-10-08",
@@ -262,25 +266,25 @@
   },
   "adicionales": {
    "stablecoins": {
-    "valor_B": 312.28415301361997,
-    "delta_30d_B": 3.4651927426199904,
-    "pct_30d": 1.1220790134061576,
-    "delta_7d_B": 1.5727291266199472
+    "valor_B": 312.33376847057,
+    "delta_30d_B": 3.514808199570041,
+    "pct_30d": 1.138145208599131,
+    "delta_7d_B": 1.6223445835699977
    },
    "funding_btc": {
-    "anualizado_7d_pct": 3.674553489037534,
-    "anualizado_30d_pct": 5.00165537431577,
-    "hasta": "2026-10-08T08:00"
+    "anualizado_7d_pct": 3.8771645391192884,
+    "anualizado_30d_pct": 5.08412742430113,
+    "hasta": "2026-10-08T16:00"
    },
    "funding_eth": {
-    "anualizado_7d_pct": 4.149132653642653,
-    "anualizado_30d_pct": 4.46414648818105,
-    "hasta": "2026-10-08T08:00"
+    "anualizado_7d_pct": 3.916382152680279,
+    "anualizado_30d_pct": 4.432392793753602,
+    "hasta": "2026-10-08T16:00"
    },
    "oi_btc": {
-    "valor_B": 3.3442602129877,
-    "pct_30d": 16.260880802357278,
-    "pct_7d": 9.442630919094032
+    "valor_B": 3.3005738284821,
+    "pct_30d": 12.62205037128577,
+    "pct_7d": 4.539607762421515
    },
    "prima_coinbase": {
     "media_7d_pct": -0.024670426026504204,
@@ -288,11 +292,11 @@
     "fecha": "2026-10-07"
    },
    "mercado": {
-    "mcap_total_usd": 2764463052729.143,
-    "volumen_24h_usd": 108306129909.56107,
-    "dominancia_btc_pct": 59.07894982374297,
-    "dominancia_eth_pct": 10.8292631197386,
-    "mcap_cambio_24h_pct": -5.247953264744725
+    "mcap_total_usd": 2733938762528.397,
+    "volumen_24h_usd": 117504663886.91933,
+    "dominancia_btc_pct": 59.20510274626015,
+    "dominancia_eth_pct": 10.773317248512889,
+    "mcap_cambio_24h_pct": -6.2969294389648285
    }
   },
   "contexto": {
@@ -344,41 +348,41 @@
    },
    "dvol": {
     "fecha": "2026-10-08",
-    "valor": 38.87,
-    "media_30d": 36.57033333333333,
-    "percentil_1a": 29.919137466307276
+    "valor": 38.42,
+    "media_30d": 36.55533333333333,
+    "percentil_1a": 26.1455525606469
    },
    "opciones": {
-    "put_call_oi": 0.5856758098974014,
-    "oi_total_btc": 378681.9,
-    "precio_ref": 81008.4,
+    "put_call_oi": 0.6008951547038247,
+    "oi_total_btc": 384971.1,
+    "precio_ref": 80549.39,
     "vencimientos": [
      {
       "fecha": "2026-10-30",
-      "oi_btc": 136666.5,
-      "nocional_B": 11.0711344986
+      "oi_btc": 139379.19999999998,
+      "nocional_B": 11.226909538687998
      },
      {
       "fecha": "2026-10-09",
-      "oi_btc": 22927.099999999995,
-      "nocional_B": 1.8572876876399993
+      "oi_btc": 22214.199999999997,
+      "nocional_B": 1.789340259338
      },
      {
       "fecha": "2026-10-16",
-      "oi_btc": 11710.0,
-      "nocional_B": 0.9486083639999999
+      "oi_btc": 12561.500000000002,
+      "nocional_B": 1.0118211624850002
      }
     ]
    },
    "usdt": {
-    "valor_B": 184.23977483701,
-    "delta_30d_B": 0.867451774009993,
-    "pct_30d": 0.47305490791648436
+    "valor_B": 184.20938424323,
+    "delta_30d_B": 0.8370611802299948,
+    "pct_30d": 0.4564817450354333
    },
    "usdc": {
-    "valor_B": 73.82808448955001,
-    "delta_30d_B": -0.7036227574499918,
-    "pct_30d": -0.9440582853122736
+    "valor_B": 73.82688726597,
+    "delta_30d_B": -0.7048199810299991,
+    "pct_30d": -0.9456646131749102
    }
   }
  },
@@ -413,10 +417,10 @@
     "id": "rrp",
     "nombre": "Reverse Repo (ON RRP)",
     "nivel": "núcleo",
-    "estado": "DESFAVORABLE",
-    "dir": "↑",
-    "valor": "2.3 B$",
-    "detalle": "4s +1.9 B$ (2026-10-07) · AVISO: saldo < 50 B$, colchón agotado; la dirección cumple la regla pero su efecto sobre la liquidez es despreciable",
+    "estado": "FAVORABLE",
+    "dir": "↓",
+    "valor": "0.3 B$",
+    "detalle": "4s -4.4 B$ (2026-10-08) · AVISO: saldo < 50 B$, colchón agotado; la dirección cumple la regla pero su efecto sobre la liquidez es despreciable",
     "fuente": "NY Fed Markets API",
     "frecuencia": "diaria"
    },
@@ -427,8 +431,8 @@
     "nivel": "núcleo",
     "estado": "NEUTRAL",
     "dir": "—",
-    "valor": "0/3 liberación · 1/3 drenaje",
-    "detalle": "TGA → · RRP ↑ · reservas →. Regla: TGA↓+RRP↓+reservas↑ = liberación; TGA↑+RRP↑+reservas↓ = drenaje",
+    "valor": "1/3 liberación · 0/3 drenaje",
+    "detalle": "TGA → · RRP ↓ · reservas →. Regla: TGA↓+RRP↓+reservas↑ = liberación; TGA↑+RRP↑+reservas↓ = drenaje",
     "fuente": "Derivado de 1-3",
     "frecuencia": "—"
    },
@@ -499,8 +503,8 @@
     "nivel": "núcleo",
     "estado": "NEUTRAL",
     "dir": "→",
-    "valor": "2026-10-28: subida 20 % · mantener 80 % · bajada 0 %",
-    "detalle": "1 sesión +2 pts de subida; tipo esperado a 3 reuniones +2 pb en 5 sesiones",
+    "valor": "2026-10-28: subida 18 % · mantener 82 % · bajada 0 %",
+    "detalle": "1 sesión +0 pts de subida; tipo esperado a 3 reuniones -0 pb en 5 sesiones",
     "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-08",
     "frecuencia": "diaria"
    },
@@ -512,7 +516,7 @@
     "estado": "NEUTRAL",
     "dir": "—",
     "valor": "absorción normal",
-    "detalle": "14 días: 3 de cupón + 15 de letras, 1,464 B$ · 0 de cupón con demanda débil · próximos 14 días: 4 subastas anunciadas, 294 B$ · deuda neta en efectivo ≈10 días +41.9 B$",
+    "detalle": "14 días: 4 de cupón + 15 de letras, 1,486 B$ · 0 de cupón con demanda débil · próximos 14 días: 3 subastas anunciadas, 272 B$ · deuda neta en efectivo ≈10 días +41.9 B$",
     "fuente": "U.S. Treasury Fiscal Data (auctions_query, DTS IIIB)",
     "frecuencia": "según calendario"
    },
@@ -544,7 +548,7 @@
   "direcciones": {
    "reservas": "→",
    "tga": "→",
-   "rrp": "↑",
+   "rrp": "↓",
    "m2": "↑",
    "t2y": "↑",
    "t10y": "↑↑",
@@ -569,7 +573,7 @@
    {
     "n": 3,
     "condicion": "RRP ↓",
-    "estado": "NO CUMPLE",
+    "estado": "CUMPLE",
     "nota": "saldo agotado: efecto despreciable",
     "id": "rrp"
    },
@@ -605,17 +609,17 @@
    }
   ],
   "checklist_resumen": {
-   "cumple": 1,
+   "cumple": 2,
    "sin_dato": 0,
    "total": 8,
-   "drenaje": 4
+   "drenaje": 3
   },
   "secuencia": [
    {
     "n": 1,
     "paso": "TGA ↓ + RRP ↓ + reservas ↑",
-    "estado": "NO CUMPLE",
-    "detalle": "0/3"
+    "estado": "PARCIAL",
+    "detalle": "1/3"
    },
    {
     "n": 2,
@@ -661,8 +665,8 @@
    "ON RRP agotado: la condición «RRP ↓» ya no aporta liquidez aunque se cumpla."
   ],
   "nucleo": {
-   "fav": 0,
-   "des": 4,
+   "fav": 1,
+   "des": 3,
    "n": 8
   },
   "contexto_13": {
@@ -732,33 +736,33 @@
     {
      "nombre": "Volatilidad implícita BTC (DVOL)",
      "estado": "NEUTRAL",
-     "valor": "38.9",
-     "lectura": "media 30d 36.6 · percentil 1 año 30",
+     "valor": "38.4",
+     "lectura": "media 30d 36.6 · percentil 1 año 26",
      "fuente": "Deribit"
     },
     {
      "nombre": "Opciones BTC: put/call (open interest)",
-     "estado": "FAVORABLE",
-     "valor": "0.59",
-     "lectura": "vencimientos grandes: 2026-10-30 136,666 BTC (~11.1 B$); 2026-10-09 22,927 BTC (~1.9 B$); 2026-10-16 11,710 BTC (~0.9 B$)",
+     "estado": "NEUTRAL",
+     "valor": "0.60",
+     "lectura": "vencimientos grandes: 2026-10-30 139,379 BTC (~11.2 B$); 2026-10-09 22,214 BTC (~1.8 B$); 2026-10-16 12,562 BTC (~1.0 B$)",
      "fuente": "Deribit"
     },
     {
      "nombre": "Oferta USDT",
      "estado": "NEUTRAL",
      "valor": "184.2 B$",
-     "lectura": "30d +0.9 B$ (+0.47%) · USDT ≈ demanda offshore",
+     "lectura": "30d +0.8 B$ (+0.46%) · USDT ≈ demanda offshore",
      "fuente": "DefiLlama"
     },
     {
      "nombre": "Oferta USDC",
      "estado": "NEUTRAL",
      "valor": "73.8 B$",
-     "lectura": "30d -0.7 B$ (-0.94%) · USDC ≈ demanda regulada/EE. UU.",
+     "lectura": "30d -0.7 B$ (-0.95%) · USDC ≈ demanda regulada/EE. UU.",
      "fuente": "DefiLlama"
     }
    ],
-   "fav": 3,
+   "fav": 2,
    "des": 3,
    "umbrales": {
     "g3_pct_3m": 1.0,
@@ -4337,6 +4341,10 @@
    [
     "2026-10-07",
     0.0023
+   ],
+   [
+    "2026-10-08",
+    0.0003
    ]
   ],
   "reservas_T": [
@@ -8474,6 +8482,6 @@
  },
  "errores_historico": {},
  "ok": true,
- "generado_utc": "2026-10-08 15:54 UTC",
- "duracion_s": 54.7
+ "generado_utc": "2026-10-08 18:06 UTC",
+ "duracion_s": 58.1
 }

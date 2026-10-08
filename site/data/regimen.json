@@ -45,7 +45,7 @@
     "estado": "NEUTRAL",
     "dir": "→",
     "evidencia": [
-     "Monitor de liquidez cripto: SIN GIRO DE LIQUIDEZ (1/8 condiciones, 4 en drenaje)",
+     "Monitor de liquidez cripto: SIN GIRO DE LIQUIDEZ (2/8 condiciones, 3 en drenaje)",
      "Balance de la Fed 6.74 T$ (+0.3 % en 13 semanas)",
      "TGA 885.4 B$ (+5.4 B$ en 4 semanas)",
      "RRP 0.3 B$ (-4.4 B$ en 4 semanas)",
@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-08): reunión del 2026-10-28 subida 18 % / mantener 82 % / bajada 0 % (+0 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +33 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-08): reunión del 2026-10-28 subida 18 % / mantener 82 % / bajada 0 % (+0 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +32 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.77 % vs tipo efectivo 3.88 % → +89 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +54 pb (-12 pb en 5 sesiones)"
@@ -97,7 +97,8 @@
     "estado": "ENDURECIÉNDOSE · más laxas que la media histórica",
     "dir": "↑",
     "evidencia": [
-     "NFCI -0.494 (+0.051 en 4 semanas; negativo = más laxas que la media) · 2026-10-02"
+     "NFCI -0.494 (+0.051 en 4 semanas; negativo = más laxas que la media) · 2026-10-02",
+     "VIX 15.1 (percentil 12 del último año)"
     ],
     "fuente": "Chicago Fed NFCI vía FRED; Cboe",
     "puntos": null
@@ -118,23 +119,27 @@
     "estado": "SE FORTALECE",
     "dir": "↑",
     "evidencia": [
-     "Dólar amplio (Fed, respaldo) 121.38 (+0.88 % 5 sesiones, +2.76 % 20 sesiones)"
+     "DXY (réplica BCE) 102.36 (+0.62 % 5 sesiones, +3.41 % 20 sesiones)",
+     "Dólar amplio (Fed) 121.38 (+0.5 % en 3 meses)"
     ],
-    "fuente": "Fed H.10 vía FRED DTWEXBGS (respaldo: la réplica del BCE no respondió)",
+    "fuente": "BCE; Fed H.10 vía FRED",
     "puntos": null
    },
    {
     "dimension": "CROSS-ASSET",
-    "estado": "SIN PATRÓN DOMINANTE",
+    "estado": "PATRÓN: SHOCK DE TIPOS REALES",
     "dir": "",
     "evidencia": [
+     "S&P 500: semana +2.0 · mes +2.2 %",
      "Nasdaq 100: semana +2.5 · mes +5.9 %",
-     "Oro (LBMA): semana -1.1 · mes -5.7 %",
+     "Russell 2000: semana -0.1 · mes -4.4 %",
+     "Oro (COMEX GC=F, respaldo): semana -1.1 · mes -5.7 %",
      "Bitcoin: semana -0.3 · mes +5.3 %",
      "Ether: semana -4.1 · mes +3.3 %",
      "10Y nominal: semana -1.0 · mes +45.0 pb",
      "10Y real: semana -1.0 · mes +46.0 pb",
-     "DXY: semana +0.9 · mes +2.8 %",
+     "DXY: semana +0.6 · mes +3.4 %",
+     "VIX: semana -7.7 · mes — %",
      "High yield: semana — · mes +38.0 pb"
     ],
     "fuente": "Cboe, FRED, Coinbase, Tesoro, BCE; oro: COMEX GC=F (Yahoo Finance), respaldo: LBMA no respondió (datos de los tres monitores)",
@@ -157,7 +162,7 @@
     "lectura": "SIN GIRO DE LIQUIDEZ",
     "sentido": "NEUTRAL",
     "precio": "BTC CONFIRMA",
-    "detalle": "checklist 1/8 · BTC 30 días +5.3 %"
+    "detalle": "checklist 2/8 · BTC 30 días +5.3 %"
    },
    {
     "monitor": "Oro (XAU/USD)",
@@ -170,8 +175,8 @@
     "monitor": "Índices USA",
     "lectura": "MIXTO",
     "sentido": "NEUTRAL",
-    "precio": "SIN DATO",
-    "detalle": "amplitud SE DETERIORA · S&P 20 sesiones — %"
+    "precio": "CONFIRMA FUERZA",
+    "detalle": "amplitud SE DETERIORA · S&P 20 sesiones +2.2 %"
    }
   ],
   "concordancia": "LOS TRES COINCIDEN: NEUTRAL",
@@ -188,7 +193,7 @@
    },
    {
     "motor": "Dólar (DXY)",
-    "valor": "+0.88 %",
+    "valor": "+0.62 %",
     "efecto": "EN CONTRA de oro, bolsa y cripto"
    },
    {
@@ -198,8 +203,8 @@
    },
    {
     "motor": "VIX (aversión al riesgo)",
-    "valor": "SIN DATO",
-    "efecto": "SIN DATO"
+    "valor": "-7.71 %",
+    "efecto": "NEUTRAL"
    },
    {
     "motor": "Liquidez (TGA/RRP/reservas/Fed)",
@@ -211,8 +216,8 @@
   "motor_historico": "SIN MOTOR COMÚN",
   "cross_asset": {
    "S&P 500": {
-    "semana": null,
-    "mes": null,
+    "semana": 1.96,
+    "mes": 2.17,
     "unidad": "%"
    },
    "Nasdaq 100": {
@@ -221,13 +226,13 @@
     "unidad": "%"
    },
    "Russell 2000": {
-    "semana": null,
-    "mes": null,
+    "semana": -0.13,
+    "mes": -4.38,
     "unidad": "%"
    },
-   "Oro (LBMA)": {
-    "semana": -1.08,
-    "mes": -5.68,
+   "Oro (COMEX GC=F, respaldo)": {
+    "semana": -1.07,
+    "mes": -5.67,
     "unidad": "%"
    },
    "Bitcoin": {
@@ -251,12 +256,12 @@
     "unidad": "pb"
    },
    "DXY": {
-    "semana": 0.8765893792071822,
-    "mes": 2.757879231674387,
+    "semana": 0.62,
+    "mes": 3.41,
     "unidad": "%"
    },
    "VIX": {
-    "semana": null,
+    "semana": -7.71,
     "mes": null,
     "unidad": "%"
    },
@@ -269,45 +274,50 @@
   "patrones": [
    {
     "patron": "SHOCK DE TIPOS REALES",
-    "cumple": 3,
+    "cumple": 4,
     "de": 5,
-    "pct": 60
+    "pct": 80
    },
    {
     "patron": "ESTRÉS DE CRÉDITO",
-    "cumple": 1,
+    "cumple": 2,
     "de": 4,
-    "pct": 25
+    "pct": 50
+   },
+   {
+    "patron": "EXPANSIÓN DE LIQUIDEZ",
+    "cumple": 2,
+    "de": 5,
+    "pct": 40
+   },
+   {
+    "patron": "CRECIMIENTO / REFLACIÓN",
+    "cumple": 2,
+    "de": 5,
+    "pct": 40
+   },
+   {
+    "patron": "DESINFLACIÓN FAVORABLE (goldilocks)",
+    "cumple": 2,
+    "de": 5,
+    "pct": 40
    },
    {
     "patron": "HUIDA AL REFUGIO (risk-off clásico)",
     "cumple": 1,
     "de": 5,
     "pct": 20
-   },
-   {
-    "patron": "EXPANSIÓN DE LIQUIDEZ",
-    "cumple": 1,
-    "de": 5,
-    "pct": 20
-   },
-   {
-    "patron": "CRECIMIENTO / REFLACIÓN",
-    "cumple": 1,
-    "de": 5,
-    "pct": 20
-   },
-   {
-    "patron": "DESINFLACIÓN FAVORABLE (goldilocks)",
-    "cumple": 0,
-    "de": 5,
-    "pct": 0
    }
   ],
-  "patron_dominante": [],
+  "patron_dominante": [
+   "SHOCK DE TIPOS REALES"
+  ],
   "contradicciones": [
    "Bitcoin sube +5.3 % en 30 días sin soporte de liquidez y con el tipo real al alza: el motor es propio de cripto (flujos, posicionamiento), no macro. Históricamente estos movimientos son menos fiables (ver monitor cripto).",
-   "El Nasdaq 100 sube +5.9 % en 20 sesiones mientras el 10Y real sube +46 pb: los beneficios/temática (semis, IA) se imponen a los tipos. Vulnerable si los beneficios decepcionan."
+   "El Nasdaq 100 sube +5.9 % en 20 sesiones mientras el 10Y real sube +46 pb: los beneficios/temática (semis, IA) se imponen a los tipos. Vulnerable si los beneficios decepcionan.",
+   "Divergencia bolsa-crédito: el high yield se amplía mientras el S&P sigue cerca de máximos. Históricamente el crédito suele adelantarse, aunque no siempre.",
+   "VIX bajo con el crédito empeorando: la bolsa no refleja el estrés del crédito.",
+   "S&P cerca de máximos con amplitud débil: subida sostenida por pocas empresas."
   ],
   "preguntas": [
    {
@@ -348,7 +358,7 @@
    },
    {
     "pregunta": "¿Qué contradicciones hay?",
-    "respuesta": "2 (ver sección de contradicciones)"
+    "respuesta": "5 (ver sección de contradicciones)"
    },
    {
     "pregunta": "¿Qué datos pueden cambiarlo?",
@@ -1043,6 +1053,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-08 17:54 UTC",
- "duracion_s": 492.5
+ "generado_utc": "2026-10-08 18:06 UTC",
+ "duracion_s": 291.4
 }
