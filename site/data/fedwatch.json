@@ -1,6 +1,6 @@
 {
  "fecha_precios": "2026-10-08",
- "generado_utc": "2026-10-08 14:50 UTC",
+ "generado_utc": "2026-10-08 15:34 UTC",
  "rango_objetivo": [
   3.75,
   4.0
@@ -129,17 +129,17 @@
   },
   {
    "reunion": "2027-04-28",
-   "tipo_esperado": 4.505,
-   "cambio_reunion_pb": 9.3,
-   "cambio_acumulado_pb": 62.5,
+   "tipo_esperado": 4.51,
+   "cambio_reunion_pb": 9.8,
+   "cambio_acumulado_pb": 63.0,
    "metodo": "mes siguiente sin reunión (ZQK27)",
    "prob_reunion": {
-    "subida": 37.1,
-    "mantiene": 62.9,
+    "subida": 39.1,
+    "mantiene": 60.9,
     "bajada": 0,
     "detalle_pb": {
-     "0": 62.9,
-     "25": 37.1
+     "0": 60.9,
+     "25": 39.1
     }
    },
    "prob_acumulada": {
@@ -147,29 +147,29 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 50.0,
-     "75": 50.0
+     "50": 48.0,
+     "75": 52.0
     }
    },
-   "subida_1d_pts": -0.9,
+   "subida_1d_pts": 1.1,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 5.0,
-   "subida_5d_pts": 1.5,
-   "tipo_5d_pb": 3.5
+   "tipo_1d_pb": 5.5,
+   "subida_5d_pts": 3.5,
+   "tipo_5d_pb": 4.0
   },
   {
    "reunion": "2027-06-09",
-   "tipo_esperado": 4.605,
-   "cambio_reunion_pb": 10.0,
-   "cambio_acumulado_pb": 72.5,
+   "tipo_esperado": 4.6171,
+   "cambio_reunion_pb": 10.7,
+   "cambio_acumulado_pb": 73.7,
    "metodo": "mes de la reunión (ZQM27)",
    "prob_reunion": {
-    "subida": 40.0,
-    "mantiene": 60.0,
+    "subida": 42.9,
+    "mantiene": 57.1,
     "bajada": 0,
     "detalle_pb": {
-     "0": 60.0,
-     "25": 40.0
+     "0": 57.1,
+     "25": 42.9
     }
    },
    "prob_acumulada": {
@@ -177,15 +177,15 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 10.0,
-     "75": 90.0
+     "50": 5.1,
+     "75": 94.9
     }
    },
-   "subida_1d_pts": 0.0,
+   "subida_1d_pts": 2.9,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 5.0,
-   "subida_5d_pts": -2.9,
-   "tipo_5d_pb": 2.8
+   "tipo_1d_pb": 6.2,
+   "subida_5d_pts": 0.0,
+   "tipo_5d_pb": 4.0
   }
  ],
  "lectura": "SIN CAMBIO RELEVANTE",
@@ -13544,5 +13544,5 @@
   "BoJ": null
  },
  "ok": true,
- "duracion_s": 9.3
+ "duracion_s": 9.9
 }

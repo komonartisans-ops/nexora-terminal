@@ -1,0 +1,1095 @@
+{
+ "series": {
+  "IPC EE. UU. (CPI)": {
+   "serie": "CPIAUCSL",
+   "modo": "yoy",
+   "unidad": "%",
+   "descripcion": "IPC general, % interanual",
+   "decimales": 2,
+   "fuente": "FRED CPIAUCSL",
+   "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 3.32,
+     "original": 3.32,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.32,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 3.95,
+     "original": 3.95,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.95,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 4.27,
+     "original": 4.27,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 4.27,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 3.73,
+     "original": 3.73,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.73,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 3.54,
+     "original": 3.54,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.54,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 3.71,
+     "original": 3.71,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.71,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-11"
+  },
+  "IPC subyacente": {
+   "serie": "CPILFESL",
+   "modo": "yoy",
+   "unidad": "%",
+   "descripcion": "IPC sin alimentos ni energía, % interanual",
+   "decimales": 2,
+   "fuente": "FRED CPILFESL",
+   "url": "https://fred.stlouisfed.org/series/CPILFESL",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 2.67,
+     "original": 2.67,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 2.67,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 2.99,
+     "original": 2.99,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 2.99,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 2.96,
+     "original": 2.96,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 2.96,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 2.81,
+     "original": 2.81,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 2.81,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 2.79,
+     "original": 2.79,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 2.79,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 2.76,
+     "original": 2.76,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 2.76,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-11"
+  },
+  "Empleo · nóminas no agrícolas": {
+   "serie": "PAYEMS",
+   "modo": "diff",
+   "unidad": "mil",
+   "descripcion": "Variación mensual de nóminas, miles",
+   "decimales": 0,
+   "fuente": "FRED PAYEMS",
+   "url": "https://fred.stlouisfed.org/series/PAYEMS",
+   "periodos": [
+    {
+     "periodo": "2026-04-01",
+     "valor": 148.0,
+     "original": 148.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 148.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 63.0,
+     "original": 63.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 63.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 31.0,
+     "original": 31.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 31.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": -10.0,
+     "original": -10.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": -10.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 133.0,
+     "original": 133.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 133.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-09-01",
+     "valor": 29.0,
+     "original": 29.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 29.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-10-02"
+  },
+  "Tasa de paro": {
+   "serie": "UNRATE",
+   "modo": "nivel",
+   "unidad": "%",
+   "descripcion": "Tasa de paro, %",
+   "decimales": 1,
+   "fuente": "FRED UNRATE",
+   "url": "https://fred.stlouisfed.org/series/UNRATE",
+   "periodos": [
+    {
+     "periodo": "2026-04-01",
+     "valor": 4.3,
+     "original": 4.3,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 4.3,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 4.3,
+     "original": 4.3,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 4.3,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 4.2,
+     "original": 4.2,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 4.2,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 4.1,
+     "original": 4.1,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 4.1,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 4.1,
+     "original": 4.1,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 4.1,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-09-01",
+     "valor": 4.2,
+     "original": 4.2,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 4.2,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-10-02"
+  },
+  "Peticiones semanales de paro": {
+   "serie": "ICSA",
+   "modo": "nivel",
+   "unidad": "personas",
+   "descripcion": "Peticiones iniciales, personas",
+   "decimales": 0,
+   "fuente": "FRED ICSA",
+   "url": "https://fred.stlouisfed.org/series/ICSA",
+   "periodos": [
+    {
+     "periodo": "2026-08-15",
+     "valor": 207000.0,
+     "original": 207000.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 207000.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-22",
+     "valor": 204000.0,
+     "original": 204000.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 204000.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-29",
+     "valor": 207000.0,
+     "original": 207000.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 207000.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-09-05",
+     "valor": 207000.0,
+     "original": 207000.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 207000.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-09-12",
+     "valor": 198000.0,
+     "original": 198000.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 198000.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-09-19",
+     "valor": 198000.0,
+     "original": 198000.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 198000.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-09-26",
+     "valor": 199000.0,
+     "original": 199000.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 199000.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-10-03",
+     "valor": 197000.0,
+     "original": 197000.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 197000.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-10-08"
+  },
+  "Ventas minoristas": {
+   "serie": "RSAFS",
+   "modo": "mom",
+   "unidad": "%",
+   "descripcion": "Ventas minoristas, % mensual",
+   "decimales": 2,
+   "fuente": "FRED RSAFS",
+   "url": "https://fred.stlouisfed.org/series/RSAFS",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 1.66,
+     "original": 1.66,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 1.66,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 0.59,
+     "original": 0.59,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 0.59,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 1.04,
+     "original": 1.04,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 1.04,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 0.2,
+     "original": 0.2,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 0.2,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": -0.46,
+     "original": -0.46,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": -0.46,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 1.13,
+     "original": 1.13,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 1.13,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-28"
+  },
+  "IPP EE. UU. (PPI)": {
+   "serie": "PPIFIS",
+   "modo": "yoy",
+   "unidad": "%",
+   "descripcion": "IPP demanda final, % interanual",
+   "decimales": 2,
+   "fuente": "FRED PPIFIS",
+   "url": "https://fred.stlouisfed.org/series/PPIFIS",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 4.28,
+     "original": 4.28,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 4.28,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 5.69,
+     "original": 5.69,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 5.69,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 5.88,
+     "original": 5.88,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 5.88,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 5.58,
+     "original": 5.58,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 5.58,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 4.8,
+     "original": 4.8,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 4.8,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 5.41,
+     "original": 5.41,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 5.41,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-10"
+  },
+  "PIB EE. UU.": {
+   "serie": "GDPC1",
+   "modo": "qoq_anual",
+   "unidad": "%",
+   "descripcion": "PIB real, % trimestral anualizado",
+   "decimales": 2,
+   "fuente": "FRED GDPC1",
+   "url": "https://fred.stlouisfed.org/series/GDPC1",
+   "periodos": [
+    {
+     "periodo": "2025-07-01",
+     "valor": 3.88,
+     "original": 3.88,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.88,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2025-10-01",
+     "valor": 0.21,
+     "original": 0.21,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 0.21,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-01-01",
+     "valor": 2.49,
+     "original": 2.49,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 2.49,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 2.22,
+     "original": 2.22,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 2.22,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-30"
+  },
+  "Gasto personal (PCE)": {
+   "serie": "PCEPI",
+   "modo": "yoy",
+   "unidad": "%",
+   "descripcion": "Deflactor PCE, % interanual",
+   "decimales": 2,
+   "fuente": "FRED PCEPI",
+   "url": "https://fred.stlouisfed.org/series/PCEPI",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 3.37,
+     "original": 3.37,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.37,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 3.57,
+     "original": 3.57,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.57,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 3.82,
+     "original": 3.82,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.82,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 3.45,
+     "original": 3.45,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.45,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 3.36,
+     "original": 3.36,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.36,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 3.42,
+     "original": 3.42,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.42,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-30"
+  },
+  "PCE subyacente": {
+   "serie": "PCEPILFE",
+   "modo": "yoy",
+   "unidad": "%",
+   "descripcion": "Deflactor PCE subyacente, % interanual",
+   "decimales": 2,
+   "fuente": "FRED PCEPILFE",
+   "url": "https://fred.stlouisfed.org/series/PCEPILFE",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 3.11,
+     "original": 3.11,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.11,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 3.08,
+     "original": 3.08,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.08,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 3.16,
+     "original": 3.16,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.16,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 3.04,
+     "original": 3.04,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.04,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 2.98,
+     "original": 2.98,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 2.98,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 3.01,
+     "original": 3.01,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 3.01,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-30"
+  },
+  "Producción industrial": {
+   "serie": "INDPRO",
+   "modo": "mom",
+   "unidad": "%",
+   "descripcion": "Producción industrial, % mensual",
+   "decimales": 2,
+   "fuente": "FRED INDPRO",
+   "url": "https://fred.stlouisfed.org/series/INDPRO",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": -0.17,
+     "original": -0.17,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": -0.17,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 0.83,
+     "original": 0.83,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 0.83,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 0.06,
+     "original": 0.06,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 0.06,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 0.2,
+     "original": 0.2,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 0.2,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 0.2,
+     "original": 0.2,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 0.2,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 0.02,
+     "original": 0.02,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 0.02,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-18"
+  },
+  "Ofertas de empleo (JOLTS)": {
+   "serie": "JTSJOL",
+   "modo": "nivel",
+   "unidad": "mil",
+   "descripcion": "Ofertas de empleo, miles",
+   "decimales": 0,
+   "fuente": "FRED JTSJOL",
+   "url": "https://fred.stlouisfed.org/series/JTSJOL",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 6887.0,
+     "original": 6887.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 6887.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 7585.0,
+     "original": 7585.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 7585.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 7537.0,
+     "original": 7537.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 7537.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 7182.0,
+     "original": 7182.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 7182.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 7335.0,
+     "original": 7335.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 7335.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 7079.0,
+     "original": 7079.0,
+     "revisado": false,
+     "vistas": [
+      {
+       "valor": 7079.0,
+       "visto_utc": "2026-10-08 15:37 UTC"
+      }
+     ],
+     "visto_primera_vez_utc": "2026-10-08 15:37 UTC"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-29"
+  }
+ },
+ "revisiones": [],
+ "n_revisiones": 0,
+ "filas_registro": 72,
+ "registro_desde_utc": "2026-10-08 15:37 UTC",
+ "nuevas_filas": 72,
+ "revisiones_nuevas": [],
+ "errores": {},
+ "nota": "El registro de revisiones empieza el día de la primera ejecución: antes de esa fecha no hay vintages guardados y no se inventan.",
+ "ok": true,
+ "generado_utc": "2026-10-08 15:34 UTC",
+ "duracion_s": 3.4
+}

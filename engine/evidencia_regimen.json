@@ -1,0 +1,647 @@
+{
+  "cuadrante": {
+    "periodo": "1990-01-31 → 2026-08-31",
+    "meses": 440,
+    "base": {
+      "n": 440,
+      "SPX_1m": {
+        "mediana": 1.29,
+        "pos": 65,
+        "n": 439
+      },
+      "SPX_3m": {
+        "mediana": 3.15,
+        "pos": 70,
+        "n": 437
+      },
+      "SPX_6m": {
+        "mediana": 5.44,
+        "pos": 74,
+        "n": 434
+      },
+      "NDX_1m": {
+        "mediana": 1.85,
+        "pos": 61,
+        "n": 439
+      },
+      "NDX_3m": {
+        "mediana": 4.74,
+        "pos": 71,
+        "n": 437
+      },
+      "NDX_6m": {
+        "mediana": 9.66,
+        "pos": 75,
+        "n": 434
+      },
+      "ORO_1m": {
+        "mediana": 0.27,
+        "pos": 54,
+        "n": 439
+      },
+      "ORO_3m": {
+        "mediana": 0.75,
+        "pos": 55,
+        "n": 437
+      },
+      "ORO_6m": {
+        "mediana": 2.31,
+        "pos": 61,
+        "n": 434
+      },
+      "BTC_1m": {
+        "mediana": 3.18,
+        "pos": 56,
+        "n": 140
+      },
+      "BTC_3m": {
+        "mediana": 10.37,
+        "pos": 60,
+        "n": 138
+      },
+      "BTC_6m": {
+        "mediana": 32.7,
+        "pos": 66,
+        "n": 135
+      },
+      "T10_3m": {
+        "mediana": 0.0,
+        "pos": 50,
+        "n": 437
+      },
+      "DXY_3m": {
+        "mediana": 0.31,
+        "pos": 52,
+        "n": 329
+      }
+    },
+    "por_cuadrante": {
+      "DESACELERACIÓN DESINFLACIONISTA": {
+        "n": 110,
+        "SPX_1m": {
+          "mediana": 1.4,
+          "pos": 72,
+          "n": 110
+        },
+        "SPX_3m": {
+          "mediana": 3.84,
+          "pos": 72,
+          "n": 109
+        },
+        "SPX_6m": {
+          "mediana": 5.42,
+          "pos": 76,
+          "n": 109
+        },
+        "NDX_1m": {
+          "mediana": 1.9,
+          "pos": 66,
+          "n": 110
+        },
+        "NDX_3m": {
+          "mediana": 5.45,
+          "pos": 70,
+          "n": 109
+        },
+        "NDX_6m": {
+          "mediana": 9.53,
+          "pos": 77,
+          "n": 109
+        },
+        "ORO_1m": {
+          "mediana": 0.53,
+          "pos": 61,
+          "n": 110
+        },
+        "ORO_3m": {
+          "mediana": 1.36,
+          "pos": 59,
+          "n": 109
+        },
+        "ORO_6m": {
+          "mediana": 3.6,
+          "pos": 72,
+          "n": 109
+        },
+        "BTC_1m": {
+          "mediana": 0.71,
+          "pos": 51,
+          "n": 39
+        },
+        "BTC_3m": {
+          "mediana": 15.31,
+          "pos": 63,
+          "n": 38
+        },
+        "BTC_6m": {
+          "mediana": 33.72,
+          "pos": 61,
+          "n": 38
+        },
+        "T10_3m": {
+          "mediana": 7.0,
+          "pos": 61,
+          "n": 109
+        },
+        "DXY_3m": {
+          "mediana": -0.06,
+          "pos": 48,
+          "n": 83
+        }
+      },
+      "ESTANFLACIÓN": {
+        "n": 109,
+        "SPX_1m": {
+          "mediana": 1.75,
+          "pos": 61,
+          "n": 109
+        },
+        "SPX_3m": {
+          "mediana": 3.12,
+          "pos": 66,
+          "n": 108
+        },
+        "SPX_6m": {
+          "mediana": 3.4,
+          "pos": 66,
+          "n": 108
+        },
+        "NDX_1m": {
+          "mediana": 2.22,
+          "pos": 64,
+          "n": 109
+        },
+        "NDX_3m": {
+          "mediana": 4.25,
+          "pos": 66,
+          "n": 108
+        },
+        "NDX_6m": {
+          "mediana": 7.52,
+          "pos": 69,
+          "n": 108
+        },
+        "ORO_1m": {
+          "mediana": -0.74,
+          "pos": 41,
+          "n": 109
+        },
+        "ORO_3m": {
+          "mediana": -0.14,
+          "pos": 49,
+          "n": 108
+        },
+        "ORO_6m": {
+          "mediana": 2.05,
+          "pos": 56,
+          "n": 108
+        },
+        "BTC_1m": {
+          "mediana": 5.25,
+          "pos": 59,
+          "n": 39
+        },
+        "BTC_3m": {
+          "mediana": 3.82,
+          "pos": 55,
+          "n": 38
+        },
+        "BTC_6m": {
+          "mediana": 27.71,
+          "pos": 71,
+          "n": 38
+        },
+        "T10_3m": {
+          "mediana": -4.0,
+          "pos": 45,
+          "n": 108
+        },
+        "DXY_3m": {
+          "mediana": 0.94,
+          "pos": 65,
+          "n": 79
+        }
+      },
+      "EXPANSIÓN DESINFLACIONISTA": {
+        "n": 114,
+        "SPX_1m": {
+          "mediana": 1.16,
+          "pos": 63,
+          "n": 113
+        },
+        "SPX_3m": {
+          "mediana": 3.61,
+          "pos": 73,
+          "n": 113
+        },
+        "SPX_6m": {
+          "mediana": 7.32,
+          "pos": 78,
+          "n": 113
+        },
+        "NDX_1m": {
+          "mediana": 1.26,
+          "pos": 58,
+          "n": 113
+        },
+        "NDX_3m": {
+          "mediana": 5.32,
+          "pos": 72,
+          "n": 113
+        },
+        "NDX_6m": {
+          "mediana": 11.47,
+          "pos": 81,
+          "n": 113
+        },
+        "ORO_1m": {
+          "mediana": 0.65,
+          "pos": 58,
+          "n": 113
+        },
+        "ORO_3m": {
+          "mediana": 0.84,
+          "pos": 58,
+          "n": 113
+        },
+        "ORO_6m": {
+          "mediana": 2.14,
+          "pos": 61,
+          "n": 113
+        },
+        "BTC_1m": {
+          "mediana": 5.27,
+          "pos": 60,
+          "n": 30
+        },
+        "BTC_3m": {
+          "mediana": 11.36,
+          "pos": 67,
+          "n": 30
+        },
+        "BTC_6m": {
+          "mediana": 48.02,
+          "pos": 70,
+          "n": 30
+        },
+        "T10_3m": {
+          "mediana": -14.0,
+          "pos": 41,
+          "n": 113
+        },
+        "DXY_3m": {
+          "mediana": -0.67,
+          "pos": 42,
+          "n": 80
+        }
+      },
+      "REFLACIÓN": {
+        "n": 107,
+        "SPX_1m": {
+          "mediana": 1.08,
+          "pos": 64,
+          "n": 107
+        },
+        "SPX_3m": {
+          "mediana": 2.59,
+          "pos": 72,
+          "n": 107
+        },
+        "SPX_6m": {
+          "mediana": 5.26,
+          "pos": 77,
+          "n": 104
+        },
+        "NDX_1m": {
+          "mediana": 1.94,
+          "pos": 55,
+          "n": 107
+        },
+        "NDX_3m": {
+          "mediana": 4.04,
+          "pos": 76,
+          "n": 107
+        },
+        "NDX_6m": {
+          "mediana": 8.53,
+          "pos": 74,
+          "n": 104
+        },
+        "ORO_1m": {
+          "mediana": 0.46,
+          "pos": 55,
+          "n": 107
+        },
+        "ORO_3m": {
+          "mediana": 0.75,
+          "pos": 55,
+          "n": 107
+        },
+        "ORO_6m": {
+          "mediana": 0.57,
+          "pos": 53,
+          "n": 104
+        },
+        "BTC_1m": {
+          "mediana": 10.27,
+          "pos": 53,
+          "n": 32
+        },
+        "BTC_3m": {
+          "mediana": 7.24,
+          "pos": 56,
+          "n": 32
+        },
+        "BTC_6m": {
+          "mediana": 18.35,
+          "pos": 62,
+          "n": 29
+        },
+        "T10_3m": {
+          "mediana": 4.0,
+          "pos": 53,
+          "n": 107
+        },
+        "DXY_3m": {
+          "mediana": 0.44,
+          "pos": 53,
+          "n": 87
+        }
+      }
+    },
+    "ultimo": {
+      "fecha": "2026-08-31",
+      "cuadrante": "EXPANSIÓN DESINFLACIONISTA",
+      "crecimiento": 18.2,
+      "inflacion_pp": -1.15
+    },
+    "persistencia_3m": {
+      "DESACELERACIÓN DESINFLACIONISTA": 20,
+      "ESTANFLACIÓN": 25,
+      "EXPANSIÓN DESINFLACIONISTA": 24,
+      "REFLACIÓN": 17
+    }
+  },
+  "motor_comun": {
+    "periodo": "2003-01-10 → 2026-09-25",
+    "semanas": 1238,
+    "base": {
+      "n": 1238,
+      "SPX_1s": {
+        "mediana": 0.29,
+        "pos": 57,
+        "n": 1237
+      },
+      "SPX_4s": {
+        "mediana": 1.35,
+        "pos": 65,
+        "n": 1234
+      },
+      "NDX_1s": {
+        "mediana": 0.39,
+        "pos": 57,
+        "n": 1237
+      },
+      "NDX_4s": {
+        "mediana": 1.7,
+        "pos": 65,
+        "n": 1234
+      },
+      "ORO_1s": {
+        "mediana": 0.33,
+        "pos": 55,
+        "n": 1237
+      },
+      "ORO_4s": {
+        "mediana": 0.78,
+        "pos": 56,
+        "n": 1234
+      },
+      "BTC_1s": {
+        "mediana": 0.74,
+        "pos": 54,
+        "n": 616
+      },
+      "BTC_4s": {
+        "mediana": 2.07,
+        "pos": 57,
+        "n": 613
+      }
+    },
+    "por_motor": {
+      "MOTOR A FAVOR (≥3 a favor, 0 en contra)": {
+        "n": 135,
+        "SPX_1s": {
+          "mediana": 0.36,
+          "pos": 57,
+          "n": 135
+        },
+        "SPX_4s": {
+          "mediana": 1.61,
+          "pos": 69,
+          "n": 135
+        },
+        "NDX_1s": {
+          "mediana": 0.59,
+          "pos": 60,
+          "n": 135
+        },
+        "NDX_4s": {
+          "mediana": 1.91,
+          "pos": 70,
+          "n": 135
+        },
+        "ORO_1s": {
+          "mediana": 0.54,
+          "pos": 61,
+          "n": 135
+        },
+        "ORO_4s": {
+          "mediana": 1.16,
+          "pos": 61,
+          "n": 135
+        },
+        "BTC_1s": {
+          "mediana": 1.05,
+          "pos": 60,
+          "n": 58
+        },
+        "BTC_4s": {
+          "mediana": 1.55,
+          "pos": 59,
+          "n": 58
+        }
+      },
+      "MOTOR EN CONTRA (≥3 en contra, 0 a favor)": {
+        "n": 111,
+        "SPX_1s": {
+          "mediana": 0.02,
+          "pos": 50,
+          "n": 110
+        },
+        "SPX_4s": {
+          "mediana": 0.9,
+          "pos": 58,
+          "n": 109
+        },
+        "NDX_1s": {
+          "mediana": 0.1,
+          "pos": 52,
+          "n": 110
+        },
+        "NDX_4s": {
+          "mediana": 1.17,
+          "pos": 61,
+          "n": 109
+        },
+        "ORO_1s": {
+          "mediana": -0.03,
+          "pos": 49,
+          "n": 110
+        },
+        "ORO_4s": {
+          "mediana": 0.72,
+          "pos": 59,
+          "n": 109
+        },
+        "BTC_1s": {
+          "mediana": -0.19,
+          "pos": 45,
+          "n": 56
+        },
+        "BTC_4s": {
+          "mediana": -2.96,
+          "pos": 35,
+          "n": 55
+        }
+      },
+      "SIN MOTOR COMÚN": {
+        "n": 992,
+        "SPX_1s": {
+          "mediana": 0.31,
+          "pos": 58,
+          "n": 992
+        },
+        "SPX_4s": {
+          "mediana": 1.35,
+          "pos": 65,
+          "n": 990
+        },
+        "NDX_1s": {
+          "mediana": 0.38,
+          "pos": 57,
+          "n": 992
+        },
+        "NDX_4s": {
+          "mediana": 1.67,
+          "pos": 65,
+          "n": 990
+        },
+        "ORO_1s": {
+          "mediana": 0.28,
+          "pos": 55,
+          "n": 992
+        },
+        "ORO_4s": {
+          "mediana": 0.71,
+          "pos": 55,
+          "n": 990
+        },
+        "BTC_1s": {
+          "mediana": 0.81,
+          "pos": 55,
+          "n": 502
+        },
+        "BTC_4s": {
+          "mediana": 3.05,
+          "pos": 59,
+          "n": 500
+        }
+      }
+    }
+  },
+  "curva": {
+    "por_dinamica": {
+      "BEAR FLATTENING": {
+        "n": 89,
+        "SPX_3m": {
+          "mediana": 1.98,
+          "pos": 67,
+          "n": 88
+        },
+        "ORO_3m": {
+          "mediana": 0.48,
+          "pos": 53,
+          "n": 88
+        }
+      },
+      "BEAR STEEPENING": {
+        "n": 86,
+        "SPX_3m": {
+          "mediana": 3.64,
+          "pos": 71,
+          "n": 85
+        },
+        "ORO_3m": {
+          "mediana": 1.33,
+          "pos": 60,
+          "n": 85
+        }
+      },
+      "BULL FLATTENING": {
+        "n": 82,
+        "SPX_3m": {
+          "mediana": 2.83,
+          "pos": 70,
+          "n": 82
+        },
+        "ORO_3m": {
+          "mediana": 1.13,
+          "pos": 57,
+          "n": 82
+        }
+      },
+      "BULL STEEPENING": {
+        "n": 46,
+        "SPX_3m": {
+          "mediana": 3.68,
+          "pos": 78,
+          "n": 46
+        },
+        "ORO_3m": {
+          "mediana": 1.63,
+          "pos": 61,
+          "n": 46
+        }
+      },
+      "SIN CAMBIO": {
+        "n": 137,
+        "SPX_3m": {
+          "mediana": 4.17,
+          "pos": 71,
+          "n": 136
+        },
+        "ORO_3m": {
+          "mediana": 0.02,
+          "pos": 50,
+          "n": 136
+        }
+      }
+    },
+    "base": {
+      "n": 440,
+      "SPX_3m": {
+        "mediana": 3.15,
+        "pos": 70,
+        "n": 437
+      },
+      "ORO_3m": {
+        "mediana": 0.75,
+        "pos": 55,
+        "n": 437
+      }
+    }
+  },
+  "generado": "2026-09-30",
+  "nota": "Evidencia descriptiva: medianas y % de veces positivo. Ventanas solapadas; valores finales de FRED con desfase de publicación. No es predicción."
+}

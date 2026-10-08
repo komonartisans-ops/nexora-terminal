@@ -1,0 +1,1046 @@
+{
+ "evaluacion": {
+  "mapa": [
+   {
+    "dimension": "CRECIMIENTO",
+    "estado": "ESTABLE",
+    "dir": "→",
+    "evidencia": [
+     "Encuestas manufactureras Fed (Filadelfia, NY, Dallas), media 3 meses +21.5 vs +7.9 los 3 anteriores",
+     "Empleo (NFP) media 3 meses +51 mil vs +81 mil (2026-09)",
+     "Ventas minoristas 3 meses anualizado +3.5 % vs +5.4 % interanual (2026-08)",
+     "Producción industrial 3 meses anualizado +1.7 % vs +1.4 % interanual (2026-08)",
+     "Peticiones de paro media 4 semanas 198,000 vs 208,462 las 13 anteriores (-5.0 %)",
+     "Confirmación de mercado (no vota): XLY/XLP 1,3630 (2026-10-07) · -1,9 % frente a su media de 200 sesiones · 13 semanas -3,0 % · consumo real firme (2026-08, +0,93 % media 3 meses vs 3 anteriores) → DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
+    ],
+    "fuente": "Fed regionales, BLS, Census, Fed G.17, DOL vía FRED",
+    "puntos": 0
+   },
+   {
+    "dimension": "INFLACIÓN",
+    "estado": "DESACELERANDO",
+    "dir": "↓",
+    "evidencia": [
+     "IPC subyacente: 3 meses anualizado 2.0 % vs 2.8 % interanual (2026-08)",
+     "PCE subyacente: 3 meses anualizado 2.0 % vs 3.0 % interanual (2026-08)",
+     "Inflación esperada a 10 años (breakeven) 2.36 % (-1 pb en 20 sesiones)",
+     "Expectativas de inflación a 1 año (U. Michigan) 4.0 % (-0.8 pp en 3 meses)"
+    ],
+    "fuente": "BLS, BEA, U. Michigan, Tesoro vía FRED",
+    "puntos": -3
+   },
+   {
+    "dimension": "EMPLEO",
+    "estado": "ESTABLE",
+    "dir": "→",
+    "evidencia": [
+     "Regla de Sahm en tiempo real 0.00 (umbral de recesión 0,50; hace 3 meses 0.07)",
+     "Tasa de paro 4.2 % (mínimo de 12 meses 4.1 %)"
+    ],
+    "fuente": "BLS vía FRED; Sahm (Fed St. Louis)",
+    "puntos": 0
+   },
+   {
+    "dimension": "LIQUIDEZ",
+    "estado": "NEUTRAL",
+    "dir": "→",
+    "evidencia": [
+     "Monitor de liquidez cripto: SIN GIRO DE LIQUIDEZ (1/8 condiciones, 4 en drenaje)",
+     "Balance de la Fed 6.74 T$ (+0.3 % en 13 semanas)",
+     "TGA 885.4 B$ (+5.4 B$ en 4 semanas)",
+     "RRP 2.3 B$ (+1.9 B$ en 4 semanas)",
+     "Reservas bancarias 2.948 T$ (1 mes +1.85 %, 3 meses -0.63 %)",
+     "M2 +5.66 % interanual (2026-08)"
+    ],
+    "fuente": "Fed H.4.1, Tesoro DTS, NY Fed, H.6; monitor cripto NEXORA",
+    "puntos": 0
+   },
+   {
+    "dimension": "CRÉDITO",
+    "estado": "SE ENDURECE (menos crédito, diferenciales ↑) · ESTRÉS EN HIGH YIELD",
+    "dir": "↓",
+    "evidencia": [
+     "Diferencial high yield 309 pb (+38 pb en 20 sesiones)",
+     "Diferencial grado de inversión 82 pb (+1 pb en 20 sesiones)",
+     "Crédito bancario 13 semanas anualizado +3.7 % vs +5.9 % interanual (H.8)"
+    ],
+    "fuente": "ICE BofA y Fed H.8 vía FRED",
+    "puntos": -2
+   },
+   {
+    "dimension": "POLÍTICA MONETARIA",
+    "estado": "ENDURECIENDO · MERCADO DESCUENTA SUBIDAS",
+    "dir": "↑",
+    "evidencia": [
+     "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
+     "FedWatch NEXORA (2026-10-08): reunión del 2026-10-28 subida 20 % / mantener 80 % / bajada 0 % (+2 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +35 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "Bono a 2 años 4.77 % vs tipo efectivo 3.88 % → +89 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
+     "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
+     "Letra 1 año − tipo efectivo +54 pb (-12 pb en 5 sesiones)"
+    ],
+    "fuente": "Fed vía FRED, U.S. Treasury",
+    "puntos": null
+   },
+   {
+    "dimension": "FISCAL",
+    "estado": "RESTRICTIVA (el déficit se reduce)",
+    "dir": "↓",
+    "evidencia": [
+     "Saldo federal 12 meses -1,768 B$ = -5.4 % del PIB (hace un año -6.1 %; 2026-08)",
+     "Impulso = cambio del saldo en % del PIB. Un déficit mayor añade demanda y emisión de deuda (presión sobre el 10Y)."
+    ],
+    "fuente": "U.S. Treasury Monthly Treasury Statement y BEA vía FRED",
+    "puntos": null
+   },
+   {
+    "dimension": "CONDICIONES FINANCIERAS",
+    "estado": "ENDURECIÉNDOSE · más laxas que la media histórica",
+    "dir": "↑",
+    "evidencia": [
+     "NFCI -0.494 (+0.051 en 4 semanas; negativo = más laxas que la media) · 2026-10-02"
+    ],
+    "fuente": "Chicago Fed NFCI vía FRED; Cboe",
+    "puntos": null
+   },
+   {
+    "dimension": "CURVA DE TIPOS",
+    "estado": "POSITIVA · BEAR STEEPENING",
+    "dir": "",
+    "evidencia": [
+     "2s10s +51 pb (+11 pb en 20 sesiones: 2Y +34 pb, 10Y +45 pb) → BEAR STEEPENING (sube más el largo: prima por plazo, fiscal o inflación)",
+     "10 años − 3 meses +106 pb (2026-10-07)"
+    ],
+    "fuente": "U.S. Treasury; FRED T10Y3M",
+    "puntos": null
+   },
+   {
+    "dimension": "DÓLAR",
+    "estado": "SIN DATO",
+    "dir": "→",
+    "evidencia": [
+     "Dólar amplio (Fed) 121.38 (+0.5 % en 3 meses)"
+    ],
+    "fuente": "BCE; Fed H.10 vía FRED",
+    "puntos": null
+   },
+   {
+    "dimension": "CROSS-ASSET",
+    "estado": "SIN PATRÓN DOMINANTE",
+    "dir": "",
+    "evidencia": [
+     "Nasdaq 100: semana +2.5 · mes +5.9 %",
+     "Bitcoin: semana -0.3 · mes +5.3 %",
+     "Ether: semana -4.1 · mes +3.3 %",
+     "10Y nominal: semana -1.0 · mes +45.0 pb",
+     "10Y real: semana -1.0 · mes +46.0 pb",
+     "High yield: semana — · mes +38.0 pb"
+    ],
+    "fuente": "Cboe, FRED, LBMA, Coinbase, Tesoro, BCE (datos de los tres monitores)",
+    "puntos": null
+   }
+  ],
+  "cuadrante": "SIN RÉGIMEN CLARO (crecimiento o inflación sin dirección)",
+  "fuerza": "crecimiento +0 e inflación -3 votos",
+  "cuadrante_simple": {
+   "crecimiento": "↑",
+   "inflacion": "↓",
+   "cuadrante": "EXPANSIÓN DESINFLACIONISTA",
+   "detalle": "Filadelfia media 3 meses +30.0 · IPC subyacente 3m anualizado − interanual -0.79 pp"
+  },
+  "riesgo": "MIXTO",
+  "liquidez": "NEUTRAL",
+  "monitores": [
+   {
+    "monitor": "Liquidez cripto",
+    "lectura": "SIN GIRO DE LIQUIDEZ",
+    "sentido": "NEUTRAL",
+    "precio": "BTC CONFIRMA",
+    "detalle": "checklist 1/8 · BTC 30 días +5.3 %"
+   },
+   {
+    "monitor": "Oro (XAU/USD)",
+    "lectura": "MIXTO",
+    "sentido": "NEUTRAL",
+    "precio": "SIN DATO",
+    "detalle": "oro 20 sesiones — %"
+   },
+   {
+    "monitor": "Índices USA",
+    "lectura": "MIXTO",
+    "sentido": "NEUTRAL",
+    "precio": "SIN DATO",
+    "detalle": "amplitud SE DETERIORA · S&P 20 sesiones — %"
+   }
+  ],
+  "concordancia": "LOS TRES COINCIDEN: NEUTRAL",
+  "motor": [
+   {
+    "motor": "Bono a 2 años",
+    "valor": "-11 pb",
+    "efecto": "A FAVOR de oro, bolsa y cripto"
+   },
+   {
+    "motor": "10Y real",
+    "valor": "-1 pb",
+    "efecto": "NEUTRAL"
+   },
+   {
+    "motor": "Dólar (DXY)",
+    "valor": "SIN DATO",
+    "efecto": "SIN DATO"
+   },
+   {
+    "motor": "Condiciones financieras (NFCI)",
+    "valor": "+0.05",
+    "efecto": "EN CONTRA de oro, bolsa y cripto"
+   },
+   {
+    "motor": "VIX (aversión al riesgo)",
+    "valor": "SIN DATO",
+    "efecto": "SIN DATO"
+   },
+   {
+    "motor": "Liquidez (TGA/RRP/reservas/Fed)",
+    "valor": "NEUTRAL",
+    "efecto": "NEUTRAL"
+   }
+  ],
+  "motor_lectura": "SIN MOTOR COMÚN DOMINANTE",
+  "motor_historico": "SIN MOTOR COMÚN",
+  "cross_asset": {
+   "S&P 500": {
+    "semana": null,
+    "mes": null,
+    "unidad": "%"
+   },
+   "Nasdaq 100": {
+    "semana": 2.47,
+    "mes": 5.91,
+    "unidad": "%"
+   },
+   "Russell 2000": {
+    "semana": null,
+    "mes": null,
+    "unidad": "%"
+   },
+   "Oro (LBMA)": {
+    "semana": null,
+    "mes": null,
+    "unidad": "%"
+   },
+   "Bitcoin": {
+    "semana": -0.33639658318347365,
+    "mes": 5.288893423693963,
+    "unidad": "%"
+   },
+   "Ether": {
+    "semana": -4.140569985059206,
+    "mes": 3.3410721314899527,
+    "unidad": "%"
+   },
+   "10Y nominal": {
+    "semana": -1.0,
+    "mes": 45.0,
+    "unidad": "pb"
+   },
+   "10Y real": {
+    "semana": -1.0,
+    "mes": 46.0,
+    "unidad": "pb"
+   },
+   "DXY": {
+    "semana": null,
+    "mes": null,
+    "unidad": "%"
+   },
+   "VIX": {
+    "semana": null,
+    "mes": null,
+    "unidad": "%"
+   },
+   "High yield": {
+    "semana": null,
+    "mes": 37.999999999999986,
+    "unidad": "pb"
+   }
+  },
+  "patrones": [
+   {
+    "patron": "ESTRÉS DE CRÉDITO",
+    "cumple": 1,
+    "de": 4,
+    "pct": 25
+   },
+   {
+    "patron": "SHOCK DE TIPOS REALES",
+    "cumple": 1,
+    "de": 5,
+    "pct": 20
+   },
+   {
+    "patron": "HUIDA AL REFUGIO (risk-off clásico)",
+    "cumple": 1,
+    "de": 5,
+    "pct": 20
+   },
+   {
+    "patron": "EXPANSIÓN DE LIQUIDEZ",
+    "cumple": 1,
+    "de": 5,
+    "pct": 20
+   },
+   {
+    "patron": "CRECIMIENTO / REFLACIÓN",
+    "cumple": 1,
+    "de": 5,
+    "pct": 20
+   },
+   {
+    "patron": "DESINFLACIÓN FAVORABLE (goldilocks)",
+    "cumple": 1,
+    "de": 5,
+    "pct": 20
+   }
+  ],
+  "patron_dominante": [],
+  "contradicciones": [
+   "Bitcoin sube +5.3 % en 30 días sin soporte de liquidez y con el tipo real al alza: el motor es propio de cripto (flujos, posicionamiento), no macro. Históricamente estos movimientos son menos fiables (ver monitor cripto).",
+   "El Nasdaq 100 sube +5.9 % en 20 sesiones mientras el 10Y real sube +46 pb: los beneficios/temática (semis, IA) se imponen a los tipos. Vulnerable si los beneficios decepcionan."
+  ],
+  "preguntas": [
+   {
+    "pregunta": "¿En qué fase del ciclo estamos?",
+    "respuesta": "SIN RÉGIMEN CLARO (crecimiento o inflación sin dirección) (crecimiento +0 e inflación -3 votos). Crecimiento estable, inflación desacelerando, empleo estable."
+   },
+   {
+    "pregunta": "¿Qué está acelerando?",
+    "respuesta": "Nada con claridad."
+   },
+   {
+    "pregunta": "¿Qué está desacelerando?",
+    "respuesta": "inflación, crédito"
+   },
+   {
+    "pregunta": "¿Dónde aparece estrés?",
+    "respuesta": "crédito high yield, amplitud de la bolsa"
+   },
+   {
+    "pregunta": "¿Entra o sale liquidez?",
+    "respuesta": "NEUTRAL. Monitor cripto: SIN GIRO DE LIQUIDEZ."
+   },
+   {
+    "pregunta": "¿Qué hacen los bancos centrales?",
+    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 20 %, mantener 80 %, bajada 0 % (ayer subida 18 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
+   },
+   {
+    "pregunta": "¿Qué dice el consumo (mercado frente a datos reales)?",
+    "respuesta": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %)."
+   },
+   {
+    "pregunta": "¿Coinciden los tres monitores?",
+    "respuesta": "LOS TRES COINCIDEN: NEUTRAL"
+   },
+   {
+    "pregunta": "¿Hay un motor común?",
+    "respuesta": "SIN MOTOR COMÚN DOMINANTE"
+   },
+   {
+    "pregunta": "¿Qué contradicciones hay?",
+    "respuesta": "2 (ver sección de contradicciones)"
+   },
+   {
+    "pregunta": "¿Qué datos pueden cambiarlo?",
+    "respuesta": "mié 2026-10-14 14:30 IPC EE. UU. (CPI) · mié 2026-10-21 Resultados Tesla (TSLA) · mié 2026-10-28 19:00 Decisión FOMC (Fed) · mié 2026-10-28 Resultados Alphabet (GOOGL) · jue 2026-10-29 13:30 Renta y gasto personal (PCE) · jue 2026-10-29 Resultados Apple (AAPL) · jue 2026-10-29 Resultados Amazon (AMZN)"
+   }
+  ],
+  "umbrales": {
+   "encuestas_3m": 3.0,
+   "nfp_3m_miles": 25,
+   "retail_pp": 1.0,
+   "claims_pct": 5.0,
+   "indpro_pp": 1.0,
+   "infl_pp": 0.3,
+   "be_20d_pb": 10,
+   "mich_pp": 0.3,
+   "sahm": 0.5,
+   "sahm_3m": 0.1,
+   "hy_4s_pb": 25,
+   "ig_4s_pb": 10,
+   "credito_pp": 1.0,
+   "fed_6m_pb": 20,
+   "mercado_pb": 25,
+   "fiscal_pp": 0.5,
+   "nfci_4s": 0.02,
+   "curva_20d_pb": 5,
+   "dxy_20d_pct": 1.0,
+   "real_20d_pb": 15,
+   "patron_min": 0.75
+  },
+  "evidencia": {
+   "cuadrante": {
+    "periodo": "1990-01-31 → 2026-08-31",
+    "meses": 440,
+    "base": {
+     "n": 440,
+     "SPX_1m": {
+      "mediana": 1.29,
+      "pos": 65,
+      "n": 439
+     },
+     "SPX_3m": {
+      "mediana": 3.15,
+      "pos": 70,
+      "n": 437
+     },
+     "SPX_6m": {
+      "mediana": 5.44,
+      "pos": 74,
+      "n": 434
+     },
+     "NDX_1m": {
+      "mediana": 1.85,
+      "pos": 61,
+      "n": 439
+     },
+     "NDX_3m": {
+      "mediana": 4.74,
+      "pos": 71,
+      "n": 437
+     },
+     "NDX_6m": {
+      "mediana": 9.66,
+      "pos": 75,
+      "n": 434
+     },
+     "ORO_1m": {
+      "mediana": 0.27,
+      "pos": 54,
+      "n": 439
+     },
+     "ORO_3m": {
+      "mediana": 0.75,
+      "pos": 55,
+      "n": 437
+     },
+     "ORO_6m": {
+      "mediana": 2.31,
+      "pos": 61,
+      "n": 434
+     },
+     "BTC_1m": {
+      "mediana": 3.18,
+      "pos": 56,
+      "n": 140
+     },
+     "BTC_3m": {
+      "mediana": 10.37,
+      "pos": 60,
+      "n": 138
+     },
+     "BTC_6m": {
+      "mediana": 32.7,
+      "pos": 66,
+      "n": 135
+     },
+     "T10_3m": {
+      "mediana": 0.0,
+      "pos": 50,
+      "n": 437
+     },
+     "DXY_3m": {
+      "mediana": 0.31,
+      "pos": 52,
+      "n": 329
+     }
+    },
+    "por_cuadrante": {
+     "DESACELERACIÓN DESINFLACIONISTA": {
+      "n": 110,
+      "SPX_1m": {
+       "mediana": 1.4,
+       "pos": 72,
+       "n": 110
+      },
+      "SPX_3m": {
+       "mediana": 3.84,
+       "pos": 72,
+       "n": 109
+      },
+      "SPX_6m": {
+       "mediana": 5.42,
+       "pos": 76,
+       "n": 109
+      },
+      "NDX_1m": {
+       "mediana": 1.9,
+       "pos": 66,
+       "n": 110
+      },
+      "NDX_3m": {
+       "mediana": 5.45,
+       "pos": 70,
+       "n": 109
+      },
+      "NDX_6m": {
+       "mediana": 9.53,
+       "pos": 77,
+       "n": 109
+      },
+      "ORO_1m": {
+       "mediana": 0.53,
+       "pos": 61,
+       "n": 110
+      },
+      "ORO_3m": {
+       "mediana": 1.36,
+       "pos": 59,
+       "n": 109
+      },
+      "ORO_6m": {
+       "mediana": 3.6,
+       "pos": 72,
+       "n": 109
+      },
+      "BTC_1m": {
+       "mediana": 0.71,
+       "pos": 51,
+       "n": 39
+      },
+      "BTC_3m": {
+       "mediana": 15.31,
+       "pos": 63,
+       "n": 38
+      },
+      "BTC_6m": {
+       "mediana": 33.72,
+       "pos": 61,
+       "n": 38
+      },
+      "T10_3m": {
+       "mediana": 7.0,
+       "pos": 61,
+       "n": 109
+      },
+      "DXY_3m": {
+       "mediana": -0.06,
+       "pos": 48,
+       "n": 83
+      }
+     },
+     "ESTANFLACIÓN": {
+      "n": 109,
+      "SPX_1m": {
+       "mediana": 1.75,
+       "pos": 61,
+       "n": 109
+      },
+      "SPX_3m": {
+       "mediana": 3.12,
+       "pos": 66,
+       "n": 108
+      },
+      "SPX_6m": {
+       "mediana": 3.4,
+       "pos": 66,
+       "n": 108
+      },
+      "NDX_1m": {
+       "mediana": 2.22,
+       "pos": 64,
+       "n": 109
+      },
+      "NDX_3m": {
+       "mediana": 4.25,
+       "pos": 66,
+       "n": 108
+      },
+      "NDX_6m": {
+       "mediana": 7.52,
+       "pos": 69,
+       "n": 108
+      },
+      "ORO_1m": {
+       "mediana": -0.74,
+       "pos": 41,
+       "n": 109
+      },
+      "ORO_3m": {
+       "mediana": -0.14,
+       "pos": 49,
+       "n": 108
+      },
+      "ORO_6m": {
+       "mediana": 2.05,
+       "pos": 56,
+       "n": 108
+      },
+      "BTC_1m": {
+       "mediana": 5.25,
+       "pos": 59,
+       "n": 39
+      },
+      "BTC_3m": {
+       "mediana": 3.82,
+       "pos": 55,
+       "n": 38
+      },
+      "BTC_6m": {
+       "mediana": 27.71,
+       "pos": 71,
+       "n": 38
+      },
+      "T10_3m": {
+       "mediana": -4.0,
+       "pos": 45,
+       "n": 108
+      },
+      "DXY_3m": {
+       "mediana": 0.94,
+       "pos": 65,
+       "n": 79
+      }
+     },
+     "EXPANSIÓN DESINFLACIONISTA": {
+      "n": 114,
+      "SPX_1m": {
+       "mediana": 1.16,
+       "pos": 63,
+       "n": 113
+      },
+      "SPX_3m": {
+       "mediana": 3.61,
+       "pos": 73,
+       "n": 113
+      },
+      "SPX_6m": {
+       "mediana": 7.32,
+       "pos": 78,
+       "n": 113
+      },
+      "NDX_1m": {
+       "mediana": 1.26,
+       "pos": 58,
+       "n": 113
+      },
+      "NDX_3m": {
+       "mediana": 5.32,
+       "pos": 72,
+       "n": 113
+      },
+      "NDX_6m": {
+       "mediana": 11.47,
+       "pos": 81,
+       "n": 113
+      },
+      "ORO_1m": {
+       "mediana": 0.65,
+       "pos": 58,
+       "n": 113
+      },
+      "ORO_3m": {
+       "mediana": 0.84,
+       "pos": 58,
+       "n": 113
+      },
+      "ORO_6m": {
+       "mediana": 2.14,
+       "pos": 61,
+       "n": 113
+      },
+      "BTC_1m": {
+       "mediana": 5.27,
+       "pos": 60,
+       "n": 30
+      },
+      "BTC_3m": {
+       "mediana": 11.36,
+       "pos": 67,
+       "n": 30
+      },
+      "BTC_6m": {
+       "mediana": 48.02,
+       "pos": 70,
+       "n": 30
+      },
+      "T10_3m": {
+       "mediana": -14.0,
+       "pos": 41,
+       "n": 113
+      },
+      "DXY_3m": {
+       "mediana": -0.67,
+       "pos": 42,
+       "n": 80
+      }
+     },
+     "REFLACIÓN": {
+      "n": 107,
+      "SPX_1m": {
+       "mediana": 1.08,
+       "pos": 64,
+       "n": 107
+      },
+      "SPX_3m": {
+       "mediana": 2.59,
+       "pos": 72,
+       "n": 107
+      },
+      "SPX_6m": {
+       "mediana": 5.26,
+       "pos": 77,
+       "n": 104
+      },
+      "NDX_1m": {
+       "mediana": 1.94,
+       "pos": 55,
+       "n": 107
+      },
+      "NDX_3m": {
+       "mediana": 4.04,
+       "pos": 76,
+       "n": 107
+      },
+      "NDX_6m": {
+       "mediana": 8.53,
+       "pos": 74,
+       "n": 104
+      },
+      "ORO_1m": {
+       "mediana": 0.46,
+       "pos": 55,
+       "n": 107
+      },
+      "ORO_3m": {
+       "mediana": 0.75,
+       "pos": 55,
+       "n": 107
+      },
+      "ORO_6m": {
+       "mediana": 0.57,
+       "pos": 53,
+       "n": 104
+      },
+      "BTC_1m": {
+       "mediana": 10.27,
+       "pos": 53,
+       "n": 32
+      },
+      "BTC_3m": {
+       "mediana": 7.24,
+       "pos": 56,
+       "n": 32
+      },
+      "BTC_6m": {
+       "mediana": 18.35,
+       "pos": 62,
+       "n": 29
+      },
+      "T10_3m": {
+       "mediana": 4.0,
+       "pos": 53,
+       "n": 107
+      },
+      "DXY_3m": {
+       "mediana": 0.44,
+       "pos": 53,
+       "n": 87
+      }
+     }
+    },
+    "ultimo": {
+     "fecha": "2026-08-31",
+     "cuadrante": "EXPANSIÓN DESINFLACIONISTA",
+     "crecimiento": 18.2,
+     "inflacion_pp": -1.15
+    },
+    "persistencia_3m": {
+     "DESACELERACIÓN DESINFLACIONISTA": 20,
+     "ESTANFLACIÓN": 25,
+     "EXPANSIÓN DESINFLACIONISTA": 24,
+     "REFLACIÓN": 17
+    }
+   },
+   "motor_comun": {
+    "periodo": "2003-01-10 → 2026-09-25",
+    "semanas": 1238,
+    "base": {
+     "n": 1238,
+     "SPX_1s": {
+      "mediana": 0.29,
+      "pos": 57,
+      "n": 1237
+     },
+     "SPX_4s": {
+      "mediana": 1.35,
+      "pos": 65,
+      "n": 1234
+     },
+     "NDX_1s": {
+      "mediana": 0.39,
+      "pos": 57,
+      "n": 1237
+     },
+     "NDX_4s": {
+      "mediana": 1.7,
+      "pos": 65,
+      "n": 1234
+     },
+     "ORO_1s": {
+      "mediana": 0.33,
+      "pos": 55,
+      "n": 1237
+     },
+     "ORO_4s": {
+      "mediana": 0.78,
+      "pos": 56,
+      "n": 1234
+     },
+     "BTC_1s": {
+      "mediana": 0.74,
+      "pos": 54,
+      "n": 616
+     },
+     "BTC_4s": {
+      "mediana": 2.07,
+      "pos": 57,
+      "n": 613
+     }
+    },
+    "por_motor": {
+     "MOTOR A FAVOR (≥3 a favor, 0 en contra)": {
+      "n": 135,
+      "SPX_1s": {
+       "mediana": 0.36,
+       "pos": 57,
+       "n": 135
+      },
+      "SPX_4s": {
+       "mediana": 1.61,
+       "pos": 69,
+       "n": 135
+      },
+      "NDX_1s": {
+       "mediana": 0.59,
+       "pos": 60,
+       "n": 135
+      },
+      "NDX_4s": {
+       "mediana": 1.91,
+       "pos": 70,
+       "n": 135
+      },
+      "ORO_1s": {
+       "mediana": 0.54,
+       "pos": 61,
+       "n": 135
+      },
+      "ORO_4s": {
+       "mediana": 1.16,
+       "pos": 61,
+       "n": 135
+      },
+      "BTC_1s": {
+       "mediana": 1.05,
+       "pos": 60,
+       "n": 58
+      },
+      "BTC_4s": {
+       "mediana": 1.55,
+       "pos": 59,
+       "n": 58
+      }
+     },
+     "MOTOR EN CONTRA (≥3 en contra, 0 a favor)": {
+      "n": 111,
+      "SPX_1s": {
+       "mediana": 0.02,
+       "pos": 50,
+       "n": 110
+      },
+      "SPX_4s": {
+       "mediana": 0.9,
+       "pos": 58,
+       "n": 109
+      },
+      "NDX_1s": {
+       "mediana": 0.1,
+       "pos": 52,
+       "n": 110
+      },
+      "NDX_4s": {
+       "mediana": 1.17,
+       "pos": 61,
+       "n": 109
+      },
+      "ORO_1s": {
+       "mediana": -0.03,
+       "pos": 49,
+       "n": 110
+      },
+      "ORO_4s": {
+       "mediana": 0.72,
+       "pos": 59,
+       "n": 109
+      },
+      "BTC_1s": {
+       "mediana": -0.19,
+       "pos": 45,
+       "n": 56
+      },
+      "BTC_4s": {
+       "mediana": -2.96,
+       "pos": 35,
+       "n": 55
+      }
+     },
+     "SIN MOTOR COMÚN": {
+      "n": 992,
+      "SPX_1s": {
+       "mediana": 0.31,
+       "pos": 58,
+       "n": 992
+      },
+      "SPX_4s": {
+       "mediana": 1.35,
+       "pos": 65,
+       "n": 990
+      },
+      "NDX_1s": {
+       "mediana": 0.38,
+       "pos": 57,
+       "n": 992
+      },
+      "NDX_4s": {
+       "mediana": 1.67,
+       "pos": 65,
+       "n": 990
+      },
+      "ORO_1s": {
+       "mediana": 0.28,
+       "pos": 55,
+       "n": 992
+      },
+      "ORO_4s": {
+       "mediana": 0.71,
+       "pos": 55,
+       "n": 990
+      },
+      "BTC_1s": {
+       "mediana": 0.81,
+       "pos": 55,
+       "n": 502
+      },
+      "BTC_4s": {
+       "mediana": 3.05,
+       "pos": 59,
+       "n": 500
+      }
+     }
+    }
+   },
+   "curva": {
+    "por_dinamica": {
+     "BEAR FLATTENING": {
+      "n": 89,
+      "SPX_3m": {
+       "mediana": 1.98,
+       "pos": 67,
+       "n": 88
+      },
+      "ORO_3m": {
+       "mediana": 0.48,
+       "pos": 53,
+       "n": 88
+      }
+     },
+     "BEAR STEEPENING": {
+      "n": 86,
+      "SPX_3m": {
+       "mediana": 3.64,
+       "pos": 71,
+       "n": 85
+      },
+      "ORO_3m": {
+       "mediana": 1.33,
+       "pos": 60,
+       "n": 85
+      }
+     },
+     "BULL FLATTENING": {
+      "n": 82,
+      "SPX_3m": {
+       "mediana": 2.83,
+       "pos": 70,
+       "n": 82
+      },
+      "ORO_3m": {
+       "mediana": 1.13,
+       "pos": 57,
+       "n": 82
+      }
+     },
+     "BULL STEEPENING": {
+      "n": 46,
+      "SPX_3m": {
+       "mediana": 3.68,
+       "pos": 78,
+       "n": 46
+      },
+      "ORO_3m": {
+       "mediana": 1.63,
+       "pos": 61,
+       "n": 46
+      }
+     },
+     "SIN CAMBIO": {
+      "n": 137,
+      "SPX_3m": {
+       "mediana": 4.17,
+       "pos": 71,
+       "n": 136
+      },
+      "ORO_3m": {
+       "mediana": 0.02,
+       "pos": 50,
+       "n": 136
+      }
+     }
+    },
+    "base": {
+     "n": 440,
+     "SPX_3m": {
+      "mediana": 3.15,
+      "pos": 70,
+      "n": 437
+     },
+     "ORO_3m": {
+      "mediana": 0.75,
+      "pos": 55,
+      "n": 437
+     }
+    }
+   },
+   "generado": "2026-09-30",
+   "nota": "Evidencia descriptiva: medianas y % de veces positivo. Ventanas solapadas; valores finales de FRED con desfase de publicación. No es predicción."
+  },
+  "consumo": {
+   "valor": "XLY/XLP 1,3630 (2026-10-07) · -1,9 % frente a su media de 200 sesiones · 13 semanas -3,0 % · consumo real firme (2026-08, +0,93 % media 3 meses vs 3 anteriores)",
+   "lectura": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
+   "historico": "Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %).",
+   "aviso": "Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
+   "concentracion": "",
+   "tesis": "XLY/XLP 1,3630 (2026-10-07) · -1,9 % frente a su media de 200 sesiones · 13 semanas -3,0 % · consumo real firme (2026-08, +0,93 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
+   "estado_mercado": "DEFENSIVO",
+   "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
+  }
+ },
+ "errores": {},
+ "monitores_fuente": {
+  "cripto": "calculado en esta ejecución",
+  "oro": "calculado en esta ejecución",
+  "indices": "calculado en esta ejecución"
+ },
+ "ok": true,
+ "generado_utc": "2026-10-08 15:42 UTC",
+ "duracion_s": 489.1
+}

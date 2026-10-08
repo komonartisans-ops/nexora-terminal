@@ -28,6 +28,7 @@ sys.path.insert(0, HERE)
 os.makedirs(SITE_DATA, exist_ok=True)
 os.makedirs(DATA, exist_ok=True)
 
+import csvlog  # noqa: E402
 import liquidez_cripto as LQ  # noqa: E402
 
 NOW = dt.datetime.now(dt.timezone.utc)
@@ -83,20 +84,8 @@ def serie_json(s, desde_dias=None):
 
 
 def csv_append(nombre, fila, claves):
-    """Memoria permanente: solo se añade, una fila por clave (fecha) si no existe."""
-    p = os.path.join(DATA, nombre)
-    existe = os.path.exists(p)
-    vistas = set()
-    if existe:
-        with open(p, encoding="utf-8", newline="") as f:
-            vistas = {r.get(claves[0]) for r in csv.DictReader(f)}
-    if fila.get(claves[0]) in vistas:
-        return
-    with open(p, "a", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(fila.keys()))
-        if not existe:
-            w.writeheader()
-        w.writerow(fila)
+    """Memoria permanente: solo se añade; una fila por clave (columnas `claves`), nunca duplicada."""
+    return csvlog.anadir(nombre, [fila], claves)
 
 
 # ------------------------------------------------------------------ precios (Yahoo, sin clave)
@@ -173,6 +162,10 @@ def etapa_precios():
             out[k] = {"nombre": nombre, "simbolo": sym, "valor": None, "fuente": fuente, "sin_dato": True}
     if len(err) == len(ACTIVOS):
         raise RuntimeError("Yahoo Finance no responde: " + json.dumps(err)[:300])
+    # memoria permanente: una fila por activo en CADA ejecución (la clave incluye el minuto de captura → crece sin duplicar)
+    csvlog.anadir("historico_precios.csv", [{"capturado_utc": STAMP, "activo": k, "valor": a.get("valor", ""), "fecha_dato": a.get("fecha", ""),
+                                             "cambio_1d_pct": a.get("cambio_1d_pct", ""), "fuente": a.get("fuente", "")}
+                                            for k, a in out.items() if a.get("valor") is not None], ("capturado_utc", "activo"))
     return {"activos": out, "errores": err}
 
 
@@ -197,7 +190,43 @@ def etapa_fedwatch():
     F["tipos_actuales"] = {"Fed": {"rango": F["rango_objetivo"], "effr": F["effr"], "fuente": "FRED DFEDTARL/DFEDTARU/EFFR"},
                            "BCE": {**(ult("bce_deposito") or {}), "fuente": "FRED ECBDFR (facilidad de depósito)"} if ult("bce_deposito") else None,
                            "BoJ": {**(ult("boj_politica") or {}), "fuente": "FRED IRSTCB01JPM156N (OCDE, mensual)"} if ult("boj_politica") else None}
+    csvlog.anadir("historico_fedwatch.csv", [{"capturado_utc": STAMP, "reunion": r["reunion"], "tipo_esperado": r["tipo_esperado"],
+                                              "prob_subida": r["prob_reunion"]["subida"], "prob_mantiene": r["prob_reunion"]["mantiene"],
+                                              "prob_bajada": r["prob_reunion"]["bajada"], "fecha_precios": F["fecha_precios"]} for r in F["reuniones"]],
+                  ("capturado_utc", "reunion"))
     return F
+
+
+# ------------------------------------------------------------------ tipos oficiales (Tesoro de EE. UU.): 2Y, 10Y y 10Y real
+def etapa_tipos():
+    import oro_xau
+    err, out = {}, {}
+    def bloque(s):
+        a, b = s[-1], s[-2]
+        d5 = next((x for x in reversed(s[:-1]) if x[0] <= a[0] - dt.timedelta(days=7)), None)
+        return {"valor": round(a[1], 3), "fecha": a[0].isoformat(), "d1_pb": round((a[1] - b[1]) * 100, 1),
+                "d5_pb": round((a[1] - d5[1]) * 100, 1) if d5 else None, "serie": serie_json(s, 900)}
+    try:
+        nom = oro_xau.treasury("nominal", 2)
+        real = oro_xau.treasury("real", 2)
+        for k, d, col in (("t2y", nom, "2 Yr"), ("n10", nom, "10 Yr"), ("real10", real, "10 YR")):
+            s = [(f, v[col]) for f, v in d.items() if col in v]
+            if len(s) > 5:
+                out[k] = {**bloque(s), "fuente": "Tesoro de EE. UU. (curva par diaria)", "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates"}
+    except Exception as e:  # noqa: BLE001
+        err["tesoro"] = f"{type(e).__name__}: {e}"
+    for k, sid in (("t2y", "DGS2"), ("n10", "DGS10"), ("real10", "DFII10")):  # respaldo FRED si el Tesoro no respondió
+        if k not in out:
+            try:
+                s = LQ.fred(sid, (dt.date.today() - dt.timedelta(days=1100)).isoformat())
+                out[k] = {**bloque(s), "fuente": f"FRED {sid} (respaldo: Tesoro no respondió)", "url": f"https://fred.stlouisfed.org/series/{sid}"}
+            except Exception as e:  # noqa: BLE001
+                err[sid] = f"{type(e).__name__}: {e}"
+    if not out:
+        raise RuntimeError("sin tipos: " + json.dumps(err)[:300])
+    csvlog.anadir("historico_tipos.csv", [{"capturado_utc": STAMP, "serie": k, "valor": m["valor"], "fecha_dato": m["fecha"], "d1_pb": m["d1_pb"], "fuente": m["fuente"]}
+                                          for k, m in out.items()], ("capturado_utc", "serie"))
+    return {**out, "errores": err}
 
 
 # ------------------------------------------------------------------ calendario
@@ -251,6 +280,8 @@ def etapa_calendario():
                     v["fecha_publicacion"] = max(v.get("fecha_publicacion", ""), e["fecha"])  # periodo ≠ publicación: se muestran las dos
                 break
     C["ultimos_publicados"] = pub
+    csvlog.anadir("eventos_macro.csv", [{"fecha": e["fecha"], "hora_madrid": e.get("hora_madrid") or "", "evento": e["evento"], "importancia": e.get("importancia", ""),
+                                         "fuente": e.get("fuente", ""), "visto_utc": STAMP} for e in C["eventos"]], ("fecha", "evento"))
     return C
 
 
@@ -348,14 +379,64 @@ def etapa_resumen():
         tes[a] = {"etiqueta": et, "puntuacion": tot, "motores": cs}
     P["tesis_activos"] = tes
     P.pop("datos", None)
+    # memoria permanente: tesis del día por activo (una fila por activo y día) para el registro de tesis y su verificación posterior
+    px = {"Oro": "oro", "Bitcoin": "btc", "S&P 500": "spx", "Nasdaq 100": "ndx", "US30 · Dow Jones": "dji", "Russell 2000": "rut"}
+    pr = (leer("precios.json") or {}).get("activos", {})
+    csvlog.anadir("registro_tesis.csv", [{"fecha": dt.date.today().isoformat(), "activo": a, "tesis": t["etiqueta"], "puntuacion": t["puntuacion"],
+                                          "motores": "; ".join(f"{m['motor']}{'↑' if m['sube'] else '↓'}" for m in t["motores"]),
+                                          "precio_referencia": (pr.get(px.get(a)) or {}).get("valor", ""), "capturado_utc": STAMP}
+                                         for a, t in tes.items()], ("fecha", "activo"))
     return P
 
 
+
+# ------------------------------------------------------------------ ciclo y crédito
+def etapa_ciclo():
+    import ciclo
+    M = ciclo.medir()
+    cr = M["credito"]
+    fila = {"fecha_captura": dt.date.today().isoformat(), "fase": M["fase"], "encendidas": M["encendidas"], "validas": M["validas"],
+            "probit_12m_pct": (M.get("probit") or {}).get("probabilidad_12m_pct", ""), "ebp_pp": ((M.get("ebp") or {}).get("ultimo") or ["", ""])[1],
+            **{f"{k}_pb": (cr.get(k) or {}).get("valor_pb", "") for k in ("ig", "bbb", "hy", "ccc")},
+            "senales": "".join("1" if x["encendida"] else "0" if x["encendida"] is not None else "?" for x in M["senales"])}
+    csvlog.anadir("historico_ciclo.csv", [fila], ("fecha_captura",))
+    if len(M["errores"]) >= 6:
+        raise RuntimeError("ciclo: demasiadas fuentes sin dato: " + json.dumps(M["errores"])[:300])
+    return M
+
+
+# ------------------------------------------------------------------ datos publicados con revisiones
+def etapa_publicados():
+    import datos_macro
+    return datos_macro.actualizar(leer("calendario.json"))
+
+
+# ------------------------------------------------------------------ régimen macro
+def etapa_regimen():
+    import regimen
+    cal = leer("calendario.json")
+    cripto = ruta("liquidez.json") if (leer("liquidez.json") or {}).get("evaluacion") else None
+    R = regimen.medir(cripto=cripto)
+    E = regimen.evaluar(R, cal if cal and cal.get("eventos") else None)
+    E.pop("fedwatch", None)
+    csvlog.anadir("historico_regimen.csv", [{"fecha_captura": dt.date.today().isoformat(), "cuadrante": E["cuadrante"], "fuerza": E["fuerza"], "riesgo": E["riesgo"],
+                                             "liquidez": E["liquidez"], "concordancia": E["concordancia"], "motor": E["motor_lectura"],
+                                             "estados": " | ".join(f"{d['dimension']}={d['estado']}" for d in E["mapa"])}], ("fecha_captura",))
+    return {"evaluacion": E, "errores": R.get("errores", {}), "monitores_fuente": {k: ("calculado en esta ejecución" if k in R else "SIN DATO") for k in ("cripto", "oro", "indices")}}
+
+
+# ------------------------------------------------------------------ alertas (Telegram)
+def etapa_alertas():
+    import alertas
+    return alertas.ejecutar()
+
+
 # ------------------------------------------------------------------ principal
-ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "calendario": etapa_calendario,
-          "liquidez": etapa_liquidez, "resumen": etapa_resumen}
-ORDEN = ["precios", "fedwatch", "calendario", "liquidez", "resumen"]
-MODOS = {"horario": ["precios", "fedwatch"], "diario": ORDEN, "todo": ORDEN}
+ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_tipos, "calendario": etapa_calendario,
+          "liquidez": etapa_liquidez, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen,
+          "regimen": etapa_regimen, "alertas": etapa_alertas}
+ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "ciclo", "publicados", "resumen", "regimen", "alertas"]
+MODOS = {"horario": ["precios", "fedwatch", "tipos", "alertas"], "diario": ORDEN, "todo": ORDEN}
 
 
 def main():
@@ -376,8 +457,12 @@ def main():
             r["ultimo_ok_utc"] = estado.get(e, {}).get("ultimo_ok_utc")
         estado[e] = r
         print(f"   {'OK' if r['ok'] else 'FALLO'} {r['duracion_s']} s {r['error'] or ''}", flush=True)
-    escribir("meta.json", {"actualizado_utc": STAMP, "modo": a.modo, "etapas": estado,
-                           "duracion_total_s": round(time.time() - t0, 1)})
+    dur = round(time.time() - t0, 1)
+    escribir("meta.json", {"actualizado_utc": STAMP, "modo": a.modo, "etapas": estado, "duracion_total_s": dur})
+    # una fila por ejecución (garantiza que data/ crece en cada run)
+    ok = [e for e in etapas if estado[e]["ok"]]
+    csvlog.anadir("ejecuciones.csv", [{"capturado_utc": STAMP, "modo": a.modo, "evento": os.environ.get("GITHUB_EVENT_NAME", "local"),
+                                       "etapas_ok": ",".join(ok), "etapas_fallo": ",".join(e for e in etapas if e not in ok), "duracion_s": dur}], ("capturado_utc", "modo"))
     return 0
 
 

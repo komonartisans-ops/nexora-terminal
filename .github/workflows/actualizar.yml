@@ -2,14 +2,17 @@ name: actualizar
 
 on:
   schedule:
-    - cron: "7 6-22 * * 1-5"   # cada hora en días laborables (UTC): precios + FedWatch
-    - cron: "30 5 * * *"       # diario 05:30 UTC: build completo
+    - cron: "7 6-22 * * 1-5"   # cada hora en días laborables (UTC): precios, FedWatch, tipos y evaluación de alertas → Telegram
+    - cron: "30 5 * * *"       # diario 05:30 UTC: build completo (régimen, ciclo, datos publicados…)
     - cron: "0 8 * * 6"        # sábado: completo (COT y backtests ligeros llegan en fases posteriores)
   workflow_dispatch:
     inputs:
       modo:
         description: "horario | diario | todo"
         default: "diario"
+      prueba_telegram:
+        description: "Enviar una alerta de prueba a Telegram al terminar (true | false)"
+        default: "false"
 
 permissions:
   contents: write
@@ -23,12 +26,14 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Dependencias (solo xlrd, para leer el xls del probit de la Fed de NY)
+        run: pip install xlrd==2.0.1
       - name: Elegir modo
         id: modo
         run: |
@@ -43,6 +48,13 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python engine/build.py --modo "${{ steps.modo.outputs.modo }}"
+      - name: Alerta de prueba a Telegram (solo si se pide al lanzar a mano)
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.prueba_telegram == 'true' }}
+        env:
+          PYTHONUTF8: "1"
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python engine/alertas.py --prueba
       - name: Commit de data/ y site/data/ (memoria permanente)
         run: |
           git config user.name "nexora-bot"

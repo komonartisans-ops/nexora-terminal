@@ -1,20 +1,20 @@
 {
- "actualizado_utc": "2026-10-08 14:50 UTC",
+ "actualizado_utc": "2026-10-08 15:53 UTC",
  "modo": "diario",
  "etapas": {
   "precios": {
    "ok": true,
-   "duracion_s": 8.1,
+   "duracion_s": 8.3,
    "error": null,
-   "ejecutada_utc": "2026-10-08 14:50 UTC",
-   "ultimo_ok_utc": "2026-10-08 14:50 UTC"
+   "ejecutada_utc": "2026-10-08 15:34 UTC",
+   "ultimo_ok_utc": "2026-10-08 15:34 UTC"
   },
   "fedwatch": {
    "ok": true,
-   "duracion_s": 9.3,
+   "duracion_s": 9.9,
    "error": null,
-   "ejecutada_utc": "2026-10-08 14:50 UTC",
-   "ultimo_ok_utc": "2026-10-08 14:50 UTC"
+   "ejecutada_utc": "2026-10-08 15:34 UTC",
+   "ultimo_ok_utc": "2026-10-08 15:34 UTC"
   },
   "calendario": {
    "ok": true,
@@ -32,11 +32,46 @@
   },
   "resumen": {
    "ok": true,
-   "duracion_s": 56.6,
+   "duracion_s": 114.4,
    "error": null,
-   "ejecutada_utc": "2026-10-08 14:50 UTC",
-   "ultimo_ok_utc": "2026-10-08 14:50 UTC"
+   "ejecutada_utc": "2026-10-08 15:42 UTC",
+   "ultimo_ok_utc": "2026-10-08 15:42 UTC"
+  },
+  "tipos": {
+   "ok": true,
+   "duracion_s": 112.0,
+   "error": null,
+   "ejecutada_utc": "2026-10-08 15:34 UTC",
+   "ultimo_ok_utc": "2026-10-08 15:34 UTC"
+  },
+  "ciclo": {
+   "ok": true,
+   "duracion_s": 7.6,
+   "error": null,
+   "ejecutada_utc": "2026-10-08 15:53 UTC",
+   "ultimo_ok_utc": "2026-10-08 15:53 UTC"
+  },
+  "publicados": {
+   "ok": true,
+   "duracion_s": 3.4,
+   "error": null,
+   "ejecutada_utc": "2026-10-08 15:34 UTC",
+   "ultimo_ok_utc": "2026-10-08 15:34 UTC"
+  },
+  "regimen": {
+   "ok": true,
+   "duracion_s": 489.1,
+   "error": null,
+   "ejecutada_utc": "2026-10-08 15:42 UTC",
+   "ultimo_ok_utc": "2026-10-08 15:42 UTC"
+  },
+  "alertas": {
+   "ok": true,
+   "duracion_s": 0.5,
+   "error": null,
+   "ejecutada_utc": "2026-10-08 15:53 UTC",
+   "ultimo_ok_utc": "2026-10-08 15:53 UTC"
   }
  },
- "duracion_total_s": 177.7
+ "duracion_total_s": 8.1
 }

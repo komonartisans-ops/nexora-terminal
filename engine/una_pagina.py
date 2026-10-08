@@ -30,18 +30,33 @@ from oro_xau import lbma, okx_ohlc, treasury  # noqa: E402
 
 # umbrales (sesión, semana) — CRITERIO NEXORA
 UMB = {"fed": (10, 15), "t2y": (5, 10), "real": (4, 8), "dxy": (0.3, 0.6), "vix": (8, 12), "hy": (8, 15)}
-MOV = {"Nasdaq 100": (0.8, 1.5), "S&P 500": (0.6, 1.2), "Oro": (0.7, 1.5), "Bitcoin": (2.0, 4.0)}
+MOV = {"Nasdaq 100": (0.8, 1.5), "S&P 500": (0.6, 1.2), "Oro": (0.7, 1.5), "Bitcoin": (2.0, 4.0),
+       "US30 · Dow Jones": (0.6, 1.2), "Russell 2000": (1.0, 2.0)}
 # sensibilidad de cada activo a que el motor SUBA (−2 fuerte en contra … +1 a favor)
 SENS = {
     "Nasdaq 100": {"fed": -1.5, "t2y": -1, "real": -2, "dxy": -0.5, "vix": -1, "hy": -1},
     "S&P 500": {"fed": -1, "t2y": -1, "real": -1, "dxy": -0.5, "vix": -1, "hy": -1.5},
     "Oro": {"fed": -1, "t2y": -1, "real": -2, "dxy": -2, "vix": 0.5, "hy": 0},
     "Bitcoin": {"fed": -1.5, "t2y": -1, "real": -1, "dxy": -1.5, "vix": -1, "hy": -1},
+    # Índices del monitor de índices (Cboe DJX y RUT). CRITERIO NEXORA: el Dow (valor, ciclo, multinacionales) es menos sensible a los tipos
+    # que el Nasdaq; el Russell 2000 (pequeñas empresas, más deuda a tipo variable y financiación bancaria) es el más sensible a Fed, 2Y y crédito.
+    "US30 · Dow Jones": {"fed": -0.75, "t2y": -0.5, "real": -1, "dxy": -0.5, "vix": -1, "hy": -1.25},
+    "Russell 2000": {"fed": -2, "t2y": -1.5, "real": -1.5, "dxy": 0, "vix": -1, "hy": -2},
 }
 FOCO = {"indices": ["Nasdaq 100", "S&P 500"], "oro": ["Oro"], "cripto": ["Bitcoin"],
-        "regimen": ["Nasdaq 100", "S&P 500", "Oro", "Bitcoin"], "nexora": ["Oro", "Nasdaq 100", "S&P 500", "Bitcoin"]}
+        "regimen": ["Nasdaq 100", "S&P 500", "Oro", "Bitcoin"], "nexora": ["Oro", "Nasdaq 100", "S&P 500", "Bitcoin", "US30 · Dow Jones", "Russell 2000"]}
 AFECTA = {"indices": "índices", "oro": "oro", "cripto": "cripto", "regimen": "", "nexora": ""}
 NAVY, GOLD, GREEN, RED, AMBER, GREY = "#0d1b2e", "#c9a961", "#1e6b4f", "#9b2d3a", "#a8741a", "#8b95a8"
+
+
+_DIA = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
+_MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+
+
+def f_dia(iso, hora=None):
+    """«jue 8 oct · 14:30» en una sola línea."""
+    d = dt.date.fromisoformat(iso)
+    return f"{_DIA[d.weekday()]} {d.day} {_MES[d.month - 1]}" + (f" · {hora}" if hora else "")
 
 
 def n(x, d=1, sg=True):
@@ -90,6 +105,7 @@ def medir(h=1, fw=None):
         x = g("xaut", okx_ohlc, "XAUT-USDT", 30)
         oro = [(r[0], r[4]) for r in x] if x else None
     btc = g("btc", coinbase, "BTC-USD", 20)
+    djx, rut = g("cboe_djx", cboe, "DJX"), g("cboe_rut", cboe, "RUT")  # mismas series que el monitor de índices (indices.py)
     hy = g("hy", fred, "BAMLH0A0HYM2", (dt.date.today() - dt.timedelta(days=40)).isoformat())
     M = {}
     if nom:
@@ -115,7 +131,8 @@ def medir(h=1, fw=None):
                     "delta": (r0["prob_reunion"]["subida"] - p_ant) if p_ant is not None else None, "tipo_delta_pb": d_tipo,
                     "bajada": r0["prob_reunion"]["bajada"], "fecha": fw["fecha_precios"]}
     A = {}
-    for nm, s in (("Nasdaq 100", ndx), ("S&P 500", spx), ("Oro", oro), ("Bitcoin", [(d, c) for d, c, _ in btc] if btc else None)):
+    for nm, s in (("Nasdaq 100", ndx), ("S&P 500", spx), ("Oro", oro), ("Bitcoin", [(d, c) for d, c, _ in btc] if btc else None),
+                  ("US30 · Dow Jones", [(d, v * 100) for d, v in djx] if djx else None), ("Russell 2000", rut)):
         if s:
             A[nm] = {"delta": ch(s, h), "fecha": s[-1][0].isoformat(), "valor": s[-1][1]}
     return {"h": h, "motores": M, "activos": A, "errores": err}
@@ -123,7 +140,7 @@ def medir(h=1, fw=None):
 
 def texto_motor(k, m, sube):
     if k == "fed":
-        base = f"la probabilidad de que la Fed SUBA tipos el {m['reunion'][8:10]}-{m['reunion'][5:7]} pasa de {m['antes']:.0f} % a {m['valor']:.0f} %"
+        base = f"la probabilidad de que la Fed SUBA tipos el {f_dia(m['reunion'])} pasa de {m['antes']:.0f} % a {m['valor']:.0f} %"
         return base
     if k == "t2y":
         return f"el bono a 2 años {'sube' if sube else 'baja'} {abs(m['delta']):.0f} pb (hasta {n(m['valor'], 2, False)} %)"
@@ -201,7 +218,7 @@ def construir(D, foco="regimen", cal=None, fw=None):
     # 4) qué significa (activos del foco primero)
     orden = FOCO.get(foco, FOCO["regimen"]) + [a for a in SENS if a not in FOCO.get(foco, [])]
     sign = []
-    for a in orden[:4]:
+    for a in orden[:6]:
         mv = (A.get(a) or {}).get("delta")
         if mv is None:
             coh = ""
@@ -222,14 +239,14 @@ def construir(D, foco="regimen", cal=None, fw=None):
     ahora = dt.datetime.now(ZoneInfo("Europe/Madrid")).strftime("%Y-%m-%d %H:%M")
     if M.get("fed"):
         f = M["fed"]
-        vig.append(f"Fed {f['reunion'][8:10]}-{f['reunion'][5:7]}: hoy {f['valor']:.0f} % de subida" + (f", {f['bajada']:.0f} % de bajada" if f['bajada'] else "") +
+        vig.append(f"Fed {f_dia(f['reunion'])}: hoy {f['valor']:.0f} % de subida" + (f", {f['bajada']:.0f} % de bajada" if f['bajada'] else "") +
                    ". Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.")
     af = AFECTA.get(foco, "")
     for e in (cal or {}).get("eventos", []):
         if len(vig) >= 3:
             break
         if f"{e['fecha']} {e['hora_madrid'] or '23:59'}" > ahora and e["importancia"] == "ALTA" and (not af or af in e["afecta"]) and "FOMC" not in e["evento"]:
-            vig.append(f"{e['dia']} {e['fecha'][8:10]}-{e['fecha'][5:7]} {e['hora_madrid'] or ''} · {e['evento']}: {e['que_mirar']}".replace("  ", " "))
+            vig.append(f"{f_dia(e['fecha'], e['hora_madrid'] or None)} · {e['evento']}: {e['que_mirar']}")
     # 6) tesis y palabras sencillas
     NOM = {"Oro": "el oro", "Bitcoin": "bitcoin", "Nasdaq 100": "el Nasdaq", "S&P 500": "el S&P 500"}
     fa = NOM[FOCO.get(foco, FOCO["regimen"])[0]]

@@ -72,12 +72,12 @@ const PAGES = [
   { id: 'tesis', g: 'Personal', t: 'Registro de tesis', d: 'Histórico de tesis y su resultado', f: 5 },
 ];
 const PLAN = {
-  2: 'Alertas Telegram, Ciclo y crédito, Régimen macro y Datos publicados con revisiones.',
   3: 'Oro, Índices USA y Cripto.',
   4: 'COT (CFTC), Sesgo de divisas y Noticias RSS de bancos centrales.',
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
+const LIVE = new Set(['resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados']);
 const D = {};
 const MOUNT = [];
 
@@ -85,7 +85,7 @@ function buildNav() {
   const nav = $('#nav');
   nav.innerHTML = GROUPS.map((g) => `<div class="nav-item" data-g="${g}">
     <button class="nav-btn">${g} <span class="chev">▾</span></button>
-    <div class="menu">${PAGES.filter((p) => p.g === g).map((p) => `<a href="#/${p.id}" data-id="${p.id}"><div class="t">${esc(p.t)}${p.f > 1 ? `<span class="fase">F${p.f}</span>` : ''}</div><div class="d">${esc(p.d)}</div></a>`).join('')}</div>
+    <div class="menu">${PAGES.filter((p) => p.g === g).map((p) => `<a href="#/${p.id}" data-id="${p.id}"><div class="t">${esc(p.t)}${!LIVE.has(p.id) ? `<span class="fase">F${p.f}</span>` : ''}</div><div class="d">${esc(p.d)}</div></a>`).join('')}</div>
   </div>`).join('');
   $$('.nav-item', nav).forEach((it) => {
     $('.nav-btn', it).addEventListener('click', (e) => { e.stopPropagation(); const o = it.classList.contains('open'); $$('.nav-item').forEach((x) => x.classList.remove('open')); if (!o) it.classList.add('open'); });
@@ -123,15 +123,16 @@ function essential(l1, l2, l3) {
 }
 function foot(src, fecha, url, extra) {
   const s = url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(src)}</a>` : esc(src);
-  return `<div class="foot"><span>Fuente: ${s}</span><span>${fecha ? 'dato ' + esc(fdy(fecha)) + (extra ? ' · ' + extra : '') : (extra || 'dato SIN DATO')}</span></div>`;
+  return `<div class="foot"><span>Fuente: ${s}</span><span>${fecha ? 'dato ' + esc(fdy(fecha)) + (extra ? ' · ' + extra : '') : fecha === false ? (extra || '') : (extra || 'dato SIN DATO')}</span></div>`;
 }
-function spark(serie, n = 60) {
+function spark(serie, n = 63) {
   const s = (serie || []).slice(-n);
   if (s.length < 3) return '';
   const vs = s.map((x) => x[1]); const mn = Math.min(...vs), mx = Math.max(...vs), r = mx - mn || 1;
-  const pts = vs.map((v, i) => `${(i / (vs.length - 1) * 100).toFixed(1)},${(30 - (v - mn) / r * 28).toFixed(1)}`).join(' ');
+  const pts = vs.map((v, i) => `${(i / (vs.length - 1) * 100).toFixed(1)},${(46 - (v - mn) / r * 42).toFixed(1)}`).join(' ');
   const c = vs[vs.length - 1] >= vs[0] ? '#2FA36B' : '#C8463D';
-  return `<svg class="spark" viewBox="0 0 100 32" preserveAspectRatio="none"><polygon points="0,32 ${pts} 100,32" fill="${c}" opacity=".12"/><polyline points="${pts}" fill="none" stroke="${c}" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>`;
+  const meses = Math.max(1, Math.round((pd(s[s.length - 1][0]) - pd(s[0][0])) / 864e5 / 30.4));
+  return `<svg class="spark" viewBox="0 0 100 50" preserveAspectRatio="none"><polygon points="0,50 ${pts} 100,50" fill="${c}" opacity=".13"/><polyline points="${pts}" fill="none" stroke="${c}" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg><div class="sparkcap"><span>${esc(fd(s[0][0]))}</span><span>${meses === 1 ? '1 mes' : meses + ' meses'}</span><span>${esc(fd(s[s.length - 1][0]))}</span></div>`;
 }
 function ck(estado) {
   const e = String(estado || '').toUpperCase();
@@ -183,11 +184,12 @@ function lw(id, defs, opts = {}) {
       return s;
     });
     chart.timeScale().fitContent();
+    if (opts.init) { const all0 = defs.flatMap((d) => d.data || []).map((x) => x[0]).sort(); const to0 = all0[all0.length - 1]; chart.timeScale().setVisibleRange({ from: new Date(pd(to0) - opts.init * 864e5).toISOString().slice(0, 10), to: to0 }); }
     const leg = document.getElementById(id + '-leg');
     if (leg) chart.subscribeCrosshairMove((p) => {
       defs.forEach((d, i) => { const v = p.seriesData && p.seriesData.get(series[i]); const b = leg.querySelector(`[data-i="${i}"]`); if (b) b.textContent = v ? num(v.value, d.prec ?? 2) : ''; });
     });
-    new ResizeObserver(() => chart.applyOptions({ width: el.clientWidth })).observe(el);
+    new ResizeObserver(() => chart.applyOptions({ width: el.clientWidth, height: el.clientHeight })).observe(el);
     const rb = document.getElementById(id + '-rng');
     if (rb) rb.addEventListener('click', (e) => {
       const b = e.target.closest('button'); if (!b) return;
@@ -199,7 +201,7 @@ function lw(id, defs, opts = {}) {
   });
   const leg = defs.map((d, i) => `<span><i style="background:${d.color}"></i>${esc(d.name)} <b class="mono" data-i="${i}" style="color:#E6E8EB"></b></span>`).join('');
   const rng = opts.range === false ? '' : `<span id="${id}-rng" style="margin-left:auto;display:flex;gap:4px">${[['3M', 92], ['6M', 183], ['1A', 365], ['Todo', 0]].map(([l, d], i, a) => `<button class="fbtn ${i === a.length - 1 ? 'on' : ''}" data-d="${d}" style="padding:2px 8px;font-size:10.5px">${l}</button>`).join('')}</span>`;
-  return `<div class="legend" id="${id}-leg">${leg}${rng}</div><div class="chart ${opts.tall ? 'tall' : ''}" id="${id}"></div>`;
+  return `<div class="legend" id="${id}-leg">${leg}${rng}</div><div class="chart ${opts.tall ? 'tall' : ''} ${opts.fill ? 'fill' : ''}" id="${id}"></div>`;
 }
 function rebase(s, desde) {
   const pts = s.filter((x) => x[0] >= desde);
@@ -213,11 +215,11 @@ const UMB = { fed: [10, 15], t2y: [5, 10], real: [4, 8], dxy: [0.3, 0.6], vix: [
 const UNID = { fed: ['%', ' pts'], t2y: ['%', ' pb'], real: ['%', ' pb'], dxy: ['', '%'], vix: ['', '%'], hy: [' pb', ' pb'] };
 
 function pageResumen() {
-  const R = D.resumen, P = D.precios, C = D.calendario;
+  const R = D.resumen, P = D.precios, C = D.calendario, T = D.tipos;
   const act = (P && P.activos) || {};
   const orden = [['oro', 'Oro', 'USD'], ['btc', 'Bitcoin', 'USD'], ['spx', 'S&P 500', 'pts'], ['ndx', 'Nasdaq 100', 'pts'], ['dji', 'US30 · Dow Jones', 'pts'], ['rut', 'Russell 2000', 'pts']];
   const TES = (R && R.tesis_activos) || {};
-  const nombreTesis = { oro: 'Oro', btc: 'Bitcoin', spx: 'S&P 500', ndx: 'Nasdaq 100' };
+  const nombreTesis = { oro: 'Oro', btc: 'Bitcoin', spx: 'S&P 500', ndx: 'Nasdaq 100', dji: 'US30 · Dow Jones', rut: 'Russell 2000' };
   const corteFecha = R && R.corte ? (R.corte.match(/\d{4}-\d{2}-\d{2}/g) || []).pop() : null;
   const stamp = `Precios: ${P && P.generado_utc ? esc(horaAct(P.generado_utc)) : 'SIN DATO'} · Tesis: ${R && R.generado_utc ? esc(horaAct(R.generado_utc)) : 'SIN DATO'} · corte de datos: ${R ? esc(R.corte) : 'SIN DATO'}`;
   let h = head('Mercados', 'Resumen', 'Una tarjeta por activo: precio, tendencia y el viento macro que lo acompaña. La tesis solo describe si la macro empuja a favor o en contra; no es una recomendación de compra o venta.', stamp);
@@ -226,51 +228,67 @@ function pageResumen() {
   const vig = R ? R.vigilar.slice(0, 2).map(esc).join(' · ') : SD;
   h += essential(R ? esc(R.movido) : SD, R ? esc(R.tesis) : SD, vig);
 
-  h += '<div class="sect"><h2>Activos</h2><span class="more">1d · 1 sem · 1 mes · 3 meses</span></div><div class="grid g6">';
+  h += '<div class="sect"><h2>Activos</h2><span class="more">cambio 1d · 1 sem · 1 mes · 3 meses · gráfico de 3 meses</span></div><div class="grid g6">';
   h += orden.map(([k, nm, u]) => {
     const a = act[k];
-    if (!a || a.valor == null) return `<div class="card kpi asset"><div class="top"><div><div class="nm">${nm}</div></div>${tagTesis(null)}</div><div class="big" style="margin-top:12px">${SD}</div>${foot('Yahoo Finance', null)}</div>`;
+    if (!a || a.valor == null) return `<div class="card kpi asset"><div class="top"><div><div class="nm">${nm}</div></div>${tagTesis(null)}</div><div class="big" style="margin-top:12px">${SD}</div>${foot((a && a.fuente) || 'Yahoo Finance', null)}</div>`;
     const t = TES[nombreTesis[k]];
     return `<div class="card kpi asset"><div class="top"><div><div class="nm">${nm}</div><div class="sym">${esc(a.simbolo)}</div></div>${nombreTesis[k] ? (t ? tagTesis(t.etiqueta) : tagTesis('SIN TESIS')) : tagTesis(null)}</div>
-      <div class="big" style="margin-top:10px">${num(a.valor, a.valor > 1000 ? 0 : 2)}<small>${u}</small></div><div class="chg">${pill(a.cambio_1d_pct)}</div>${spark(a.serie)}
+      <div class="big" style="margin-top:10px">${num(a.valor, a.valor > 1000 ? 0 : 2)}<small>${u}</small></div><div class="chg">${pill(a.cambio_1d_pct)}</div>${spark(a.serie, 63)}
       <table><tr><td>1 semana</td><td>${pill(a.cambio_5d_pct)}</td></tr><tr><td>1 mes</td><td>${pill(a.cambio_21d_pct)}</td></tr><tr><td>3 meses</td><td>${pill(a.cambio_63d_pct)}</td></tr></table>
-      ${foot(a.fuente.replace(/ \(.*\)/, ''), a.fecha)}</div>`;
+      ${foot(a.fuente, a.fecha)}</div>`;
   }).join('') + '</div>';
 
-  h += '<div class="sect"><h2>Panel de mercado</h2><span class="more">▲▼ frente al cierre anterior · vs media de 50 sesiones</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Activo</th><th>Último</th><th>1d</th><th>1 sem</th><th>1 mes</th><th>3 meses</th><th>vs SMA50</th><th>Dato</th></tr></thead><tbody>';
+  h += '<div class="sect"><h2>Panel de mercado</h2><span class="more">▲▼ frente al cierre anterior · vs media de 50 sesiones</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Activo</th><th>Último</th><th>1d</th><th>1 sem</th><th>1 mes</th><th>3 meses</th><th>vs SMA50</th><th>Dato</th><th style="text-align:left">Fuente</th></tr></thead><tbody>';
   const filas = [...orden.map((o) => o[0]), 'vix', 'dxy'];
   h += filas.map((k) => {
     const a = act[k];
-    if (!a || a.valor == null) return `<tr><td>${esc((a && a.nombre) || k)}</td><td colspan="7" style="text-align:left;color:var(--dim)">SIN DATO</td></tr>`;
+    if (!a || a.valor == null) return `<tr><td>${esc((a && a.nombre) || k)}</td><td colspan="7" style="text-align:left;color:var(--dim)">SIN DATO</td><td style="text-align:left;color:var(--dim)">${esc((a && a.fuente) || '')}</td></tr>`;
     const v = ((a.valor / a.sma50 - 1) * 100);
-    return `<tr><td>${esc(a.nombre)}<small>${esc(a.simbolo)}</small></td><td>${num(a.valor, a.valor > 1000 ? 0 : 2)}</td><td>${pill(a.cambio_1d_pct)}</td><td>${pill(a.cambio_5d_pct)}</td><td>${pill(a.cambio_21d_pct)}</td><td>${pill(a.cambio_63d_pct)}</td><td>${pill(v, 1)}</td><td>${esc(fd(a.fecha))}</td></tr>`;
+    return `<tr><td>${esc(a.nombre)}<small>${esc(a.simbolo)}</small></td><td>${num(a.valor, a.valor > 1000 ? 0 : 2)}</td><td>${pill(a.cambio_1d_pct)}</td><td>${pill(a.cambio_5d_pct)}</td><td>${pill(a.cambio_21d_pct)}</td><td>${pill(a.cambio_63d_pct)}</td><td>${pill(v, 1)}</td><td>${esc(fd(a.fecha))}</td><td style="text-align:left;color:var(--dim)">${esc(a.fuente)}</td></tr>`;
   }).join('');
   h += '</tbody></table></div>';
 
-  h += '<div class="grid g21" style="margin-top:12px"><div><div class="sect" style="margin-top:14px"><h2>Tesis por activo · causa → efecto</h2><span class="more">viento macro de hoy</span></div><div class="grid g2">';
-  h += ['Oro', 'Nasdaq 100', 'S&P 500', 'Bitcoin'].map((n) => {
-    const t = TES[n]; const s = R && R.significa.find((x) => x.activo === n);
-    const mot = t && t.motores.length ? t.motores.map((m) => `<div>${esc(LABEL[m.motor] || m.motor)} ${m.sube ? '↑' : '↓'} → ${esc(m.razon)}</div>`).join('') : '<div>Ningún motor macro supera su umbral de hoy.</div>';
-    return `<div class="card asset"><div class="top"><div class="nm">${n}</div>${t ? tagTesis(t.etiqueta) : tagTesis('SIN TESIS')}</div>
-      <div class="flow">${s ? esc(s.texto) : SD}<em>Motores que lo mueven</em>${mot}</div>
+  /* tesis: las que tienen viento, en tarjeta completa; las SIN TESIS, compactadas en una fila cada una */
+  const nombres = ['Oro', 'Nasdaq 100', 'S&P 500', 'Bitcoin', 'US30 · Dow Jones', 'Russell 2000'];
+  const conTesis = nombres.filter((n) => TES[n] && TES[n].etiqueta !== 'SIN TESIS');
+  const sinTesis = nombres.filter((n) => !(TES[n] && TES[n].etiqueta !== 'SIN TESIS'));
+  const texto = (n) => { const s = R && R.significa.find((x) => x.activo === n); return s ? s.texto : (TES[n] ? 'Ningún motor macro supera su umbral de hoy.' : null); };
+  h += '<div class="grid g21 stretch" style="margin-top:12px"><div class="col"><div class="sect" style="margin-top:14px"><h2>Tesis por activo · causa → efecto</h2><span class="more">viento macro de hoy · seis activos</span></div>';
+  if (conTesis.length) {
+    h += '<div class="grid g2">' + conTesis.map((n) => {
+      const t = TES[n];
+      const mot = t.motores.map((m) => `<div>${esc(LABEL[m.motor] || m.motor)} ${m.sube ? '↑' : '↓'} → ${esc(m.razon)}</div>`).join('');
+      return `<div class="card asset"><div class="top"><div class="nm">${esc(n)}</div>${tagTesis(t.etiqueta)}</div>
+        <div class="flow">${esc(texto(n) || '')}<em>Motores que lo mueven</em>${mot}</div>${foot('Reglas NEXORA (sensibilidades fijas)', corteFecha)}</div>`;
+    }).join('') + '</div>';
+  }
+  if (sinTesis.length) {
+    h += `<div class="card compact" style="margin-top:12px"><div class="chead"><span>Sin tesis hoy</span><span class="more">ningún motor macro supera su umbral</span></div>
+      ${sinTesis.map((n) => `<div class="trow"><span class="nm">${esc(n)}</span>${tagTesis(TES[n] ? TES[n].etiqueta : null)}<span class="why">${esc(texto(n) || 'SIN DATO')}</span></div>`).join('')}
       ${foot('Reglas NEXORA (sensibilidades fijas)', corteFecha)}</div>`;
-  }).join('');
-  h += '</div></div><div>';
+  }
+  /* gráfico grande que llena el hueco bajo las tesis: 2Y vs tipo real a 10 años (Tesoro de EE. UU.) */
+  const t2 = T && T.t2y, rl = T && T.real10;
+  h += `<div class="card chartcard" style="margin-top:12px"><h3>Bono a 2 años frente al tipo real a 10 años</h3><div class="sub">Los dos motores que más pesan en oro e índices. Si el 2Y baja y el tipo real no, el mercado espera una Fed más blanda pero sigue exigiendo rentabilidad real.</div>
+    ${lw('cTipos2', [{ name: 'Bono a 2 años', color: COL.amber, data: t2 && t2.serie, prec: 2 }, { name: 'Tipo real 10 años', color: COL.blue, data: rl && rl.serie, prec: 2 }], { fill: true, init: 365 })}
+    ${foot(t2 ? t2.fuente : 'Tesoro de EE. UU.', t2 && t2.fecha, t2 && t2.url)}</div></div><div>`;
   h += '<div class="sect" style="margin-top:14px"><h2>Motores macro</h2><span class="more">umbral de sesión</span></div><div class="card pad0"><table class="t"><thead><tr><th>Motor</th><th>Valor</th><th>Hoy</th><th>Umbral</th></tr></thead><tbody>';
   const M = (R && R.motores) || {};
   h += Object.keys(LABEL).map((k) => {
     const m = M[k]; if (!m) return `<tr><td>${esc(LABEL[k])}</td><td colspan="3" style="color:var(--dim);text-align:left">SIN DATO</td></tr>`;
     const [u1, u2] = UNID[k]; const sig = m.delta != null && Math.abs(m.delta) >= UMB[k][0];
     return `<tr><td>${esc(LABEL[k])}<small>${esc(fd(m.fecha))}</small></td><td>${num(m.valor, k === 'fed' || k === 'hy' ? 0 : 2)}${u1}</td><td>${pill(m.delta, k === 'dxy' || k === 'vix' ? 2 : 1, u2)}</td><td>${sig ? '<span class="ck par">SUPERA</span>' : `<span class="mono" style="color:var(--dim)">${UMB[k][0]}${u2.trim()}</span>`}</td></tr>`;
-  }).join('') + '</tbody></table></div>';
+  }).join('') + '</tbody></table>' + footIn('Tesoro de EE. UU., BCE, Cboe, ICE BofA vía FRED, FedWatch NEXORA', corteFecha) + '</div>';
   h += '<div class="sect"><h2>Próximos eventos</h2><a class="more" href="#/calendario">calendario →</a></div><div class="card">';
   const lista = prox.filter((e) => e.importancia !== 'BAJA').slice(0, 7);
-  h += lista.length ? lista.map((e) => `<div style="display:grid;grid-template-columns:62px 1fr;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)"><span class="mono" style="color:var(--amber);font-size:11.5px">${esc(fdd(e.fecha))}<br><span style="color:var(--dim)">${esc(e.hora_madrid || '—')}</span></span><span style="font-size:12px">${esc(e.evento)}<br><span style="color:var(--dim);font-size:10.5px">${esc(e.afecta)}</span></span></div>`).join('') : SD;
-  h += foot('Calendario NEXORA (FRED, ISM, Fed, Nasdaq)', null, null, 'hora de Madrid') + '</div></div></div>';
+  h += lista.length ? lista.map((e) => `<div class="evrow"><span class="when">${esc(fdh(e.fecha, e.hora_madrid))}</span><span class="what">${esc(e.evento)}<span class="aff">${esc(e.afecta)}</span></span></div>`).join('') : SD;
+  h += foot('Calendario NEXORA (FRED, ISM, Fed, Nasdaq)', false, null, 'hora de Madrid') + '</div>';
+  h += cardAlertas() + '</div></div>';
 
   h += `<div class="sect"><h2>En palabras sencillas</h2></div><div class="card"><div class="simple">${R ? esc(R.sencillo) : SD}</div>
     <ul class="watch" style="margin-top:12px">${R ? R.vigilar.map((v) => `<li>${esc(v)}</li>`).join('') : ''}</ul>
-    <div class="note">Cada cifra procede de su fuente oficial (Tesoro de EE. UU., FRED, Cboe, Nasdaq, Coinbase, futuros ZQ). Si una descarga falla se muestra SIN DATO: nunca se interpola ni se estima.</div></div>`;
+    <div class="note">Cada cifra procede de su fuente oficial (Tesoro de EE. UU., FRED, Cboe, Nasdaq, Coinbase, futuros ZQ). Si una descarga falla se muestra SIN DATO: nunca se interpola ni se estima.</div>${foot('Plantillas deterministas NEXORA (sin IA)', corteFecha)}</div>`;
   return h;
 }
 
@@ -330,7 +348,7 @@ function pageBancos() {
   h += R.map((r) => `<tr><td>${esc(fdd(r.reunion))}<small>${cuentaAtras(r.reunion)}</small></td><td>${num(r.tipo_esperado, 3)} %</td><td class="down">${num(r.prob_reunion.subida, 1)} %</td><td>${num(r.prob_reunion.mantiene, 1)} %</td><td class="up">${num(r.prob_reunion.bajada, 1)} %</td>
     <td><div class="prob"><i class="s" style="width:${r.prob_reunion.subida}%"></i><i class="m" style="width:${r.prob_reunion.mantiene}%"></i><i class="b" style="width:${r.prob_reunion.bajada}%"></i></div></td>
     <td>${pill(r.subida_1d_pts, 1, ' pts', true)}</td><td>${pill(r.subida_5d_pts, 1, ' pts', true)}</td><td>${pill(r.tipo_5d_pb, 1, ' pb', true)}</td><td>${num(r.prob_acumulada.mas_alto_que_hoy, 1)} %</td></tr>`).join('');
-  h += '</tbody></table></div>';
+  h += '</tbody></table>' + footIn('FedWatch NEXORA (futuros ZQ del CBOT, EFFR, calendario FOMC)', F.fecha_precios) + '</div>';
   h += `<div class="note">Rojo = más tipos (endurecimiento); verde = menos tipos. ${esc(F.fuente)}</div>`;
 
   const th = F.tipos_historico || {};
@@ -356,8 +374,8 @@ function pageLiquidez() {
   h += essential(neta ? `Liquidez neta de la Fed ${num(neta[1], 2)} bill. $ (${esc(fdy(neta[0]))}), ${sg(d4, 2, ' bill. $')} en 4 semanas. TGA ${M.tga ? num(M.tga.valor_B, 0) : 'SIN DATO'} mm $ (${M.tga ? sg(M.tga.delta_1s_B, 0, ' mm $') : '—'} en 1 semana), RRP ${M.rrp ? num(M.rrp.valor_B, 1) : 'SIN DATO'} mm $.` : SD,
     `Lectura NEXORA: <b style="color:var(--text)">${esc(E.lectura)}</b>. Checklist ${cr.cumple ?? '—'}/${cr.total ?? 8} condiciones cumplidas; secuencia ${E.secuencia_cumplidos ?? '—'}/7. Interpretación: ${E.lectura.includes('SIN GIRO') ? 'la liquidez no está dando un empujón claro a los activos de riesgo' : 'hay señales de cambio de liquidez que conviene contrastar con los activos'}.`,
     `Reservas bancarias (semanal, H.4.1), TGA tras la liquidación de subastas y la próxima decisión de la Fed. ${E.avisos && E.avisos.length ? esc(E.avisos[0]) : ''}`);
-  h += `<div class="state"><div class="card"><div class="eb">Liquidez</div><div class="v ${E.lectura.includes('SIN GIRO') ? 'amber' : ''}">${esc(E.lectura)}</div><p>Reservas, TGA y RRP: ${E.nucleo ? `${E.nucleo.fav} a favor · ${E.nucleo.des} en contra de ${E.nucleo.n}` : 'SIN DATO'} (núcleo). Contexto global: ${E.contexto_13 ? `${E.contexto_13.fav} favorables · ${E.contexto_13.des} desfavorables` : 'SIN DATO'}.</p></div>
-    <div class="card"><div class="eb">Secuencia de giro</div><div class="v">${E.secuencia_cumplidos ?? '—'} <span style="color:var(--dim)">/ 7</span></div><p>Cumple hasta el paso ${E.secuencia_hasta ?? 0}. El giro exige TGA↓, RRP↓ y reservas↑ primero, y después tipos, Fed, dólar y BTC.</p></div></div>`;
+  h += `<div class="state"><div class="card"><div class="eb">Liquidez</div><div class="v ${E.lectura.includes('SIN GIRO') ? 'amber' : ''}">${esc(E.lectura)}</div><p>Reservas, TGA y RRP: ${E.nucleo ? `${E.nucleo.fav} a favor · ${E.nucleo.des} en contra de ${E.nucleo.n}` : 'SIN DATO'} (núcleo). Contexto global: ${E.contexto_13 ? `${E.contexto_13.fav} favorables · ${E.contexto_13.des} desfavorables` : 'SIN DATO'}.</p>${foot('Monitor de liquidez NEXORA (FRED, Tesoro, Fed)', (lastOf(H.liquidez_neta_T) || [])[0])}</div>
+    <div class="card"><div class="eb">Secuencia de giro</div><div class="v">${E.secuencia_cumplidos ?? '—'} <span style="color:var(--dim)">/ 7</span></div><p>Cumple hasta el paso ${E.secuencia_hasta ?? 0}. El giro exige TGA↓, RRP↓ y reservas↑ primero, y después tipos, Fed, dólar y BTC.</p>${foot('Secuencia NEXORA (FRED, Tesoro, Fed, Coinbase)', (lastOf(H.liquidez_neta_T) || [])[0])}</div></div>`;
   (E.avisos || []).forEach((a) => { h += `<div class="banner amber" style="margin-top:10px;border-radius:6px">${esc(a)}</div>`; });
 
   h += '<div class="sect"><h2>Balance y liquidez</h2><span class="more">bill. $ = billones de dólares (10¹²) · mm $ = miles de millones</span></div><div class="grid g4">';
@@ -388,9 +406,9 @@ function pageLiquidez() {
     + foot('FRED NFCI · RRPONTSYD', (lastOf(H.nfci) || [])[0]) + '</div></div>';
 
   h += '<div class="sect"><h2>Checklist de liquidez</h2><span class="more">' + (cr.cumple ?? '—') + ' de ' + (cr.total ?? 8) + ' cumplidas</span></div><div class="grid g2"><div class="card pad0"><table class="t"><thead><tr><th>Condición</th><th>Estado</th><th>Nota</th></tr></thead><tbody>'
-    + (E.checklist || []).map((c) => `<tr><td>${c.n}. ${esc(c.condicion)}</td><td>${ck(c.estado)}</td><td style="text-align:left;color:var(--dim);white-space:normal">${esc(c.nota || '')}</td></tr>`).join('') + '</tbody></table></div>';
+    + (E.checklist || []).map((c) => `<tr><td>${c.n}. ${esc(c.condicion)}</td><td>${ck(c.estado)}</td><td style="text-align:left;color:var(--dim);white-space:normal">${esc(c.nota || '')}</td></tr>`).join('') + '</tbody></table>' + footIn('Checklist NEXORA (FRED, Tesoro, Fed)', (lastOf(H.liquidez_neta_T) || [])[0]) + '</div>';
   h += '<div class="card pad0"><table class="t"><thead><tr><th>Secuencia del giro</th><th>Estado</th><th>Detalle</th></tr></thead><tbody>'
-    + (E.secuencia || []).map((c) => `<tr><td>${c.n}. ${esc(c.paso)}</td><td>${ck(c.estado)}</td><td style="text-align:left;color:var(--dim);white-space:normal">${esc(c.detalle || '')}</td></tr>`).join('') + '</tbody></table></div></div>';
+    + (E.secuencia || []).map((c) => `<tr><td>${c.n}. ${esc(c.paso)}</td><td>${ck(c.estado)}</td><td style="text-align:left;color:var(--dim);white-space:normal">${esc(c.detalle || '')}</td></tr>`).join('') + '</tbody></table>' + footIn('Secuencia NEXORA (FRED, Tesoro, Fed, Coinbase)', (lastOf(H.liquidez_neta_T) || [])[0]) + '</div></div>';
 
   h += '<div class="sect"><h2>Indicadores</h2><span class="more">valor · dirección · fuente · frecuencia</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Indicador</th><th>Valor</th><th>Dir.</th><th>Estado</th><th style="text-align:left">Detalle</th><th style="text-align:left">Fuente</th></tr></thead><tbody>'
     + (E.indicadores || []).map((i) => `<tr><td>${esc(i.nombre)}<small>${esc(i.nivel)}</small></td><td>${esc(i.valor)}</td><td class="${i.dir.includes('↑') ? 'up' : i.dir.includes('↓') ? 'down' : 'flat'}">${esc(i.dir)}</td><td>${ck(i.estado)}</td><td style="text-align:left;color:var(--muted);white-space:normal">${esc(i.detalle)}</td><td style="text-align:left;color:var(--dim);white-space:normal">${esc(i.fuente)} · ${esc(i.frecuencia)}</td></tr>`).join('') + '</tbody></table></div>';
@@ -456,7 +474,7 @@ function pageCalendario() {
   h += essential(`${C.eventos.filter((e) => e.fecha >= hoy).length} eventos en los próximos ${diasHasta(C.hasta)} días. ${altas.length ? 'Esta semana, de importancia alta: ' + altas.map((e) => `${esc(e.evento)} (${esc(fdd(e.fecha))} ${esc(e.hora_madrid || '')})`).join('; ') + '.' : 'Sin eventos de importancia alta lo que queda de semana.'}`,
     'Los datos de inflación y empleo mueven las expectativas de tipos (2Y, tipo real y dólar); los resultados de grandes empresas mueven los índices. La hipótesis sobre cada uno está en «qué mirar».',
     Object.keys(pc).length ? Object.entries(pc).map(([k, v]) => `${esc(k)} ${esc(fd(v.fecha))} (${cuentaAtras(v.fecha)})`).join(' · ') : 'Sin fecha de banco central en el rango.');
-  if (Object.keys(pc).length) h += '<div class="grid g3">' + Object.entries(pc).map(([k, v]) => `<div class="card"><div class="eyebrow" style="color:var(--muted)">Decisión de tipos</div><div style="font-family:var(--serif);font-size:20px;margin:6px 0 2px">${esc(k)}</div><div class="mono">${esc(fdd(v.fecha))} · ${cuentaAtras(v.fecha)}</div></div>`).join('') + '</div>';
+  if (Object.keys(pc).length) h += '<div class="grid g3">' + Object.entries(pc).map(([k, v]) => `<div class="card"><div class="eyebrow" style="color:var(--muted)">Decisión de tipos</div><div style="font-family:var(--serif);font-size:20px;margin:6px 0 2px">${esc(k)}</div><div class="mono">${esc(fdd(v.fecha))} · ${cuentaAtras(v.fecha)}</div>${foot('Calendario oficial del banco central', v.fecha)}</div>`).join('') + '</div>';
   h += `<div class="filters" id="calF" style="margin-top:18px">${[['semana', 'Esta semana'], ['siguiente', 'Próxima semana'], ['todo', 'Todo lo que viene'], ['pasados', 'Últimos 7 días']].map(([k, l]) => `<button class="fbtn ${calState.rango === k ? 'on' : ''}" data-r="${k}">${l}</button>`).join('')}<span style="width:14px"></span>${['TODAS', 'ALTA', 'MEDIA'].map((k) => `<button class="fbtn ${calState.imp === k ? 'on' : ''}" data-i="${k}">${k === 'TODAS' ? 'Toda importancia' : k.charAt(0) + k.slice(1).toLowerCase()}</button>`).join('')}</div><div id="calList"></div>`;
   MOUNT.push(() => {
     drawCalendario();
@@ -475,6 +493,191 @@ function pageCalendario() {
     + '</tbody></table></div>';
   if (C.errores && Object.keys(C.errores).length) h += `<div class="note">Fuentes sin dato (SIN DATO): ${Object.entries(C.errores).map(([k, v]) => esc(k + ': ' + String(v).slice(0, 90))).join(' · ')}</div>`;
   return h;
+}
+
+/* ------------------------------------------------------------------ fase 2: Ciclo y crédito, Régimen macro, Datos publicados, alertas */
+const fdh = (iso, hora) => (iso ? `${fdd(iso)}${hora ? ' · ' + hora : ''}` : '—');
+const TONO_CSS = { pos: 'var(--pos)', amb: 'var(--amber)', neg: 'var(--neg)' };
+function footIn(src, fecha, url, extra) { return `<div style="padding:0 16px 12px">${foot(src, fecha, url, extra)}</div>`; }
+function pillAbs(v, dec, suf, inv) { return pill(v == null ? null : v, dec, suf, inv); }
+
+const FASE_TXT = {
+  'EXPANSIÓN': 'Casi ninguna de las nueve señales avisa de recesión: con estos umbrales el riesgo de ciclo es bajo. Es lo que dicen los datos hoy, no una garantía.',
+  'DESACELERACIÓN': 'Varias señales se han encendido: la economía pierde velocidad. Suele pesar sobre beneficios y favorecer a lo defensivo (interpretación, no hecho).',
+  'RIESGO ALTO': 'Cuatro o cinco señales encendidas: zona de riesgo elevado según el criterio NEXORA (hipótesis, no predicción).',
+  'RECESIÓN PROBABLE': 'Seis o más señales encendidas: el conjunto de datos es coherente con una recesión en marcha o inminente (hipótesis).',
+};
+const ESCALA_SENAL = { 1: 100, 2: 30, 3: 0.5, 4: 20, 5: 50, 6: 2, 7: 150, 8: 1, 9: 0.5 };
+const SENAL_MENSUAL = new Set([2, 3, 5, 6, 8]);
+function footSig(s) {
+  const m = String(s.fecha || '').match(/^(\d{4})-(\d{2})(?:-(\d{2}))?/);
+  if (!m) return foot(s.fuente, null, s.url);
+  const iso = `${m[1]}-${m[2]}-${m[3] || '01'}`;
+  return SENAL_MENSUAL.has(s.n) ? foot(s.fuente, false, s.url, `dato mensual · periodo ${esc(fdm(iso))}`) : foot(s.fuente, iso, s.url);
+}
+const margenTxt = (s) => {
+  if (s.margen == null) return '';
+  const d = s.unidad === 'pb' || s.unidad === 'mil' ? 0 : 2;
+  return s.encendida ? `supera el umbral por ${num(Math.abs(s.margen), d)} ${s.unidad}`.trim() : `faltan ${num(s.margen, d)} ${s.unidad} para encenderse`.trim();
+};
+
+function pageCiclo() {
+  const C = D.ciclo;
+  let h = head('Análisis', 'Ciclo y crédito EE. UU.', 'Nueve señales encendidas o apagadas frente a umbrales fijos, la fase del ciclo que resulta de contarlas, la probabilidad de recesión de la Fed de Nueva York y los diferenciales de crédito.',
+    `Actualizado: ${C && C.generado_utc ? esc(horaAct(C.generado_utc)) : 'SIN DATO'} · cada señal lleva la fecha de su dato`);
+  h += fallo('ciclo');
+  if (!C || !C.senales) return h + noData('Ciclo y crédito');
+  const enc = C.senales.filter((s) => s.encendida);
+  const cerca = C.senales.filter((s) => s.encendida === false && s.margen != null).map((s) => ({ s, r: s.margen / ESCALA_SENAL[s.n] })).sort((a, b) => a.r - b.r).slice(0, 2);
+  const hy = C.credito && C.credito.hy;
+  const pr = C.probit;
+  h += essential(`Fase <b style="color:${TONO_CSS[C.tono]}">${esc(C.fase)}</b>: ${C.encendidas} de ${C.validas} señales encendidas${enc.length ? ' (' + enc.map((s) => esc(s.nombre)).join('; ') + ')' : ''}. ${pr ? `Probit de la Fed de NY: ${num(pr.probabilidad_12m_pct, 1)} % de recesión a 12 meses (para ${esc(pr.para_mes)}).` : 'Probit: SIN DATO.'} ${hy && !hy.sin_dato ? `High yield ${num(hy.valor_pb, 0)} pb (${sg(hy.d5_pb, 0)} pb en 5 días).` : ''}`,
+    `${esc(FASE_TXT[C.fase] || '')}`,
+    cerca.length ? `Las más cercanas a encenderse: ${cerca.map((x) => `${esc(x.s.nombre)} (${esc(margenTxt(x.s))})`).join(' · ')}. Una señal nueva encendida o un cambio de fase dispara alerta en Telegram.` : 'Ninguna señal apagada tiene dato para medir su distancia.');
+
+  h += `<div class="state"><div class="card"><div class="eb">Fase del ciclo</div><div class="v" style="color:${TONO_CSS[C.tono]}">${esc(C.fase)}</div>
+    <div class="lamps">${C.senales.map((s) => `<i class="${s.encendida === true ? 'on' : s.encendida === false ? 'off' : 'nd'}" title="${esc(s.n + '. ' + s.nombre + ': ' + s.estado)}"></i>`).join('')}<span class="mono" style="margin-left:8px">${C.encendidas} / ${C.validas}</span></div>
+    <p style="margin-top:8px">Fases: 0-1 señales EXPANSIÓN · 2-3 DESACELERACIÓN · 4-5 RIESGO ALTO · 6 o más RECESIÓN PROBABLE (criterio NEXORA, no oficial).</p>${foot('NEXORA sobre FRED, Fed de NY y Fed', false, null, 'cuenta de señales')}</div>
+    <div class="card"><div class="eb">Probit de recesión · Fed de Nueva York</div><div class="v">${pr ? num(pr.probabilidad_12m_pct, 1) + ' %' : SD}</div>
+    <p>${pr ? `Probabilidad de que EE. UU. esté en recesión en ${esc(pr.para_mes)} (12 meses vista), calculada con el diferencial 10 años − 3 meses de ${esc(pr.ultimo_mes_dato)} (${num(pr.spread_ultimo_pp, 2)} pp). Es una probabilidad estadística, no una predicción.` : 'SIN DATO'}</p>${foot('Fed de Nueva York (modelo probit)', false, 'https://www.newyorkfed.org/research/capital_markets/ycfaq', pr ? 'dato mensual · último diferencial ' + esc(fdm(pr.ultimo_mes_dato + '-01')) : '')}</div></div>`;
+
+  h += '<div class="sect"><h2>Las nueve señales</h2><span class="more">rojo = encendida (avisa) · verde = apagada · gris = SIN DATO (no cuenta)</span></div><div class="grid g3">';
+  h += C.senales.map((s) => `<div class="card sig ${s.encendida === true ? 'on' : s.encendida === false ? 'off' : 'nd'}"><div class="top"><div class="nm">${s.n} · ${esc(s.nombre)}</div><span class="ck ${s.encendida === true ? 'no' : s.encendida === false ? 'ok' : 'sd'}">${esc(s.estado)}</span></div>
+    <div class="big mono">${s.valor ? esc(s.valor) : SD}</div><div class="note" style="margin:6px 0 0">Se enciende si ${esc(s.umbral)}${margenTxt(s) ? ' · ' + esc(margenTxt(s)) : ''}</div>
+    ${footSig(s)}</div>`).join('') + '</div>';
+
+  h += '<div class="sect"><h2>Diferenciales de crédito</h2><span class="more">pb = puntos básicos · si suben, financiarse cuesta más (rojo)</span></div><div class="grid g4">';
+  h += ['ig', 'bbb', 'hy', 'ccc'].map((k) => {
+    const m = (C.credito || {})[k];
+    if (!m || m.sin_dato) return `<div class="card kpi"><div class="lab">${esc((m && m.nombre) || k)}</div><div class="big">${SD}</div>${foot((m && m.fuente) || 'FRED', null)}</div>`;
+    return `<div class="card kpi"><div class="lab">${esc(m.nombre)}</div><div class="exp">Diferencial de opciones (OAS) frente al Tesoro, ICE BofA</div><div class="big">${num(m.valor_pb, 0)}<small>pb</small></div>${spark(m.serie, 126)}
+      <table><tr><td>5 días</td><td>${pill(m.d5_pb, 0, ' pb', true)}</td></tr><tr><td>1 mes</td><td>${pill(m.d1m_pb, 0, ' pb', true)}</td></tr><tr><td>3 meses</td><td>${pill(m.d3m_pb, 0, ' pb', true)}</td></tr></table>
+      ${foot(m.fuente, m.fecha, m.url)}</div>`;
+  }).join('') + '</div>';
+
+  const mk = (a) => (a || []).map(([t, v]) => [t, v]);
+  const umb = (a, v) => (a || []).map(([t]) => [t, v]);
+  const cr = C.credito || {};
+  h += '<div class="sect"><h2>Gráficos</h2></div><div class="grid g2">';
+  h += `<div class="card"><h3>Grado de inversión y BBB</h3><div class="sub">pb · más alto = más estrés en el crédito de calidad</div>${lw('cIgBbb', [{ name: 'IG', color: COL.blue, data: mk(cr.ig && cr.ig.serie), prec: 0 }, { name: 'BBB', color: COL.amber, data: mk(cr.bbb && cr.bbb.serie), prec: 0 }])}${foot('FRED BAMLC0A0CM · BAMLC0A4CBBB (ICE BofA)', (lastOf(cr.ig && cr.ig.serie) || [])[0], 'https://fred.stlouisfed.org/series/BAMLC0A4CBBB')}</div>`;
+  h += `<div class="card"><h3>High yield y CCC</h3><div class="sub">pb · CCC en el eje izquierdo (escala mucho mayor)</div>${lw('cHyCcc', [{ name: 'CCC (eje izq.)', color: COL.neg, data: mk(cr.ccc && cr.ccc.serie), scale: 'left', prec: 0 }, { name: 'High yield', color: COL.amber, data: mk(cr.hy && cr.hy.serie), prec: 0 }, { name: 'Umbral HY 450 pb', color: COL.gray, data: umb(cr.hy && cr.hy.serie, C.umbrales.hy_pb), w: 1, prec: 0 }], { left: true })}${foot('FRED BAMLH0A0HYM2 · BAMLH0A3HYC (ICE BofA)', (lastOf(cr.hy && cr.hy.serie) || [])[0], 'https://fred.stlouisfed.org/series/BAMLH0A3HYC')}</div>`;
+  h += `<div class="card"><h3>Probit de recesión de la Fed de Nueva York</h3><div class="sub">% a 12 meses vista; la serie llega hasta 12 meses después del último dato · umbral NEXORA 30 %</div>${lw('cProbit', [{ name: 'Probabilidad', color: COL.amber, data: mk(pr && pr.serie), area: true, prec: 1 }, { name: 'Umbral 30 %', color: COL.neg, data: umb(pr && pr.serie, C.umbrales.probit_pct), w: 1, prec: 1 }])}${foot('Fed de Nueva York (modelo probit)', false, 'https://www.newyorkfed.org/research/capital_markets/ycfaq', pr ? 'dato mensual · último diferencial ' + esc(fdm(pr.ultimo_mes_dato + '-01')) : '')}</div>`;
+  h += `<div class="card"><h3>Prima de bono en exceso (EBP)</h3><div class="sub">pp · parte del diferencial de crédito que no explica el riesgo de impago: mide apetito de riesgo · umbral 0,5 pp</div>${lw('cEbp', [{ name: 'EBP', color: COL.amber, data: mk(C.ebp && C.ebp.serie), prec: 2 }, { name: 'Umbral 0,5 pp', color: COL.neg, data: umb(C.ebp && C.ebp.serie, C.umbrales.ebp_pp), w: 1, prec: 2 }])}${foot('Reserva Federal (Gilchrist-Zakrajšek)', false, 'https://www.federalreserve.gov/econres/notes/feds-notes/ebp_csv.csv', C.ebp && C.ebp.ultimo ? 'dato mensual · periodo ' + esc(fdm(C.ebp.ultimo[0])) : 'SIN DATO')}</div>`;
+  h += `<div class="card"><h3>Curva de tipos: 10Y − 3M y 10Y − 2Y</h3><div class="sub">pp · por debajo de 0 = curva invertida</div>${lw('cCurva', [{ name: '10Y − 3M', color: COL.amber, data: mk(C.curva && C.curva.t10y3m), prec: 2 }, { name: '10Y − 2Y', color: COL.blue, data: mk(C.curva && C.curva.t10y2y), prec: 2 }, { name: 'Cero', color: COL.gray, data: umb(C.curva && C.curva.t10y3m, 0), w: 1, prec: 2 }])}${foot('FRED T10Y3M · T10Y2Y', (lastOf(C.curva && C.curva.t10y3m) || [])[0], 'https://fred.stlouisfed.org/series/T10Y3M')}</div>`;
+  h += `<div class="card"><h3>Condiciones financieras (NFCI) y regla de Sahm</h3><div class="sub">NFCI &gt; 0 = más duras que la media · Sahm ≥ 0,5 = señal de recesión</div>${lw('cNfci2', [{ name: 'NFCI (eje izq.)', color: COL.amber, data: mk(C.nfci), scale: 'left', prec: 2 }, { name: 'Sahm', color: COL.neg, data: mk(C.sahm), prec: 2 }], { left: true })}${foot('FRED NFCI · SAHMREALTIME', (lastOf(C.nfci) || [])[0], 'https://fred.stlouisfed.org/series/SAHMREALTIME')}</div></div>`;
+
+  h += '<div class="sect"><h2>Reglas y fuentes de cada señal</h2><span class="more">umbrales fijos · CRITERIO NEXORA</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Señal</th><th>Valor</th><th>Se enciende si</th><th>Estado</th><th>Dato</th><th style="text-align:left">Fuente</th></tr></thead><tbody>'
+    + C.senales.map((s) => `<tr><td>${s.n}. ${esc(s.nombre)}</td><td>${s.valor ? esc(s.valor) : 'SIN DATO'}</td><td>${esc(s.umbral)}</td><td>${s.encendida === true ? '<span class="ck no">ENCENDIDA</span>' : s.encendida === false ? '<span class="ck ok">APAGADA</span>' : '<span class="ck sd">SIN DATO</span>'}</td><td>${esc(s.fecha || '—')}</td><td style="text-align:left"><a class="src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.fuente)}</a></td></tr>`).join('')
+    + '</tbody></table></div><div class="note">Una señal es un hecho medido frente a un umbral; la fase es solo la cuenta de señales encendidas. Los umbrales son criterio de NEXORA, no cifras oficiales, y no predicen una recesión. Si una fuente falla la señal queda SIN DATO y no cuenta.</div>';
+  if (C.errores && Object.keys(C.errores).length) h += `<div class="note">Fuentes sin dato: ${Object.entries(C.errores).map(([k, v]) => esc(k + ': ' + String(v).slice(0, 90))).join(' · ')}</div>`;
+  return h;
+}
+
+/* ---------------- régimen macro */
+function tonoDim(d) {
+  const e = (d.estado || '').toUpperCase(), n = d.dimension;
+  if (/SIN DATO/.test(e)) return 'sd';
+  const T = (re) => re.test(e);
+  if (n === 'INFLACIÓN') return T(/DESACELER/) ? 'ok' : T(/ACELER/) ? 'no' : 'par';
+  if (n === 'CRECIMIENTO' || n === 'EMPLEO') return T(/DETERIOR|DESACELER|SE ENFR|CAE|DÉBIL/) ? 'no' : T(/FIRME|ACELER|MEJOR/) ? 'ok' : 'par';
+  if (n === 'LIQUIDEZ') return T(/RESTRICT|DESFAV|DREN/) ? 'no' : T(/EXPANSIV|FAVOR|INYECT/) ? 'ok' : 'par';
+  if (n === 'CRÉDITO') return T(/ESTR[ÉE]S|SE ENDURECE/) ? 'no' : T(/RELAJ|LAXO|MEJOR/) ? 'ok' : 'par';
+  if (n === 'POLÍTICA MONETARIA') return T(/ENDURECIENDO|RESTRICT/) ? 'no' : T(/RECORT|EXPANSIV|RELAJ/) ? 'ok' : 'par';
+  if (n === 'FISCAL') return T(/RESTRICT/) ? 'no' : T(/EXPANSIV/) ? 'ok' : 'par';
+  if (n === 'CONDICIONES FINANCIERAS') return T(/ENDURECI/) ? 'no' : T(/RELAJ|LAXAS/) ? 'ok' : 'par';
+  if (n === 'CURVA DE TIPOS') return T(/INVERTID/) ? 'no' : 'par';
+  if (n === 'DÓLAR') return T(/FORTALEC|FUERTE/) ? 'no' : T(/DEBILIT/) ? 'ok' : 'par';
+  return 'par';
+}
+function pageRegimen() {
+  const G = D.regimen;
+  let h = head('Análisis', 'Régimen macro', 'Mapa de las condiciones macro de EE. UU.: crecimiento, inflación, empleo, liquidez, crédito, política monetaria, fiscal, condiciones financieras, curva y dólar, y si los tres monitores de NEXORA cuentan la misma historia.',
+    `Actualizado: ${G && G.generado_utc ? esc(horaAct(G.generado_utc)) : 'SIN DATO'} · cada dimensión muestra su evidencia y su fuente`);
+  h += fallo('regimen');
+  if (!G || !G.evaluacion) return h + noData('Régimen macro');
+  const E = G.evaluacion;
+  const q = (t) => (E.preguntas.find((x) => x.pregunta.includes(t)) || {}).respuesta || 'SIN DATO';
+  h += essential(`Régimen: <b style="color:var(--text)">${esc(E.cuadrante)}</b> (${esc(E.fuerza)}). Riesgo en índices: ${esc(E.riesgo)} · liquidez: ${esc(E.liquidez)}. ${esc(q('acelerando'))}`,
+    `Monitores: ${esc(E.concordancia)}. ${esc(E.motor_lectura)}. ${E.contradicciones.length ? `Hay ${E.contradicciones.length} contradicción(es) entre mercados y macro (abajo): son hipótesis a vigilar, no hechos.` : 'Sin contradicciones entre mercados y macro según las reglas.'}`,
+    esc(q('datos pueden cambiarlo')).slice(0, 320));
+  h += `<div class="state" style="grid-template-columns:repeat(4,1fr)">${[['Régimen', E.cuadrante, E.fuerza], ['Riesgo (índices)', E.riesgo, 'monitor de índices'], ['Liquidez', E.liquidez, 'monitor de liquidez'], ['Monitores', E.concordancia.replace('LOS TRES COINCIDEN: ', 'Coinciden: '), E.motor_lectura]]
+    .map(([a, b, c]) => `<div class="card"><div class="eb">${a}</div><div class="v" style="font-size:18px">${esc(b)}</div><p>${esc(c)}</p></div>`).join('')}</div>`;
+  h += '<div class="sect"><h2>Mapa de régimen</h2><span class="more">color = presión sobre activos de riesgo: verde apoya · ámbar neutral · rojo presiona (criterio NEXORA sobre el texto del estado)</span></div><div class="grid g3">';
+  h += E.mapa.map((d) => {
+    const t = tonoDim(d);
+    const ev = (d.evidencia || []).slice(0, 6);
+    return `<div class="card dim ${t}"><div class="top"><div class="nm">${esc(d.dimension)}</div><span class="ck ${t}">${esc(d.dir || '')}</span></div>
+      <div class="estado">${esc(d.estado)}</div><ul class="ev-list">${ev.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>${foot(d.fuente || 'NEXORA', false, null, esc(G.evaluacion && G.generado_utc ? 'corte ' + horaAct(G.generado_utc) : ''))}</div>`;
+  }).join('') + '</div>';
+
+  h += '<div class="sect"><h2>Los tres monitores</h2><span class="more">¿cuentan la misma historia?</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Monitor</th><th style="text-align:left">Lectura</th><th>Sentido</th><th>Precio</th><th style="text-align:left">Detalle</th></tr></thead><tbody>'
+    + E.monitores.map((m) => `<tr><td>${esc(m.monitor)}</td><td style="text-align:left">${esc(m.lectura)}</td><td>${ck(m.sentido)}</td><td>${esc(m.precio)}</td><td style="text-align:left;color:var(--dim);white-space:normal">${esc(m.detalle)}</td></tr>`).join('') + '</tbody></table>'
+    + footIn('Monitores NEXORA (liquidez, oro, índices) sobre FRED, Tesoro, Cboe, Coinbase', false, null, esc(G.generado_utc ? horaAct(G.generado_utc) : '')) + '</div>';
+
+  h += '<div class="grid g2" style="margin-top:12px"><div><div class="sect" style="margin-top:14px"><h2>Motor común</h2><span class="more">¿hay una causa que mueva a todos?</span></div><div class="card pad0"><table class="t"><thead><tr><th>Motor</th><th>Valor</th><th style="text-align:left">Efecto</th></tr></thead><tbody>'
+    + E.motor.map((m) => `<tr><td>${esc(m.motor)}</td><td>${esc(m.valor)}</td><td style="text-align:left;color:var(--muted);white-space:normal">${esc(m.efecto)}</td></tr>`).join('') + '</tbody></table>'
+    + footIn('Tesoro de EE. UU., BCE, FRED NFCI, FedWatch NEXORA', false) + '</div></div>';
+  h += '<div><div class="sect" style="margin-top:14px"><h2>Patrones cross-asset del último mes</h2><span class="more">reglas cumplidas / total</span></div><div class="card">'
+    + E.patrones.map((p) => `<div class="patron"><div class="pn"><span>${esc(p.patron)}</span><span class="mono">${p.cumple}/${p.de}</span></div><div class="pbar"><i style="width:${p.pct}%"></i></div></div>`).join('')
+    + `<div class="note">Patrón dominante: ${E.patron_dominante.length ? esc(E.patron_dominante.join(', ')) : 'ninguno (se necesita ≥ 75 % de las reglas)'}.</div>` + foot('Cboe, FRED, Coinbase, Tesoro, BCE', false) + '</div></div></div>';
+
+  h += '<div class="sect"><h2>Contradicciones</h2><span class="more">lo que un activo hace y la macro no explica</span></div>';
+  h += E.contradicciones.length ? '<div class="grid g2">' + E.contradicciones.map((c) => `<div class="card"><p style="margin:0;color:#c4c9d0">${esc(c)}</p>${foot('Reglas NEXORA sobre los tres monitores', false)}</div>`).join('') + '</div>' : '<div class="card"><div class="empty" style="height:80px">SIN CONTRADICCIONES SEGÚN LAS REGLAS</div></div>';
+
+  h += '<div class="sect"><h2>Preguntas clave</h2><span class="more">respondidas con datos</span></div><div class="card pad0">'
+    + E.preguntas.map((p) => `<details class="qa"><summary>${esc(p.pregunta)}</summary><p>${esc(p.respuesta)}</p></details>`).join('') + footIn('Mapa de régimen NEXORA', false) + '</div>';
+  if (E.cuadrante_simple) h += `<div class="note">Cuadrante simplificado (comparable con el histórico): ${esc(E.cuadrante_simple.cuadrante)} · ${esc(E.cuadrante_simple.detalle)}.</div>`;
+  const er = G.errores || {};
+  if (Object.keys(er).length) h += `<div class="note">Fuentes sin dato: ${Object.entries(er).map(([k, v]) => esc(k + ': ' + String(v).slice(0, 90))).join(' · ')}</div>`;
+  return h;
+}
+
+/* ---------------- datos publicados */
+function pagePublicados() {
+  const P = D.publicados, C = D.calendario;
+  let h = head('Noticias', 'Datos publicados', 'Últimas publicaciones macro con su periodo, su fecha de publicación y sus revisiones (formato original → revisado). El periodo del dato no es la fecha en que se publica: se muestran las dos.',
+    `Actualizado: ${P && P.generado_utc ? esc(horaAct(P.generado_utc)) : 'SIN DATO'} · registro de revisiones desde ${P ? esc(horaAct(P.registro_desde_utc)) : 'SIN DATO'}`);
+  h += fallo('publicados');
+  if (!P || !P.series) return h + noData('Datos publicados');
+  const S = Object.entries(P.series).filter(([, v]) => !v.sin_dato);
+  const rev = P.revisiones || [];
+  const prox = ((C && C.eventos) || []).filter((e) => e.fecha >= hoyISO() && e.importancia === 'ALTA').slice(0, 2);
+  h += essential(`${S.length} series oficiales seguidas; ${P.n_revisiones} revisión(es) detectada(s) desde el inicio del registro (${esc(fdy(P.registro_desde_utc.slice(0, 10)))}). ${rev.length ? 'Última: ' + esc(rev[0].serie) + ' (' + esc(fdm(rev[0].periodo)) + ') ' + num(rev[0].original, 2) + ' → ' + num(rev[0].revisado, 2) + '.' : 'Todavía ninguna: las revisiones aparecen cuando un periodo ya registrado cambia de valor.'}`,
+    'Hecho: cada cifra es la que publica la fuente oficial; «original» es el primer valor que NEXORA registró y «revisado» el último. Interpretación: si un dato se revisa, la lectura que se hizo del primer valor queda desfasada: compara siempre original → revisado.',
+    prox.length ? `Próximas publicaciones de importancia alta: ${prox.map((e) => `${esc(fdh(e.fecha, e.hora_madrid))} ${esc(e.evento)}`).join(' · ')}.` : 'Sin publicaciones de importancia alta en el calendario próximo.');
+
+  h += '<div class="sect"><h2>Revisiones detectadas</h2><span class="more">original → revisado</span></div>';
+  h += rev.length ? '<div class="card pad0 scroll"><table class="t"><thead><tr><th>Dato</th><th>Periodo</th><th>Original</th><th>Revisado</th><th>Cambio</th><th>Detectado</th></tr></thead><tbody>'
+    + rev.map((r) => `<tr><td>${esc(r.serie)}</td><td>${esc(fdm(r.periodo))}</td><td>${num(r.original, 2)}</td><td><b>${num(r.revisado, 2)}</b></td><td>${pill(r.revisado - r.original, 2, '', false)}</td><td>${esc(horaAct(r.visto_utc))}</td></tr>`).join('') + '</tbody></table>' + footIn('Registro NEXORA data/publicaciones_macro.csv sobre FRED', null, 'https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/publicaciones_macro.csv') + '</div>'
+    : `<div class="card"><div class="empty" style="height:90px">SIN REVISIONES DESDE EL INICIO DEL REGISTRO</div><div class="note">${esc(P.nota)} El registro (${P.filas_registro} filas) crece en cada ejecución sin duplicar nada.</div>${foot('Registro NEXORA data/publicaciones_macro.csv', null, 'https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/publicaciones_macro.csv')}</div>`;
+
+  h += '<div class="sect"><h2>Series</h2><span class="more">último periodo · valor · variación frente al anterior · fecha de publicación</span></div><div class="grid g3">';
+  h += Object.entries(P.series).map(([nombre, v]) => {
+    if (v.sin_dato) return `<div class="card kpi"><div class="lab">${esc(nombre)}</div><div class="big">${SD}</div>${foot(v.fuente, null, v.url)}</div>`;
+    const ps = v.periodos, a = ps[ps.length - 1], b = ps[ps.length - 2];
+    const dec = v.decimales, u = v.unidad === '%' ? ' %' : v.unidad === 'mil' ? ' mil' : '';
+    return `<div class="card kpi"><div class="lab">${esc(nombre)}</div><div class="exp">${esc(v.descripcion)}</div>
+      <div class="big">${num(a.valor, dec)}<small>${esc(u.trim() || v.unidad)}</small></div>
+      <div class="chg">${b ? pill(a.valor - b.valor, dec, v.unidad === '%' ? ' pp' : '', false) : ''} <span style="color:var(--dim);font-size:10.5px">frente a ${esc(v.serie === 'ICSA' ? fdy(b && b.periodo) : fdm(b && b.periodo))}</span></div>
+      <table class="mini"><tr><th>Periodo</th><th>Valor</th><th>Original → revisado</th></tr>${ps.slice().reverse().map((p) => `<tr><td>${esc(v.serie === 'ICSA' ? fdy(p.periodo) : fdm(p.periodo))}</td><td>${num(p.valor, dec)}</td><td>${p.revisado ? `<span class="down">${num(p.original, dec)} → ${num(p.valor, dec)}</span>` : '<span style="color:var(--dim)">sin revisar</span>'}</td></tr>`).join('')}</table>
+      <div class="note" style="margin:8px 0 0">Periodo: <b style="color:var(--text)">${esc(v.serie === 'ICSA' ? fdy(a.periodo) : fdm(a.periodo))}</b> · Publicado: <b style="color:var(--text)">${v.fecha_publicacion_calendario ? esc(fdd(v.fecha_publicacion_calendario)) : 'sin fecha en el calendario'}</b> · Visto por NEXORA: ${esc(horaAct(a.visto_primera_vez_utc))}</div>
+      ${foot(v.fuente, false, v.url, 'periodo ' + esc(v.serie === 'ICSA' ? fdy(a.periodo) : fdm(a.periodo)))}</div>`;
+  }).join('') + '</div>';
+  h += `<div class="note">${esc(P.nota)} «Visto por NEXORA» es la hora de nuestra captura, no la hora oficial de publicación; la fecha oficial sale del calendario económico. Memoria permanente: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/publicaciones_macro.csv" target="_blank" rel="noopener">data/publicaciones_macro.csv</a> (${P.filas_registro} filas).</div>`;
+  if (P.errores && Object.keys(P.errores).length) h += `<div class="note">Fuentes sin dato (SIN DATO): ${Object.entries(P.errores).map(([k, v]) => esc(k + ': ' + String(v).slice(0, 90))).join(' · ')}</div>`;
+  return h;
+}
+
+/* ---------------- alertas (tarjeta para el Resumen) */
+function cardAlertas() {
+  const A = D.alertas;
+  if (!A) return `<div class="sect"><h2>Alertas Telegram</h2></div><div class="card"><div class="empty" style="height:70px">SIN DATO · alertas todavía no evaluadas</div></div>`;
+  const r = (A.recientes || []).slice(-5).reverse();
+  const U = A.umbrales || {};
+  return `<div class="sect"><h2>Alertas Telegram</h2><span class="more">${A.telegram_configurado ? 'canal activo' : 'canal sin configurar en esta ejecución'}</span></div><div class="card">
+    ${r.length ? r.map((x) => `<div class="alrt"><span class="mono" style="color:var(--dim);font-size:10.5px">${esc(horaAct(x.fecha_utc))}</span><span>${esc(x.titulo)}</span><span class="ck ${x.enviada ? 'ok' : 'no'}">${x.enviada ? 'ENVIADA' : 'NO ENVIADA'}</span></div>`).join('') : '<div class="note" style="margin:0">Ninguna alerta disparada todavía: ningún umbral se ha cruzado.</div>'}
+    <div class="note">Umbrales: Fed ±${U.fed_pts ?? 15} pts · 2Y ±${U.t2y_pb ?? 12} pb · 10Y real ±${U.real_pb ?? 8} pb · DXY ±${U.dxy_pct ?? 0.7} % · VIX &gt;${U.vix_nivel ?? 25} · IG +${U.ig_pb ?? 10} / BBB +${U.bbb_pb ?? 12} / HY +${U.hy_pb ?? 25} / CCC +${U.ccc_pb ?? 60} pb (5 d) · oro ±${U.oro_pct ?? 2} % · BTC −7 / +8 % · ETF BTC &lt;−500 M$. Una vez al día cada una.</div>
+    ${foot('Motor de alertas NEXORA (data/estado_alertas.json)', false, null, esc('evaluado ' + horaAct(A.ultima_evaluacion_utc)))}</div>`;
 }
 
 function pagePlaceholder(p) {
@@ -501,7 +704,7 @@ function route() {
   $$('.menu a').forEach((a) => a.classList.toggle('cur', a.dataset.id === p.id));
   const it = $(`.nav-item[data-g="${p.g}"] .nav-btn`); if (it) it.classList.add('active');
   MOUNT.length = 0;
-  const fn = { resumen: pageResumen, bancos: pageBancos, liquidez: pageLiquidez, calendario: pageCalendario }[p.id];
+  const fn = { resumen: pageResumen, bancos: pageBancos, liquidez: pageLiquidez, calendario: pageCalendario, ciclo: pageCiclo, regimen: pageRegimen, publicados: pagePublicados }[p.id];
   let html;
   try { html = fn ? fn() : pagePlaceholder(p); } catch (e) { console.error(e); html = head(p.g, p.t, '', '') + `<div class="banner red" style="border-radius:6px">Error al dibujar esta página: ${esc(e.message)}. El resto de la web sigue funcionando.</div>`; }
   $('#app').innerHTML = html;
@@ -511,7 +714,7 @@ function route() {
 }
 
 async function cargar() {
-  await Promise.all(['meta', 'precios', 'fedwatch', 'calendario', 'liquidez', 'resumen'].map(async (n) => {
+  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas'].map(async (n) => {
     try { const r = await fetch(`data/${n}.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) D[n] = await r.json(); } catch (e) { /* SIN DATO */ }
   }));
 }
