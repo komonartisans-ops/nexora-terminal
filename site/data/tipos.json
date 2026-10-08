@@ -1,9 +1,9 @@
 {
  "t2y": {
-  "valor": 4.77,
-  "fecha": "2026-10-07",
+  "valor": 4.75,
+  "fecha": "2026-10-08",
   "d1_pb": -2.0,
-  "d5_pb": -11.0,
+  "d5_pb": -3.0,
   "serie": [
    [
     "2025-01-02",
@@ -1772,16 +1772,20 @@
    [
     "2026-10-07",
     4.77
+   ],
+   [
+    "2026-10-08",
+    4.75
    ]
   ],
   "fuente": "Tesoro de EE. UU. (curva par diaria)",
   "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates"
  },
  "n10": {
-  "valor": 5.28,
-  "fecha": "2026-10-07",
-  "d1_pb": 1.0,
-  "d5_pb": -1.0,
+  "valor": 5.22,
+  "fecha": "2026-10-08",
+  "d1_pb": -6.0,
+  "d5_pb": -2.0,
   "serie": [
    [
     "2025-01-02",
@@ -3550,15 +3554,19 @@
    [
     "2026-10-07",
     5.28
+   ],
+   [
+    "2026-10-08",
+    5.22
    ]
   ],
   "fuente": "Tesoro de EE. UU. (curva par diaria)",
   "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates"
  },
  "real10": {
-  "valor": 2.92,
-  "fecha": "2026-10-07",
-  "d1_pb": 1.0,
+  "valor": 2.87,
+  "fecha": "2026-10-08",
+  "d1_pb": -5.0,
   "d5_pb": -1.0,
   "serie": [
    [
@@ -5328,6 +5336,10 @@
    [
     "2026-10-07",
     2.92
+   ],
+   [
+    "2026-10-08",
+    2.87
    ]
   ],
   "fuente": "Tesoro de EE. UU. (curva par diaria)",
@@ -5335,6 +5347,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-08 18:06 UTC",
- "duracion_s": 77.0
+ "generado_utc": "2026-10-08 20:40 UTC",
+ "duracion_s": 73.4
 }
