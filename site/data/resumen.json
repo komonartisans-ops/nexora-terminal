@@ -1,0 +1,114 @@
+{
+ "periodo": "hoy",
+ "corte": "Datos entre el 2026-10-07 y el 2026-10-08 (cada fuente publica a su hora)",
+ "movido": "Sin cambio macro relevante hoy: ni la Fed, ni los tipos, ni el dólar, ni el miedo se han movido por encima de los umbrales. Lo que se mueva hoy lo explican flujos o noticias concretas, no un cambio de fondo.",
+ "significa": [
+  {
+   "activo": "Oro",
+   "viento": "SIN VIENTO CLARO",
+   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro."
+  },
+  {
+   "activo": "Nasdaq 100",
+   "viento": "SIN VIENTO CLARO",
+   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente."
+  },
+  {
+   "activo": "S&P 500",
+   "viento": "SIN VIENTO CLARO",
+   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente."
+  },
+  {
+   "activo": "Bitcoin",
+   "viento": "SIN VIENTO CLARO",
+   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro."
+  }
+ ],
+ "vigilar": [
+  "Fed 28-10: hoy 20 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "mié 14-10 14:30 · IPC EE. UU. (CPI): Subyacente m/m y servicios: inflación ↑ retrasa recortes (2Y ↑, real ↑).",
+  "mié 21-10 · Resultados Tesla (TSLA): BPA estimado $0.24 · después del cierre"
+ ],
+ "tesis": "Sin viento macro claro para el oro. Lo que puede inclinarlo: IPC EE. UU. (CPI).",
+ "sencillo": "Hoy la macro no ha cambiado. Si ves movimientos en el gráfico, se deben a flujos o noticias concretas, no a un cambio de fondo: no hay que leer en ellos más de lo que son.",
+ "motores_significativos": [],
+ "errores": {
+  "bce": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>",
+  "vix": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)>",
+  "spx": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)>",
+  "lbma": "HTTPError: HTTP Error 403: Forbidden"
+ },
+ "detalle_viento": {
+  "Nasdaq 100": [],
+  "S&P 500": [],
+  "Oro": [],
+  "Bitcoin": []
+ },
+ "motores": {
+  "t2y": {
+   "valor": 4.77,
+   "delta": -2.000000000000046,
+   "fecha": "2026-10-07"
+  },
+  "real": {
+   "valor": 2.92,
+   "delta": 0.9999999999999787,
+   "fecha": "2026-10-07"
+  },
+  "hy": {
+   "valor": 309.0,
+   "delta": 6.000000000000005,
+   "fecha": "2026-10-07"
+  },
+  "fed": {
+   "valor": 20.0,
+   "antes": 18.0,
+   "reunion": "2026-10-28",
+   "delta": 2.0,
+   "fecha": "2026-10-08"
+  }
+ },
+ "activos": {
+  "Nasdaq 100": {
+   "delta": -0.2069195883129593,
+   "fecha": "2026-10-07",
+   "valor": 31160.08
+  },
+  "Oro": {
+   "delta": -1.3461630752987341,
+   "fecha": "2026-10-07",
+   "valor": 4111.3
+  },
+  "Bitcoin": {
+   "delta": -2.6475521269229585,
+   "fecha": "2026-10-07",
+   "valor": 83275.06
+  }
+ },
+ "fuente": "Tesoro de EE. UU. (2Y, 10Y real), BCE (réplica del dólar), Cboe (VIX, S&P 500), Nasdaq (Nasdaq 100), LBMA o XAUT/OKX si LBMA falla (oro), Coinbase (bitcoin), ICE BofA vía FRED (crédito), FedWatch NEXORA (futuros ZQ).",
+ "tesis_activos": {
+  "Nasdaq 100": {
+   "etiqueta": "SIN TESIS",
+   "puntuacion": 0,
+   "motores": []
+  },
+  "S&P 500": {
+   "etiqueta": "SIN TESIS",
+   "puntuacion": 0,
+   "motores": []
+  },
+  "Oro": {
+   "etiqueta": "SIN TESIS",
+   "puntuacion": 0,
+   "motores": []
+  },
+  "Bitcoin": {
+   "etiqueta": "SIN TESIS",
+   "puntuacion": 0,
+   "motores": []
+  }
+ },
+ "ok": true,
+ "generado_utc": "2026-10-08 14:41 UTC",
+ "duracion_s": 88.5
+}

@@ -1,0 +1,9 @@
+# Secretos: NUNCA se suben (el token de Telegram vive solo en GitHub Secrets)
+*.env
+!config.example.env
+.env*
+# Entorno y temporales
+__pycache__/
+*.pyc
+.venv/
+capturas/

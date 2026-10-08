@@ -1,0 +1,72 @@
+name: actualizar
+
+on:
+  schedule:
+    - cron: "7 6-22 * * 1-5"   # cada hora en días laborables (UTC): precios + FedWatch
+    - cron: "30 5 * * *"       # diario 05:30 UTC: build completo
+    - cron: "0 8 * * 6"        # sábado: completo (COT y backtests ligeros llegan en fases posteriores)
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "horario | diario | todo"
+        default: "diario"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: actualizar
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Elegir modo
+        id: modo
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then M="${{ github.event.inputs.modo }}";
+          elif [ "${{ github.event.schedule }}" = "7 6-22 * * 1-5" ]; then M="horario";
+          elif [ "${{ github.event.schedule }}" = "0 8 * * 6" ]; then M="todo";
+          else M="diario"; fi
+          echo "modo=$M" >> "$GITHUB_OUTPUT"
+      - name: Ejecutar build (cada fuente falla por separado, nunca la web entera)
+        env:
+          PYTHONUTF8: "1"
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python engine/build.py --modo "${{ steps.modo.outputs.modo }}"
+      - name: Commit de data/ y site/data/ (memoria permanente)
+        run: |
+          git config user.name "nexora-bot"
+          git config user.email "nexora-bot@users.noreply.github.com"
+          git add data site/data
+          if git diff --cached --quiet; then echo "sin cambios"; else
+            git commit -m "datos ${{ steps.modo.outputs.modo }} $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]"
+            git pull --rebase --autostash origin main || true
+            git push origin HEAD:main
+          fi
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.dep.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: dep
+        uses: actions/deploy-pages@v4
