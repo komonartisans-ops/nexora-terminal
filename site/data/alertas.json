@@ -1,8 +1,17 @@
 {
- "recientes": [],
+ "recientes": [
+  {
+   "fecha_utc": "2026-10-08 16:04 UTC",
+   "clave": "prueba",
+   "titulo": "Alerta de prueba",
+   "enviada": true,
+   "error": null,
+   "l1": "Alerta de prueba con datos actuales (no es una señal)."
+  }
+ ],
  "candidatas": [],
  "no_evaluables": {},
- "telegram_configurado": false,
+ "telegram_configurado": true,
  "umbrales": {
   "fed_pts": 15,
   "t2y_pb": 12,
@@ -20,8 +29,6 @@
   "etf_btc_musd": -500
  },
  "enviadas_hoy": [],
- "ultima_evaluacion_utc": "2026-10-08 15:54 UTC",
- "ok": true,
- "generado_utc": "2026-10-08 15:53 UTC",
- "duracion_s": 0.5
+ "ultima_evaluacion_utc": "2026-10-08 16:04 UTC",
+ "ok": true
 }
