@@ -1,7 +1,7 @@
 {
- "generado": "2026-10-08 20:08 Madrid",
- "desde": "2026-08-29",
- "hasta": "2026-10-29",
+ "generado": "2026-10-09 14:01 Madrid",
+ "desde": "2026-08-30",
+ "hasta": "2026-10-30",
  "eventos": [
   {
    "fecha": "2026-09-01",
@@ -828,7 +828,7 @@
    "evento": "Resultados Tesla (TSLA)",
    "importancia": "ALTA",
    "afecta": "índices",
-   "que_mirar": "BPA estimado $0.24 · después del cierre",
+   "que_mirar": "BPA estimado $0.23 · después del cierre",
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/tsla/earnings",
    "nota": "fecha CONFIRMADA"
@@ -920,6 +920,19 @@
    "fuente": "Federal Reserve",
    "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
    "nota": ""
+  },
+  {
+   "fecha": "2026-10-28",
+   "dia": "mié",
+   "hora_ny": "",
+   "hora_madrid": "",
+   "evento": "Resultados Microsoft (MSFT)",
+   "importancia": "ALTA",
+   "afecta": "índices",
+   "que_mirar": "BPA estimado $4.71 · después del cierre",
+   "fuente": "Nasdaq / Zacks",
+   "url": "https://www.nasdaq.com/market-activity/stocks/msft/earnings",
+   "nota": "fecha CONFIRMADA"
   },
   {
    "fecha": "2026-10-28",
@@ -1021,19 +1034,6 @@
    "dia": "jue",
    "hora_ny": "",
    "hora_madrid": "",
-   "evento": "Resultados Apple (AAPL)",
-   "importancia": "ALTA",
-   "afecta": "índices",
-   "que_mirar": "BPA estimado $1.98 · momento no publicado",
-   "fuente": "Nasdaq / Zacks",
-   "url": "https://www.nasdaq.com/market-activity/stocks/aapl/earnings",
-   "nota": "fecha ESTIMADA por algoritmo (Zacks); puede cambiar"
-  },
-  {
-   "fecha": "2026-10-29",
-   "dia": "jue",
-   "hora_ny": "",
-   "hora_madrid": "",
    "evento": "Resultados Amazon (AMZN)",
    "importancia": "ALTA",
    "afecta": "índices",
@@ -1067,20 +1067,46 @@
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/lly/earnings",
    "nota": "fecha CONFIRMADA"
+  },
+  {
+   "fecha": "2026-10-30",
+   "dia": "vie",
+   "hora_ny": "16:15",
+   "hora_madrid": "21:15",
+   "evento": "Crédito bancario H.8",
+   "importancia": "BAJA",
+   "afecta": "índices",
+   "que_mirar": "Crédito de bancos comerciales.",
+   "fuente": "FRED Release Calendar · H.8 Assets and Liabilities of Commercial Banks in the United States",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=22&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-30",
+   "dia": "vie",
+   "hora_ny": "",
+   "hora_madrid": "",
+   "evento": "Decisión de política monetaria del Banco de Japón (día 2)",
+   "importancia": "MEDIA",
+   "afecta": "cripto · oro · índices (vía yen/carry)",
+   "que_mirar": "Subidas del BoJ → yen ↑ → posible deshacer carry trade (volatilidad global).",
+   "fuente": "Bank of Japan",
+   "url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
+   "nota": "hora de publicación variable (sin hora fija oficial)"
   }
  ],
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
-   "dias": 20
+   "dias": 19
   },
   "BCE": {
    "fecha": "2026-10-29",
-   "dias": 21
+   "dias": 20
   },
   "Banco de Japón": {
    "fecha": "2026-10-30",
-   "dias": 22
+   "dias": 21
   }
  },
  "errores": {
@@ -1169,6 +1195,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-08 18:06 UTC",
- "duracion_s": 38.0
+ "generado_utc": "2026-10-09 11:59 UTC",
+ "duracion_s": 40.8
 }
