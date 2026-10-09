@@ -32,7 +32,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Dependencias (openpyxl: toneladas del ETF GLD y consumo XLY/XLP; gratuito)
+      - name: "Dependencias (openpyxl para toneladas del ETF GLD y consumo XLY/XLP; gratuito)"
         run: pip install openpyxl
       - name: Elegir modo
         id: modo
