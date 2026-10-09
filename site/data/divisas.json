@@ -1,0 +1,460 @@
+{
+ "monedas": [
+  {
+   "clave": "AUD",
+   "nombre": "Dólar australiano",
+   "banco": "Banco de la Reserva de Australia",
+   "factores": {
+    "tipo": {
+     "valor": 4.35,
+     "puntos": 1,
+     "fecha": "2026-09-24",
+     "fuente": "BIS · tipos de política (WS_CBPOL)"
+    },
+    "real": {
+     "valor": 0.35,
+     "puntos": 1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "bono": {
+     "valor": 0.331,
+     "puntos": 1,
+     "fecha": "2026-08-01",
+     "fuente": "OCDE vía FRED IRLTLT01AUM156N (mensual)"
+    },
+    "crec": {
+     "valor": 2,
+     "puntos": 1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "giro": {
+     "valor": 0.25,
+     "puntos": 1,
+     "fecha": "2026-09-24",
+     "fuente": null
+    },
+    "riesgo": {
+     "valor": 14.86,
+     "puntos": 1,
+     "fecha": "2026-10-09",
+     "fuente": null
+    }
+   },
+   "total": 6,
+   "n_factores": 6,
+   "sesgo": "FUERTE",
+   "fx_3m_pct": 0.32,
+   "inflacion": 4
+  },
+  {
+   "clave": "NZD",
+   "nombre": "Dólar neozelandés",
+   "banco": "Banco de la Reserva de Nueva Zelanda",
+   "factores": {
+    "tipo": {
+     "valor": 2.75,
+     "puntos": 0,
+     "fecha": "2026-10-02",
+     "fuente": "BIS · tipos de política (WS_CBPOL)"
+    },
+    "real": {
+     "valor": -0.35,
+     "puntos": -1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "bono": {
+     "valor": 0.026,
+     "puntos": 1,
+     "fecha": "2026-08-01",
+     "fuente": "OCDE vía FRED IRLTLT01NZM156N (mensual)"
+    },
+    "crec": {
+     "valor": 2.1,
+     "puntos": 1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "giro": {
+     "valor": 0.5,
+     "puntos": 1,
+     "fecha": "2026-10-02",
+     "fuente": null
+    },
+    "riesgo": {
+     "valor": 14.86,
+     "puntos": 1,
+     "fecha": "2026-10-09",
+     "fuente": null
+    }
+   },
+   "total": 3,
+   "n_factores": 6,
+   "sesgo": "FUERTE",
+   "fx_3m_pct": -1.66,
+   "inflacion": 3.1
+  },
+  {
+   "clave": "USD",
+   "nombre": "Dólar de EE. UU.",
+   "banco": "Fed",
+   "factores": {
+    "tipo": {
+     "valor": 3.875,
+     "puntos": 1,
+     "fecha": "2026-10-06",
+     "fuente": "BIS · tipos de política (WS_CBPOL)"
+    },
+    "real": {
+     "valor": 0.67,
+     "puntos": 1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "bono": {
+     "valor": 0.0,
+     "puntos": 0,
+     "fecha": "2026-10-07",
+     "fuente": "Tesoro de EE. UU. vía FRED DGS10"
+    },
+    "crec": {
+     "valor": 2.3,
+     "puntos": 1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "giro": {
+     "valor": 0.25,
+     "puntos": 1,
+     "fecha": "2026-10-06",
+     "fuente": null
+    },
+    "riesgo": {
+     "valor": 14.86,
+     "puntos": -1,
+     "fecha": "2026-10-09",
+     "fuente": null
+    }
+   },
+   "total": 3,
+   "n_factores": 6,
+   "sesgo": "FUERTE",
+   "fx_3m_pct": 1.29,
+   "inflacion": 3.2
+  },
+  {
+   "clave": "GBP",
+   "nombre": "Libra esterlina",
+   "banco": "Banco de Inglaterra",
+   "factores": {
+    "tipo": {
+     "valor": 3.75,
+     "puntos": 1,
+     "fecha": "2026-10-05",
+     "fuente": "BIS · tipos de política (WS_CBPOL)"
+    },
+    "real": {
+     "valor": 0.55,
+     "puntos": 1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "bono": {
+     "valor": 0.304,
+     "puntos": 1,
+     "fecha": "2026-08-01",
+     "fuente": "OCDE vía FRED IRLTLT01GBM156N (mensual)"
+    },
+    "crec": {
+     "valor": 0.8,
+     "puntos": -1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "giro": {
+     "valor": 0.0,
+     "puntos": 0,
+     "fecha": "2026-10-05",
+     "fuente": null
+    },
+    "riesgo": {
+     "valor": 14.86,
+     "puntos": 0,
+     "fecha": "2026-10-09",
+     "fuente": null
+    }
+   },
+   "total": 2,
+   "n_factores": 6,
+   "sesgo": "MODERADO",
+   "fx_3m_pct": -0.97,
+   "inflacion": 3.2
+  },
+  {
+   "clave": "CAD",
+   "nombre": "Dólar canadiense",
+   "banco": "Banco de Canadá",
+   "factores": {
+    "tipo": {
+     "valor": 2.25,
+     "puntos": -1,
+     "fecha": "2026-10-05",
+     "fuente": "BIS · tipos de política (WS_CBPOL)"
+    },
+    "real": {
+     "valor": -0.25,
+     "puntos": 0,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "bono": {
+     "valor": -1.009,
+     "puntos": 0,
+     "fecha": "2026-08-01",
+     "fuente": "OCDE vía FRED IRLTLT01CAM156N (mensual)"
+    },
+    "crec": {
+     "valor": 1.5,
+     "puntos": 0,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "giro": {
+     "valor": 0.0,
+     "puntos": 0,
+     "fecha": "2026-10-05",
+     "fuente": null
+    },
+    "riesgo": {
+     "valor": 14.86,
+     "puntos": 1,
+     "fecha": "2026-10-09",
+     "fuente": null
+    }
+   },
+   "total": 0,
+   "n_factores": 6,
+   "sesgo": "NEUTRAL",
+   "fx_3m_pct": -0.5,
+   "inflacion": 2.5
+  },
+  {
+   "clave": "EUR",
+   "nombre": "Euro",
+   "banco": "BCE",
+   "factores": {
+    "tipo": {
+     "valor": 2.5,
+     "puntos": 0,
+     "fecha": "2026-10-06",
+     "fuente": "BIS · tipos de política (WS_CBPOL)"
+    },
+    "real": {
+     "valor": -0.1,
+     "puntos": 0,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "bono": {
+     "valor": -1.761,
+     "puntos": -1,
+     "fecha": "2026-10-08",
+     "fuente": "BCE · curva AAA de la zona euro (10Y)"
+    },
+    "crec": {
+     "valor": 1.1,
+     "puntos": -1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "giro": {
+     "valor": 0.5,
+     "puntos": 1,
+     "fecha": "2026-10-06",
+     "fuente": null
+    },
+    "riesgo": {
+     "valor": 14.86,
+     "puntos": 0,
+     "fecha": "2026-10-09",
+     "fuente": null
+    }
+   },
+   "total": -1,
+   "n_factores": 6,
+   "sesgo": "DÉBIL",
+   "fx_3m_pct": -1.65,
+   "inflacion": 2.6
+  },
+  {
+   "clave": "CHF",
+   "nombre": "Franco suizo",
+   "banco": "Banco Nacional Suizo",
+   "factores": {
+    "tipo": {
+     "valor": 0.0,
+     "puntos": -1,
+     "fecha": "2026-10-06",
+     "fuente": "BIS · tipos de política (WS_CBPOL)"
+    },
+    "real": {
+     "valor": -0.5,
+     "puntos": -1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "bono": {
+     "valor": -4.214,
+     "puntos": -1,
+     "fecha": "2026-08-01",
+     "fuente": "OCDE vía FRED IRLTLT01CHM156N (mensual)"
+    },
+    "crec": {
+     "valor": 1.3,
+     "puntos": 0,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "giro": {
+     "valor": 0.0,
+     "puntos": 0,
+     "fecha": "2026-10-06",
+     "fuente": null
+    },
+    "riesgo": {
+     "valor": 14.86,
+     "puntos": -1,
+     "fecha": "2026-10-09",
+     "fuente": null
+    }
+   },
+   "total": -4,
+   "n_factores": 6,
+   "sesgo": "MUY DÉBIL",
+   "fx_3m_pct": -3.27,
+   "inflacion": 0.5
+  },
+  {
+   "clave": "JPY",
+   "nombre": "Yen japonés",
+   "banco": "Banco de Japón",
+   "factores": {
+    "tipo": {
+     "valor": 1.25,
+     "puntos": -1,
+     "fecha": "2026-09-18",
+     "fuente": "Banco de Japón (boj.or.jp, portada: guideline vigente)"
+    },
+    "real": {
+     "valor": -0.95,
+     "puntos": -1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "bono": {
+     "valor": -1.744,
+     "puntos": -1,
+     "fecha": "2026-08-01",
+     "fuente": "OCDE vía FRED IRLTLT01JPM156N (mensual)"
+    },
+    "crec": {
+     "valor": 0.7,
+     "puntos": -1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "giro": {
+     "valor": 0.5,
+     "puntos": 1,
+     "fecha": "2026-09-18",
+     "fuente": null
+    },
+    "riesgo": {
+     "valor": 14.86,
+     "puntos": -1,
+     "fecha": "2026-10-09",
+     "fuente": null
+    }
+   },
+   "total": -4,
+   "n_factores": 6,
+   "sesgo": "MUY DÉBIL",
+   "fx_3m_pct": 1.96,
+   "inflacion": 2.2
+  }
+ ],
+ "factores": [
+  {
+   "clave": "tipo",
+   "nombre": "Tipo oficial"
+  },
+  {
+   "clave": "real",
+   "nombre": "Tipo real"
+  },
+  {
+   "clave": "bono",
+   "nombre": "Bono 10Y vs EE. UU."
+  },
+  {
+   "clave": "crec",
+   "nombre": "Crecimiento"
+  },
+  {
+   "clave": "giro",
+   "nombre": "Giro del banco central"
+  },
+  {
+   "clave": "riesgo",
+   "nombre": "Riesgo (VIX)"
+  }
+ ],
+ "riesgo": {
+  "vix": 14.86,
+  "fecha": "2026-10-09",
+  "regimen": "APETITO"
+ },
+ "boj": {
+  "valor": 1.25,
+  "fecha": "2026-09-18",
+  "texto": "remain at around 1.25 percent",
+  "fuente": "Banco de Japón (boj.or.jp, portada: guideline vigente)",
+  "url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm",
+  "nota": null
+ },
+ "anio_weo": "2026",
+ "esencial": {
+  "cambio": "Sesgo macro más fuerte: AUD (+6); más débil: JPY (-4). Riesgo apetito (VIX 14.9).",
+  "significa": "Hecho: la suma de seis factores objetivos coloca a esa divisa arriba y a la otra abajo. Interpretación: la combinación de tipos, crecimiento y giro de política respalda a la primera frente a la segunda; no dice que vaya a subir ni a bajar.",
+  "vigilar": "Próximas reuniones de bancos centrales (calendario), la sorpresa de inflación y el VIX: un VIX por encima de 22 o por debajo de 16 cambia el factor de riesgo de golpe."
+ },
+ "errores": {},
+ "reglas": [],
+ "fuentes": [
+  {
+   "nombre": "BIS · tipos de política",
+   "url": "https://data.bis.org/topics/CBPOL"
+  },
+  {
+   "nombre": "Banco de Japón",
+   "url": "https://www.boj.or.jp/en/"
+  },
+  {
+   "nombre": "FMI · WEO (inflación y PIB)",
+   "url": "https://www.imf.org/external/datamapper/NGDP_RPCH@WEO"
+  },
+  {
+   "nombre": "BCE · curva de tipos",
+   "url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_area_yield_curves/html/index.en.html"
+  },
+  {
+   "nombre": "FRED (Tesoro, OCDE, tipos de cambio)",
+   "url": "https://fred.stlouisfed.org/"
+  }
+ ],
+ "ok": true,
+ "generado_utc": "2026-10-09 18:41 UTC",
+ "duracion_s": 4.6
+}

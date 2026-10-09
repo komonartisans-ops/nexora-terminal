@@ -6,7 +6,7 @@ from playwright.sync_api import sync_playwright
 
 BASE = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8765"
 OUT = sys.argv[2] if len(sys.argv) > 2 else "capturas"
-PAGES = ["resumen", "bancos", "liquidez", "calendario", "ciclo", "regimen", "publicados", "oro", "indices", "cripto"]
+PAGES = ["resumen", "bancos", "liquidez", "calendario", "ciclo", "regimen", "publicados", "oro", "indices", "cripto", "divisas", "posicionamiento", "noticias"]
 CHROME = os.path.expandvars(r"%LOCALAPPDATA%\ms-playwright\chromium-1223\chrome-win64\chrome.exe")
 os.makedirs(OUT, exist_ok=True)
 

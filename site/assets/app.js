@@ -77,7 +77,7 @@ const PLAN = {
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto']);
+const LIVE = new Set(['resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias']);
 const D = {};
 const MOUNT = [];
 
@@ -352,7 +352,7 @@ function pageBancos() {
   h += '<div class="sect"><h2>Tipos oficiales y calendario</h2></div><div class="grid g3">';
   h += bank('Fed', fed.rango && fed.rango[0] != null ? `${num(fed.rango[0], 2)}–${num(fed.rango[1], 2)}<small> %</small>` : null, `EFFR ${fed.effr != null ? num(fed.effr, 2) + ' %' : 'SIN DATO'} · rango objetivo`, nextOf(/Fed/i), 'balance_fed_T', 'FRED DFEDTARL/U · H.4.1');
   h += bank('BCE', ta.BCE && ta.BCE.valor != null ? `${num(ta.BCE.valor, 2)}<small> %</small>` : null, 'Facilidad de depósito', nextOf(/BCE|ECB/i), 'bce_T', 'FRED ECBDFR · ECBASSETSW');
-  h += bank('BoJ', ta.BoJ && ta.BoJ.valor != null ? `${num(ta.BoJ.valor, 2)}<small> %</small>` : null, 'Tipo de política (OCDE, mensual). Sin dato reciente en FRED: no se estima', nextOf(/Jap|BoJ/i), 'boj_T', 'FRED IRSTCB01JPM156N · JPNASSETS');
+  h += bank('BoJ', ta.BoJ && ta.BoJ.valor != null ? `${num(ta.BoJ.valor, 2)}<small> %</small>` : null, 'Objetivo del tipo a un día sin garantía (web del BoJ)', nextOf(/Jap|BoJ/i), 'boj_T', 'boj.or.jp (guideline vigente) · FRED JPNASSETS');
   h += '</div>';
 
   h += '<div class="sect"><h2>FedWatch · probabilidades por reunión</h2><span class="more">futuros ZQ (CBOT) · EFFR · calendario FOMC</span></div><div class="grid g21">';
@@ -379,8 +379,8 @@ function pageBancos() {
 
   const th = F.tipos_historico || {};
   h += '<div class="sect"><h2>Tipos oficiales · histórico</h2></div><div class="grid g21"><div class="card">'
-    + lw('cTipos', [{ name: 'Fed (techo del rango)', color: COL.amber, data: th.fed_max, step: true }, { name: 'BCE (depósito)', color: COL.blue, data: th.bce_deposito, step: true }, { name: 'BoJ (OCDE, mensual)', color: COL.violet, data: th.boj_politica, step: true }], { tall: true })
-    + foot('FRED DFEDTARU · ECBDFR · IRSTCB01JPM156N', lastOf(th.fed_max) && lastOf(th.fed_max)[0]) + '</div>';
+    + lw('cTipos', [{ name: 'Fed (techo del rango)', color: COL.amber, data: th.fed_max, step: true }, { name: 'BCE (depósito)', color: COL.blue, data: th.bce_deposito, step: true }, { name: 'BoJ (web oficial + BIS)', color: COL.violet, data: th.boj_politica, step: true }], { tall: true })
+    + foot('FRED DFEDTARU · ECBDFR · BoJ (boj.or.jp) e histórico BIS', lastOf(th.fed_max) && lastOf(th.fed_max)[0]) + '</div>';
   h += `<div class="card"><h3>Probabilidad de subida · próxima reunión</h3><div class="sub">Últimas sesiones (${esc(fd(r0.reunion))})</div><table class="t" style="margin-top:4px"><thead><tr><th>Sesión</th><th>Subida</th><th>Bajada</th></tr></thead><tbody>`
     + (F.historial || []).slice().reverse().map((x) => `<tr><td>${esc(fdd(x.fecha))}</td><td class="down">${num(x.prox_subida, 1)} %</td><td class="up">${num(x.prox_bajada, 1)} %</td></tr>`).join('')
     + `</tbody></table>${foot('FedWatch NEXORA', F.fecha_precios)}</div></div>`;
@@ -745,7 +745,7 @@ function route() {
 }
 
 async function cargar() {
-  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series'].map(async (n) => {
+  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias'].map(async (n) => {
     try { const r = await fetch(`data/${n}.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) D[n] = await r.json(); } catch (e) { /* SIN DATO */ }
   }));
 }

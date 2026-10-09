@@ -1,0 +1,9 @@
+fecha_captura,divisa,total,sesgo,factores
+2026-10-09,AUD,6,FUERTE,tipo=1 | real=1 | bono=1 | crec=1 | giro=1 | riesgo=1
+2026-10-09,NZD,3,FUERTE,tipo=0 | real=-1 | bono=1 | crec=1 | giro=1 | riesgo=1
+2026-10-09,USD,3,FUERTE,tipo=1 | real=1 | bono=0 | crec=1 | giro=1 | riesgo=-1
+2026-10-09,GBP,2,MODERADO,tipo=1 | real=1 | bono=1 | crec=-1 | giro=0 | riesgo=0
+2026-10-09,CAD,0,NEUTRAL,tipo=-1 | real=0 | bono=0 | crec=0 | giro=0 | riesgo=1
+2026-10-09,EUR,-1,DÉBIL,tipo=0 | real=0 | bono=-1 | crec=-1 | giro=1 | riesgo=0
+2026-10-09,CHF,-4,MUY DÉBIL,tipo=-1 | real=-1 | bono=-1 | crec=0 | giro=0 | riesgo=-1
+2026-10-09,JPY,-4,MUY DÉBIL,tipo=-1 | real=-1 | bono=-1 | crec=-1 | giro=1 | riesgo=-1

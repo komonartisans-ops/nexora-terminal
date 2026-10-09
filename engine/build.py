@@ -179,13 +179,34 @@ def etapa_fedwatch():
     F = fedwatch.medir(6)
     hoy = dt.date.today()
     hist = {}
-    for clave, sid in (("fed_max", "DFEDTARU"), ("fed_min", "DFEDTARL"), ("effr", "EFFR"), ("bce_deposito", "ECBDFR"),
-                       ("boj_politica", "IRSTCB01JPM156N")):
+    for clave, sid in (("fed_max", "DFEDTARU"), ("fed_min", "DFEDTARL"), ("effr", "EFFR"), ("bce_deposito", "ECBDFR")):
         try:
             hist[clave] = serie_json(LQ.fred(sid, (hoy - dt.timedelta(days=900)).isoformat()), 900) or None  # FRED ignora cosd en series muertas: se recorta aquí; sin datos recientes = SIN DATO
         except Exception as e:  # noqa: BLE001
             hist[clave] = None
             F.setdefault("errores", {})[sid] = f"{type(e).__name__}: {e}"
+    # BoJ: el tipo actual sale de la web oficial del Banco de Japón (FRED/OCDE va con años de retraso); el histórico, del BIS
+    boj_web = None
+    try:
+        import boj
+        boj_web = boj.tipo_oficial()
+    except Exception as e:  # noqa: BLE001
+        F.setdefault("errores", {})["BoJ (web)"] = f"{type(e).__name__}: {e}"
+    try:
+        import divisas
+        jp = divisas._bis(["JP"], dias=900).get("JP") or []
+        cambios = [x for i, x in enumerate(jp) if i == 0 or x[1] != jp[i - 1][1]]  # solo los cambios de tipo (serie en escalón)
+        h_boj = [[d.isoformat(), v] for d, v in cambios]
+        if boj_web:  # el dato de la web manda; si la decisión es posterior al último cambio del BIS se añade como último escalón
+            if not h_boj or h_boj[-1][1] != boj_web["valor"]:
+                h_boj.append([boj_web["fecha"] or hoy.isoformat(), boj_web["valor"]])
+            elif boj_web["fecha"]:
+                h_boj[-1][0] = boj_web["fecha"]  # el BIS fecha la entrada en vigor; la web del BoJ, la decisión
+            h_boj.append([hoy.isoformat(), boj_web["valor"]])
+        hist["boj_politica"] = h_boj or None
+    except Exception as e:  # noqa: BLE001
+        hist["boj_politica"] = None
+        F.setdefault("errores", {})["BIS (histórico BoJ)"] = f"{type(e).__name__}: {e}"
     F["tipos_historico"] = hist
     # tipo actual por banco (valor + fecha del dato; no se estima nada)
     def ult(k):
@@ -193,7 +214,7 @@ def etapa_fedwatch():
         return {"valor": s[-1][1], "fecha": s[-1][0]} if s else None
     F["tipos_actuales"] = {"Fed": {"rango": F["rango_objetivo"], "effr": F["effr"], "fuente": "FRED DFEDTARL/DFEDTARU/EFFR"},
                            "BCE": {**(ult("bce_deposito") or {}), "fuente": "FRED ECBDFR (facilidad de depósito)"} if ult("bce_deposito") else None,
-                           "BoJ": {**(ult("boj_politica") or {}), "fuente": "FRED IRSTCB01JPM156N (OCDE, mensual)"} if ult("boj_politica") else None}
+                           "BoJ": {"valor": boj_web["valor"], "fecha": boj_web["fecha"], "fuente": boj_web["fuente"], "url": boj_web["url"], "nota": boj_web["nota"]} if boj_web else None}
     csvlog.anadir("historico_fedwatch.csv", [{"capturado_utc": STAMP, "reunion": r["reunion"], "tipo_esperado": r["tipo_esperado"],
                                               "prob_subida": r["prob_reunion"]["subida"], "prob_mantiene": r["prob_reunion"]["mantiene"],
                                               "prob_bajada": r["prob_reunion"]["bajada"], "fecha_precios": F["fecha_precios"]} for r in F["reuniones"]],
@@ -599,6 +620,26 @@ def etapa_regimen():
     return {"evaluacion": E, "errores": R.get("errores", {}), "monitores_fuente": {k: ("calculado en esta ejecución" if k in R else "SIN DATO") for k in ("cripto", "oro", "indices")}}
 
 
+# ------------------------------------------------------------------ fase 4: sesgo de divisas, posicionamiento COT, noticias de bancos centrales
+def etapa_divisas():
+    import divisas
+    D_ = divisas.medir()
+    csvlog.anadir("historico_divisas.csv", [{"fecha_captura": dt.date.today().isoformat(), "divisa": m["clave"], "total": m["total"] if m["total"] is not None else "",
+                                             "sesgo": m["sesgo"], "factores": " | ".join(f"{k}={v['puntos']}" for k, v in m["factores"].items())} for m in D_["monedas"]],
+                  ("fecha_captura", "divisa"))
+    return D_
+
+
+def etapa_cot():
+    import cot
+    return cot.medir()
+
+
+def etapa_noticias():
+    import noticias
+    return noticias.medir()
+
+
 # ------------------------------------------------------------------ alertas (Telegram)
 def etapa_alertas():
     import alertas
@@ -608,9 +649,9 @@ def etapa_alertas():
 # ------------------------------------------------------------------ principal
 ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_tipos, "calendario": etapa_calendario,
           "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen,
-          "regimen": etapa_regimen, "alertas": etapa_alertas}
-ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "resumen", "regimen", "alertas"]
-MODOS = {"horario": ["precios", "fedwatch", "tipos", "alertas"], "diario": ORDEN, "todo": ORDEN}
+          "regimen": etapa_regimen, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias, "alertas": etapa_alertas}
+ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "resumen", "regimen", "divisas", "cot", "noticias", "alertas"]
+MODOS = {"horario": ["precios", "fedwatch", "tipos", "noticias", "alertas"], "diario": ORDEN, "todo": ORDEN}
 
 
 def main():
