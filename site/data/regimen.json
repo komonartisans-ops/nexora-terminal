@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-09): reunión del 2026-10-28 subida 20 % / mantener 80 % / bajada 0 % (+2 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +36 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-09): reunión del 2026-10-28 subida 18 % / mantener 82 % / bajada 0 % (+0 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +36 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.75 % vs tipo efectivo 3.88 % → +87 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +56 pb (+0 pb en 5 sesiones)"
@@ -133,7 +133,7 @@
      "S&P 500: semana +1.3 · mes +2.3 %",
      "Nasdaq 100: semana +0.7 · mes +5.6 %",
      "Russell 2000: semana -0.5 · mes -3.4 %",
-     "Oro (COMEX GC=F, respaldo): semana +1.4 · mes -4.2 %",
+     "Oro (COMEX GC=F, respaldo): semana +1.4 · mes -4.3 %",
      "Bitcoin: semana -3.7 · mes +4.1 %",
      "Ether: semana -8.6 · mes -0.5 %",
      "10Y nominal: semana -2.0 · mes +27.0 pb",
@@ -169,7 +169,7 @@
     "lectura": "MIXTO",
     "sentido": "NEUTRAL",
     "precio": "CONFIRMA DEBILIDAD",
-    "detalle": "oro 20 sesiones -4.2 %"
+    "detalle": "oro 20 sesiones -4.3 %"
    },
    {
     "monitor": "Índices USA",
@@ -231,8 +231,8 @@
     "unidad": "%"
    },
    "Oro (COMEX GC=F, respaldo)": {
-    "semana": 1.45,
-    "mes": -4.23,
+    "semana": 1.36,
+    "mes": -4.3,
     "unidad": "%"
    },
    "Bitcoin": {
@@ -340,7 +340,7 @@
    },
    {
     "pregunta": "¿Qué hacen los bancos centrales?",
-    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 20 %, mantener 80 %, bajada 0 % (ayer subida 18 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
+    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 18 %, mantener 82 %, bajada 0 % (ayer subida 18 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
    },
    {
     "pregunta": "¿Qué dice el consumo (mercado frente a datos reales)?",
@@ -1051,6 +1051,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-09 18:02 UTC",
- "duracion_s": 18.7
+ "generado_utc": "2026-10-09 18:45 UTC",
+ "duracion_s": 17.6
 }

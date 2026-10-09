@@ -35,7 +35,7 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 20 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 18 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 14 oct · 14:30 · IPC EE. UU. (CPI): Subyacente m/m y servicios: inflación ↑ retrasa recortes (2Y ↑, real ↑).",
   "mié 21 oct · Resultados Tesla (TSLA): BPA estimado $0.23 · después del cierre"
  ],
@@ -124,10 +124,10 @@
    "fecha": "2026-10-08"
   },
   "fed": {
-   "valor": 20.0,
+   "valor": 18.0,
    "antes": 18.0,
    "reunion": "2026-10-28",
-   "delta": 2.0,
+   "delta": 0.0,
    "fecha": "2026-10-09"
   }
  },
@@ -143,9 +143,9 @@
    "valor": 7765.36
   },
   "Oro": {
-   "delta": 1.5299518320002425,
+   "delta": 1.5612196859213334,
    "fecha": "2026-10-09",
-   "valor": 4220.60009765625
+   "valor": 4221.89990234375
   },
   "Bitcoin": {
    "delta": -1.9000526688302655,
@@ -416,23 +416,23 @@
  },
  "motores_propios": {
   "oro_xau": {
-   "calculado_utc": "2026-10-09 18:02 UTC",
+   "calculado_utc": "2026-10-09 18:45 UTC",
    "ok": true,
    "disponible": true
   },
   "indices": {
-   "calculado_utc": "2026-10-09 18:02 UTC",
+   "calculado_utc": "2026-10-09 18:45 UTC",
    "ok": true,
    "disponible": true
   },
   "liquidez_cripto": {
-   "calculado_utc": "2026-10-09 18:02 UTC",
+   "calculado_utc": "2026-10-09 18:45 UTC",
    "ok": true,
    "disponible": true
   }
  },
  "sencillo_activos": "Empujan en contra: Bitcoin, US30 · Dow Jones y Russell 2000; sin ventaja clara: Oro, Nasdaq 100 y S&P 500 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-09 18:02 UTC",
+ "generado_utc": "2026-10-09 18:45 UTC",
  "duracion_s": 107.0
 }
