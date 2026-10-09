@@ -281,12 +281,13 @@ function pageResumen() {
   const nombres = ['Oro', 'Nasdaq 100', 'S&P 500', 'Bitcoin', 'US30 · Dow Jones', 'Russell 2000'];
   const MP = (R && R.motores_propios) || {};
   const monDe = { 'Oro': 'oro_xau', 'Bitcoin': 'liquidez_cripto' };
-  const lst = (arr) => (arr && arr.length ? arr.map(esc).join(' · ') : '');
+  const cut = (x, n) => { x = String(x ?? ''); return x.length > n ? x.slice(0, n - 1) + '…' : x; };
+  const lst = (arr) => (arr && arr.length ? arr.map((x) => esc(cut(x, 120))).join(' · ') : '');
   const cardTesis = (n) => {
     const t = TES[n];
     if (!t) return `<div class="card asset"><div class="top"><div class="nm">${esc(n)}</div>${tagTesis(null)}</div><div class="flow">SIN DATO: la tesis no se pudo calcular en esta ejecución.</div>${foot('Motor NEXORA (por_activo.py)', false)}</div>`;
     const pr = t.propio, est = MP[monDe[n] || 'indices'] || {};
-    const prop = pr ? `<div><b style="color:var(--text)">${esc(pr.veredicto)}</b> · ${esc(pr.detalle)}</div>${pr.favor && pr.favor.length ? `<div class="up">A favor: ${lst(pr.favor)}</div>` : ''}${pr.contra && pr.contra.length ? `<div class="down">En contra: ${lst(pr.contra)}</div>` : ''}${pr.rotacion ? `<div>Rotación cíclico/defensivo (XLY/XLP): ${esc(pr.rotacion)}</div>` : ''}${pr.avisos && pr.avisos[0] ? `<div style="color:var(--amber)">${esc(pr.avisos[0])}</div>` : ''}` : '<div>SIN DATO: el monitor propio no respondió (nunca se estima).</div>';
+    const prop = pr ? `<div><b style="color:var(--text)">${esc(pr.veredicto)}</b> · ${esc(cut(pr.detalle, 190))}</div>${pr.favor && pr.favor.length ? `<div class="up">A favor: ${lst(pr.favor)}</div>` : ''}${pr.contra && pr.contra.length ? `<div class="down">En contra: ${lst(pr.contra)}</div>` : ''}${pr.rotacion ? `<div>Rotación cíclico/defensivo (XLY/XLP): ${esc(cut(pr.rotacion, 130))}</div>` : ''}${pr.avisos && pr.avisos[0] ? `<div style="color:var(--amber)">${esc(cut(pr.avisos[0], 130))}</div>` : ''}` : '<div>SIN DATO: el monitor propio no respondió (nunca se estima).</div>';
     return `<div class="card asset"><div class="top"><div class="nm">${esc(n)}</div>${tagTesis(t.etiqueta)}</div>
       <div class="flow">${esc(t.tesis)}<em>Viento macro</em><div>Hoy · ${esc(t.hoy)}</div><div>Semana · ${esc(t.semana)}</div><em>Su motor propio · ${esc(t.motor_propio_nombre || '')}</em>${prop}</div>
       ${foot('Motor NEXORA por_activo.py (monitor ' + (est.calculado_utc ? horaAct(est.calculado_utc) : 'SIN DATO') + ')', corteFecha)}</div>`;

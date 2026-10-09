@@ -26,6 +26,8 @@ INDICE_NOMBRE = {"Nasdaq 100": "Nasdaq 100", "S&P 500": "S&P 500", "US30 · Dow 
 VIENTO_N = {"A FAVOR": 1, "EN CONTRA": -1, "SIN VIENTO CLARO": 0}
 # veredicto del monitor propio → (+1 a favor, 0 neutro, −1 en contra)
 VEREDICTO_N = {
+    "FAVORABLE": 1, "DESFAVORABLE": -1,  # NEXORA Terminal: entorno por índice de indices.py (por_indice); el informe diario original no lo mapea
+
     "CONFLUENCIA FAVORABLE": 1, "PREDOMINIO FAVORABLE": 1, "CONFLUENCIA CONTRARIA": -1, "PREDOMINIO CONTRARIO": -1, "MIXTO": 0,
     "RISK-ON": 1, "PREDOMINIO RISK-ON": 1, "RISK-OFF": -1, "PREDOMINIO RISK-OFF": -1,
     "GIRO DE LIQUIDEZ EN CURSO": 1, "SEÑALES INICIALES DE GIRO": 0, "SIN GIRO DE LIQUIDEZ": -1, "DRENAJE DE LIQUIDEZ": -1,
