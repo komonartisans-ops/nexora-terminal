@@ -1,6 +1,6 @@
 {
- "fecha_precios": "2026-10-08",
- "generado_utc": "2026-10-08 20:40 UTC",
+ "fecha_precios": "2026-10-09",
+ "generado_utc": "2026-10-09 01:10 UTC",
  "rango_objetivo": [
   3.75,
   4.0
@@ -34,8 +34,8 @@
    "subida_1d_pts": 0.0,
    "bajada_1d_pts": 0,
    "tipo_1d_pb": 0.0,
-   "subida_5d_pts": -6.0,
-   "tipo_5d_pb": -1.5
+   "subida_5d_pts": -2.0,
+   "tipo_5d_pb": -0.5
   },
   {
    "reunion": "2026-12-09",
@@ -64,8 +64,8 @@
    "subida_1d_pts": 0.0,
    "bajada_1d_pts": 0,
    "tipo_1d_pb": 0.0,
-   "subida_5d_pts": 5.6,
-   "tipo_5d_pb": -0.1
+   "subida_5d_pts": -2.8,
+   "tipo_5d_pb": -1.2
   },
   {
    "reunion": "2027-01-27",
@@ -91,11 +91,11 @@
      "50": 34.0
     }
    },
-   "subida_1d_pts": 4.0,
+   "subida_1d_pts": 2.0,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 1.0,
-   "subida_5d_pts": 0.4,
-   "tipo_5d_pb": 0.0
+   "tipo_1d_pb": 0.5,
+   "subida_5d_pts": -1.2,
+   "tipo_5d_pb": -1.5
   },
   {
    "reunion": "2027-03-17",
@@ -120,25 +120,25 @@
      "50": 99.6
     }
    },
-   "subida_1d_pts": 4.4,
+   "subida_1d_pts": 0.0,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 2.1,
-   "subida_5d_pts": 0.0,
-   "tipo_5d_pb": 0.0
+   "tipo_1d_pb": 0.5,
+   "subida_5d_pts": -8.9,
+   "tipo_5d_pb": -3.7
   },
   {
    "reunion": "2027-04-28",
-   "tipo_esperado": 4.47,
-   "cambio_reunion_pb": 8.9,
-   "cambio_acumulado_pb": 59.0,
+   "tipo_esperado": 4.465,
+   "cambio_reunion_pb": 8.4,
+   "cambio_acumulado_pb": 58.5,
    "metodo": "mes siguiente sin reunión (ZQK27)",
    "prob_reunion": {
-    "subida": 35.6,
-    "mantiene": 64.4,
+    "subida": 33.6,
+    "mantiene": 66.4,
     "bajada": 0,
     "detalle_pb": {
-     "0": 64.4,
-     "25": 35.6
+     "0": 66.4,
+     "25": 33.6
     }
    },
    "prob_acumulada": {
@@ -146,29 +146,29 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 64.0,
-     "75": 36.0
+     "50": 66.0,
+     "75": 34.0
     }
    },
-   "subida_1d_pts": -2.4,
+   "subida_1d_pts": -2.0,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 1.5,
-   "subida_5d_pts": 0.0,
-   "tipo_5d_pb": 0.0
+   "tipo_1d_pb": 0.0,
+   "subida_5d_pts": -5.1,
+   "tipo_5d_pb": -5.0
   },
   {
    "reunion": "2027-06-09",
-   "tipo_esperado": 4.5557,
-   "cambio_reunion_pb": 8.6,
-   "cambio_acumulado_pb": 67.6,
+   "tipo_esperado": 4.565,
+   "cambio_reunion_pb": 10.0,
+   "cambio_acumulado_pb": 68.5,
    "metodo": "mes de la reunión (ZQM27)",
    "prob_reunion": {
-    "subida": 34.3,
-    "mantiene": 65.7,
+    "subida": 40.0,
+    "mantiene": 60.0,
     "bajada": 0,
     "detalle_pb": {
-     "0": 65.7,
-     "25": 34.3
+     "0": 60.0,
+     "25": 40.0
     }
    },
    "prob_acumulada": {
@@ -176,28 +176,22 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 29.7,
-     "75": 70.3
+     "50": 26.0,
+     "75": 74.0
     }
    },
-   "subida_1d_pts": -5.7,
+   "subida_1d_pts": 0.0,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 0.1,
-   "subida_5d_pts": -8.6,
-   "tipo_5d_pb": -2.1
+   "tipo_1d_pb": 0.0,
+   "subida_5d_pts": -5.7,
+   "tipo_5d_pb": -6.4
   }
  ],
  "lectura": "SIN CAMBIO RELEVANTE",
- "tipo_esperado_3_reuniones_1d_pb": 1.0,
- "tipo_esperado_3_reuniones_5d_pb": 0.0,
+ "tipo_esperado_3_reuniones_1d_pb": 0.5,
+ "tipo_esperado_3_reuniones_5d_pb": -1.5,
  "resumen": "Reunión del 2026-10-28: subida 18 %, mantener 82 %, bajada 0 % (ayer subida 18 %)",
  "historial": [
-  {
-   "fecha": "2026-10-01",
-   "prox_subida": 24.0,
-   "prox_bajada": 0,
-   "reunion": "2026-10-28"
-  },
   {
    "fecha": "2026-10-02",
    "prox_subida": 20.0,
@@ -227,16 +221,18 @@
    "prox_subida": 18.0,
    "prox_bajada": 0,
    "reunion": "2026-10-28"
+  },
+  {
+   "fecha": "2026-10-09",
+   "prox_subida": 18.0,
+   "prox_bajada": 0,
+   "reunion": "2026-10-28"
   }
  ],
  "errores": {},
  "fuente": "Cálculo NEXORA con el método de CME FedWatch: futuros de fondos federales ZQ (CBOT, precios vía Yahoo Finance) + EFFR y rango objetivo (FRED) + calendario FOMC (Federal Reserve). Puede diferir unos puntos de CME.",
  "tipos_historico": {
   "fed_max": [
-   [
-    "2024-04-21",
-    5.5
-   ],
    [
     "2024-04-22",
     5.5
@@ -3839,10 +3835,6 @@
    ]
   ],
   "fed_min": [
-   [
-    "2024-04-21",
-    5.25
-   ],
    [
     "2024-04-22",
     5.25
@@ -9920,10 +9912,6 @@
   ],
   "bce_deposito": [
    [
-    "2024-04-21",
-    4.0
-   ],
-   [
     "2024-04-22",
     4.0
    ],
@@ -13543,5 +13531,5 @@
   "BoJ": null
  },
  "ok": true,
- "duracion_s": 7.5
+ "duracion_s": 8.3
 }

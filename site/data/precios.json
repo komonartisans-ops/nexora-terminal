@@ -3,13 +3,13 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4159.2,
-   "fecha": "2026-10-08",
-   "cambio_1d_pct": 0.45,
-   "cambio_5d_pct": -1.03,
-   "cambio_21d_pct": -6.76,
-   "cambio_63d_pct": 1.11,
-   "sma50": 4374.69,
+   "valor": 4170.0,
+   "fecha": "2026-10-09",
+   "cambio_1d_pct": 0.71,
+   "cambio_5d_pct": -0.77,
+   "cambio_21d_pct": -6.52,
+   "cambio_63d_pct": 1.37,
+   "sma50": 4374.91,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
@@ -1017,27 +1017,23 @@
      4140.7002
     ],
     [
-     "2026-10-08",
-     4159.2002
+     "2026-10-09",
+     4170.0
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 81747.33,
-   "fecha": "2026-10-08",
-   "cambio_1d_pct": -1.84,
-   "cambio_5d_pct": -3.56,
-   "cambio_21d_pct": 6.99,
-   "cambio_63d_pct": 27.21,
-   "sma50": 80529.69,
+   "valor": 81705.21,
+   "fecha": "2026-10-09",
+   "cambio_1d_pct": -1.89,
+   "cambio_5d_pct": -3.61,
+   "cambio_21d_pct": 6.94,
+   "cambio_63d_pct": 27.14,
+   "sma50": 80528.85,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-08",
-     123354.8672
-    ],
     [
      "2025-10-09",
      121705.5859
@@ -2495,8 +2491,8 @@
      83275.9297
     ],
     [
-     "2026-10-08",
-     81747.3281
+     "2026-10-09",
+     81705.2109
     ]
    ]
   },
@@ -7605,13 +7601,13 @@
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 102.14,
-   "fecha": "2026-10-08",
-   "cambio_1d_pct": -0.1,
-   "cambio_5d_pct": 0.03,
-   "cambio_21d_pct": 3.41,
-   "cambio_63d_pct": 1.15,
-   "sma50": 100.07,
+   "valor": 102.08,
+   "fecha": "2026-10-09",
+   "cambio_1d_pct": -0.16,
+   "cambio_5d_pct": -0.02,
+   "cambio_21d_pct": 3.35,
+   "cambio_63d_pct": 1.1,
+   "sma50": 100.06,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
     [
@@ -8619,14 +8615,14 @@
      102.24
     ],
     [
-     "2026-10-08",
-     102.135
+     "2026-10-09",
+     102.08
     ]
    ]
   }
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-08 20:40 UTC",
+ "generado_utc": "2026-10-09 01:10 UTC",
  "duracion_s": 7.8
 }
