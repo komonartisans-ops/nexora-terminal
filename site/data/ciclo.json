@@ -10,9 +10,9 @@
  "credito": {
   "ig": {
    "nombre": "Grado de inversión (IG)",
-   "fecha": "2026-10-07",
+   "fecha": "2026-10-08",
    "pb": 82,
-   "5d_pb": -2,
+   "5d_pb": -4,
    "1m_pb": 1,
    "3m_pb": 6,
    "percentil_1a": 83,
@@ -20,9 +20,9 @@
   },
   "bbb": {
    "nombre": "BBB (el escalón más bajo del grado de inversión)",
-   "fecha": "2026-10-07",
+   "fecha": "2026-10-08",
    "pb": 102,
-   "5d_pb": -1,
+   "5d_pb": -4,
    "1m_pb": 3,
    "3m_pb": 8,
    "percentil_1a": 78,
@@ -30,26 +30,26 @@
   },
   "hy": {
    "nombre": "High yield (HY)",
-   "fecha": "2026-10-07",
-   "pb": 309,
-   "5d_pb": -3,
-   "1m_pb": 41,
-   "3m_pb": 39,
-   "percentil_1a": 86,
+   "fecha": "2026-10-08",
+   "pb": 315,
+   "5d_pb": -9,
+   "1m_pb": 48,
+   "3m_pb": 45,
+   "percentil_1a": 92,
    "min_1a_pb": 260
   },
   "ccc": {
    "nombre": "CCC (las empresas más frágiles)",
-   "fecha": "2026-10-07",
-   "pb": 1229,
-   "5d_pb": 50,
-   "1m_pb": 174,
-   "3m_pb": 254,
+   "fecha": "2026-10-08",
+   "pb": 1252,
+   "5d_pb": 37,
+   "1m_pb": 196,
+   "3m_pb": 278,
    "percentil_1a": 100,
    "min_1a_pb": 822
   }
  },
- "estado_credito": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +174 pb en 1 mes",
+ "estado_credito": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +196 pb en 1 mes",
  "senales": [
   {
    "id": "curva",
@@ -1467,6 +1467,10 @@
     [
      "2026-10-07",
      82.0
+    ],
+    [
+     "2026-10-08",
+     82.0
     ]
    ],
    "bbb": [
@@ -2616,6 +2620,10 @@
     ],
     [
      "2026-10-07",
+     102.0
+    ],
+    [
+     "2026-10-08",
      102.0
     ]
    ],
@@ -3767,6 +3775,10 @@
     [
      "2026-10-07",
      309.0
+    ],
+    [
+     "2026-10-08",
+     315.0
     ]
    ],
    "ccc": [
@@ -4917,6 +4929,10 @@
     [
      "2026-10-07",
      1229.0
+    ],
+    [
+     "2026-10-08",
+     1252.0
     ]
    ]
   },
@@ -11689,6 +11705,6 @@
  },
  "tono": "pos",
  "ok": true,
- "generado_utc": "2026-10-09 11:59 UTC",
- "duracion_s": 6.8
+ "generado_utc": "2026-10-09 17:52 UTC",
+ "duracion_s": 5.6
 }

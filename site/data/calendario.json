@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-09 14:01 Madrid",
+ "generado": "2026-10-09 19:54 Madrid",
  "desde": "2026-08-30",
  "hasta": "2026-10-30",
  "eventos": [
@@ -834,6 +834,19 @@
    "nota": "fecha CONFIRMADA"
   },
   {
+   "fecha": "2026-10-21",
+   "dia": "mié",
+   "hora_ny": "",
+   "hora_madrid": "",
+   "evento": "Subasta del Tesoro Bond 19-Year 10-Month",
+   "importancia": "MEDIA",
+   "afecta": "índices · oro",
+   "que_mirar": "Demanda débil (cola) → yields ↑.",
+   "fuente": "TreasuryDirect (U.S. Treasury)",
+   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
+   "nota": "hora de cierre aún no anunciada"
+  },
+  {
    "fecha": "2026-10-22",
    "dia": "jue",
    "hora_ny": "08:30",
@@ -868,6 +881,19 @@
    "fuente": "FRED Release Calendar · H.4.1 Factors Affecting Reserve Balances",
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=20&y=2026",
    "nota": ""
+  },
+  {
+   "fecha": "2026-10-22",
+   "dia": "jue",
+   "hora_ny": "",
+   "hora_madrid": "",
+   "evento": "Subasta del Tesoro Note 5-Year",
+   "importancia": "MEDIA",
+   "afecta": "índices · oro",
+   "que_mirar": "Demanda débil (cola) → yields ↑.",
+   "fuente": "TreasuryDirect (U.S. Treasury)",
+   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
+   "nota": "hora de cierre aún no anunciada"
   },
   {
    "fecha": "2026-10-23",
@@ -1109,9 +1135,7 @@
    "dias": 21
   }
  },
- "errores": {
-  "subastas": null
- },
+ "errores": {},
  "nota": "Horas oficiales convertidas a Nueva York y Madrid con cambio de horario incluido. Las fechas de FRED las publican los organismos y pueden cambiar (p. ej., cierre del Gobierno).",
  "ultimos_publicados": {
   "IPC EE. UU. (CPI)": {
@@ -1195,6 +1219,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-09 11:59 UTC",
- "duracion_s": 40.8
+ "generado_utc": "2026-10-09 17:52 UTC",
+ "duracion_s": 38.3
 }
