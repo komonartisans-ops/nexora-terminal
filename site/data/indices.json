@@ -1,8 +1,8 @@
 {
  "ok": true,
- "generado_utc": "2026-10-09 17:52 UTC",
+ "generado_utc": "2026-10-09 18:02 UTC",
  "metricas": {
-  "generado_utc": "2026-10-09 17:55 UTC",
+  "generado_utc": "2026-10-09 18:05 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer los índices (S&P 500 · Nasdaq 100 · US30 · Russell 2000)",
   "indices": {
    "S&P 500": {
@@ -196,33 +196,33 @@
   },
   "tiempo_real": {
    "SPY": {
-    "precio": 778.37,
-    "cambio_pct": 0.57,
-    "hora": "Oct 9, 2026 1:57 PM ET",
+    "precio": 778.23,
+    "cambio_pct": 0.56,
+    "hora": "Oct 9, 2026 2:06 PM ET",
     "estado_mercado": "Open"
    },
    "QQQ": {
-    "precio": 750.72,
-    "cambio_pct": 0.42,
-    "hora": "Oct 9, 2026 1:56 PM ET",
+    "precio": 750.92,
+    "cambio_pct": 0.45,
+    "hora": "Oct 9, 2026 2:07 PM ET",
     "estado_mercado": "Open"
    },
    "DIA": {
-    "precio": 515.89,
-    "cambio_pct": 0.83,
-    "hora": "Oct 9, 2026 1:57 PM ET",
+    "precio": 515.94,
+    "cambio_pct": 0.84,
+    "hora": "Oct 9, 2026 2:07 PM ET",
     "estado_mercado": "Open"
    },
    "IWM": {
-    "precio": 279.33,
-    "cambio_pct": 0.63,
-    "hora": "Oct 9, 2026 1:57 PM ET",
+    "precio": 279.2843,
+    "cambio_pct": 0.62,
+    "hora": "Oct 9, 2026 2:06 PM ET",
     "estado_mercado": "Open"
    },
    "NDX": {
-    "precio": 30868.07,
-    "cambio_pct": 0.46,
-    "hora": "Oct 9, 2026 1:54 PM ET",
+    "precio": 30864.01,
+    "cambio_pct": 0.45,
+    "hora": "Oct 9, 2026 2:05 PM ET",
     "estado_mercado": "Open"
    }
   },
@@ -1370,69 +1370,69 @@
     ]
    },
    "Nasdaq 100": {
-    "referencia": 30868.07,
+    "referencia": 30864.01,
     "atr14": 396.93,
     "encima": [
      {
       "nombre": "máx. semana anterior",
       "nivel": 31017.52,
-      "dist_pct": 0.48,
+      "dist_pct": 0.5,
       "dist_atr": 0.4
      },
      {
       "nombre": "gap bajista 2026-10-07",
       "nivel": 31092.22,
-      "dist_pct": 0.73,
+      "dist_pct": 0.74,
       "dist_atr": 0.6
      },
      {
       "nombre": "máx. día anterior",
       "nivel": 31125.13,
-      "dist_pct": 0.83,
-      "dist_atr": 0.6
+      "dist_pct": 0.85,
+      "dist_atr": 0.7
      },
      {
       "nombre": "máx. 20 semanas",
       "nivel": 31361.37,
-      "dist_pct": 1.6,
-      "dist_atr": 1.2
+      "dist_pct": 1.61,
+      "dist_atr": 1.3
      },
      {
       "nombre": "máx. 52 semanas",
       "nivel": 31361.37,
-      "dist_pct": 1.6,
-      "dist_atr": 1.2
+      "dist_pct": 1.61,
+      "dist_atr": 1.3
      }
     ],
     "debajo": [
      {
       "nombre": "máx. mes anterior",
       "nivel": 30770.63,
-      "dist_pct": -0.32,
+      "dist_pct": -0.3,
       "dist_atr": -0.2
      },
      {
       "nombre": "mín. día anterior",
       "nivel": 30556.4,
-      "dist_pct": -1.01,
+      "dist_pct": -1.0,
       "dist_atr": -0.8
      },
      {
       "nombre": "mín. semana anterior",
       "nivel": 30081.06,
-      "dist_pct": -2.55,
+      "dist_pct": -2.54,
       "dist_atr": -2.0
      },
      {
       "nombre": "gap alcista 2026-09-21",
       "nivel": 29797.48,
-      "dist_pct": -3.47,
+      "dist_pct": -3.46,
       "dist_atr": -2.7
      },
      {
       "nombre": "gap alcista 2026-09-17",
       "nivel": 29318.72,
-      "dist_pct": -5.02,
+      "dist_pct": -5.01,
       "dist_atr": -3.9
      }
     ]

@@ -1,6 +1,6 @@
 {
  "metricas": {
-  "generado_utc": "2026-10-09T17:55:07Z",
+  "generado_utc": "2026-10-09T18:05:00Z",
   "errores": {},
   "reservas": {
    "fecha": "2026-10-07",
@@ -282,11 +282,11 @@
     "fecha": "2026-10-08"
    },
    "mercado": {
-    "mcap_total_usd": 2800468080131.535,
-    "volumen_24h_usd": 84811386633.18375,
-    "dominancia_btc_pct": 59.21909131134795,
-    "dominancia_eth_pct": 10.821001705535586,
-    "mcap_cambio_24h_pct": -0.6237428825646649
+    "mcap_total_usd": 2796901736543.9062,
+    "volumen_24h_usd": 83548856688.15756,
+    "dominancia_btc_pct": 59.19797158865049,
+    "dominancia_eth_pct": 10.823408634812738,
+    "mcap_cambio_24h_pct": -0.3607420335450857
    }
   },
   "contexto": {
@@ -343,24 +343,24 @@
     "percentil_1a": 11.590296495956872
    },
    "opciones": {
-    "put_call_oi": 0.5851546966812528,
-    "oi_total_btc": 375111.8,
-    "precio_ref": 82652.14,
+    "put_call_oi": 0.5851618814827896,
+    "oi_total_btc": 375228.9,
+    "precio_ref": 82604.88,
     "vencimientos": [
      {
       "fecha": "2026-10-30",
-      "oi_btc": 140208.50000000003,
-      "nocional_B": 11.588532571190003
+      "oi_btc": 140240.50000000003,
+      "nocional_B": 11.584549673640003
      },
      {
       "fecha": "2026-10-16",
       "oi_btc": 15009.599999999999,
-      "nocional_B": 1.2405755605439999
+      "nocional_B": 1.239866206848
      },
      {
       "fecha": "2026-10-23",
       "oi_btc": 7781.499999999999,
-      "nocional_B": 0.6431576274099999
+      "nocional_B": 0.64278987372
      }
     ]
    },
@@ -734,7 +734,7 @@
      "nombre": "Opciones BTC: put/call (open interest)",
      "estado": "FAVORABLE",
      "valor": "0.59",
-     "lectura": "vencimientos grandes: 2026-10-30 140,209 BTC (~11.6 B$); 2026-10-16 15,010 BTC (~1.2 B$); 2026-10-23 7,781 BTC (~0.6 B$)",
+     "lectura": "vencimientos grandes: 2026-10-30 140,241 BTC (~11.6 B$); 2026-10-16 15,010 BTC (~1.2 B$); 2026-10-23 7,781 BTC (~0.6 B$)",
      "fuente": "Deribit"
     },
     {
@@ -4342,6 +4342,10 @@
    ],
    [
     "2026-10-08",
+    0.0003
+   ],
+   [
+    "2026-10-09",
     0.0003
    ]
   ],
@@ -8488,6 +8492,6 @@
  },
  "errores_historico": {},
  "ok": true,
- "generado_utc": "2026-10-09 17:52 UTC",
- "duracion_s": 54.1
+ "generado_utc": "2026-10-09 18:02 UTC",
+ "duracion_s": 57.1
 }

@@ -143,9 +143,9 @@
    "valor": 7765.36
   },
   "Oro": {
-   "delta": 1.496276047931211,
+   "delta": 1.5299518320002425,
    "fecha": "2026-10-09",
-   "valor": 4219.2001953125
+   "valor": 4220.60009765625
   },
   "Bitcoin": {
    "delta": -1.9000526688302655,
@@ -330,8 +330,8 @@
    ]
   },
   "US30 · Dow Jones": {
-   "etiqueta": "SIN TESIS",
-   "tesis": "SIN TESIS: ni la macro ni su motor propio (DESFAVORABLE) marcan dirección.",
+   "etiqueta": "BAJISTA DÉBIL",
+   "tesis": "BAJISTA DÉBIL: solo lo empuja su motor propio (DESFAVORABLE); lo otro está neutral. Lo que la rompería: que ganen peso VIX y ADV/DECLINE (amplitud) (hoy ya empujan en sentido contrario).",
    "hoy": "A favor: baja el tipo real (lo que más les ayuda).",
    "semana": "Sin viento claro: la macro no ha cambiado lo suficiente.",
    "viento_semana": "SIN VIENTO CLARO",
@@ -372,8 +372,8 @@
    ]
   },
   "Russell 2000": {
-   "etiqueta": "SIN TESIS",
-   "tesis": "SIN TESIS: ni la macro ni su motor propio (DESFAVORABLE) marcan dirección.",
+   "etiqueta": "BAJISTA DÉBIL",
+   "tesis": "BAJISTA DÉBIL: solo lo empuja su motor propio (DESFAVORABLE); lo otro está neutral. Lo que la rompería: que ganen peso VIX y ADV/DECLINE (amplitud) (hoy ya empujan en sentido contrario).",
    "hoy": "A favor: baja el tipo real (lo que más les ayuda).",
    "semana": "Sin viento claro: la macro no ha cambiado lo suficiente.",
    "viento_semana": "SIN VIENTO CLARO",
@@ -416,23 +416,23 @@
  },
  "motores_propios": {
   "oro_xau": {
-   "calculado_utc": "2026-10-09 17:52 UTC",
+   "calculado_utc": "2026-10-09 18:02 UTC",
    "ok": true,
    "disponible": true
   },
   "indices": {
-   "calculado_utc": "2026-10-09 17:52 UTC",
+   "calculado_utc": "2026-10-09 18:02 UTC",
    "ok": true,
    "disponible": true
   },
   "liquidez_cripto": {
-   "calculado_utc": "2026-10-09 17:52 UTC",
+   "calculado_utc": "2026-10-09 18:02 UTC",
    "ok": true,
    "disponible": true
   }
  },
- "sencillo_activos": "Empujan en contra: Bitcoin; sin ventaja clara: Oro, Nasdaq 100, S&P 500, US30 · Dow Jones y Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
+ "sencillo_activos": "Empujan en contra: Bitcoin, US30 · Dow Jones y Russell 2000; sin ventaja clara: Oro, Nasdaq 100 y S&P 500 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-09 17:52 UTC",
- "duracion_s": 103.6
+ "generado_utc": "2026-10-09 18:02 UTC",
+ "duracion_s": 107.0
 }
