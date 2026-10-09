@@ -77,7 +77,7 @@ const PLAN = {
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados']);
+const LIVE = new Set(['resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto']);
 const D = {};
 const MOUNT = [];
 
@@ -140,8 +140,9 @@ function ck(estado) {
   return `<span class="ck ${c}">${esc(e || 'SIN DATO')}</span>`;
 }
 function tagTesis(et) {
-  const m = { 'ALCISTA': 'alc', 'BAJISTA': 'baj', 'DÉBIL': 'deb', 'SIN TESIS': 'sin' };
-  return et ? `<span class="tag ${m[et] || 'sin'}">${esc(et)}</span>` : '<span class="tag sd">NO CUBIERTO</span>';
+  const e = String(et || '');
+  const c = e.includes('DÉBIL') ? 'deb' : e.startsWith('ALCISTA') ? 'alc' : e.startsWith('BAJISTA') ? 'baj' : 'sin';
+  return e ? `<span class="tag ${c}">${esc(e)}</span>` : '<span class="tag sd">NO CUBIERTO</span>';
 }
 function fallo(nombre) {
   const e = D.meta && D.meta.etapas && D.meta.etapas[nombre];
@@ -214,6 +215,32 @@ const LABEL = { t2y: 'Rendimiento 2Y EE. UU.', real: 'Tipo real 10Y', dxy: 'Dól
 const UMB = { fed: [10, 15], t2y: [5, 10], real: [4, 8], dxy: [0.3, 0.6], vix: [8, 12], hy: [8, 15] };
 const UNID = { fed: ['%', ' pts'], t2y: ['%', ' pb'], real: ['%', ' pb'], dxy: ['', '%'], vix: ['', '%'], hy: [' pb', ' pb'] };
 
+/* alerta de tensión de crédito (CCC, HY, BBB, IG) con las reglas y umbrales de ciclo.py: solo aparece si está activa */
+function alertaCredito() {
+  const C = D.ciclo;
+  if (!C || !C.estado_credito || !/TENSI/i.test(C.estado_credito)) return '';
+  const U = C.umb_cred || {}, S = (C.series && C.series.oas) || {}, cr = C.credito || {};
+  const NOM = { ccc: 'CCC · las más frágiles', hy: 'High yield', bbb: 'BBB', ig: 'Grado de inversión' };
+  const celdas = ['ccc', 'hy', 'bbb', 'ig'].map((k) => {
+    const m = cr[k];
+    if (!m) return `<div class="cm"><div class="k">${NOM[k]}</div><div class="v">${SD}</div></div>`;
+    const u = U[k] || [];
+    const d5 = m['5d_pb'] ?? m.d5_pb;
+    const on = (d5 != null && u[0] != null && d5 >= u[0]) || (m['1m_pb'] != null && u[1] != null && m['1m_pb'] >= u[1]);
+    return `<div class="cm ${on ? 'on' : ''}"><div class="k">${NOM[k]}${on ? ' · SUPERA UMBRAL' : ''}</div><div class="v mono">${num(m.pb, 0)}<small> pb</small></div>
+      <div class="d">5 d ${pill(d5, 0, ' pb', true)} · 1 m ${pill(m['1m_pb'], 0, ' pb', true)}</div>${S[k] ? spark(S[k], 126) : ''}
+      <div class="n">percentil ${m.percentil_1a} del último año · alerta a ${u[0] ?? '—'} pb (5 d) / ${u[1] ?? '—'} pb (1 m)</div><div class="n">${esc(fdy(m.fecha))}</div></div>`;
+  }).join('');
+  const ccc = cr.ccc;
+  return `<a class="credit-alert" href="#/ciclo" aria-label="Alerta de tensión de crédito">
+    <div class="ca-head"><span class="ca-tag">ALERTA ACTIVA</span><span class="ca-title">${esc(C.estado_credito)}</span><span class="ca-go">Ciclo y crédito →</span></div>
+    <div class="ca-body"><div class="ca-text"><p><b>Hecho</b>${esc(C.estado_credito)}${ccc ? `. El diferencial CCC está en ${num(ccc.pb, 0)} pb, en el percentil ${ccc.percentil_1a} del último año (mínimo de 12 meses: ${num(ccc.min_1a_pb, 0)} pb).` : ''}</p>
+      <p><b>Interpretación</b>Los bonos de las empresas más endeudadas exigen cada vez más para financiarlas. Suele adelantarse a la bolsa y pesa sobre todo en el Russell 2000.</p>
+      <p><b>Escenario a vigilar</b>Si se amplía también el high yield (umbral ${(U.hy || [])[0] ?? '—'} pb en 5 días), el estrés deja de ser solo de los más frágiles y pasa a ser de todo el crédito de riesgo. Si el CCC se estrecha, la señal pierde fuerza.</p></div>
+      <div class="ca-grid">${celdas}</div></div>
+    <div class="foot"><span>Fuente: ICE BofA vía FRED (BAMLH0A3HYC, BAMLH0A0HYM2, BAMLC0A4CBBB, BAMLC0A0CM) · reglas de ciclo.py</span><span>dato ${esc(fdy((cr.ccc || {}).fecha))}</span></div></a>`;
+}
+
 function pageResumen() {
   const R = D.resumen, P = D.precios, C = D.calendario, T = D.tipos;
   const act = (P && P.activos) || {};
@@ -226,7 +253,8 @@ function pageResumen() {
   h += fallo('precios') + fallo('resumen');
   const prox = ((C && C.eventos) || []).filter((e) => e.fecha >= hoyISO());
   const vig = R ? R.vigilar.slice(0, 2).map(esc).join(' · ') : SD;
-  h += essential(R ? esc(R.movido) : SD, R ? esc(R.tesis) : SD, vig);
+  h += alertaCredito();
+  h += essential(R ? esc(R.movido) : SD, R ? (R.sencillo_activos ? esc(R.sencillo_activos.split('. Cada activo')[0]) + '.' : esc(R.tesis)) : SD, vig);
 
   h += '<div class="sect"><h2>Activos</h2><span class="more">cambio 1d · 1 sem · 1 mes · 3 meses · gráfico de 3 meses</span></div><div class="grid g6">';
   h += orden.map(([k, nm, u]) => {
@@ -249,25 +277,22 @@ function pageResumen() {
   }).join('');
   h += '</tbody></table></div>';
 
-  /* tesis: las que tienen viento, en tarjeta completa; las SIN TESIS, compactadas en una fila cada una */
+  /* tesis por activo: MISMO motor que el informe diario (por_activo.py): viento macro de la semana + veredicto del monitor propio */
   const nombres = ['Oro', 'Nasdaq 100', 'S&P 500', 'Bitcoin', 'US30 · Dow Jones', 'Russell 2000'];
-  const conTesis = nombres.filter((n) => TES[n] && TES[n].etiqueta !== 'SIN TESIS');
-  const sinTesis = nombres.filter((n) => !(TES[n] && TES[n].etiqueta !== 'SIN TESIS'));
-  const texto = (n) => { const s = R && R.significa.find((x) => x.activo === n); return s ? s.texto : (TES[n] ? 'Ningún motor macro supera su umbral de hoy.' : null); };
-  h += '<div class="grid g21 stretch" style="margin-top:12px"><div class="col"><div class="sect" style="margin-top:14px"><h2>Tesis por activo · causa → efecto</h2><span class="more">viento macro de hoy · seis activos</span></div>';
-  if (conTesis.length) {
-    h += '<div class="grid g2">' + conTesis.map((n) => {
-      const t = TES[n];
-      const mot = t.motores.map((m) => `<div>${esc(LABEL[m.motor] || m.motor)} ${m.sube ? '↑' : '↓'} → ${esc(m.razon)}</div>`).join('');
-      return `<div class="card asset"><div class="top"><div class="nm">${esc(n)}</div>${tagTesis(t.etiqueta)}</div>
-        <div class="flow">${esc(texto(n) || '')}<em>Motores que lo mueven</em>${mot}</div>${foot('Reglas NEXORA (sensibilidades fijas)', corteFecha)}</div>`;
-    }).join('') + '</div>';
-  }
-  if (sinTesis.length) {
-    h += `<div class="card compact" style="margin-top:12px"><div class="chead"><span>Sin tesis hoy</span><span class="more">ningún motor macro supera su umbral</span></div>
-      ${sinTesis.map((n) => `<div class="trow"><span class="nm">${esc(n)}</span>${tagTesis(TES[n] ? TES[n].etiqueta : null)}<span class="why">${esc(texto(n) || 'SIN DATO')}</span></div>`).join('')}
-      ${foot('Reglas NEXORA (sensibilidades fijas)', corteFecha)}</div>`;
-  }
+  const MP = (R && R.motores_propios) || {};
+  const monDe = { 'Oro': 'oro_xau', 'Bitcoin': 'liquidez_cripto' };
+  const lst = (arr) => (arr && arr.length ? arr.map(esc).join(' · ') : '');
+  const cardTesis = (n) => {
+    const t = TES[n];
+    if (!t) return `<div class="card asset"><div class="top"><div class="nm">${esc(n)}</div>${tagTesis(null)}</div><div class="flow">SIN DATO: la tesis no se pudo calcular en esta ejecución.</div>${foot('Motor NEXORA (por_activo.py)', false)}</div>`;
+    const pr = t.propio, est = MP[monDe[n] || 'indices'] || {};
+    const prop = pr ? `<div><b style="color:var(--text)">${esc(pr.veredicto)}</b> · ${esc(pr.detalle)}</div>${pr.favor && pr.favor.length ? `<div class="up">A favor: ${lst(pr.favor)}</div>` : ''}${pr.contra && pr.contra.length ? `<div class="down">En contra: ${lst(pr.contra)}</div>` : ''}${pr.rotacion ? `<div>Rotación cíclico/defensivo (XLY/XLP): ${esc(pr.rotacion)}</div>` : ''}${pr.avisos && pr.avisos[0] ? `<div style="color:var(--amber)">${esc(pr.avisos[0])}</div>` : ''}` : '<div>SIN DATO: el monitor propio no respondió (nunca se estima).</div>';
+    return `<div class="card asset"><div class="top"><div class="nm">${esc(n)}</div>${tagTesis(t.etiqueta)}</div>
+      <div class="flow">${esc(t.tesis)}<em>Viento macro</em><div>Hoy · ${esc(t.hoy)}</div><div>Semana · ${esc(t.semana)}</div><em>Su motor propio · ${esc(t.motor_propio_nombre || '')}</em>${prop}</div>
+      ${foot('Motor NEXORA por_activo.py (monitor ' + (est.calculado_utc ? horaAct(est.calculado_utc) : 'SIN DATO') + ')', corteFecha)}</div>`;
+  };
+  h += '<div class="grid g21 stretch" style="margin-top:12px"><div class="col"><div class="sect" style="margin-top:14px"><h2>Tesis por activo · viento macro + motor propio</h2><span class="more">mismo motor que el informe diario · seis activos</span></div>';
+  h += '<div class="grid g2">' + nombres.map(cardTesis).join('') + '</div>';
   /* gráfico grande que llena el hueco bajo las tesis: 2Y vs tipo real a 10 años (Tesoro de EE. UU.) */
   const t2 = T && T.t2y, rl = T && T.real10;
   h += `<div class="card chartcard" style="margin-top:12px"><h3>Bono a 2 años frente al tipo real a 10 años</h3><div class="sub">Los dos motores que más pesan en oro e índices. Si el 2Y baja y el tipo real no, el mercado espera una Fed más blanda pero sigue exigiendo rentabilidad real.</div>
@@ -286,7 +311,7 @@ function pageResumen() {
   h += foot('Calendario NEXORA (FRED, ISM, Fed, Nasdaq)', false, null, 'hora de Madrid') + '</div>';
   h += cardAlertas() + '</div></div>';
 
-  h += `<div class="sect"><h2>En palabras sencillas</h2></div><div class="card"><div class="simple">${R ? esc(R.sencillo) : SD}</div>
+  h += `<div class="sect"><h2>En palabras sencillas</h2></div><div class="card"><div class="simple">${R ? esc(R.sencillo_activos || '') + ' ' + esc(R.sencillo) : SD}</div>
     <ul class="watch" style="margin-top:12px">${R ? R.vigilar.map((v) => `<li>${esc(v)}</li>`).join('') : ''}</ul>
     <div class="note">Cada cifra procede de su fuente oficial (Tesoro de EE. UU., FRED, Cboe, Nasdaq, Coinbase, futuros ZQ). Si una descarga falla se muestra SIN DATO: nunca se interpola ni se estima.</div>${foot('Plantillas deterministas NEXORA (sin IA)', corteFecha)}</div>`;
   return h;
@@ -709,7 +734,7 @@ function route() {
   $$('.menu a').forEach((a) => a.classList.toggle('cur', a.dataset.id === p.id));
   const it = $(`.nav-item[data-g="${p.g}"] .nav-btn`); if (it) it.classList.add('active');
   MOUNT.length = 0;
-  const fn = { resumen: pageResumen, bancos: pageBancos, liquidez: pageLiquidez, calendario: pageCalendario, ciclo: pageCiclo, regimen: pageRegimen, publicados: pagePublicados }[p.id];
+  const fn = { resumen: pageResumen, bancos: pageBancos, liquidez: pageLiquidez, calendario: pageCalendario, ciclo: pageCiclo, regimen: pageRegimen, publicados: pagePublicados }[p.id] || (window.EXTRA_PAGES || {})[p.id];
   let html;
   try { html = fn ? fn() : pagePlaceholder(p); } catch (e) { console.error(e); html = head(p.g, p.t, '', '') + `<div class="banner red" style="border-radius:6px">Error al dibujar esta página: ${esc(e.message)}. El resto de la web sigue funcionando.</div>`; }
   $('#app').innerHTML = html;
@@ -719,7 +744,7 @@ function route() {
 }
 
 async function cargar() {
-  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas'].map(async (n) => {
+  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series'].map(async (n) => {
     try { const r = await fetch(`data/${n}.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) D[n] = await r.json(); } catch (e) { /* SIN DATO */ }
   }));
 }

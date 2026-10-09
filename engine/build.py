@@ -35,6 +35,10 @@ NOW = dt.datetime.now(dt.timezone.utc)
 STAMP = NOW.strftime("%Y-%m-%d %H:%M UTC")
 
 
+# monitores ya calculados en este proceso: se ejecutan UNA sola vez y los reutilizan resumen y régimen
+_MON = {}
+
+
 # ------------------------------------------------------------------ utilidades
 def ruta(nombre):
     return os.path.join(SITE_DATA, nombre)
@@ -295,6 +299,7 @@ def etapa_liquidez():
     except Exception:  # noqa: BLE001
         fw = None
     E = LQ.evaluar(M, fw)
+    _MON["liquidez_cripto"] = (M, E)
     hoy = dt.date.today()
     desde = (hoy - dt.timedelta(days=800)).isoformat()
     ser, errs = {}, {}
@@ -357,33 +362,183 @@ def etapa_liquidez():
     return {"metricas": M, "evaluacion": E, "historico": hist, "errores_historico": errs}
 
 
+# ------------------------------------------------------------------ monitores de oro e índices (una sola ejecución; los reutilizan resumen y régimen)
+def _par(serie):
+    return [[str(d), round(float(v), 4)] for d, v in (serie or [])]
+
+
+def _guardar_monitor(nombre, M, E, extra):
+    escribir(f"{nombre}.json", {"ok": True, "generado_utc": STAMP, "metricas": {k: v for k, v in M.items() if not k.startswith("_")},
+                                "evaluacion": E, **extra})
+
+
+def etapa_monitores():
+    import concurrent.futures as cf
+    import oro_xau
+    gld = {}
+    orig = oro_xau.gld_holdings
+
+    def gld_cache():  # misma descarga del monitor: se guarda la serie completa para el gráfico de toneladas
+        r = orig()
+        gld["s"] = r
+        return r
+    oro_xau.gld_holdings = gld_cache
+
+    def correr(mod):
+        m = __import__(mod)
+        M = m.medir()
+        return M, m.evaluar(M)
+    res, err = {}, {}
+    with cf.ThreadPoolExecutor(2) as ex:
+        fut = {ex.submit(correr, mod): k for k, mod in (("oro", "oro_xau"), ("indices", "indices"))}
+        for f in cf.as_completed(fut):
+            k = fut[f]
+            try:
+                res[k] = f.result()
+            except Exception as e:  # noqa: BLE001
+                err[k] = f"{type(e).__name__}: {e}"
+                print(f"[{k}] FALLO {err[k]}\n{traceback.format_exc()}", file=sys.stderr)
+    est = {}
+    for k, (M, E) in res.items():
+        _MON["oro_xau" if k == "oro" else "indices"] = (M, E)
+        extra = {}
+        if k == "oro":
+            extra["series"] = {"gld_t": _par([(d, t) for d, t, _ in (gld.get("s") or [])][-900:]) or None}
+        _guardar_monitor(k, M, E, extra)
+        est[k] = {"ok": True}
+    for k, e in err.items():
+        prev = leer(f"{k}.json") or {}
+        prev["ok"], prev["error"] = False, e
+        escribir(f"{k}.json", prev)
+        est[k] = {"ok": False, "error": e}
+    if len(err) == 2:
+        raise RuntimeError("ni oro ni índices respondieron: " + json.dumps(err)[:300])
+    return {"monitores": est}
+
+
+# ------------------------------------------------------------------ series para los gráficos de Oro, Índices y Cripto (solo fuentes gratuitas; si falla = SIN DATO)
+SERIES_YAHOO = [("xly", "XLY", "Consumo discrecional (ETF XLY)"), ("xlp", "XLP", "Consumo básico (ETF XLP)"), ("rsp", "RSP", "S&P 500 igual peso (ETF RSP)"),
+                ("spy", "SPY", "S&P 500 (ETF SPY)"), ("iwm", "IWM", "Russell 2000 (ETF IWM)"), ("qqq", "QQQ", "Nasdaq 100 (ETF QQQ)"),
+                ("gld", "GLD", "SPDR Gold Shares (precio)"), ("vix3m", "^VIX3M", "VIX a 3 meses (Cboe)"), ("gdx", "GDX", "Mineras de oro (ETF GDX)")]
+
+
+def etf_btc_serie():
+    """Flujos diarios de los ETF de bitcoin de EE. UU. (Farside Investors, millones de $). Devuelve [(fecha, total)]."""
+    import html as _h
+    import re
+    import urllib.request
+    req = urllib.request.Request("https://farside.co.uk/btc/", headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0 Safari/537.36"})
+    t = urllib.request.urlopen(req, timeout=40).read().decode("utf-8", "replace")
+    out = []
+    for r in re.findall(r"<tr[^>]*>(.*?)</tr>", t, flags=re.S):
+        c = [re.sub(r"\s+", " ", _h.unescape(re.sub(r"<[^>]+>", "", x))).strip() for x in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", r, flags=re.S)]
+        if len(c) >= 3 and re.match(r"\d{2} \w{3} \d{4}$", c[0]) and c[-1] not in ("-", ""):
+            try:
+                out.append((dt.datetime.strptime(c[0], "%d %b %Y").date(), float(c[-1].replace(",", "").replace("(", "-").replace(")", ""))))
+            except ValueError:
+                continue
+    if not out:
+        raise RuntimeError("Farside sin filas con dato")
+    return out[-250:]
+
+
+def etapa_series():
+    err, out, cr = {}, {}, {}
+    for k, sym, nombre in SERIES_YAHOO:
+        try:
+            pts, origen = yahoo(sym)
+            time.sleep(0.8)
+            out[k] = {"nombre": nombre, "simbolo": sym, "fecha": pts[-1][0].isoformat(), "valor": round(pts[-1][1], 4), "serie": serie_json(pts, 400), "fuente": origen}
+        except Exception as e:  # noqa: BLE001
+            err[k] = f"{type(e).__name__}: {e}"
+    def toma(clave, fn, *a):
+        try:
+            return fn(*a)
+        except Exception as e:  # noqa: BLE001
+            err[clave] = f"{type(e).__name__}: {e}"
+    btc, eth = toma("coinbase_btc", LQ.coinbase, "BTC-USD", 300), toma("coinbase_eth", LQ.coinbase, "ETH-USD", 300)
+    if btc:
+        cr["btc"] = serie_json([(d, c) for d, c, _ in btc])
+    if eth:
+        cr["eth"] = serie_json([(d, c) for d, c, _ in eth])
+    if btc and eth:
+        b = {d: c for d, c, _ in btc}
+        cr["ethbtc"] = serie_json([(d, c / b[d]) for d, c, _ in eth if d in b])
+    st = toma("stablecoins", LQ.stablecoins)
+    if st:
+        cr["stablecoins_B"] = serie_json(st)
+    dv = toma("dvol", LQ.deribit_dvol, 370)
+    if dv:
+        cr["dvol"] = serie_json(dv)
+    fu = toma("funding_btc", LQ.okx_funding, "BTC-USDT-SWAP")
+    if fu:
+        por_dia = {}
+        for ts, r in fu:
+            por_dia.setdefault(ts.date(), []).append(r)
+        cr["funding_btc_anual_pct"] = serie_json([(d, sum(v) / len(v) * 3 * 365 * 100) for d, v in sorted(por_dia.items())])
+    oi = toma("oi_btc", LQ.okx_oi, "BTC")
+    if oi:
+        cr["oi_btc"] = serie_json(oi)
+    et = toma("etf_btc", etf_btc_serie)
+    if et:
+        cr["etf_btc_musd"] = serie_json(et)
+    if not out and not cr:
+        raise RuntimeError("ninguna serie respondió: " + json.dumps(err)[:300])
+    return {"yahoo": out, "cripto": cr, "errores": err}
+
+
 # ------------------------------------------------------------------ resumen (tesis por activo, plantillas deterministas)
+def _monitor(nombre, archivo):
+    """(M, E) del monitor: el calculado en este proceso o, si no, la última copia guardada (con su fecha)."""
+    if nombre in _MON:
+        return _MON[nombre], STAMP, True
+    j = leer(archivo)
+    if j and j.get("evaluacion"):
+        return (j.get("metricas") or {}, j["evaluacion"]), j.get("generado_utc"), bool(j.get("ok"))
+    return None, None, False
+
+
 def etapa_resumen():
+    """Tesis por activo con el MISMO motor del informe diario (por_activo.py): viento macro de la semana + veredicto del monitor propio
+    (oro_xau, indices, liquidez_cripto). US30 y Russell salen del motor de índices (por_indice)."""
     import una_pagina
-    fwp = ruta("fedwatch.json")
-    cap = ruta("calendario.json")
-    P = una_pagina.generar("nexora", 1, fwp if (leer("fedwatch.json") or {}).get("ok") else None,
-                           cap if (leer("calendario.json") or {}).get("ok") else None)
-    # etiqueta de tesis por activo: suma firmada de los motores significativos (misma regla que 'viento' de una_pagina)
+    import por_activo
+    F, C = leer("fedwatch.json"), leer("calendario.json")
+    fw = F if F and F.get("ok") else None
+    if fw is None:
+        try:
+            import fedwatch
+            fw = fedwatch.medir()
+        except Exception:  # noqa: BLE001
+            fw = None
+    cal = C if C and C.get("eventos") else None
+    P = una_pagina.construir(una_pagina.medir(1, fw), "nexora", cal, fw)
+    try:
+        P5 = una_pagina.construir(una_pagina.medir(5, fw), "nexora", cal, fw)
+    except Exception:  # noqa: BLE001
+        P5 = {}
+    R, est = {}, {}
+    for nombre, archivo in (("oro_xau", "oro.json"), ("indices", "indices.json"), ("liquidez_cripto", "liquidez.json")):
+        v, cuando, ok = _monitor(nombre, archivo)
+        if v:
+            R[nombre] = v
+        est[nombre] = {"calculado_utc": cuando, "ok": ok, "disponible": bool(v)}
+    X = por_activo.construir(P, P5, R, "", por_activo.ACTIVOS_WEB)
     tes = {}
-    for a, cs in P.get("detalle_viento", {}).items():
-        tot = round(sum(c["peso"] for c in cs), 2)
-        if tot > 0.75:
-            et = "ALCISTA"
-        elif tot < -0.75:
-            et = "BAJISTA"
-        elif abs(tot) >= 0.25:
-            et = "DÉBIL"
-        else:
-            et = "SIN TESIS"
-        tes[a] = {"etiqueta": et, "puntuacion": tot, "motores": cs}
+    for a, x in X.items():
+        cs = (P.get("detalle_viento") or {}).get(a, [])
+        tes[a] = {"etiqueta": x["sesgo"], "tesis": x["tesis"], "hoy": x["hoy"], "semana": x["semana"], "viento_semana": x["viento_semana"],
+                  "propio": x["propio"], "motor_propio_nombre": por_activo.MOTOR_PROPIO.get(a), "motores": cs}
     P["tesis_activos"] = tes
+    P["motores_propios"] = est
+    P["sencillo_activos"] = por_activo.sencillo(X)
     P.pop("datos", None)
     # memoria permanente: tesis del día por activo (una fila por activo y día) para el registro de tesis y su verificación posterior
     px = {"Oro": "oro", "Bitcoin": "btc", "S&P 500": "spx", "Nasdaq 100": "ndx", "US30 · Dow Jones": "dji", "Russell 2000": "rut"}
     pr = (leer("precios.json") or {}).get("activos", {})
-    csvlog.anadir("registro_tesis.csv", [{"fecha": dt.date.today().isoformat(), "activo": a, "tesis": t["etiqueta"], "puntuacion": t["puntuacion"],
-                                          "motores": "; ".join(f"{m['motor']}{'↑' if m['sube'] else '↓'}" for m in t["motores"]),
+    csvlog.anadir("registro_tesis.csv", [{"fecha": dt.date.today().isoformat(), "activo": a, "tesis": t["etiqueta"],
+                                          "puntuacion": por_activo.VIENTO_N.get(t["viento_semana"], 0) + por_activo.VEREDICTO_N.get((t["propio"] or {}).get("veredicto"), 0),
+                                          "motores": f"viento semana: {t['viento_semana']}; motor propio: {(t['propio'] or {}).get('veredicto', 'SIN DATO')}",
                                           "precio_referencia": (pr.get(px.get(a)) or {}).get("valor", ""), "capturado_utc": STAMP}
                                          for a, t in tes.items()], ("fecha", "activo"))
     return P
@@ -431,8 +586,9 @@ def etapa_publicados():
 def etapa_regimen():
     import regimen
     cal = leer("calendario.json")
-    cripto = ruta("liquidez.json") if (leer("liquidez.json") or {}).get("evaluacion") else None
-    R = regimen.medir(cripto=cripto)
+    def ruta_si(n):  # los monitores ya calculados hoy se reutilizan (no se vuelven a descargar)
+        return ruta(n) if (leer(n) or {}).get("evaluacion") else None
+    R = regimen.medir(cripto=ruta_si("liquidez.json"), oro=ruta_si("oro.json"), indices=ruta_si("indices.json"))
     E = regimen.evaluar(R, cal if cal and cal.get("eventos") else None)
     E.pop("fedwatch", None)
     if "respaldo: LBMA no respondió" in json.dumps(E, ensure_ascii=False):  # que la etiqueta no diga LBMA si el oro viene de COMEX
@@ -451,9 +607,9 @@ def etapa_alertas():
 
 # ------------------------------------------------------------------ principal
 ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_tipos, "calendario": etapa_calendario,
-          "liquidez": etapa_liquidez, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen,
+          "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen,
           "regimen": etapa_regimen, "alertas": etapa_alertas}
-ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "ciclo", "publicados", "resumen", "regimen", "alertas"]
+ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "resumen", "regimen", "alertas"]
 MODOS = {"horario": ["precios", "fedwatch", "tipos", "alertas"], "diario": ORDEN, "todo": ORDEN}
 
 
