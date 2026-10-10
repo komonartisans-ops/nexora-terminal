@@ -62,6 +62,9 @@ const PAGES = [
   { id: 'liquidez', g: 'Análisis', t: 'Liquidez', d: 'Liquidez neta de la Fed, reservas, TGA, RRP y liquidez global', f: 1 },
   { id: 'divisas', g: 'Análisis', t: 'Sesgo de divisas', d: 'Matriz de ocho divisas por factores', f: 4 },
   { id: 'posicionamiento', g: 'Análisis', t: 'Posicionamiento (COT)', d: 'CFTC: neto no comercial y gestores de activos', f: 4 },
+  { id: 'skew', g: 'Análisis', t: 'Riesgo de cola (SKEW)', d: 'SKEW de Cboe, confirmaciones y estudio histórico', f: 6 },
+  { id: 'gamma', g: 'Análisis', t: 'Gamma de índices', d: 'Call Wall, Put Wall y Gamma Flip en ES y NQ', f: 6 },
+  { id: 'semis', g: 'Análisis', t: 'Semis vs Software', d: 'Ratio SMH/IGV, escenario del día e impacto en NQ, ES, YM', f: 6 },
   { id: 'oro', g: 'Análisis', t: 'Oro, reservas y flujos', d: 'Tipo real, DXY, GLD, compras de bancos centrales', f: 3 },
   { id: 'indices', g: 'Análisis', t: 'Índices USA', d: 'Amplitud, beneficios, VIX, XLY/XLP', f: 3 },
   { id: 'cripto', g: 'Análisis', t: 'Cripto', d: 'BTC, ETH/BTC, funding, OI, stablecoins, ETF', f: 3 },
@@ -77,7 +80,7 @@ const PLAN = {
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['diario', 'tesis', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias']);
+const LIVE = new Set(['diario', 'tesis', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis']);
 const D = {};
 const MOUNT = [];
 
@@ -712,7 +715,7 @@ function cardAlertas() {
   const U = A.umbrales || {};
   return `<div class="sect"><h2>Alertas Telegram</h2><span class="more">${A.telegram_configurado ? 'canal activo' : 'canal sin configurar en esta ejecución'}</span></div><div class="card">
     ${r.length ? r.map((x) => `<div class="alrt"><span class="mono" style="color:var(--dim);font-size:10.5px">${esc(horaAct(x.fecha_utc))}</span><span>${esc(x.titulo)}</span><span class="ck ${x.enviada ? 'ok' : 'no'}">${x.enviada ? 'ENVIADA' : 'NO ENVIADA'}</span></div>`).join('') : '<div class="note" style="margin:0">Ninguna alerta disparada todavía: ningún umbral se ha cruzado.</div>'}
-    <div class="note">Umbrales: Fed ±${U.fed_pts ?? 15} pts · 2Y ±${U.t2y_pb ?? 12} pb · 10Y real ±${U.real_pb ?? 8} pb · DXY ±${U.dxy_pct ?? 0.7} % · VIX &gt;${U.vix_nivel ?? 25} · IG +${U.ig_pb ?? 10} / BBB +${U.bbb_pb ?? 12} / HY +${U.hy_pb ?? 25} / CCC +${U.ccc_pb ?? 60} pb (5 d) · oro ±${U.oro_pct ?? 2} % · BTC −7 / +8 % · ETF BTC &lt;−500 M$. Una vez al día cada una.</div>
+    <div class="note">Umbrales: Fed ±${U.fed_pts ?? 15} pts · 2Y ±${U.t2y_pb ?? 12} pb · 10Y real ±${U.real_pb ?? 8} pb · DXY ±${U.dxy_pct ?? 0.7} % · VIX &gt;${U.vix_nivel ?? 25} · IG +${U.ig_pb ?? 10} / BBB +${U.bbb_pb ?? 12} / HY +${U.hy_pb ?? 25} / CCC +${U.ccc_pb ?? 60} pb (5 d) · oro ±${U.oro_pct ?? 2} % · BTC −7 / +8 % · ETF BTC &lt;−500 M$ · SKEW ≥ ${U.skew_alto ?? 140} (una por episodio). Una vez al día cada una.</div>
     ${foot('Motor de alertas NEXORA (data/estado_alertas.json)', false, null, esc('evaluado ' + horaAct(A.ultima_evaluacion_utc)))}</div>`;
 }
 
@@ -750,7 +753,7 @@ function route() {
 }
 
 async function cargar() {
-  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis'].map(async (n) => {
+  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma'].map(async (n) => {
     try { const r = await fetch(`data/${n}.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) D[n] = await r.json(); } catch (e) { /* SIN DATO */ }
   }));
 }

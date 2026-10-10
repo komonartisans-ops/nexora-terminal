@@ -1,6 +1,6 @@
 {
- "actualizado_utc": "2026-10-09 22:30 UTC",
- "modo": "horario",
+ "actualizado_utc": "2026-10-10 08:06 UTC",
+ "modo": "diario",
  "etapas": {
   "precios": {
    "ok": true,
@@ -106,7 +106,35 @@
    "error": null,
    "ejecutada_utc": "2026-10-09 22:30 UTC",
    "ultimo_ok_utc": "2026-10-09 22:30 UTC"
+  },
+  "skew": {
+   "ok": true,
+   "duracion_s": 2.6,
+   "error": null,
+   "ejecutada_utc": "2026-10-10 08:00 UTC",
+   "ultimo_ok_utc": "2026-10-10 08:00 UTC"
+  },
+  "semis": {
+   "ok": true,
+   "duracion_s": 23.1,
+   "error": null,
+   "ejecutada_utc": "2026-10-10 08:00 UTC",
+   "ultimo_ok_utc": "2026-10-10 08:00 UTC"
+  },
+  "gamma": {
+   "ok": true,
+   "duracion_s": 29.2,
+   "error": null,
+   "ejecutada_utc": "2026-10-10 08:06 UTC",
+   "ultimo_ok_utc": "2026-10-10 08:06 UTC"
+  },
+  "contexto": {
+   "ok": true,
+   "duracion_s": 0.1,
+   "error": null,
+   "ejecutada_utc": "2026-10-10 08:06 UTC",
+   "ultimo_ok_utc": "2026-10-10 08:06 UTC"
   }
  },
- "duracion_total_s": 102.8
+ "duracion_total_s": 29.3
 }

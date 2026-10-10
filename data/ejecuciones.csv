@@ -15,3 +15,6 @@ capturado_utc,modo,evento,etapas_ok,etapas_fallo,duracion_s
 2026-10-09 18:41 UTC,diario,local,"fedwatch,divisas,cot,noticias",,28.7
 2026-10-09 18:45 UTC,diario,workflow_dispatch,"precios,fedwatch,tipos,calendario,liquidez,monitores,series,ciclo,publicados,resumen,regimen,divisas,cot,noticias,alertas",,543.6
 2026-10-09 22:30 UTC,horario,schedule,"precios,fedwatch,tipos,noticias,alertas",,102.8
+2026-10-10 08:00 UTC,diario,local,"skew,semis,gamma,contexto",,50.5
+2026-10-10 08:05 UTC,diario,local,contexto,gamma,0.1
+2026-10-10 08:06 UTC,diario,local,contexto,gamma,0.1

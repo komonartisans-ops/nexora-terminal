@@ -1,0 +1,1340 @@
+{
+ "version": 1,
+ "generado_utc": "2026-10-10 08:06 UTC",
+ "terminal": "https://komonartisans-ops.github.io/nexora-terminal/",
+ "proposito": "Resumen compacto de todo el terminal NEXORA para redactar informes. Fuente y fecha en cada bloque. Sin IA en su generación.",
+ "lectura_para_informes": [
+  "Cita siempre la fuente y la fecha del dato que uses (campos 'fuente' y 'fecha' de cada bloque). El periodo del dato no es la fecha de publicación.",
+  "Separa hecho, interpretación, hipótesis y escenario. No hagas recomendaciones de compra o venta.",
+  "Un bloque con estado 'SIN DATO' o con 'ok': false significa que la fuente falló: dilo, no lo estimes ni lo sustituyas por memoria.",
+  "Los bloques 'CRITERIO NEXORA' (gamma, semis/software, zonas del SKEW) son métodos propios, no datos oficiales: menciona el método.",
+  "Revisa 'frescura' y 'datos_con_mas_de_48h' antes de afirmar nada sobre el estado actual."
+ ],
+ "frescura": {
+  "precios": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 22:30 UTC"
+  },
+  "fedwatch": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 22:30 UTC"
+  },
+  "calendario": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 18:45 UTC"
+  },
+  "liquidez": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 18:45 UTC"
+  },
+  "resumen": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 18:45 UTC"
+  },
+  "tipos": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 22:30 UTC"
+  },
+  "ciclo": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 18:45 UTC"
+  },
+  "publicados": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 18:45 UTC"
+  },
+  "regimen": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 18:45 UTC"
+  },
+  "alertas": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 22:30 UTC"
+  },
+  "monitores": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 18:45 UTC"
+  },
+  "series": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 18:45 UTC"
+  },
+  "divisas": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 18:45 UTC"
+  },
+  "cot": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 18:45 UTC"
+  },
+  "noticias": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-09 22:30 UTC"
+  },
+  "skew": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-10 08:00 UTC"
+  },
+  "semis": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-10 08:00 UTC"
+  },
+  "gamma": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-10 08:06 UTC"
+  },
+  "contexto": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-10 08:06 UTC"
+  }
+ },
+ "datos_con_mas_de_48h": [],
+ "fallos_ultima_ejecucion": [],
+ "mercado": {
+  "actualizado_utc": "2026-10-09 22:30 UTC",
+  "activos": {
+   "oro": {
+    "nombre": "Oro",
+    "valor": 4220.3,
+    "fecha": "2026-10-09",
+    "cambio_1d_pct": 1.52,
+    "cambio_5d_pct": 1.39,
+    "cambio_21d_pct": -4.24,
+    "cambio_63d_pct": 5.36,
+    "vs_sma50_pct": -3.6,
+    "fuente": "Futuros oro COMEX (Yahoo Finance)"
+   },
+   "btc": {
+    "nombre": "Bitcoin",
+    "valor": 82445.3,
+    "fecha": "2026-10-09",
+    "cambio_1d_pct": 0.94,
+    "cambio_5d_pct": -4.67,
+    "cambio_21d_pct": 1.91,
+    "cambio_63d_pct": 27.07,
+    "vs_sma50_pct": 2.1,
+    "fuente": "BTC-USD (Yahoo Finance)"
+   },
+   "spx": {
+    "nombre": "S&P 500",
+    "valor": 7811.54,
+    "fecha": "2026-10-09",
+    "cambio_1d_pct": 0.59,
+    "cambio_5d_pct": 1.15,
+    "cambio_21d_pct": 2.9,
+    "cambio_63d_pct": 3.94,
+    "vs_sma50_pct": 1.5,
+    "fuente": "S&P 500 (Yahoo Finance)"
+   },
+   "ndx": {
+    "nombre": "Nasdaq 100",
+    "valor": 30883.15,
+    "fecha": "2026-10-09",
+    "cambio_1d_pct": 0.51,
+    "cambio_5d_pct": 0.24,
+    "cambio_21d_pct": 6.11,
+    "cambio_63d_pct": 5.53,
+    "vs_sma50_pct": 3.7,
+    "fuente": "Nasdaq 100 (Yahoo Finance)"
+   },
+   "dji": {
+    "nombre": "US30 · Dow Jones",
+    "valor": 51654.95,
+    "fecha": "2026-10-09",
+    "cambio_1d_pct": 0.83,
+    "cambio_5d_pct": 0.93,
+    "cambio_21d_pct": -0.79,
+    "cambio_63d_pct": -1.61,
+    "vs_sma50_pct": -1.9,
+    "fuente": "Dow Jones (Yahoo Finance)"
+   },
+   "rut": {
+    "nombre": "Russell 2000",
+    "valor": 2806.98,
+    "fecha": "2026-10-09",
+    "cambio_1d_pct": 0.46,
+    "cambio_5d_pct": -0.91,
+    "cambio_21d_pct": -2.9,
+    "cambio_63d_pct": -4.95,
+    "vs_sma50_pct": -4.2,
+    "fuente": "Russell 2000 (Yahoo Finance)"
+   },
+   "vix": {
+    "nombre": "VIX",
+    "valor": 14.84,
+    "fecha": "2026-10-09",
+    "cambio_1d_pct": -3.7,
+    "cambio_5d_pct": -3.07,
+    "cambio_21d_pct": -16.82,
+    "cambio_63d_pct": -10.06,
+    "vs_sma50_pct": -4.2,
+    "fuente": "Cboe VIX (Yahoo Finance)"
+   },
+   "dxy": {
+    "nombre": "Índice dólar (DXY)",
+    "valor": 102.23,
+    "fecha": "2026-10-09",
+    "cambio_1d_pct": 0.09,
+    "cambio_5d_pct": 0.3,
+    "cambio_21d_pct": 3.17,
+    "cambio_63d_pct": 0.94,
+    "vs_sma50_pct": 2.1,
+    "fuente": "ICE DXY (Yahoo Finance)"
+   }
+  }
+ },
+ "tesis": {
+  "corte_datos": "Datos entre el 2026-10-08 y el 2026-10-09 (cada fuente publica a su hora)",
+  "actualizado_utc": "2026-10-09 18:45 UTC",
+  "que_lo_ha_movido": "El tipo real a 10 años baja 5 pb. En conjunto: el dinero se abarata.",
+  "vigilar": [
+   "Fed mié 28 oct: hoy 18 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+   "mié 14 oct · 14:30 · IPC EE. UU. (CPI): Subyacente m/m y servicios: inflación ↑ retrasa recortes (2Y ↑, real ↑).",
+   "mié 21 oct · Resultados Tesla (TSLA): BPA estimado $0.23 · después del cierre"
+  ],
+  "tesis_por_activo": [
+   {
+    "activo": "Oro",
+    "etiqueta": "SIN TESIS",
+    "viento_semana": "SIN VIENTO CLARO",
+    "motor_propio": "dólar, tipo real, flujos de ETF y posicionamiento COMEX",
+    "veredicto_motor_propio": "MIXTO",
+    "a_favor": [],
+    "en_contra": [
+     "NFCI -0.494 · 4s +0.051 · 1s +0.016 (Sube: condiciones más tensas)",
+     "TGA 885.8 B$ · 4s +42.1 B$ (Sube: puede drenar liquidez)"
+    ],
+    "tesis": "SIN TESIS: ni la macro ni su motor propio (MIXTO) marcan dirección."
+   },
+   {
+    "activo": "Nasdaq 100",
+    "etiqueta": "SIN TESIS",
+    "viento_semana": "SIN VIENTO CLARO",
+    "motor_propio": "tipos, amplitud, beneficios y volatilidad",
+    "veredicto_motor_propio": "MIXTO",
+    "a_favor": [
+     "VIX 15.41 · 5d -6.0% · percentil 1 año 18% (Estable. Riesgo, no señal automática (CH).)",
+     "ADV/DECLINE (amplitud) grandes compañías: 586 suben / 374 bajan (60.7% al alza; volumen alcista 38.5%) · igual peso vs S&P -2.73 pp en 20 sesiones (Fortaleza interna)"
+    ],
+    "en_contra": [
+     "NFCI -0.494 · 4s +0.051 (Sube: condiciones más tensas)",
+     "TGA 885.8 B$ · 4s +42.1 B$ (Sube: puede drenar liquidez)"
+    ],
+    "tesis": "SIN TESIS: ni la macro ni su motor propio (MIXTO) marcan dirección."
+   },
+   {
+    "activo": "S&P 500",
+    "etiqueta": "SIN TESIS",
+    "viento_semana": "SIN VIENTO CLARO",
+    "motor_propio": "tipos, amplitud, beneficios y volatilidad",
+    "veredicto_motor_propio": "MIXTO",
+    "a_favor": [
+     "VIX 15.41 · 5d -6.0% · percentil 1 año 18% (Estable. Riesgo, no señal automática (CH).)",
+     "ADV/DECLINE (amplitud) grandes compañías: 586 suben / 374 bajan (60.7% al alza; volumen alcista 38.5%) · igual peso vs S&P -2.73 pp en 20 sesiones (Fortaleza interna)"
+    ],
+    "en_contra": [
+     "NFCI -0.494 · 4s +0.051 (Sube: condiciones más tensas)",
+     "TGA 885.8 B$ · 4s +42.1 B$ (Sube: puede drenar liquidez)"
+    ],
+    "tesis": "SIN TESIS: ni la macro ni su motor propio (MIXTO) marcan dirección."
+   },
+   {
+    "activo": "Bitcoin",
+    "etiqueta": "BAJISTA DÉBIL",
+    "viento_semana": "SIN VIENTO CLARO",
+    "motor_propio": "liquidez en dólares (Tesoro, Fed, stablecoins) y apetito de riesgo",
+    "veredicto_motor_propio": "SIN GIRO DE LIQUIDEZ",
+    "a_favor": [
+     "Reverse Repo (ON RRP) 0.3 B$ (4s -5.0 B$ (2026-10-09) · AVISO: saldo < 50 B$, colchón agotado; la dirección cumple la regla pero su efecto sobre la liquidez es despreciable)",
+     "M2 23.34 T$ (interanual +5.66% (mes previo +5.41%) · 3m anualizado +5.84% (2026-08))"
+    ],
+    "en_contra": [
+     "TGA — cuenta del Tesoro 885.8 B$ (1s -98.3 B$ · 4s +42.1 B$ · 3m +136.5 B$ (DTS 2026-10-07))",
+     "Treasury 2Y 4.75% (1d -2 pb · 1s -3 pb · 4s +19 pb (2026-10-08))"
+    ],
+    "tesis": "BAJISTA DÉBIL: solo lo empuja su motor propio (SIN GIRO DE LIQUIDEZ); lo otro está neutral. Lo que la rompería: que ganen peso M2 y SOFR (hoy ya empujan en sentido contrario)."
+   },
+   {
+    "activo": "US30 · Dow Jones",
+    "etiqueta": "BAJISTA DÉBIL",
+    "viento_semana": "SIN VIENTO CLARO",
+    "motor_propio": "ciclo, industriales, financieras y empresas maduras",
+    "veredicto_motor_propio": "DESFAVORABLE",
+    "a_favor": [
+     "VIX 15.41 · 5d -6.0% · percentil 1 año 18% (Estable. Riesgo, no señal automática (CH).)",
+     "ADV/DECLINE (amplitud) grandes compañías: 586 suben / 374 bajan (60.7% al alza; volumen alcista 38.5%) · igual peso vs S&P -2.73 pp en 20 sesiones (Fortaleza interna)"
+    ],
+    "en_contra": [
+     "NFCI -0.494 · 4s +0.051 (Sube: condiciones más tensas)",
+     "TGA 885.8 B$ · 4s +42.1 B$ (Sube: puede drenar liquidez)"
+    ],
+    "tesis": "BAJISTA DÉBIL: solo lo empuja su motor propio (DESFAVORABLE); lo otro está neutral. Lo que la rompería: que ganen peso VIX y ADV/DECLINE (amplitud) (hoy ya empujan en sentido contrario)."
+   },
+   {
+    "activo": "Russell 2000",
+    "etiqueta": "BAJISTA DÉBIL",
+    "viento_semana": "SIN VIENTO CLARO",
+    "motor_propio": "tipos, crédito high yield, condiciones financieras y economía doméstica",
+    "veredicto_motor_propio": "DESFAVORABLE",
+    "a_favor": [
+     "VIX 15.41 · 5d -6.0% · percentil 1 año 18% (Estable. Riesgo, no señal automática (CH).)",
+     "ADV/DECLINE (amplitud) grandes compañías: 586 suben / 374 bajan (60.7% al alza; volumen alcista 38.5%) · igual peso vs S&P -2.73 pp en 20 sesiones (Fortaleza interna)"
+    ],
+    "en_contra": [
+     "NFCI -0.494 · 4s +0.051 (Sube: condiciones más tensas)",
+     "TGA 885.8 B$ · 4s +42.1 B$ (Sube: puede drenar liquidez)"
+    ],
+    "tesis": "BAJISTA DÉBIL: solo lo empuja su motor propio (DESFAVORABLE); lo otro está neutral. Lo que la rompería: que ganen peso VIX y ADV/DECLINE (amplitud) (hoy ya empujan en sentido contrario)."
+   }
+  ],
+  "fuente": "Motor NEXORA por_activo.py (plantillas deterministas) sobre monitores propios"
+ },
+ "regimen_macro": {
+  "cuadrante": "SIN RÉGIMEN CLARO (crecimiento o inflación sin dirección)",
+  "fuerza": "crecimiento +0 e inflación -3 votos",
+  "cuadrante_simple": {
+   "crecimiento": "↑",
+   "inflacion": "↓",
+   "cuadrante": "EXPANSIÓN DESINFLACIONISTA",
+   "detalle": "Filadelfia media 3 meses +30.0 · IPC subyacente 3m anualizado − interanual -0.79 pp"
+  },
+  "riesgo": "MIXTO",
+  "liquidez": "NEUTRAL",
+  "concordancia_monitores": "LOS TRES COINCIDEN: NEUTRAL",
+  "motor": "SIN MOTOR COMÚN DOMINANTE",
+  "mapa": [
+   {
+    "dimension": "CRECIMIENTO",
+    "estado": "ESTABLE",
+    "puntos": 0
+   },
+   {
+    "dimension": "INFLACIÓN",
+    "estado": "DESACELERANDO",
+    "puntos": -3
+   },
+   {
+    "dimension": "EMPLEO",
+    "estado": "ESTABLE",
+    "puntos": 0
+   },
+   {
+    "dimension": "LIQUIDEZ",
+    "estado": "NEUTRAL",
+    "puntos": 0
+   },
+   {
+    "dimension": "CRÉDITO",
+    "estado": "SE ENDURECE (menos crédito, diferenciales ↑) · ESTRÉS EN HIGH YIELD",
+    "puntos": -2
+   },
+   {
+    "dimension": "POLÍTICA MONETARIA",
+    "estado": "ENDURECIENDO · MERCADO DESCUENTA SUBIDAS",
+    "puntos": null
+   },
+   {
+    "dimension": "FISCAL",
+    "estado": "RESTRICTIVA (el déficit se reduce)",
+    "puntos": null
+   },
+   {
+    "dimension": "CONDICIONES FINANCIERAS",
+    "estado": "ENDURECIÉNDOSE · más laxas que la media histórica",
+    "puntos": null
+   },
+   {
+    "dimension": "CURVA DE TIPOS",
+    "estado": "POSITIVA · BEAR STEEPENING",
+    "puntos": null
+   },
+   {
+    "dimension": "DÓLAR",
+    "estado": "SE FORTALECE",
+    "puntos": null
+   },
+   {
+    "dimension": "CROSS-ASSET",
+    "estado": "PATRÓN: SHOCK DE TIPOS REALES",
+    "puntos": null
+   }
+  ],
+  "contradicciones": [
+   "El Nasdaq 100 sube +5.6 % en 20 sesiones mientras el 10Y real sube +32 pb: los beneficios/temática (semis, IA) se imponen a los tipos. Vulnerable si los beneficios decepcionan.",
+   "Divergencia bolsa-crédito: el high yield se amplía mientras el S&P sigue cerca de máximos. Históricamente el crédito suele adelantarse, aunque no siempre.",
+   "VIX bajo con el crédito empeorando: la bolsa no refleja el estrés del crédito."
+  ],
+  "actualizado_utc": "2026-10-09 18:45 UTC",
+  "fuente": "Mapa de régimen NEXORA (FRED, BLS, BEA, Fed regionales, monitores propios)"
+ },
+ "ciclo": {
+  "fase": "EXPANSIÓN · RIESGO BAJO",
+  "fecha": "2026-10-09",
+  "senales_adelantadas_encendidas": 0,
+  "senales_adelantadas_total": 8,
+  "prob_recesion_curva_nyfed_pct": 12.3,
+  "prob_recesion_ebp_fed_pct": 9.1,
+  "curva_10y3m_pp": 0.99,
+  "senales": [
+   {
+    "nombre": null,
+    "encendida": false
+   },
+   {
+    "nombre": null,
+    "encendida": false
+   },
+   {
+    "nombre": null,
+    "encendida": false
+   },
+   {
+    "nombre": null,
+    "encendida": false
+   },
+   {
+    "nombre": null,
+    "encendida": false
+   },
+   {
+    "nombre": null,
+    "encendida": false
+   },
+   {
+    "nombre": null,
+    "encendida": false
+   },
+   {
+    "nombre": null,
+    "encendida": false
+   },
+   {
+    "nombre": null,
+    "encendida": false
+   },
+   {
+    "nombre": null,
+    "encendida": false
+   }
+  ],
+  "actualizado_utc": "2026-10-09 18:45 UTC",
+  "fuente": "FRED, NY Fed (probit), Fed (EBP) · reglas de ciclo.py"
+ },
+ "credito": {
+  "estado": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +196 pb en 1 mes",
+  "diferenciales": {
+   "ig": {
+    "pb": 82,
+    "d5_pb": -4,
+    "d1m_pb": 1,
+    "percentil_1a": 83,
+    "fecha": "2026-10-08"
+   },
+   "bbb": {
+    "pb": 102,
+    "d5_pb": -4,
+    "d1m_pb": 3,
+    "percentil_1a": 78,
+    "fecha": "2026-10-08"
+   },
+   "hy": {
+    "pb": 315,
+    "d5_pb": -9,
+    "d1m_pb": 48,
+    "percentil_1a": 92,
+    "fecha": "2026-10-08"
+   },
+   "ccc": {
+    "pb": 1252,
+    "d5_pb": 37,
+    "d1m_pb": 196,
+    "percentil_1a": 100,
+    "fecha": "2026-10-08"
+   }
+  },
+  "umbrales_alerta_pb": {
+   "ig": [
+    10,
+    25
+   ],
+   "bbb": [
+    12,
+    30
+   ],
+   "hy": [
+    25,
+    75
+   ],
+   "ccc": [
+    60,
+    150
+   ]
+  },
+  "fuente": "ICE BofA vía FRED (BAMLC0A0CM, BAMLC0A4CBBB, BAMLH0A0HYM2, BAMLH0A3HYC)"
+ },
+ "liquidez": {
+  "lectura": "SIN GIRO DE LIQUIDEZ",
+  "checklist": {
+   "cumple": 2,
+   "sin_dato": 0,
+   "total": 8,
+   "drenaje": 4
+  },
+  "secuencia_cumplidos": 1,
+  "liquidez_neta_bill_usd": {
+   "valor": 5.865,
+   "fecha": "2026-10-07"
+  },
+  "tga_bill_usd": {
+   "valor": 0.8803,
+   "fecha": "2026-10-07"
+  },
+  "reservas_bill_usd": {
+   "valor": 3.0297,
+   "fecha": "2026-10-07"
+  },
+  "avisos": [
+   "ON RRP agotado: la condición «RRP ↓» ya no aporta liquidez aunque se cumpla."
+  ],
+  "actualizado_utc": "2026-10-09 18:45 UTC",
+  "fuente": "FRED (WALCL, WTREGEN, RRPONTSYD, WRESBAL), Tesoro, Fed"
+ },
+ "fedwatch_y_tipos": {
+  "fecha_precios": "2026-10-09",
+  "rango_objetivo": [
+   3.75,
+   4.0
+  ],
+  "effr": 3.88,
+  "lectura": "SIN CAMBIO RELEVANTE",
+  "resumen": "Reunión del 2026-10-28: subida 18 %, mantener 82 %, bajada 0 % (ayer subida 18 %)",
+  "reuniones": [
+   {
+    "reunion": "2026-10-28",
+    "tipo_esperado": 3.925,
+    "prob_subida_pct": 18.0,
+    "prob_mantiene_pct": 82.0,
+    "prob_bajada_pct": 0,
+    "subida_5d_pts": -2.0
+   },
+   {
+    "reunion": "2026-12-09",
+    "tipo_esperado": 4.1293,
+    "prob_subida_pct": 81.7,
+    "prob_mantiene_pct": 18.3,
+    "prob_bajada_pct": 0,
+    "subida_5d_pts": 0.0
+   },
+   {
+    "reunion": "2027-01-27",
+    "tipo_esperado": 4.23,
+    "prob_subida_pct": 40.3,
+    "prob_mantiene_pct": 59.7,
+    "prob_bajada_pct": 0,
+    "subida_5d_pts": 2.0
+   },
+   {
+    "reunion": "2027-03-17",
+    "tipo_esperado": 4.3961,
+    "prob_subida_pct": 66.4,
+    "prob_mantiene_pct": 33.6,
+    "prob_bajada_pct": 0,
+    "subida_5d_pts": -8.9
+   }
+  ],
+  "tipos_tesoro": {
+   "t2y": {
+    "valor": 4.8,
+    "fecha": "2026-10-09"
+   },
+   "n10": {
+    "valor": 5.24,
+    "fecha": "2026-10-09"
+   },
+   "real10": {
+    "valor": 2.91,
+    "fecha": "2026-10-09"
+   }
+  },
+  "tipos_oficiales": {
+   "Fed": {
+    "rango": [
+     3.75,
+     4.0
+    ],
+    "effr": 3.88,
+    "fuente": "FRED DFEDTARL/DFEDTARU/EFFR"
+   },
+   "BCE": {
+    "valor": 2.5,
+    "fecha": "2026-10-09",
+    "fuente": "FRED ECBDFR (facilidad de depósito)"
+   },
+   "BoJ": {
+    "valor": 1.25,
+    "fecha": "2026-09-18",
+    "fuente": "Banco de Japón (boj.or.jp, portada: guideline vigente)",
+    "url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm",
+    "nota": null
+   }
+  },
+  "actualizado_utc": "2026-10-09 22:30 UTC",
+  "fuente": "FedWatch NEXORA (futuros ZQ, EFFR, calendario FOMC) · Tesoro de EE. UU."
+ },
+ "riesgo_de_cola_skew": {
+  "fecha": "2026-10-09",
+  "valor": 154.34,
+  "zona": "ALTO",
+  "umbrales": {
+   "elevado": 135.0,
+   "alto": 140.0
+  },
+  "percentil_historico": 98,
+  "percentil_1a": 95,
+  "racha_sesiones": 39,
+  "entrada_zona_alta": "2026-08-17",
+  "confirmaciones": [
+   {
+    "nombre": "VIX y estructura de plazos",
+    "estado": "CALMA",
+    "encendida": false,
+    "valor": "VIX 14.8 · VIX/VIX3M 0.83",
+    "fecha": "2026-10-09",
+    "fuente": "Cboe (VIX y VIX3M)"
+   },
+   {
+    "nombre": "Crédito de riesgo (ciclo.py)",
+    "estado": "TENSIÓN",
+    "encendida": true,
+    "valor": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +196 pb en 1 mes",
+    "fecha": "2026-10-08",
+    "fuente": "ICE BofA vía FRED · reglas de ciclo.py"
+   },
+   {
+    "nombre": "Activos en fondos monetarios",
+    "estado": "SIN ENTRADAS FUERTES",
+    "encendida": false,
+    "valor": "3.03 bill. $ · 13 sem. +0.35 % (percentil 23)",
+    "fecha": "2026-08-31",
+    "fuente": "FRED WRMFNS (fondos monetarios minoristas, semanal)"
+   }
+  ],
+  "confirmaciones_encendidas": "1 de 3",
+  "estudio_historico": {
+   "episodios": 37,
+   "completos": 36,
+   "caidas_5pct_60s": 10,
+   "falsas_alarmas": 26,
+   "tasa_base_caida_5pct_60s": 30.7,
+   "mediana_ret_pct": {
+    "5": 0.67,
+    "20": 1.46,
+    "60": 3.19
+   },
+   "desde": "1990-06-21",
+   "aviso": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción."
+  },
+  "esencial": {
+   "cambio": "El SKEW de Cboe cerró en 154,3 el 09/10/2026 (percentil 98 de su historia desde 1990; 95 del último año), en zona alta (≥ 140); entró en zona alta el 17/08/2026 y lleva 39 sesiones seguidas. Sesión previa: 149,2.",
+   "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 3. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
+   "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
+  },
+  "actualizado_utc": "2026-10-10 08:00 UTC",
+  "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)",
+  "etiqueta": "CRITERIO NEXORA (zonas y episodios)"
+ },
+ "gamma_indices": {
+  "indices": {
+   "ES": {
+    "sesion": "2026-10-09",
+    "cierre_confirmado": true,
+    "spot_indice": 7811.54,
+    "spot_futuro": 7861.25,
+    "base_futuro": 49.71,
+    "metodo_base": "intradía 5 min (futuro e índice en el mismo minuto)",
+    "regimen_gamma": "POSITIVA",
+    "gex_neto_musd_por_1pct": 40723.7,
+    "call_wall": {
+     "idx": 7820,
+     "musd": 13958.2,
+     "fut": 7869.7
+    },
+    "put_wall": {
+     "idx": 7800,
+     "musd": 6725.9,
+     "fut": 7849.7
+    },
+    "gamma_flip": {
+     "idx": 7768.1,
+     "fut": 7817.8
+    },
+    "resumen": "Call Wall 7.870 ES (7.820 SPX), Put Wall 7.850 (7.800), Gamma Flip 7.818 (7.768); gamma positiva (+40,7 mm$ por 1 %)"
+   },
+   "NQ": {
+    "sesion": "2026-10-09",
+    "cierre_confirmado": true,
+    "spot_indice": 30883.15,
+    "spot_futuro": 31111.75,
+    "base_futuro": 228.6,
+    "metodo_base": "intradía 5 min (futuro e índice en el mismo minuto)",
+    "regimen_gamma": "POSITIVA",
+    "gex_neto_musd_por_1pct": 810.6,
+    "call_wall": {
+     "idx": 31250,
+     "musd": 1276.5,
+     "fut": 31478.6
+    },
+    "put_wall": {
+     "idx": 30850,
+     "musd": 799.7,
+     "fut": 31078.6
+    },
+    "gamma_flip": {
+     "idx": 30833.9,
+     "fut": 31062.5
+    },
+    "resumen": "Call Wall 31.479 NQ (31.250 NDX), Put Wall 31.079 (30.850), Gamma Flip 31.062 (30.834); gamma positiva (+0,8 mm$ por 1 %)"
+   }
+  },
+  "actualizado_utc": "2026-10-10 08:06 UTC",
+  "fuente": "Cboe · cadena de opciones con 15 min de retraso (cdn-api.cboe.com)",
+  "etiqueta": "CRITERIO NEXORA (método propio, no dato oficial)",
+  "supuesto": "GEX con signo +calls / −puts: hipótesis sobre el posicionamiento de los creadores de mercado, no observable."
+ },
+ "semis_vs_software": {
+  "fecha": "2026-10-09",
+  "ratio_smh_igv": 5.3548,
+  "vs_sma50_pct": -2.87,
+  "vs_sma200_pct": -1.11,
+  "tendencia": "LIDERAZGO SOFTWARE",
+  "cambios_pct": {
+   "1m": -3.28,
+   "3m": -15.24,
+   "6m": -8.48,
+   "12m": 84.49
+  },
+  "hoy": {
+   "smh_pct": -0.65,
+   "igv_pct": 2.81,
+   "fecha": "2026-10-09",
+   "smh": 603.33,
+   "igv": 112.67
+  },
+  "escenario_hoy": "ROTACIÓN HACIA SOFTWARE",
+  "explicacion": "SMH -0,65 % frente a IGV +2,81 % (diferencial -3,46 pp): el dinero se mueve dentro de tecnología hacia el software (menos intensivo en capital).",
+  "impacto": {
+   "NQ": {
+    "beta_semis": 0.421,
+    "beta_software": 0.188,
+    "r2": 0.904,
+    "real_pct": 0.51,
+    "explicado_pp": 0.25
+   },
+   "ES": {
+    "beta_semis": 0.224,
+    "beta_software": 0.145,
+    "r2": 0.708,
+    "real_pct": 0.59,
+    "explicado_pp": 0.26
+   },
+   "YM": {
+    "beta_semis": 0.136,
+    "beta_software": 0.114,
+    "r2": 0.306,
+    "real_pct": 0.83,
+    "explicado_pp": 0.23
+   }
+  },
+  "peso_ndx": {
+   "fecha": "2026-10-08",
+   "semis_pct": 32.49,
+   "software_pct": 13.53
+  },
+  "actualizado_utc": "2026-10-10 08:00 UTC",
+  "fuente": "Yahoo Finance (SMH, IGV, índices, acciones) · Invesco (pesos QQQ)",
+  "etiqueta": "CRITERIO NEXORA"
+ },
+ "posicionamiento_cot": {
+  "fecha_informe": "2026-09-29",
+  "publicado": "viernes siguiente, 15:30 ET (datos del martes)",
+  "contratos": [
+   {
+    "contrato": "Índice dólar (ICE)",
+    "grupo": "Divisas",
+    "no_comerciales": {
+     "neto": 11881,
+     "cambio_semana": 1551,
+     "percentil_3a": 71,
+     "estado": "LARGO ELEVADO"
+    },
+    "gestores": {
+     "neto": 18007,
+     "cambio_semana": 1235,
+     "percentil_3a": 89,
+     "estado": "LARGO ELEVADO"
+    }
+   },
+   {
+    "contrato": "Euro",
+    "grupo": "Divisas",
+    "no_comerciales": {
+     "neto": -63256,
+     "cambio_semana": -10922,
+     "percentil_3a": 6,
+     "estado": "EXTREMO CORTO"
+    },
+    "gestores": {
+     "neto": 220603,
+     "cambio_semana": 4120,
+     "percentil_3a": 15,
+     "estado": "CORTO ELEVADO"
+    }
+   },
+   {
+    "contrato": "Yen japonés",
+    "grupo": "Divisas",
+    "no_comerciales": {
+     "neto": 55440,
+     "cambio_semana": -16542,
+     "percentil_3a": 74,
+     "estado": "LARGO ELEVADO"
+    },
+    "gestores": {
+     "neto": 51634,
+     "cambio_semana": 10005,
+     "percentil_3a": 71,
+     "estado": "LARGO ELEVADO"
+    }
+   },
+   {
+    "contrato": "Libra esterlina",
+    "grupo": "Divisas",
+    "no_comerciales": {
+     "neto": -91075,
+     "cambio_semana": -8507,
+     "percentil_3a": 3,
+     "estado": "EXTREMO CORTO"
+    },
+    "gestores": {
+     "neto": -128544,
+     "cambio_semana": -12739,
+     "percentil_3a": 4,
+     "estado": "EXTREMO CORTO"
+    }
+   },
+   {
+    "contrato": "Franco suizo",
+    "grupo": "Divisas",
+    "no_comerciales": {
+     "neto": -24617,
+     "cambio_semana": 2135,
+     "percentil_3a": 68,
+     "estado": "INTERMEDIO"
+    },
+    "gestores": {
+     "neto": -36411,
+     "cambio_semana": -888,
+     "percentil_3a": 41,
+     "estado": "INTERMEDIO"
+    }
+   },
+   {
+    "contrato": "Dólar canadiense",
+    "grupo": "Divisas",
+    "no_comerciales": {
+     "neto": -78671,
+     "cambio_semana": -25461,
+     "percentil_3a": 54,
+     "estado": "INTERMEDIO"
+    },
+    "gestores": {
+     "neto": -27581,
+     "cambio_semana": -3460,
+     "percentil_3a": 76,
+     "estado": "LARGO ELEVADO"
+    }
+   },
+   {
+    "contrato": "Dólar australiano",
+    "grupo": "Divisas",
+    "no_comerciales": {
+     "neto": -63239,
+     "cambio_semana": -16425,
+     "percentil_3a": 38,
+     "estado": "INTERMEDIO"
+    },
+    "gestores": {
+     "neto": -73199,
+     "cambio_semana": -17846,
+     "percentil_3a": 17,
+     "estado": "CORTO ELEVADO"
+    }
+   },
+   {
+    "contrato": "Dólar neozelandés",
+    "grupo": "Divisas",
+    "no_comerciales": {
+     "neto": -17315,
+     "cambio_semana": -5935,
+     "percentil_3a": 52,
+     "estado": "INTERMEDIO"
+    },
+    "gestores": {
+     "neto": -21228,
+     "cambio_semana": -9743,
+     "percentil_3a": 54,
+     "estado": "INTERMEDIO"
+    }
+   },
+   {
+    "contrato": "Oro (COMEX)",
+    "grupo": "Materias primas",
+    "no_comerciales": {
+     "neto": 218632,
+     "cambio_semana": -7221,
+     "percentil_3a": 56,
+     "estado": "INTERMEDIO"
+    },
+    "gestores": {
+     "neto": 120318,
+     "cambio_semana": -7071,
+     "percentil_3a": 39,
+     "estado": "INTERMEDIO"
+    }
+   },
+   {
+    "contrato": "S&P 500 (consolidado)",
+    "grupo": "Índices",
+    "no_comerciales": {
+     "neto": -144956,
+     "cambio_semana": -10283,
+     "percentil_3a": 27,
+     "estado": "CORTO ELEVADO"
+    },
+    "gestores": {
+     "neto": 906259,
+     "cambio_semana": -30412,
+     "percentil_3a": 34,
+     "estado": "INTERMEDIO"
+    }
+   },
+   {
+    "contrato": "Nasdaq-100 (consolidado)",
+    "grupo": "Índices",
+    "no_comerciales": {
+     "neto": 45396,
+     "cambio_semana": -6950,
+     "percentil_3a": 96,
+     "estado": "EXTREMO LARGO"
+    },
+    "gestores": {
+     "neto": 70801,
+     "cambio_semana": -2491,
+     "percentil_3a": 39,
+     "estado": "INTERMEDIO"
+    }
+   },
+   {
+    "contrato": "Dow Jones (consolidado)",
+    "grupo": "Índices",
+    "no_comerciales": {
+     "neto": 10026,
+     "cambio_semana": -44,
+     "percentil_3a": 69,
+     "estado": "INTERMEDIO"
+    },
+    "gestores": {
+     "neto": 14911,
+     "cambio_semana": 694,
+     "percentil_3a": 92,
+     "estado": "EXTREMO LARGO"
+    }
+   },
+   {
+    "contrato": "Russell 2000 (E-mini)",
+    "grupo": "Índices",
+    "no_comerciales": {
+     "neto": -77440,
+     "cambio_semana": -1657,
+     "percentil_3a": 4,
+     "estado": "EXTREMO CORTO"
+    },
+    "gestores": {
+     "neto": 39768,
+     "cambio_semana": 6740,
+     "percentil_3a": 57,
+     "estado": "INTERMEDIO"
+    }
+   },
+   {
+    "contrato": "Bono EE. UU. 2 años",
+    "grupo": "Bonos",
+    "no_comerciales": {
+     "neto": -792024,
+     "cambio_semana": 115041,
+     "percentil_3a": 100,
+     "estado": "EXTREMO LARGO"
+    },
+    "gestores": {
+     "neto": 1638478,
+     "cambio_semana": -131607,
+     "percentil_3a": 24,
+     "estado": "CORTO ELEVADO"
+    }
+   },
+   {
+    "contrato": "Bono EE. UU. 10 años",
+    "grupo": "Bonos",
+    "no_comerciales": {
+     "neto": -900615,
+     "cambio_semana": -88863,
+     "percentil_3a": 17,
+     "estado": "CORTO ELEVADO"
+    },
+    "gestores": {
+     "neto": 2776531,
+     "cambio_semana": 245147,
+     "percentil_3a": 100,
+     "estado": "EXTREMO LARGO"
+    }
+   },
+   {
+    "contrato": "Bono EE. UU. 30 años",
+    "grupo": "Bonos",
+    "no_comerciales": {
+     "neto": -186875,
+     "cambio_semana": -31070,
+     "percentil_3a": 6,
+     "estado": "EXTREMO CORTO"
+    },
+    "gestores": {
+     "neto": 436956,
+     "cambio_semana": 23340,
+     "percentil_3a": 15,
+     "estado": "CORTO ELEVADO"
+    }
+   },
+   {
+    "contrato": "Bitcoin (CME)",
+    "grupo": "Cripto",
+    "no_comerciales": {
+     "neto": 2465,
+     "cambio_semana": -291,
+     "percentil_3a": 91,
+     "estado": "EXTREMO LARGO"
+    },
+    "gestores": {
+     "neto": 3586,
+     "cambio_semana": 415,
+     "percentil_3a": 10,
+     "estado": "EXTREMO CORTO"
+    }
+   }
+  ],
+  "fuente": "CFTC · Commitments of Traders (API Socrata publicreporting.cftc.gov)",
+  "metodo": "Neto = largos − cortos. Percentil = posición del neto actual entre las ~156 semanas anteriores (≥90 extremo largo, ≤10 extremo corto)."
+ },
+ "sesgo_divisas": {
+  "actualizado_utc": "2026-10-09 18:45 UTC",
+  "riesgo": {
+   "vix": 14.87,
+   "fecha": "2026-10-09",
+   "regimen": "APETITO"
+  },
+  "resumen": "Sesgo macro más fuerte: AUD (+6); más débil: JPY (-4). Riesgo apetito (VIX 14.9).",
+  "monedas": [
+   {
+    "divisa": "AUD",
+    "total": 6,
+    "sesgo": "FUERTE",
+    "fx_3m_pct": 0.32
+   },
+   {
+    "divisa": "NZD",
+    "total": 3,
+    "sesgo": "FUERTE",
+    "fx_3m_pct": -1.66
+   },
+   {
+    "divisa": "USD",
+    "total": 3,
+    "sesgo": "FUERTE",
+    "fx_3m_pct": 1.27
+   },
+   {
+    "divisa": "GBP",
+    "total": 2,
+    "sesgo": "MODERADO",
+    "fx_3m_pct": -0.97
+   },
+   {
+    "divisa": "CAD",
+    "total": 0,
+    "sesgo": "NEUTRAL",
+    "fx_3m_pct": -0.5
+   },
+   {
+    "divisa": "EUR",
+    "total": -1,
+    "sesgo": "DÉBIL",
+    "fx_3m_pct": -1.65
+   },
+   {
+    "divisa": "CHF",
+    "total": -4,
+    "sesgo": "MUY DÉBIL",
+    "fx_3m_pct": -3.27
+   },
+   {
+    "divisa": "JPY",
+    "total": -4,
+    "sesgo": "MUY DÉBIL",
+    "fx_3m_pct": 1.96
+   }
+  ],
+  "fuente": "BIS (tipos), BoJ, FMI WEO, Tesoro/BCE/OCDE vía FRED · reglas NEXORA"
+ },
+ "contradicciones": {
+  "senales": {
+   "credito": {
+    "etiqueta": "TENSIÓN",
+    "dir": -1
+   },
+   "divisas": {
+    "dir": 1,
+    "etiqueta": "APETITO",
+    "diferencial": 7.0
+   },
+   "cot": {
+    "dir": -1,
+    "etiqueta": "AVERSIÓN",
+    "diferencial_percentil": -25.8
+   }
+  },
+  "pares": [
+   {
+    "par": "Crédito frente a divisas",
+    "resultado": "CONTRADICCIÓN",
+    "texto": "El crédito apunta a aversión al riesgo y la otra lectura a apetito de riesgo."
+   },
+   {
+    "par": "Crédito frente a COT",
+    "resultado": "COINCIDEN",
+    "texto": "Las dos apuntan a aversión al riesgo."
+   },
+   {
+    "par": "SKEW frente a VIX",
+    "resultado": "CONTRADICCIÓN",
+    "texto": "El SKEW está en zona alta (cobertura de cola cara) mientras el VIX y su curva no muestran estrés: cobertura sin miedo generalizado (hipótesis, no hecho)."
+   }
+  ],
+  "del_regimen": [
+   "El Nasdaq 100 sube +5.6 % en 20 sesiones mientras el 10Y real sube +32 pb: los beneficios/temática (semis, IA) se imponen a los tipos. Vulnerable si los beneficios decepcionan.",
+   "Divergencia bolsa-crédito: el high yield se amplía mientras el S&P sigue cerca de máximos. Históricamente el crédito suele adelantarse, aunque no siempre.",
+   "VIX bajo con el crédito empeorando: la bolsa no refleja el estrés del crédito."
+  ],
+  "reglas": "Crédito: CCC o HY por encima de sus umbrales de ciclo.py = tensión. Divisas: sesgo medio AUD/NZD/CAD − JPY/CHF (±2). COT: percentil medio riesgo − refugio (±15).",
+  "fuente": "Reglas NEXORA sobre ciclo.py, matriz de divisas y COT de la CFTC"
+ },
+ "calendario": {
+  "proximos_14_dias": [
+   {
+    "fecha": "2026-10-13",
+    "hora_madrid": "",
+    "evento": "Resultados JPMorgan Chase (JPM)",
+    "importancia": "MEDIA",
+    "afecta": "índices"
+   },
+   {
+    "fecha": "2026-10-13",
+    "hora_madrid": "",
+    "evento": "Resultados Goldman Sachs (GS)",
+    "importancia": "MEDIA",
+    "afecta": "índices"
+   },
+   {
+    "fecha": "2026-10-14",
+    "hora_madrid": "14:30",
+    "evento": "IPC EE. UU. (CPI)",
+    "importancia": "ALTA",
+    "afecta": "cripto · oro · índices"
+   },
+   {
+    "fecha": "2026-10-15",
+    "hora_madrid": "14:30",
+    "evento": "Ventas minoristas",
+    "importancia": "MEDIA",
+    "afecta": "índices"
+   },
+   {
+    "fecha": "2026-10-15",
+    "hora_madrid": "14:30",
+    "evento": "Precios de producción (PPI)",
+    "importancia": "MEDIA",
+    "afecta": "oro · índices"
+   },
+   {
+    "fecha": "2026-10-15",
+    "hora_madrid": "14:30",
+    "evento": "Peticiones de paro semanales",
+    "importancia": "MEDIA",
+    "afecta": "índices · oro"
+   },
+   {
+    "fecha": "2026-10-15",
+    "hora_madrid": "14:30",
+    "evento": "Encuesta manufacturera Fed Filadelfia",
+    "importancia": "MEDIA",
+    "afecta": "índices"
+   },
+   {
+    "fecha": "2026-10-15",
+    "hora_madrid": "22:30",
+    "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
+    "importancia": "MEDIA",
+    "afecta": "cripto · oro · índices"
+   },
+   {
+    "fecha": "2026-10-20",
+    "hora_madrid": "",
+    "evento": "Resultados Netflix (NFLX)",
+    "importancia": "MEDIA",
+    "afecta": "índices"
+   },
+   {
+    "fecha": "2026-10-21",
+    "hora_madrid": "",
+    "evento": "Resultados Tesla (TSLA)",
+    "importancia": "ALTA",
+    "afecta": "índices"
+   },
+   {
+    "fecha": "2026-10-21",
+    "hora_madrid": "",
+    "evento": "Subasta del Tesoro Bond 19-Year 10-Month",
+    "importancia": "MEDIA",
+    "afecta": "índices · oro"
+   },
+   {
+    "fecha": "2026-10-22",
+    "hora_madrid": "14:30",
+    "evento": "Peticiones de paro semanales",
+    "importancia": "MEDIA",
+    "afecta": "índices · oro"
+   },
+   {
+    "fecha": "2026-10-22",
+    "hora_madrid": "22:30",
+    "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
+    "importancia": "MEDIA",
+    "afecta": "cripto · oro · índices"
+   },
+   {
+    "fecha": "2026-10-22",
+    "hora_madrid": "",
+    "evento": "Subasta del Tesoro Note 5-Year",
+    "importancia": "MEDIA",
+    "afecta": "índices · oro"
+   },
+   {
+    "fecha": "2026-10-23",
+    "hora_madrid": "17:00",
+    "evento": "Confianza U. Michigan (expectativas de inflación)",
+    "importancia": "MEDIA",
+    "afecta": "oro · índices"
+   }
+  ],
+  "bancos_centrales": {
+   "Fed (FOMC)": {
+    "fecha": "2026-10-28",
+    "dias": 19
+   },
+   "BCE": {
+    "fecha": "2026-10-29",
+    "dias": 20
+   },
+   "Banco de Japón": {
+    "fecha": "2026-10-30",
+    "dias": 21
+   }
+  },
+  "ultimos_publicados": [
+   {
+    "serie": "IPC EE. UU. (CPI)",
+    "periodo": "2026-08-01",
+    "valor": 3.71,
+    "anterior": 3.54,
+    "fecha_publicacion": "2026-09-11",
+    "fuente": "FRED CPIAUCSL"
+   },
+   {
+    "serie": "Empleo (Employment Situation)",
+    "periodo": "2026-09-01",
+    "valor": 29.0,
+    "anterior": 133.0,
+    "fecha_publicacion": "2026-10-02",
+    "fuente": "FRED PAYEMS"
+   },
+   {
+    "serie": "Peticiones de paro semanales",
+    "periodo": "2026-10-03",
+    "valor": 197000.0,
+    "anterior": 199000.0,
+    "fecha_publicacion": "2026-10-08",
+    "fuente": "FRED ICSA"
+   },
+   {
+    "serie": "Ventas minoristas",
+    "periodo": "2026-08-01",
+    "valor": 1.13,
+    "anterior": -0.46,
+    "fecha_publicacion": "2026-09-28",
+    "fuente": "FRED RSAFS"
+   },
+   {
+    "serie": "IPP EE. UU. (PPI)",
+    "periodo": "2026-08-01",
+    "valor": 5.41,
+    "anterior": 4.8,
+    "fecha_publicacion": null,
+    "fuente": "FRED PPIFIS"
+   },
+   {
+    "serie": "PIB EE. UU.",
+    "periodo": "2026-04-01",
+    "valor": 2.22,
+    "anterior": 2.49,
+    "fecha_publicacion": "2026-09-30",
+    "fuente": "FRED GDPC1"
+   },
+   {
+    "serie": "Gasto personal (PCE)",
+    "periodo": "2026-08-01",
+    "valor": 3.42,
+    "anterior": 3.36,
+    "fecha_publicacion": "2026-09-30",
+    "fuente": "FRED PCEPI"
+   },
+   {
+    "serie": "Producción industrial",
+    "periodo": "2026-08-01",
+    "valor": 0.02,
+    "anterior": 0.2,
+    "fecha_publicacion": "2026-09-18",
+    "fuente": "FRED INDPRO"
+   }
+  ],
+  "actualizado_utc": "2026-10-09 18:45 UTC",
+  "fuente": "Calendario NEXORA · sin consenso de analistas (es de pago)"
+ },
+ "alertas_recientes": [
+  {
+   "fecha_utc": "2026-10-08 16:04 UTC",
+   "titulo": "Alerta de prueba",
+   "enviada": true,
+   "l1": "Alerta de prueba con datos actuales (no es una señal)."
+  }
+ ],
+ "ok": true,
+ "duracion_s": 0.1
+}

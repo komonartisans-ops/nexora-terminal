@@ -3,12 +3,13 @@ name: actualizar
 on:
   schedule:
     - cron: "7 6-22 * * 1-5"   # cada hora en días laborables (UTC): precios, FedWatch, tipos y evaluación de alertas → Telegram
+    - cron: "30 21 * * 1-5"    # cierre de Nueva York (17:30 EDT / 16:30 EST): gamma de índices, semis/software, SKEW y alertas
     - cron: "30 5 * * *"       # diario 05:30 UTC: build completo (régimen, ciclo, datos publicados…)
     - cron: "0 8 * * 6"        # sábado: completo (COT y backtests ligeros llegan en fases posteriores)
   workflow_dispatch:
     inputs:
       modo:
-        description: "horario | diario | todo"
+        description: "horario | cierre | diario | todo"
         default: "diario"
       prueba_telegram:
         description: "Enviar una alerta de prueba a Telegram al terminar (true | false)"
@@ -40,6 +41,7 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then M="${{ github.event.inputs.modo }}";
           elif [ "${{ github.event.schedule }}" = "7 6-22 * * 1-5" ]; then M="horario";
           elif [ "${{ github.event.schedule }}" = "0 8 * * 6" ]; then M="todo";
+          elif [ "${{ github.event.schedule }}" = "30 21 * * 1-5" ]; then M="cierre";
           else M="diario"; fi
           echo "modo=$M" >> "$GITHUB_OUTPUT"
       - name: Ejecutar build (cada fuente falla por separado, nunca la web entera)

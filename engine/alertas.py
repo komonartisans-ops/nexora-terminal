@@ -4,7 +4,7 @@
 Umbrales = los de las alertas NEXORA (CRITERIO NEXORA, fijos):
   Fed ±15 puntos de probabilidad o cambio del resultado más probable · 2Y ±12 pb · 10Y real ±8 pb · DXY ±0,7 %
   VIX > 25 o +20 % · diferenciales en 5 días: IG +10, BBB +12, HY +25, CCC +60 pb · cambio de señal o de fase del ciclo
-  Oro ±2 % · BTC −7 % / +8 % · salidas de ETF de BTC > 500 M$.
+  Oro ±2 % · BTC −7 % / +8 % · salidas de ETF de BTC > 500 M$ · SKEW de Cboe entra en zona alta (≥ 140; una alerta por episodio).
 Cada alerta se envía UNA vez al día (estado en data/estado_alertas.json).
 Mensaje de 4 líneas: 1 QUÉ HA CAMBIADO (dato + fuente) · 2 QUÉ SIGNIFICA (oro, índices, BTC) · 3 QUÉ VIGILAR (hora de Madrid)
 · 4 EN PALABRAS SENCILLAS. No se describen precios que el usuario ya ve en su gráfico: se explica la causa.
@@ -37,7 +37,7 @@ URL = "https://komonartisans-ops.github.io/nexora-terminal/"
 DIA = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
 U = {"fed_pts": 15, "t2y_pb": 12, "real_pb": 8, "dxy_pct": 0.7, "vix_nivel": 25, "vix_pct": 20,
-     "ig_pb": 10, "bbb_pb": 12, "hy_pb": 25, "ccc_pb": 60, "oro_pct": 2.0, "btc_baja_pct": -7.0, "btc_sube_pct": 8.0, "etf_btc_musd": -500}
+     "ig_pb": 10, "bbb_pb": 12, "hy_pb": 25, "ccc_pb": 60, "oro_pct": 2.0, "btc_baja_pct": -7.0, "btc_sube_pct": 8.0, "etf_btc_musd": -500, "skew_alto": 140, "skew_elevado": 135}
 
 
 def leer(nombre, base=SITE_DATA):
@@ -217,6 +217,26 @@ def evaluar(D, estado):
         estado["ciclo"] = ciclo.nuevo_estado(C, prev, Ac)
     else:
         no_eval["ciclo"] = "SIN DATO (ciclo.json)"
+    # riesgo de cola: el SKEW de Cboe entra en zona ALTA (≥ 140). Una alerta por episodio (enfriamiento de 10 sesiones, igual que el estudio histórico).
+    S = D.get("skew") or {}
+    if S.get("valor") is None:
+        no_eval["skew"] = "SIN DATO (Cboe SKEW)"
+    elif S.get("zona") == "ALTO" and S.get("entrada_episodio"):
+        ep = S["entrada_episodio"]
+        if ep not in estado.setdefault("skew_avisados", []):
+            r = (S.get("estudio") or {}).get("resumen") or {}
+            tb = ((S.get("estudio") or {}).get("tasa_base") or {}).get("caida_5_60s_pct")
+            vx, v3 = S.get("vix") or {}, S.get("vix3m") or {}
+            ratio = f" · VIX/VIX3M {n(vx['valor'] / v3['valor'], 2)}" if vx.get("valor") and v3.get("valor") else ""
+            l1 = (f"El SKEW de Cboe cierra en {n(S['valor'], 1)} el {fecha_linea(S['fecha'])}: zona alta (≥ 140), percentil {S.get('percentil_hist')} de su historia desde 1990; "
+                  f"el episodio empezó el {fecha_linea(ep)}. VIX {n(vx.get('valor', 0), 1) if vx else 'SIN DATO'}{ratio}; confirmaciones encendidas "
+                  f"{S.get('confirmaciones_encendidas')} de {S.get('confirmaciones_validas')} (Cboe, ciclo.py, FRED/OFR).")
+            l2 = ("Se paga una prima inusual por cubrirse de una caída fuerte del S&P 500; no indica fecha ni magnitud (interpretación)."
+                  + (f" Histórico propio: tras {r.get('completos')} entradas en zona alta, el S&P 500 cayó ≥ 5 % en {r.get('caidas')} ({n(100 - r['pct_falsas'], 0)} %) "
+                     f"frente a una tasa base del {n(tb, 0)} % en cualquier sesión." if r.get("pct_falsas") is not None and tb is not None else ""))
+            l4 = ("Los inversores pagan más de lo normal por seguros contra una caída fuerte de la bolsa. No dice cuándo ni si ocurrirá"
+                  + (": en el histórico, la mayoría de las veces no hubo una caída de ese tamaño." if (r.get("pct_falsas") or 0) >= 50 else "."))
+            al(f"skew_{ep}", "Riesgo de cola (SKEW)", l1, l2, l4)
     return out, no_eval
 
 
@@ -252,7 +272,7 @@ def registrar_csv(fila):
 
 
 def cargar_datos():
-    return {k: leer(f"{k}.json") for k in ("precios", "fedwatch", "tipos", "ciclo", "calendario", "resumen")}
+    return {k: leer(f"{k}.json") for k in ("precios", "fedwatch", "tipos", "ciclo", "calendario", "resumen", "skew")}
 
 
 def ejecutar(seco=False, prueba=False, max_envios=6):
@@ -280,6 +300,8 @@ def ejecutar(seco=False, prueba=False, max_envios=6):
         reg.update({"enviada": ok, "error": err})
         if ok:
             ya[a["clave"]] = ahora.strftime("%H:%M")
+            if a["clave"].startswith("skew_"):  # un aviso por episodio: solo se marca si Telegram lo aceptó (si falla, se reintenta)
+                est.setdefault("skew_avisados", []).append(a["clave"][5:])
             enviadas += 1
         registrar_csv({"fecha_utc": stamp, "clave": a["clave"], "titulo": a["titulo"], "enviada": ok, "error": err or "", "l1": a["l1"]})
         recientes.append(reg)

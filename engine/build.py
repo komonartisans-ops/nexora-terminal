@@ -5,7 +5,7 @@ Ejecuta los monitores y escribe site/data/*.json (+ memoria permanente en data/*
 Reglas: coste cero, sin LLM, sin claves de pago. Una fuente que falla NO rompe la web:
 el JSON de esa etapa lleva ok=false, el error y, si existe, la última copia válida con su fecha.
 
-Uso:  python engine/build.py --modo diario|horario|todo [--solo etapa,etapa]
+Uso:  python engine/build.py --modo diario|horario|cierre|todo [--solo etapa,etapa]
 """
 from __future__ import annotations
 
@@ -682,6 +682,57 @@ def etapa_noticias():
     return noticias.medir()
 
 
+# ------------------------------------------------------------------ fase 6: riesgo de cola (SKEW), semis vs software, gamma de índices
+def etapa_skew():
+    import skew
+    M = skew.medir(leer("ciclo.json"))
+    skew.guardar_historico(M)
+    return M
+
+
+def etapa_semis():
+    import semis
+    return semis.medir()
+
+
+def etapa_gamma():
+    """GEX de SPX+SPY (ES) y NDX+QQQ (NQ) desde la cadena retrasada de Cboe. Solo se guarda histórico con snapshot del CIERRE de Nueva York;
+    si la ejecución cae en horario de mercado se conserva el último cierre válido en lugar de sobrescribirlo con un dato intradía."""
+    import gamma
+    import precios
+    M = gamma.medir()
+    prev = leer("gamma.json") or {}
+    descartados = {}
+    for k, x in list(M["indices"].items()):
+        if not x["cierre_confirmado"]:
+            p = (prev.get("indices") or {}).get(k)
+            if p and p.get("cierre_confirmado"):
+                descartados[k] = {"snapshot_et": x["ultima_operacion_et"], "motivo": "snapshot intradía: se conserva el último cierre de Nueva York"}
+                M["indices"][k] = p
+    M["descartados_intradia"] = descartados
+    gamma.guardar_historico(M)
+    hist = csvlog.leer("historico_gamma.csv")
+    rev, err = {}, {}
+    for clave, cfg in gamma.INDICES.items():
+        try:
+            bars, _ = precios.diario(cfg["yahoo_fut"], "3mo")
+            precios.pausa()
+            rev[clave] = gamma.revisar(clave, hist, bars)
+        except Exception as e:  # noqa: BLE001
+            err[clave] = f"{type(e).__name__}: {str(e)[:100]}"
+            rev[clave] = {"sesiones": [], "resumen": {}, "sin_dato": True}
+    M["revision"] = rev
+    M["errores_revision"] = err
+    M["sesiones_guardadas"] = len({r["fecha_sesion"] for r in hist})
+    return M
+
+
+# ------------------------------------------------------------------ contexto.json: resumen compacto de todo el terminal (para informes)
+def etapa_contexto():
+    import contexto
+    return contexto.construir()
+
+
 # ------------------------------------------------------------------ alertas (Telegram)
 def etapa_alertas():
     import alertas
@@ -691,9 +742,14 @@ def etapa_alertas():
 # ------------------------------------------------------------------ principal
 ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_tipos, "calendario": etapa_calendario,
           "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen, "tesis": etapa_tesis,
-          "regimen": etapa_regimen, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias, "alertas": etapa_alertas}
-ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "resumen", "tesis", "regimen", "divisas", "cot", "noticias", "alertas"]
-MODOS = {"horario": ["precios", "fedwatch", "tipos", "noticias", "alertas"], "diario": ORDEN, "todo": ORDEN}
+          "regimen": etapa_regimen, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias,
+          "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "alertas": etapa_alertas, "contexto": etapa_contexto}
+ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "resumen", "tesis", "regimen", "divisas", "cot", "noticias",
+         "skew", "semis", "gamma", "alertas", "contexto"]
+# horario: el SKEW (Cboe) se publica tras el cierre, por eso entra aquí para que la alerta salga en la hora siguiente; gamma NO (solo al cierre).
+# cierre (cron 21:30 UTC, tras el cierre de Nueva York): snapshot de opciones, semis/software y SKEW del día.
+MODOS = {"horario": ["precios", "fedwatch", "tipos", "noticias", "skew", "alertas", "contexto"],
+         "cierre": ["precios", "semis", "skew", "gamma", "alertas", "contexto"], "diario": ORDEN, "todo": ORDEN}
 
 
 def main():
@@ -713,6 +769,7 @@ def main():
         else:
             r["ultimo_ok_utc"] = estado.get(e, {}).get("ultimo_ok_utc")
         estado[e] = r
+        escribir("meta.json", {"actualizado_utc": STAMP, "modo": a.modo, "etapas": estado, "duracion_total_s": round(time.time() - t0, 1)})  # contexto.json lee la frescura de aquí
         print(f"   {'OK' if r['ok'] else 'FALLO'} {r['duracion_s']} s {r['error'] or ''}", flush=True)
     dur = round(time.time() - t0, 1)
     escribir("meta.json", {"actualizado_utc": STAMP, "modo": a.modo, "etapas": estado, "duracion_total_s": dur})
