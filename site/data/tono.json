@@ -642,7 +642,14 @@
   "min_terminos_discurso": 4,
   "min_menciones_tema": 3,
   "umbral_decision_pp": 0.1,
-  "ventana_decision_dias": 10
+  "ventana_decision_dias": 10,
+  "ventana_z_dias": 730,
+  "min_obs_z": 8,
+  "aviso_peso": 5,
+  "umbral_dz": 0.5,
+  "min_n_principal": 30,
+  "p_principal": 0.05,
+  "criterio_principal": "PRINCIPAL solo si n ≥ 30, acierto > 50 % con p < 0.05 (binomial bilateral) y acierto ≥ línea base «repetir la decisión anterior» en la misma muestra. Criterio fijado antes de ver el resultado."
  },
  "comunicados": {
   "Fed": [
@@ -666,7 +673,14 @@
      "solid": 1,
      "strong": 1,
      "support": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 0,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-03-18",
@@ -689,7 +703,14 @@
      "strong": 1,
      "support": 1,
      "weakened": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 1,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-04-29",
@@ -712,7 +733,14 @@
      "slowed": 2,
      "softened": 1,
      "support": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 2,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-06-17",
@@ -733,7 +761,14 @@
      "remove policy accommodation": 1,
      "soft": 1,
      "support": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 3,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-07-29",
@@ -755,7 +790,14 @@
      "soft": 1,
      "solid": 1,
      "support": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 4,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-09-17",
@@ -778,7 +820,14 @@
      "soft": 1,
      "solid": 1,
      "support": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 5,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-10-28",
@@ -801,7 +850,14 @@
      "soft": 1,
      "solid": 1,
      "support": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 6,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-12-16",
@@ -822,7 +878,14 @@
      "raise the target range": 1,
      "soft": 1,
      "solid": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 7,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2016-01-27",
@@ -843,7 +906,14 @@
      "slowed": 2,
      "soft": 1,
      "strong": 1
-    }
+    },
+    "z": -0.78,
+    "media_2a": -0.243,
+    "sd_2a": 0.169,
+    "n_2a": 8,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2016-03-16",
@@ -864,7 +934,17 @@
      "raise the target range": 1,
      "soft": 1,
      "strong": 1
-    }
+    },
+    "z": 1.16,
+    "media_2a": -0.257,
+    "sd_2a": 0.164,
+    "n_2a": 9,
+    "dz": 1.94,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-01-27",
+    "anterior_z": -0.78,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-04-27",
@@ -888,7 +968,17 @@
      "soft": 1,
      "solid": 1,
      "strong": 1
-    }
+    },
+    "z": 1.08,
+    "media_2a": -0.238,
+    "sd_2a": 0.166,
+    "n_2a": 10,
+    "dz": -0.08,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-03-16",
+    "anterior_z": 1.16,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-06-15",
@@ -908,7 +998,17 @@
      "normalization": 1,
      "slowed": 1,
      "soft": 1
-    }
+    },
+    "z": -0.67,
+    "media_2a": -0.222,
+    "sd_2a": 0.166,
+    "n_2a": 11,
+    "dz": -1.75,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-04-27",
+    "anterior_z": 1.08,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-07-27",
@@ -929,7 +1029,17 @@
      "raise the target range": 1,
      "soft": 1,
      "strong": 1
-    }
+    },
+    "z": 1.43,
+    "media_2a": -0.231,
+    "sd_2a": 0.162,
+    "n_2a": 12,
+    "dz": 2.1,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-06-15",
+    "anterior_z": -0.67,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-09-21",
@@ -951,7 +1061,17 @@
      "soft": 1,
      "solid": 1,
      "wait": 1
-    }
+    },
+    "z": 1.27,
+    "media_2a": -0.213,
+    "sd_2a": 0.168,
+    "n_2a": 13,
+    "dz": -0.16,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-07-27",
+    "anterior_z": 1.43,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-11-02",
@@ -973,7 +1093,17 @@
      "soft": 1,
      "solid": 1,
      "wait": 1
-    }
+    },
+    "z": 1.16,
+    "media_2a": -0.198,
+    "sd_2a": 0.171,
+    "n_2a": 14,
+    "dz": -0.11,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-09-21",
+    "anterior_z": 1.27,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-12-14",
@@ -994,7 +1124,17 @@
      "raise the target range": 1,
      "soft": 1,
      "solid": 1
-    }
+    },
+    "z": 1.07,
+    "media_2a": -0.185,
+    "sd_2a": 0.173,
+    "n_2a": 15,
+    "dz": -0.09,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-11-02",
+    "anterior_z": 1.16,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-02-01",
@@ -1014,7 +1154,17 @@
      "normalization": 1,
      "soft": 1,
      "solid": 1
-    }
+    },
+    "z": -0.02,
+    "media_2a": -0.163,
+    "sd_2a": 0.174,
+    "n_2a": 15,
+    "dz": -1.09,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-12-14",
+    "anterior_z": 1.07,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-03-15",
@@ -1034,7 +1184,17 @@
      "normalization": 1,
      "raise the target range": 1,
      "solid": 1
-    }
+    },
+    "z": 1.43,
+    "media_2a": -0.163,
+    "sd_2a": 0.168,
+    "n_2a": 16,
+    "dz": 1.45,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-02-01",
+    "anterior_z": -0.02,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-05-03",
@@ -1055,7 +1215,17 @@
      "slowed": 1,
      "slowing": 1,
      "solid": 2
-    }
+    },
+    "z": -0.59,
+    "media_2a": -0.114,
+    "sd_2a": 0.145,
+    "n_2a": 15,
+    "dz": -2.02,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-03-15",
+    "anterior_z": 1.43,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-06-14",
@@ -1077,7 +1247,17 @@
      "raise the target range": 1,
      "reinvestment": 1,
      "solid": 1
-    }
+    },
+    "z": 2.86,
+    "media_2a": -0.12,
+    "sd_2a": 0.142,
+    "n_2a": 16,
+    "dz": 3.45,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-05-03",
+    "anterior_z": -0.59,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-07-26",
@@ -1096,7 +1276,17 @@
      "moderate": 1,
      "normalization": 2,
      "solid": 1
-    }
+    },
+    "z": 2.96,
+    "media_2a": -0.081,
+    "sd_2a": 0.163,
+    "n_2a": 16,
+    "dz": 0.1,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-06-14",
+    "anterior_z": 2.86,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-09-20",
@@ -1115,7 +1305,17 @@
      "moderate": 2,
      "normalization": 2,
      "solid": 1
-    }
+    },
+    "z": 1.53,
+    "media_2a": -0.033,
+    "sd_2a": 0.2,
+    "n_2a": 15,
+    "dz": -1.43,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-07-26",
+    "anterior_z": 2.96,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-11-01",
@@ -1135,7 +1335,17 @@
      "normalization": 1,
      "soft": 1,
      "solid": 1
-    }
+    },
+    "z": 0.05,
+    "media_2a": -0.011,
+    "sd_2a": 0.215,
+    "n_2a": 15,
+    "dz": -1.48,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-09-20",
+    "anterior_z": 1.53,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-12-13",
@@ -1156,7 +1366,17 @@
      "solid": 2,
      "strong": 1,
      "strong labor market": 1
-    }
+    },
+    "z": 1.65,
+    "media_2a": -0.01,
+    "sd_2a": 0.208,
+    "n_2a": 16,
+    "dz": 1.6,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-11-01",
+    "anterior_z": 0.05,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-01-31",
@@ -1176,7 +1396,17 @@
      "solid": 2,
      "strong": 1,
      "strong labor market": 1
-    }
+    },
+    "z": 1.43,
+    "media_2a": 0.036,
+    "sd_2a": 0.207,
+    "n_2a": 15,
+    "dz": -0.22,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-12-13",
+    "anterior_z": 1.65,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-03-21",
@@ -1197,7 +1427,17 @@
      "raise the target range": 1,
      "strong": 3,
      "strong labor market": 1
-    }
+    },
+    "z": 0.77,
+    "media_2a": 0.063,
+    "sd_2a": 0.218,
+    "n_2a": 15,
+    "dz": -0.66,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-01-31",
+    "anterior_z": 1.43,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-05-02",
@@ -1217,7 +1457,17 @@
      "moderated": 1,
      "strong": 3,
      "strong labor market": 1
-    }
+    },
+    "z": 0.04,
+    "media_2a": 0.082,
+    "sd_2a": 0.22,
+    "n_2a": 15,
+    "dz": -0.73,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-03-21",
+    "anterior_z": 0.77,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-06-13",
@@ -1237,7 +1487,17 @@
      "solid": 1,
      "strong": 1,
      "strong labor market": 2
-    }
+    },
+    "z": 2.23,
+    "media_2a": 0.083,
+    "sd_2a": 0.212,
+    "n_2a": 16,
+    "dz": 2.19,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-05-02",
+    "anterior_z": 0.04,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-08-01",
@@ -1255,7 +1515,17 @@
      "gradual": 1,
      "strong": 2,
      "strong labor market": 2
-    }
+    },
+    "z": 1.3,
+    "media_2a": 0.148,
+    "sd_2a": 0.216,
+    "n_2a": 15,
+    "dz": -0.93,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-06-13",
+    "anterior_z": 2.23,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-09-26",
@@ -1273,7 +1543,17 @@
      "raise the target range": 1,
      "strong": 2,
      "strong labor market": 1
-    }
+    },
+    "z": 3.68,
+    "media_2a": 0.176,
+    "sd_2a": 0.224,
+    "n_2a": 15,
+    "dz": 2.38,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-08-01",
+    "anterior_z": 1.3,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-11-08",
@@ -1291,7 +1571,17 @@
      "moderated": 1,
      "strong": 2,
      "strong labor market": 1
-    }
+    },
+    "z": 1.18,
+    "media_2a": 0.243,
+    "sd_2a": 0.303,
+    "n_2a": 15,
+    "dz": -2.5,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-09-26",
+    "anterior_z": 3.68,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-12-19",
@@ -1310,7 +1600,17 @@
      "raise the target range": 1,
      "strong": 2,
      "strong labor market": 1
-    }
+    },
+    "z": 1.4,
+    "media_2a": 0.283,
+    "sd_2a": 0.308,
+    "n_2a": 15,
+    "dz": 0.22,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-11-08",
+    "anterior_z": 1.18,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-01-30",
@@ -1330,7 +1630,17 @@
      "strong": 1,
      "strong labor market": 1,
      "support": 2
-    }
+    },
+    "z": -1.77,
+    "media_2a": 0.31,
+    "sd_2a": 0.316,
+    "n_2a": 16,
+    "dz": -3.17,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-12-19",
+    "anterior_z": 1.4,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-03-20",
@@ -1350,7 +1660,17 @@
      "strong": 1,
      "strong labor market": 1,
      "support": 2
-    }
+    },
+    "z": -1.57,
+    "media_2a": 0.32,
+    "sd_2a": 0.331,
+    "n_2a": 15,
+    "dz": 0.2,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-01-30",
+    "anterior_z": -1.77,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-05-01",
@@ -1370,7 +1690,17 @@
      "strong": 1,
      "strong labor market": 1,
      "support": 2
-    }
+    },
+    "z": -1.41,
+    "media_2a": 0.287,
+    "sd_2a": 0.345,
+    "n_2a": 16,
+    "dz": 0.16,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-03-20",
+    "anterior_z": -1.57,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-06-19",
@@ -1390,7 +1720,17 @@
      "strong": 1,
      "strong labor market": 2,
      "support": 1
-    }
+    },
+    "z": -0.4,
+    "media_2a": 0.287,
+    "sd_2a": 0.357,
+    "n_2a": 15,
+    "dz": 1.01,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-05-01",
+    "anterior_z": -1.41,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-07-31",
@@ -1410,7 +1750,17 @@
      "solid": 1,
      "strong": 1,
      "strong labor market": 2
-    }
+    },
+    "z": -0.76,
+    "media_2a": 0.27,
+    "sd_2a": 0.357,
+    "n_2a": 15,
+    "dz": -0.36,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-06-19",
+    "anterior_z": -0.4,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-09-18",
@@ -1430,7 +1780,17 @@
      "strong": 2,
      "strong labor market": 2,
      "weakened": 1
-    }
+    },
+    "z": -0.72,
+    "media_2a": 0.253,
+    "sd_2a": 0.352,
+    "n_2a": 16,
+    "dz": 0.04,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-07-31",
+    "anterior_z": -0.76,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-10-11",
@@ -1447,7 +1807,17 @@
      "normalization": 1,
      "reinvestment": 1,
      "support": 1
-    }
+    },
+    "z": -0.66,
+    "media_2a": 0.236,
+    "sd_2a": 0.357,
+    "n_2a": 16,
+    "dz": 0.06,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": true,
+    "anterior_fecha": "2019-09-18",
+    "anterior_z": -0.72,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-10-30",
@@ -1466,7 +1836,17 @@
      "solid": 1,
      "strong": 2,
      "strong labor market": 1
-    }
+    },
+    "z": -0.23,
+    "media_2a": 0.222,
+    "sd_2a": 0.351,
+    "n_2a": 17,
+    "dz": 0.43,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-10-11",
+    "anterior_z": -0.66,
+    "anterior_pocos_terminos": true
    },
    {
     "fecha": "2019-12-11",
@@ -1485,7 +1865,17 @@
      "strong": 2,
      "strong labor market": 1,
      "support": 1
-    }
+    },
+    "z": 0.29,
+    "media_2a": 0.231,
+    "sd_2a": 0.347,
+    "n_2a": 17,
+    "dz": 0.52,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-10-30",
+    "anterior_z": -0.23,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-01-29",
@@ -1504,7 +1894,17 @@
      "strong": 1,
      "strong labor market": 1,
      "support": 1
-    }
+    },
+    "z": -0.67,
+    "media_2a": 0.231,
+    "sd_2a": 0.347,
+    "n_2a": 17,
+    "dz": -0.96,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-12-11",
+    "anterior_z": 0.29,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-03-03",
@@ -1521,7 +1921,17 @@
      "lower the target range": 1,
      "strong": 1,
      "support": 2
-    }
+    },
+    "z": -2.32,
+    "media_2a": 0.211,
+    "sd_2a": 0.35,
+    "n_2a": 17,
+    "dz": -1.65,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-01-29",
+    "anterior_z": -0.67,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-03-15",
@@ -1542,7 +1952,17 @@
      "strong": 2,
      "strong labor market": 1,
      "support": 4
-    }
+    },
+    "z": -1.41,
+    "media_2a": 0.166,
+    "sd_2a": 0.39,
+    "n_2a": 18,
+    "dz": 0.91,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-03-03",
+    "anterior_z": -2.32,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-03-23",
@@ -1558,7 +1978,17 @@
     "terminos": {
      "reinvest": 1,
      "support": 6
-    }
+    },
+    "z": -2.76,
+    "media_2a": 0.132,
+    "sd_2a": 0.41,
+    "n_2a": 18,
+    "dz": -1.35,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-03-15",
+    "anterior_z": -1.41,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-03-31",
@@ -1574,7 +2004,17 @@
     "terminos": {
      "ease": 1,
      "support": 4
-    }
+    },
+    "z": -2.25,
+    "media_2a": 0.072,
+    "sd_2a": 0.476,
+    "n_2a": 19,
+    "dz": 0.51,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-03-23",
+    "anterior_z": -2.76,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-04-29",
@@ -1590,7 +2030,17 @@
     "terminos": {
      "support": 4,
      "weaker": 1
-    }
+    },
+    "z": -1.95,
+    "media_2a": 0.019,
+    "sd_2a": 0.521,
+    "n_2a": 20,
+    "dz": 0.3,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-03-31",
+    "anterior_z": -2.25,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-06-10",
@@ -1606,7 +2056,17 @@
     "terminos": {
      "support": 4,
      "weaker": 1
-    }
+    },
+    "z": -1.7,
+    "media_2a": -0.036,
+    "sd_2a": 0.568,
+    "n_2a": 20,
+    "dz": 0.25,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-04-29",
+    "anterior_z": -1.95,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-07-29",
@@ -1623,7 +2083,17 @@
      "support": 4,
      "weaker": 1,
      "well below": 1
-    }
+    },
+    "z": -1.5,
+    "media_2a": -0.114,
+    "sd_2a": 0.589,
+    "n_2a": 20,
+    "dz": 0.2,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-06-10",
+    "anterior_z": -1.7,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-08-27",
@@ -1640,7 +2110,17 @@
      "moderate": 2,
      "robust": 1,
      "strong labor market": 1
-    }
+    },
+    "z": 0.31,
+    "media_2a": -0.185,
+    "sd_2a": 0.606,
+    "n_2a": 20,
+    "dz": 1.81,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": true,
+    "anterior_fecha": "2020-07-29",
+    "anterior_z": -1.5,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-09-16",
@@ -1658,7 +2138,17 @@
      "support": 2,
      "weaker": 1,
      "well below": 1
-    }
+    },
+    "z": -1.39,
+    "media_2a": -0.176,
+    "sd_2a": 0.592,
+    "n_2a": 21,
+    "dz": -1.7,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-08-27",
+    "anterior_z": 0.31,
+    "anterior_pocos_terminos": true
    },
    {
     "fecha": "2020-11-05",
@@ -1676,7 +2166,17 @@
      "support": 2,
      "weaker": 1,
      "well below": 1
-    }
+    },
+    "z": -1.32,
+    "media_2a": -0.272,
+    "sd_2a": 0.553,
+    "n_2a": 21,
+    "dz": 0.07,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-09-16",
+    "anterior_z": -1.39,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-12-16",
@@ -1695,7 +2195,17 @@
      "support": 2,
      "weaker": 1,
      "well below": 1
-    }
+    },
+    "z": -1.21,
+    "media_2a": -0.348,
+    "sd_2a": 0.537,
+    "n_2a": 21,
+    "dz": 0.11,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-11-05",
+    "anterior_z": -1.32,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-01-27",
@@ -1714,7 +2224,17 @@
      "moderated": 1,
      "support": 2,
      "weaker": 1
-    }
+    },
+    "z": -1.15,
+    "media_2a": -0.429,
+    "sd_2a": 0.497,
+    "n_2a": 21,
+    "dz": 0.06,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-12-16",
+    "anterior_z": -1.21,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-03-17",
@@ -1731,7 +2251,17 @@
      "accommodative": 3,
      "asset purchases": 1,
      "support": 2
-    }
+    },
+    "z": -1.05,
+    "media_2a": -0.465,
+    "sd_2a": 0.51,
+    "n_2a": 21,
+    "dz": 0.1,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-01-27",
+    "anterior_z": -1.15,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-04-28",
@@ -1749,7 +2279,17 @@
      "asset purchases": 1,
      "strong": 1,
      "support": 3
-    }
+    },
+    "z": -0.64,
+    "media_2a": -0.503,
+    "sd_2a": 0.519,
+    "n_2a": 21,
+    "dz": 0.41,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-03-17",
+    "anterior_z": -1.05,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-06-16",
@@ -1767,7 +2307,17 @@
      "asset purchases": 1,
      "strong": 1,
      "support": 3
-    }
+    },
+    "z": -0.58,
+    "media_2a": -0.533,
+    "sd_2a": 0.519,
+    "n_2a": 21,
+    "dz": 0.06,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-04-28",
+    "anterior_z": -0.64,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-07-28",
@@ -1785,7 +2335,17 @@
      "asset purchases": 1,
      "strong": 1,
      "support": 3
-    }
+    },
+    "z": -0.51,
+    "media_2a": -0.58,
+    "sd_2a": 0.498,
+    "n_2a": 21,
+    "dz": 0.07,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-06-16",
+    "anterior_z": -0.58,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-09-22",
@@ -1804,7 +2364,17 @@
      "slowed": 1,
      "strong": 1,
      "support": 3
-    }
+    },
+    "z": -0.47,
+    "media_2a": -0.65,
+    "sd_2a": 0.474,
+    "n_2a": 20,
+    "dz": 0.04,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-07-28",
+    "anterior_z": -0.51,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-11-03",
@@ -1824,7 +2394,17 @@
      "slowed": 1,
      "strong": 1,
      "support": 4
-    }
+    },
+    "z": -0.38,
+    "media_2a": -0.738,
+    "sd_2a": 0.416,
+    "n_2a": 19,
+    "dz": 0.09,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-09-22",
+    "anterior_z": -0.47,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-12-15",
@@ -1844,7 +2424,17 @@
      "solid": 1,
      "strong": 1,
      "support": 5
-    }
+    },
+    "z": 0.12,
+    "media_2a": -0.803,
+    "sd_2a": 0.326,
+    "n_2a": 19,
+    "dz": 0.5,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-11-03",
+    "anterior_z": -0.38,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-01-26",
@@ -1865,7 +2455,17 @@
      "solid": 1,
      "strong labor market": 1,
      "support": 3
-    }
+    },
+    "z": 1.05,
+    "media_2a": -0.801,
+    "sd_2a": 0.317,
+    "n_2a": 20,
+    "dz": 0.93,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-12-15",
+    "anterior_z": 0.12,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-03-16",
@@ -1888,7 +2488,17 @@
      "support": 1,
      "uncertain": 1,
      "upward pressure": 1
-    }
+    },
+    "z": 6.18,
+    "media_2a": -0.861,
+    "sd_2a": 0.255,
+    "n_2a": 18,
+    "dz": 5.13,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-01-26",
+    "anterior_z": 1.05,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-05-04",
@@ -1913,7 +2523,17 @@
      "support": 1,
      "uncertain": 1,
      "upward pressure": 1
-    }
+    },
+    "z": 3.18,
+    "media_2a": -0.737,
+    "sd_2a": 0.467,
+    "n_2a": 16,
+    "dz": -3.0,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-03-16",
+    "anterior_z": 6.18,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-06-15",
@@ -1935,7 +2555,17 @@
      "robust": 1,
      "support": 1,
      "upward pressure": 1
-    }
+    },
+    "z": 2.45,
+    "media_2a": -0.627,
+    "sd_2a": 0.59,
+    "n_2a": 16,
+    "dz": -0.73,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-05-04",
+    "anterior_z": 3.18,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-07-27",
@@ -1958,7 +2588,17 @@
      "softened": 1,
      "support": 1,
      "upward pressure": 1
-    }
+    },
+    "z": 1.61,
+    "media_2a": -0.542,
+    "sd_2a": 0.671,
+    "n_2a": 17,
+    "dz": -0.84,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-06-15",
+    "anterior_z": 2.45,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-09-21",
@@ -1980,7 +2620,17 @@
      "robust": 1,
      "support": 1,
      "upward pressure": 1
-    }
+    },
+    "z": 1.73,
+    "media_2a": -0.445,
+    "sd_2a": 0.732,
+    "n_2a": 15,
+    "dz": 0.12,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-07-27",
+    "anterior_z": 1.61,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-11-02",
@@ -2004,7 +2654,17 @@
      "support": 1,
      "tightening": 1,
      "upward pressure": 1
-    }
+    },
+    "z": 1.59,
+    "media_2a": -0.366,
+    "sd_2a": 0.775,
+    "n_2a": 16,
+    "dz": -0.14,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-09-21",
+    "anterior_z": 1.73,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-12-14",
@@ -2028,7 +2688,17 @@
      "support": 1,
      "tightening": 1,
      "upward pressure": 1
-    }
+    },
+    "z": 1.37,
+    "media_2a": -0.25,
+    "sd_2a": 0.813,
+    "n_2a": 16,
+    "dz": -0.22,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-11-02",
+    "anterior_z": 1.59,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-02-01",
@@ -2051,7 +2721,17 @@
      "support": 1,
      "tightening": 1,
      "uncertainty": 1
-    }
+    },
+    "z": 0.56,
+    "media_2a": -0.075,
+    "sd_2a": 0.827,
+    "n_2a": 15,
+    "dz": -0.81,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-12-14",
+    "anterior_z": 1.37,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-03-22",
@@ -2076,7 +2756,17 @@
      "support": 1,
      "tightening": 1,
      "uncertain": 1
-    }
+    },
+    "z": 0.92,
+    "media_2a": 0.017,
+    "sd_2a": 0.793,
+    "n_2a": 15,
+    "dz": 0.36,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-02-01",
+    "anterior_z": 0.56,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-05-03",
@@ -2100,7 +2790,17 @@
      "support": 1,
      "tightening": 1,
      "uncertain": 1
-    }
+    },
+    "z": 0.76,
+    "media_2a": 0.123,
+    "sd_2a": 0.777,
+    "n_2a": 15,
+    "dz": -0.16,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-03-22",
+    "anterior_z": 0.92,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-06-14",
@@ -2123,7 +2823,17 @@
      "support": 1,
      "tightening": 1,
      "uncertain": 1
-    }
+    },
+    "z": 0.66,
+    "media_2a": 0.16,
+    "sd_2a": 0.765,
+    "n_2a": 16,
+    "dz": -0.1,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-05-03",
+    "anterior_z": 0.76,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-07-26",
@@ -2148,7 +2858,17 @@
      "support": 1,
      "tightening": 1,
      "uncertain": 1
-    }
+    },
+    "z": 0.48,
+    "media_2a": 0.253,
+    "sd_2a": 0.726,
+    "n_2a": 16,
+    "dz": -0.18,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-06-14",
+    "anterior_z": 0.66,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-09-20",
@@ -2173,7 +2893,17 @@
      "support": 1,
      "tightening": 1,
      "uncertain": 1
-    }
+    },
+    "z": 0.19,
+    "media_2a": 0.343,
+    "sd_2a": 0.669,
+    "n_2a": 16,
+    "dz": -0.29,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-07-26",
+    "anterior_z": 0.48,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-11-01",
@@ -2197,7 +2927,17 @@
      "support": 1,
      "tightening": 1,
      "uncertain": 1
-    }
+    },
+    "z": 0.25,
+    "media_2a": 0.427,
+    "sd_2a": 0.585,
+    "n_2a": 16,
+    "dz": 0.06,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-09-20",
+    "anterior_z": 0.19,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-12-13",
@@ -2222,7 +2962,17 @@
      "support": 1,
      "tightening": 1,
      "uncertain": 1
-    }
+    },
+    "z": -0.84,
+    "media_2a": 0.518,
+    "sd_2a": 0.467,
+    "n_2a": 16,
+    "dz": -1.09,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-11-01",
+    "anterior_z": 0.25,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-01-31",
@@ -2245,7 +2995,17 @@
      "strong": 1,
      "support": 1,
      "uncertain": 1
-    }
+    },
+    "z": -4.51,
+    "media_2a": 0.643,
+    "sd_2a": 0.203,
+    "n_2a": 15,
+    "dz": -3.67,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-12-13",
+    "anterior_z": -0.84,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-03-20",
@@ -2267,7 +3027,17 @@
      "strong": 1,
      "support": 1,
      "uncertain": 1
-    }
+    },
+    "z": -2.51,
+    "media_2a": 0.578,
+    "sd_2a": 0.31,
+    "n_2a": 15,
+    "dz": 2.0,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-01-31",
+    "anterior_z": -4.51,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-05-01",
@@ -2290,7 +3060,17 @@
      "strong": 1,
      "support": 1,
      "uncertain": 1
-    }
+    },
+    "z": -2.24,
+    "media_2a": 0.529,
+    "sd_2a": 0.357,
+    "n_2a": 16,
+    "dz": 0.27,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-03-20",
+    "anterior_z": -2.51,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-06-12",
@@ -2312,7 +3092,17 @@
      "strong": 1,
      "support": 1,
      "uncertain": 1
-    }
+    },
+    "z": -1.65,
+    "media_2a": 0.465,
+    "sd_2a": 0.404,
+    "n_2a": 16,
+    "dz": 0.59,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-05-01",
+    "anterior_z": -2.24,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-07-31",
@@ -2334,7 +3124,17 @@
      "support": 1,
      "uncertain": 1,
      "unemployment rate has moved up": 1
-    }
+    },
+    "z": -2.35,
+    "media_2a": 0.392,
+    "sd_2a": 0.437,
+    "n_2a": 15,
+    "dz": -0.7,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-06-12",
+    "anterior_z": -1.65,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-09-18",
@@ -2354,7 +3154,17 @@
      "solid": 1,
      "uncertain": 1,
      "unemployment rate has moved up": 1
-    }
+    },
+    "z": -1.79,
+    "media_2a": 0.328,
+    "sd_2a": 0.495,
+    "n_2a": 16,
+    "dz": 0.56,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-07-31",
+    "anterior_z": -2.35,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-11-07",
@@ -2375,7 +3185,17 @@
      "support": 1,
      "uncertain": 1,
      "unemployment rate has moved up": 1
-    }
+    },
+    "z": -1.56,
+    "media_2a": 0.201,
+    "sd_2a": 0.512,
+    "n_2a": 15,
+    "dz": 0.23,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-09-18",
+    "anterior_z": -1.79,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-12-18",
@@ -2396,7 +3216,17 @@
      "support": 1,
      "uncertain": 1,
      "unemployment rate has moved up": 1
-    }
+    },
+    "z": -1.36,
+    "media_2a": 0.103,
+    "sd_2a": 0.516,
+    "n_2a": 15,
+    "dz": 0.2,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-11-07",
+    "anterior_z": -1.56,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-01-29",
@@ -2414,7 +3244,17 @@
      "solid": 2,
      "support": 1,
      "uncertain": 1
-    }
+    },
+    "z": 0.27,
+    "media_2a": 0.059,
+    "sd_2a": 0.529,
+    "n_2a": 16,
+    "dz": 1.63,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-12-18",
+    "anterior_z": -1.36,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-03-19",
@@ -2432,7 +3272,17 @@
      "solid": 2,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": 0.29,
+    "media_2a": 0.047,
+    "sd_2a": 0.523,
+    "n_2a": 16,
+    "dz": 0.02,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-01-29",
+    "anterior_z": 0.27,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-05-07",
@@ -2451,7 +3301,17 @@
      "solid": 2,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": 0.78,
+    "media_2a": -0.034,
+    "sd_2a": 0.47,
+    "n_2a": 15,
+    "dz": 0.49,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-03-19",
+    "anterior_z": 0.29,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-06-18",
@@ -2469,7 +3329,17 @@
      "solid": 2,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": 0.58,
+    "media_2a": -0.056,
+    "sd_2a": 0.441,
+    "n_2a": 15,
+    "dz": -0.2,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-05-07",
+    "anterior_z": 0.78,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-07-30",
@@ -2488,7 +3358,17 @@
      "solid": 1,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": -0.29,
+    "media_2a": -0.083,
+    "sd_2a": 0.41,
+    "n_2a": 15,
+    "dz": -0.87,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-06-18",
+    "anterior_z": 0.58,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-08-22",
@@ -2501,7 +3381,14 @@
     "palabras": 204,
     "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250822a.htm",
     "tipo": "Comunicado FOMC",
-    "terminos": {}
+    "terminos": {},
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 0,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2025-09-17",
@@ -2522,7 +3409,17 @@
      "slowed": 1,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": -1.79,
+    "media_2a": -0.09,
+    "sd_2a": 0.397,
+    "n_2a": 16,
+    "dz": -1.5,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-07-30",
+    "anterior_z": -0.29,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-10-29",
@@ -2542,7 +3439,17 @@
      "slowed": 1,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": -2.05,
+    "media_2a": -0.169,
+    "sd_2a": 0.405,
+    "n_2a": 16,
+    "dz": -0.26,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-09-17",
+    "anterior_z": -1.79,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-12-10",
@@ -2562,7 +3469,17 @@
      "slowed": 1,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": -1.81,
+    "media_2a": -0.268,
+    "sd_2a": 0.404,
+    "n_2a": 16,
+    "dz": 0.24,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-10-29",
+    "anterior_z": -2.05,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-01-28",
@@ -2579,7 +3496,17 @@
      "solid": 1,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": 0.01,
+    "media_2a": -0.338,
+    "sd_2a": 0.428,
+    "n_2a": 16,
+    "dz": 1.82,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": true,
+    "anterior_fecha": "2025-12-10",
+    "anterior_z": -1.81,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-03-18",
@@ -2597,7 +3524,17 @@
      "support": 1,
      "uncertain": 1,
      "uncertainty": 1
-    }
+    },
+    "z": -0.37,
+    "media_2a": -0.342,
+    "sd_2a": 0.428,
+    "n_2a": 16,
+    "dz": -0.38,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": true,
+    "anterior_fecha": "2026-01-28",
+    "anterior_z": 0.01,
+    "anterior_pocos_terminos": true
    },
    {
     "fecha": "2026-04-29",
@@ -2614,7 +3551,17 @@
      "solid": 1,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": 0.06,
+    "media_2a": -0.36,
+    "sd_2a": 0.428,
+    "n_2a": 16,
+    "dz": 0.43,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": true,
+    "anterior_fecha": "2026-03-18",
+    "anterior_z": -0.37,
+    "anterior_pocos_terminos": true
    },
    {
     "fecha": "2026-06-17",
@@ -2633,7 +3580,17 @@
      "strong": 1,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": 1.61,
+    "media_2a": -0.375,
+    "sd_2a": 0.44,
+    "n_2a": 15,
+    "dz": 1.55,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2026-04-29",
+    "anterior_z": 0.06,
+    "anterior_pocos_terminos": true
    },
    {
     "fecha": "2026-07-29",
@@ -2653,7 +3610,17 @@
      "strong": 1,
      "support": 1,
      "uncertainty": 1
-    }
+    },
+    "z": 1.81,
+    "media_2a": -0.331,
+    "sd_2a": 0.46,
+    "n_2a": 16,
+    "dz": 0.2,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2026-06-17",
+    "anterior_z": 1.61,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-09-16",
@@ -2675,7 +3642,17 @@
      "strong": 1,
      "support": 2,
      "uncertainty": 1
-    }
+    },
+    "z": 1.44,
+    "media_2a": -0.26,
+    "sd_2a": 0.496,
+    "n_2a": 16,
+    "dz": -0.37,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2026-07-29",
+    "anterior_z": 1.81,
+    "anterior_pocos_terminos": false
    }
   ],
   "BCE": [
@@ -2713,7 +3690,14 @@
      "tightening": 1,
      "weaker": 2,
      "will raise": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 0,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-03-05",
@@ -2744,7 +3728,14 @@
      "support": 4,
      "uncertainty": 1,
      "weaker": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 1,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-04-15",
@@ -2778,7 +3769,14 @@
      "supportive": 1,
      "uncertainty": 4,
      "weaker": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 2,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-06-03",
@@ -2813,7 +3811,14 @@
      "uncertainty": 1,
      "weakening": 1,
      "weaker": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 3,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-07-16",
@@ -2848,7 +3853,14 @@
      "tightening": 4,
      "uncertainty": 2,
      "wait": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 4,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-09-03",
@@ -2890,7 +3902,14 @@
      "uncertainty": 1,
      "weakening": 3,
      "weaker": 3
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 5,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-10-22",
@@ -2935,7 +3954,14 @@
      "vigilant": 1,
      "wait": 2,
      "weaker": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 6,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-12-03",
@@ -2978,7 +4004,14 @@
      "weakening": 1,
      "weaker": 2,
      "well below": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 7,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2016-01-21",
@@ -3022,7 +4055,14 @@
      "wait": 1,
      "weaker": 2,
      "well below": 1
-    }
+    },
+    "z": -0.23,
+    "media_2a": -0.472,
+    "sd_2a": 0.248,
+    "n_2a": 8,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2016-03-10",
@@ -3058,7 +4098,17 @@
      "weakened": 1,
      "weakening": 2,
      "weaker": 1
-    }
+    },
+    "z": -0.91,
+    "media_2a": -0.478,
+    "sd_2a": 0.233,
+    "n_2a": 9,
+    "dz": -0.68,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-01-21",
+    "anterior_z": -0.23,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-04-21",
@@ -3096,7 +4146,17 @@
      "tightening": 2,
      "uncertainty": 1,
      "wait": 1
-    }
+    },
+    "z": -0.32,
+    "media_2a": -0.5,
+    "sd_2a": 0.23,
+    "n_2a": 10,
+    "dz": 0.59,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-03-10",
+    "anterior_z": -0.91,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-06-02",
@@ -3135,7 +4195,17 @@
      "tightening": 1,
      "weakening": 1,
      "weaker": 1
-    }
+    },
+    "z": -0.84,
+    "media_2a": -0.506,
+    "sd_2a": 0.219,
+    "n_2a": 11,
+    "dz": -0.52,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-04-21",
+    "anterior_z": -0.32,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-07-21",
@@ -3167,7 +4237,17 @@
      "supportive": 2,
      "uncertainty": 4,
      "wait": 1
-    }
+    },
+    "z": -0.17,
+    "media_2a": -0.522,
+    "sd_2a": 0.215,
+    "n_2a": 12,
+    "dz": 0.67,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-06-02",
+    "anterior_z": -0.84,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-09-08",
@@ -3204,7 +4284,17 @@
      "support": 8,
      "supportive": 3,
      "uncertainty": 1
-    }
+    },
+    "z": -0.61,
+    "media_2a": -0.525,
+    "sd_2a": 0.207,
+    "n_2a": 13,
+    "dz": -0.44,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-07-21",
+    "anterior_z": -0.17,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-10-20",
@@ -3239,7 +4329,17 @@
      "supportive": 1,
      "tightening": 2,
      "uncertainty": 1
-    }
+    },
+    "z": -0.33,
+    "media_2a": -0.534,
+    "sd_2a": 0.201,
+    "n_2a": 14,
+    "dz": 0.28,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-09-08",
+    "anterior_z": -0.61,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-12-08",
@@ -3274,7 +4374,17 @@
      "subdued": 1,
      "support": 3,
      "uncertainty": 10
-    }
+    },
+    "z": 0.1,
+    "media_2a": -0.538,
+    "sd_2a": 0.195,
+    "n_2a": 15,
+    "dz": 0.43,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-10-20",
+    "anterior_z": -0.33,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-01-19",
@@ -3306,7 +4416,17 @@
      "support": 7,
      "uncertainty": 2,
      "weaker": 1
-    }
+    },
+    "z": 0.29,
+    "media_2a": -0.537,
+    "sd_2a": 0.188,
+    "n_2a": 16,
+    "dz": 0.19,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-12-08",
+    "anterior_z": 0.1,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-03-09",
@@ -3341,7 +4461,17 @@
      "support": 3,
      "supportive": 1,
      "too high": 1
-    }
+    },
+    "z": 0.81,
+    "media_2a": -0.528,
+    "sd_2a": 0.19,
+    "n_2a": 15,
+    "dz": 0.52,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-01-19",
+    "anterior_z": 0.29,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-04-27",
@@ -3379,7 +4509,17 @@
      "uncertainty": 8,
      "upward pressure": 1,
      "weaker": 1
-    }
+    },
+    "z": -0.75,
+    "media_2a": -0.527,
+    "sd_2a": 0.191,
+    "n_2a": 15,
+    "dz": -1.56,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-03-09",
+    "anterior_z": 0.81,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-06-08",
@@ -3416,7 +4556,17 @@
      "support": 5,
      "tightening": 1,
      "uncertainty": 3
-    }
+    },
+    "z": -1.27,
+    "media_2a": -0.575,
+    "sd_2a": 0.108,
+    "n_2a": 15,
+    "dz": -0.52,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-04-27",
+    "anterior_z": -0.75,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-07-20",
@@ -3454,7 +4604,17 @@
      "tightening": 2,
      "uncertainty": 1,
      "wait": 1
-    }
+    },
+    "z": -0.81,
+    "media_2a": -0.595,
+    "sd_2a": 0.102,
+    "n_2a": 15,
+    "dz": 0.46,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-06-08",
+    "anterior_z": -1.27,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-09-07",
@@ -3491,7 +4651,17 @@
      "tightened": 1,
      "tightening": 2,
      "uncertainty": 10
-    }
+    },
+    "z": -0.13,
+    "media_2a": -0.604,
+    "sd_2a": 0.103,
+    "n_2a": 15,
+    "dz": 0.68,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-07-20",
+    "anterior_z": -0.81,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-10-26",
@@ -3535,7 +4705,17 @@
      "support": 8,
      "too high": 1,
      "uncertainty": 2
-    }
+    },
+    "z": 0.9,
+    "media_2a": -0.607,
+    "sd_2a": 0.102,
+    "n_2a": 15,
+    "dz": 1.03,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-09-07",
+    "anterior_z": -0.13,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-12-14",
@@ -3569,7 +4749,17 @@
      "stimulus": 3,
      "strong": 5,
      "support": 10
-    }
+    },
+    "z": 0.83,
+    "media_2a": -0.591,
+    "sd_2a": 0.095,
+    "n_2a": 15,
+    "dz": -0.07,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-10-26",
+    "anterior_z": 0.9,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-01-25",
@@ -3606,7 +4796,17 @@
      "support": 4,
      "tightening": 1,
      "uncertainty": 2
-    }
+    },
+    "z": 2.05,
+    "media_2a": -0.59,
+    "sd_2a": 0.096,
+    "n_2a": 15,
+    "dz": 1.22,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-12-14",
+    "anterior_z": 0.83,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-03-08",
@@ -3645,7 +4845,17 @@
      "uncertain": 1,
      "uncertainty": 6,
      "wait": 1
-    }
+    },
+    "z": -1.43,
+    "media_2a": -0.577,
+    "sd_2a": 0.105,
+    "n_2a": 16,
+    "dz": -3.48,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-01-25",
+    "anterior_z": 2.05,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-04-26",
@@ -3684,7 +4894,17 @@
      "support": 7,
      "tightening": 3,
      "weaker": 1
-    }
+    },
+    "z": 3.05,
+    "media_2a": -0.58,
+    "sd_2a": 0.112,
+    "n_2a": 15,
+    "dz": 4.48,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-03-08",
+    "anterior_z": -1.43,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-06-14",
@@ -3723,7 +4943,17 @@
      "upside risks": 1,
      "wage pressures": 1,
      "weaker": 3
-    }
+    },
+    "z": 1.66,
+    "media_2a": -0.55,
+    "sd_2a": 0.138,
+    "n_2a": 15,
+    "dz": -1.39,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-04-26",
+    "anterior_z": 3.05,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-07-26",
@@ -3765,7 +4995,17 @@
      "uncertainty": 5,
      "weakening": 1,
      "weaker": 2
-    }
+    },
+    "z": 0.33,
+    "media_2a": -0.534,
+    "sd_2a": 0.15,
+    "n_2a": 15,
+    "dz": -1.33,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-06-14",
+    "anterior_z": 1.66,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-09-13",
@@ -3809,7 +5049,17 @@
      "wait": 1,
      "weakening": 2,
      "weaker": 3
-    }
+    },
+    "z": 0.3,
+    "media_2a": -0.523,
+    "sd_2a": 0.147,
+    "n_2a": 15,
+    "dz": -0.03,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-07-26",
+    "anterior_z": 0.33,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-10-25",
@@ -3845,7 +5095,17 @@
      "uncertainty": 2,
      "weakening": 1,
      "weaker": 10
-    }
+    },
+    "z": -1.0,
+    "media_2a": -0.515,
+    "sd_2a": 0.146,
+    "n_2a": 15,
+    "dz": -1.3,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-09-13",
+    "anterior_z": 0.3,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-12-13",
@@ -3882,7 +5142,17 @@
      "uncertainty": 6,
      "wait": 1,
      "weaker": 5
-    }
+    },
+    "z": 0.55,
+    "media_2a": -0.524,
+    "sd_2a": 0.15,
+    "n_2a": 15,
+    "dz": 1.55,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-10-25",
+    "anterior_z": -1.0,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-01-24",
@@ -3924,7 +5194,17 @@
      "vigilance": 1,
      "wait": 2,
      "weaker": 5
-    }
+    },
+    "z": 0.18,
+    "media_2a": -0.522,
+    "sd_2a": 0.152,
+    "n_2a": 15,
+    "dz": -0.37,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-12-13",
+    "anterior_z": 0.55,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-03-07",
@@ -3965,7 +5245,17 @@
      "wait": 1,
      "weakening": 1,
      "weaker": 4
-    }
+    },
+    "z": -1.65,
+    "media_2a": -0.52,
+    "sd_2a": 0.147,
+    "n_2a": 16,
+    "dz": -1.83,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-01-24",
+    "anterior_z": 0.18,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-04-10",
@@ -3999,7 +5289,17 @@
      "tightening": 1,
      "uncertainty": 1,
      "weakening": 7
-    }
+    },
+    "z": -1.16,
+    "media_2a": -0.544,
+    "sd_2a": 0.153,
+    "n_2a": 16,
+    "dz": 0.49,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-03-07",
+    "anterior_z": -1.65,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-06-06",
@@ -4035,7 +5335,17 @@
      "uncertainty": 9,
      "weakening": 1,
      "weaker": 1
-    }
+    },
+    "z": -0.74,
+    "media_2a": -0.547,
+    "sd_2a": 0.156,
+    "n_2a": 16,
+    "dz": 0.42,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-04-10",
+    "anterior_z": -1.16,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-07-25",
@@ -4081,7 +5391,17 @@
      "uncertainty": 2,
      "wait": 1,
      "weakening": 1
-    }
+    },
+    "z": 0.06,
+    "media_2a": -0.535,
+    "sd_2a": 0.154,
+    "n_2a": 15,
+    "dz": 0.8,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-06-06",
+    "anterior_z": -0.74,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-09-12",
@@ -4128,7 +5448,17 @@
      "weakening": 4,
      "weaker": 1,
      "well below": 1
-    }
+    },
+    "z": -0.41,
+    "media_2a": -0.529,
+    "sd_2a": 0.153,
+    "n_2a": 15,
+    "dz": -0.47,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-07-25",
+    "anterior_z": 0.06,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-10-24",
@@ -4167,7 +5497,17 @@
      "uncertainty": 4,
      "weakening": 4,
      "weaker": 1
-    }
+    },
+    "z": -1.48,
+    "media_2a": -0.533,
+    "sd_2a": 0.148,
+    "n_2a": 16,
+    "dz": -1.07,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-09-12",
+    "anterior_z": -0.41,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-12-12",
@@ -4204,7 +5544,17 @@
      "wait": 1,
      "weakened": 1,
      "weaker": 1
-    }
+    },
+    "z": -0.75,
+    "media_2a": -0.548,
+    "sd_2a": 0.158,
+    "n_2a": 16,
+    "dz": 0.73,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-10-24",
+    "anterior_z": -1.48,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-01-23",
@@ -4244,7 +5594,17 @@
      "wait": 2,
      "weakening": 2,
      "weaker": 1
-    }
+    },
+    "z": 0.49,
+    "media_2a": -0.558,
+    "sd_2a": 0.16,
+    "n_2a": 16,
+    "dz": 1.24,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-12-12",
+    "anterior_z": -0.75,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-03-12",
@@ -4287,7 +5647,17 @@
      "weakened": 1,
      "weakening": 1,
      "weaker": 2
-    }
+    },
+    "z": -1.08,
+    "media_2a": -0.552,
+    "sd_2a": 0.155,
+    "n_2a": 15,
+    "dz": -1.57,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-01-23",
+    "anterior_z": 0.49,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-04-30",
@@ -4333,7 +5703,17 @@
      "uncertainty": 4,
      "upward pressures": 1,
      "weaker": 1
-    }
+    },
+    "z": -0.04,
+    "media_2a": -0.584,
+    "sd_2a": 0.133,
+    "n_2a": 15,
+    "dz": 1.04,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-03-12",
+    "anterior_z": -1.08,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-06-04",
@@ -4377,7 +5757,17 @@
      "uncertainty": 5,
      "upward pressures": 1,
      "weaker": 1
-    }
+    },
+    "z": 0.51,
+    "media_2a": -0.584,
+    "sd_2a": 0.129,
+    "n_2a": 16,
+    "dz": 0.55,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-04-30",
+    "anterior_z": -0.04,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-07-16",
@@ -4424,7 +5814,17 @@
      "wait": 1,
      "weaker": 1,
      "well below": 2
-    }
+    },
+    "z": 1.29,
+    "media_2a": -0.597,
+    "sd_2a": 0.11,
+    "n_2a": 16,
+    "dz": 0.78,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-06-04",
+    "anterior_z": 0.51,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-09-10",
@@ -4467,7 +5867,17 @@
      "upward pressure": 1,
      "wage pressures": 1,
      "well below": 1
-    }
+    },
+    "z": 0.54,
+    "media_2a": -0.595,
+    "sd_2a": 0.112,
+    "n_2a": 16,
+    "dz": -0.75,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-07-16",
+    "anterior_z": 1.29,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-10-29",
@@ -4513,7 +5923,17 @@
      "wage pressures": 1,
      "weakening": 1,
      "weaker": 1
-    }
+    },
+    "z": 0.4,
+    "media_2a": -0.594,
+    "sd_2a": 0.112,
+    "n_2a": 15,
+    "dz": -0.14,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-09-10",
+    "anterior_z": 0.54,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-12-10",
@@ -4553,7 +5973,17 @@
      "wage pressures": 1,
      "weaker": 1,
      "well below": 1
-    }
+    },
+    "z": 1.53,
+    "media_2a": -0.591,
+    "sd_2a": 0.109,
+    "n_2a": 16,
+    "dz": 1.13,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-10-29",
+    "anterior_z": 0.4,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-01-21",
@@ -4597,7 +6027,17 @@
      "wage pressures": 1,
      "weaker": 1,
      "well below": 1
-    }
+    },
+    "z": 1.27,
+    "media_2a": -0.59,
+    "sd_2a": 0.11,
+    "n_2a": 16,
+    "dz": -0.26,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-12-10",
+    "anterior_z": 1.53,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-03-11",
@@ -4638,7 +6078,17 @@
      "upward pressure": 1,
      "wage pressures": 1,
      "weaker": 2
-    }
+    },
+    "z": 1.81,
+    "media_2a": -0.576,
+    "sd_2a": 0.107,
+    "n_2a": 15,
+    "dz": 0.54,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-01-21",
+    "anterior_z": 1.27,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-04-22",
@@ -4683,7 +6133,17 @@
      "wait": 1,
      "weaker": 1,
      "well below": 2
-    }
+    },
+    "z": 4.03,
+    "media_2a": -0.554,
+    "sd_2a": 0.11,
+    "n_2a": 15,
+    "dz": 2.22,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-03-11",
+    "anterior_z": 1.81,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-06-10",
@@ -4730,7 +6190,17 @@
      "wage pressures": 1,
      "weakening": 1,
      "weaker": 2
-    }
+    },
+    "z": 1.93,
+    "media_2a": -0.517,
+    "sd_2a": 0.154,
+    "n_2a": 15,
+    "dz": -2.1,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-04-22",
+    "anterior_z": 4.03,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-07-22",
@@ -4771,7 +6241,17 @@
      "uncertainty": 1,
      "upward pressure": 1,
      "well below": 2
-    }
+    },
+    "z": 1.85,
+    "media_2a": -0.498,
+    "sd_2a": 0.166,
+    "n_2a": 16,
+    "dz": -0.08,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-06-10",
+    "anterior_z": 1.93,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-09-09",
@@ -4808,7 +6288,17 @@
      "upside risks": 1,
      "weaker": 1,
      "well below": 1
-    }
+    },
+    "z": 0.61,
+    "media_2a": -0.477,
+    "sd_2a": 0.183,
+    "n_2a": 16,
+    "dz": -1.24,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-07-22",
+    "anterior_z": 1.85,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-10-28",
@@ -4845,7 +6335,17 @@
      "tightening": 3,
      "wait": 1,
      "weakened": 1
-    }
+    },
+    "z": 2.51,
+    "media_2a": -0.444,
+    "sd_2a": 0.171,
+    "n_2a": 15,
+    "dz": 1.9,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-09-09",
+    "anterior_z": 0.61,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-12-16",
@@ -4885,7 +6385,17 @@
      "uncertain": 3,
      "uncertainty": 16,
      "upside risk": 3
-    }
+    },
+    "z": -0.52,
+    "media_2a": -0.4,
+    "sd_2a": 0.192,
+    "n_2a": 15,
+    "dz": -3.03,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-10-28",
+    "anterior_z": 2.51,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-02-03",
@@ -4928,7 +6438,17 @@
      "uncertainty": 4,
      "upside risk": 2,
      "weakened": 1
-    }
+    },
+    "z": 2.04,
+    "media_2a": -0.402,
+    "sd_2a": 0.192,
+    "n_2a": 15,
+    "dz": 2.56,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-12-16",
+    "anterior_z": -0.52,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-03-10",
@@ -4968,7 +6488,17 @@
      "wage pressures": 1,
      "wait": 2,
      "weaker": 1
-    }
+    },
+    "z": -0.08,
+    "media_2a": -0.377,
+    "sd_2a": 0.21,
+    "n_2a": 16,
+    "dz": -2.12,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-02-03",
+    "anterior_z": 2.04,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-04-14",
@@ -5008,7 +6538,17 @@
      "uncertainty": 5,
      "upside risks": 2,
      "upward pressure": 1
-    }
+    },
+    "z": 2.2,
+    "media_2a": -0.357,
+    "sd_2a": 0.19,
+    "n_2a": 16,
+    "dz": 2.28,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-03-10",
+    "anterior_z": -0.08,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-06-09",
@@ -5060,7 +6600,17 @@
      "support": 4,
      "tightening": 1,
      "uncertainty": 3
-    }
+    },
+    "z": 2.33,
+    "media_2a": -0.303,
+    "sd_2a": 0.205,
+    "n_2a": 15,
+    "dz": 0.13,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-04-14",
+    "anterior_z": 2.2,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-07-21",
@@ -5106,7 +6656,17 @@
      "uncertainty": 4,
      "upside risk": 3,
      "wait": 1
-    }
+    },
+    "z": 1.82,
+    "media_2a": -0.261,
+    "sd_2a": 0.234,
+    "n_2a": 15,
+    "dz": -0.51,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-06-09",
+    "anterior_z": 2.33,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-09-08",
@@ -5159,7 +6719,17 @@
      "uncertainty": 1,
      "upward pressure": 1,
      "weakening": 1
-    }
+    },
+    "z": 2.43,
+    "media_2a": -0.234,
+    "sd_2a": 0.25,
+    "n_2a": 16,
+    "dz": 0.61,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-07-21",
+    "anterior_z": 1.82,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-10-27",
@@ -5211,7 +6781,17 @@
      "vigilance": 1,
      "vigilant": 1,
      "weakening": 5
-    }
+    },
+    "z": 1.03,
+    "media_2a": -0.177,
+    "sd_2a": 0.279,
+    "n_2a": 16,
+    "dz": -1.4,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-09-08",
+    "anterior_z": 2.43,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-12-15",
@@ -5263,7 +6843,17 @@
      "weakening": 3,
      "weaker": 3,
      "will raise": 2
-    }
+    },
+    "z": 1.03,
+    "media_2a": -0.117,
+    "sd_2a": 0.267,
+    "n_2a": 15,
+    "dz": 0.0,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-10-27",
+    "anterior_z": 1.03,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-02-02",
@@ -5317,7 +6907,17 @@
      "weakened": 1,
      "weakening": 3,
      "weaker": 1
-    }
+    },
+    "z": 1.4,
+    "media_2a": -0.076,
+    "sd_2a": 0.259,
+    "n_2a": 15,
+    "dz": 0.37,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-12-15",
+    "anterior_z": 1.03,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-03-16",
@@ -5368,7 +6968,17 @@
      "weakened": 2,
      "weakening": 2,
      "weaker": 2
-    }
+    },
+    "z": 0.92,
+    "media_2a": -0.032,
+    "sd_2a": 0.259,
+    "n_2a": 15,
+    "dz": -0.48,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-02-02",
+    "anterior_z": 1.4,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-05-04",
@@ -5416,7 +7026,17 @@
      "wait": 1,
      "weakened": 1,
      "weaker": 2
-    }
+    },
+    "z": 1.87,
+    "media_2a": -0.011,
+    "sd_2a": 0.265,
+    "n_2a": 15,
+    "dz": 0.95,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-03-16",
+    "anterior_z": 0.92,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-06-15",
@@ -5468,7 +7088,17 @@
      "weakened": 1,
      "weakening": 1,
      "weaker": 2
-    }
+    },
+    "z": 0.93,
+    "media_2a": 0.036,
+    "sd_2a": 0.287,
+    "n_2a": 15,
+    "dz": -0.94,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-05-04",
+    "anterior_z": 1.87,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-07-27",
@@ -5518,7 +7148,17 @@
      "upward pressures": 1,
      "wait": 1,
      "weaker": 3
-    }
+    },
+    "z": 1.3,
+    "media_2a": 0.069,
+    "sd_2a": 0.288,
+    "n_2a": 15,
+    "dz": 0.37,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-06-15",
+    "anterior_z": 0.93,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-09-14",
@@ -5567,7 +7207,17 @@
      "weakened": 1,
      "weakening": 3,
      "weaker": 3
-    }
+    },
+    "z": -0.14,
+    "media_2a": 0.123,
+    "sd_2a": 0.276,
+    "n_2a": 15,
+    "dz": -1.44,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-07-27",
+    "anterior_z": 1.3,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-10-26",
@@ -5615,7 +7265,17 @@
      "weakening": 3,
      "weaker": 3,
      "well below": 1
-    }
+    },
+    "z": 0.02,
+    "media_2a": 0.121,
+    "sd_2a": 0.267,
+    "n_2a": 16,
+    "dz": 0.16,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-09-14",
+    "anterior_z": -0.14,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-12-14",
@@ -5658,7 +7318,17 @@
      "weakened": 1,
      "weakening": 1,
      "weaker": 4
-    }
+    },
+    "z": -1.17,
+    "media_2a": 0.13,
+    "sd_2a": 0.264,
+    "n_2a": 16,
+    "dz": -1.19,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-10-26",
+    "anterior_z": 0.02,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-01-25",
@@ -5702,7 +7372,17 @@
      "upside risks": 1,
      "weaker": 3,
      "well below": 1
-    }
+    },
+    "z": -2.2,
+    "media_2a": 0.15,
+    "sd_2a": 0.222,
+    "n_2a": 16,
+    "dz": -1.03,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-12-14",
+    "anterior_z": -1.17,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-03-07",
@@ -5747,7 +7427,17 @@
      "vigilant": 1,
      "wait": 2,
      "weaker": 1
-    }
+    },
+    "z": -0.35,
+    "media_2a": 0.129,
+    "sd_2a": 0.251,
+    "n_2a": 16,
+    "dz": 1.85,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-01-25",
+    "anterior_z": -2.2,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-04-11",
@@ -5792,7 +7482,17 @@
      "upward pressure": 1,
      "wait": 1,
      "weaker": 3
-    }
+    },
+    "z": -0.88,
+    "media_2a": 0.156,
+    "sd_2a": 0.211,
+    "n_2a": 16,
+    "dz": -0.53,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-03-07",
+    "anterior_z": -0.35,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-06-06",
@@ -5839,7 +7539,17 @@
      "upside risks": 1,
      "weakened": 1,
      "weaker": 2
-    }
+    },
+    "z": -0.85,
+    "media_2a": 0.15,
+    "sd_2a": 0.215,
+    "n_2a": 16,
+    "dz": 0.03,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-04-11",
+    "anterior_z": -0.88,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-07-18",
@@ -5878,7 +7588,17 @@
      "upside risks": 1,
      "weaker": 2,
      "will raise": 1
-    }
+    },
+    "z": -0.04,
+    "media_2a": 0.137,
+    "sd_2a": 0.22,
+    "n_2a": 16,
+    "dz": 0.81,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-06-06",
+    "anterior_z": -0.85,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-09-12",
@@ -5919,7 +7639,17 @@
      "upside risks": 1,
      "weakened": 2,
      "weaker": 4
-    }
+    },
+    "z": -1.09,
+    "media_2a": 0.119,
+    "sd_2a": 0.217,
+    "n_2a": 15,
+    "dz": -1.05,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-07-18",
+    "anterior_z": -0.04,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-10-17",
@@ -5970,7 +7700,17 @@
      "wait": 1,
      "weakened": 1,
      "weaker": 3
-    }
+    },
+    "z": -1.78,
+    "media_2a": 0.105,
+    "sd_2a": 0.218,
+    "n_2a": 16,
+    "dz": -0.69,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-09-12",
+    "anterior_z": -1.09,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-12-12",
@@ -6011,7 +7751,17 @@
      "upside risks": 1,
      "wage pressures": 1,
      "weakening": 1
-    }
+    },
+    "z": -0.91,
+    "media_2a": 0.08,
+    "sd_2a": 0.239,
+    "n_2a": 16,
+    "dz": 0.87,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-10-17",
+    "anterior_z": -1.78,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-01-30",
@@ -6056,7 +7806,17 @@
      "wage pressures": 1,
      "wait": 2,
      "weakening": 1
-    }
+    },
+    "z": -0.62,
+    "media_2a": 0.062,
+    "sd_2a": 0.243,
+    "n_2a": 16,
+    "dz": 0.29,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-12-12",
+    "anterior_z": -0.91,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-03-06",
@@ -6105,7 +7865,17 @@
      "vigilant": 4,
      "wait": 1,
      "weakening": 1
-    }
+    },
+    "z": -0.79,
+    "media_2a": 0.038,
+    "sd_2a": 0.238,
+    "n_2a": 16,
+    "dz": -0.17,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-01-30",
+    "anterior_z": -0.62,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-04-17",
@@ -6145,7 +7915,17 @@
      "tightening": 1,
      "uncertainty": 17,
      "upward pressure": 1
-    }
+    },
+    "z": -2.0,
+    "media_2a": 0.016,
+    "sd_2a": 0.238,
+    "n_2a": 16,
+    "dz": -1.21,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-03-06",
+    "anterior_z": -0.79,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-06-05",
@@ -6190,7 +7970,17 @@
      "uncertainty": 10,
      "wait": 3,
      "weaker": 2
-    }
+    },
+    "z": -2.08,
+    "media_2a": -0.043,
+    "sd_2a": 0.232,
+    "n_2a": 16,
+    "dz": -0.08,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-04-17",
+    "anterior_z": -2.0,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-07-24",
@@ -6234,7 +8024,17 @@
      "uncertain": 2,
      "uncertainty": 13,
      "wait": 3
-    }
+    },
+    "z": -1.75,
+    "media_2a": -0.095,
+    "sd_2a": 0.241,
+    "n_2a": 16,
+    "dz": 0.33,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-06-05",
+    "anterior_z": -2.08,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-09-11",
@@ -6271,7 +8071,17 @@
      "uncertain": 2,
      "uncertainty": 11,
      "weaker": 2
-    }
+    },
+    "z": -2.26,
+    "media_2a": -0.155,
+    "sd_2a": 0.217,
+    "n_2a": 16,
+    "dz": -0.51,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-07-24",
+    "anterior_z": -1.75,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-10-30",
@@ -6315,7 +8125,17 @@
      "wait": 2,
      "weakening": 2,
      "weaker": 1
-    }
+    },
+    "z": -1.0,
+    "media_2a": -0.222,
+    "sd_2a": 0.23,
+    "n_2a": 15,
+    "dz": 1.26,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-09-11",
+    "anterior_z": -2.26,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-12-18",
@@ -6353,7 +8173,17 @@
      "wage pressures": 1,
      "wait": 1,
      "weaker": 1
-    }
+    },
+    "z": 0.35,
+    "media_2a": -0.241,
+    "sd_2a": 0.237,
+    "n_2a": 15,
+    "dz": 1.35,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-10-30",
+    "anterior_z": -1.0,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-02-05",
@@ -6387,7 +8217,17 @@
      "uncertain": 3,
      "uncertainty": 6,
      "weaker": 1
-    }
+    },
+    "z": -0.57,
+    "media_2a": -0.228,
+    "sd_2a": 0.236,
+    "n_2a": 15,
+    "dz": -0.92,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-12-18",
+    "anterior_z": 0.35,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-03-19",
@@ -6418,7 +8258,17 @@
      "uncertain": 2,
      "uncertainty": 3,
      "upside risks": 1
-    }
+    },
+    "z": -0.49,
+    "media_2a": -0.255,
+    "sd_2a": 0.226,
+    "n_2a": 15,
+    "dz": 0.08,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2026-02-05",
+    "anterior_z": -0.57,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-04-30",
@@ -6455,7 +8305,17 @@
      "uncertain": 1,
      "uncertainty": 5,
      "upside risks": 2
-    }
+    },
+    "z": 1.7,
+    "media_2a": -0.278,
+    "sd_2a": 0.219,
+    "n_2a": 15,
+    "dz": 2.19,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2026-03-19",
+    "anterior_z": -0.49,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-06-11",
@@ -6496,7 +8356,17 @@
      "uncertainty": 8,
      "upside risks": 1,
      "weaker": 1
-    }
+    },
+    "z": 2.33,
+    "media_2a": -0.269,
+    "sd_2a": 0.231,
+    "n_2a": 15,
+    "dz": 0.63,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2026-04-30",
+    "anterior_z": 1.7,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-07-23",
@@ -6533,7 +8403,17 @@
      "wait": 1,
      "weakening": 1,
      "weaker": 1
-    }
+    },
+    "z": 1.26,
+    "media_2a": -0.26,
+    "sd_2a": 0.25,
+    "n_2a": 15,
+    "dz": -1.07,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2026-06-11",
+    "anterior_z": 2.33,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-09-10",
@@ -6569,7 +8449,17 @@
      "tightening": 2,
      "uncertain": 1,
      "uncertainty": 4
-    }
+    },
+    "z": 1.93,
+    "media_2a": -0.24,
+    "sd_2a": 0.254,
+    "n_2a": 16,
+    "dz": 0.67,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2026-07-23",
+    "anterior_z": 1.26,
+    "anterior_pocos_terminos": false
    }
   ],
   "BoJ": [
@@ -6594,7 +8484,14 @@
      "monetary easing": 3,
      "resilient": 1,
      "support": 2
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 0,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-02-18",
@@ -6616,7 +8513,14 @@
      "monetary easing": 3,
      "resilient": 1,
      "sluggish": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 1,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-03-17",
@@ -6638,7 +8542,14 @@
      "monetary easing": 3,
      "resilient": 1,
      "sluggish": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 2,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-04-08",
@@ -6660,7 +8571,14 @@
      "monetary easing": 1,
      "resilient": 1,
      "sluggish": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 3,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-04-30",
@@ -6675,7 +8593,14 @@
     "tipo": "Statement on Monetary Policy",
     "terminos": {
      "asset purchases": 2
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 4,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": true
    },
    {
     "fecha": "2015-05-22",
@@ -6696,7 +8621,14 @@
      "moderate": 3,
      "monetary easing": 1,
      "resilient": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 5,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-06-19",
@@ -6717,7 +8649,14 @@
      "moderate": 3,
      "monetary easing": 1,
      "resilient": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 6,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-07-15",
@@ -6739,7 +8678,14 @@
      "moderate": 2,
      "monetary easing": 1,
      "resilient": 1
-    }
+    },
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 7,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-08-07",
@@ -6759,7 +8705,14 @@
      "moderate": 2,
      "monetary easing": 1,
      "resilient": 1
-    }
+    },
+    "z": -1.01,
+    "media_2a": -0.486,
+    "sd_2a": 0.376,
+    "n_2a": 8,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2015-09-15",
@@ -6780,7 +8733,17 @@
      "monetary easing": 1,
      "resilient": 1,
      "slowdown": 3
-    }
+    },
+    "z": -1.02,
+    "media_2a": -0.528,
+    "sd_2a": 0.374,
+    "n_2a": 9,
+    "dz": -0.01,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2015-08-07",
+    "anterior_z": -1.01,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2015-10-07",
@@ -6801,7 +8764,17 @@
      "monetary easing": 1,
      "resilient": 1,
      "slowdown": 3
-    }
+    },
+    "z": -0.92,
+    "media_2a": -0.567,
+    "sd_2a": 0.373,
+    "n_2a": 10,
+    "dz": 0.1,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2015-09-15",
+    "anterior_z": -1.02,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2015-10-30",
@@ -6816,7 +8789,17 @@
     "tipo": "Statement on Monetary Policy",
     "terminos": {
      "asset purchases": 2
-    }
+    },
+    "z": -1.09,
+    "media_2a": -0.598,
+    "sd_2a": 0.369,
+    "n_2a": 11,
+    "dz": -0.17,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": true,
+    "anterior_fecha": "2015-10-07",
+    "anterior_z": -0.92,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2015-11-19",
@@ -6837,7 +8820,17 @@
      "monetary easing": 1,
      "resilient": 1,
      "slowdown": 3
-    }
+    },
+    "z": -0.75,
+    "media_2a": -0.631,
+    "sd_2a": 0.37,
+    "n_2a": 12,
+    "dz": 0.34,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2015-10-30",
+    "anterior_z": -1.09,
+    "anterior_pocos_terminos": true
    },
    {
     "fecha": "2015-12-18",
@@ -6859,7 +8852,17 @@
      "resilient": 1,
      "slowdown": 2,
      "support": 6
-    }
+    },
+    "z": -0.79,
+    "media_2a": -0.653,
+    "sd_2a": 0.363,
+    "n_2a": 13,
+    "dz": -0.04,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2015-11-19",
+    "anterior_z": -0.75,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-01-29",
@@ -6882,7 +8885,17 @@
      "negative interest rate": 24,
      "support": 4,
      "uncertainty": 1
-    }
+    },
+    "z": -0.78,
+    "media_2a": -0.673,
+    "sd_2a": 0.357,
+    "n_2a": 14,
+    "dz": 0.01,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2015-12-18",
+    "anterior_z": -0.79,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-03-15",
@@ -6907,7 +8920,17 @@
      "sluggish": 1,
      "support": 3,
      "weakened": 1
-    }
+    },
+    "z": -0.72,
+    "media_2a": -0.692,
+    "sd_2a": 0.351,
+    "n_2a": 15,
+    "dz": 0.06,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-01-29",
+    "anterior_z": -0.78,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-04-28",
@@ -6923,7 +8946,17 @@
     "terminos": {
      "asset purchases": 3,
      "negative interest rate": 1
-    }
+    },
+    "z": -0.85,
+    "media_2a": -0.707,
+    "sd_2a": 0.345,
+    "n_2a": 16,
+    "dz": -0.13,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-03-15",
+    "anterior_z": -0.72,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-06-16",
@@ -6948,7 +8981,17 @@
      "slowing": 1,
      "sluggish": 1,
      "weakened": 1
-    }
+    },
+    "z": -0.62,
+    "media_2a": -0.724,
+    "sd_2a": 0.342,
+    "n_2a": 17,
+    "dz": 0.23,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-04-28",
+    "anterior_z": -0.85,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-07-29",
@@ -6972,7 +9015,17 @@
      "stimulus": 1,
      "support": 5,
      "uncertainty": 1
-    }
+    },
+    "z": -0.79,
+    "media_2a": -0.736,
+    "sd_2a": 0.335,
+    "n_2a": 18,
+    "dz": -0.17,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-06-16",
+    "anterior_z": -0.62,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-09-21",
@@ -7007,7 +9060,17 @@
      "uncertainty": 1,
      "weakened": 2,
      "will raise": 1
-    }
+    },
+    "z": -0.15,
+    "media_2a": -0.75,
+    "sd_2a": 0.331,
+    "n_2a": 19,
+    "dz": 0.64,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-07-29",
+    "anterior_z": -0.79,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-11-01",
@@ -7023,7 +9086,17 @@
     "terminos": {
      "asset purchases": 4,
      "negative interest rate": 1
-    }
+    },
+    "z": -0.77,
+    "media_2a": -0.753,
+    "sd_2a": 0.323,
+    "n_2a": 20,
+    "dz": -0.62,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-09-21",
+    "anterior_z": -0.15,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2016-12-20",
@@ -7046,7 +9119,17 @@
      "sluggish": 1,
      "stimulus": 1,
      "weakening": 1
-    }
+    },
+    "z": -0.54,
+    "media_2a": -0.764,
+    "sd_2a": 0.319,
+    "n_2a": 21,
+    "dz": 0.23,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-11-01",
+    "anterior_z": -0.77,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-01-31",
@@ -7063,7 +9146,17 @@
      "asset purchases": 4,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": -0.75,
+    "media_2a": -0.815,
+    "sd_2a": 0.247,
+    "n_2a": 21,
+    "dz": -0.21,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2016-12-20",
+    "anterior_z": -0.54,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-03-16",
@@ -7086,7 +9179,17 @@
      "sluggish": 1,
      "stimulus": 1,
      "weakening": 1
-    }
+    },
+    "z": -0.41,
+    "media_2a": -0.835,
+    "sd_2a": 0.245,
+    "n_2a": 21,
+    "dz": 0.34,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-01-31",
+    "anterior_z": -0.75,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-04-27",
@@ -7102,7 +9205,17 @@
     "terminos": {
      "asset purchases": 4,
      "negative interest rate": 1
-    }
+    },
+    "z": -0.57,
+    "media_2a": -0.867,
+    "sd_2a": 0.234,
+    "n_2a": 20,
+    "dz": -0.16,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-03-16",
+    "anterior_z": -0.41,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-06-16",
@@ -7124,7 +9237,17 @@
      "stimulus": 1,
      "tighten": 1,
      "weakening": 1
-    }
+    },
+    "z": 0.06,
+    "media_2a": -0.877,
+    "sd_2a": 0.235,
+    "n_2a": 19,
+    "dz": 0.63,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-04-27",
+    "anterior_z": -0.57,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-07-20",
@@ -7140,7 +9263,17 @@
     "terminos": {
      "asset purchases": 4,
      "negative interest rate": 1
-    }
+    },
+    "z": -1.07,
+    "media_2a": -0.939,
+    "sd_2a": 0.057,
+    "n_2a": 18,
+    "dz": -1.13,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-06-16",
+    "anterior_z": 0.06,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-09-21",
@@ -7162,7 +9295,17 @@
      "stimulus": 1,
      "tighten": 1,
      "weakening": 1
-    }
+    },
+    "z": 2.02,
+    "media_2a": -0.948,
+    "sd_2a": 0.057,
+    "n_2a": 17,
+    "dz": 3.09,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-07-20",
+    "anterior_z": -1.07,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-10-31",
@@ -7179,7 +9322,17 @@
      "asset purchases": 2,
      "easing": 1,
      "negative interest rate": 1
-    }
+    },
+    "z": -0.95,
+    "media_2a": -0.94,
+    "sd_2a": 0.063,
+    "n_2a": 16,
+    "dz": -2.97,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-09-21",
+    "anterior_z": 2.02,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2017-12-21",
@@ -7203,7 +9356,17 @@
      "stimulus": 1,
      "tighten": 1,
      "weakening": 1
-    }
+    },
+    "z": 4.0,
+    "media_2a": -0.946,
+    "sd_2a": 0.067,
+    "n_2a": 15,
+    "dz": 4.95,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-10-31",
+    "anterior_z": -0.95,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-01-23",
@@ -7222,7 +9385,17 @@
      "hike": 1,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": 2.84,
+    "media_2a": -0.93,
+    "sd_2a": 0.093,
+    "n_2a": 16,
+    "dz": -1.16,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2017-12-21",
+    "anterior_z": 4.0,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-03-09",
@@ -7247,7 +9420,17 @@
      "stimulus": 1,
      "tighten": 1,
      "weakening": 1
-    }
+    },
+    "z": 2.76,
+    "media_2a": -0.912,
+    "sd_2a": 0.113,
+    "n_2a": 16,
+    "dz": -0.08,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-01-23",
+    "anterior_z": 2.84,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-04-27",
@@ -7266,7 +9449,17 @@
      "hike": 1,
      "monetary easing": 2,
      "negative interest rate": 1
-    }
+    },
+    "z": 1.29,
+    "media_2a": -0.89,
+    "sd_2a": 0.137,
+    "n_2a": 16,
+    "dz": -1.47,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-03-09",
+    "anterior_z": 2.76,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-06-15",
@@ -7291,7 +9484,17 @@
      "negative interest rate": 1,
      "tighten": 1,
      "weakening": 1
-    }
+    },
+    "z": 1.73,
+    "media_2a": -0.873,
+    "sd_2a": 0.14,
+    "n_2a": 16,
+    "dz": 0.44,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-04-27",
+    "anterior_z": 1.29,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-07-31",
@@ -7312,7 +9515,17 @@
      "monetary easing": 7,
      "negative interest rate": 2,
      "tighten": 1
-    }
+    },
+    "z": 0.43,
+    "media_2a": -0.844,
+    "sd_2a": 0.151,
+    "n_2a": 15,
+    "dz": -1.3,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-06-15",
+    "anterior_z": 1.73,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-09-19",
@@ -7336,7 +9549,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "tighten": 1
-    }
+    },
+    "z": 1.25,
+    "media_2a": -0.84,
+    "sd_2a": 0.147,
+    "n_2a": 16,
+    "dz": 0.82,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-07-31",
+    "anterior_z": 0.43,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-10-31",
@@ -7356,7 +9579,17 @@
      "hike": 1,
      "monetary easing": 2,
      "negative interest rate": 1
-    }
+    },
+    "z": 0.2,
+    "media_2a": -0.831,
+    "sd_2a": 0.154,
+    "n_2a": 16,
+    "dz": -1.05,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-09-19",
+    "anterior_z": 1.25,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2018-12-20",
@@ -7379,7 +9612,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "tighten": 1
-    }
+    },
+    "z": 0.71,
+    "media_2a": -0.818,
+    "sd_2a": 0.147,
+    "n_2a": 16,
+    "dz": 0.51,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-10-31",
+    "anterior_z": 0.2,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-01-23",
@@ -7400,7 +9643,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": -0.09,
+    "media_2a": -0.804,
+    "sd_2a": 0.146,
+    "n_2a": 16,
+    "dz": -0.8,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2018-12-20",
+    "anterior_z": 0.71,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-03-15",
@@ -7424,7 +9677,17 @@
      "negative interest rate": 1,
      "slowdown": 2,
      "tighten": 1
-    }
+    },
+    "z": 0.26,
+    "media_2a": -0.793,
+    "sd_2a": 0.137,
+    "n_2a": 16,
+    "dz": 0.35,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-01-23",
+    "anterior_z": -0.09,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-04-25",
@@ -7448,7 +9711,17 @@
      "slowdown": 1,
      "support": 3,
      "tightening": 1
-    }
+    },
+    "z": 0.42,
+    "media_2a": -0.782,
+    "sd_2a": 0.131,
+    "n_2a": 16,
+    "dz": 0.16,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-03-15",
+    "anterior_z": 0.26,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-06-20",
@@ -7473,7 +9746,17 @@
      "negative interest rate": 1,
      "slowdown": 2,
      "tighten": 1
-    }
+    },
+    "z": -0.11,
+    "media_2a": -0.758,
+    "sd_2a": 0.119,
+    "n_2a": 15,
+    "dz": -0.53,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-04-25",
+    "anterior_z": 0.42,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-07-30",
@@ -7494,7 +9777,17 @@
      "hike": 1,
      "monetary easing": 2,
      "negative interest rate": 1
-    }
+    },
+    "z": -0.57,
+    "media_2a": -0.743,
+    "sd_2a": 0.099,
+    "n_2a": 15,
+    "dz": -0.46,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-06-20",
+    "anterior_z": -0.11,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-09-19",
@@ -7518,7 +9811,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "slowdown": 2
-    }
+    },
+    "z": -0.39,
+    "media_2a": -0.747,
+    "sd_2a": 0.097,
+    "n_2a": 16,
+    "dz": 0.18,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-07-30",
+    "anterior_z": -0.57,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-10-31",
@@ -7543,7 +9846,17 @@
      "raising": 2,
      "slowdown": 3,
      "strong": 1
-    }
+    },
+    "z": 0.99,
+    "media_2a": -0.744,
+    "sd_2a": 0.095,
+    "n_2a": 16,
+    "dz": 1.38,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-09-19",
+    "anterior_z": -0.39,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2019-12-19",
@@ -7567,7 +9880,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "slowdown": 3
-    }
+    },
+    "z": -0.91,
+    "media_2a": -0.722,
+    "sd_2a": 0.068,
+    "n_2a": 16,
+    "dz": -1.9,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-10-31",
+    "anterior_z": 0.99,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-01-21",
@@ -7587,7 +9910,17 @@
      "easing": 1,
      "monetary easing": 2,
      "negative interest rate": 1
-    }
+    },
+    "z": -3.94,
+    "media_2a": -0.728,
+    "sd_2a": 0.069,
+    "n_2a": 16,
+    "dz": -3.03,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2019-12-19",
+    "anterior_z": -0.91,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-04-27",
@@ -7608,7 +9941,17 @@
      "monetary easing": 8,
      "negative interest rate": 1,
      "support": 1
-    }
+    },
+    "z": -1.09,
+    "media_2a": -0.762,
+    "sd_2a": 0.092,
+    "n_2a": 14,
+    "dz": 2.85,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-01-21",
+    "anterior_z": -3.94,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-05-22",
@@ -7624,7 +9967,17 @@
     "terminos": {
      "easing": 1,
      "support": 5
-    }
+    },
+    "z": -2.52,
+    "media_2a": -0.769,
+    "sd_2a": 0.092,
+    "n_2a": 15,
+    "dz": -1.43,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-04-27",
+    "anterior_z": -1.09,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-06-16",
@@ -7647,7 +10000,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": -2.04,
+    "media_2a": -0.793,
+    "sd_2a": 0.101,
+    "n_2a": 15,
+    "dz": 0.48,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-05-22",
+    "anterior_z": -2.52,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-07-15",
@@ -7667,7 +10030,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": -1.75,
+    "media_2a": -0.806,
+    "sd_2a": 0.111,
+    "n_2a": 16,
+    "dz": 0.29,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-06-16",
+    "anterior_z": -2.04,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-09-17",
@@ -7691,7 +10064,17 @@
      "negative interest rate": 1,
      "support": 2,
      "weakened": 1
-    }
+    },
+    "z": -1.49,
+    "media_2a": -0.82,
+    "sd_2a": 0.12,
+    "n_2a": 16,
+    "dz": 0.26,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-07-15",
+    "anterior_z": -1.75,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-10-29",
@@ -7711,7 +10094,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": -1.32,
+    "media_2a": -0.842,
+    "sd_2a": 0.12,
+    "n_2a": 16,
+    "dz": 0.17,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-09-17",
+    "anterior_z": -1.49,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2020-12-18",
@@ -7735,7 +10128,17 @@
      "support": 4,
      "vigilance": 2,
      "weakened": 1
-    }
+    },
+    "z": 0.61,
+    "media_2a": -0.854,
+    "sd_2a": 0.125,
+    "n_2a": 16,
+    "dz": 1.93,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-10-29",
+    "anterior_z": -1.32,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-01-21",
@@ -7755,7 +10158,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 3
-    }
+    },
+    "z": -1.17,
+    "media_2a": -0.858,
+    "sd_2a": 0.121,
+    "n_2a": 16,
+    "dz": -1.78,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2020-12-18",
+    "anterior_z": 0.61,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-03-19",
@@ -7785,7 +10198,17 @@
      "upward pressure": 1,
      "vigilance": 1,
      "weakened": 1
-    }
+    },
+    "z": 0.13,
+    "media_2a": -0.877,
+    "sd_2a": 0.127,
+    "n_2a": 15,
+    "dz": 1.3,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-01-21",
+    "anterior_z": -1.17,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-04-27",
@@ -7805,7 +10228,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": -0.95,
+    "media_2a": -0.886,
+    "sd_2a": 0.12,
+    "n_2a": 15,
+    "dz": -1.08,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-03-19",
+    "anterior_z": 0.13,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-06-18",
@@ -7827,7 +10260,17 @@
      "negative interest rate": 1,
      "strong": 1,
      "support": 7
-    }
+    },
+    "z": -0.25,
+    "media_2a": -0.893,
+    "sd_2a": 0.119,
+    "n_2a": 16,
+    "dz": 0.7,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-04-27",
+    "anterior_z": -0.95,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-07-16",
@@ -7846,7 +10289,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 4
-    }
+    },
+    "z": -0.85,
+    "media_2a": -0.903,
+    "sd_2a": 0.115,
+    "n_2a": 16,
+    "dz": -0.6,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-06-18",
+    "anterior_z": -0.25,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-09-22",
@@ -7869,7 +10322,17 @@
      "negative interest rate": 1,
      "strong": 1,
      "support": 3
-    }
+    },
+    "z": 0.1,
+    "media_2a": -0.924,
+    "sd_2a": 0.112,
+    "n_2a": 15,
+    "dz": 0.95,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-07-16",
+    "anterior_z": -0.85,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-10-28",
@@ -7888,7 +10351,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": -0.71,
+    "media_2a": -0.923,
+    "sd_2a": 0.108,
+    "n_2a": 16,
+    "dz": -0.81,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-09-22",
+    "anterior_z": 0.1,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2021-12-17",
@@ -7909,7 +10382,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 5
-    }
+    },
+    "z": -0.67,
+    "media_2a": -0.945,
+    "sd_2a": 0.082,
+    "n_2a": 16,
+    "dz": 0.04,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-10-28",
+    "anterior_z": -0.71,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-01-18",
@@ -7928,7 +10411,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": -0.59,
+    "media_2a": -0.959,
+    "sd_2a": 0.07,
+    "n_2a": 16,
+    "dz": 0.08,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2021-12-17",
+    "anterior_z": -0.67,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-03-18",
@@ -7949,7 +10442,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 3
-    }
+    },
+    "z": -0.59,
+    "media_2a": -0.959,
+    "sd_2a": 0.07,
+    "n_2a": 16,
+    "dz": 0.0,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-01-18",
+    "anterior_z": -0.59,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-04-28",
@@ -7968,7 +10471,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 1
-    }
+    },
+    "z": -0.5,
+    "media_2a": -0.967,
+    "sd_2a": 0.066,
+    "n_2a": 16,
+    "dz": 0.09,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-03-18",
+    "anterior_z": -0.59,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-06-17",
@@ -7989,7 +10502,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": -0.52,
+    "media_2a": -0.965,
+    "sd_2a": 0.068,
+    "n_2a": 15,
+    "dz": -0.02,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-04-28",
+    "anterior_z": -0.5,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-07-21",
@@ -8008,7 +10531,17 @@
      "monetary easing": 2,
      "negative interest rate": 1,
      "support": 1
-    }
+    },
+    "z": -0.52,
+    "media_2a": -0.965,
+    "sd_2a": 0.068,
+    "n_2a": 15,
+    "dz": 0.0,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-06-17",
+    "anterior_z": -0.52,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-09-22",
@@ -8029,7 +10562,17 @@
      "monetary easing": 1,
      "negative interest rate": 1,
      "support": 3
-    }
+    },
+    "z": -0.52,
+    "media_2a": -0.965,
+    "sd_2a": 0.068,
+    "n_2a": 15,
+    "dz": 0.0,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-07-21",
+    "anterior_z": -0.52,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-10-28",
@@ -8048,7 +10591,17 @@
      "monetary easing": 1,
      "negative interest rate": 1,
      "support": 1
-    }
+    },
+    "z": -0.5,
+    "media_2a": -0.967,
+    "sd_2a": 0.066,
+    "n_2a": 16,
+    "dz": 0.02,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-09-22",
+    "anterior_z": -0.52,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2022-12-20",
@@ -8071,7 +10624,17 @@
      "negative interest rate": 1,
      "slowed": 1,
      "support": 1
-    }
+    },
+    "z": -0.46,
+    "media_2a": -0.98,
+    "sd_2a": 0.044,
+    "n_2a": 15,
+    "dz": 0.04,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-10-28",
+    "anterior_z": -0.5,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-01-18",
@@ -8090,7 +10653,17 @@
      "monetary easing": 1,
      "negative interest rate": 1,
      "support": 2
-    }
+    },
+    "z": -0.45,
+    "media_2a": -0.981,
+    "sd_2a": 0.043,
+    "n_2a": 16,
+    "dz": 0.01,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2022-12-20",
+    "anterior_z": -0.46,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-03-10",
@@ -8112,7 +10685,17 @@
      "negative interest rate": 1,
      "slowed": 1,
      "support": 1
-    }
+    },
+    "z": -0.45,
+    "media_2a": -0.981,
+    "sd_2a": 0.043,
+    "n_2a": 16,
+    "dz": 0.0,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-01-18",
+    "anterior_z": -0.45,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-04-28",
@@ -8130,7 +10713,17 @@
      "easing": 1,
      "monetary easing": 3,
      "negative interest rate": 1
-    }
+    },
+    "z": -0.38,
+    "media_2a": -0.989,
+    "sd_2a": 0.029,
+    "n_2a": 15,
+    "dz": 0.07,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-03-10",
+    "anterior_z": -0.45,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-06-16",
@@ -8152,7 +10745,17 @@
      "negative interest rate": 1,
      "slowdown": 1,
      "slowed": 1
-    }
+    },
+    "z": -0.37,
+    "media_2a": -0.99,
+    "sd_2a": 0.028,
+    "n_2a": 16,
+    "dz": 0.01,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-04-28",
+    "anterior_z": -0.38,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-07-28",
@@ -8172,7 +10775,17 @@
      "monetary easing": 6,
      "negative interest rate": 1,
      "tightening": 1
-    }
+    },
+    "z": 5.66,
+    "media_2a": -0.994,
+    "sd_2a": 0.022,
+    "n_2a": 15,
+    "dz": 6.03,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-06-16",
+    "anterior_z": -0.37,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-09-22",
@@ -8195,7 +10808,17 @@
      "negative interest rate": 1,
      "slowdown": 1,
      "slowed": 1
-    }
+    },
+    "z": -0.36,
+    "media_2a": -0.986,
+    "sd_2a": 0.038,
+    "n_2a": 16,
+    "dz": -6.02,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-07-28",
+    "anterior_z": 5.66,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-10-31",
@@ -8215,7 +10838,17 @@
      "negative interest rate": 1,
      "strong": 1,
      "support": 1
-    }
+    },
+    "z": 2.65,
+    "media_2a": -0.991,
+    "sd_2a": 0.034,
+    "n_2a": 15,
+    "dz": 3.01,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-09-22",
+    "anterior_z": -0.36,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2023-12-19",
@@ -8238,7 +10871,17 @@
      "negative interest rate": 1,
      "slowdown": 1,
      "slowed": 1
-    }
+    },
+    "z": -0.37,
+    "media_2a": -0.984,
+    "sd_2a": 0.041,
+    "n_2a": 15,
+    "dz": -3.02,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-10-31",
+    "anterior_z": 2.65,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-01-23",
@@ -8256,7 +10899,17 @@
      "easing": 1,
      "monetary easing": 2,
      "negative interest rate": 1
-    }
+    },
+    "z": -0.37,
+    "media_2a": -0.984,
+    "sd_2a": 0.041,
+    "n_2a": 15,
+    "dz": 0.0,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2023-12-19",
+    "anterior_z": -0.37,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-03-19",
@@ -8284,7 +10937,17 @@
      "slowed": 1,
      "solid": 2,
      "support": 2
-    }
+    },
+    "z": 9.27,
+    "media_2a": -0.984,
+    "sd_2a": 0.041,
+    "n_2a": 15,
+    "dz": 9.64,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-01-23",
+    "anterior_z": -0.37,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-04-26",
@@ -8297,7 +10960,14 @@
     "palabras": 1045,
     "url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2024/k240426a.htm",
     "tipo": "Statement on Monetary Policy",
-    "terminos": {}
+    "terminos": {},
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 0,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2024-06-14",
@@ -8314,7 +10984,17 @@
      "accommodative": 2,
      "moderate": 1,
      "resilient": 1
-    }
+    },
+    "z": 2.71,
+    "media_2a": -0.958,
+    "sd_2a": 0.107,
+    "n_2a": 15,
+    "dz": -6.56,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-03-19",
+    "anterior_z": 9.27,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-07-31",
@@ -8339,7 +11019,17 @@
      "resilient": 1,
      "support": 4,
      "upside risks": 1
-    }
+    },
+    "z": 5.1,
+    "media_2a": -0.931,
+    "sd_2a": 0.134,
+    "n_2a": 14,
+    "dz": 2.39,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-06-14",
+    "anterior_z": 2.71,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-09-20",
@@ -8356,7 +11046,17 @@
      "accommodative": 2,
      "moderate": 2,
      "raising": 1
-    }
+    },
+    "z": 0.79,
+    "media_2a": -0.886,
+    "sd_2a": 0.218,
+    "n_2a": 15,
+    "dz": -4.31,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-07-31",
+    "anterior_z": 5.1,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2024-10-31",
@@ -8369,7 +11069,14 @@
     "palabras": 1001,
     "url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2024/k241031a.htm",
     "tipo": "Statement on Monetary Policy",
-    "terminos": {}
+    "terminos": {},
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 0,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2024-12-19",
@@ -8386,7 +11093,17 @@
      "accommodative": 2,
      "moderate": 2,
      "raising": 1
-    }
+    },
+    "z": 0.64,
+    "media_2a": -0.857,
+    "sd_2a": 0.225,
+    "n_2a": 14,
+    "dz": -0.15,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-09-20",
+    "anterior_z": 0.79,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-01-24",
@@ -8406,7 +11123,17 @@
      "moderate": 1,
      "solid": 1,
      "support": 3
-    }
+    },
+    "z": 2.16,
+    "media_2a": -0.824,
+    "sd_2a": 0.228,
+    "n_2a": 13,
+    "dz": 1.52,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2024-12-19",
+    "anterior_z": 0.64,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-03-19",
@@ -8423,7 +11150,17 @@
      "accommodative": 2,
      "moderate": 2,
      "raising": 1
-    }
+    },
+    "z": 0.23,
+    "media_2a": -0.773,
+    "sd_2a": 0.258,
+    "n_2a": 13,
+    "dz": -1.93,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-01-24",
+    "anterior_z": 2.16,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-05-01",
@@ -8436,7 +11173,14 @@
     "palabras": 998,
     "url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2025/k250501a.htm",
     "tipo": "Statement on Monetary Policy",
-    "terminos": {}
+    "terminos": {},
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 0,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2025-06-17",
@@ -8458,7 +11202,17 @@
      "sluggish": 1,
      "support": 2,
      "uncertain": 1
-    }
+    },
+    "z": -0.69,
+    "media_2a": -0.73,
+    "sd_2a": 0.248,
+    "n_2a": 12,
+    "dz": -0.92,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-03-19",
+    "anterior_z": 0.23,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-07-31",
@@ -8471,7 +11225,14 @@
     "palabras": 998,
     "url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2025/k250731a.htm",
     "tipo": "Statement on Monetary Policy",
-    "terminos": {}
+    "terminos": {},
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 0,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2025-09-19",
@@ -8494,7 +11255,17 @@
      "sluggish": 1,
      "support": 1,
      "uncertain": 1
-    }
+    },
+    "z": -0.13,
+    "media_2a": -0.733,
+    "sd_2a": 0.25,
+    "n_2a": 12,
+    "dz": 0.56,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-06-17",
+    "anterior_z": -0.69,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2025-10-30",
@@ -8507,7 +11278,14 @@
     "palabras": 1123,
     "url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2025/k251030a.htm",
     "tipo": "Statement on Monetary Policy",
-    "terminos": {}
+    "terminos": {},
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 0,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2025-12-19",
@@ -8530,7 +11308,17 @@
      "slowdown": 1,
      "solid": 1,
      "support": 4
-    }
+    },
+    "z": 0.56,
+    "media_2a": -0.666,
+    "sd_2a": 0.229,
+    "n_2a": 10,
+    "dz": 0.69,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-09-19",
+    "anterior_z": -0.13,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-01-23",
@@ -8543,7 +11331,14 @@
     "palabras": 1106,
     "url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/k260123a.htm",
     "tipo": "Statement on Monetary Policy",
-    "terminos": {}
+    "terminos": {},
+    "z": null,
+    "media_2a": null,
+    "sd_2a": null,
+    "n_2a": 0,
+    "dz": null,
+    "dz_txt": null,
+    "pocos_terminos": false
    },
    {
     "fecha": "2026-03-19",
@@ -8564,7 +11359,17 @@
      "moderate": 1,
      "resilient": 1,
      "upward pressure": 1
-    }
+    },
+    "z": 1.18,
+    "media_2a": -0.62,
+    "sd_2a": 0.198,
+    "n_2a": 10,
+    "dz": 0.62,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2025-12-19",
+    "anterior_z": 0.56,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-04-28",
@@ -8579,7 +11384,17 @@
     "tipo": "Statement on Monetary Policy",
     "terminos": {
      "accommodative": 1
-    }
+    },
+    "z": -1.9,
+    "media_2a": -0.598,
+    "sd_2a": 0.212,
+    "n_2a": 10,
+    "dz": -3.08,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": true,
+    "anterior_fecha": "2026-03-19",
+    "anterior_z": 1.18,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-06-16",
@@ -8606,7 +11421,17 @@
      "strong": 1,
      "support": 4,
      "upside risks": 1
-    }
+    },
+    "z": 0.18,
+    "media_2a": -0.631,
+    "sd_2a": 0.247,
+    "n_2a": 10,
+    "dz": 2.08,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2026-04-28",
+    "anterior_z": -1.9,
+    "anterior_pocos_terminos": true
    },
    {
     "fecha": "2026-07-31",
@@ -8621,7 +11446,17 @@
     "tipo": "Statement on Monetary Policy",
     "terminos": {
      "upside risks": 1
-    }
+    },
+    "z": 6.93,
+    "media_2a": -0.627,
+    "sd_2a": 0.235,
+    "n_2a": 11,
+    "dz": 6.75,
+    "dz_txt": "MÁS HAWKISH",
+    "pocos_terminos": true,
+    "anterior_fecha": "2026-06-16",
+    "anterior_z": 0.18,
+    "anterior_pocos_terminos": false
    },
    {
     "fecha": "2026-09-18",
@@ -8646,7 +11481,17 @@
      "strong": 2,
      "support": 5,
      "upward pressure": 1
-    }
+    },
+    "z": 0.25,
+    "media_2a": -0.514,
+    "sd_2a": 0.54,
+    "n_2a": 11,
+    "dz": -6.68,
+    "dz_txt": "MÁS DOVISH",
+    "pocos_terminos": false,
+    "anterior_fecha": "2026-07-31",
+    "anterior_z": 6.93,
+    "anterior_pocos_terminos": true
    }
   ]
  },
@@ -8672,9 +11517,20 @@
     "support": 2,
     "uncertainty": 1
    },
+   "z": 1.44,
+   "media_2a": -0.26,
+   "sd_2a": 0.496,
+   "n_2a": 16,
+   "dz": -0.37,
+   "dz_txt": "SIN CAMBIO",
+   "pocos_terminos": false,
+   "anterior_fecha": "2026-07-29",
+   "anterior_z": 1.81,
+   "anterior_pocos_terminos": false,
    "anterior": {
     "fecha": "2026-07-29",
-    "indice": 0.5
+    "indice": 0.5,
+    "z": 1.81
    }
   },
   "BCE": {
@@ -8712,9 +11568,20 @@
     "uncertain": 1,
     "uncertainty": 4
    },
+   "z": 1.93,
+   "media_2a": -0.24,
+   "sd_2a": 0.254,
+   "n_2a": 16,
+   "dz": 0.67,
+   "dz_txt": "MÁS HAWKISH",
+   "pocos_terminos": false,
+   "anterior_fecha": "2026-07-23",
+   "anterior_z": 1.26,
+   "anterior_pocos_terminos": false,
    "anterior": {
     "fecha": "2026-07-23",
-    "indice": 0.055
+    "indice": 0.055,
+    "z": 1.26
    }
   },
   "BoJ": {
@@ -8741,9 +11608,20 @@
     "support": 5,
     "upward pressure": 1
    },
+   "z": 0.25,
+   "media_2a": -0.514,
+   "sd_2a": 0.54,
+   "n_2a": 11,
+   "dz": -6.68,
+   "dz_txt": "MÁS DOVISH",
+   "pocos_terminos": false,
+   "anterior_fecha": "2026-07-31",
+   "anterior_z": 6.93,
+   "anterior_pocos_terminos": true,
    "anterior": {
     "fecha": "2026-07-31",
-    "indice": 1.0
+    "indice": 1.0,
+    "z": 6.93
    }
   }
  },
@@ -9002,6 +11880,137 @@
     "dir_pct": null
    }
   }
+ },
+ "validacion_z": {
+  "Fed": {
+   "reuniones_con_movimiento": 32,
+   "sin_dz": 2,
+   "direccion": {
+    "n": 30,
+    "aciertos": 11,
+    "pct": 36.7,
+    "azar_pct": 50.0,
+    "p_valor": 0.2005,
+    "repite_aciertos": 15,
+    "repite_pct": 50.0
+   },
+   "direccion_dz_fuerte": {
+    "n": 18,
+    "aciertos": 6,
+    "pct": 33.3,
+    "azar_pct": 50.0,
+    "p_valor": 0.2379,
+    "repite_aciertos": 8,
+    "repite_pct": 44.4
+   },
+   "misma_reunion": {
+    "n": 31,
+    "aciertos": 13,
+    "pct": 41.9,
+    "azar_pct": 50.0,
+    "p_valor": 0.4731,
+    "repite_aciertos": 0,
+    "repite_pct": 0.0
+   }
+  },
+  "BCE": {
+   "reuniones_con_movimiento": 20,
+   "sin_dz": 1,
+   "direccion": {
+    "n": 19,
+    "aciertos": 11,
+    "pct": 57.9,
+    "azar_pct": 50.0,
+    "p_valor": 0.6476,
+    "repite_aciertos": 14,
+    "repite_pct": 73.7
+   },
+   "direccion_dz_fuerte": {
+    "n": 13,
+    "aciertos": 7,
+    "pct": 53.8,
+    "azar_pct": 50.0,
+    "p_valor": 1.0,
+    "repite_aciertos": 9,
+    "repite_pct": 69.2
+   },
+   "misma_reunion": {
+    "n": 19,
+    "aciertos": 11,
+    "pct": 57.9,
+    "azar_pct": 50.0,
+    "p_valor": 0.6476,
+    "repite_aciertos": 0,
+    "repite_pct": 0.0
+   }
+  },
+  "BoJ": {
+   "reuniones_con_movimiento": 7,
+   "sin_dz": 2,
+   "direccion": {
+    "n": 5,
+    "aciertos": 2,
+    "pct": 40.0,
+    "azar_pct": 50.0,
+    "p_valor": 1.0,
+    "repite_aciertos": 0,
+    "repite_pct": 0.0
+   },
+   "direccion_dz_fuerte": {
+    "n": 3,
+    "aciertos": 1,
+    "pct": 33.3,
+    "azar_pct": 50.0,
+    "p_valor": 1.0,
+    "repite_aciertos": 0,
+    "repite_pct": 0.0
+   },
+   "misma_reunion": {
+    "n": 7,
+    "aciertos": 5,
+    "pct": 71.4,
+    "azar_pct": 50.0,
+    "p_valor": 0.4531,
+    "repite_aciertos": 0,
+    "repite_pct": 0.0
+   }
+  },
+  "_total": {
+   "direccion": {
+    "n": 54,
+    "aciertos": 24,
+    "pct": 44.4,
+    "azar_pct": 50.0,
+    "p_valor": 0.4966,
+    "repite_aciertos": 29,
+    "repite_pct": 53.7
+   },
+   "direccion_dz_fuerte": {
+    "n": 34,
+    "aciertos": 14,
+    "pct": 41.2,
+    "azar_pct": 50.0,
+    "p_valor": 0.3915,
+    "repite_aciertos": 17,
+    "repite_pct": 50.0
+   },
+   "misma_reunion": {
+    "n": 57,
+    "aciertos": 29,
+    "pct": 50.9,
+    "azar_pct": 50.0,
+    "p_valor": 1.0,
+    "repite_aciertos": 0,
+    "repite_pct": 0.0
+   },
+   "estado": "SECUNDARIO",
+   "motivo": "Δz no mejora: 44 % de acierto (24/54) frente a 50 % del azar, p = 0.497: no distinguible del azar; peor que «repetir la decisión anterior» (54 %).",
+   "criterio": "PRINCIPAL solo si n ≥ 30, acierto > 50 % con p < 0.05 (binomial bilateral) y acierto ≥ línea base «repetir la decisión anterior» en la misma muestra. Criterio fijado antes de ver el resultado."
+  }
+ },
+ "estado_bloque": {
+  "estado": "SECUNDARIO",
+  "motivo": "Δz no mejora: 44 % de acierto (24/54) frente a 50 % del azar, p = 0.497: no distinguible del azar; peor que «repetir la decisión anterior» (54 %)."
  },
  "discursos": [
   {
@@ -14865,6 +17874,6 @@
  },
  "errores_total": 53,
  "ok": true,
- "generado_utc": "2026-10-10 08:59 UTC",
- "duracion_s": 61.6
+ "generado_utc": "2026-10-10 16:57 UTC",
+ "duracion_s": 22.7
 }

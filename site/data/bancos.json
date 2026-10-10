@@ -5865,7 +5865,9 @@
   "sin_cambios": 9,
   "total": 38,
   "amplitud": -0.184,
-  "tipos": "MIXTA",
+  "tipos": "RELAJACIÓN",
+  "tipos_por_numero": "MIXTA",
+  "ponderado_pib": true,
   "bancos_sube": [
    "XM",
    "JP",
@@ -5903,15 +5905,151 @@
  "balance": {
   "valor_T": 17.3762,
   "fecha": "2026-10-07",
-  "ref_fecha": "2025-10-01",
-  "var_12m_pct": -5.65,
+  "ref_fecha": "2025-10-07",
+  "var_12m_pct": -2.84,
+  "var_12m_usd_pct": -5.65,
+  "base": "moneda local, ponderada por tamaño en USD a la fecha de referencia (sin efecto divisa)",
+  "componentes": {
+   "fed": {
+    "fecha": "2026-10-07",
+    "ref_fecha": "2025-10-01",
+    "var_local_pct": 2.44,
+    "peso_ref_T": 6.587,
+    "valor_T": 6.748,
+    "var_usd_pct": 2.44,
+    "peso": 0.354
+   },
+   "bce": {
+    "fecha": "2026-09-25",
+    "ref_fecha": "2025-09-19",
+    "var_local_pct": -2.85,
+    "peso_ref_T": 7.294,
+    "valor_T": 6.723,
+    "var_usd_pct": -7.83,
+    "peso": 0.392
+   },
+   "boj": {
+    "fecha": "2026-09-01",
+    "ref_fecha": "2025-09-01",
+    "var_local_pct": -10.17,
+    "peso_ref_T": 4.732,
+    "valor_T": 3.906,
+    "var_usd_pct": -17.46,
+    "peso": 0.254
+   }
+  },
   "estado": "SE CONTRAE",
   "fuente": "FRED (WALCL, ECBASSETSW, JPNASSETS) · liquidez.json de este terminal"
  },
  "lectura": {
-  "etiqueta": "LIQUIDEZ GLOBAL ALGO RESTRICTIVA",
-  "texto": "tipos: 11 suben y 18 bajan de 38 bancos (mixta); balance Fed+BCE+BoJ se contrae (-5,7 % a 12 meses).",
-  "regla": "Movimiento a 12 meses: SUBE ≥ +0,10 pp, BAJA ≤ −0,10 pp. Amplitud = (suben − bajan) / bancos con dato: ≥ +0,20 endurecimiento, ≤ −0,20 relajación, entre medias mixta. Balance Fed+BCE+BoJ a 12 meses: ≥ +2 % expande, ≤ −2 % se contrae, entre medias plano. Es una convención fija de NEXORA, no un modelo ajustado."
+  "etiqueta": "SEÑALES CONTRADICTORIAS (tipos a la baja, balances en contracción)",
+  "texto": "tipos: 11 suben y 18 bajan de 38 bancos (por número: mixta; ponderado por PIB: 28 % del PIB sube, 50 % baja → relajación); balance Fed+BCE+BoJ se contrae (-2,8 % a 12 meses en moneda local; -5,7 % medido en USD).",
+  "regla": "Dos patas que se combinan con una tabla fija. (1) TIPOS: movimiento de cada banco = tipo hoy − tipo hace 365 días, en puntos porcentuales NOMINALES (no se descuenta la inflación, es decir, no son tipos reales). SUBE ≥ +0,10 pp, BAJA ≤ −0,10 pp. Amplitud = (peso que sube − peso que baja) / peso total con dato, con cada banco ponderado por el PIB NOMINAL en USD de su economía (FMI WEO; zona euro = suma de sus países): una Fed o un BCE pesan mucho más que Macedonia o Islandia. ≥ +0,20 ENDURECIMIENTO, ≤ −0,20 RELAJACIÓN, entre medias MIXTA. Los bancos sin cambios cuentan en el denominador y diluyen la amplitud. El recuento por número (un voto por banco) se muestra al lado y se usa solo si falta algún PIB. (2) BALANCE: Fed + BCE + BoJ; variación a 12 meses de cada balance en su MONEDA LOCAL (sin efecto divisa), ponderada por su tamaño en USD a la fecha de referencia. ≥ +2 % EXPANDE, ≤ −2 % SE CONTRAE, entre medias PLANO. El PBoC no entra. (3) COMBINACIÓN: tabla de abajo. Con tipos MIXTA y balance que se contrae, la lectura es «ALGO RESTRICTIVA»: el balance desempata cuando los tipos no tienen dirección clara. Es una convención fija de NEXORA, no un modelo ajustado ni validado contra mercado. CAMBIO respecto a la versión anterior: antes un voto por banco y balance medido en USD.",
+  "combinacion": [
+   {
+    "tipos": "ENDURECIMIENTO",
+    "balance": "SE CONTRAE",
+    "etiqueta": "LIQUIDEZ GLOBAL RESTRICTIVA"
+   },
+   {
+    "tipos": "ENDURECIMIENTO",
+    "balance": "PLANO",
+    "etiqueta": "LIQUIDEZ GLOBAL ALGO RESTRICTIVA"
+   },
+   {
+    "tipos": "ENDURECIMIENTO",
+    "balance": "EXPANDE",
+    "etiqueta": "SEÑALES CONTRADICTORIAS (tipos al alza, balances en expansión)"
+   },
+   {
+    "tipos": "MIXTA",
+    "balance": "SE CONTRAE",
+    "etiqueta": "LIQUIDEZ GLOBAL ALGO RESTRICTIVA"
+   },
+   {
+    "tipos": "MIXTA",
+    "balance": "PLANO",
+    "etiqueta": "LIQUIDEZ GLOBAL NEUTRA"
+   },
+   {
+    "tipos": "MIXTA",
+    "balance": "EXPANDE",
+    "etiqueta": "LIQUIDEZ GLOBAL ALGO EXPANSIVA"
+   },
+   {
+    "tipos": "RELAJACIÓN",
+    "balance": "SE CONTRAE",
+    "etiqueta": "SEÑALES CONTRADICTORIAS (tipos a la baja, balances en contracción)"
+   },
+   {
+    "tipos": "RELAJACIÓN",
+    "balance": "PLANO",
+    "etiqueta": "LIQUIDEZ GLOBAL ALGO EXPANSIVA"
+   },
+   {
+    "tipos": "RELAJACIÓN",
+    "balance": "EXPANDE",
+    "etiqueta": "LIQUIDEZ GLOBAL EXPANSIVA"
+   }
+  ],
+  "umbrales": {
+   "movimiento_pp": 0.1,
+   "amplitud": 0.2,
+   "balance_pct": 2.0
+  }
+ },
+ "amplitud_ponderada": {
+  "sube_pct": 27.8,
+  "baja_pct": 50.5,
+  "sin_cambios_pct": 21.7,
+  "amplitud": -0.227,
+  "tipos": "RELAJACIÓN",
+  "ano_pib": 2025,
+  "fuente": "FMI WEO · NGDPD (PIB nominal en USD)",
+  "mayores": [
+   {
+    "codigo": "US",
+    "banco": "Reserva Federal (Fed)",
+    "peso_pct": 28.6,
+    "dir": "BAJA",
+    "cambio_12m": -0.25
+   },
+   {
+    "codigo": "CN",
+    "banco": "Banco Popular de China (PBoC)",
+    "peso_pct": 18.3,
+    "dir": "SIN CAMBIOS",
+    "cambio_12m": 0.0
+   },
+   {
+    "codigo": "XM",
+    "banco": "Banco Central Europeo (BCE)",
+    "peso_pct": 16.7,
+    "dir": "SUBE",
+    "cambio_12m": 0.5
+   },
+   {
+    "codigo": "JP",
+    "banco": "Banco de Japón (BoJ)",
+    "peso_pct": 4.1,
+    "dir": "SUBE",
+    "cambio_12m": 0.75
+   },
+   {
+    "codigo": "GB",
+    "banco": "Banco de Inglaterra (BoE)",
+    "peso_pct": 3.7,
+    "dir": "BAJA",
+    "cambio_12m": -0.25
+   },
+   {
+    "codigo": "IN",
+    "banco": "Banco de la Reserva de la India (RBI)",
+    "peso_pct": 3.6,
+    "dir": "BAJA",
+    "cambio_12m": -0.25
+   }
+  ]
  },
  "proximas_reuniones": [
   {
@@ -10923,6 +11061,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-10 09:04 UTC",
- "duracion_s": 12.0
+ "generado_utc": "2026-10-10 16:57 UTC",
+ "duracion_s": 13.5
 }

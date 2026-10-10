@@ -1,6 +1,6 @@
 {
  "metricas": {
-  "generado_utc": "2026-10-10T14:09:13Z",
+  "generado_utc": "2026-10-10T17:00:48Z",
   "errores": {},
   "reservas": {
    "fecha": "2026-10-07",
@@ -256,25 +256,25 @@
   },
   "adicionales": {
    "stablecoins": {
-    "valor_B": 310.98271311389004,
-    "delta_30d_B": 2.077489623890017,
-    "pct_30d": 0.6725330185157163,
-    "delta_7d_B": -0.9116374611099332
+    "valor_B": 310.96393054367996,
+    "delta_30d_B": 2.058707053679939,
+    "pct_30d": 0.6664526518589556,
+    "delta_7d_B": -0.9304200313200113
    },
    "funding_btc": {
-    "anualizado_7d_pct": 3.5835051501661295,
-    "anualizado_30d_pct": 5.160590008883871,
-    "hasta": "2026-10-10T08:00"
+    "anualizado_7d_pct": 3.4854081285850227,
+    "anualizado_30d_pct": 5.1375818854520965,
+    "hasta": "2026-10-10T16:00"
    },
    "funding_eth": {
-    "anualizado_7d_pct": 2.5827491603933868,
-    "anualizado_30d_pct": 4.111446795848352,
-    "hasta": "2026-10-10T08:00"
+    "anualizado_7d_pct": 2.3518752963770386,
+    "anualizado_30d_pct": 4.058701498701585,
+    "hasta": "2026-10-10T16:00"
    },
    "oi_btc": {
-    "valor_B": 3.2875028882637,
-    "pct_30d": 16.140491530111625,
-    "pct_7d": 1.0120681474812272
+    "valor_B": 3.3029090394770004,
+    "pct_30d": 12.459251126975026,
+    "pct_7d": 4.469224889185998
    },
    "prima_coinbase": {
     "media_7d_pct": -0.04337705370680726,
@@ -282,11 +282,11 @@
     "fecha": "2026-10-09"
    },
    "mercado": {
-    "mcap_total_usd": 2806541051939.008,
-    "volumen_24h_usd": 55158714933.93224,
-    "dominancia_btc_pct": 59.093866137949924,
-    "dominancia_eth_pct": 10.835357464828265,
-    "mcap_cambio_24h_pct": -2.3671982868875374
+    "mcap_total_usd": 2814640087228.542,
+    "volumen_24h_usd": 51864437634.83651,
+    "dominancia_btc_pct": 59.116212700835135,
+    "dominancia_eth_pct": 10.843972905883428,
+    "mcap_cambio_24h_pct": -2.333218625489232
    }
   },
   "contexto": {
@@ -338,41 +338,41 @@
    },
    "dvol": {
     "fecha": "2026-10-10",
-    "valor": 36.76,
-    "media_30d": 36.28966666666667,
-    "percentil_1a": 15.902964959568733
+    "valor": 36.83,
+    "media_30d": 36.292,
+    "percentil_1a": 16.172506738544474
    },
    "opciones": {
-    "put_call_oi": 0.5868027656428297,
-    "oi_total_btc": 376016.4,
-    "precio_ref": 82707.04,
+    "put_call_oi": 0.5868680592552473,
+    "oi_total_btc": 376197.69999999995,
+    "precio_ref": 82939.57,
     "vencimientos": [
      {
       "fecha": "2026-10-30",
-      "oi_btc": 140765.4,
-      "nocional_B": 11.642289568415999
+      "oi_btc": 140845.19999999998,
+      "nocional_B": 11.681640324563999
      },
      {
       "fecha": "2026-10-16",
-      "oi_btc": 15036.3,
-      "nocional_B": 1.2436078655519998
+      "oi_btc": 15037.4,
+      "nocional_B": 1.247195489918
      },
      {
       "fecha": "2026-10-23",
-      "oi_btc": 8850.500000000002,
-      "nocional_B": 0.7319986575200002
+      "oi_btc": 8857.400000000001,
+      "nocional_B": 0.7346289473180002
      }
     ]
    },
    "usdt": {
-    "valor_B": 184.08088815492002,
-    "delta_30d_B": 0.7004200929200124,
-    "pct_30d": 0.38194912485620003
+    "valor_B": 184.070971729,
+    "delta_30d_B": 0.6905036670000015,
+    "pct_30d": 0.3765415555415344
    },
    "usdc": {
-    "valor_B": 72.98555309219999,
-    "delta_30d_B": -1.5505247318000102,
-    "pct_30d": -2.0802338640104217
+    "valor_B": 72.98268413829,
+    "delta_30d_B": -1.553393685710006,
+    "pct_30d": -2.084082944876697
    }
   }
  },
@@ -735,7 +735,7 @@
      "nombre": "Opciones BTC: put/call (open interest)",
      "estado": "FAVORABLE",
      "valor": "0.59",
-     "lectura": "vencimientos grandes: 2026-10-30 140,765 BTC (~11.6 B$); 2026-10-16 15,036 BTC (~1.2 B$); 2026-10-23 8,851 BTC (~0.7 B$)",
+     "lectura": "vencimientos grandes: 2026-10-30 140,845 BTC (~11.7 B$); 2026-10-16 15,037 BTC (~1.2 B$); 2026-10-23 8,857 BTC (~0.7 B$)",
      "fuente": "Deribit"
     },
     {
@@ -8469,10 +8469,44 @@
     "2026-10-07",
     17.3762
    ]
-  ]
+  ],
+  "liquidez_global_12m": {
+   "fecha": "2026-10-07",
+   "ref_fecha": "2025-10-07",
+   "componentes": {
+    "fed": {
+     "fecha": "2026-10-07",
+     "ref_fecha": "2025-10-01",
+     "var_local_pct": 2.44,
+     "peso_ref_T": 6.587,
+     "valor_T": 6.748,
+     "var_usd_pct": 2.44,
+     "peso": 0.354
+    },
+    "bce": {
+     "fecha": "2026-09-25",
+     "ref_fecha": "2025-09-19",
+     "var_local_pct": -2.85,
+     "peso_ref_T": 7.294,
+     "valor_T": 6.723,
+     "var_usd_pct": -7.83,
+     "peso": 0.392
+    },
+    "boj": {
+     "fecha": "2026-09-01",
+     "ref_fecha": "2025-09-01",
+     "var_local_pct": -10.17,
+     "peso_ref_T": 4.732,
+     "valor_T": 3.906,
+     "var_usd_pct": -17.46,
+     "peso": 0.254
+    }
+   },
+   "var_local_ponderada_pct": -2.84
+  }
  },
  "errores_historico": {},
  "ok": true,
- "generado_utc": "2026-10-10 14:06 UTC",
+ "generado_utc": "2026-10-10 16:57 UTC",
  "duracion_s": 52.3
 }

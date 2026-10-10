@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generado_utc": "2026-10-10 14:06 UTC",
+ "generado_utc": "2026-10-10 16:57 UTC",
  "terminal": "https://komonartisans-ops.github.io/nexora-terminal/",
  "proposito": "Resumen compacto de todo el terminal NEXORA para redactar informes. Fuente y fecha en cada bloque. Sin IA en su generación.",
  "lectura_para_informes": [
@@ -8,94 +8,104 @@
   "Separa hecho, interpretación, hipótesis y escenario. No hagas recomendaciones de compra o venta.",
   "Un bloque con estado 'SIN DATO' o con 'ok': false significa que la fuente falló: dilo, no lo estimes ni lo sustituyas por memoria.",
   "Los bloques 'CRITERIO NEXORA' (gamma, semis/software, zonas del SKEW) son métodos propios, no datos oficiales: menciona el método.",
-  "Revisa 'frescura' y 'datos_con_mas_de_48h' antes de afirmar nada sobre el estado actual."
+  "Revisa 'frescura' y 'datos_con_mas_de_48h' antes de afirmar nada sobre el estado actual.",
+  "El tono hawkish/dovish es un bloque SECUNDARIO si 'tono_bancos_centrales.estado_bloque' lo dice: lectura léxica con diccionario fijo, sin demostrar que anticipe la dirección de los tipos frente al azar. Cítalo solo como contexto, con su z-score, su muestra y su estado; nunca como señal de subida o bajada.",
+  "La lectura de liquidez global y las zonas relativas del SKEW (percentil de 500 sesiones) son CRITERIO NEXORA; los tipos, fechas de reunión e indicadores del FMI son datos oficiales con su fecha."
  ],
  "frescura": {
   "precios": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "fedwatch": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "calendario": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "liquidez": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "resumen": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "tipos": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "ciclo": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "publicados": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "regimen": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "alertas": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "monitores": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "series": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "divisas": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "cot": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "noticias": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "skew": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "semis": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "gamma": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   },
   "contexto": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 11:15 UTC"
+   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
   },
   "tesis": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 14:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
+  },
+  "bancos": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
+  },
+  "tono": {
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-10 16:57 UTC"
   }
  },
  "datos_con_mas_de_48h": [],
  "fallos_ultima_ejecucion": [],
  "mercado": {
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "activos": {
    "oro": {
     "nombre": "Oro",
@@ -110,13 +120,13 @@
    },
    "btc": {
     "nombre": "Bitcoin",
-    "valor": 82710.38,
+    "valor": 82913.25,
     "fecha": "2026-10-10",
-    "cambio_1d_pct": 0.2,
-    "cambio_5d_pct": -3.59,
-    "cambio_21d_pct": 1.82,
-    "cambio_63d_pct": 27.43,
-    "vs_sma50_pct": 2.4,
+    "cambio_1d_pct": 0.44,
+    "cambio_5d_pct": -3.35,
+    "cambio_21d_pct": 2.07,
+    "cambio_63d_pct": 27.75,
+    "vs_sma50_pct": 2.6,
     "fuente": "BTC-USD (Yahoo Finance)"
    },
    "spx": {
@@ -189,7 +199,7 @@
  },
  "tesis": {
   "corte_datos": "Datos entre el 2026-10-08 y el 2026-10-09 (cada fuente publica a su hora)",
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "que_lo_ha_movido": "El tipo real a 10 años sube 4 pb. En conjunto: el dinero se encarece.",
   "vigilar": [
    "Fed mié 28 oct: hoy 18 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
@@ -369,7 +379,7 @@
    "Divergencia bolsa-crédito: el high yield se amplía mientras el S&P sigue cerca de máximos. Históricamente el crédito suele adelantarse, aunque no siempre.",
    "VIX bajo con el crédito empeorando: la bolsa no refleja el estrés del crédito."
   ],
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "fuente": "Mapa de régimen NEXORA (FRED, BLS, BEA, Fed regionales, monitores propios)"
  },
  "ciclo": {
@@ -422,7 +432,7 @@
     "encendida": false
    }
   ],
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "fuente": "FRED, NY Fed (probit), Fed (EBP) · reglas de ciclo.py"
  },
  "credito": {
@@ -502,7 +512,7 @@
    "Cripto (pasos 5-7) responde sin que la liquidez macro (pasos 1-2) lo confirme: movimiento sin soporte de liquidez según las guías.",
    "ON RRP agotado: la condición «RRP ↓» ya no aporta liquidez aunque se cumpla."
   ],
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "fuente": "FRED (WALCL, WTREGEN, RRPONTSYD, WRESBAL), Tesoro, Fed"
  },
  "fedwatch_y_tipos": {
@@ -584,13 +594,40 @@
     "nota": null
    }
   },
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "fuente": "FedWatch NEXORA (futuros ZQ, EFFR, calendario FOMC) · Tesoro de EE. UU."
  },
  "riesgo_de_cola_skew": {
   "fecha": "2026-10-09",
   "valor": 154.34,
   "zona": "ALTO",
+  "zona_relativa": {
+   "zona_relativa": "ELEVADO",
+   "percentil_500_sesiones": 82.4,
+   "umbral_alto_p90": 161.21,
+   "umbral_elevado_p75": 151.92,
+   "racha_sesiones": 1,
+   "entrada_zona_alta": null,
+   "alerta_telegram_usa": "zona relativa (percentil ≥ 90 de 500 sesiones)",
+   "avisos_ultimos_3_anos": {
+    "fija": 6,
+    "relativa": 7
+   },
+   "estudio_historico": {
+    "muestra_desde": "1991-12-20",
+    "episodios": 108,
+    "completos": 108,
+    "caidas_5pct_60s": 25,
+    "falsas_alarmas": 83,
+    "pct_falsas": 76.9,
+    "tasa_base_caida_5pct_60s": 31.7,
+    "mediana_ret_pct": {
+     "5": 0.63,
+     "20": 1.77,
+     "60": 3.04
+    }
+   }
+  },
   "umbrales": {
    "elevado": 135.0,
    "alto": 140.0
@@ -631,7 +668,7 @@
    "completos": 36,
    "caidas_5pct_60s": 10,
    "falsas_alarmas": 26,
-   "tasa_base_caida_5pct_60s": 30.7,
+   "tasa_base_caida_5pct_60s": 31.4,
    "mediana_ret_pct": {
     "5": 0.67,
     "20": 1.46,
@@ -641,11 +678,11 @@
    "aviso": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción."
   },
   "esencial": {
-   "cambio": "El SKEW de Cboe cerró en 154,3 el 09/10/2026 (percentil 98 de su historia desde 1990; 95 del último año), en zona alta (≥ 140); entró en zona alta el 17/08/2026 y lleva 39 sesiones seguidas. Sesión previa: 149,2.",
+   "cambio": "El SKEW de Cboe cerró en 154,3 el 09/10/2026 (percentil 98 de su historia desde 1990; 95 del último año), en zona alta (≥ 140); frente a las últimas 500 sesiones está en el percentil 82 (zona relativa elevado; el umbral alto relativo está en 161,2); entró en zona alta el 17/08/2026 y lleva 39 sesiones seguidas. Sesión previa: 149,2.",
    "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 3. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
    "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
   },
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)",
   "etiqueta": "CRITERIO NEXORA (zonas y episodios)"
  },
@@ -655,24 +692,24 @@
     "sesion": "2026-10-09",
     "cierre_confirmado": true,
     "spot_indice": 7811.54,
-    "spot_futuro": 7861.0,
-    "base_futuro": 49.46,
+    "spot_futuro": 7861.25,
+    "base_futuro": 49.71,
     "metodo_base": "intradía 5 min (futuro e índice en el mismo minuto)",
     "regimen_gamma": "POSITIVA",
     "gex_neto_musd_por_1pct": 40723.7,
     "call_wall": {
      "idx": 7820,
      "musd": 13958.2,
-     "fut": 7869.5
+     "fut": 7869.7
     },
     "put_wall": {
      "idx": 7800,
      "musd": 6725.9,
-     "fut": 7849.5
+     "fut": 7849.7
     },
     "gamma_flip": {
      "idx": 7768.1,
-     "fut": 7817.6
+     "fut": 7817.8
     },
     "resumen": "Call Wall 7.870 ES (7.820 SPX), Put Wall 7.850 (7.800), Gamma Flip 7.818 (7.768); gamma positiva (+40,7 mm$ por 1 %)"
    },
@@ -680,29 +717,29 @@
     "sesion": "2026-10-09",
     "cierre_confirmado": true,
     "spot_indice": 30883.15,
-    "spot_futuro": 31112.0,
-    "base_futuro": 228.85,
+    "spot_futuro": 31112.25,
+    "base_futuro": 229.1,
     "metodo_base": "intradía 5 min (futuro e índice en el mismo minuto)",
     "regimen_gamma": "POSITIVA",
     "gex_neto_musd_por_1pct": 810.6,
     "call_wall": {
      "idx": 31250,
      "musd": 1276.5,
-     "fut": 31478.8
+     "fut": 31479.1
     },
     "put_wall": {
      "idx": 30850,
      "musd": 799.7,
-     "fut": 31078.8
+     "fut": 31079.1
     },
     "gamma_flip": {
      "idx": 30833.9,
-     "fut": 31062.8
+     "fut": 31063.0
     },
     "resumen": "Call Wall 31.479 NQ (31.250 NDX), Put Wall 31.079 (30.850), Gamma Flip 31.063 (30.834); gamma positiva (+0,8 mm$ por 1 %)"
    }
   },
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "fuente": "Cboe · cadena de opciones con 15 min de retraso (cdn-api.cboe.com)",
   "etiqueta": "CRITERIO NEXORA (método propio, no dato oficial)",
   "supuesto": "GEX con signo +calls / −puts: hipótesis sobre el posicionamiento de los creadores de mercado, no observable."
@@ -756,9 +793,1628 @@
    "semis_pct": 32.07,
    "software_pct": 13.87
   },
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "fuente": "Yahoo Finance (SMH, IGV, índices, acciones) · Invesco (pesos QQQ)",
   "etiqueta": "CRITERIO NEXORA"
+ },
+ "bancos_centrales_mundo": {
+  "fecha": "2026-10-10",
+  "n_bancos": 38,
+  "contador_12m": {
+   "sube": 11,
+   "baja": 18,
+   "sin_cambios": 9,
+   "total": 38,
+   "amplitud": -0.184,
+   "tipos": "RELAJACIÓN",
+   "tipos_por_numero": "MIXTA",
+   "ponderado_pib": true,
+   "bancos_sube": [
+    "XM",
+    "JP",
+    "AU",
+    "NO",
+    "DK",
+    "IS",
+    "CZ",
+    "ZA",
+    "KR",
+    "ID",
+    "CO"
+   ],
+   "bancos_baja": [
+    "US",
+    "GB",
+    "CA",
+    "NZ",
+    "PL",
+    "HU",
+    "MK",
+    "TR",
+    "RU",
+    "IL",
+    "SA",
+    "KW",
+    "HK",
+    "IN",
+    "TH",
+    "BR",
+    "MX",
+    "CL"
+   ]
+  },
+  "lectura_liquidez_global": {
+   "etiqueta": "SEÑALES CONTRADICTORIAS (tipos a la baja, balances en contracción)",
+   "texto": "tipos: 11 suben y 18 bajan de 38 bancos (por número: mixta; ponderado por PIB: 28 % del PIB sube, 50 % baja → relajación); balance Fed+BCE+BoJ se contrae (-2,8 % a 12 meses en moneda local; -5,7 % medido en USD).",
+   "regla": "Dos patas que se combinan con una tabla fija. (1) TIPOS: movimiento de cada banco = tipo hoy − tipo hace 365 días, en puntos porcentuales NOMINALES (no se descuenta la inflación, es decir, no son tipos reales). SUBE ≥ +0,10 pp, BAJA ≤ −0,10 pp. Amplitud = (peso que sube − peso que baja) / peso total con dato, con cada banco ponderado por el PIB NOMINAL en USD de su economía (FMI WEO; zona euro = suma de sus países): una Fed o un BCE pesan mucho más que Macedonia o Islandia. ≥ +0,20 ENDURECIMIENTO, ≤ −0,20 RELAJACIÓN, entre medias MIXTA. Los bancos sin cambios cuentan en el denominador y diluyen la amplitud. El recuento por número (un voto por banco) se muestra al lado y se usa solo si falta algún PIB. (2) BALANCE: Fed + BCE + BoJ; variación a 12 meses de cada balance en su MONEDA LOCAL (sin efecto divisa), ponderada por su tamaño en USD a la fecha de referencia. ≥ +2 % EXPANDE, ≤ −2 % SE CONTRAE, entre medias PLANO. El PBoC no entra. (3) COMBINACIÓN: tabla de abajo. Con tipos MIXTA y balance que se contrae, la lectura es «ALGO RESTRICTIVA»: el balance desempata cuando los tipos no tienen dirección clara. Es una convención fija de NEXORA, no un modelo ajustado ni validado contra mercado. CAMBIO respecto a la versión anterior: antes un voto por banco y balance medido en USD.",
+   "combinacion": [
+    {
+     "tipos": "ENDURECIMIENTO",
+     "balance": "SE CONTRAE",
+     "etiqueta": "LIQUIDEZ GLOBAL RESTRICTIVA"
+    },
+    {
+     "tipos": "ENDURECIMIENTO",
+     "balance": "PLANO",
+     "etiqueta": "LIQUIDEZ GLOBAL ALGO RESTRICTIVA"
+    },
+    {
+     "tipos": "ENDURECIMIENTO",
+     "balance": "EXPANDE",
+     "etiqueta": "SEÑALES CONTRADICTORIAS (tipos al alza, balances en expansión)"
+    },
+    {
+     "tipos": "MIXTA",
+     "balance": "SE CONTRAE",
+     "etiqueta": "LIQUIDEZ GLOBAL ALGO RESTRICTIVA"
+    },
+    {
+     "tipos": "MIXTA",
+     "balance": "PLANO",
+     "etiqueta": "LIQUIDEZ GLOBAL NEUTRA"
+    },
+    {
+     "tipos": "MIXTA",
+     "balance": "EXPANDE",
+     "etiqueta": "LIQUIDEZ GLOBAL ALGO EXPANSIVA"
+    },
+    {
+     "tipos": "RELAJACIÓN",
+     "balance": "SE CONTRAE",
+     "etiqueta": "SEÑALES CONTRADICTORIAS (tipos a la baja, balances en contracción)"
+    },
+    {
+     "tipos": "RELAJACIÓN",
+     "balance": "PLANO",
+     "etiqueta": "LIQUIDEZ GLOBAL ALGO EXPANSIVA"
+    },
+    {
+     "tipos": "RELAJACIÓN",
+     "balance": "EXPANDE",
+     "etiqueta": "LIQUIDEZ GLOBAL EXPANSIVA"
+    }
+   ],
+   "umbrales": {
+    "movimiento_pp": 0.1,
+    "amplitud": 0.2,
+    "balance_pct": 2.0
+   }
+  },
+  "balance_fed_bce_boj": {
+   "valor_T": 17.3762,
+   "fecha": "2026-10-07",
+   "ref_fecha": "2025-10-07",
+   "var_12m_pct": -2.84,
+   "var_12m_usd_pct": -5.65,
+   "base": "moneda local, ponderada por tamaño en USD a la fecha de referencia (sin efecto divisa)",
+   "componentes": {
+    "fed": {
+     "fecha": "2026-10-07",
+     "ref_fecha": "2025-10-01",
+     "var_local_pct": 2.44,
+     "peso_ref_T": 6.587,
+     "valor_T": 6.748,
+     "var_usd_pct": 2.44,
+     "peso": 0.354
+    },
+    "bce": {
+     "fecha": "2026-09-25",
+     "ref_fecha": "2025-09-19",
+     "var_local_pct": -2.85,
+     "peso_ref_T": 7.294,
+     "valor_T": 6.723,
+     "var_usd_pct": -7.83,
+     "peso": 0.392
+    },
+    "boj": {
+     "fecha": "2026-09-01",
+     "ref_fecha": "2025-09-01",
+     "var_local_pct": -10.17,
+     "peso_ref_T": 4.732,
+     "valor_T": 3.906,
+     "var_usd_pct": -17.46,
+     "peso": 0.254
+    }
+   },
+   "estado": "SE CONTRAE",
+   "fuente": "FRED (WALCL, ECBASSETSW, JPNASSETS) · liquidez.json de este terminal"
+  },
+  "amplitud_ponderada_pib": {
+   "sube_pct": 27.8,
+   "baja_pct": 50.5,
+   "sin_cambios_pct": 21.7,
+   "amplitud": -0.227,
+   "tipos": "RELAJACIÓN",
+   "ano_pib": 2025,
+   "fuente": "FMI WEO · NGDPD (PIB nominal en USD)",
+   "mayores": [
+    {
+     "codigo": "US",
+     "banco": "Reserva Federal (Fed)",
+     "peso_pct": 28.6,
+     "dir": "BAJA",
+     "cambio_12m": -0.25
+    },
+    {
+     "codigo": "CN",
+     "banco": "Banco Popular de China (PBoC)",
+     "peso_pct": 18.3,
+     "dir": "SIN CAMBIOS",
+     "cambio_12m": 0.0
+    },
+    {
+     "codigo": "XM",
+     "banco": "Banco Central Europeo (BCE)",
+     "peso_pct": 16.7,
+     "dir": "SUBE",
+     "cambio_12m": 0.5
+    },
+    {
+     "codigo": "JP",
+     "banco": "Banco de Japón (BoJ)",
+     "peso_pct": 4.1,
+     "dir": "SUBE",
+     "cambio_12m": 0.75
+    },
+    {
+     "codigo": "GB",
+     "banco": "Banco de Inglaterra (BoE)",
+     "peso_pct": 3.7,
+     "dir": "BAJA",
+     "cambio_12m": -0.25
+    },
+    {
+     "codigo": "IN",
+     "banco": "Banco de la Reserva de la India (RBI)",
+     "peso_pct": 3.6,
+     "dir": "BAJA",
+     "cambio_12m": -0.25
+    }
+   ]
+  },
+  "proximas_reuniones": [
+   {
+    "codigo": "US",
+    "banco": "Reserva Federal (Fed)",
+    "fecha": "2026-10-28",
+    "dias": 18
+   },
+   {
+    "codigo": "CA",
+    "banco": "Banco de Canadá (BoC)",
+    "fecha": "2026-10-28",
+    "dias": 18
+   },
+   {
+    "codigo": "XM",
+    "banco": "Banco Central Europeo (BCE)",
+    "fecha": "2026-10-29",
+    "dias": 19
+   },
+   {
+    "codigo": "JP",
+    "banco": "Banco de Japón (BoJ)",
+    "fecha": "2026-10-30",
+    "dias": 20
+   },
+   {
+    "codigo": "AU",
+    "banco": "Banco de la Reserva de Australia (RBA)",
+    "fecha": "2026-11-03",
+    "dias": 24
+   },
+   {
+    "codigo": "SE",
+    "banco": "Riksbank",
+    "fecha": "2026-11-04",
+    "dias": 25
+   },
+   {
+    "codigo": "GB",
+    "banco": "Banco de Inglaterra (BoE)",
+    "fecha": "2026-11-05",
+    "dias": 26
+   },
+   {
+    "codigo": "CH",
+    "banco": "Banco Nacional Suizo (SNB)",
+    "fecha": "2026-12-10",
+    "dias": 61
+   }
+  ],
+  "bancos": [
+   {
+    "codigo": "US",
+    "banco": "Reserva Federal (Fed)",
+    "pais": "Estados Unidos",
+    "tipo_pct": 3.875,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-17",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": -0.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "2026-10-28",
+    "proxima_fuente": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "divisa_vs_usd_1m_pct": null,
+    "divisa_fecha": null,
+    "inflacion_fmi": {
+     "valor": 2.7,
+     "ano": 2025,
+     "prevision": 3.2,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 2.1,
+     "ano": 2025,
+     "prevision": 2.3,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "XM",
+    "banco": "Banco Central Europeo (BCE)",
+    "pais": "Zona euro",
+    "tipo_pct": 2.5,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-16",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 0.5,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "2026-10-29",
+    "proxima_fuente": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+    "divisa_vs_usd_1m_pct": -3.04,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 2.1,
+     "ano": 2025,
+     "prevision": 2.6,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1.4,
+     "ano": 2025,
+     "prevision": 1.1,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "JP",
+    "banco": "Banco de Japón (BoJ)",
+    "pais": "Japón",
+    "tipo_pct": 1.25,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-24",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 0.75,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "2026-10-30",
+    "proxima_fuente": "https://www.boj.or.jp/en/about/calendar/",
+    "divisa_vs_usd_1m_pct": -1.17,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 3.2,
+     "ano": 2025,
+     "prevision": 2.2,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1.2,
+     "ano": 2025,
+     "prevision": 0.7,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "GB",
+    "banco": "Banco de Inglaterra (BoE)",
+    "pais": "Reino Unido",
+    "tipo_pct": 3.75,
+    "fecha_dato": "2026-10-05",
+    "ultimo_movimiento": {
+     "fecha": "2025-12-18",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -0.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "2026-11-05",
+    "proxima_fuente": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
+    "divisa_vs_usd_1m_pct": -1.87,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 3.4,
+     "ano": 2025,
+     "prevision": 3.2,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1.3,
+     "ano": 2025,
+     "prevision": 0.8,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "CH",
+    "banco": "Banco Nacional Suizo (SNB)",
+    "pais": "Suiza",
+    "tipo_pct": 0.0,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2025-06-20",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": 0.0,
+    "direccion_12m": "SIN CAMBIOS",
+    "proxima_reunion": "2026-12-10",
+    "proxima_fuente": "https://www.snb.ch/en/services-events/digital-services/event-schedule",
+    "divisa_vs_usd_1m_pct": -2.56,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 0.2,
+     "ano": 2025,
+     "prevision": 0.5,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1.3,
+     "ano": 2025,
+     "prevision": 1.3,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "CA",
+    "banco": "Banco de Canadá (BoC)",
+    "pais": "Canadá",
+    "tipo_pct": 2.25,
+    "fecha_dato": "2026-10-05",
+    "ultimo_movimiento": {
+     "fecha": "2025-10-30",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -0.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "2026-10-28",
+    "proxima_fuente": "https://www.bankofcanada.ca/2025/08/bank-canada-publishes-2026-schedule-policy-interest-rate-announcements-other-major-publications/",
+    "divisa_vs_usd_1m_pct": -3.16,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 2.1,
+     "ano": 2025,
+     "prevision": 2.5,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1.7,
+     "ano": 2025,
+     "prevision": 1.5,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "AU",
+    "banco": "Banco de la Reserva de Australia (RBA)",
+    "pais": "Australia",
+    "tipo_pct": 4.35,
+    "fecha_dato": "2026-09-24",
+    "ultimo_movimiento": {
+     "fecha": "2026-05-06",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 0.75,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "2026-11-03",
+    "proxima_fuente": "https://www.rba.gov.au/media-releases/2025/mr-25-02.html",
+    "divisa_vs_usd_1m_pct": -3.07,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 2.9,
+     "ano": 2025,
+     "prevision": 4,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 2,
+     "ano": 2025,
+     "prevision": 2,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "NZ",
+    "banco": "Banco de la Reserva de Nueva Zelanda (RBNZ)",
+    "pais": "Nueva Zelanda",
+    "tipo_pct": 2.75,
+    "fecha_dato": "2026-10-02",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-03",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": -0.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -4.52,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 2.8,
+     "ano": 2025,
+     "prevision": 3.1,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 0.2,
+     "ano": 2025,
+     "prevision": 2.1,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "SE",
+    "banco": "Riksbank",
+    "pais": "Suecia",
+    "tipo_pct": 1.75,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2025-10-01",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": 0.0,
+    "direccion_12m": "SIN CAMBIOS",
+    "proxima_reunion": "2026-11-04",
+    "proxima_fuente": "https://www.riksbank.se/en-gb/press-and-published/calendar/calendar-2026",
+    "divisa_vs_usd_1m_pct": -4.26,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 2.6,
+     "ano": 2025,
+     "prevision": 1.5,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1.5,
+     "ano": 2025,
+     "prevision": 2,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "NO",
+    "banco": "Norges Bank",
+    "pais": "Noruega",
+    "tipo_pct": 4.5,
+    "fecha_dato": "2026-10-02",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-25",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 0.5,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -2.81,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 3,
+     "ano": 2025,
+     "prevision": 3.3,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1.1,
+     "ano": 2025,
+     "prevision": 1.5,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "DK",
+    "banco": "Danmarks Nationalbank",
+    "pais": "Dinamarca",
+    "tipo_pct": 2.1,
+    "fecha_dato": "2026-10-05",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-11",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 0.5,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -3.04,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 1.8,
+     "ano": 2025,
+     "prevision": 2,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 2.9,
+     "ano": 2025,
+     "prevision": 2,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "IS",
+    "banco": "Banco Central de Islandia",
+    "pais": "Islandia",
+    "tipo_pct": 8.0,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2026-08-19",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 0.5,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -0.92,
+    "divisa_fecha": "2026-10-05",
+    "inflacion_fmi": {
+     "valor": 4.1,
+     "ano": 2025,
+     "prevision": 4.8,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1.3,
+     "ano": 2025,
+     "prevision": 1.9,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "PL",
+    "banco": "Narodowy Bank Polski",
+    "pais": "Polonia",
+    "tipo_pct": 3.75,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2026-03-05",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -1.0,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -4.15,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 3.6,
+     "ano": 2025,
+     "prevision": 3.3,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 3.6,
+     "ano": 2025,
+     "prevision": 3.3,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "CZ",
+    "banco": "Česká národní banka",
+    "pais": "Chequia",
+    "tipo_pct": 3.75,
+    "fecha_dato": "2026-10-05",
+    "ultimo_movimiento": {
+     "fecha": "2026-06-19",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 0.25,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -3.9,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 2.5,
+     "ano": 2025,
+     "prevision": 2.4,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 2.5,
+     "ano": 2025,
+     "prevision": 2.2,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "HU",
+    "banco": "Magyar Nemzeti Bank",
+    "pais": "Hungría",
+    "tipo_pct": 5.5,
+    "fecha_dato": "2026-09-30",
+    "ultimo_movimiento": {
+     "fecha": "2026-08-26",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -1.0,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -3.48,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 4.4,
+     "ano": 2025,
+     "prevision": 3.8,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 0.4,
+     "ano": 2025,
+     "prevision": 1.7,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "RO",
+    "banco": "Banca Națională a României",
+    "pais": "Rumanía",
+    "tipo_pct": 6.5,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2024-08-08",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": 0.0,
+    "direccion_12m": "SIN CAMBIOS",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -4.81,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 7.3,
+     "ano": 2025,
+     "prevision": 7.8,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 0.7,
+     "ano": 2025,
+     "prevision": 0.7,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "RS",
+    "banco": "Banco Nacional de Serbia",
+    "pais": "Serbia",
+    "tipo_pct": 5.75,
+    "fecha_dato": "2026-09-30",
+    "ultimo_movimiento": {
+     "fecha": "2024-09-12",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": 0.0,
+    "direccion_12m": "SIN CAMBIOS",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -2.34,
+    "divisa_fecha": "2026-09-30",
+    "inflacion_fmi": {
+     "valor": 3.9,
+     "ano": 2025,
+     "prevision": 5.2,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 2,
+     "ano": 2025,
+     "prevision": 2.8,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "MK",
+    "banco": "Banco Nacional de Macedonia del Norte",
+    "pais": "Macedonia del Norte",
+    "tipo_pct": 4.25,
+    "fecha_dato": "2026-10-02",
+    "ultimo_movimiento": {
+     "fecha": "2026-06-17",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": -1.1,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -2.77,
+    "divisa_fecha": "2026-10-02",
+    "inflacion_fmi": {
+     "valor": 4.1,
+     "ano": 2025,
+     "prevision": 4.5,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 3.5,
+     "ano": 2025,
+     "prevision": 3.1,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "TR",
+    "banco": "Banco Central de la República de Turquía (CBRT)",
+    "pais": "Turquía",
+    "tipo_pct": 37.0,
+    "fecha_dato": "2026-10-02",
+    "ultimo_movimiento": {
+     "fecha": "2026-01-23",
+     "pp": -1.0
+    },
+    "cambio_12m_pp": -3.5,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -1.5,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 34.9,
+     "ano": 2025,
+     "prevision": 28.6,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 3.6,
+     "ano": 2025,
+     "prevision": 3.4,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "RU",
+    "banco": "Banco de Rusia",
+    "pais": "Rusia",
+    "tipo_pct": 14.0,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2026-07-27",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -3.0,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": 1.95,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 8.7,
+     "ano": 2025,
+     "prevision": 5.6,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1,
+     "ano": 2025,
+     "prevision": 1.1,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "IL",
+    "banco": "Banco de Israel",
+    "pais": "Israel",
+    "tipo_pct": 3.25,
+    "fecha_dato": "2026-09-30",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-03",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -1.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -1.33,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 3,
+     "ano": 2025,
+     "prevision": 2.3,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 2.9,
+     "ano": 2025,
+     "prevision": 3.5,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "SA",
+    "banco": "Banco Central de Arabia Saudí (SAMA)",
+    "pais": "Arabia Saudí",
+    "tipo_pct": 4.5,
+    "fecha_dato": "2026-09-30",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-16",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": -0.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": 0.0,
+    "divisa_fecha": "2026-09-30",
+    "inflacion_fmi": {
+     "valor": 2,
+     "ano": 2025,
+     "prevision": 2.3,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 4.5,
+     "ano": 2025,
+     "prevision": 3.1,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "KW",
+    "banco": "Banco Central de Kuwait",
+    "pais": "Kuwait",
+    "tipo_pct": 3.5,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2025-12-11",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -0.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -0.37,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 2.4,
+     "ano": 2025,
+     "prevision": 2.8,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 3.5,
+     "ano": 2025,
+     "prevision": -0.6,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "ZA",
+    "banco": "Banco de la Reserva de Sudáfrica (SARB)",
+    "pais": "Sudáfrica",
+    "tipo_pct": 7.25,
+    "fecha_dato": "2026-10-05",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-25",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 0.25,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -3.17,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 3.2,
+     "ano": 2025,
+     "prevision": 3.9,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1.1,
+     "ano": 2025,
+     "prevision": 1,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "MA",
+    "banco": "Bank Al-Maghrib",
+    "pais": "Marruecos",
+    "tipo_pct": 2.25,
+    "fecha_dato": "2026-08-31",
+    "ultimo_movimiento": {
+     "fecha": "2025-03-20",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": 0.0,
+    "direccion_12m": "SIN CAMBIOS",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": 1.29,
+    "divisa_fecha": "2026-08-28",
+    "inflacion_fmi": {
+     "valor": 0.8,
+     "ano": 2025,
+     "prevision": 1.3,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 4.9,
+     "ano": 2025,
+     "prevision": 4.9,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "CN",
+    "banco": "Banco Popular de China (PBoC)",
+    "pais": "China",
+    "tipo_pct": 3.0,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2025-05-20",
+     "pp": -0.1
+    },
+    "cambio_12m_pp": 0.0,
+    "direccion_12m": "SIN CAMBIOS",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": 0.09,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 0,
+     "ano": 2025,
+     "prevision": 1.2,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 5,
+     "ano": 2025,
+     "prevision": 4.4,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "HK",
+    "banco": "Autoridad Monetaria de Hong Kong (HKMA)",
+    "pais": "Hong Kong",
+    "tipo_pct": 4.25,
+    "fecha_dato": "2026-09-29",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-17",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": -0.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -0.1,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 1.4,
+     "ano": 2025,
+     "prevision": 2.1,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 3.5,
+     "ano": 2025,
+     "prevision": 2.4,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "IN",
+    "banco": "Banco de la Reserva de la India (RBI)",
+    "pais": "India",
+    "tipo_pct": 5.25,
+    "fecha_dato": "2026-07-23",
+    "ultimo_movimiento": {
+     "fecha": "2025-12-05",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -0.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -2.01,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 2.1,
+     "ano": 2025,
+     "prevision": 4.7,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 7.6,
+     "ano": 2025,
+     "prevision": 6.5,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "KR",
+    "banco": "Banco de Corea (BoK)",
+    "pais": "Corea del Sur",
+    "tipo_pct": 3.0,
+    "fecha_dato": "2026-08-28",
+    "ultimo_movimiento": {
+     "fecha": "2026-08-27",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 0.5,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": 0.86,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 2.1,
+     "ano": 2025,
+     "prevision": 2.5,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 1,
+     "ano": 2025,
+     "prevision": 1.9,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "ID",
+    "banco": "Bank Indonesia",
+    "pais": "Indonesia",
+    "tipo_pct": 5.75,
+    "fecha_dato": "2026-10-05",
+    "ultimo_movimiento": {
+     "fecha": "2026-06-18",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 1.0,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -1.15,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 1.9,
+     "ano": 2025,
+     "prevision": 3,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 5.1,
+     "ano": 2025,
+     "prevision": 5,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "MY",
+    "banco": "Bank Negara Malaysia",
+    "pais": "Malasia",
+    "tipo_pct": 2.75,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2025-07-09",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": 0.0,
+    "direccion_12m": "SIN CAMBIOS",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -0.99,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 1.4,
+     "ano": 2025,
+     "prevision": 1.9,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 5.2,
+     "ano": 2025,
+     "prevision": 4.7,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "TH",
+    "banco": "Banco de Tailandia (BoT)",
+    "pais": "Tailandia",
+    "tipo_pct": 1.0,
+    "fecha_dato": "2026-10-01",
+    "ultimo_movimiento": {
+     "fecha": "2026-02-25",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -0.5,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -1.95,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": -0.1,
+     "ano": 2025,
+     "prevision": 0.9,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 2.4,
+     "ano": 2025,
+     "prevision": 1.5,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "PH",
+    "banco": "Bangko Sentral ng Pilipinas",
+    "pais": "Filipinas",
+    "tipo_pct": 5.0,
+    "fecha_dato": "2026-10-02",
+    "ultimo_movimiento": {
+     "fecha": "2026-08-28",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 0.0,
+    "direccion_12m": "SIN CAMBIOS",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -0.14,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 1.7,
+     "ano": 2025,
+     "prevision": 4.3,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 4.4,
+     "ano": 2025,
+     "prevision": 4.1,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "BR",
+    "banco": "Banco Central de Brasil (BCB)",
+    "pais": "Brasil",
+    "tipo_pct": 13.75,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2026-09-17",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -1.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": 2.87,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 5,
+     "ano": 2025,
+     "prevision": 4,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 2.3,
+     "ano": 2025,
+     "prevision": 1.9,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "MX",
+    "banco": "Banco de México (Banxico)",
+    "pais": "México",
+    "tipo_pct": 6.5,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2026-05-08",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -1.0,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -5.83,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 3.8,
+     "ano": 2025,
+     "prevision": 3.9,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 0.6,
+     "ano": 2025,
+     "prevision": 1.6,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "CL",
+    "banco": "Banco Central de Chile",
+    "pais": "Chile",
+    "tipo_pct": 4.5,
+    "fecha_dato": "2026-10-06",
+    "ultimo_movimiento": {
+     "fecha": "2025-12-17",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": -0.25,
+    "direccion_12m": "BAJA",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -4.48,
+    "divisa_fecha": "2026-10-06",
+    "inflacion_fmi": {
+     "valor": 4.2,
+     "ano": 2025,
+     "prevision": 2.9,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 2.3,
+     "ano": 2025,
+     "prevision": 2.4,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "CO",
+    "banco": "Banco de la República (Colombia)",
+    "pais": "Colombia",
+    "tipo_pct": 12.25,
+    "fecha_dato": "2026-10-02",
+    "ultimo_movimiento": {
+     "fecha": "2026-10-01",
+     "pp": 0.25
+    },
+    "cambio_12m_pp": 3.0,
+    "direccion_12m": "SUBE",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -3.74,
+    "divisa_fecha": "2026-10-02",
+    "inflacion_fmi": {
+     "valor": 5.1,
+     "ano": 2025,
+     "prevision": 5.9,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 2.6,
+     "ano": 2025,
+     "prevision": 2.3,
+     "ano_prevision": 2026
+    }
+   },
+   {
+    "codigo": "PE",
+    "banco": "Banco Central de Reserva del Perú",
+    "pais": "Perú",
+    "tipo_pct": 4.25,
+    "fecha_dato": "2026-10-02",
+    "ultimo_movimiento": {
+     "fecha": "2025-09-12",
+     "pp": -0.25
+    },
+    "cambio_12m_pp": 0.0,
+    "direccion_12m": "SIN CAMBIOS",
+    "proxima_reunion": "SIN DATO",
+    "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+    "divisa_vs_usd_1m_pct": -2.51,
+    "divisa_fecha": "2026-10-01",
+    "inflacion_fmi": {
+     "valor": 1.5,
+     "ano": 2025,
+     "prevision": 2.5,
+     "ano_prevision": 2026
+    },
+    "pib_fmi": {
+     "valor": 3.4,
+     "ano": 2025,
+     "prevision": 2.8,
+     "ano_prevision": 2026
+    }
+   }
+  ],
+  "zona_euro": {
+   "miembros": 21,
+   "tipo_bce_pct": 2.5
+  },
+  "historico_8_grandes": "site/data/bancos.json → historico8 (cambios de tipo desde 2010, BIS)",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
+  "fuente": "BIS WS_CBPOL y WS_XRU · FMI DataMapper (WEO) · calendarios oficiales de cada banco",
+  "etiqueta": "Tipos y calendarios: dato oficial. Lectura de liquidez global: CRITERIO NEXORA (regla en la página).",
+  "errores": {}
+ },
+ "tono_bancos_centrales": {
+  "fecha": "2026-10-10",
+  "estado_bloque": "SECUNDARIO",
+  "estado_motivo": "Δz no mejora: 44 % de acierto (24/54) frente a 50 % del azar, p = 0.497: no distinguible del azar; peor que «repetir la decisión anterior» (54 %).",
+  "criterio_estado": "PRINCIPAL solo si n ≥ 30, acierto > 50 % con p < 0.05 (binomial bilateral) y acierto ≥ línea base «repetir la decisión anterior» en la misma muestra. Criterio fijado antes de ver el resultado.",
+  "ultimo_comunicado": {
+   "Fed": {
+    "fecha": "2026-09-16",
+    "indice_crudo": 0.455,
+    "z_vs_media_2a_propia": 1.44,
+    "media_2a": -0.26,
+    "sd_2a": 0.496,
+    "observaciones_en_ventana": 16,
+    "cambio_z_vs_intervencion_anterior": -0.37,
+    "cambio_z": "SIN CAMBIO",
+    "anterior": "2026-07-29",
+    "aviso": null
+   },
+   "BCE": {
+    "fecha": "2026-09-10",
+    "indice_crudo": 0.25,
+    "z_vs_media_2a_propia": 1.93,
+    "media_2a": -0.24,
+    "sd_2a": 0.254,
+    "observaciones_en_ventana": 16,
+    "cambio_z_vs_intervencion_anterior": 0.67,
+    "cambio_z": "MÁS HAWKISH",
+    "anterior": "2026-07-23",
+    "aviso": null
+   },
+   "BoJ": {
+    "fecha": "2026-09-18",
+    "indice_crudo": -0.379,
+    "z_vs_media_2a_propia": 0.25,
+    "media_2a": -0.514,
+    "sd_2a": 0.54,
+    "observaciones_en_ventana": 11,
+    "cambio_z_vs_intervencion_anterior": -6.68,
+    "cambio_z": "MÁS DOVISH",
+    "anterior": "2026-07-31",
+    "aviso": "intervención anterior con pocos términos: Δz poco fiable"
+   }
+  },
+  "validacion_z_dir_siguiente_decision": {
+   "regla": "signo de Δz frente a la dirección de la reunión siguiente, solo cuando esa reunión mueve el tipo",
+   "por_banco": {
+    "Fed": {
+     "muestra_movimientos": 30,
+     "aciertos": 11,
+     "acierto_pct": 36.7,
+     "azar_pct": 50.0,
+     "p_valor": 0.2005,
+     "base_repite_decision_pct": 50.0
+    },
+    "BCE": {
+     "muestra_movimientos": 19,
+     "aciertos": 11,
+     "acierto_pct": 57.9,
+     "azar_pct": 50.0,
+     "p_valor": 0.6476,
+     "base_repite_decision_pct": 73.7
+    },
+    "BoJ": {
+     "muestra_movimientos": 5,
+     "aciertos": 2,
+     "acierto_pct": 40.0,
+     "azar_pct": 50.0,
+     "p_valor": 1.0,
+     "base_repite_decision_pct": 0.0
+    }
+   },
+   "total": {
+    "muestra_movimientos": 54,
+    "aciertos": 24,
+    "acierto_pct": 44.4,
+    "azar_pct": 50.0,
+    "p_valor_binomial": 0.4966,
+    "base_repite_decision_pct": 53.7
+   }
+  },
+  "validacion_nivel_version_anterior": {
+   "Fed": {
+    "muestra": 98,
+    "desde": "2015-01-28",
+    "acierto_nivel_pct": 32.7,
+    "acierto_cambio_pct": 41.7,
+    "base_siempre_mantiene_pct": 68.4,
+    "base_repite_decision_pct": 67.3,
+    "correlacion_tono_vs_siguiente_cambio_pp": 0.464
+   },
+   "BCE": {
+    "muestra": 93,
+    "desde": "2015-01-22",
+    "acierto_nivel_pct": 21.5,
+    "acierto_cambio_pct": 41.3,
+    "base_siempre_mantiene_pct": 78.5,
+    "base_repite_decision_pct": 90.3,
+    "correlacion_tono_vs_siguiente_cambio_pp": 0.384
+   },
+   "BoJ": {
+    "muestra": 93,
+    "desde": "2015-01-21",
+    "acierto_nivel_pct": 4.3,
+    "acierto_cambio_pct": 57.0,
+    "base_siempre_mantiene_pct": 93.5,
+    "base_repite_decision_pct": 87.1,
+    "correlacion_tono_vs_siguiente_cambio_pp": 0.321
+   }
+  },
+  "oradores_recientes": [
+   {
+    "banco": "Fed",
+    "orador": "Christopher J. Waller",
+    "fecha": "2026-10-08",
+    "indice_crudo": 0.542,
+    "nivel_crudo": "HAWKISH",
+    "cambio_vs_anterior": 0.472,
+    "anterior": {
+     "fecha": "2026-09-03",
+     "indice": 0.07
+    }
+   },
+   {
+    "banco": "BoJ",
+    "orador": "Shinichi Uchida",
+    "fecha": "2026-10-05",
+    "indice_crudo": 0.111,
+    "nivel_crudo": "NEUTRAL",
+    "cambio_vs_anterior": 0.479,
+    "anterior": {
+     "fecha": "2025-07-23",
+     "indice": -0.368
+    }
+   },
+   {
+    "banco": "Fed",
+    "orador": "Philip N. Jefferson",
+    "fecha": "2026-10-01",
+    "indice_crudo": 0.259,
+    "nivel_crudo": "HAWKISH",
+    "cambio_vs_anterior": 0.281,
+    "anterior": {
+     "fecha": "2026-07-16",
+     "indice": -0.022
+    }
+   },
+   {
+    "banco": "Fed",
+    "orador": "Lisa D. Cook",
+    "fecha": "2026-09-30",
+    "indice_crudo": 0.25,
+    "nivel_crudo": "HAWKISH",
+    "cambio_vs_anterior": 0.153,
+    "anterior": {
+     "fecha": "2026-09-28",
+     "indice": 0.097
+    }
+   },
+   {
+    "banco": "BCE",
+    "orador": "Isabel Schnabel",
+    "fecha": "2026-09-30",
+    "indice_crudo": 0.266,
+    "nivel_crudo": "HAWKISH",
+    "cambio_vs_anterior": 0.695,
+    "anterior": {
+     "fecha": "2026-08-28",
+     "indice": -0.429
+    }
+   },
+   {
+    "banco": "Fed",
+    "orador": "Michael S. Barr",
+    "fecha": "2026-09-29",
+    "indice_crudo": 0.188,
+    "nivel_crudo": "NEUTRAL",
+    "cambio_vs_anterior": 0.708,
+    "anterior": {
+     "fecha": "2026-09-23",
+     "indice": -0.52
+    }
+   },
+   {
+    "banco": "BCE",
+    "orador": "Christine Lagarde",
+    "fecha": "2026-09-28",
+    "indice_crudo": 0.133,
+    "nivel_crudo": "NEUTRAL",
+    "cambio_vs_anterior": 0.111,
+    "anterior": {
+     "fecha": "2026-06-29",
+     "indice": 0.022
+    }
+   },
+   {
+    "banco": "BoJ",
+    "orador": "Kazuyuki Masu",
+    "fecha": "2026-09-10",
+    "indice_crudo": 0.432,
+    "nivel_crudo": "HAWKISH",
+    "cambio_vs_anterior": 0.032,
+    "anterior": {
+     "fecha": "2026-05-14",
+     "indice": 0.4
+    }
+   },
+   {
+    "banco": "BoJ",
+    "orador": "Hajime Takata",
+    "fecha": "2026-09-02",
+    "indice_crudo": -0.059,
+    "nivel_crudo": "NEUTRAL",
+    "cambio_vs_anterior": 0.362,
+    "anterior": {
+     "fecha": "2026-02-26",
+     "indice": -0.421
+    }
+   },
+   {
+    "banco": "BCE",
+    "orador": "Boris Vujčić",
+    "fecha": "2026-09-01",
+    "indice_crudo": -0.412,
+    "nivel_crudo": "DOVISH",
+    "cambio_vs_anterior": -0.312,
+    "anterior": {
+     "fecha": "2026-06-02",
+     "indice": -0.1
+    }
+   },
+   {
+    "banco": "Fed",
+    "orador": "Chairman Kevin Warsh",
+    "fecha": "2026-08-28",
+    "indice_crudo": 0.438,
+    "nivel_crudo": "HAWKISH",
+    "cambio_vs_anterior": null,
+    "anterior": null
+   },
+   {
+    "banco": "BoJ",
+    "orador": "Ryozo Himino",
+    "fecha": "2026-08-27",
+    "indice_crudo": 0.167,
+    "nivel_crudo": "NEUTRAL",
+    "cambio_vs_anterior": 0.147,
+    "anterior": {
+     "fecha": "2026-03-02",
+     "indice": 0.02
+    }
+   }
+  ],
+  "diccionario": {
+   "version": "1.0213cd75",
+   "n_terminos": 157
+  },
+  "actualizado_utc": "2026-10-10 16:57 UTC",
+  "fuente": "federalreserve.gov, ecb.europa.eu, boj.or.jp · diccionario de términos NEXORA (sin IA)",
+  "etiqueta": "CRITERIO NEXORA: lectura léxica, no entiende contexto. Ver validación y líneas base antes de usarla."
  },
  "posicionamiento_cot": {
   "fecha_informe": "2026-10-06",
@@ -1041,7 +2697,7 @@
   "metodo": "Neto = largos − cortos. Percentil = posición del neto actual entre las ~156 semanas anteriores (≥90 extremo largo, ≤10 extremo corto)."
  },
  "sesgo_divisas": {
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "riesgo": {
    "vix": 14.84,
    "fecha": "2026-10-09",
@@ -1331,7 +2987,7 @@
     "fuente": "FRED INDPRO"
    }
   ],
-  "actualizado_utc": "2026-10-10 14:06 UTC",
+  "actualizado_utc": "2026-10-10 16:57 UTC",
   "fuente": "Calendario NEXORA · sin consenso de analistas (es de pago)"
  },
  "alertas_recientes": [
