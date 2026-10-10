@@ -1,8 +1,8 @@
 {
  "ok": true,
- "generado_utc": "2026-10-10 11:15 UTC",
+ "generado_utc": "2026-10-10 14:06 UTC",
  "metricas": {
-  "generado_utc": "2026-10-10 11:19 UTC",
+  "generado_utc": "2026-10-10 14:09 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer el oro (XAU/USD)",
   "oro": {
    "lbma_pm": 4216.2998046875,
@@ -22,17 +22,17 @@
   },
   "oro_intradia": {
    "xaut_okx": {
-    "precio": 4183.6,
-    "hora_utc": "2026-10-10 11:20",
+    "precio": 4184.5,
+    "hora_utc": "2026-10-10 14:11",
     "max24h": 4197.8,
-    "min24h": 4169.1
+    "min24h": 4178.7
    },
    "paxg_coinbase": {
-    "precio": 4182.35,
-    "hora_utc": "2026-10-10 11:20"
+    "precio": 4182.87,
+    "hora_utc": "2026-10-10 14:10"
    },
    "nota": "Proxy: tokens respaldados por oro físico, cotizan 24/7; pueden desviarse unas décimas del spot XAU/USD.",
-   "divergencia_pct": 0.03
+   "divergencia_pct": 0.039
   },
   "dxy": {
    "valor": 102.19,
@@ -568,42 +568,42 @@
   },
   "chuleta_60s": "SIN CONFLUENCIA COMPLETA",
   "pools": {
-   "referencia": 4183.6,
+   "referencia": 4184.5,
    "atr14": 54.7,
    "encima": [
     {
      "id": "PDH+semana_actual_max",
      "nombre": "máx. día anterior / máx. semana en curso",
      "nivel": 4197.8,
-     "dist_pct": 0.34,
-     "dist_atr": 0.3
+     "dist_pct": 0.32,
+     "dist_atr": 0.2
     },
     {
      "id": "PWH",
      "nombre": "máx. semana anterior",
      "nivel": 4262.1,
-     "dist_pct": 1.88,
+     "dist_pct": 1.85,
      "dist_atr": 1.4
     },
     {
      "id": "PMH",
      "nombre": "máx. mes anterior",
      "nivel": 4500.0,
-     "dist_pct": 7.56,
+     "dist_pct": 7.54,
      "dist_atr": 5.8
     },
     {
      "id": "max_20s",
      "nombre": "máx. 20 semanas",
      "nivel": 4679.8,
-     "dist_pct": 11.86,
+     "dist_pct": 11.84,
      "dist_atr": 9.1
     },
     {
      "id": "max_52s",
      "nombre": "máx. 52 semanas",
      "nivel": 5609.9,
-     "dist_pct": 34.09,
+     "dist_pct": 34.06,
      "dist_atr": 26.1
     }
    ],
@@ -612,35 +612,35 @@
      "id": "PDL",
      "nombre": "mín. día anterior",
      "nivel": 4138.7,
-     "dist_pct": -1.07,
+     "dist_pct": -1.09,
      "dist_atr": -0.8
     },
     {
      "id": "PWL+PML",
      "nombre": "mín. semana anterior / mín. mes anterior",
      "nivel": 4117.5,
-     "dist_pct": -1.58,
+     "dist_pct": -1.6,
      "dist_atr": -1.2
     },
     {
      "id": "semana_actual_min",
      "nombre": "mín. semana en curso",
      "nivel": 4075.9,
-     "dist_pct": -2.57,
+     "dist_pct": -2.6,
      "dist_atr": -2.0
     },
     {
      "id": "min_20s",
      "nombre": "mín. 20 semanas",
      "nivel": 3943.1,
-     "dist_pct": -5.75,
+     "dist_pct": -5.77,
      "dist_atr": -4.4
     },
     {
      "id": "min_52s",
      "nombre": "mín. 52 semanas",
      "nivel": 3892.7,
-     "dist_pct": -6.95,
+     "dist_pct": -6.97,
      "dist_atr": -5.3
     }
    ]
@@ -714,7 +714,7 @@
     "paso": "LIQUIDEZ DEL GRÁFICO",
     "que": "Pools de liquidez; sweep/inducción (modelo ICT)",
     "estado": "CONTEXTO",
-    "detalle": "Ref. 4,183.6 (ATR14 54.7) — encima: máx. día anterior / máx. semana en curso 4,197.8 (+0.3 ATR) · máx. semana anterior 4,262.1 (+1.4 ATR) · máx. mes anterior 4,500.0 (+5.8 ATR) · máx. 20 semanas 4,679.8 (+9.1 ATR) — debajo: mín. día anterior 4,138.7 (-0.8 ATR) · mín. semana anterior / mín. mes anterior 4,117.5 (-1.2 ATR) · mín. semana en curso 4,075.9 (-2.0 ATR) · mín. 20 semanas 3,943.1 (-4.4 ATR)"
+    "detalle": "Ref. 4,184.5 (ATR14 54.7) — encima: máx. día anterior / máx. semana en curso 4,197.8 (+0.2 ATR) · máx. semana anterior 4,262.1 (+1.4 ATR) · máx. mes anterior 4,500.0 (+5.8 ATR) · máx. 20 semanas 4,679.8 (+9.1 ATR) — debajo: mín. día anterior 4,138.7 (-0.8 ATR) · mín. semana anterior / mín. mes anterior 4,117.5 (-1.2 ATR) · mín. semana en curso 4,075.9 (-2.0 ATR) · mín. 20 semanas 3,943.1 (-4.4 ATR)"
    },
    {
     "n": 7,
@@ -775,7 +775,7 @@
    {
     "n": 9,
     "pregunta": "¿Dónde está la liquidez en el gráfico y qué nivel puede barrerse?",
-    "respuesta": "Ref. 4,183.6 (ATR14 54.7) — encima: máx. día anterior / máx. semana en curso 4,197.8 (+0.3 ATR) · máx. semana anterior 4,262.1 (+1.4 ATR) · máx. mes anterior 4,500.0 (+5.8 ATR) · máx. 20 semanas 4,679.8 (+9.1 ATR) — debajo: mín. día anterior 4,138.7 (-0.8 ATR) · mín. semana anterior / mín. mes anterior 4,117.5 (-1.2 ATR) · mín. semana en curso 4,075.9 (-2.0 ATR) · mín. 20 semanas 3,943.1 (-4.4 ATR) (proxy XAUT; verificar en tu gráfico)"
+    "respuesta": "Ref. 4,184.5 (ATR14 54.7) — encima: máx. día anterior / máx. semana en curso 4,197.8 (+0.2 ATR) · máx. semana anterior 4,262.1 (+1.4 ATR) · máx. mes anterior 4,500.0 (+5.8 ATR) · máx. 20 semanas 4,679.8 (+9.1 ATR) — debajo: mín. día anterior 4,138.7 (-0.8 ATR) · mín. semana anterior / mín. mes anterior 4,117.5 (-1.2 ATR) · mín. semana en curso 4,075.9 (-2.0 ATR) · mín. 20 semanas 3,943.1 (-4.4 ATR) (proxy XAUT; verificar en tu gráfico)"
    },
    {
     "n": 10,
