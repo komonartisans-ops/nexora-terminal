@@ -1021,13 +1021,13 @@
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 82754.32,
+   "valor": 82727.09,
    "fecha": "2026-10-10",
-   "cambio_1d_pct": 0.25,
-   "cambio_5d_pct": -3.53,
-   "cambio_21d_pct": 1.87,
-   "cambio_63d_pct": 27.5,
-   "sma50": 80806.92,
+   "cambio_1d_pct": 0.22,
+   "cambio_5d_pct": -3.57,
+   "cambio_21d_pct": 1.84,
+   "cambio_63d_pct": 27.46,
+   "sma50": 80806.38,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2492,7 +2492,7 @@
     ],
     [
      "2026-10-10",
-     82754.3203
+     82727.0938
     ]
    ]
   },
@@ -8619,6 +8619,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-10 08:08 UTC",
- "duracion_s": 7.0
+ "generado_utc": "2026-10-10 11:15 UTC",
+ "duracion_s": 7.8
 }

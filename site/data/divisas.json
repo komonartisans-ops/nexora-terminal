@@ -36,7 +36,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 14.87,
+     "valor": 14.84,
      "puntos": 1,
      "fecha": "2026-10-09",
      "fuente": null
@@ -84,7 +84,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 14.87,
+     "valor": 14.84,
      "puntos": 1,
      "fecha": "2026-10-09",
      "fuente": null
@@ -116,7 +116,7 @@
     "bono": {
      "valor": 0.0,
      "puntos": 0,
-     "fecha": "2026-10-07",
+     "fecha": "2026-10-08",
      "fuente": "Tesoro de EE. UU. vía FRED DGS10"
     },
     "crec": {
@@ -132,7 +132,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 14.87,
+     "valor": 14.84,
      "puntos": -1,
      "fecha": "2026-10-09",
      "fuente": null
@@ -141,7 +141,7 @@
    "total": 3,
    "n_factores": 6,
    "sesgo": "FUERTE",
-   "fx_3m_pct": 1.27,
+   "fx_3m_pct": 1.23,
    "inflacion": 3.2
   },
   {
@@ -180,7 +180,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 14.87,
+     "valor": 14.84,
      "puntos": 0,
      "fecha": "2026-10-09",
      "fuente": null
@@ -228,7 +228,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 14.87,
+     "valor": 14.84,
      "puntos": 1,
      "fecha": "2026-10-09",
      "fuente": null
@@ -258,7 +258,7 @@
      "fuente": null
     },
     "bono": {
-     "valor": -1.761,
+     "valor": -1.701,
      "puntos": -1,
      "fecha": "2026-10-08",
      "fuente": "BCE · curva AAA de la zona euro (10Y)"
@@ -276,7 +276,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 14.87,
+     "valor": 14.84,
      "puntos": 0,
      "fecha": "2026-10-09",
      "fuente": null
@@ -324,7 +324,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 14.87,
+     "valor": 14.84,
      "puntos": -1,
      "fecha": "2026-10-09",
      "fuente": null
@@ -372,7 +372,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 14.87,
+     "valor": 14.84,
      "puntos": -1,
      "fecha": "2026-10-09",
      "fuente": null
@@ -412,7 +412,7 @@
   }
  ],
  "riesgo": {
-  "vix": 14.87,
+  "vix": 14.84,
   "fecha": "2026-10-09",
   "regimen": "APETITO"
  },
@@ -426,7 +426,7 @@
  },
  "anio_weo": "2026",
  "esencial": {
-  "cambio": "Sesgo macro más fuerte: AUD (+6); más débil: JPY (-4). Riesgo apetito (VIX 14.9).",
+  "cambio": "Sesgo macro más fuerte: AUD (+6); más débil: JPY (-4). Riesgo apetito (VIX 14.8).",
   "significa": "Hecho: la suma de seis factores objetivos coloca a esa divisa arriba y a la otra abajo. Interpretación: la combinación de tipos, crecimiento y giro de política respalda a la primera frente a la segunda; no dice que vaya a subir ni a bajar.",
   "vigilar": "Próximas reuniones de bancos centrales (calendario), la sorpresa de inflación y el VIX: un VIX por encima de 22 o por debajo de 16 cambia el factor de riesgo de golpe."
  },
@@ -455,6 +455,6 @@
   }
  ],
  "ok": true,
- "generado_utc": "2026-10-09 18:45 UTC",
- "duracion_s": 11.7
+ "generado_utc": "2026-10-10 11:15 UTC",
+ "duracion_s": 13.9
 }

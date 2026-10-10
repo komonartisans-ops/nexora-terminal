@@ -1,6 +1,6 @@
 {
  "metricas": {
-  "generado_utc": "2026-10-09T18:48:42Z",
+  "generado_utc": "2026-10-10T11:19:03Z",
   "errores": {},
   "reservas": {
    "fecha": "2026-10-07",
@@ -9,18 +9,18 @@
    "pct_3m": -2.2347205195631625
   },
   "tga": {
-   "fecha": "2026-10-07",
-   "valor_B": 885.783,
-   "delta_4s_B": 42.078,
-   "delta_3m_B": 136.539,
-   "delta_1s_B": -98.263
+   "fecha": "2026-10-08",
+   "valor_B": 887.469,
+   "delta_4s_B": 69.359,
+   "delta_3m_B": 142.832,
+   "delta_1s_B": -6.23
   },
   "dts": {
-   "desde": "2026-10-01",
-   "hasta": "2026-10-07",
-   "ingresos_B": 742.505,
-   "gastos_B": 840.767,
-   "deuda_neta_B": 40.572
+   "desde": "2026-10-02",
+   "hasta": "2026-10-08",
+   "ingresos_B": 670.206,
+   "gastos_B": 676.436,
+   "deuda_neta_B": 71.791
   },
   "rrp": {
    "fecha": "2026-10-09",
@@ -35,19 +35,19 @@
    "ann_3m": 5.843942046023853
   },
   "t2y": {
-   "fecha": "2026-10-08",
-   "valor": 4.75,
-   "pb_4s": 19.00000000000004,
+   "fecha": "2026-10-09",
+   "valor": 4.8,
+   "pb_4s": 16.999999999999993,
    "pb_1s": -3.000000000000025,
-   "pb_1d": -1.9999999999999574,
+   "pb_1d": 4.999999999999982,
    "fuente": "U.S. Treasury Daily Par Yield Curve"
   },
   "t10y": {
-   "fecha": "2026-10-08",
-   "valor": 5.22,
-   "pb_4s": 26.999999999999957,
-   "pb_1s": -2.000000000000046,
-   "pb_1d": -6.00000000000005,
+   "fecha": "2026-10-09",
+   "valor": 5.24,
+   "pb_4s": 28.000000000000025,
+   "pb_1s": -4.0000000000000036,
+   "pb_1d": 2.000000000000046,
    "fuente": "U.S. Treasury Daily Par Yield Curve"
   },
   "nfci": {
@@ -144,132 +144,132 @@
   },
   "cripto": {
    "BTC": {
-    "precio": 81692.79,
-    "fecha": "2026-10-08",
-    "1d": -1.9000526688302655,
-    "7d": -3.719489967616485,
-    "30d": 4.137411817975178,
-    "90d": 27.38923059002325,
-    "sma50": 80524.7968,
+    "precio": 82544.71,
+    "fecha": "2026-10-09",
+    "1d": 1.0428337678270116,
+    "7d": -2.3195938506746616,
+    "30d": 5.442658893939734,
+    "90d": 29.435118664564207,
+    "sma50": 80715.45360000001,
     "sobre_sma50": true,
-    "vol7d_vs_30d": 0.9131686542745225
+    "vol7d_vs_30d": 0.8172953798412818
    },
    "ETH": {
-    "precio": 2472.89,
-    "fecha": "2026-10-08",
-    "1d": -3.883317786069662,
-    "7d": -8.597671410090557,
-    "30d": -0.4881248440656405,
-    "90d": 37.70868834018286,
-    "sma50": 2550.8776,
+    "precio": 2485.23,
+    "fecha": "2026-10-09",
+    "1d": 0.4990112783019196,
+    "7d": -6.854988325156574,
+    "30d": 0.7185410334346498,
+    "90d": 39.08753588797915,
+    "sma50": 2554.0552,
     "sobre_sma50": false,
-    "vol7d_vs_30d": 0.890363088750614
+    "vol7d_vs_30d": 0.8354479838218329
    },
    "ETH/BTC": {
-    "precio": 0.03028,
-    "fecha": "2026-10-08",
-    "1d": -2.0191560962982136,
-    "7d": -5.0217998180734575,
-    "30d": -4.455383061971463,
-    "90d": 8.131271649466143,
-    "sma50": 0.03167606,
+    "precio": 0.030115,
+    "fecha": "2026-10-09",
+    "1d": -0.5449141347424136,
+    "7d": -4.617869698793264,
+    "30d": -4.481730525247407,
+    "90d": 7.476802284082806,
+    "sma50": 0.03164146,
     "sobre_sma50": false,
-    "vol7d_vs_30d": 0.9277849384526211
+    "vol7d_vs_30d": 0.7786674753940286
    },
    "SOL": {
-    "precio": 109.54,
-    "fecha": "2026-10-08",
-    "1d": -5.772043010752681,
-    "7d": -7.467477614461893,
-    "30d": 5.968849762987327,
-    "90d": 40.309978224670196,
-    "sma50": 107.7872,
+    "precio": 109.04,
+    "fecha": "2026-10-09",
+    "1d": -0.4564542632828239,
+    "7d": -8.076209745405494,
+    "30d": 7.3862517234587255,
+    "90d": 42.090174615585106,
+    "sma50": 108.2152,
     "sobre_sma50": true,
-    "vol7d_vs_30d": 0.6582315967979143
+    "vol7d_vs_30d": 0.60245860984069
    },
    "ADA": {
-    "precio": 0.23219,
-    "fecha": "2026-10-08",
-    "1d": -9.055657827738816,
-    "7d": -5.724958382394741,
-    "30d": 5.848832968636031,
-    "90d": 39.28614277144573,
-    "sma50": 0.2254266,
+    "precio": 0.24287,
+    "fecha": "2026-10-09",
+    "1d": 4.599681295490754,
+    "7d": -0.6666666666666599,
+    "30d": 14.577534556776905,
+    "90d": 46.74924471299094,
+    "sma50": 0.2263028,
     "sobre_sma50": true,
-    "vol7d_vs_30d": 0.9845590817363148
+    "vol7d_vs_30d": 0.9507722190832754
    },
    "XRP": {
-    "precio": 1.3795,
-    "fecha": "2026-10-08",
-    "1d": -2.8999788836489127,
-    "7d": -7.651626723791671,
-    "30d": -2.6601749929438423,
-    "90d": 24.96602953166045,
-    "sma50": 1.430854,
+    "precio": 1.3945,
+    "fecha": "2026-10-09",
+    "1d": 1.0873504893077257,
+    "7d": -6.056319051468595,
+    "30d": -0.04300766970108949,
+    "90d": 27.223793449502786,
+    "sma50": 1.43339,
     "sobre_sma50": false,
-    "vol7d_vs_30d": 0.5992243842254229
+    "vol7d_vs_30d": 0.515995805791477
    },
    "AVAX": {
-    "precio": 10.069,
-    "fecha": "2026-10-08",
-    "1d": -9.492134831460664,
-    "7d": -8.296903460837878,
-    "30d": 25.752466591732247,
-    "90d": 49.17037037037038,
-    "sma50": 8.86214,
+    "precio": 10.326,
+    "fecha": "2026-10-09",
+    "1d": 2.5523885192173967,
+    "7d": -4.318013343217187,
+    "30d": 32.38461538461539,
+    "90d": 57.64885496183207,
+    "sma50": 8.92274,
     "sobre_sma50": true,
-    "vol7d_vs_30d": 0.7138262785422703
+    "vol7d_vs_30d": 0.6345240798696719
    },
    "LINK": {
-    "precio": 12.701,
-    "fecha": "2026-10-08",
-    "1d": -4.6399879870861245,
-    "7d": -11.65750852055366,
-    "30d": 1.445686900958476,
-    "90d": 59.48016072325464,
-    "sma50": 12.44372,
+    "precio": 12.799,
+    "fecha": "2026-10-09",
+    "1d": 0.7715927879694329,
+    "7d": -7.199825986078889,
+    "30d": 8.456910431319375,
+    "90d": 61.72605509224161,
+    "sma50": 12.4858,
     "sobre_sma50": true,
-    "vol7d_vs_30d": 0.5453454669281846
+    "vol7d_vs_30d": 0.4695162202590934
    },
    "DOT": {
-    "precio": 1.0894,
-    "fecha": "2026-10-08",
-    "1d": -2.5058170753535003,
-    "7d": -7.340307901675603,
-    "30d": -12.575234732364981,
-    "90d": 24.360730593607304,
-    "sma50": 1.045904,
+    "precio": 1.2358,
+    "fecha": "2026-10-09",
+    "1d": 13.438590049568578,
+    "7d": 7.144095717010579,
+    "30d": 10.142602495543663,
+    "90d": 44.876905041031655,
+    "sma50": 1.05366,
     "sobre_sma50": true,
-    "vol7d_vs_30d": 0.6892194785190648
+    "vol7d_vs_30d": 0.8101025414422194
    },
    "DOGE": {
-    "precio": 0.084,
-    "fecha": "2026-10-08",
-    "1d": -5.60737161478817,
-    "7d": -10.922587486744417,
-    "30d": -6.718489727928922,
-    "90d": 13.436866981769068,
-    "sma50": 0.0890522,
+    "precio": 0.08532,
+    "fecha": "2026-10-09",
+    "1d": 1.571428571428557,
+    "7d": -8.159311087190535,
+    "30d": -0.9749303621169991,
+    "90d": 16.589232030609445,
+    "sma50": 0.0891498,
     "sobre_sma50": false,
-    "vol7d_vs_30d": 0.6353556970019234
+    "vol7d_vs_30d": 0.6099247299902987
    }
   },
   "adicionales": {
    "stablecoins": {
-    "valor_B": 311.60842144953006,
-    "delta_30d_B": 2.5505992755300326,
-    "pct_30d": 0.8252822263447004,
-    "delta_7d_B": 0.0914838105300646
+    "valor_B": 310.97206583884997,
+    "delta_30d_B": 2.0668423488499457,
+    "pct_30d": 0.6690862412421634,
+    "delta_7d_B": -0.9222847361500044
    },
    "funding_btc": {
-    "anualizado_7d_pct": 3.5108275936861237,
-    "anualizado_30d_pct": 5.1113489894490325,
-    "hasta": "2026-10-09T16:00"
+    "anualizado_7d_pct": 3.5835051501661295,
+    "anualizado_30d_pct": 5.160590008883871,
+    "hasta": "2026-10-10T08:00"
    },
    "funding_eth": {
-    "anualizado_7d_pct": 2.4919838733200184,
-    "anualizado_30d_pct": 4.160098215444466,
-    "hasta": "2026-10-09T16:00"
+    "anualizado_7d_pct": 2.5827491603933868,
+    "anualizado_30d_pct": 4.111446795848352,
+    "hasta": "2026-10-10T08:00"
    },
    "oi_btc": {
     "valor_B": 3.2875028882637,
@@ -277,16 +277,16 @@
     "pct_7d": 1.0120681474812272
    },
    "prima_coinbase": {
-    "media_7d_pct": -0.03158840888212008,
-    "ultimo_pct": -0.08220401174169334,
-    "fecha": "2026-10-08"
+    "media_7d_pct": -0.04337705370680726,
+    "ultimo_pct": -0.0991085195324537,
+    "fecha": "2026-10-09"
    },
    "mercado": {
-    "mcap_total_usd": 2790890433408.5728,
-    "volumen_24h_usd": 80398595125.16687,
-    "dominancia_btc_pct": 59.184624176045006,
-    "dominancia_eth_pct": 10.828874138153203,
-    "mcap_cambio_24h_pct": -0.6574732388474503
+    "mcap_total_usd": 2782057900272.3945,
+    "volumen_24h_usd": 62620948412.76637,
+    "dominancia_btc_pct": 59.62911990715673,
+    "dominancia_eth_pct": 10.917422783923811,
+    "mcap_cambio_24h_pct": -2.421596437755913
    }
   },
   "contexto": {
@@ -301,21 +301,21 @@
     "usdjpy": 157.81,
     "pct_2s": 0.5992222859692724,
     "pct_4s": 1.088975722247126,
-    "cftc_fecha": "2026-09-29",
-    "cftc_neto": -14161,
-    "cftc_delta_1s": -21584
+    "cftc_fecha": "2026-10-06",
+    "cftc_neto": -25043,
+    "cftc_delta_1s": -10882
    },
    "real10": {
-    "fecha": "2026-10-07",
-    "valor": 2.92,
-    "delta_4s": 0.45999999999999996,
-    "pct_4s": 18.69918699186992
+    "fecha": "2026-10-08",
+    "valor": 2.87,
+    "delta_4s": 0.3200000000000003,
+    "pct_4s": 12.549019607843148
    },
    "be10": {
-    "fecha": "2026-10-08",
-    "valor": 2.35,
-    "delta_4s": -0.04999999999999982,
-    "pct_4s": -2.083333333333326
+    "fecha": "2026-10-09",
+    "valor": 2.33,
+    "delta_4s": -0.029999999999999805,
+    "pct_4s": -1.2711864406779578
    },
    "hy": {
     "fecha": "2026-10-08",
@@ -330,49 +330,49 @@
     "pct_4s": -13.621076233183855
    },
    "nasdaq": {
-    "fecha": "2026-10-08",
-    "valor": 27193.34,
-    "delta_4s": 1111.619999999999,
-    "pct_4s": 4.262065538622449,
-    "corr_btc_60d": 0.367935404885231
+    "fecha": "2026-10-09",
+    "valor": 27366.17,
+    "delta_4s": 1033.1299999999974,
+    "pct_4s": 3.9233221838420382,
+    "corr_btc_60d": 0.35770807047140407
    },
    "dvol": {
-    "fecha": "2026-10-09",
-    "valor": 36.13,
-    "media_30d": 36.397,
-    "percentil_1a": 11.590296495956872
+    "fecha": "2026-10-10",
+    "valor": 36.73,
+    "media_30d": 36.288666666666664,
+    "percentil_1a": 15.363881401617252
    },
    "opciones": {
-    "put_call_oi": 0.5852742634708076,
-    "oi_total_btc": 376097.6,
-    "precio_ref": 82424.33,
+    "put_call_oi": 0.5870499319468768,
+    "oi_total_btc": 375813.9,
+    "precio_ref": 82730.56,
     "vencimientos": [
      {
       "fecha": "2026-10-30",
-      "oi_btc": 140403.30000000002,
-      "nocional_B": 11.572647932289001
+      "oi_btc": 140777.99999999997,
+      "nocional_B": 11.646642775679997
      },
      {
       "fecha": "2026-10-16",
-      "oi_btc": 15000.9,
-      "nocional_B": 1.236439131897
+      "oi_btc": 15047.199999999999,
+      "nocional_B": 1.2448632824319998
      },
      {
       "fecha": "2026-10-23",
-      "oi_btc": 7843.799999999999,
-      "nocional_B": 0.6465199596539999
+      "oi_btc": 8849.000000000002,
+      "nocional_B": 0.7320827254400002
      }
     ]
    },
    "usdt": {
-    "valor_B": 184.31057622364003,
-    "delta_30d_B": 0.9219609996400209,
-    "pct_30d": 0.5027362241183247
+    "valor_B": 184.06996750565,
+    "delta_30d_B": 0.6894994436499928,
+    "pct_30d": 0.37599393814224347
    },
    "usdc": {
-    "valor_B": 73.24690005977,
-    "delta_30d_B": -1.3969843422299988,
-    "pct_30d": -1.8715322138200086
+    "valor_B": 72.98303599303999,
+    "delta_30d_B": -1.5530418309600122,
+    "pct_30d": -2.083610885224156
    }
   }
  },
@@ -397,8 +397,8 @@
     "nivel": "núcleo",
     "estado": "DESFAVORABLE",
     "dir": "↑",
-    "valor": "885.8 B$",
-    "detalle": "1s -98.3 B$ · 4s +42.1 B$ · 3m +136.5 B$ (DTS 2026-10-07)",
+    "valor": "887.5 B$",
+    "detalle": "1s -6.2 B$ · 4s +69.4 B$ · 3m +142.8 B$ (DTS 2026-10-08)",
     "fuente": "U.S. Treasury Daily Treasury Statement",
     "frecuencia": "diaria"
    },
@@ -445,8 +445,8 @@
     "nivel": "núcleo",
     "estado": "DESFAVORABLE",
     "dir": "↑",
-    "valor": "4.75%",
-    "detalle": "1d -2 pb · 1s -3 pb · 4s +19 pb (2026-10-08)",
+    "valor": "4.80%",
+    "detalle": "1d +5 pb · 1s -3 pb · 4s +17 pb (2026-10-09)",
     "fuente": "U.S. Treasury Daily Par Yield Curve",
     "frecuencia": "diaria"
    },
@@ -457,8 +457,8 @@
     "nivel": "núcleo",
     "estado": "DESFAVORABLE",
     "dir": "↑↑",
-    "valor": "5.22%",
-    "detalle": "1d -6 pb · 1s -2 pb · 4s +27 pb (2026-10-08)",
+    "valor": "5.24%",
+    "detalle": "1d +2 pb · 1s -4 pb · 4s +28 pb (2026-10-09)",
     "fuente": "U.S. Treasury Daily Par Yield Curve",
     "frecuencia": "diaria"
    },
@@ -506,7 +506,7 @@
     "estado": "NEUTRAL",
     "dir": "—",
     "valor": "absorción normal",
-    "detalle": "14 días: 3 de cupón + 13 de letras, 1,267 B$ · 0 de cupón con demanda débil · próximos 14 días: 3 subastas anunciadas, 272 B$ · deuda neta en efectivo ≈10 días +40.6 B$",
+    "detalle": "14 días: 3 de cupón + 13 de letras, 1,267 B$ · 0 de cupón con demanda débil · próximos 14 días: 3 subastas anunciadas, 272 B$ · deuda neta en efectivo ≈10 días +71.8 B$",
     "fuente": "U.S. Treasury Fiscal Data (auctions_query, DTS IIIB)",
     "frecuencia": "según calendario"
    },
@@ -517,8 +517,8 @@
     "nivel": "contexto",
     "estado": "FAVORABLE",
     "dir": "—",
-    "valor": "gasta 841 / ingresa 743 B$",
-    "detalle": "5 días hábiles 2026-10-01 → 2026-10-07: el Tesoro gasta más de lo que ingresa",
+    "valor": "gasta 676 / ingresa 670 B$",
+    "detalle": "5 días hábiles 2026-10-02 → 2026-10-08: el Tesoro gasta más de lo que ingresa",
     "fuente": "U.S. Treasury DTS (tablas II y IIIB)",
     "frecuencia": "diaria"
    },
@@ -633,7 +633,7 @@
     "n": 5,
     "paso": "BTC confirma",
     "estado": "CUMPLE",
-    "detalle": "30d +4.1% · sobre media 50d"
+    "detalle": "30d +5.4% · sobre media 50d"
    },
    {
     "n": 6,
@@ -644,14 +644,15 @@
    {
     "n": 7,
     "paso": "Altcoins con fuerza relativa",
-    "estado": "PARCIAL",
-    "detalle": "3/7 baten a BTC en 30d"
+    "estado": "CUMPLE",
+    "detalle": "5/7 baten a BTC en 30d"
    }
   ],
   "secuencia_hasta": 0,
-  "secuencia_cumplidos": 1,
+  "secuencia_cumplidos": 2,
   "lectura": "SIN GIRO DE LIQUIDEZ",
   "avisos": [
+   "Cripto (pasos 5-7) responde sin que la liquidez macro (pasos 1-2) lo confirme: movimiento sin soporte de liquidez según las guías.",
    "ON RRP agotado: la condición «RRP ↓» ya no aporta liquidez aunque se cumpla."
   ],
   "nucleo": {
@@ -692,21 +693,21 @@
      "nombre": "Carry trade del yen",
      "estado": "NEUTRAL",
      "valor": "USDJPY 157.81",
-     "lectura": "2s +0.60% · 4s +1.09% · CFTC fondos apalancados neto -14,161 (-21,584 en 1s, 2026-09-29). Yen apreciándose más de un 3% en 2 semanas = riesgo de deshacer carry",
+     "lectura": "2s +0.60% · 4s +1.09% · CFTC fondos apalancados neto -25,043 (-10,882 en 1s, 2026-10-06). Yen apreciándose más de un 3% en 2 semanas = riesgo de deshacer carry",
      "fuente": "Fed H.10 (DEXJPUS) + CFTC TFF"
     },
     {
      "nombre": "Tipo real 10Y (TIPS)",
      "estado": "DESFAVORABLE",
-     "valor": "2.92%",
-     "lectura": "4s +46 pb · breakeven 10Y 2.35% (-5 pb): la subida del 10Y es sobre todo real",
+     "valor": "2.87%",
+     "lectura": "4s +32 pb · breakeven 10Y 2.33% (-3 pb): la subida del 10Y es sobre todo real",
      "fuente": "FRED DFII10, T10YIE"
     },
     {
      "nombre": "Nasdaq",
      "estado": "FAVORABLE",
-     "valor": "27,193",
-     "lectura": "4s +4.3% · correlación con BTC a 60 días +0.37",
+     "valor": "27,366",
+     "lectura": "4s +3.9% · correlación con BTC a 60 días +0.36",
      "fuente": "FRED NASDAQCOM"
     },
     {
@@ -726,29 +727,29 @@
     {
      "nombre": "Volatilidad implícita BTC (DVOL)",
      "estado": "NEUTRAL",
-     "valor": "36.1",
-     "lectura": "media 30d 36.4 · percentil 1 año 12",
+     "valor": "36.7",
+     "lectura": "media 30d 36.3 · percentil 1 año 15",
      "fuente": "Deribit"
     },
     {
      "nombre": "Opciones BTC: put/call (open interest)",
      "estado": "FAVORABLE",
      "valor": "0.59",
-     "lectura": "vencimientos grandes: 2026-10-30 140,403 BTC (~11.6 B$); 2026-10-16 15,001 BTC (~1.2 B$); 2026-10-23 7,844 BTC (~0.6 B$)",
+     "lectura": "vencimientos grandes: 2026-10-30 140,778 BTC (~11.6 B$); 2026-10-16 15,047 BTC (~1.2 B$); 2026-10-23 8,849 BTC (~0.7 B$)",
      "fuente": "Deribit"
     },
     {
      "nombre": "Oferta USDT",
      "estado": "NEUTRAL",
-     "valor": "184.3 B$",
-     "lectura": "30d +0.9 B$ (+0.50%) · USDT ≈ demanda offshore",
+     "valor": "184.1 B$",
+     "lectura": "30d +0.7 B$ (+0.38%) · USDT ≈ demanda offshore",
      "fuente": "DefiLlama"
     },
     {
      "nombre": "Oferta USDC",
      "estado": "DESFAVORABLE",
-     "valor": "73.2 B$",
-     "lectura": "30d -1.4 B$ (-1.87%) · USDC ≈ demanda regulada/EE. UU.",
+     "valor": "73.0 B$",
+     "lectura": "30d -1.6 B$ (-2.08%) · USDC ≈ demanda regulada/EE. UU.",
      "fuente": "DefiLlama"
     }
    ],
@@ -770,10 +771,6 @@
  },
  "historico": {
   "liquidez_neta_T": [
-   [
-    "2024-07-31",
-    5.9787
-   ],
    [
     "2024-08-07",
     6.1177
@@ -1233,10 +1230,6 @@
   ],
   "balance_fed_T": [
    [
-    "2024-07-31",
-    7.1784
-   ],
-   [
     "2024-08-07",
     7.1753
    ],
@@ -1695,10 +1688,6 @@
   ],
   "tga_T": [
    [
-    "2024-07-31",
-    0.7865
-   ],
-   [
     "2024-08-07",
     0.7709
    ],
@@ -2156,10 +2145,6 @@
    ]
   ],
   "rrp_T": [
-   [
-    "2024-07-31",
-    0.4132
-   ],
    [
     "2024-08-01",
     0.3489
@@ -4351,10 +4336,6 @@
   ],
   "reservas_T": [
    [
-    "2024-07-31",
-    3.2935
-   ],
-   [
     "2024-08-07",
     3.3517
    ],
@@ -4812,10 +4793,6 @@
    ]
   ],
   "sp500": [
-   [
-    "2024-07-31",
-    5522.3
-   ],
    [
     "2024-08-01",
     5446.68
@@ -7011,6 +6988,10 @@
    [
     "2026-10-08",
     7765.36
+   ],
+   [
+    "2026-10-09",
+    7811.54
    ]
   ],
   "bce_T": [
@@ -8492,6 +8473,6 @@
  },
  "errores_historico": {},
  "ok": true,
- "generado_utc": "2026-10-09 18:45 UTC",
- "duracion_s": 59.7
+ "generado_utc": "2026-10-10 11:15 UTC",
+ "duracion_s": 57.7
 }
