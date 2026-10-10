@@ -1,6 +1,7 @@
 /* NEXORA TERMINAL · fase 5: Diario de operaciones, Watchlists, Registro de tesis y bloque «Contradicciones» del Resumen.
    Se carga después de app.js, mercados.js y fase4.js y reutiliza sus helpers.
-   PRIVACIDAD: el diario y las watchlists viven SOLO en el localStorage del navegador (el repo es público). Nada se sube.
+   PRIVACIDAD: el diario y las watchlists viven en el localStorage del navegador (el repo es público, nada se sube a él).
+   El diario puede, además, sincronizarse con el repo PRIVADO nexora-diario si pegas un token (ver diario_sync.js).
    Todo texto dinámico (incluido lo que escribe el usuario) pasa por esc() antes de entrar en el HTML. */
 'use strict';
 
@@ -126,8 +127,10 @@ function bloqueContradicciones() {
 /* ================================================================== DIARIO DE OPERACIONES */
 const DK = 'nexora.diario.v1';
 const diario = { mes: null, dia: null, st: null };
-const dLoad = () => { const s = lsGet(DK, null); return s && Array.isArray(s.trades) ? s : { trades: [], notas: {} }; };
-const dSave = () => lsSet(DK, diario.st);
+const dLoad = () => { const s = lsGet(DK, null); return DSYNC.norm(s && Array.isArray(s.trades) ? s : null); };
+/* guarda en local y avisa a la sincronización con GitHub (pend = 'replace' tras importar) */
+const dSave = (pend) => { lsSet(DK, diario.st); DSYNC.cambio(pend); };
+const diarioFuente = () => (DSYNC.conectado() ? 'Tu diario (navegador + repo privado nexora-diario)' : 'Tu diario (localStorage del navegador)');
 const ymd = (y, m, d) => `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
 const ACT_BASE = ['Oro', 'Bitcoin', 'S&P 500', 'Nasdaq 100', 'US30', 'Russell 2000', 'EUR/USD', 'USD/JPY', 'Otro'];
 
@@ -175,7 +178,7 @@ function diarioHtml() {
   const mejor = diasMes.map((f) => [f, porDia[f].reduce((a, t) => a + t.pnl, 0)]).sort((a, b) => b[1] - a[1]);
   const kp = (lab, val, sub, c) => `<div class="card kpi"><div class="lab">${lab}</div><div class="big ${c || ''}">${val}</div><div class="chg" style="color:var(--dim)">${sub}</div></div>`;
   let h = `<div class="jtop"><div class="filters" style="margin:0"><button class="fbtn" data-a="prev" aria-label="Mes anterior">‹</button><span class="jmes">${MESES_L[M]} ${Y}</span><button class="fbtn" data-a="next" aria-label="Mes siguiente">›</button><button class="fbtn" data-a="hoy">Hoy</button></div>
-    <div class="filters" style="margin:0"><button class="fbtn" data-a="exp-json">Exportar JSON</button><button class="fbtn" data-a="exp-csv">Exportar CSV</button><button class="fbtn" data-a="imp">Importar JSON</button><input type="file" id="jimp" accept="application/json,.json" hidden></div></div>`;
+    <div class="filters" style="margin:0"><button class="fbtn" data-a="exp-json">Exportar JSON</button><button class="fbtn" data-a="exp-csv">Exportar CSV</button><button class="fbtn" data-a="imp">Importar JSON</button><input type="file" id="jimp" accept="application/json,.json" hidden></div></div><div id="jsync">${DSYNC.html()}</div>`;
   h += `<div class="grid g4" style="margin-top:12px">
     ${kp('P&amp;L del mes', st.n ? f5.usd(st.tot) : '0,00 $', st.n ? `${st.n} operaciones · ${st.g} ganadoras · ${st.p} perdedoras` : 'sin operaciones este mes', st.tot > 0 ? 'up' : st.tot < 0 ? 'down' : '')}
     ${kp('Win rate del mes', st.win == null ? '—' : num(st.win, 0) + ' %', st.n ? `media ganadora ${st.medG == null ? '—' : f5.usd(st.medG, 0)} · perdedora ${st.medP == null ? '—' : f5.usd(st.medP, 0)}` : 'sin resultado')}
@@ -194,16 +197,16 @@ function diarioHtml() {
       <button class="fbtn" data-a="nota" style="margin-top:6px">Guardar nota</button></div></div></div>`;
   h += '<div class="grid g2" style="margin-top:12px"><div class="card chartcard"><h3>Curva de P&amp;L acumulado</h3><div class="sub">Suma de todos los resultados registrados, por fecha</div>';
   h += (cum.length > 1 ? lw('jCum', [{ name: 'P&L acumulado ($)', color: COL.amber, data: cum, prec: 2, area: true }], { range: false, fill: true }) : `<div class="chart fill"><div class="empty">${cum.length ? 'UN SOLO DÍA REGISTRADO · la curva aparece con el segundo' : 'SIN OPERACIONES · añade la primera para ver la curva'}</div></div>`);
-  h += `${foot('Tu diario (localStorage del navegador)', false, null, 'no se sube a ningún servidor')}</div>`;
+  h += `${foot(diarioFuente(), false, null, DSYNC.conectado() ? 'copia privada en GitHub' : 'no se sube a ningún servidor')}</div>`;
   h += '<div class="card chartcard"><h3>P&amp;L diario del mes</h3><div class="sub">Verde = día ganador · rojo = día perdedor</div>';
   h += diasMes.length ? barras('jBar', diasMes.map((f) => String(+f.slice(8))), [{ name: 'P&L ($)', data: diasMes.map((f) => +porDia[f].reduce((a, t) => a + t.pnl, 0).toFixed(2)) }], { dec: 2, alto: 300, fino: 26 })
     : '<div class="chart fill"><div class="empty">SIN OPERACIONES ESTE MES</div></div>';
-  h += `${foot('Tu diario (localStorage del navegador)', false, null, mejor.length ? 'mejor día ' + esc(fd(mejor[0][0])) + ' ' + f5.usd(mejor[0][1], 0) : 'sin días registrados')}</div></div>`;
+  h += `${foot(diarioFuente(), false, null, mejor.length ? 'mejor día ' + esc(fd(mejor[0][0])) + ' ' + f5.usd(mejor[0][1], 0) : 'sin días registrados')}</div></div>`;
   h += '<div class="sect"><h2>Operaciones del mes</h2><span class="more">más recientes primero</span></div><div class="card pad0 scroll">';
   h += mesTr.length ? `<table class="t"><thead><tr><th>Fecha</th><th>Activo</th><th>Lado</th><th>P&amp;L</th><th style="text-align:left">Nota</th><th></th></tr></thead><tbody>${mesTr.slice().sort((a, b) => b.fecha.localeCompare(a.fecha)).map((t) => `<tr><td>${esc(fdd(t.fecha))}</td><td>${esc(t.activo)}</td><td>${esc(t.lado)}</td><td class="${f5.cls(t.pnl)}">${f5.usd(t.pnl)}</td><td style="text-align:left;color:var(--muted);white-space:normal">${esc(t.nota || '')}</td><td><button class="x" data-del="${esc(t.id)}" aria-label="Borrar">×</button></td></tr>`).join('')}</tbody></table>`
     : '<div class="empty" style="height:110px;border:0">SIN OPERACIONES ESTE MES · usa el formulario de arriba</div>';
   h += '</div>';
-  h += '<div class="note">Todo lo que escribes aquí se guarda únicamente en este navegador (localStorage). Si borras los datos del sitio o cambias de navegador se pierde: exporta el JSON de vez en cuando. Importar sustituye el diario actual. El diario es tuyo y no forma parte de las tesis ni de las alertas de NEXORA.</div>';
+  h += '<div class="note">Todo lo que escribes aquí se guarda en este navegador (localStorage). Con «Conectar GitHub» además se copia, en cada cambio, a tu repo privado nexora-diario (el token se queda solo en este navegador). Sin conexión se usa la copia local y se sincroniza después. Exportar JSON sigue siendo una copia extra. Importar sustituye el diario actual (y la copia de GitHub). El diario es tuyo y no forma parte de las tesis ni de las alertas de NEXORA.</div>';
   return h;
 }
 function pageDiario() {
@@ -213,8 +216,8 @@ function pageDiario() {
   if (!diario.dia) diario.dia = hoy;
   const S = diario.st, pref = `${diario.mes[0]}-${String(diario.mes[1] + 1).padStart(2, '0')}`;
   const mt = diarioStats(S.trades.filter((t) => t.fecha.startsWith(pref)));
-  let h = head('Personal', 'Diario de operaciones', 'Tu diario de trades: qué pasó, por qué y cómo te sentiste. Calendario mensual con P&amp;L por día y semana, curva acumulada y estadísticas. Solo vive en tu navegador.',
-    `Registro personal · ${S.trades.length} operaciones guardadas en este navegador`);
+  let h = head('Personal', 'Diario de operaciones', 'Tu diario de trades: qué pasó, por qué y cómo te sentiste. Calendario mensual con P&amp;L por día y semana, curva acumulada y estadísticas. Vive en tu navegador y, si quieres, en un repo privado tuyo.',
+    `Registro personal · ${S.trades.length} operaciones guardadas${DSYNC.conectado() ? ' (navegador + GitHub privado)' : ' en este navegador'}`);
   h += essential(S.trades.length ? `${MESES_L[diario.mes[1]]}: ${mt.n} operaciones, P&amp;L ${f5.usd(mt.tot)}${mt.win != null ? ', win rate ' + num(mt.win, 0) + ' %' : ''}.` : 'El diario está vacío: todavía no has registrado ninguna operación en este navegador.',
     'Hecho: son tus propias cifras, sin comisiones ni deslizamiento salvo que las incluyas en el P&amp;L. Interpretación: el win rate solo sirve junto al tamaño medio de ganadoras y perdedoras (factor de beneficio).',
     'Anota el motivo de cada trade junto a la tesis NEXORA del día (Registro de tesis) para ver después si seguías tu plan o la contradecías.');
@@ -224,15 +227,19 @@ function pageDiario() {
     if (!root) return;
     const repaint = () => f5.paint(root, diarioHtml);
     repaint();
+    /* sincronización: lo remoto/fusionado se adopta y se repinta solo si el Diario sigue en pantalla */
+    DSYNC.bind({ get: () => diario.st, set: (st) => { diario.st = DSYNC.norm(st); lsSet(DK, diario.st); if (document.getElementById('dia-root') === root) repaint(); } });
+    DSYNC.abrir();
     root.addEventListener('click', (e) => {
       const dia = e.target.closest('[data-dia]'), del = e.target.closest('[data-del]'), a = e.target.closest('[data-a]');
       if (dia) { diario.dia = dia.dataset.dia; repaint(); return; }
-      if (del) { diario.st.trades = diario.st.trades.filter((t) => t.id !== del.dataset.del); dSave(); repaint(); return; }
+      if (del) { diario.st.trades = diario.st.trades.filter((t) => t.id !== del.dataset.del); diario.st.borrados[del.dataset.del] = new Date().toISOString(); dSave(); repaint(); return; }
       if (!a) return;
       const k = a.dataset.a;
+      if (DSYNC.accion(k)) return;
       if (k === 'prev' || k === 'next') { const [y, m] = diario.mes; const n = m + (k === 'next' ? 1 : -1); diario.mes = [y + Math.floor(n / 12), ((n % 12) + 12) % 12]; repaint(); }
       else if (k === 'hoy') { const t = hoyISO(); diario.mes = [+t.slice(0, 4), +t.slice(5, 7) - 1]; diario.dia = t; repaint(); }
-      else if (k === 'nota') { const v = $('#jnota', root).value.trim(); if (v) diario.st.notas[diario.dia] = v; else delete diario.st.notas[diario.dia]; dSave(); repaint(); }
+      else if (k === 'nota') { const v = $('#jnota', root).value.trim(); diario.st.notas[diario.dia] = v; diario.st.notasMod[diario.dia] = new Date().toISOString(); dSave(); repaint(); }
       else if (k === 'exp-json') f5.descarga(`nexora-diario-${hoyISO()}.json`, JSON.stringify(diario.st, null, 1), 'application/json');
       else if (k === 'exp-csv') {
         const cab = ['fecha', 'activo', 'lado', 'pnl', 'nota'];
@@ -240,6 +247,7 @@ function pageDiario() {
       } else if (k === 'imp') $('#jimp', root).click();
     });
     root.addEventListener('submit', (e) => {
+      if (e.target.id === 'jghform') { e.preventDefault(); DSYNC.enviar(e.target); return; }
       if (e.target.id !== 'jform') return;
       e.preventDefault();
       const f = new FormData(e.target);
@@ -257,8 +265,10 @@ function pageDiario() {
           if (!o || !Array.isArray(o.trades)) throw new Error('el archivo no tiene la lista «trades»');
           const ok = o.trades.filter((t) => t && /^\d{4}-\d{2}-\d{2}$/.test(t.fecha) && Number.isFinite(+t.pnl)).map((t) => ({ id: String(t.id || f5.uid()), fecha: t.fecha, activo: String(t.activo || 'Otro').slice(0, 40), lado: t.lado === 'Corto' ? 'Corto' : 'Largo', pnl: +t.pnl, nota: String(t.nota || '').slice(0, 240) }));
           if (!confirm(`Importar ${ok.length} operaciones sustituirá el diario actual (${diario.st.trades.length}). ¿Continuar?`)) return;
-          diario.st = { trades: ok, notas: o.notas && typeof o.notas === 'object' ? o.notas : {} };
-          dSave(); repaint();
+          const notas = {}, notasMod = {}, ahora = new Date().toISOString();
+          Object.entries(o.notas && typeof o.notas === 'object' ? o.notas : {}).forEach(([d, v]) => { if (/^\d{4}-\d{2}-\d{2}$/.test(d) && v) { notas[d] = String(v).slice(0, 600); notasMod[d] = ahora; } });
+          diario.st = DSYNC.norm({ trades: ok, notas, notasMod, borrados: {} });
+          dSave('replace'); repaint();
         } catch (err) { alert('No se pudo importar: ' + err.message); }
       };
       rd.readAsText(e.target.files[0]);
