@@ -19,6 +19,8 @@ LECTURA = [
     "Un bloque con estado 'SIN DATO' o con 'ok': false significa que la fuente falló: dilo, no lo estimes ni lo sustituyas por memoria.",
     "Los bloques 'CRITERIO NEXORA' (gamma, semis/software, zonas del SKEW) son métodos propios, no datos oficiales: menciona el método.",
     "Revisa 'frescura' y 'datos_con_mas_de_48h' antes de afirmar nada sobre el estado actual.",
+    "El tono hawkish/dovish es una lectura léxica con diccionario fijo: antes de citarlo mira 'validacion_vs_siguiente_decision' (muestra y líneas base); en la mayoría de bancos no mejora a «siempre mantiene».",
+    "La lectura de liquidez global y las zonas relativas del SKEW (percentil de 500 sesiones) son CRITERIO NEXORA; los tipos, fechas de reunión e indicadores del FMI son datos oficiales con su fecha.",
 ]
 
 
@@ -161,7 +163,15 @@ def _skew(S):
         return _sd("Cboe · SKEW")
     est = S.get("estudio") or {}
     r = est.get("resumen") or {}
-    return {"fecha": S["fecha"], "valor": S["valor"], "zona": S["zona"], "umbrales": S.get("umbrales"), "percentil_historico": S.get("percentil_hist"), "percentil_1a": S.get("percentil_1a"),
+    er = S.get("estudio_relativo") or {}
+    rr = er.get("resumen") or {}
+    rel = {"zona_relativa": S.get("zona_relativa"), "percentil_500_sesiones": S.get("percentil_500"), "umbral_alto_p90": S.get("umbral_alto_500"), "umbral_elevado_p75": S.get("umbral_elevado_500"),
+           "racha_sesiones": S.get("racha_relativa"), "entrada_zona_alta": S.get("entrada_zona_alta_relativa"), "alerta_telegram_usa": "zona relativa (percentil ≥ 90 de 500 sesiones)",
+           "avisos_ultimos_3_anos": S.get("avisos_3_anos"),
+           "estudio_historico": {"muestra_desde": er.get("muestra_desde"), "episodios": rr.get("episodios"), "completos": rr.get("completos"), "caidas_5pct_60s": rr.get("caidas"),
+                                 "falsas_alarmas": rr.get("falsas_alarmas"), "pct_falsas": rr.get("pct_falsas"), "tasa_base_caida_5pct_60s": (er.get("tasa_base") or {}).get("caida_5_60s_pct"),
+                                 "mediana_ret_pct": {h: (rr.get(h) or {}).get("mediana") for h in ("5", "20", "60")}}} if er else None
+    return {"fecha": S["fecha"], "valor": S["valor"], "zona": S["zona"], "zona_relativa": rel, "umbrales": S.get("umbrales"), "percentil_historico": S.get("percentil_hist"), "percentil_1a": S.get("percentil_1a"),
             "racha_sesiones": S.get("racha_sesiones"), "entrada_zona_alta": S.get("entrada_zona_alta"),
             "confirmaciones": [{"nombre": c["nombre"], "estado": c["estado"], "encendida": c["encendida"], "valor": c["valor"], "fecha": c.get("fecha"), "fuente": c.get("fuente")}
                                for c in S.get("confirmaciones", [])],
@@ -195,6 +205,54 @@ def _semis(S):
                         for k, v in (S.get("impacto") or {}).items()},
             "peso_ndx": S.get("pesos_ndx") and {k: S["pesos_ndx"][k] for k in ("fecha", "semis_pct", "software_pct")},
             "actualizado_utc": S.get("generado_utc"), "fuente": S.get("fuente"), "etiqueta": "CRITERIO NEXORA"}
+
+
+def _bancos_mundo(B):
+    if not B or not B.get("bancos"):
+        return _sd("BIS · tipos de política (WS_CBPOL)")
+    filas = []
+    for b in B["bancos"]:
+        if b.get("sin_dato"):
+            filas.append({"codigo": b["codigo"], "banco": b["banco"], "pais": b["pais"], "tipo": None, "estado": "SIN DATO"})
+            continue
+        um = b.get("ultimo_movimiento") or {}
+        pr = b.get("proxima")
+        filas.append({"codigo": b["codigo"], "banco": b["banco"], "pais": b["pais"], "tipo_pct": b["tipo"], "fecha_dato": b["fecha_dato"],
+                      "ultimo_movimiento": {"fecha": um.get("fecha"), "pp": um.get("delta")} if um else None,
+                      "cambio_12m_pp": b.get("cambio_12m"), "direccion_12m": b.get("dir_12m"),
+                      "proxima_reunion": pr["fecha"] if pr else "SIN DATO", "proxima_fuente": pr["url"] if pr else b.get("motivo_sin_proxima"),
+                      "divisa_vs_usd_1m_pct": (b.get("fx") or {}).get("cambio_1m_pct"), "divisa_fecha": (b.get("fx") or {}).get("fecha"),
+                      "inflacion_fmi": b.get("inflacion"), "pib_fmi": b.get("pib")})
+    return {"fecha": B.get("fecha"), "n_bancos": B.get("n_bancos"), "contador_12m": B.get("contador"),
+            "lectura_liquidez_global": B.get("lectura"), "balance_fed_bce_boj": B.get("balance"),
+            "proximas_reuniones": B.get("proximas_reuniones"), "bancos": filas,
+            "zona_euro": {"miembros": (B.get("eurozona") or {}).get("n"), "tipo_bce_pct": next((b.get("tipo") for b in B["bancos"] if b["codigo"] == "XM"), None)},
+            "historico_8_grandes": "site/data/bancos.json → historico8 (cambios de tipo desde 2010, BIS)",
+            "actualizado_utc": B.get("generado_utc"), "fuente": "BIS WS_CBPOL y WS_XRU · FMI DataMapper (WEO) · calendarios oficiales de cada banco",
+            "etiqueta": "Tipos y calendarios: dato oficial. Lectura de liquidez global: CRITERIO NEXORA (regla en la página).", "errores": B.get("errores")}
+
+
+def _tono(T):
+    if not T or not T.get("comunicados"):
+        return _sd("Webs oficiales de Fed, BCE y BoJ")
+    val = T.get("validacion") or {}
+    v = {}
+    for b in ("Fed", "BCE", "BoJ"):
+        x = val.get(b) or {}
+        if not x.get("n"):
+            v[b] = "SIN DATO"
+            continue
+        v[b] = {"muestra": x["n"], "desde": x.get("desde"), "acierto_nivel_pct": x["nivel"]["pct"], "acierto_cambio_pct": x["cambio"].get("pct"),
+                "base_siempre_mantiene_pct": x["base_mantiene"]["pct"], "base_repite_decision_pct": x["base_repite"]["pct"], "correlacion_tono_vs_siguiente_cambio_pp": x.get("correlacion")}
+    return {"fecha": T.get("fecha"), "ultimo_comunicado": {b: ({"fecha": u["fecha"], "indice": u["indice"], "nivel": u["nivel"], "cambio_vs_anterior": u.get("cambio"), "cambio": u.get("cambio_txt")} if u else "SIN DATO")
+                                                          for b, u in (T.get("ultimo") or {}).items()},
+            "validacion_vs_siguiente_decision": v,
+            "oradores_recientes": [{"banco": o["banco"], "orador": o["orador"], "fecha": o["ultimo"]["fecha"], "indice": o["ultimo"]["indice"], "nivel": o["ultimo"]["nivel"],
+                                    "cambio_vs_anterior": o.get("cambio"), "anterior": o.get("anterior")} for o in (T.get("oradores") or [])[:12]],
+            "diccionario": {"version": (T.get("diccionario") or {}).get("version"), "n_terminos": (T.get("diccionario") or {}).get("n_terminos")},
+            "actualizado_utc": T.get("generado_utc"),
+            "fuente": "federalreserve.gov, ecb.europa.eu, boj.or.jp · diccionario de términos NEXORA (sin IA)",
+            "etiqueta": "CRITERIO NEXORA: lectura léxica, no entiende contexto. Ver validación y líneas base antes de usarla."}
 
 
 # ---------------------------------------------------------------- contradicciones (mismas reglas que el bloque del Resumen)
@@ -269,7 +327,7 @@ def _contradicciones(C, D, T, R, S):
 
 # ---------------------------------------------------------------- principal
 def construir():
-    J = {n: _leer(n) for n in ("meta", "precios", "resumen", "ciclo", "liquidez", "fedwatch", "tipos", "cot", "divisas", "regimen", "calendario", "skew", "gamma", "semis", "alertas")}
+    J = {n: _leer(n) for n in ("meta", "precios", "resumen", "ciclo", "liquidez", "fedwatch", "tipos", "cot", "divisas", "regimen", "calendario", "skew", "gamma", "semis", "alertas", "bancos", "tono")}
     stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     meta = J["meta"] or {}
     fres, viejos, fallos = {}, [], []
@@ -300,6 +358,8 @@ def construir():
         "riesgo_de_cola_skew": _skew(skew),
         "gamma_indices": _gamma(J["gamma"] if J["gamma"] and J["gamma"].get("indices") else None),
         "semis_vs_software": _semis(J["semis"] if J["semis"] and J["semis"].get("ratio") else None),
+        "bancos_centrales_mundo": _bancos_mundo(J["bancos"] if J["bancos"] and J["bancos"].get("bancos") else None),
+        "tono_bancos_centrales": _tono(J["tono"] if J["tono"] and J["tono"].get("comunicados") else None),
         "posicionamiento_cot": _cot(J["cot"]),
         "sesgo_divisas": _divisas(J["divisas"]),
         "contradicciones": _contradicciones(J["ciclo"], J["divisas"], J["cot"], J["regimen"], skew),

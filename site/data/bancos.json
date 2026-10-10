@@ -1,0 +1,10928 @@
+{
+ "fecha": "2026-10-10",
+ "bancos": [
+  {
+   "codigo": "US",
+   "banco": "Reserva Federal (Fed)",
+   "pais": "Estados Unidos",
+   "iso3": "USA",
+   "moneda": "USD",
+   "tipo": 3.875,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-17",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 23
+   },
+   "cambio_12m": -0.25,
+   "dir_12m": "BAJA",
+   "proxima": {
+    "fecha": "2026-10-28",
+    "dias": 18,
+    "fuente": "Calendario oficial del banco central",
+    "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "lectura": "automática en esta ejecución"
+   },
+   "motivo_sin_proxima": null,
+   "fx": null,
+   "inflacion": {
+    "valor": 2.7,
+    "ano": 2025,
+    "prevision": 3.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "pasos": null
+  },
+  {
+   "codigo": "XM",
+   "banco": "Banco Central Europeo (BCE)",
+   "pais": "Zona euro",
+   "iso3": "EURO",
+   "moneda": "EUR",
+   "tipo": 2.5,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-16",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 24
+   },
+   "cambio_12m": 0.5,
+   "dir_12m": "SUBE",
+   "proxima": {
+    "fecha": "2026-10-29",
+    "dias": 19,
+    "fuente": "Calendario oficial del banco central",
+    "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+    "lectura": "automática en esta ejecución"
+   },
+   "motivo_sin_proxima": null,
+   "fx": {
+    "valor": 0.88739,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -3.04,
+    "ref_fecha": "2026-09-04",
+    "moneda": "EUR",
+    "por_usd": 0.88739
+   },
+   "inflacion": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 1.1,
+    "ano_prevision": 2026
+   },
+   "pasos": null
+  },
+  {
+   "codigo": "JP",
+   "banco": "Banco de Japón (BoJ)",
+   "pais": "Japón",
+   "iso3": "JPN",
+   "moneda": "JPY",
+   "tipo": 1.25,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-24",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 16
+   },
+   "cambio_12m": 0.75,
+   "dir_12m": "SUBE",
+   "proxima": {
+    "fecha": "2026-10-30",
+    "dias": 20,
+    "fuente": "Calendario oficial del banco central",
+    "url": "https://www.boj.or.jp/en/about/calendar/",
+    "lectura": "automática en esta ejecución"
+   },
+   "motivo_sin_proxima": null,
+   "fx": {
+    "valor": 158.088562,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -1.17,
+    "ref_fecha": "2026-09-04",
+    "moneda": "JPY",
+    "por_usd": 158.088562
+   },
+   "inflacion": {
+    "valor": 3.2,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.2,
+    "ano": 2025,
+    "prevision": 0.7,
+    "ano_prevision": 2026
+   },
+   "pasos": null
+  },
+  {
+   "codigo": "GB",
+   "banco": "Banco de Inglaterra (BoE)",
+   "pais": "Reino Unido",
+   "iso3": "GBR",
+   "moneda": "GBP",
+   "tipo": 3.75,
+   "fecha_dato": "2026-10-05",
+   "ultimo_movimiento": {
+    "fecha": "2025-12-18",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 296
+   },
+   "cambio_12m": -0.25,
+   "dir_12m": "BAJA",
+   "proxima": {
+    "fecha": "2026-11-05",
+    "dias": 26,
+    "fuente": "Calendario oficial del banco central",
+    "url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
+    "lectura": "automática en esta ejecución"
+   },
+   "motivo_sin_proxima": null,
+   "fx": {
+    "valor": 0.753217,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -1.87,
+    "ref_fecha": "2026-09-04",
+    "moneda": "GBP",
+    "por_usd": 0.753217
+   },
+   "inflacion": {
+    "valor": 3.4,
+    "ano": 2025,
+    "prevision": 3.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.3,
+    "ano": 2025,
+    "prevision": 0.8,
+    "ano_prevision": 2026
+   },
+   "pasos": null
+  },
+  {
+   "codigo": "CH",
+   "banco": "Banco Nacional Suizo (SNB)",
+   "pais": "Suiza",
+   "iso3": "CHE",
+   "moneda": "CHF",
+   "tipo": 0.0,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2025-06-20",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 477
+   },
+   "cambio_12m": 0.0,
+   "dir_12m": "SIN CAMBIOS",
+   "proxima": {
+    "fecha": "2026-12-10",
+    "dias": 61,
+    "fuente": "Calendario oficial del banco central",
+    "url": "https://www.snb.ch/en/services-events/digital-services/event-schedule",
+    "lectura": "automática en esta ejecución"
+   },
+   "motivo_sin_proxima": null,
+   "fx": {
+    "valor": 0.830508,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -2.56,
+    "ref_fecha": "2026-09-04",
+    "moneda": "CHF",
+    "por_usd": 0.830508
+   },
+   "inflacion": {
+    "valor": 0.2,
+    "ano": 2025,
+    "prevision": 0.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.3,
+    "ano": 2025,
+    "prevision": 1.3,
+    "ano_prevision": 2026
+   },
+   "pasos": null
+  },
+  {
+   "codigo": "CA",
+   "banco": "Banco de Canadá (BoC)",
+   "pais": "Canadá",
+   "iso3": "CAN",
+   "moneda": "CAD",
+   "tipo": 2.25,
+   "fecha_dato": "2026-10-05",
+   "ultimo_movimiento": {
+    "fecha": "2025-10-30",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 345
+   },
+   "cambio_12m": -0.25,
+   "dir_12m": "BAJA",
+   "proxima": {
+    "fecha": "2026-10-28",
+    "dias": 18,
+    "fuente": "Calendario oficial del banco central",
+    "url": "https://www.bankofcanada.ca/2025/08/bank-canada-publishes-2026-schedule-policy-interest-rate-announcements-other-major-publications/",
+    "lectura": "automática en esta ejecución"
+   },
+   "motivo_sin_proxima": null,
+   "fx": {
+    "valor": 1.424971,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -3.16,
+    "ref_fecha": "2026-09-04",
+    "moneda": "CAD",
+    "por_usd": 1.424971
+   },
+   "inflacion": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.7,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "pasos": null
+  },
+  {
+   "codigo": "AU",
+   "banco": "Banco de la Reserva de Australia (RBA)",
+   "pais": "Australia",
+   "iso3": "AUS",
+   "moneda": "AUD",
+   "tipo": 4.35,
+   "fecha_dato": "2026-09-24",
+   "ultimo_movimiento": {
+    "fecha": "2026-05-06",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 157
+   },
+   "cambio_12m": 0.75,
+   "dir_12m": "SUBE",
+   "proxima": {
+    "fecha": "2026-11-03",
+    "dias": 24,
+    "fuente": "Nota oficial del RBA",
+    "url": "https://www.rba.gov.au/media-releases/2025/mr-25-02.html",
+    "lectura": "verificada a mano el 2026-10-10 (la web del RBA bloquea la descarga automática)"
+   },
+   "motivo_sin_proxima": null,
+   "fx": {
+    "valor": 1.432248,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -3.07,
+    "ref_fecha": "2026-09-04",
+    "moneda": "AUD",
+    "por_usd": 1.432248
+   },
+   "inflacion": {
+    "valor": 2.9,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "pasos": null
+  },
+  {
+   "codigo": "NZ",
+   "banco": "Banco de la Reserva de Nueva Zelanda (RBNZ)",
+   "pais": "Nueva Zelanda",
+   "iso3": "NZL",
+   "moneda": "NZD",
+   "tipo": 2.75,
+   "fecha_dato": "2026-10-02",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-03",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 37
+   },
+   "cambio_12m": -0.25,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 1.780193,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -4.52,
+    "ref_fecha": "2026-09-04",
+    "moneda": "NZD",
+    "por_usd": 1.780193
+   },
+   "inflacion": {
+    "valor": 2.8,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.2,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "pasos": null
+  },
+  {
+   "codigo": "SE",
+   "banco": "Riksbank",
+   "pais": "Suecia",
+   "iso3": "SWE",
+   "moneda": "SEK",
+   "tipo": 1.75,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2025-10-01",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 374
+   },
+   "cambio_12m": 0.0,
+   "dir_12m": "SIN CAMBIOS",
+   "proxima": {
+    "fecha": "2026-11-04",
+    "dias": 25,
+    "fuente": "Calendario oficial del banco central",
+    "url": "https://www.riksbank.se/en-gb/press-and-published/calendar/calendar-2026",
+    "lectura": "automática en esta ejecución"
+   },
+   "motivo_sin_proxima": null,
+   "fx": {
+    "valor": 9.976484,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -4.26,
+    "ref_fecha": "2026-09-04",
+    "moneda": "SEK",
+    "por_usd": 9.976484
+   },
+   "inflacion": {
+    "valor": 2.6,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.5,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-02-18",
+     -0.1
+    ],
+    [
+     "2015-03-25",
+     -0.25
+    ],
+    [
+     "2015-07-08",
+     -0.35
+    ],
+    [
+     "2016-02-17",
+     -0.5
+    ],
+    [
+     "2019-01-09",
+     -0.25
+    ],
+    [
+     "2020-01-08",
+     0.0
+    ],
+    [
+     "2022-05-04",
+     0.25
+    ],
+    [
+     "2022-07-06",
+     0.75
+    ],
+    [
+     "2022-09-21",
+     1.75
+    ],
+    [
+     "2022-11-30",
+     2.5
+    ],
+    [
+     "2023-02-15",
+     3.0
+    ],
+    [
+     "2023-05-03",
+     3.5
+    ],
+    [
+     "2023-07-05",
+     3.75
+    ],
+    [
+     "2023-09-27",
+     4.0
+    ],
+    [
+     "2024-05-15",
+     3.75
+    ],
+    [
+     "2024-08-21",
+     3.5
+    ],
+    [
+     "2024-10-02",
+     3.25
+    ],
+    [
+     "2024-11-13",
+     2.75
+    ],
+    [
+     "2025-01-08",
+     2.5
+    ],
+    [
+     "2025-02-05",
+     2.25
+    ],
+    [
+     "2025-06-25",
+     2.0
+    ],
+    [
+     "2025-10-01",
+     1.75
+    ]
+   ]
+  },
+  {
+   "codigo": "NO",
+   "banco": "Norges Bank",
+   "pais": "Noruega",
+   "iso3": "NOR",
+   "moneda": "NOK",
+   "tipo": 4.5,
+   "fecha_dato": "2026-10-02",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-25",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 15
+   },
+   "cambio_12m": 0.5,
+   "dir_12m": "SUBE",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 9.564291,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -2.81,
+    "ref_fecha": "2026-09-04",
+    "moneda": "NOK",
+    "por_usd": 9.564291
+   },
+   "inflacion": {
+    "valor": 3,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.1,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-06-19",
+     1.0
+    ],
+    [
+     "2015-09-25",
+     0.75
+    ],
+    [
+     "2016-03-18",
+     0.5
+    ],
+    [
+     "2018-09-21",
+     0.75
+    ],
+    [
+     "2019-03-22",
+     1.0
+    ],
+    [
+     "2019-06-21",
+     1.25
+    ],
+    [
+     "2019-09-20",
+     1.5
+    ],
+    [
+     "2020-03-16",
+     1.0
+    ],
+    [
+     "2020-03-23",
+     0.25
+    ],
+    [
+     "2020-05-08",
+     0.0
+    ],
+    [
+     "2021-09-24",
+     0.25
+    ],
+    [
+     "2021-12-17",
+     0.5
+    ],
+    [
+     "2022-03-25",
+     0.75
+    ],
+    [
+     "2022-06-24",
+     1.25
+    ],
+    [
+     "2022-08-19",
+     1.75
+    ],
+    [
+     "2022-09-23",
+     2.25
+    ],
+    [
+     "2022-11-04",
+     2.5
+    ],
+    [
+     "2022-12-16",
+     2.75
+    ],
+    [
+     "2023-03-24",
+     3.0
+    ],
+    [
+     "2023-05-05",
+     3.25
+    ],
+    [
+     "2023-06-23",
+     3.75
+    ],
+    [
+     "2023-08-18",
+     4.0
+    ],
+    [
+     "2023-09-22",
+     4.25
+    ],
+    [
+     "2023-12-15",
+     4.5
+    ],
+    [
+     "2025-06-20",
+     4.25
+    ],
+    [
+     "2025-09-19",
+     4.0
+    ],
+    [
+     "2026-05-08",
+     4.25
+    ],
+    [
+     "2026-09-25",
+     4.5
+    ]
+   ]
+  },
+  {
+   "codigo": "DK",
+   "banco": "Danmarks Nationalbank",
+   "pais": "Dinamarca",
+   "iso3": "DNK",
+   "moneda": "DKK",
+   "tipo": 2.1,
+   "fecha_dato": "2026-10-05",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-11",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 29
+   },
+   "cambio_12m": 0.5,
+   "dir_12m": "SUBE",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 6.632975,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -3.04,
+    "ref_fecha": "2026-09-04",
+    "moneda": "DKK",
+    "por_usd": 6.632975
+   },
+   "inflacion": {
+    "valor": 1.8,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.9,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-01-20",
+     -0.2
+    ],
+    [
+     "2015-01-23",
+     -0.35
+    ],
+    [
+     "2015-01-30",
+     -0.5
+    ],
+    [
+     "2015-02-06",
+     -0.75
+    ],
+    [
+     "2016-01-08",
+     -0.65
+    ],
+    [
+     "2019-09-13",
+     -0.75
+    ],
+    [
+     "2020-03-20",
+     -0.6
+    ],
+    [
+     "2021-03-19",
+     -0.5
+    ],
+    [
+     "2021-10-01",
+     -0.6
+    ],
+    [
+     "2022-07-22",
+     -0.1
+    ],
+    [
+     "2022-09-09",
+     0.65
+    ],
+    [
+     "2022-10-28",
+     1.25
+    ],
+    [
+     "2022-12-16",
+     1.75
+    ],
+    [
+     "2023-02-03",
+     2.1
+    ],
+    [
+     "2023-03-17",
+     2.6
+    ],
+    [
+     "2023-05-08",
+     2.85
+    ],
+    [
+     "2023-06-16",
+     3.1
+    ],
+    [
+     "2023-07-28",
+     3.35
+    ],
+    [
+     "2023-09-15",
+     3.6
+    ],
+    [
+     "2024-06-07",
+     3.35
+    ],
+    [
+     "2024-09-13",
+     3.1
+    ],
+    [
+     "2024-10-18",
+     2.85
+    ],
+    [
+     "2024-12-13",
+     2.6
+    ],
+    [
+     "2025-01-31",
+     2.35
+    ],
+    [
+     "2025-03-07",
+     2.1
+    ],
+    [
+     "2025-04-22",
+     1.85
+    ],
+    [
+     "2025-06-06",
+     1.6
+    ],
+    [
+     "2026-06-12",
+     1.85
+    ],
+    [
+     "2026-09-11",
+     2.1
+    ]
+   ]
+  },
+  {
+   "codigo": "IS",
+   "banco": "Banco Central de Islandia",
+   "pais": "Islandia",
+   "iso3": "ISL",
+   "moneda": "ISK",
+   "tipo": 8.0,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2026-08-19",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 52
+   },
+   "cambio_12m": 0.5,
+   "dir_12m": "SUBE",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 122.28,
+    "fecha": "2026-10-05",
+    "cambio_1m_pct": -0.92,
+    "ref_fecha": "2026-09-04",
+    "moneda": "ISK",
+    "por_usd": 122.28
+   },
+   "inflacion": {
+    "valor": 4.1,
+    "ano": 2025,
+    "prevision": 4.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.3,
+    "ano": 2025,
+    "prevision": 1.9,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-06-10",
+     5.0
+    ],
+    [
+     "2015-08-19",
+     5.5
+    ],
+    [
+     "2015-11-04",
+     5.75
+    ],
+    [
+     "2016-08-24",
+     5.25
+    ],
+    [
+     "2016-12-14",
+     5.0
+    ],
+    [
+     "2017-05-17",
+     4.75
+    ],
+    [
+     "2017-06-14",
+     4.5
+    ],
+    [
+     "2017-10-04",
+     4.25
+    ],
+    [
+     "2018-11-07",
+     4.5
+    ],
+    [
+     "2019-05-22",
+     4.0
+    ],
+    [
+     "2019-06-26",
+     3.75
+    ],
+    [
+     "2019-08-28",
+     3.5
+    ],
+    [
+     "2019-10-02",
+     3.25
+    ],
+    [
+     "2019-11-06",
+     3.0
+    ],
+    [
+     "2020-02-05",
+     2.75
+    ],
+    [
+     "2020-03-11",
+     2.25
+    ],
+    [
+     "2020-03-18",
+     1.75
+    ],
+    [
+     "2020-05-20",
+     1.0
+    ],
+    [
+     "2020-11-18",
+     0.75
+    ],
+    [
+     "2021-05-19",
+     1.0
+    ],
+    [
+     "2021-08-25",
+     1.25
+    ],
+    [
+     "2021-10-06",
+     1.5
+    ],
+    [
+     "2021-11-17",
+     2.0
+    ],
+    [
+     "2022-02-09",
+     2.75
+    ],
+    [
+     "2022-05-04",
+     3.75
+    ],
+    [
+     "2022-06-22",
+     4.75
+    ],
+    [
+     "2022-08-24",
+     5.5
+    ],
+    [
+     "2022-10-05",
+     5.75
+    ],
+    [
+     "2022-11-23",
+     6.0
+    ],
+    [
+     "2023-02-08",
+     6.5
+    ],
+    [
+     "2023-03-22",
+     7.5
+    ],
+    [
+     "2023-05-24",
+     8.75
+    ],
+    [
+     "2023-08-23",
+     9.25
+    ],
+    [
+     "2024-10-02",
+     9.0
+    ],
+    [
+     "2024-11-20",
+     8.5
+    ],
+    [
+     "2025-02-05",
+     8.0
+    ],
+    [
+     "2025-03-19",
+     7.75
+    ],
+    [
+     "2025-05-21",
+     7.5
+    ],
+    [
+     "2025-11-19",
+     7.25
+    ],
+    [
+     "2026-03-18",
+     7.5
+    ],
+    [
+     "2026-05-20",
+     7.75
+    ],
+    [
+     "2026-08-19",
+     8.0
+    ]
+   ]
+  },
+  {
+   "codigo": "PL",
+   "banco": "Narodowy Bank Polski",
+   "pais": "Polonia",
+   "iso3": "POL",
+   "moneda": "PLN",
+   "tipo": 3.75,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2026-03-05",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 219
+   },
+   "cambio_12m": -1.0,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 3.873458,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -4.15,
+    "ref_fecha": "2026-09-04",
+    "moneda": "PLN",
+    "por_usd": 3.873458
+   },
+   "inflacion": {
+    "valor": 3.6,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.6,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-03-05",
+     1.5
+    ],
+    [
+     "2020-03-18",
+     1.0
+    ],
+    [
+     "2020-04-09",
+     0.5
+    ],
+    [
+     "2020-05-29",
+     0.1
+    ],
+    [
+     "2021-10-07",
+     0.5
+    ],
+    [
+     "2021-11-04",
+     1.25
+    ],
+    [
+     "2021-12-09",
+     1.75
+    ],
+    [
+     "2022-01-05",
+     2.25
+    ],
+    [
+     "2022-02-09",
+     2.75
+    ],
+    [
+     "2022-03-09",
+     3.5
+    ],
+    [
+     "2022-04-07",
+     4.5
+    ],
+    [
+     "2022-05-06",
+     5.25
+    ],
+    [
+     "2022-06-09",
+     6.0
+    ],
+    [
+     "2022-07-08",
+     6.5
+    ],
+    [
+     "2022-09-08",
+     6.75
+    ],
+    [
+     "2023-09-07",
+     6.0
+    ],
+    [
+     "2023-10-05",
+     5.75
+    ],
+    [
+     "2025-05-08",
+     5.25
+    ],
+    [
+     "2025-07-03",
+     5.0
+    ],
+    [
+     "2025-09-04",
+     4.75
+    ],
+    [
+     "2025-10-09",
+     4.5
+    ],
+    [
+     "2025-11-06",
+     4.25
+    ],
+    [
+     "2025-12-04",
+     4.0
+    ],
+    [
+     "2026-03-05",
+     3.75
+    ]
+   ]
+  },
+  {
+   "codigo": "CZ",
+   "banco": "Česká národní banka",
+   "pais": "Chequia",
+   "iso3": "CZE",
+   "moneda": "CZK",
+   "tipo": 3.75,
+   "fecha_dato": "2026-10-05",
+   "ultimo_movimiento": {
+    "fecha": "2026-06-19",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 113
+   },
+   "cambio_12m": 0.25,
+   "dir_12m": "SUBE",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 21.656757,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -3.9,
+    "ref_fecha": "2026-09-04",
+    "moneda": "CZK",
+    "por_usd": 21.656757
+   },
+   "inflacion": {
+    "valor": 2.5,
+    "ano": 2025,
+    "prevision": 2.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.5,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2017-08-04",
+     0.25
+    ],
+    [
+     "2017-11-03",
+     0.5
+    ],
+    [
+     "2018-02-02",
+     0.75
+    ],
+    [
+     "2018-06-28",
+     1.0
+    ],
+    [
+     "2018-08-03",
+     1.25
+    ],
+    [
+     "2018-09-27",
+     1.5
+    ],
+    [
+     "2018-11-02",
+     1.75
+    ],
+    [
+     "2019-05-03",
+     2.0
+    ],
+    [
+     "2020-02-07",
+     2.25
+    ],
+    [
+     "2020-03-17",
+     1.75
+    ],
+    [
+     "2020-03-27",
+     1.0
+    ],
+    [
+     "2020-05-11",
+     0.25
+    ],
+    [
+     "2021-06-24",
+     0.5
+    ],
+    [
+     "2021-08-06",
+     0.75
+    ],
+    [
+     "2021-10-01",
+     1.5
+    ],
+    [
+     "2021-11-05",
+     2.75
+    ],
+    [
+     "2021-12-23",
+     3.75
+    ],
+    [
+     "2022-02-04",
+     4.5
+    ],
+    [
+     "2022-04-01",
+     5.0
+    ],
+    [
+     "2022-05-06",
+     5.75
+    ],
+    [
+     "2022-06-23",
+     7.0
+    ],
+    [
+     "2023-12-22",
+     6.75
+    ],
+    [
+     "2024-02-09",
+     6.25
+    ],
+    [
+     "2024-03-21",
+     5.75
+    ],
+    [
+     "2024-05-03",
+     5.25
+    ],
+    [
+     "2024-06-28",
+     4.75
+    ],
+    [
+     "2024-08-02",
+     4.5
+    ],
+    [
+     "2024-09-26",
+     4.25
+    ],
+    [
+     "2024-11-08",
+     4.0
+    ],
+    [
+     "2025-02-07",
+     3.75
+    ],
+    [
+     "2025-05-09",
+     3.5
+    ],
+    [
+     "2026-06-19",
+     3.75
+    ]
+   ]
+  },
+  {
+   "codigo": "HU",
+   "banco": "Magyar Nemzeti Bank",
+   "pais": "Hungría",
+   "iso3": "HUN",
+   "moneda": "HUF",
+   "tipo": 5.5,
+   "fecha_dato": "2026-09-30",
+   "ultimo_movimiento": {
+    "fecha": "2026-08-26",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 45
+   },
+   "cambio_12m": -1.0,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 323.853048,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -3.48,
+    "ref_fecha": "2026-09-04",
+    "moneda": "HUF",
+    "por_usd": 323.853048
+   },
+   "inflacion": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 3.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.4,
+    "ano": 2025,
+    "prevision": 1.7,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-03-25",
+     1.95
+    ],
+    [
+     "2015-04-22",
+     1.8
+    ],
+    [
+     "2015-05-27",
+     1.65
+    ],
+    [
+     "2015-06-24",
+     1.5
+    ],
+    [
+     "2015-07-22",
+     1.35
+    ],
+    [
+     "2016-03-23",
+     1.2
+    ],
+    [
+     "2016-04-27",
+     1.05
+    ],
+    [
+     "2016-05-25",
+     0.9
+    ],
+    [
+     "2020-06-24",
+     0.75
+    ],
+    [
+     "2020-07-22",
+     0.6
+    ],
+    [
+     "2021-06-23",
+     0.9
+    ],
+    [
+     "2021-07-28",
+     1.2
+    ],
+    [
+     "2021-08-25",
+     1.5
+    ],
+    [
+     "2021-09-22",
+     1.65
+    ],
+    [
+     "2021-10-20",
+     1.8
+    ],
+    [
+     "2021-11-17",
+     2.1
+    ],
+    [
+     "2021-12-15",
+     2.4
+    ],
+    [
+     "2022-01-26",
+     2.9
+    ],
+    [
+     "2022-02-23",
+     3.4
+    ],
+    [
+     "2022-03-23",
+     4.4
+    ],
+    [
+     "2022-04-27",
+     5.4
+    ],
+    [
+     "2022-06-01",
+     5.9
+    ],
+    [
+     "2022-06-29",
+     7.75
+    ],
+    [
+     "2022-07-13",
+     9.75
+    ],
+    [
+     "2022-07-27",
+     10.75
+    ],
+    [
+     "2022-08-31",
+     11.75
+    ],
+    [
+     "2022-09-28",
+     13.0
+    ],
+    [
+     "2023-10-25",
+     12.25
+    ],
+    [
+     "2023-11-22",
+     11.5
+    ],
+    [
+     "2023-12-20",
+     10.75
+    ],
+    [
+     "2024-01-31",
+     10.0
+    ],
+    [
+     "2024-02-28",
+     9.0
+    ],
+    [
+     "2024-03-27",
+     8.25
+    ],
+    [
+     "2024-04-24",
+     7.75
+    ],
+    [
+     "2024-05-22",
+     7.25
+    ],
+    [
+     "2024-06-19",
+     7.0
+    ],
+    [
+     "2024-07-24",
+     6.75
+    ],
+    [
+     "2024-09-25",
+     6.5
+    ],
+    [
+     "2026-02-25",
+     6.25
+    ],
+    [
+     "2026-06-24",
+     6.0
+    ],
+    [
+     "2026-06-25",
+     6.25
+    ],
+    [
+     "2026-07-01",
+     6.0
+    ],
+    [
+     "2026-07-22",
+     5.75
+    ],
+    [
+     "2026-08-26",
+     5.5
+    ]
+   ]
+  },
+  {
+   "codigo": "RO",
+   "banco": "Banca Națională a României",
+   "pais": "Rumanía",
+   "iso3": "ROU",
+   "moneda": "RON",
+   "tipo": 6.5,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2024-08-08",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 793
+   },
+   "cambio_12m": 0.0,
+   "dir_12m": "SIN CAMBIOS",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 4.748425,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -4.81,
+    "ref_fecha": "2026-09-04",
+    "moneda": "RON",
+    "por_usd": 4.748425
+   },
+   "inflacion": {
+    "valor": 7.3,
+    "ano": 2025,
+    "prevision": 7.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.7,
+    "ano": 2025,
+    "prevision": 0.7,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-01-08",
+     2.5
+    ],
+    [
+     "2015-02-05",
+     2.25
+    ],
+    [
+     "2015-04-01",
+     2.0
+    ],
+    [
+     "2015-05-07",
+     1.75
+    ],
+    [
+     "2018-01-09",
+     2.0
+    ],
+    [
+     "2018-02-08",
+     2.25
+    ],
+    [
+     "2018-05-08",
+     2.5
+    ],
+    [
+     "2020-03-23",
+     2.0
+    ],
+    [
+     "2020-06-02",
+     1.75
+    ],
+    [
+     "2020-08-06",
+     1.5
+    ],
+    [
+     "2021-01-18",
+     1.25
+    ],
+    [
+     "2021-10-06",
+     1.5
+    ],
+    [
+     "2021-11-10",
+     1.75
+    ],
+    [
+     "2022-01-11",
+     2.0
+    ],
+    [
+     "2022-02-10",
+     2.5
+    ],
+    [
+     "2022-04-06",
+     3.0
+    ],
+    [
+     "2022-05-11",
+     3.75
+    ],
+    [
+     "2022-07-07",
+     4.75
+    ],
+    [
+     "2022-08-08",
+     5.5
+    ],
+    [
+     "2022-10-06",
+     6.25
+    ],
+    [
+     "2022-11-09",
+     6.75
+    ],
+    [
+     "2023-01-11",
+     7.0
+    ],
+    [
+     "2024-07-08",
+     6.75
+    ],
+    [
+     "2024-08-08",
+     6.5
+    ]
+   ]
+  },
+  {
+   "codigo": "RS",
+   "banco": "Banco Nacional de Serbia",
+   "pais": "Serbia",
+   "iso3": "SRB",
+   "moneda": "RSD",
+   "tipo": 5.75,
+   "fecha_dato": "2026-09-30",
+   "ultimo_movimiento": {
+    "fecha": "2024-09-12",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 758
+   },
+   "cambio_12m": 0.0,
+   "dir_12m": "SIN CAMBIOS",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 103.6668,
+    "fecha": "2026-09-30",
+    "cambio_1m_pct": -2.34,
+    "ref_fecha": "2026-08-31",
+    "moneda": "RSD",
+    "por_usd": 103.6668
+   },
+   "inflacion": {
+    "valor": 3.9,
+    "ano": 2025,
+    "prevision": 5.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-03-12",
+     7.5
+    ],
+    [
+     "2015-04-09",
+     7.0
+    ],
+    [
+     "2015-05-11",
+     6.5
+    ],
+    [
+     "2015-06-11",
+     6.0
+    ],
+    [
+     "2015-08-13",
+     5.5
+    ],
+    [
+     "2015-09-10",
+     5.0
+    ],
+    [
+     "2015-10-14",
+     4.5
+    ],
+    [
+     "2016-02-11",
+     4.25
+    ],
+    [
+     "2016-07-07",
+     4.0
+    ],
+    [
+     "2017-09-07",
+     3.75
+    ],
+    [
+     "2017-10-09",
+     3.5
+    ],
+    [
+     "2018-03-14",
+     3.25
+    ],
+    [
+     "2018-04-12",
+     3.0
+    ],
+    [
+     "2019-07-11",
+     2.75
+    ],
+    [
+     "2019-08-08",
+     2.5
+    ],
+    [
+     "2019-11-07",
+     2.25
+    ],
+    [
+     "2020-03-12",
+     1.75
+    ],
+    [
+     "2020-04-09",
+     1.5
+    ],
+    [
+     "2020-06-11",
+     1.25
+    ],
+    [
+     "2020-12-10",
+     1.0
+    ],
+    [
+     "2022-04-07",
+     1.5
+    ],
+    [
+     "2022-05-12",
+     2.0
+    ],
+    [
+     "2022-06-09",
+     2.5
+    ],
+    [
+     "2022-07-07",
+     2.75
+    ],
+    [
+     "2022-08-11",
+     3.0
+    ],
+    [
+     "2022-09-08",
+     3.5
+    ],
+    [
+     "2022-10-06",
+     4.0
+    ],
+    [
+     "2022-11-10",
+     4.5
+    ],
+    [
+     "2022-12-08",
+     5.0
+    ],
+    [
+     "2023-01-12",
+     5.25
+    ],
+    [
+     "2023-02-09",
+     5.5
+    ],
+    [
+     "2023-03-09",
+     5.75
+    ],
+    [
+     "2023-04-06",
+     6.0
+    ],
+    [
+     "2023-06-08",
+     6.25
+    ],
+    [
+     "2023-07-13",
+     6.5
+    ],
+    [
+     "2024-06-13",
+     6.25
+    ],
+    [
+     "2024-07-11",
+     6.0
+    ],
+    [
+     "2024-09-12",
+     5.75
+    ]
+   ]
+  },
+  {
+   "codigo": "MK",
+   "banco": "Banco Nacional de Macedonia del Norte",
+   "pais": "Macedonia del Norte",
+   "iso3": "MKD",
+   "moneda": "MKD",
+   "tipo": 4.25,
+   "fecha_dato": "2026-10-02",
+   "ultimo_movimiento": {
+    "fecha": "2026-06-17",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 115
+   },
+   "cambio_12m": -1.1,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 54.57,
+    "fecha": "2026-10-02",
+    "cambio_1m_pct": -2.77,
+    "ref_fecha": "2026-09-02",
+    "moneda": "MKD",
+    "por_usd": 54.57
+   },
+   "inflacion": {
+    "valor": 4.1,
+    "ano": 2025,
+    "prevision": 4.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.5,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2016-05-11",
+     4.0
+    ],
+    [
+     "2016-12-14",
+     3.75
+    ],
+    [
+     "2017-01-11",
+     3.5
+    ],
+    [
+     "2017-02-15",
+     3.25
+    ],
+    [
+     "2018-03-15",
+     3.0
+    ],
+    [
+     "2018-08-15",
+     2.75
+    ],
+    [
+     "2018-12-12",
+     2.5
+    ],
+    [
+     "2019-03-13",
+     2.25
+    ],
+    [
+     "2020-01-15",
+     2.0
+    ],
+    [
+     "2020-03-16",
+     1.75
+    ],
+    [
+     "2020-05-13",
+     1.5
+    ],
+    [
+     "2021-03-10",
+     1.25
+    ],
+    [
+     "2022-04-13",
+     1.5
+    ],
+    [
+     "2022-05-11",
+     1.75
+    ],
+    [
+     "2022-06-15",
+     2.0
+    ],
+    [
+     "2022-07-13",
+     2.5
+    ],
+    [
+     "2022-09-14",
+     3.0
+    ],
+    [
+     "2022-10-12",
+     3.5
+    ],
+    [
+     "2022-11-16",
+     4.25
+    ],
+    [
+     "2022-12-14",
+     4.75
+    ],
+    [
+     "2023-02-15",
+     5.25
+    ],
+    [
+     "2023-03-22",
+     5.5
+    ],
+    [
+     "2023-05-10",
+     5.75
+    ],
+    [
+     "2023-06-21",
+     6.0
+    ],
+    [
+     "2023-08-03",
+     6.15
+    ],
+    [
+     "2023-09-20",
+     6.3
+    ],
+    [
+     "2024-09-18",
+     6.05
+    ],
+    [
+     "2024-10-24",
+     5.8
+    ],
+    [
+     "2024-12-18",
+     5.55
+    ],
+    [
+     "2025-02-05",
+     5.35
+    ],
+    [
+     "2025-12-24",
+     4.0
+    ],
+    [
+     "2026-06-17",
+     4.25
+    ]
+   ]
+  },
+  {
+   "codigo": "TR",
+   "banco": "Banco Central de la República de Turquía (CBRT)",
+   "pais": "Turquía",
+   "iso3": "TUR",
+   "moneda": "TRY",
+   "tipo": 37.0,
+   "fecha_dato": "2026-10-02",
+   "ultimo_movimiento": {
+    "fecha": "2026-01-23",
+    "delta": -1.0,
+    "direccion": "BAJA",
+    "dias": 260
+   },
+   "cambio_12m": -3.5,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 49.178809,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -1.5,
+    "ref_fecha": "2026-09-04",
+    "moneda": "TRY",
+    "por_usd": 49.178809
+   },
+   "inflacion": {
+    "valor": 34.9,
+    "ano": 2025,
+    "prevision": 28.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.6,
+    "ano": 2025,
+    "prevision": 3.4,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-01-21",
+     7.75
+    ],
+    [
+     "2015-02-25",
+     7.5
+    ],
+    [
+     "2016-11-25",
+     8.0
+    ],
+    [
+     "2018-06-01",
+     16.5
+    ],
+    [
+     "2018-06-08",
+     17.75
+    ],
+    [
+     "2018-09-14",
+     24.0
+    ],
+    [
+     "2019-07-26",
+     19.75
+    ],
+    [
+     "2019-09-13",
+     16.5
+    ],
+    [
+     "2019-10-25",
+     14.0
+    ],
+    [
+     "2019-12-13",
+     12.0
+    ],
+    [
+     "2020-01-17",
+     11.25
+    ],
+    [
+     "2020-02-20",
+     10.75
+    ],
+    [
+     "2020-03-18",
+     9.75
+    ],
+    [
+     "2020-04-23",
+     8.75
+    ],
+    [
+     "2020-05-22",
+     8.25
+    ],
+    [
+     "2020-09-25",
+     10.25
+    ],
+    [
+     "2020-11-20",
+     15.0
+    ],
+    [
+     "2020-12-25",
+     17.0
+    ],
+    [
+     "2021-03-19",
+     19.0
+    ],
+    [
+     "2021-09-24",
+     18.0
+    ],
+    [
+     "2021-10-22",
+     16.0
+    ],
+    [
+     "2021-11-19",
+     15.0
+    ],
+    [
+     "2021-12-17",
+     14.0
+    ],
+    [
+     "2022-08-19",
+     13.0
+    ],
+    [
+     "2022-09-23",
+     12.0
+    ],
+    [
+     "2022-10-21",
+     10.5
+    ],
+    [
+     "2022-11-25",
+     9.0
+    ],
+    [
+     "2023-02-24",
+     8.5
+    ],
+    [
+     "2023-06-23",
+     15.0
+    ],
+    [
+     "2023-07-21",
+     17.5
+    ],
+    [
+     "2023-08-25",
+     25.0
+    ],
+    [
+     "2023-09-22",
+     30.0
+    ],
+    [
+     "2023-10-27",
+     35.0
+    ],
+    [
+     "2023-11-24",
+     40.0
+    ],
+    [
+     "2023-12-22",
+     42.5
+    ],
+    [
+     "2024-01-26",
+     45.0
+    ],
+    [
+     "2024-03-22",
+     50.0
+    ],
+    [
+     "2024-12-27",
+     47.5
+    ],
+    [
+     "2025-01-24",
+     45.0
+    ],
+    [
+     "2025-03-07",
+     42.5
+    ],
+    [
+     "2025-04-18",
+     46.0
+    ],
+    [
+     "2025-07-25",
+     43.0
+    ],
+    [
+     "2025-09-12",
+     40.5
+    ],
+    [
+     "2025-10-24",
+     39.5
+    ],
+    [
+     "2025-12-12",
+     38.0
+    ],
+    [
+     "2026-01-23",
+     37.0
+    ]
+   ]
+  },
+  {
+   "codigo": "RU",
+   "banco": "Banco de Rusia",
+   "pais": "Rusia",
+   "iso3": "RUS",
+   "moneda": "RUB",
+   "tipo": 14.0,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2026-07-27",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 75
+   },
+   "cambio_12m": -3.0,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 84.9309,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": 1.95,
+    "ref_fecha": "2026-09-05",
+    "moneda": "RUB",
+    "por_usd": 84.9309
+   },
+   "inflacion": {
+    "valor": 8.7,
+    "ano": 2025,
+    "prevision": 5.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1,
+    "ano": 2025,
+    "prevision": 1.1,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-02-02",
+     15.0
+    ],
+    [
+     "2015-03-16",
+     14.0
+    ],
+    [
+     "2015-05-05",
+     12.5
+    ],
+    [
+     "2015-06-16",
+     11.5
+    ],
+    [
+     "2015-08-03",
+     11.0
+    ],
+    [
+     "2016-06-14",
+     10.5
+    ],
+    [
+     "2016-09-19",
+     10.0
+    ],
+    [
+     "2017-03-27",
+     9.75
+    ],
+    [
+     "2017-05-03",
+     9.25
+    ],
+    [
+     "2017-06-19",
+     9.0
+    ],
+    [
+     "2017-09-20",
+     8.5
+    ],
+    [
+     "2017-10-27",
+     8.25
+    ],
+    [
+     "2017-12-18",
+     7.75
+    ],
+    [
+     "2018-02-12",
+     7.5
+    ],
+    [
+     "2018-03-27",
+     7.25
+    ],
+    [
+     "2018-09-17",
+     7.5
+    ],
+    [
+     "2018-12-17",
+     7.75
+    ],
+    [
+     "2019-06-17",
+     7.5
+    ],
+    [
+     "2019-07-29",
+     7.25
+    ],
+    [
+     "2019-09-09",
+     7.0
+    ],
+    [
+     "2019-10-28",
+     6.5
+    ],
+    [
+     "2019-12-16",
+     6.25
+    ],
+    [
+     "2020-02-10",
+     6.0
+    ],
+    [
+     "2020-04-27",
+     5.5
+    ],
+    [
+     "2020-06-24",
+     4.5
+    ],
+    [
+     "2020-07-27",
+     4.25
+    ],
+    [
+     "2021-03-22",
+     4.5
+    ],
+    [
+     "2021-04-26",
+     5.0
+    ],
+    [
+     "2021-06-15",
+     5.5
+    ],
+    [
+     "2021-07-26",
+     6.5
+    ],
+    [
+     "2021-09-13",
+     6.75
+    ],
+    [
+     "2021-10-25",
+     7.5
+    ],
+    [
+     "2021-12-20",
+     8.5
+    ],
+    [
+     "2022-02-14",
+     9.5
+    ],
+    [
+     "2022-02-28",
+     20.0
+    ],
+    [
+     "2022-04-11",
+     17.0
+    ],
+    [
+     "2022-05-04",
+     14.0
+    ],
+    [
+     "2022-05-27",
+     11.0
+    ],
+    [
+     "2022-06-14",
+     9.5
+    ],
+    [
+     "2022-07-25",
+     8.0
+    ],
+    [
+     "2022-09-19",
+     7.5
+    ],
+    [
+     "2023-07-25",
+     8.5
+    ],
+    [
+     "2023-08-15",
+     12.0
+    ],
+    [
+     "2023-09-18",
+     13.0
+    ],
+    [
+     "2023-10-30",
+     15.0
+    ],
+    [
+     "2023-12-18",
+     16.0
+    ],
+    [
+     "2024-07-29",
+     18.0
+    ],
+    [
+     "2024-09-16",
+     19.0
+    ],
+    [
+     "2024-10-28",
+     21.0
+    ],
+    [
+     "2025-06-09",
+     20.0
+    ],
+    [
+     "2025-07-28",
+     18.0
+    ],
+    [
+     "2025-09-15",
+     17.0
+    ],
+    [
+     "2025-10-27",
+     16.5
+    ],
+    [
+     "2025-12-22",
+     16.0
+    ],
+    [
+     "2026-02-16",
+     15.5
+    ],
+    [
+     "2026-03-23",
+     15.0
+    ],
+    [
+     "2026-04-27",
+     14.5
+    ],
+    [
+     "2026-06-22",
+     14.25
+    ],
+    [
+     "2026-07-27",
+     14.0
+    ]
+   ]
+  },
+  {
+   "codigo": "IL",
+   "banco": "Banco de Israel",
+   "pais": "Israel",
+   "iso3": "ISR",
+   "moneda": "ILS",
+   "tipo": 3.25,
+   "fecha_dato": "2026-09-30",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-03",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 37
+   },
+   "cambio_12m": -1.25,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 3.048008,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -1.33,
+    "ref_fecha": "2026-09-04",
+    "moneda": "ILS",
+    "por_usd": 3.048008
+   },
+   "inflacion": {
+    "valor": 3,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.9,
+    "ano": 2025,
+    "prevision": 3.5,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-02-26",
+     0.1
+    ],
+    [
+     "2018-11-29",
+     0.25
+    ],
+    [
+     "2020-04-10",
+     0.1
+    ],
+    [
+     "2022-04-14",
+     0.35
+    ],
+    [
+     "2022-05-26",
+     0.75
+    ],
+    [
+     "2022-07-07",
+     1.25
+    ],
+    [
+     "2022-08-25",
+     2.0
+    ],
+    [
+     "2022-10-09",
+     2.75
+    ],
+    [
+     "2022-11-24",
+     3.25
+    ],
+    [
+     "2023-01-05",
+     3.75
+    ],
+    [
+     "2023-02-23",
+     4.25
+    ],
+    [
+     "2023-04-07",
+     4.5
+    ],
+    [
+     "2023-05-25",
+     4.75
+    ],
+    [
+     "2024-01-04",
+     4.5
+    ],
+    [
+     "2025-11-27",
+     4.25
+    ],
+    [
+     "2026-01-08",
+     4.0
+    ],
+    [
+     "2026-05-28",
+     3.75
+    ],
+    [
+     "2026-07-09",
+     3.5
+    ],
+    [
+     "2026-09-03",
+     3.25
+    ]
+   ]
+  },
+  {
+   "codigo": "SA",
+   "banco": "Banco Central de Arabia Saudí (SAMA)",
+   "pais": "Arabia Saudí",
+   "iso3": "SAU",
+   "moneda": "SAR",
+   "tipo": 4.5,
+   "fecha_dato": "2026-09-30",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-16",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 24
+   },
+   "cambio_12m": -0.25,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 3.75,
+    "fecha": "2026-09-30",
+    "cambio_1m_pct": 0.0,
+    "ref_fecha": "2026-08-31",
+    "moneda": "SAR",
+    "por_usd": 3.75
+   },
+   "inflacion": {
+    "valor": 2,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.5,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2018-03-15",
+     2.25
+    ],
+    [
+     "2018-06-13",
+     2.5
+    ],
+    [
+     "2018-09-26",
+     2.75
+    ],
+    [
+     "2018-12-19",
+     3.0
+    ],
+    [
+     "2019-07-31",
+     2.75
+    ],
+    [
+     "2019-09-18",
+     2.5
+    ],
+    [
+     "2019-10-30",
+     2.25
+    ],
+    [
+     "2020-03-03",
+     1.75
+    ],
+    [
+     "2020-03-16",
+     1.0
+    ],
+    [
+     "2022-03-17",
+     1.25
+    ],
+    [
+     "2022-05-05",
+     1.75
+    ],
+    [
+     "2022-06-15",
+     2.25
+    ],
+    [
+     "2022-07-27",
+     3.0
+    ],
+    [
+     "2022-09-21",
+     3.75
+    ],
+    [
+     "2022-11-02",
+     4.5
+    ],
+    [
+     "2022-12-14",
+     5.0
+    ],
+    [
+     "2023-02-01",
+     5.25
+    ],
+    [
+     "2023-03-23",
+     5.5
+    ],
+    [
+     "2023-05-03",
+     5.75
+    ],
+    [
+     "2023-07-26",
+     6.0
+    ],
+    [
+     "2024-09-18",
+     5.5
+    ],
+    [
+     "2024-11-07",
+     5.25
+    ],
+    [
+     "2024-12-18",
+     5.0
+    ],
+    [
+     "2025-09-17",
+     4.75
+    ],
+    [
+     "2025-10-29",
+     4.5
+    ],
+    [
+     "2025-12-10",
+     4.25
+    ],
+    [
+     "2026-09-16",
+     4.5
+    ]
+   ]
+  },
+  {
+   "codigo": "KW",
+   "banco": "Banco Central de Kuwait",
+   "pais": "Kuwait",
+   "iso3": "KWT",
+   "moneda": "KWD",
+   "tipo": 3.5,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2025-12-11",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 303
+   },
+   "cambio_12m": -0.25,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 0.30815,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -0.37,
+    "ref_fecha": "2026-09-03",
+    "moneda": "KWD",
+    "por_usd": 0.30815
+   },
+   "inflacion": {
+    "valor": 2.4,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.5,
+    "ano": 2025,
+    "prevision": -0.6,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-12-17",
+     2.25
+    ],
+    [
+     "2016-12-15",
+     2.5
+    ],
+    [
+     "2017-03-16",
+     2.75
+    ],
+    [
+     "2018-03-22",
+     3.0
+    ],
+    [
+     "2019-10-30",
+     2.75
+    ],
+    [
+     "2020-03-04",
+     2.5
+    ],
+    [
+     "2020-03-17",
+     1.5
+    ],
+    [
+     "2022-03-17",
+     1.75
+    ],
+    [
+     "2022-05-05",
+     2.0
+    ],
+    [
+     "2022-06-16",
+     2.25
+    ],
+    [
+     "2022-07-28",
+     2.5
+    ],
+    [
+     "2022-08-11",
+     2.75
+    ],
+    [
+     "2022-09-22",
+     3.0
+    ],
+    [
+     "2022-12-07",
+     3.5
+    ],
+    [
+     "2023-01-25",
+     4.0
+    ],
+    [
+     "2023-07-26",
+     4.25
+    ],
+    [
+     "2024-09-19",
+     4.0
+    ],
+    [
+     "2025-09-18",
+     3.75
+    ],
+    [
+     "2025-12-11",
+     3.5
+    ]
+   ]
+  },
+  {
+   "codigo": "ZA",
+   "banco": "Banco de la Reserva de Sudáfrica (SARB)",
+   "pais": "Sudáfrica",
+   "iso3": "ZAF",
+   "moneda": "ZAR",
+   "tipo": 7.25,
+   "fecha_dato": "2026-10-05",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-25",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 15
+   },
+   "cambio_12m": 0.25,
+   "dir_12m": "SUBE",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 16.490283,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -3.17,
+    "ref_fecha": "2026-09-04",
+    "moneda": "ZAR",
+    "por_usd": 16.490283
+   },
+   "inflacion": {
+    "valor": 3.2,
+    "ano": 2025,
+    "prevision": 3.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.1,
+    "ano": 2025,
+    "prevision": 1,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-07-24",
+     6.0
+    ],
+    [
+     "2015-11-20",
+     6.25
+    ],
+    [
+     "2016-01-29",
+     6.75
+    ],
+    [
+     "2016-03-18",
+     7.0
+    ],
+    [
+     "2017-07-21",
+     6.75
+    ],
+    [
+     "2018-03-29",
+     6.5
+    ],
+    [
+     "2018-11-23",
+     6.75
+    ],
+    [
+     "2019-07-19",
+     6.5
+    ],
+    [
+     "2020-01-17",
+     6.25
+    ],
+    [
+     "2020-03-20",
+     5.25
+    ],
+    [
+     "2020-04-15",
+     4.25
+    ],
+    [
+     "2020-05-22",
+     3.75
+    ],
+    [
+     "2020-07-24",
+     3.5
+    ],
+    [
+     "2021-11-19",
+     3.75
+    ],
+    [
+     "2022-01-28",
+     4.0
+    ],
+    [
+     "2022-03-25",
+     4.25
+    ],
+    [
+     "2022-05-20",
+     4.75
+    ],
+    [
+     "2022-07-22",
+     5.5
+    ],
+    [
+     "2022-09-23",
+     6.25
+    ],
+    [
+     "2022-11-25",
+     7.0
+    ],
+    [
+     "2023-01-27",
+     7.25
+    ],
+    [
+     "2023-03-31",
+     7.75
+    ],
+    [
+     "2023-05-26",
+     8.25
+    ],
+    [
+     "2024-09-20",
+     8.0
+    ],
+    [
+     "2024-11-22",
+     7.75
+    ],
+    [
+     "2025-01-31",
+     7.5
+    ],
+    [
+     "2025-05-30",
+     7.25
+    ],
+    [
+     "2025-08-01",
+     7.0
+    ],
+    [
+     "2025-11-21",
+     6.75
+    ],
+    [
+     "2026-05-29",
+     7.0
+    ],
+    [
+     "2026-09-25",
+     7.25
+    ]
+   ]
+  },
+  {
+   "codigo": "MA",
+   "banco": "Bank Al-Maghrib",
+   "pais": "Marruecos",
+   "iso3": "MAR",
+   "moneda": "MAD",
+   "tipo": 2.25,
+   "fecha_dato": "2026-08-31",
+   "ultimo_movimiento": {
+    "fecha": "2025-03-20",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 569
+   },
+   "cambio_12m": 0.0,
+   "dir_12m": "SIN CAMBIOS",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 9.2577,
+    "fecha": "2026-08-28",
+    "cambio_1m_pct": 1.29,
+    "ref_fecha": "2026-07-29",
+    "moneda": "MAD",
+    "por_usd": 9.2577
+   },
+   "inflacion": {
+    "valor": 0.8,
+    "ano": 2025,
+    "prevision": 1.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.9,
+    "ano": 2025,
+    "prevision": 4.9,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2016-03-22",
+     2.25
+    ],
+    [
+     "2020-03-17",
+     2.0
+    ],
+    [
+     "2020-06-18",
+     1.5
+    ],
+    [
+     "2022-09-29",
+     2.0
+    ],
+    [
+     "2022-12-22",
+     2.5
+    ],
+    [
+     "2023-03-23",
+     3.0
+    ],
+    [
+     "2024-06-27",
+     2.75
+    ],
+    [
+     "2024-12-19",
+     2.5
+    ],
+    [
+     "2025-03-20",
+     2.25
+    ]
+   ]
+  },
+  {
+   "codigo": "CN",
+   "banco": "Banco Popular de China (PBoC)",
+   "pais": "China",
+   "iso3": "CHN",
+   "moneda": "CNY",
+   "tipo": 3.0,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2025-05-20",
+    "delta": -0.1,
+    "direccion": "BAJA",
+    "dias": 508
+   },
+   "cambio_12m": 0.0,
+   "dir_12m": "SIN CAMBIOS",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 6.704588,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": 0.09,
+    "ref_fecha": "2026-09-04",
+    "moneda": "CNY",
+    "por_usd": 6.704588
+   },
+   "inflacion": {
+    "valor": 0,
+    "ano": 2025,
+    "prevision": 1.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5,
+    "ano": 2025,
+    "prevision": 4.4,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-03-01",
+     5.35
+    ],
+    [
+     "2015-05-11",
+     5.1
+    ],
+    [
+     "2015-06-28",
+     4.85
+    ],
+    [
+     "2015-08-26",
+     4.6
+    ],
+    [
+     "2015-10-24",
+     4.35
+    ],
+    [
+     "2019-08-20",
+     4.25
+    ],
+    [
+     "2019-09-20",
+     4.2
+    ],
+    [
+     "2019-11-20",
+     4.15
+    ],
+    [
+     "2020-02-20",
+     4.05
+    ],
+    [
+     "2020-04-20",
+     3.85
+    ],
+    [
+     "2021-12-20",
+     3.8
+    ],
+    [
+     "2022-01-20",
+     3.7
+    ],
+    [
+     "2022-08-20",
+     3.65
+    ],
+    [
+     "2023-06-20",
+     3.55
+    ],
+    [
+     "2023-08-20",
+     3.45
+    ],
+    [
+     "2024-07-22",
+     3.35
+    ],
+    [
+     "2024-10-21",
+     3.1
+    ],
+    [
+     "2025-05-20",
+     3.0
+    ]
+   ]
+  },
+  {
+   "codigo": "HK",
+   "banco": "Autoridad Monetaria de Hong Kong (HKMA)",
+   "pais": "Hong Kong",
+   "iso3": "HKG",
+   "moneda": "HKD",
+   "tipo": 4.25,
+   "fecha_dato": "2026-09-29",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-17",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 23
+   },
+   "cambio_12m": -0.25,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 7.847901,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -0.1,
+    "ref_fecha": "2026-09-04",
+    "moneda": "HKD",
+    "por_usd": 7.847901
+   },
+   "inflacion": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.5,
+    "ano": 2025,
+    "prevision": 2.4,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-12-18",
+     0.75
+    ],
+    [
+     "2016-12-15",
+     1.0
+    ],
+    [
+     "2017-03-16",
+     1.25
+    ],
+    [
+     "2017-06-15",
+     1.5
+    ],
+    [
+     "2017-12-14",
+     1.75
+    ],
+    [
+     "2018-03-22",
+     2.0
+    ],
+    [
+     "2018-06-14",
+     2.25
+    ],
+    [
+     "2018-09-27",
+     2.5
+    ],
+    [
+     "2018-12-20",
+     2.75
+    ],
+    [
+     "2019-08-01",
+     2.5
+    ],
+    [
+     "2019-09-19",
+     2.25
+    ],
+    [
+     "2019-10-31",
+     2.0
+    ],
+    [
+     "2019-11-18",
+     2.13
+    ],
+    [
+     "2019-11-19",
+     2.23
+    ],
+    [
+     "2019-11-20",
+     2.24
+    ],
+    [
+     "2019-11-21",
+     2.26
+    ],
+    [
+     "2019-11-22",
+     2.21
+    ],
+    [
+     "2019-11-25",
+     2.12
+    ],
+    [
+     "2019-11-26",
+     2.03
+    ],
+    [
+     "2019-11-27",
+     2.0
+    ],
+    [
+     "2019-12-19",
+     2.07
+    ],
+    [
+     "2019-12-20",
+     2.14
+    ],
+    [
+     "2019-12-23",
+     2.21
+    ],
+    [
+     "2019-12-24",
+     2.24
+    ],
+    [
+     "2019-12-27",
+     2.35
+    ],
+    [
+     "2019-12-30",
+     2.43
+    ],
+    [
+     "2019-12-31",
+     2.49
+    ],
+    [
+     "2020-01-02",
+     2.73
+    ],
+    [
+     "2020-01-03",
+     2.68
+    ],
+    [
+     "2020-01-06",
+     2.55
+    ],
+    [
+     "2020-01-07",
+     2.41
+    ],
+    [
+     "2020-01-08",
+     2.28
+    ],
+    [
+     "2020-01-09",
+     2.0
+    ],
+    [
+     "2020-03-04",
+     1.5
+    ],
+    [
+     "2020-03-16",
+     0.86
+    ],
+    [
+     "2020-03-17",
+     0.91
+    ],
+    [
+     "2020-03-18",
+     0.98
+    ],
+    [
+     "2020-03-19",
+     1.08
+    ],
+    [
+     "2020-03-20",
+     1.19
+    ],
+    [
+     "2020-03-23",
+     1.26
+    ],
+    [
+     "2020-03-24",
+     1.29
+    ],
+    [
+     "2020-03-25",
+     1.33
+    ],
+    [
+     "2020-03-26",
+     1.39
+    ],
+    [
+     "2020-03-27",
+     1.46
+    ],
+    [
+     "2020-03-30",
+     1.57
+    ],
+    [
+     "2020-03-31",
+     1.65
+    ],
+    [
+     "2020-04-01",
+     1.72
+    ],
+    [
+     "2020-04-02",
+     1.63
+    ],
+    [
+     "2020-04-03",
+     1.56
+    ],
+    [
+     "2020-04-06",
+     1.48
+    ],
+    [
+     "2020-04-07",
+     1.4
+    ],
+    [
+     "2020-04-08",
+     1.29
+    ],
+    [
+     "2020-04-14",
+     1.26
+    ],
+    [
+     "2020-04-15",
+     1.23
+    ],
+    [
+     "2020-04-16",
+     1.21
+    ],
+    [
+     "2020-04-17",
+     1.19
+    ],
+    [
+     "2020-04-20",
+     1.18
+    ],
+    [
+     "2020-04-21",
+     1.19
+    ],
+    [
+     "2020-04-22",
+     1.18
+    ],
+    [
+     "2020-04-23",
+     1.19
+    ],
+    [
+     "2020-04-24",
+     1.2
+    ],
+    [
+     "2020-04-27",
+     1.19
+    ],
+    [
+     "2020-04-28",
+     1.16
+    ],
+    [
+     "2020-04-29",
+     1.11
+    ],
+    [
+     "2020-05-04",
+     1.03
+    ],
+    [
+     "2020-05-05",
+     0.94
+    ],
+    [
+     "2020-05-06",
+     0.82
+    ],
+    [
+     "2020-05-07",
+     0.71
+    ],
+    [
+     "2020-05-08",
+     0.62
+    ],
+    [
+     "2020-05-11",
+     0.56
+    ],
+    [
+     "2020-05-12",
+     0.5
+    ],
+    [
+     "2020-05-27",
+     0.51
+    ],
+    [
+     "2020-05-28",
+     0.56
+    ],
+    [
+     "2020-05-29",
+     0.62
+    ],
+    [
+     "2020-06-02",
+     0.59
+    ],
+    [
+     "2020-06-03",
+     0.57
+    ],
+    [
+     "2020-06-04",
+     0.55
+    ],
+    [
+     "2020-06-05",
+     0.51
+    ],
+    [
+     "2020-06-08",
+     0.5
+    ],
+    [
+     "2022-03-17",
+     0.75
+    ],
+    [
+     "2022-05-05",
+     1.25
+    ],
+    [
+     "2022-06-16",
+     2.0
+    ],
+    [
+     "2022-07-28",
+     2.75
+    ],
+    [
+     "2022-09-22",
+     3.5
+    ],
+    [
+     "2022-11-03",
+     4.25
+    ],
+    [
+     "2022-12-06",
+     4.28
+    ],
+    [
+     "2022-12-07",
+     4.34
+    ],
+    [
+     "2022-12-08",
+     4.25
+    ],
+    [
+     "2022-12-15",
+     4.75
+    ],
+    [
+     "2023-02-02",
+     5.0
+    ],
+    [
+     "2023-03-23",
+     5.25
+    ],
+    [
+     "2023-05-04",
+     5.5
+    ],
+    [
+     "2023-07-27",
+     5.75
+    ],
+    [
+     "2024-09-19",
+     5.25
+    ],
+    [
+     "2024-11-08",
+     5.0
+    ],
+    [
+     "2024-12-19",
+     4.75
+    ],
+    [
+     "2025-09-18",
+     4.5
+    ],
+    [
+     "2025-10-30",
+     4.25
+    ],
+    [
+     "2025-12-11",
+     4.0
+    ],
+    [
+     "2026-09-17",
+     4.25
+    ]
+   ]
+  },
+  {
+   "codigo": "IN",
+   "banco": "Banco de la Reserva de la India (RBI)",
+   "pais": "India",
+   "iso3": "IND",
+   "moneda": "INR",
+   "tipo": 5.25,
+   "fecha_dato": "2026-07-23",
+   "ultimo_movimiento": {
+    "fecha": "2025-12-05",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 309
+   },
+   "cambio_12m": -0.25,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 96.425149,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -2.01,
+    "ref_fecha": "2026-09-04",
+    "moneda": "INR",
+    "por_usd": 96.425149
+   },
+   "inflacion": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 4.7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 7.6,
+    "ano": 2025,
+    "prevision": 6.5,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-01-15",
+     7.75
+    ],
+    [
+     "2015-03-04",
+     7.5
+    ],
+    [
+     "2015-06-02",
+     7.25
+    ],
+    [
+     "2015-09-29",
+     6.75
+    ],
+    [
+     "2016-04-05",
+     6.5
+    ],
+    [
+     "2016-10-04",
+     6.25
+    ],
+    [
+     "2017-08-02",
+     6.0
+    ],
+    [
+     "2018-06-06",
+     6.25
+    ],
+    [
+     "2018-08-01",
+     6.5
+    ],
+    [
+     "2019-02-08",
+     6.25
+    ],
+    [
+     "2019-04-04",
+     6.0
+    ],
+    [
+     "2019-06-07",
+     5.75
+    ],
+    [
+     "2019-08-08",
+     5.4
+    ],
+    [
+     "2019-10-05",
+     5.15
+    ],
+    [
+     "2020-03-27",
+     4.4
+    ],
+    [
+     "2020-05-22",
+     4.0
+    ],
+    [
+     "2022-05-04",
+     4.4
+    ],
+    [
+     "2022-06-08",
+     4.9
+    ],
+    [
+     "2022-08-05",
+     5.4
+    ],
+    [
+     "2022-09-30",
+     5.9
+    ],
+    [
+     "2022-12-07",
+     6.25
+    ],
+    [
+     "2023-02-08",
+     6.5
+    ],
+    [
+     "2025-02-07",
+     6.25
+    ],
+    [
+     "2025-04-09",
+     6.0
+    ],
+    [
+     "2025-06-06",
+     5.5
+    ],
+    [
+     "2025-12-05",
+     5.25
+    ]
+   ]
+  },
+  {
+   "codigo": "KR",
+   "banco": "Banco de Corea (BoK)",
+   "pais": "Corea del Sur",
+   "iso3": "KOR",
+   "moneda": "KRW",
+   "tipo": 3.0,
+   "fecha_dato": "2026-08-28",
+   "ultimo_movimiento": {
+    "fecha": "2026-08-27",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 44
+   },
+   "cambio_12m": 0.5,
+   "dir_12m": "SUBE",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 1338.778951,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": 0.86,
+    "ref_fecha": "2026-09-04",
+    "moneda": "KRW",
+    "por_usd": 1338.778951
+   },
+   "inflacion": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1,
+    "ano": 2025,
+    "prevision": 1.9,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-03-12",
+     1.75
+    ],
+    [
+     "2015-06-11",
+     1.5
+    ],
+    [
+     "2016-06-09",
+     1.25
+    ],
+    [
+     "2017-11-30",
+     1.5
+    ],
+    [
+     "2018-11-30",
+     1.75
+    ],
+    [
+     "2019-07-18",
+     1.5
+    ],
+    [
+     "2019-10-16",
+     1.25
+    ],
+    [
+     "2020-03-17",
+     0.75
+    ],
+    [
+     "2020-05-28",
+     0.5
+    ],
+    [
+     "2021-08-26",
+     0.75
+    ],
+    [
+     "2021-11-25",
+     1.0
+    ],
+    [
+     "2022-01-14",
+     1.25
+    ],
+    [
+     "2022-04-14",
+     1.5
+    ],
+    [
+     "2022-05-26",
+     1.75
+    ],
+    [
+     "2022-07-13",
+     2.25
+    ],
+    [
+     "2022-08-25",
+     2.5
+    ],
+    [
+     "2022-10-12",
+     3.0
+    ],
+    [
+     "2022-11-24",
+     3.25
+    ],
+    [
+     "2023-01-13",
+     3.5
+    ],
+    [
+     "2024-10-11",
+     3.25
+    ],
+    [
+     "2024-11-28",
+     3.0
+    ],
+    [
+     "2025-02-25",
+     2.75
+    ],
+    [
+     "2025-05-29",
+     2.5
+    ],
+    [
+     "2026-07-16",
+     2.75
+    ],
+    [
+     "2026-08-27",
+     3.0
+    ]
+   ]
+  },
+  {
+   "codigo": "ID",
+   "banco": "Bank Indonesia",
+   "pais": "Indonesia",
+   "iso3": "IDN",
+   "moneda": "IDR",
+   "tipo": 5.75,
+   "fecha_dato": "2026-10-05",
+   "ultimo_movimiento": {
+    "fecha": "2026-06-18",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 114
+   },
+   "cambio_12m": 1.0,
+   "dir_12m": "SUBE",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 17840.802201,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -1.15,
+    "ref_fecha": "2026-09-04",
+    "moneda": "IDR",
+    "por_usd": 17840.802201
+   },
+   "inflacion": {
+    "valor": 1.9,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.1,
+    "ano": 2025,
+    "prevision": 5,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-02-17",
+     7.5
+    ],
+    [
+     "2016-01-14",
+     7.25
+    ],
+    [
+     "2016-02-18",
+     7.0
+    ],
+    [
+     "2016-03-17",
+     6.75
+    ],
+    [
+     "2016-06-16",
+     6.5
+    ],
+    [
+     "2016-08-19",
+     5.25
+    ],
+    [
+     "2016-09-22",
+     5.0
+    ],
+    [
+     "2016-10-20",
+     4.75
+    ],
+    [
+     "2017-08-22",
+     4.5
+    ],
+    [
+     "2017-09-22",
+     4.25
+    ],
+    [
+     "2018-05-17",
+     4.5
+    ],
+    [
+     "2018-05-30",
+     4.75
+    ],
+    [
+     "2018-06-29",
+     5.25
+    ],
+    [
+     "2018-08-15",
+     5.5
+    ],
+    [
+     "2018-09-27",
+     5.75
+    ],
+    [
+     "2018-11-15",
+     6.0
+    ],
+    [
+     "2019-07-18",
+     5.75
+    ],
+    [
+     "2019-08-22",
+     5.5
+    ],
+    [
+     "2019-09-19",
+     5.25
+    ],
+    [
+     "2019-10-24",
+     5.0
+    ],
+    [
+     "2020-02-20",
+     4.75
+    ],
+    [
+     "2020-03-19",
+     4.5
+    ],
+    [
+     "2020-06-18",
+     4.25
+    ],
+    [
+     "2020-07-16",
+     4.0
+    ],
+    [
+     "2020-11-19",
+     3.75
+    ],
+    [
+     "2021-02-18",
+     3.5
+    ],
+    [
+     "2022-08-23",
+     3.75
+    ],
+    [
+     "2022-09-22",
+     4.25
+    ],
+    [
+     "2022-10-20",
+     4.75
+    ],
+    [
+     "2022-11-17",
+     5.25
+    ],
+    [
+     "2022-12-22",
+     5.5
+    ],
+    [
+     "2023-01-19",
+     5.75
+    ],
+    [
+     "2023-10-19",
+     6.0
+    ],
+    [
+     "2024-04-24",
+     6.25
+    ],
+    [
+     "2024-09-18",
+     6.0
+    ],
+    [
+     "2025-01-15",
+     5.75
+    ],
+    [
+     "2025-05-21",
+     5.5
+    ],
+    [
+     "2025-07-16",
+     5.25
+    ],
+    [
+     "2025-08-20",
+     5.0
+    ],
+    [
+     "2025-09-17",
+     4.75
+    ],
+    [
+     "2026-05-20",
+     5.25
+    ],
+    [
+     "2026-06-09",
+     5.5
+    ],
+    [
+     "2026-06-18",
+     5.75
+    ]
+   ]
+  },
+  {
+   "codigo": "MY",
+   "banco": "Bank Negara Malaysia",
+   "pais": "Malasia",
+   "iso3": "MYS",
+   "moneda": "MYR",
+   "tipo": 2.75,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2025-07-09",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 458
+   },
+   "cambio_12m": 0.0,
+   "dir_12m": "SIN CAMBIOS",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 4.085012,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -0.99,
+    "ref_fecha": "2026-09-04",
+    "moneda": "MYR",
+    "por_usd": 4.085012
+   },
+   "inflacion": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 1.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.2,
+    "ano": 2025,
+    "prevision": 4.7,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2016-07-13",
+     3.0
+    ],
+    [
+     "2018-01-25",
+     3.25
+    ],
+    [
+     "2019-05-07",
+     3.0
+    ],
+    [
+     "2020-01-22",
+     2.75
+    ],
+    [
+     "2020-03-03",
+     2.5
+    ],
+    [
+     "2020-05-05",
+     2.0
+    ],
+    [
+     "2020-07-07",
+     1.75
+    ],
+    [
+     "2022-05-11",
+     2.0
+    ],
+    [
+     "2022-07-06",
+     2.25
+    ],
+    [
+     "2022-09-08",
+     2.5
+    ],
+    [
+     "2022-11-03",
+     2.75
+    ],
+    [
+     "2023-05-03",
+     3.0
+    ],
+    [
+     "2025-07-09",
+     2.75
+    ]
+   ]
+  },
+  {
+   "codigo": "TH",
+   "banco": "Banco de Tailandia (BoT)",
+   "pais": "Tailandia",
+   "iso3": "THA",
+   "moneda": "THB",
+   "tipo": 1.0,
+   "fecha_dato": "2026-10-01",
+   "ultimo_movimiento": {
+    "fecha": "2026-02-25",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 227
+   },
+   "cambio_12m": -0.5,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 33.575295,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -1.95,
+    "ref_fecha": "2026-09-04",
+    "moneda": "THB",
+    "por_usd": 33.575295
+   },
+   "inflacion": {
+    "valor": -0.1,
+    "ano": 2025,
+    "prevision": 0.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.4,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-03-11",
+     1.75
+    ],
+    [
+     "2015-04-29",
+     1.5
+    ],
+    [
+     "2018-12-19",
+     1.75
+    ],
+    [
+     "2019-08-07",
+     1.5
+    ],
+    [
+     "2019-11-06",
+     1.25
+    ],
+    [
+     "2020-02-05",
+     1.0
+    ],
+    [
+     "2020-03-23",
+     0.75
+    ],
+    [
+     "2020-05-06",
+     0.5
+    ],
+    [
+     "2020-05-07",
+     0.75
+    ],
+    [
+     "2020-05-20",
+     0.5
+    ],
+    [
+     "2022-08-10",
+     0.75
+    ],
+    [
+     "2022-09-28",
+     1.0
+    ],
+    [
+     "2022-11-30",
+     1.25
+    ],
+    [
+     "2023-01-25",
+     1.5
+    ],
+    [
+     "2023-03-29",
+     1.75
+    ],
+    [
+     "2023-05-31",
+     2.0
+    ],
+    [
+     "2023-08-02",
+     2.25
+    ],
+    [
+     "2023-09-27",
+     2.5
+    ],
+    [
+     "2024-10-16",
+     2.25
+    ],
+    [
+     "2025-02-26",
+     2.0
+    ],
+    [
+     "2025-04-30",
+     1.75
+    ],
+    [
+     "2025-08-13",
+     1.5
+    ],
+    [
+     "2025-12-17",
+     1.25
+    ],
+    [
+     "2026-02-25",
+     1.0
+    ]
+   ]
+  },
+  {
+   "codigo": "PH",
+   "banco": "Bangko Sentral ng Pilipinas",
+   "pais": "Filipinas",
+   "iso3": "PHL",
+   "moneda": "PHP",
+   "tipo": 5.0,
+   "fecha_dato": "2026-10-02",
+   "ultimo_movimiento": {
+    "fecha": "2026-08-28",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 43
+   },
+   "cambio_12m": 0.0,
+   "dir_12m": "SIN CAMBIOS",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 62.740261,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -0.14,
+    "ref_fecha": "2026-09-04",
+    "moneda": "PHP",
+    "por_usd": 62.740261
+   },
+   "inflacion": {
+    "valor": 1.7,
+    "ano": 2025,
+    "prevision": 4.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 4.1,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2016-06-03",
+     3.0
+    ],
+    [
+     "2018-05-10",
+     3.25
+    ],
+    [
+     "2018-06-21",
+     3.5
+    ],
+    [
+     "2018-08-10",
+     4.0
+    ],
+    [
+     "2018-09-28",
+     4.5
+    ],
+    [
+     "2018-11-16",
+     4.75
+    ],
+    [
+     "2019-05-10",
+     4.5
+    ],
+    [
+     "2019-08-09",
+     4.25
+    ],
+    [
+     "2019-09-27",
+     4.0
+    ],
+    [
+     "2020-02-07",
+     3.75
+    ],
+    [
+     "2020-03-20",
+     3.25
+    ],
+    [
+     "2020-04-17",
+     2.75
+    ],
+    [
+     "2020-06-26",
+     2.25
+    ],
+    [
+     "2020-11-20",
+     2.0
+    ],
+    [
+     "2022-05-20",
+     2.25
+    ],
+    [
+     "2022-06-24",
+     2.5
+    ],
+    [
+     "2022-07-14",
+     3.25
+    ],
+    [
+     "2022-08-19",
+     3.75
+    ],
+    [
+     "2022-09-23",
+     4.25
+    ],
+    [
+     "2022-11-18",
+     5.0
+    ],
+    [
+     "2022-12-16",
+     5.5
+    ],
+    [
+     "2023-02-17",
+     6.0
+    ],
+    [
+     "2023-03-24",
+     6.25
+    ],
+    [
+     "2023-10-27",
+     6.5
+    ],
+    [
+     "2024-08-16",
+     6.25
+    ],
+    [
+     "2024-10-17",
+     6.0
+    ],
+    [
+     "2024-12-20",
+     5.75
+    ],
+    [
+     "2025-04-11",
+     5.5
+    ],
+    [
+     "2025-06-20",
+     5.25
+    ],
+    [
+     "2025-08-29",
+     5.0
+    ],
+    [
+     "2025-10-10",
+     4.75
+    ],
+    [
+     "2025-12-12",
+     4.5
+    ],
+    [
+     "2026-02-20",
+     4.25
+    ],
+    [
+     "2026-04-24",
+     4.5
+    ],
+    [
+     "2026-06-19",
+     4.75
+    ],
+    [
+     "2026-08-28",
+     5.0
+    ]
+   ]
+  },
+  {
+   "codigo": "BR",
+   "banco": "Banco Central de Brasil (BCB)",
+   "pais": "Brasil",
+   "iso3": "BRA",
+   "moneda": "BRL",
+   "tipo": 13.75,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2026-09-17",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 23
+   },
+   "cambio_12m": -1.25,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 4.968586,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": 2.87,
+    "ref_fecha": "2026-09-04",
+    "moneda": "BRL",
+    "por_usd": 4.968586
+   },
+   "inflacion": {
+    "valor": 5,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.3,
+    "ano": 2025,
+    "prevision": 1.9,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-01-22",
+     12.25
+    ],
+    [
+     "2015-03-05",
+     12.75
+    ],
+    [
+     "2015-04-30",
+     13.25
+    ],
+    [
+     "2015-06-04",
+     13.75
+    ],
+    [
+     "2015-07-30",
+     14.25
+    ],
+    [
+     "2016-10-20",
+     14.0
+    ],
+    [
+     "2016-12-01",
+     13.75
+    ],
+    [
+     "2017-01-12",
+     13.0
+    ],
+    [
+     "2017-02-23",
+     12.25
+    ],
+    [
+     "2017-04-13",
+     11.25
+    ],
+    [
+     "2017-06-01",
+     10.25
+    ],
+    [
+     "2017-07-27",
+     9.25
+    ],
+    [
+     "2017-09-08",
+     8.25
+    ],
+    [
+     "2017-10-26",
+     7.5
+    ],
+    [
+     "2017-12-07",
+     7.0
+    ],
+    [
+     "2018-02-08",
+     6.75
+    ],
+    [
+     "2018-03-22",
+     6.5
+    ],
+    [
+     "2019-08-01",
+     6.0
+    ],
+    [
+     "2019-09-19",
+     5.5
+    ],
+    [
+     "2019-10-31",
+     5.0
+    ],
+    [
+     "2019-12-12",
+     4.5
+    ],
+    [
+     "2020-02-06",
+     4.25
+    ],
+    [
+     "2020-03-19",
+     3.75
+    ],
+    [
+     "2020-05-07",
+     3.0
+    ],
+    [
+     "2020-06-18",
+     2.25
+    ],
+    [
+     "2020-08-06",
+     2.0
+    ],
+    [
+     "2021-03-18",
+     2.75
+    ],
+    [
+     "2021-05-06",
+     3.5
+    ],
+    [
+     "2021-06-17",
+     4.25
+    ],
+    [
+     "2021-08-05",
+     5.25
+    ],
+    [
+     "2021-09-23",
+     6.25
+    ],
+    [
+     "2021-10-28",
+     7.75
+    ],
+    [
+     "2021-12-09",
+     9.25
+    ],
+    [
+     "2022-02-03",
+     10.75
+    ],
+    [
+     "2022-03-17",
+     11.75
+    ],
+    [
+     "2022-05-05",
+     12.75
+    ],
+    [
+     "2022-06-16",
+     13.25
+    ],
+    [
+     "2022-08-04",
+     13.75
+    ],
+    [
+     "2023-08-03",
+     13.25
+    ],
+    [
+     "2023-09-21",
+     12.75
+    ],
+    [
+     "2023-11-02",
+     12.25
+    ],
+    [
+     "2023-12-14",
+     11.75
+    ],
+    [
+     "2024-02-01",
+     11.25
+    ],
+    [
+     "2024-03-21",
+     10.75
+    ],
+    [
+     "2024-05-09",
+     10.5
+    ],
+    [
+     "2024-09-19",
+     10.75
+    ],
+    [
+     "2024-11-07",
+     11.25
+    ],
+    [
+     "2024-12-12",
+     12.25
+    ],
+    [
+     "2025-01-30",
+     13.25
+    ],
+    [
+     "2025-03-20",
+     14.25
+    ],
+    [
+     "2025-05-08",
+     14.75
+    ],
+    [
+     "2025-06-19",
+     15.0
+    ],
+    [
+     "2026-03-19",
+     14.75
+    ],
+    [
+     "2026-04-30",
+     14.5
+    ],
+    [
+     "2026-06-18",
+     14.25
+    ],
+    [
+     "2026-08-06",
+     14.0
+    ],
+    [
+     "2026-09-17",
+     13.75
+    ]
+   ]
+  },
+  {
+   "codigo": "MX",
+   "banco": "Banco de México (Banxico)",
+   "pais": "México",
+   "iso3": "MEX",
+   "moneda": "MXN",
+   "tipo": 6.5,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2026-05-08",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 155
+   },
+   "cambio_12m": -1.0,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 17.944538,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -5.83,
+    "ref_fecha": "2026-09-04",
+    "moneda": "MXN",
+    "por_usd": 17.944538
+   },
+   "inflacion": {
+    "valor": 3.8,
+    "ano": 2025,
+    "prevision": 3.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.6,
+    "ano": 2025,
+    "prevision": 1.6,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-12-17",
+     3.25
+    ],
+    [
+     "2016-02-17",
+     3.75
+    ],
+    [
+     "2016-06-30",
+     4.25
+    ],
+    [
+     "2016-09-29",
+     4.75
+    ],
+    [
+     "2016-11-17",
+     5.25
+    ],
+    [
+     "2016-12-15",
+     5.75
+    ],
+    [
+     "2017-02-09",
+     6.25
+    ],
+    [
+     "2017-03-30",
+     6.5
+    ],
+    [
+     "2017-05-18",
+     6.75
+    ],
+    [
+     "2017-06-22",
+     7.0
+    ],
+    [
+     "2017-12-14",
+     7.25
+    ],
+    [
+     "2018-02-08",
+     7.5
+    ],
+    [
+     "2018-06-21",
+     7.75
+    ],
+    [
+     "2018-11-15",
+     8.0
+    ],
+    [
+     "2018-12-20",
+     8.25
+    ],
+    [
+     "2019-08-15",
+     8.0
+    ],
+    [
+     "2019-09-26",
+     7.75
+    ],
+    [
+     "2019-11-14",
+     7.5
+    ],
+    [
+     "2019-12-19",
+     7.25
+    ],
+    [
+     "2020-02-13",
+     7.0
+    ],
+    [
+     "2020-03-20",
+     6.5
+    ],
+    [
+     "2020-04-21",
+     6.0
+    ],
+    [
+     "2020-05-14",
+     5.5
+    ],
+    [
+     "2020-06-25",
+     5.0
+    ],
+    [
+     "2020-08-14",
+     4.5
+    ],
+    [
+     "2020-09-25",
+     4.25
+    ],
+    [
+     "2021-02-12",
+     4.0
+    ],
+    [
+     "2021-06-25",
+     4.25
+    ],
+    [
+     "2021-08-13",
+     4.5
+    ],
+    [
+     "2021-10-01",
+     4.75
+    ],
+    [
+     "2021-11-12",
+     5.0
+    ],
+    [
+     "2021-12-17",
+     5.5
+    ],
+    [
+     "2022-02-11",
+     6.0
+    ],
+    [
+     "2022-03-25",
+     6.5
+    ],
+    [
+     "2022-05-13",
+     7.0
+    ],
+    [
+     "2022-06-24",
+     7.75
+    ],
+    [
+     "2022-08-12",
+     8.5
+    ],
+    [
+     "2022-09-30",
+     9.25
+    ],
+    [
+     "2022-11-11",
+     10.0
+    ],
+    [
+     "2022-12-16",
+     10.5
+    ],
+    [
+     "2023-02-10",
+     11.0
+    ],
+    [
+     "2023-03-31",
+     11.25
+    ],
+    [
+     "2024-03-22",
+     11.0
+    ],
+    [
+     "2024-08-09",
+     10.75
+    ],
+    [
+     "2024-09-27",
+     10.5
+    ],
+    [
+     "2024-11-15",
+     10.25
+    ],
+    [
+     "2024-12-20",
+     10.0
+    ],
+    [
+     "2025-02-07",
+     9.5
+    ],
+    [
+     "2025-03-28",
+     9.0
+    ],
+    [
+     "2025-05-16",
+     8.5
+    ],
+    [
+     "2025-06-27",
+     8.0
+    ],
+    [
+     "2025-08-08",
+     7.75
+    ],
+    [
+     "2025-09-26",
+     7.5
+    ],
+    [
+     "2025-11-07",
+     7.25
+    ],
+    [
+     "2025-12-19",
+     7.0
+    ],
+    [
+     "2026-03-27",
+     6.75
+    ],
+    [
+     "2026-05-08",
+     6.5
+    ]
+   ]
+  },
+  {
+   "codigo": "CL",
+   "banco": "Banco Central de Chile",
+   "pais": "Chile",
+   "iso3": "CHL",
+   "moneda": "CLP",
+   "tipo": 4.5,
+   "fecha_dato": "2026-10-06",
+   "ultimo_movimiento": {
+    "fecha": "2025-12-17",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 297
+   },
+   "cambio_12m": -0.25,
+   "dir_12m": "BAJA",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 977.25,
+    "fecha": "2026-10-06",
+    "cambio_1m_pct": -4.48,
+    "ref_fecha": "2026-09-04",
+    "moneda": "CLP",
+    "por_usd": 977.25
+   },
+   "inflacion": {
+    "valor": 4.2,
+    "ano": 2025,
+    "prevision": 2.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.3,
+    "ano": 2025,
+    "prevision": 2.4,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-10-16",
+     3.25
+    ],
+    [
+     "2015-12-18",
+     3.5
+    ],
+    [
+     "2017-01-20",
+     3.25
+    ],
+    [
+     "2017-03-17",
+     3.0
+    ],
+    [
+     "2017-04-17",
+     2.75
+    ],
+    [
+     "2017-05-19",
+     2.5
+    ],
+    [
+     "2018-10-19",
+     2.75
+    ],
+    [
+     "2019-01-31",
+     3.0
+    ],
+    [
+     "2019-06-10",
+     2.5
+    ],
+    [
+     "2019-09-04",
+     2.0
+    ],
+    [
+     "2019-10-24",
+     1.75
+    ],
+    [
+     "2020-03-17",
+     1.0
+    ],
+    [
+     "2020-04-01",
+     0.5
+    ],
+    [
+     "2021-07-15",
+     0.75
+    ],
+    [
+     "2021-09-01",
+     1.5
+    ],
+    [
+     "2021-10-14",
+     2.75
+    ],
+    [
+     "2021-12-15",
+     4.0
+    ],
+    [
+     "2022-01-27",
+     5.5
+    ],
+    [
+     "2022-03-30",
+     7.0
+    ],
+    [
+     "2022-05-06",
+     8.25
+    ],
+    [
+     "2022-06-08",
+     9.0
+    ],
+    [
+     "2022-07-14",
+     9.75
+    ],
+    [
+     "2022-09-07",
+     10.75
+    ],
+    [
+     "2022-10-13",
+     11.25
+    ],
+    [
+     "2023-07-31",
+     10.25
+    ],
+    [
+     "2023-09-06",
+     9.5
+    ],
+    [
+     "2023-10-30",
+     9.0
+    ],
+    [
+     "2023-12-20",
+     8.25
+    ],
+    [
+     "2024-02-01",
+     7.25
+    ],
+    [
+     "2024-04-03",
+     6.5
+    ],
+    [
+     "2024-05-24",
+     6.0
+    ],
+    [
+     "2024-06-19",
+     5.75
+    ],
+    [
+     "2024-09-04",
+     5.5
+    ],
+    [
+     "2024-10-18",
+     5.25
+    ],
+    [
+     "2024-12-18",
+     5.0
+    ],
+    [
+     "2025-07-30",
+     4.75
+    ],
+    [
+     "2025-12-17",
+     4.5
+    ]
+   ]
+  },
+  {
+   "codigo": "CO",
+   "banco": "Banco de la República (Colombia)",
+   "pais": "Colombia",
+   "iso3": "COL",
+   "moneda": "COP",
+   "tipo": 12.25,
+   "fecha_dato": "2026-10-02",
+   "ultimo_movimiento": {
+    "fecha": "2026-10-01",
+    "delta": 0.25,
+    "direccion": "SUBE",
+    "dias": 9
+   },
+   "cambio_12m": 3.0,
+   "dir_12m": "SUBE",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 3307.73,
+    "fecha": "2026-10-02",
+    "cambio_1m_pct": -3.74,
+    "ref_fecha": "2026-09-02",
+    "moneda": "COP",
+    "por_usd": 3307.73
+   },
+   "inflacion": {
+    "valor": 5.1,
+    "ano": 2025,
+    "prevision": 5.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.6,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-09-28",
+     4.75
+    ],
+    [
+     "2015-11-03",
+     5.25
+    ],
+    [
+     "2015-11-30",
+     5.5
+    ],
+    [
+     "2015-12-21",
+     5.75
+    ],
+    [
+     "2016-02-01",
+     6.0
+    ],
+    [
+     "2016-02-22",
+     6.25
+    ],
+    [
+     "2016-03-22",
+     6.5
+    ],
+    [
+     "2016-05-02",
+     7.0
+    ],
+    [
+     "2016-05-31",
+     7.25
+    ],
+    [
+     "2016-06-23",
+     7.5
+    ],
+    [
+     "2016-08-01",
+     7.75
+    ],
+    [
+     "2016-12-19",
+     7.5
+    ],
+    [
+     "2017-02-27",
+     7.25
+    ],
+    [
+     "2017-03-27",
+     7.0
+    ],
+    [
+     "2017-05-02",
+     6.5
+    ],
+    [
+     "2017-05-30",
+     6.25
+    ],
+    [
+     "2017-07-04",
+     5.75
+    ],
+    [
+     "2017-07-28",
+     5.5
+    ],
+    [
+     "2017-09-01",
+     5.25
+    ],
+    [
+     "2017-10-30",
+     5.0
+    ],
+    [
+     "2017-11-27",
+     4.75
+    ],
+    [
+     "2018-01-30",
+     4.5
+    ],
+    [
+     "2018-04-30",
+     4.25
+    ],
+    [
+     "2020-03-30",
+     3.75
+    ],
+    [
+     "2020-05-04",
+     3.25
+    ],
+    [
+     "2020-06-01",
+     2.75
+    ],
+    [
+     "2020-07-01",
+     2.5
+    ],
+    [
+     "2020-08-01",
+     2.25
+    ],
+    [
+     "2020-09-01",
+     2.0
+    ],
+    [
+     "2020-09-28",
+     1.75
+    ],
+    [
+     "2021-10-01",
+     2.0
+    ],
+    [
+     "2021-11-02",
+     2.5
+    ],
+    [
+     "2021-12-18",
+     3.0
+    ],
+    [
+     "2022-01-31",
+     4.0
+    ],
+    [
+     "2022-04-01",
+     5.0
+    ],
+    [
+     "2022-05-01",
+     6.0
+    ],
+    [
+     "2022-07-01",
+     7.5
+    ],
+    [
+     "2022-08-01",
+     9.0
+    ],
+    [
+     "2022-09-30",
+     10.0
+    ],
+    [
+     "2022-10-31",
+     11.0
+    ],
+    [
+     "2022-12-17",
+     12.0
+    ],
+    [
+     "2023-01-30",
+     12.75
+    ],
+    [
+     "2023-03-31",
+     13.0
+    ],
+    [
+     "2023-05-02",
+     13.25
+    ],
+    [
+     "2023-12-20",
+     13.0
+    ],
+    [
+     "2024-02-01",
+     12.75
+    ],
+    [
+     "2024-03-26",
+     12.25
+    ],
+    [
+     "2024-05-02",
+     11.75
+    ],
+    [
+     "2024-07-02",
+     11.25
+    ],
+    [
+     "2024-08-01",
+     10.75
+    ],
+    [
+     "2024-10-01",
+     10.25
+    ],
+    [
+     "2024-11-01",
+     9.75
+    ],
+    [
+     "2024-12-23",
+     9.5
+    ],
+    [
+     "2025-05-02",
+     9.25
+    ],
+    [
+     "2026-02-02",
+     10.25
+    ],
+    [
+     "2026-04-01",
+     11.25
+    ],
+    [
+     "2026-07-01",
+     12.0
+    ],
+    [
+     "2026-10-01",
+     12.25
+    ]
+   ]
+  },
+  {
+   "codigo": "PE",
+   "banco": "Banco Central de Reserva del Perú",
+   "pais": "Perú",
+   "iso3": "PER",
+   "moneda": "PEN",
+   "tipo": 4.25,
+   "fecha_dato": "2026-10-02",
+   "ultimo_movimiento": {
+    "fecha": "2025-09-12",
+    "delta": -0.25,
+    "direccion": "BAJA",
+    "dias": 393
+   },
+   "cambio_12m": 0.0,
+   "dir_12m": "SIN CAMBIOS",
+   "proxima": null,
+   "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
+   "fx": {
+    "valor": 3.4505,
+    "fecha": "2026-10-01",
+    "cambio_1m_pct": -2.51,
+    "ref_fecha": "2026-09-01",
+    "moneda": "PEN",
+    "por_usd": 3.4505
+   },
+   "inflacion": {
+    "valor": 1.5,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.4,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "pasos": [
+    [
+     "2015-01-16",
+     3.25
+    ],
+    [
+     "2015-09-11",
+     3.5
+    ],
+    [
+     "2015-12-11",
+     3.75
+    ],
+    [
+     "2016-01-15",
+     4.0
+    ],
+    [
+     "2016-02-12",
+     4.25
+    ],
+    [
+     "2017-05-12",
+     4.0
+    ],
+    [
+     "2017-07-14",
+     3.75
+    ],
+    [
+     "2017-09-14",
+     3.5
+    ],
+    [
+     "2017-11-10",
+     3.25
+    ],
+    [
+     "2018-01-12",
+     3.0
+    ],
+    [
+     "2018-03-09",
+     2.75
+    ],
+    [
+     "2019-08-09",
+     2.5
+    ],
+    [
+     "2019-11-08",
+     2.25
+    ],
+    [
+     "2020-03-20",
+     1.25
+    ],
+    [
+     "2020-04-13",
+     0.25
+    ],
+    [
+     "2021-08-13",
+     0.5
+    ],
+    [
+     "2021-09-10",
+     1.0
+    ],
+    [
+     "2021-10-11",
+     1.5
+    ],
+    [
+     "2021-11-12",
+     2.0
+    ],
+    [
+     "2021-12-10",
+     2.5
+    ],
+    [
+     "2022-01-07",
+     3.0
+    ],
+    [
+     "2022-02-11",
+     3.5
+    ],
+    [
+     "2022-03-11",
+     4.0
+    ],
+    [
+     "2022-04-08",
+     4.5
+    ],
+    [
+     "2022-05-13",
+     5.0
+    ],
+    [
+     "2022-06-10",
+     5.5
+    ],
+    [
+     "2022-07-08",
+     6.0
+    ],
+    [
+     "2022-08-12",
+     6.5
+    ],
+    [
+     "2022-09-09",
+     6.75
+    ],
+    [
+     "2022-10-07",
+     7.0
+    ],
+    [
+     "2022-11-11",
+     7.25
+    ],
+    [
+     "2022-12-12",
+     7.5
+    ],
+    [
+     "2023-01-13",
+     7.75
+    ],
+    [
+     "2023-09-15",
+     7.5
+    ],
+    [
+     "2023-10-06",
+     7.25
+    ],
+    [
+     "2023-11-10",
+     7.0
+    ],
+    [
+     "2023-12-15",
+     6.75
+    ],
+    [
+     "2024-01-12",
+     6.5
+    ],
+    [
+     "2024-02-13",
+     6.25
+    ],
+    [
+     "2024-04-12",
+     6.0
+    ],
+    [
+     "2024-05-10",
+     5.75
+    ],
+    [
+     "2024-08-09",
+     5.5
+    ],
+    [
+     "2024-09-13",
+     5.25
+    ],
+    [
+     "2024-11-08",
+     5.0
+    ],
+    [
+     "2025-01-10",
+     4.75
+    ],
+    [
+     "2025-05-09",
+     4.5
+    ],
+    [
+     "2025-09-12",
+     4.25
+    ]
+   ]
+  }
+ ],
+ "n_bancos": 38,
+ "n_catalogo": 38,
+ "contador": {
+  "sube": 11,
+  "baja": 18,
+  "sin_cambios": 9,
+  "total": 38,
+  "amplitud": -0.184,
+  "tipos": "MIXTA",
+  "bancos_sube": [
+   "XM",
+   "JP",
+   "AU",
+   "NO",
+   "DK",
+   "IS",
+   "CZ",
+   "ZA",
+   "KR",
+   "ID",
+   "CO"
+  ],
+  "bancos_baja": [
+   "US",
+   "GB",
+   "CA",
+   "NZ",
+   "PL",
+   "HU",
+   "MK",
+   "TR",
+   "RU",
+   "IL",
+   "SA",
+   "KW",
+   "HK",
+   "IN",
+   "TH",
+   "BR",
+   "MX",
+   "CL"
+  ]
+ },
+ "balance": {
+  "valor_T": 17.3762,
+  "fecha": "2026-10-07",
+  "ref_fecha": "2025-10-01",
+  "var_12m_pct": -5.65,
+  "estado": "SE CONTRAE",
+  "fuente": "FRED (WALCL, ECBASSETSW, JPNASSETS) · liquidez.json de este terminal"
+ },
+ "lectura": {
+  "etiqueta": "LIQUIDEZ GLOBAL ALGO RESTRICTIVA",
+  "texto": "tipos: 11 suben y 18 bajan de 38 bancos (mixta); balance Fed+BCE+BoJ se contrae (-5,7 % a 12 meses).",
+  "regla": "Movimiento a 12 meses: SUBE ≥ +0,10 pp, BAJA ≤ −0,10 pp. Amplitud = (suben − bajan) / bancos con dato: ≥ +0,20 endurecimiento, ≤ −0,20 relajación, entre medias mixta. Balance Fed+BCE+BoJ a 12 meses: ≥ +2 % expande, ≤ −2 % se contrae, entre medias plano. Es una convención fija de NEXORA, no un modelo ajustado."
+ },
+ "proximas_reuniones": [
+  {
+   "codigo": "US",
+   "banco": "Reserva Federal (Fed)",
+   "fecha": "2026-10-28",
+   "dias": 18
+  },
+  {
+   "codigo": "CA",
+   "banco": "Banco de Canadá (BoC)",
+   "fecha": "2026-10-28",
+   "dias": 18
+  },
+  {
+   "codigo": "XM",
+   "banco": "Banco Central Europeo (BCE)",
+   "fecha": "2026-10-29",
+   "dias": 19
+  },
+  {
+   "codigo": "JP",
+   "banco": "Banco de Japón (BoJ)",
+   "fecha": "2026-10-30",
+   "dias": 20
+  },
+  {
+   "codigo": "AU",
+   "banco": "Banco de la Reserva de Australia (RBA)",
+   "fecha": "2026-11-03",
+   "dias": 24
+  },
+  {
+   "codigo": "SE",
+   "banco": "Riksbank",
+   "fecha": "2026-11-04",
+   "dias": 25
+  },
+  {
+   "codigo": "GB",
+   "banco": "Banco de Inglaterra (BoE)",
+   "fecha": "2026-11-05",
+   "dias": 26
+  },
+  {
+   "codigo": "CH",
+   "banco": "Banco Nacional Suizo (SNB)",
+   "fecha": "2026-12-10",
+   "dias": 61
+  }
+ ],
+ "con_calendario": 8,
+ "historico8": {
+  "US": [
+   [
+    "2010-01-01",
+    0.125
+   ],
+   [
+    "2015-12-17",
+    0.375
+   ],
+   [
+    "2016-12-15",
+    0.625
+   ],
+   [
+    "2017-03-16",
+    0.875
+   ],
+   [
+    "2017-06-15",
+    1.125
+   ],
+   [
+    "2017-12-14",
+    1.375
+   ],
+   [
+    "2018-03-22",
+    1.625
+   ],
+   [
+    "2018-06-14",
+    1.875
+   ],
+   [
+    "2018-09-27",
+    2.125
+   ],
+   [
+    "2018-12-20",
+    2.375
+   ],
+   [
+    "2019-08-01",
+    2.125
+   ],
+   [
+    "2019-09-19",
+    1.875
+   ],
+   [
+    "2019-10-31",
+    1.625
+   ],
+   [
+    "2020-03-04",
+    1.125
+   ],
+   [
+    "2020-03-16",
+    0.125
+   ],
+   [
+    "2022-03-17",
+    0.375
+   ],
+   [
+    "2022-05-05",
+    0.875
+   ],
+   [
+    "2022-06-16",
+    1.625
+   ],
+   [
+    "2022-07-28",
+    2.375
+   ],
+   [
+    "2022-09-22",
+    3.125
+   ],
+   [
+    "2022-11-03",
+    3.875
+   ],
+   [
+    "2022-12-15",
+    4.375
+   ],
+   [
+    "2023-02-02",
+    4.625
+   ],
+   [
+    "2023-03-23",
+    4.875
+   ],
+   [
+    "2023-05-04",
+    5.125
+   ],
+   [
+    "2023-07-27",
+    5.375
+   ],
+   [
+    "2024-09-19",
+    4.875
+   ],
+   [
+    "2024-11-08",
+    4.625
+   ],
+   [
+    "2024-12-19",
+    4.375
+   ],
+   [
+    "2025-09-18",
+    4.125
+   ],
+   [
+    "2025-10-30",
+    3.875
+   ],
+   [
+    "2025-12-11",
+    3.625
+   ],
+   [
+    "2026-09-17",
+    3.875
+   ],
+   [
+    "2026-10-10",
+    3.875
+   ]
+  ],
+  "XM": [
+   [
+    "2010-01-01",
+    1.0
+   ],
+   [
+    "2011-04-13",
+    1.25
+   ],
+   [
+    "2011-07-13",
+    1.5
+   ],
+   [
+    "2011-11-09",
+    1.25
+   ],
+   [
+    "2011-12-14",
+    1.0
+   ],
+   [
+    "2012-07-11",
+    0.75
+   ],
+   [
+    "2013-05-08",
+    0.5
+   ],
+   [
+    "2013-11-13",
+    0.25
+   ],
+   [
+    "2014-06-11",
+    0.15
+   ],
+   [
+    "2014-09-10",
+    0.05
+   ],
+   [
+    "2016-03-16",
+    0.0
+   ],
+   [
+    "2022-07-27",
+    0.5
+   ],
+   [
+    "2022-09-14",
+    1.25
+   ],
+   [
+    "2022-11-02",
+    2.0
+   ],
+   [
+    "2022-12-21",
+    2.5
+   ],
+   [
+    "2023-02-08",
+    3.0
+   ],
+   [
+    "2023-03-22",
+    3.5
+   ],
+   [
+    "2023-05-10",
+    3.75
+   ],
+   [
+    "2023-06-21",
+    4.0
+   ],
+   [
+    "2023-08-02",
+    4.25
+   ],
+   [
+    "2023-09-20",
+    4.5
+   ],
+   [
+    "2024-06-12",
+    4.25
+   ],
+   [
+    "2024-09-18",
+    3.5
+   ],
+   [
+    "2024-10-23",
+    3.25
+   ],
+   [
+    "2024-12-18",
+    3.0
+   ],
+   [
+    "2025-02-05",
+    2.75
+   ],
+   [
+    "2025-03-12",
+    2.5
+   ],
+   [
+    "2025-04-23",
+    2.25
+   ],
+   [
+    "2025-06-11",
+    2.0
+   ],
+   [
+    "2026-06-17",
+    2.25
+   ],
+   [
+    "2026-09-16",
+    2.5
+   ],
+   [
+    "2026-10-10",
+    2.5
+   ]
+  ],
+  "JP": [
+   [
+    "2010-01-01",
+    0.1
+   ],
+   [
+    "2010-10-05",
+    0.05
+   ],
+   [
+    "2016-09-21",
+    -0.1
+   ],
+   [
+    "2024-03-21",
+    0.05
+   ],
+   [
+    "2024-08-01",
+    0.25
+   ],
+   [
+    "2025-01-27",
+    0.5
+   ],
+   [
+    "2025-12-22",
+    0.75
+   ],
+   [
+    "2026-06-17",
+    1.0
+   ],
+   [
+    "2026-09-24",
+    1.25
+   ],
+   [
+    "2026-10-10",
+    1.25
+   ]
+  ],
+  "GB": [
+   [
+    "2010-01-04",
+    0.5
+   ],
+   [
+    "2016-08-04",
+    0.25
+   ],
+   [
+    "2017-11-02",
+    0.5
+   ],
+   [
+    "2018-08-02",
+    0.75
+   ],
+   [
+    "2020-03-11",
+    0.25
+   ],
+   [
+    "2020-03-19",
+    0.1
+   ],
+   [
+    "2021-12-16",
+    0.25
+   ],
+   [
+    "2022-02-03",
+    0.5
+   ],
+   [
+    "2022-03-17",
+    0.75
+   ],
+   [
+    "2022-05-05",
+    1.0
+   ],
+   [
+    "2022-06-16",
+    1.25
+   ],
+   [
+    "2022-08-04",
+    1.75
+   ],
+   [
+    "2022-09-22",
+    2.25
+   ],
+   [
+    "2022-11-03",
+    3.0
+   ],
+   [
+    "2022-12-15",
+    3.5
+   ],
+   [
+    "2023-02-02",
+    4.0
+   ],
+   [
+    "2023-03-23",
+    4.25
+   ],
+   [
+    "2023-05-11",
+    4.5
+   ],
+   [
+    "2023-06-22",
+    5.0
+   ],
+   [
+    "2023-08-03",
+    5.25
+   ],
+   [
+    "2024-08-01",
+    5.0
+   ],
+   [
+    "2024-11-07",
+    4.75
+   ],
+   [
+    "2025-02-06",
+    4.5
+   ],
+   [
+    "2025-05-08",
+    4.25
+   ],
+   [
+    "2025-08-07",
+    4.0
+   ],
+   [
+    "2025-12-18",
+    3.75
+   ],
+   [
+    "2026-10-10",
+    3.75
+   ]
+  ],
+  "CH": [
+   [
+    "2010-01-01",
+    0.375
+   ],
+   [
+    "2011-08-03",
+    0.125
+   ],
+   [
+    "2014-12-18",
+    -0.25
+   ],
+   [
+    "2015-01-15",
+    -0.75
+   ],
+   [
+    "2022-06-17",
+    -0.25
+   ],
+   [
+    "2022-09-23",
+    0.5
+   ],
+   [
+    "2022-12-16",
+    1.0
+   ],
+   [
+    "2023-03-24",
+    1.5
+   ],
+   [
+    "2023-06-23",
+    1.75
+   ],
+   [
+    "2024-03-22",
+    1.5
+   ],
+   [
+    "2024-06-21",
+    1.25
+   ],
+   [
+    "2024-09-27",
+    1.0
+   ],
+   [
+    "2024-12-13",
+    0.5
+   ],
+   [
+    "2025-03-21",
+    0.25
+   ],
+   [
+    "2025-06-20",
+    0.0
+   ],
+   [
+    "2026-10-10",
+    0.0
+   ]
+  ],
+  "CA": [
+   [
+    "2010-01-01",
+    0.25
+   ],
+   [
+    "2010-06-01",
+    0.5
+   ],
+   [
+    "2010-07-20",
+    0.75
+   ],
+   [
+    "2010-09-08",
+    1.0
+   ],
+   [
+    "2015-01-21",
+    0.75
+   ],
+   [
+    "2015-07-15",
+    0.5
+   ],
+   [
+    "2017-07-12",
+    0.75
+   ],
+   [
+    "2017-09-06",
+    1.0
+   ],
+   [
+    "2018-01-17",
+    1.25
+   ],
+   [
+    "2018-07-11",
+    1.5
+   ],
+   [
+    "2018-10-24",
+    1.75
+   ],
+   [
+    "2020-03-04",
+    1.25
+   ],
+   [
+    "2020-03-16",
+    0.75
+   ],
+   [
+    "2020-03-27",
+    0.25
+   ],
+   [
+    "2022-03-03",
+    0.5
+   ],
+   [
+    "2022-04-14",
+    1.0
+   ],
+   [
+    "2022-06-02",
+    1.5
+   ],
+   [
+    "2022-07-14",
+    2.5
+   ],
+   [
+    "2022-09-08",
+    3.25
+   ],
+   [
+    "2022-10-27",
+    3.75
+   ],
+   [
+    "2022-12-08",
+    4.25
+   ],
+   [
+    "2023-01-26",
+    4.5
+   ],
+   [
+    "2023-06-08",
+    4.75
+   ],
+   [
+    "2023-07-13",
+    5.0
+   ],
+   [
+    "2024-06-06",
+    4.75
+   ],
+   [
+    "2024-07-25",
+    4.5
+   ],
+   [
+    "2024-09-05",
+    4.25
+   ],
+   [
+    "2024-10-24",
+    3.75
+   ],
+   [
+    "2024-12-12",
+    3.25
+   ],
+   [
+    "2025-01-30",
+    3.0
+   ],
+   [
+    "2025-03-13",
+    2.75
+   ],
+   [
+    "2025-09-18",
+    2.5
+   ],
+   [
+    "2025-10-30",
+    2.25
+   ],
+   [
+    "2026-10-10",
+    2.25
+   ]
+  ],
+  "AU": [
+   [
+    "2010-01-04",
+    3.75
+   ],
+   [
+    "2010-03-03",
+    4.0
+   ],
+   [
+    "2010-04-07",
+    4.25
+   ],
+   [
+    "2010-05-05",
+    4.5
+   ],
+   [
+    "2010-09-03",
+    4.5001
+   ],
+   [
+    "2010-09-06",
+    4.5
+   ],
+   [
+    "2010-11-03",
+    4.75
+   ],
+   [
+    "2010-11-23",
+    4.7538
+   ],
+   [
+    "2010-11-24",
+    4.75
+   ],
+   [
+    "2011-11-02",
+    4.5
+   ],
+   [
+    "2011-12-07",
+    4.25
+   ],
+   [
+    "2012-05-02",
+    3.75
+   ],
+   [
+    "2012-06-06",
+    3.5
+   ],
+   [
+    "2012-10-03",
+    3.25
+   ],
+   [
+    "2012-12-05",
+    3.0
+   ],
+   [
+    "2013-05-08",
+    2.75
+   ],
+   [
+    "2013-08-07",
+    2.5
+   ],
+   [
+    "2015-02-04",
+    2.25
+   ],
+   [
+    "2015-05-06",
+    2.0
+   ],
+   [
+    "2016-05-04",
+    1.75
+   ],
+   [
+    "2016-08-03",
+    1.5
+   ],
+   [
+    "2019-06-05",
+    1.25
+   ],
+   [
+    "2019-07-03",
+    1.0
+   ],
+   [
+    "2019-10-02",
+    0.75
+   ],
+   [
+    "2020-03-04",
+    0.5
+   ],
+   [
+    "2020-03-20",
+    0.25
+   ],
+   [
+    "2020-11-04",
+    0.1
+   ],
+   [
+    "2022-05-04",
+    0.35
+   ],
+   [
+    "2022-06-08",
+    0.85
+   ],
+   [
+    "2022-07-06",
+    1.35
+   ],
+   [
+    "2022-08-03",
+    1.85
+   ],
+   [
+    "2022-09-07",
+    2.35
+   ],
+   [
+    "2022-10-05",
+    2.6
+   ],
+   [
+    "2022-11-02",
+    2.85
+   ],
+   [
+    "2022-12-07",
+    3.1
+   ],
+   [
+    "2023-02-08",
+    3.35
+   ],
+   [
+    "2023-03-08",
+    3.6
+   ],
+   [
+    "2023-05-03",
+    3.85
+   ],
+   [
+    "2023-06-07",
+    4.1
+   ],
+   [
+    "2023-11-08",
+    4.35
+   ],
+   [
+    "2025-02-19",
+    4.1
+   ],
+   [
+    "2025-05-21",
+    3.85
+   ],
+   [
+    "2025-08-13",
+    3.6
+   ],
+   [
+    "2026-02-04",
+    3.85
+   ],
+   [
+    "2026-03-18",
+    4.1
+   ],
+   [
+    "2026-05-06",
+    4.35
+   ],
+   [
+    "2026-10-10",
+    4.35
+   ]
+  ],
+  "NZ": [
+   [
+    "2010-01-01",
+    2.5
+   ],
+   [
+    "2010-06-10",
+    2.75
+   ],
+   [
+    "2010-07-29",
+    3.0
+   ],
+   [
+    "2011-03-10",
+    2.5
+   ],
+   [
+    "2014-03-13",
+    2.75
+   ],
+   [
+    "2014-04-24",
+    3.0
+   ],
+   [
+    "2014-06-12",
+    3.25
+   ],
+   [
+    "2014-07-24",
+    3.5
+   ],
+   [
+    "2015-06-11",
+    3.25
+   ],
+   [
+    "2015-07-23",
+    3.0
+   ],
+   [
+    "2015-09-10",
+    2.75
+   ],
+   [
+    "2015-12-10",
+    2.5
+   ],
+   [
+    "2016-03-10",
+    2.25
+   ],
+   [
+    "2016-08-11",
+    2.0
+   ],
+   [
+    "2016-11-10",
+    1.75
+   ],
+   [
+    "2019-05-09",
+    1.5
+   ],
+   [
+    "2019-08-08",
+    1.0
+   ],
+   [
+    "2020-03-17",
+    0.25
+   ],
+   [
+    "2021-10-07",
+    0.5
+   ],
+   [
+    "2021-11-25",
+    0.75
+   ],
+   [
+    "2022-02-24",
+    1.0
+   ],
+   [
+    "2022-04-14",
+    1.5
+   ],
+   [
+    "2022-05-26",
+    2.0
+   ],
+   [
+    "2022-07-14",
+    2.5
+   ],
+   [
+    "2022-08-18",
+    3.0
+   ],
+   [
+    "2022-10-06",
+    3.5
+   ],
+   [
+    "2022-11-24",
+    4.25
+   ],
+   [
+    "2023-02-23",
+    4.75
+   ],
+   [
+    "2023-04-06",
+    5.25
+   ],
+   [
+    "2023-05-25",
+    5.5
+   ],
+   [
+    "2024-08-15",
+    5.25
+   ],
+   [
+    "2024-10-10",
+    4.75
+   ],
+   [
+    "2024-11-28",
+    4.25
+   ],
+   [
+    "2025-02-20",
+    3.75
+   ],
+   [
+    "2025-04-10",
+    3.5
+   ],
+   [
+    "2025-05-29",
+    3.25
+   ],
+   [
+    "2025-08-21",
+    3.0
+   ],
+   [
+    "2025-10-09",
+    2.5
+   ],
+   [
+    "2025-11-27",
+    2.25
+   ],
+   [
+    "2026-07-09",
+    2.5
+   ],
+   [
+    "2026-09-03",
+    2.75
+   ],
+   [
+    "2026-10-10",
+    2.75
+   ]
+  ]
+ },
+ "grandes": [
+  "US",
+  "XM",
+  "JP",
+  "GB",
+  "CH",
+  "CA",
+  "AU",
+  "NZ"
+ ],
+ "eurozona": {
+  "codigo": "XM",
+  "miembros_a2": [
+   "AT",
+   "BE",
+   "BG",
+   "CY",
+   "DE",
+   "EE",
+   "ES",
+   "FI",
+   "FR",
+   "GR",
+   "HR",
+   "IE",
+   "IT",
+   "LT",
+   "LU",
+   "LV",
+   "MT",
+   "NL",
+   "PT",
+   "SI",
+   "SK"
+  ],
+  "n": 21,
+  "nota": "Países cuya divisa es el euro en el BIS (WS_XRU); todos comparten el tipo del BCE."
+ },
+ "paises": {
+  "004": {
+   "a2": "AF",
+   "a3": "AFG",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.9,
+    "ano": 2025,
+    "prevision": null,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3,
+    "ano": 2025,
+    "prevision": null,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "008": {
+   "a2": "AL",
+   "a3": "ALB",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.2,
+    "ano": 2025,
+    "prevision": 3.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.7,
+    "ano": 2025,
+    "prevision": 3.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "010": {
+   "a2": "AQ",
+   "a3": "ATA",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "012": {
+   "a2": "DZ",
+   "a3": "DZA",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 2.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.8,
+    "ano": 2025,
+    "prevision": 3.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "016": {
+   "a2": "AS",
+   "a3": "ASM",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "020": {
+   "a2": "AD",
+   "a3": "AND",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.4,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.9,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "024": {
+   "a2": "AO",
+   "a3": "AGO",
+   "banco": null,
+   "inflacion": {
+    "valor": 20.2,
+    "ano": 2025,
+    "prevision": 12.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.1,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "028": {
+   "a2": "AG",
+   "a3": "ATG",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "031": {
+   "a2": "AZ",
+   "a3": "AZE",
+   "banco": null,
+   "inflacion": {
+    "valor": 5.6,
+    "ano": 2025,
+    "prevision": 6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "032": {
+   "a2": "AR",
+   "a3": "ARG",
+   "banco": null,
+   "inflacion": {
+    "valor": 41.9,
+    "ano": 2025,
+    "prevision": 30.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 3.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "036": {
+   "a2": "AU",
+   "a3": "AUS",
+   "banco": "AU",
+   "inflacion": {
+    "valor": 2.9,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "040": {
+   "a2": "AT",
+   "a3": "AUT",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 3.6,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.6,
+    "ano": 2025,
+    "prevision": 0.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "044": {
+   "a2": "BS",
+   "a3": "BHS",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.6,
+    "ano": 2025,
+    "prevision": 1.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.8,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "048": {
+   "a2": "BH",
+   "a3": "BHR",
+   "banco": null,
+   "inflacion": {
+    "valor": -0.1,
+    "ano": 2025,
+    "prevision": 2.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.1,
+    "ano": 2025,
+    "prevision": -0.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "050": {
+   "a2": "BD",
+   "a3": "BGD",
+   "banco": null,
+   "inflacion": {
+    "valor": 10,
+    "ano": 2025,
+    "prevision": 9.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.5,
+    "ano": 2025,
+    "prevision": 4.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "051": {
+   "a2": "AM",
+   "a3": "ARM",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.3,
+    "ano": 2025,
+    "prevision": 3.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 7.2,
+    "ano": 2025,
+    "prevision": 5.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "052": {
+   "a2": "BB",
+   "a3": "BRB",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.8,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.7,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "056": {
+   "a2": "BE",
+   "a3": "BEL",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 3,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1,
+    "ano": 2025,
+    "prevision": 0.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "060": {
+   "a2": "BM",
+   "a3": "BMU",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "064": {
+   "a2": "BT",
+   "a3": "BTN",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.6,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 7.1,
+    "ano": 2025,
+    "prevision": 7.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "068": {
+   "a2": "BO",
+   "a3": "BOL",
+   "banco": null,
+   "inflacion": {
+    "valor": 19.5,
+    "ano": 2025,
+    "prevision": 20.7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -1.2,
+    "ano": 2025,
+    "prevision": -3.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "070": {
+   "a2": "BA",
+   "a3": "BIH",
+   "banco": null,
+   "inflacion": {
+    "valor": 4,
+    "ano": 2025,
+    "prevision": 4.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "072": {
+   "a2": "BW",
+   "a3": "BWA",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.8,
+    "ano": 2025,
+    "prevision": 5.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -0.9,
+    "ano": 2025,
+    "prevision": 4.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "074": {
+   "a2": "BV",
+   "a3": "BVT",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "076": {
+   "a2": "BR",
+   "a3": "BRA",
+   "banco": "BR",
+   "inflacion": {
+    "valor": 5,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.3,
+    "ano": 2025,
+    "prevision": 1.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "084": {
+   "a2": "BZ",
+   "a3": "BLZ",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.1,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.7,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "086": {
+   "a2": "IO",
+   "a3": "IOT",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "090": {
+   "a2": "SB",
+   "a3": "SLB",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.4,
+    "ano": 2025,
+    "prevision": 3.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.7,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "092": {
+   "a2": "VG",
+   "a3": "VGB",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "096": {
+   "a2": "BN",
+   "a3": "BRN",
+   "banco": null,
+   "inflacion": {
+    "valor": -0.3,
+    "ano": 2025,
+    "prevision": 1.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.6,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "100": {
+   "a2": "BG",
+   "a3": "BGR",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 3.5,
+    "ano": 2025,
+    "prevision": 3.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.1,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "104": {
+   "a2": "MM",
+   "a3": "MMR",
+   "banco": null,
+   "inflacion": {
+    "valor": 22,
+    "ano": 2025,
+    "prevision": 19,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -2,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "108": {
+   "a2": "BI",
+   "a3": "BDI",
+   "banco": null,
+   "inflacion": {
+    "valor": 34.2,
+    "ano": 2025,
+    "prevision": 14.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.9,
+    "ano": 2025,
+    "prevision": 3.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "112": {
+   "a2": "BY",
+   "a3": "BLR",
+   "banco": null,
+   "inflacion": {
+    "valor": 6.6,
+    "ano": 2025,
+    "prevision": 6.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.3,
+    "ano": 2025,
+    "prevision": 1.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "116": {
+   "a2": "KH",
+   "a3": "KHM",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.5,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "120": {
+   "a2": "CM",
+   "a3": "CMR",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.4,
+    "ano": 2025,
+    "prevision": 3.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.1,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "124": {
+   "a2": "CA",
+   "a3": "CAN",
+   "banco": "CA",
+   "inflacion": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.7,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "132": {
+   "a2": "CV",
+   "a3": "CPV",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.3,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.5,
+    "ano": 2025,
+    "prevision": 4.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "136": {
+   "a2": "KY",
+   "a3": "CYM",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "140": {
+   "a2": "CF",
+   "a3": "CAF",
+   "banco": null,
+   "inflacion": {
+    "valor": 1,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.8,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "144": {
+   "a2": "LK",
+   "a3": "LKA",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "148": {
+   "a2": "TD",
+   "a3": "TCD",
+   "banco": null,
+   "inflacion": {
+    "valor": -2.6,
+    "ano": 2025,
+    "prevision": 0.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.6,
+    "ano": 2025,
+    "prevision": 5.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "152": {
+   "a2": "CL",
+   "a3": "CHL",
+   "banco": "CL",
+   "inflacion": {
+    "valor": 4.2,
+    "ano": 2025,
+    "prevision": 2.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.3,
+    "ano": 2025,
+    "prevision": 2.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "156": {
+   "a2": "CN",
+   "a3": "CHN",
+   "banco": "CN",
+   "inflacion": {
+    "valor": 0,
+    "ano": 2025,
+    "prevision": 1.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5,
+    "ano": 2025,
+    "prevision": 4.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "158": {
+   "a2": "TW",
+   "a3": "TWN",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.7,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 8.7,
+    "ano": 2025,
+    "prevision": 5.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "162": {
+   "a2": "CX",
+   "a3": "CXR",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "166": {
+   "a2": "CC",
+   "a3": "CCK",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "170": {
+   "a2": "CO",
+   "a3": "COL",
+   "banco": "CO",
+   "inflacion": {
+    "valor": 5.1,
+    "ano": 2025,
+    "prevision": 5.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.6,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "174": {
+   "a2": "KM",
+   "a3": "COM",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.2,
+    "ano": 2025,
+    "prevision": 3.7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.8,
+    "ano": 2025,
+    "prevision": 4.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "175": {
+   "a2": "YT",
+   "a3": "MYT",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "178": {
+   "a2": "CG",
+   "a3": "COG",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.6,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.4,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "180": {
+   "a2": "CD",
+   "a3": "COD",
+   "banco": null,
+   "inflacion": {
+    "valor": 7.4,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.7,
+    "ano": 2025,
+    "prevision": 5.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "184": {
+   "a2": "CK",
+   "a3": "COK",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "188": {
+   "a2": "CR",
+   "a3": "CRI",
+   "banco": null,
+   "inflacion": {
+    "valor": -0.1,
+    "ano": 2025,
+    "prevision": -0.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.6,
+    "ano": 2025,
+    "prevision": 3.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "191": {
+   "a2": "HR",
+   "a3": "HRV",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 4.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.2,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "192": {
+   "a2": "CU",
+   "a3": "CUB",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "196": {
+   "a2": "CY",
+   "a3": "CYP",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 0.8,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.8,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "203": {
+   "a2": "CZ",
+   "a3": "CZE",
+   "banco": "CZ",
+   "inflacion": {
+    "valor": 2.5,
+    "ano": 2025,
+    "prevision": 2.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.5,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "204": {
+   "a2": "BJ",
+   "a3": "BEN",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.1,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 7.5,
+    "ano": 2025,
+    "prevision": 7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "208": {
+   "a2": "DK",
+   "a3": "DNK",
+   "banco": "DK",
+   "inflacion": {
+    "valor": 1.8,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.9,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "212": {
+   "a2": "DM",
+   "a3": "DMA",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.3,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.5,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "214": {
+   "a2": "DO",
+   "a3": "DOM",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.9,
+    "ano": 2025,
+    "prevision": 5.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 3.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "218": {
+   "a2": "EC",
+   "a3": "ECU",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.7,
+    "ano": 2025,
+    "prevision": 2.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.7,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "222": {
+   "a2": "SV",
+   "a3": "SLV",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.3,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.7,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "226": {
+   "a2": "GQ",
+   "a3": "GNQ",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.8,
+    "ano": 2025,
+    "prevision": 3.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -6.4,
+    "ano": 2025,
+    "prevision": -2.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "231": {
+   "a2": "ET",
+   "a3": "ETH",
+   "banco": null,
+   "inflacion": {
+    "valor": 13.2,
+    "ano": 2025,
+    "prevision": 11.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 9.2,
+    "ano": 2025,
+    "prevision": 9.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "232": {
+   "a2": "ER",
+   "a3": "ERI",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "233": {
+   "a2": "EE",
+   "a3": "EST",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 4.8,
+    "ano": 2025,
+    "prevision": 3.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.6,
+    "ano": 2025,
+    "prevision": 1.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "234": {
+   "a2": "FO",
+   "a3": "FRO",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "238": {
+   "a2": "FK",
+   "a3": "FLK",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "239": {
+   "a2": "GS",
+   "a3": "SGS",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "242": {
+   "a2": "FJ",
+   "a3": "FJI",
+   "banco": null,
+   "inflacion": {
+    "valor": -1.4,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.2,
+    "ano": 2025,
+    "prevision": 2.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "246": {
+   "a2": "FI",
+   "a3": "FIN",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 1.8,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.2,
+    "ano": 2025,
+    "prevision": 1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "248": {
+   "a2": "AX",
+   "a3": "ALA",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "250": {
+   "a2": "FR",
+   "a3": "FRA",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 0.9,
+    "ano": 2025,
+    "prevision": 1.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.9,
+    "ano": 2025,
+    "prevision": 0.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "254": {
+   "a2": "GF",
+   "a3": "GUF",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "258": {
+   "a2": "PF",
+   "a3": "PYF",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "260": {
+   "a2": "TF",
+   "a3": "ATF",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "262": {
+   "a2": "DJ",
+   "a3": "DJI",
+   "banco": null,
+   "inflacion": {
+    "valor": -0.3,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6,
+    "ano": 2025,
+    "prevision": 6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "266": {
+   "a2": "GA",
+   "a3": "GAB",
+   "banco": null,
+   "inflacion": {
+    "valor": 2,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.5,
+    "ano": 2025,
+    "prevision": 2.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "268": {
+   "a2": "GE",
+   "a3": "GEO",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.9,
+    "ano": 2025,
+    "prevision": 4.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 7.5,
+    "ano": 2025,
+    "prevision": 5.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "270": {
+   "a2": "GM",
+   "a3": "GMB",
+   "banco": null,
+   "inflacion": {
+    "valor": 7.9,
+    "ano": 2025,
+    "prevision": 5.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6,
+    "ano": 2025,
+    "prevision": 5.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "275": {
+   "a2": "PS",
+   "a3": "PSE",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "276": {
+   "a2": "DE",
+   "a3": "DEU",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 2.3,
+    "ano": 2025,
+    "prevision": 2.7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.2,
+    "ano": 2025,
+    "prevision": 0.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "288": {
+   "a2": "GH",
+   "a3": "GHA",
+   "banco": null,
+   "inflacion": {
+    "valor": 14.2,
+    "ano": 2025,
+    "prevision": 5.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6,
+    "ano": 2025,
+    "prevision": 4.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "292": {
+   "a2": "GI",
+   "a3": "GIB",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "296": {
+   "a2": "KI",
+   "a3": "KIR",
+   "banco": null,
+   "inflacion": {
+    "valor": 6.5,
+    "ano": 2025,
+    "prevision": 4.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.3,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "300": {
+   "a2": "GR",
+   "a3": "GRC",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 2.9,
+    "ano": 2025,
+    "prevision": 3.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 1.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "304": {
+   "a2": "GL",
+   "a3": "GRL",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "308": {
+   "a2": "GD",
+   "a3": "GRD",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.6,
+    "ano": 2025,
+    "prevision": 1.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "312": {
+   "a2": "GP",
+   "a3": "GLP",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "316": {
+   "a2": "GU",
+   "a3": "GUM",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "320": {
+   "a2": "GT",
+   "a3": "GTM",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.6,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.1,
+    "ano": 2025,
+    "prevision": 3.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "324": {
+   "a2": "GN",
+   "a3": "GIN",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.1,
+    "ano": 2025,
+    "prevision": 4.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6.7,
+    "ano": 2025,
+    "prevision": 8.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "328": {
+   "a2": "GY",
+   "a3": "GUY",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.3,
+    "ano": 2025,
+    "prevision": 4.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 19.3,
+    "ano": 2025,
+    "prevision": 16.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "332": {
+   "a2": "HT",
+   "a3": "HTI",
+   "banco": null,
+   "inflacion": {
+    "valor": 28.3,
+    "ano": 2025,
+    "prevision": 23.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -2.7,
+    "ano": 2025,
+    "prevision": -1.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "334": {
+   "a2": "HM",
+   "a3": "HMD",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "336": {
+   "a2": "VA",
+   "a3": "VAT",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "340": {
+   "a2": "HN",
+   "a3": "HND",
+   "banco": null,
+   "inflacion": {
+    "valor": 4.6,
+    "ano": 2025,
+    "prevision": 4.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.7,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "344": {
+   "a2": "HK",
+   "a3": "HKG",
+   "banco": "HK",
+   "inflacion": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.5,
+    "ano": 2025,
+    "prevision": 2.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "348": {
+   "a2": "HU",
+   "a3": "HUN",
+   "banco": "HU",
+   "inflacion": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 3.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.4,
+    "ano": 2025,
+    "prevision": 1.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "352": {
+   "a2": "IS",
+   "a3": "ISL",
+   "banco": "IS",
+   "inflacion": {
+    "valor": 4.1,
+    "ano": 2025,
+    "prevision": 4.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.3,
+    "ano": 2025,
+    "prevision": 1.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "356": {
+   "a2": "IN",
+   "a3": "IND",
+   "banco": "IN",
+   "inflacion": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 4.7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 7.6,
+    "ano": 2025,
+    "prevision": 6.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "360": {
+   "a2": "ID",
+   "a3": "IDN",
+   "banco": "ID",
+   "inflacion": {
+    "valor": 1.9,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.1,
+    "ano": 2025,
+    "prevision": 5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "364": {
+   "a2": "IR",
+   "a3": "IRN",
+   "banco": null,
+   "inflacion": {
+    "valor": 50.9,
+    "ano": 2025,
+    "prevision": 68.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -1.5,
+    "ano": 2025,
+    "prevision": -6.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "368": {
+   "a2": "IQ",
+   "a3": "IRQ",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.3,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -0.4,
+    "ano": 2025,
+    "prevision": -6.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "372": {
+   "a2": "IE",
+   "a3": "IRL",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 12.3,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "376": {
+   "a2": "IL",
+   "a3": "ISR",
+   "banco": "IL",
+   "inflacion": {
+    "valor": 3,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.9,
+    "ano": 2025,
+    "prevision": 3.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "380": {
+   "a2": "IT",
+   "a3": "ITA",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 1.6,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.5,
+    "ano": 2025,
+    "prevision": 0.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "384": {
+   "a2": "CI",
+   "a3": "CIV",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.1,
+    "ano": 2025,
+    "prevision": 1.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6.5,
+    "ano": 2025,
+    "prevision": 6.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "388": {
+   "a2": "JM",
+   "a3": "JAM",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.9,
+    "ano": 2025,
+    "prevision": 6.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -0.1,
+    "ano": 2025,
+    "prevision": -1.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "392": {
+   "a2": "JP",
+   "a3": "JPN",
+   "banco": "JP",
+   "inflacion": {
+    "valor": 3.2,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.2,
+    "ano": 2025,
+    "prevision": 0.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "398": {
+   "a2": "KZ",
+   "a3": "KAZ",
+   "banco": null,
+   "inflacion": {
+    "valor": 11.4,
+    "ano": 2025,
+    "prevision": 10.7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6.5,
+    "ano": 2025,
+    "prevision": 4.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "400": {
+   "a2": "JO",
+   "a3": "JOR",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.8,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.7,
+    "ano": 2025,
+    "prevision": 2.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "404": {
+   "a2": "KE",
+   "a3": "KEN",
+   "banco": null,
+   "inflacion": {
+    "valor": 4.1,
+    "ano": 2025,
+    "prevision": 5.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.9,
+    "ano": 2025,
+    "prevision": 4.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "408": {
+   "a2": "KP",
+   "a3": "PRK",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "410": {
+   "a2": "KR",
+   "a3": "KOR",
+   "banco": "KR",
+   "inflacion": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1,
+    "ano": 2025,
+    "prevision": 1.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "414": {
+   "a2": "KW",
+   "a3": "KWT",
+   "banco": "KW",
+   "inflacion": {
+    "valor": 2.4,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.5,
+    "ano": 2025,
+    "prevision": -0.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "417": {
+   "a2": "KG",
+   "a3": "KGZ",
+   "banco": null,
+   "inflacion": {
+    "valor": 8.2,
+    "ano": 2025,
+    "prevision": 10.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 11.1,
+    "ano": 2025,
+    "prevision": 6.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "418": {
+   "a2": "LA",
+   "a3": "LAO",
+   "banco": null,
+   "inflacion": {
+    "valor": 7.7,
+    "ano": 2025,
+    "prevision": 9.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.8,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "422": {
+   "a2": "LB",
+   "a3": "LBN",
+   "banco": null,
+   "inflacion": {
+    "valor": 14.6,
+    "ano": 2025,
+    "prevision": null,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4,
+    "ano": 2025,
+    "prevision": null,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "426": {
+   "a2": "LS",
+   "a3": "LSO",
+   "banco": null,
+   "inflacion": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 4.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 1.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "428": {
+   "a2": "LV",
+   "a3": "LVA",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 3.8,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "430": {
+   "a2": "LR",
+   "a3": "LBR",
+   "banco": null,
+   "inflacion": {
+    "valor": 8.3,
+    "ano": 2025,
+    "prevision": 5.7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.1,
+    "ano": 2025,
+    "prevision": 5.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "434": {
+   "a2": "LY",
+   "a3": "LBY",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.8,
+    "ano": 2025,
+    "prevision": 10.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 15.9,
+    "ano": 2025,
+    "prevision": 6.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "438": {
+   "a2": "LI",
+   "a3": "LIE",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.2,
+    "ano": 2025,
+    "prevision": 0.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0,
+    "ano": 2025,
+    "prevision": -0.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "440": {
+   "a2": "LT",
+   "a3": "LTU",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 3.4,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.9,
+    "ano": 2025,
+    "prevision": 2.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "442": {
+   "a2": "LU",
+   "a3": "LUX",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 2.5,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.6,
+    "ano": 2025,
+    "prevision": 1.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "446": {
+   "a2": "MO",
+   "a3": "MAC",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.3,
+    "ano": 2025,
+    "prevision": 1.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.7,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "450": {
+   "a2": "MG",
+   "a3": "MDG",
+   "banco": null,
+   "inflacion": {
+    "valor": 8,
+    "ano": 2025,
+    "prevision": 8.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.8,
+    "ano": 2025,
+    "prevision": 3.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "454": {
+   "a2": "MW",
+   "a3": "MWI",
+   "banco": null,
+   "inflacion": {
+    "valor": 28.4,
+    "ano": 2025,
+    "prevision": 24.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "458": {
+   "a2": "MY",
+   "a3": "MYS",
+   "banco": "MY",
+   "inflacion": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 1.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.2,
+    "ano": 2025,
+    "prevision": 4.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "462": {
+   "a2": "MV",
+   "a3": "MDV",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.5,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "466": {
+   "a2": "ML",
+   "a3": "MLI",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.3,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.9,
+    "ano": 2025,
+    "prevision": 5.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "470": {
+   "a2": "MT",
+   "a3": "MLT",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 2.4,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4,
+    "ano": 2025,
+    "prevision": 3.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "474": {
+   "a2": "MQ",
+   "a3": "MTQ",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "478": {
+   "a2": "MR",
+   "a3": "MRT",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.6,
+    "ano": 2025,
+    "prevision": 4.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.2,
+    "ano": 2025,
+    "prevision": 4.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "480": {
+   "a2": "MU",
+   "a3": "MUS",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.7,
+    "ano": 2025,
+    "prevision": 3.7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.1,
+    "ano": 2025,
+    "prevision": 3.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "484": {
+   "a2": "MX",
+   "a3": "MEX",
+   "banco": "MX",
+   "inflacion": {
+    "valor": 3.8,
+    "ano": 2025,
+    "prevision": 3.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.6,
+    "ano": 2025,
+    "prevision": 1.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "492": {
+   "a2": "MC",
+   "a3": "MCO",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "496": {
+   "a2": "MN",
+   "a3": "MNG",
+   "banco": null,
+   "inflacion": {
+    "valor": 8.6,
+    "ano": 2025,
+    "prevision": 7.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6.8,
+    "ano": 2025,
+    "prevision": 5.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "498": {
+   "a2": "MD",
+   "a3": "MDA",
+   "banco": null,
+   "inflacion": {
+    "valor": 7.8,
+    "ano": 2025,
+    "prevision": 6.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.4,
+    "ano": 2025,
+    "prevision": 1.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "499": {
+   "a2": "ME",
+   "a3": "MNE",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.9,
+    "ano": 2025,
+    "prevision": 3.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.7,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "500": {
+   "a2": "MS",
+   "a3": "MSR",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "504": {
+   "a2": "MA",
+   "a3": "MAR",
+   "banco": "MA",
+   "inflacion": {
+    "valor": 0.8,
+    "ano": 2025,
+    "prevision": 1.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.9,
+    "ano": 2025,
+    "prevision": 4.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "508": {
+   "a2": "MZ",
+   "a3": "MOZ",
+   "banco": null,
+   "inflacion": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 4.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -0.5,
+    "ano": 2025,
+    "prevision": 0.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "512": {
+   "a2": "OM",
+   "a3": "OMN",
+   "banco": null,
+   "inflacion": {
+    "valor": 1,
+    "ano": 2025,
+    "prevision": 1.7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.4,
+    "ano": 2025,
+    "prevision": 3.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "516": {
+   "a2": "NA",
+   "a3": "NAM",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.5,
+    "ano": 2025,
+    "prevision": 3.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.4,
+    "ano": 2025,
+    "prevision": 2.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "520": {
+   "a2": "NR",
+   "a3": "NRU",
+   "banco": null,
+   "inflacion": {
+    "valor": 6.1,
+    "ano": 2025,
+    "prevision": 5.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.2,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "524": {
+   "a2": "NP",
+   "a3": "NPL",
+   "banco": null,
+   "inflacion": {
+    "valor": 4.1,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.6,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "528": {
+   "a2": "NL",
+   "a3": "NLD",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 3,
+    "ano": 2025,
+    "prevision": 2.7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.9,
+    "ano": 2025,
+    "prevision": 1.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "531": {
+   "a2": "CW",
+   "a3": "CUW",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "533": {
+   "a2": "AW",
+   "a3": "ABW",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.1,
+    "ano": 2025,
+    "prevision": 1.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.6,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "534": {
+   "a2": "SX",
+   "a3": "SXM",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "535": {
+   "a2": "BQ",
+   "a3": "BES",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "540": {
+   "a2": "NC",
+   "a3": "NCL",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "548": {
+   "a2": "VU",
+   "a3": "VUT",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.7,
+    "ano": 2025,
+    "prevision": 4.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.1,
+    "ano": 2025,
+    "prevision": 3.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "554": {
+   "a2": "NZ",
+   "a3": "NZL",
+   "banco": "NZ",
+   "inflacion": {
+    "valor": 2.8,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.2,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "558": {
+   "a2": "NI",
+   "a3": "NIC",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 3.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.9,
+    "ano": 2025,
+    "prevision": 3.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "562": {
+   "a2": "NE",
+   "a3": "NER",
+   "banco": null,
+   "inflacion": {
+    "valor": -4.6,
+    "ano": 2025,
+    "prevision": 0.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6.9,
+    "ano": 2025,
+    "prevision": 6.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "566": {
+   "a2": "NG",
+   "a3": "NGA",
+   "banco": null,
+   "inflacion": {
+    "valor": 23,
+    "ano": 2025,
+    "prevision": 16,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4,
+    "ano": 2025,
+    "prevision": 4.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "570": {
+   "a2": "NU",
+   "a3": "NIU",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "574": {
+   "a2": "NF",
+   "a3": "NFK",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "578": {
+   "a2": "NO",
+   "a3": "NOR",
+   "banco": "NO",
+   "inflacion": {
+    "valor": 3,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.1,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "580": {
+   "a2": "MP",
+   "a3": "MNP",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "581": {
+   "a2": "UM",
+   "a3": "UMI",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "583": {
+   "a2": "FM",
+   "a3": "FSM",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.2,
+    "ano": 2025,
+    "prevision": 3.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.1,
+    "ano": 2025,
+    "prevision": 0.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "584": {
+   "a2": "MH",
+   "a3": "MHL",
+   "banco": null,
+   "inflacion": {
+    "valor": 5.5,
+    "ano": 2025,
+    "prevision": 7.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.5,
+    "ano": 2025,
+    "prevision": 3.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "585": {
+   "a2": "PW",
+   "a3": "PLW",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.3,
+    "ano": 2025,
+    "prevision": 5.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6.3,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "586": {
+   "a2": "PK",
+   "a3": "PAK",
+   "banco": null,
+   "inflacion": {
+    "valor": 4.5,
+    "ano": 2025,
+    "prevision": 7.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.1,
+    "ano": 2025,
+    "prevision": 3.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "591": {
+   "a2": "PA",
+   "a3": "PAN",
+   "banco": null,
+   "inflacion": {
+    "valor": 0,
+    "ano": 2025,
+    "prevision": 1.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 3.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "598": {
+   "a2": "PG",
+   "a3": "PNG",
+   "banco": null,
+   "inflacion": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.6,
+    "ano": 2025,
+    "prevision": 3.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "600": {
+   "a2": "PY",
+   "a3": "PRY",
+   "banco": null,
+   "inflacion": {
+    "valor": 4.1,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6,
+    "ano": 2025,
+    "prevision": 4.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "604": {
+   "a2": "PE",
+   "a3": "PER",
+   "banco": "PE",
+   "inflacion": {
+    "valor": 1.5,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.4,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "608": {
+   "a2": "PH",
+   "a3": "PHL",
+   "banco": "PH",
+   "inflacion": {
+    "valor": 1.7,
+    "ano": 2025,
+    "prevision": 4.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 4.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "612": {
+   "a2": "PN",
+   "a3": "PCN",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "616": {
+   "a2": "PL",
+   "a3": "POL",
+   "banco": "PL",
+   "inflacion": {
+    "valor": 3.6,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.6,
+    "ano": 2025,
+    "prevision": 3.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "620": {
+   "a2": "PT",
+   "a3": "PRT",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 2.2,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.9,
+    "ano": 2025,
+    "prevision": 1.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "624": {
+   "a2": "GW",
+   "a3": "GNB",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.9,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.5,
+    "ano": 2025,
+    "prevision": 4.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "626": {
+   "a2": "TL",
+   "a3": "TLS",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.5,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.5,
+    "ano": 2025,
+    "prevision": 4.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "630": {
+   "a2": "PR",
+   "a3": "PRI",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -0.8,
+    "ano": 2025,
+    "prevision": -0.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "634": {
+   "a2": "QA",
+   "a3": "QAT",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.6,
+    "ano": 2025,
+    "prevision": 3.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.8,
+    "ano": 2025,
+    "prevision": -8.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "638": {
+   "a2": "RE",
+   "a3": "REU",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "642": {
+   "a2": "RO",
+   "a3": "ROU",
+   "banco": "RO",
+   "inflacion": {
+    "valor": 7.3,
+    "ano": 2025,
+    "prevision": 7.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.7,
+    "ano": 2025,
+    "prevision": 0.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "643": {
+   "a2": "RU",
+   "a3": "RUS",
+   "banco": "RU",
+   "inflacion": {
+    "valor": 8.7,
+    "ano": 2025,
+    "prevision": 5.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1,
+    "ano": 2025,
+    "prevision": 1.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "646": {
+   "a2": "RW",
+   "a3": "RWA",
+   "banco": null,
+   "inflacion": {
+    "valor": 7,
+    "ano": 2025,
+    "prevision": 5.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 7,
+    "ano": 2025,
+    "prevision": 7.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "652": {
+   "a2": "BL",
+   "a3": "BLM",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "654": {
+   "a2": "SH",
+   "a3": "SHN",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "659": {
+   "a2": "KN",
+   "a3": "KNA",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.3,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.5,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "660": {
+   "a2": "AI",
+   "a3": "AIA",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "662": {
+   "a2": "LC",
+   "a3": "LCA",
+   "banco": null,
+   "inflacion": {
+    "valor": 2,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.7,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "663": {
+   "a2": "MF",
+   "a3": "MAF",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "666": {
+   "a2": "PM",
+   "a3": "SPM",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "670": {
+   "a2": "VC",
+   "a3": "VCT",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.9,
+    "ano": 2025,
+    "prevision": 0.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.4,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "674": {
+   "a2": "SM",
+   "a3": "SMR",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.3,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.5,
+    "ano": 2025,
+    "prevision": 1.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "678": {
+   "a2": "ST",
+   "a3": "STP",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.9,
+    "ano": 2025,
+    "prevision": 9.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 3.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "682": {
+   "a2": "SA",
+   "a3": "SAU",
+   "banco": "SA",
+   "inflacion": {
+    "valor": 2,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.5,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "686": {
+   "a2": "SN",
+   "a3": "SEN",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.4,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 7.9,
+    "ano": 2025,
+    "prevision": 2.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "688": {
+   "a2": "RS",
+   "a3": "SRB",
+   "banco": "RS",
+   "inflacion": {
+    "valor": 3.9,
+    "ano": 2025,
+    "prevision": 5.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "690": {
+   "a2": "SC",
+   "a3": "SYC",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.3,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.1,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "694": {
+   "a2": "SL",
+   "a3": "SLE",
+   "banco": null,
+   "inflacion": {
+    "valor": 7.6,
+    "ano": 2025,
+    "prevision": 7.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 4.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "702": {
+   "a2": "SG",
+   "a3": "SGP",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.9,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5,
+    "ano": 2025,
+    "prevision": 3.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "703": {
+   "a2": "SK",
+   "a3": "SVK",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 4.2,
+    "ano": 2025,
+    "prevision": 4.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.8,
+    "ano": 2025,
+    "prevision": 0.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "704": {
+   "a2": "VN",
+   "a3": "VNM",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.3,
+    "ano": 2025,
+    "prevision": 4.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 8,
+    "ano": 2025,
+    "prevision": 7.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "705": {
+   "a2": "SI",
+   "a3": "SVN",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 2.5,
+    "ano": 2025,
+    "prevision": 2.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.1,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "706": {
+   "a2": "SO",
+   "a3": "SOM",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.7,
+    "ano": 2025,
+    "prevision": 5.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "710": {
+   "a2": "ZA",
+   "a3": "ZAF",
+   "banco": "ZA",
+   "inflacion": {
+    "valor": 3.2,
+    "ano": 2025,
+    "prevision": 3.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.1,
+    "ano": 2025,
+    "prevision": 1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "716": {
+   "a2": "ZW",
+   "a3": "ZWE",
+   "banco": null,
+   "inflacion": {
+    "valor": 81.4,
+    "ano": 2025,
+    "prevision": 8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 7.5,
+    "ano": 2025,
+    "prevision": 5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "724": {
+   "a2": "ES",
+   "a3": "ESP",
+   "banco": "XM",
+   "inflacion": {
+    "valor": 2.7,
+    "ano": 2025,
+    "prevision": 3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.8,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": true
+  },
+  "728": {
+   "a2": "SS",
+   "a3": "SSD",
+   "banco": null,
+   "inflacion": {
+    "valor": 97.6,
+    "ano": 2025,
+    "prevision": 14,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 46.1,
+    "ano": 2025,
+    "prevision": 4.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "729": {
+   "a2": "SD",
+   "a3": "SDN",
+   "banco": null,
+   "inflacion": {
+    "valor": 100.2,
+    "ano": 2025,
+    "prevision": 75.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.2,
+    "ano": 2025,
+    "prevision": 0.7,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "732": {
+   "a2": "EH",
+   "a3": "ESH",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "740": {
+   "a2": "SR",
+   "a3": "SUR",
+   "banco": null,
+   "inflacion": {
+    "valor": 9.2,
+    "ano": 2025,
+    "prevision": 11.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.5,
+    "ano": 2025,
+    "prevision": 3.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "744": {
+   "a2": "SJ",
+   "a3": "SJM",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "748": {
+   "a2": "SZ",
+   "a3": "SWZ",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.1,
+    "ano": 2025,
+    "prevision": 3.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.6,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "752": {
+   "a2": "SE",
+   "a3": "SWE",
+   "banco": "SE",
+   "inflacion": {
+    "valor": 2.6,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.5,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "756": {
+   "a2": "CH",
+   "a3": "CHE",
+   "banco": "CH",
+   "inflacion": {
+    "valor": 0.2,
+    "ano": 2025,
+    "prevision": 0.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.3,
+    "ano": 2025,
+    "prevision": 1.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "760": {
+   "a2": "SY",
+   "a3": "SYR",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "762": {
+   "a2": "TJ",
+   "a3": "TJK",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.4,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 8.4,
+    "ano": 2025,
+    "prevision": 6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "764": {
+   "a2": "TH",
+   "a3": "THA",
+   "banco": "TH",
+   "inflacion": {
+    "valor": -0.1,
+    "ano": 2025,
+    "prevision": 0.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.4,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "768": {
+   "a2": "TG",
+   "a3": "TGO",
+   "banco": null,
+   "inflacion": {
+    "valor": 0.4,
+    "ano": 2025,
+    "prevision": 2.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.9,
+    "ano": 2025,
+    "prevision": 5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "772": {
+   "a2": "TK",
+   "a3": "TKL",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "776": {
+   "a2": "TO",
+   "a3": "TON",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.2,
+    "ano": 2025,
+    "prevision": 3.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.8,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "780": {
+   "a2": "TT",
+   "a3": "TTO",
+   "banco": null,
+   "inflacion": {
+    "valor": 1,
+    "ano": 2025,
+    "prevision": 1.8,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 0.8,
+    "ano": 2025,
+    "prevision": 0.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "784": {
+   "a2": "AE",
+   "a3": "ARE",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.3,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.8,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "788": {
+   "a2": "TN",
+   "a3": "TUN",
+   "banco": null,
+   "inflacion": {
+    "valor": 5.3,
+    "ano": 2025,
+    "prevision": 6.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.5,
+    "ano": 2025,
+    "prevision": 2.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "792": {
+   "a2": "TR",
+   "a3": "TUR",
+   "banco": "TR",
+   "inflacion": {
+    "valor": 34.9,
+    "ano": 2025,
+    "prevision": 28.6,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.6,
+    "ano": 2025,
+    "prevision": 3.4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "795": {
+   "a2": "TM",
+   "a3": "TKM",
+   "banco": null,
+   "inflacion": {
+    "valor": 2.7,
+    "ano": 2025,
+    "prevision": 3.9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.6,
+    "ano": 2025,
+    "prevision": 2.6,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "796": {
+   "a2": "TC",
+   "a3": "TCA",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "798": {
+   "a2": "TV",
+   "a3": "TUV",
+   "banco": null,
+   "inflacion": {
+    "valor": 2,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.2,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "800": {
+   "a2": "UG",
+   "a3": "UGA",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.6,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 6.7,
+    "ano": 2025,
+    "prevision": 7.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "804": {
+   "a2": "UA",
+   "a3": "UKR",
+   "banco": null,
+   "inflacion": {
+    "valor": 12.7,
+    "ano": 2025,
+    "prevision": 6.1,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.8,
+    "ano": 2025,
+    "prevision": 2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "807": {
+   "a2": "MK",
+   "a3": "MKD",
+   "banco": "MK",
+   "inflacion": {
+    "valor": 4.1,
+    "ano": 2025,
+    "prevision": 4.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.5,
+    "ano": 2025,
+    "prevision": 3.1,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "818": {
+   "a2": "EG",
+   "a3": "EGY",
+   "banco": null,
+   "inflacion": {
+    "valor": 20.4,
+    "ano": 2025,
+    "prevision": 13.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.4,
+    "ano": 2025,
+    "prevision": 4.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "826": {
+   "a2": "GB",
+   "a3": "GBR",
+   "banco": "GB",
+   "inflacion": {
+    "valor": 3.4,
+    "ano": 2025,
+    "prevision": 3.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.3,
+    "ano": 2025,
+    "prevision": 0.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "831": {
+   "a2": "GG",
+   "a3": "GGY",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "832": {
+   "a2": "JE",
+   "a3": "JEY",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "833": {
+   "a2": "IM",
+   "a3": "IMN",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "834": {
+   "a2": "TZ",
+   "a3": "TZA",
+   "banco": null,
+   "inflacion": {
+    "valor": 3.3,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5.9,
+    "ano": 2025,
+    "prevision": 5.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "840": {
+   "a2": "US",
+   "a3": "USA",
+   "banco": "US",
+   "inflacion": {
+    "valor": 2.7,
+    "ano": 2025,
+    "prevision": 3.2,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 2.1,
+    "ano": 2025,
+    "prevision": 2.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "850": {
+   "a2": "VI",
+   "a3": "VIR",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "854": {
+   "a2": "BF",
+   "a3": "BFA",
+   "banco": null,
+   "inflacion": {
+    "valor": -0.5,
+    "ano": 2025,
+    "prevision": 1.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5,
+    "ano": 2025,
+    "prevision": 4.9,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "858": {
+   "a2": "UY",
+   "a3": "URY",
+   "banco": null,
+   "inflacion": {
+    "valor": 4.7,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.8,
+    "ano": 2025,
+    "prevision": 1.8,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "860": {
+   "a2": "UZ",
+   "a3": "UZB",
+   "banco": null,
+   "inflacion": {
+    "valor": 8.8,
+    "ano": 2025,
+    "prevision": 7,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 7.7,
+    "ano": 2025,
+    "prevision": 6.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "862": {
+   "a2": "VE",
+   "a3": "VEN",
+   "banco": null,
+   "inflacion": {
+    "valor": 252,
+    "ano": 2025,
+    "prevision": 387.4,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 1.5,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "876": {
+   "a2": "WF",
+   "a3": "WLF",
+   "banco": null,
+   "inflacion": null,
+   "pib": null,
+   "zona_euro": false
+  },
+  "882": {
+   "a2": "WS",
+   "a3": "WSM",
+   "banco": null,
+   "inflacion": {
+    "valor": 1.9,
+    "ano": 2025,
+    "prevision": 2.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 4.2,
+    "ano": 2025,
+    "prevision": 3.2,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "887": {
+   "a2": "YE",
+   "a3": "YEM",
+   "banco": null,
+   "inflacion": {
+    "valor": 21.4,
+    "ano": 2025,
+    "prevision": 26.5,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": -0.5,
+    "ano": 2025,
+    "prevision": 0.5,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  },
+  "894": {
+   "a2": "ZM",
+   "a3": "ZMB",
+   "banco": null,
+   "inflacion": {
+    "valor": 13.9,
+    "ano": 2025,
+    "prevision": 9,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 3.8,
+    "ano": 2025,
+    "prevision": 4.3,
+    "ano_prevision": 2026
+   },
+   "zona_euro": false
+  }
+ },
+ "ano_fmi": 2025,
+ "ano_prevision_fmi": 2026,
+ "series_sin_actualizar_bis": {
+  "AR": "2025-07-10"
+ },
+ "fuentes": {
+  "tipos": {
+   "nombre": "BIS · Central bank policy rates (WS_CBPOL)",
+   "url": "https://data.bis.org/topics/CBPOL"
+  },
+  "fmi": {
+   "nombre": "FMI · DataMapper (WEO): PCPIPCH y NGDP_RPCH",
+   "url": "https://www.imf.org/external/datamapper/"
+  },
+  "divisas": {
+   "nombre": "BIS · tipos de cambio frente al USD (WS_XRU)",
+   "url": "https://data.bis.org/topics/XRU"
+  }
+ },
+ "errores": {},
+ "ok": true,
+ "generado_utc": "2026-10-10 09:04 UTC",
+ "duracion_s": 12.0
+}

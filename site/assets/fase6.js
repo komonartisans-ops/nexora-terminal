@@ -12,7 +12,7 @@ const linea = (serie, y) => (serie && serie.length > 1 ? [[serie[0][0], y], [ser
 function pageSkew() {
   const S = D.skew;
   let h = head('Análisis', 'Riesgo de cola (SKEW)', 'El SKEW de Cboe mide cuánto más caras están las puts muy fuera de dinero del S&P 500. Subido = el mercado paga por cubrirse de una caída fuerte e improbable. No predice fecha ni tamaño.',
-    `Cierre del ${S && S.fecha ? esc(fdy(S.fecha)) : 'SIN DATO'} · descargado: ${S && S.generado_utc ? esc(horaAct(S.generado_utc)) : 'SIN DATO'} · zonas: normal &lt; 135 · elevado ≥ 135 · alto ≥ 140 <span class="tag sin" style="margin-left:6px">CRITERIO NEXORA</span>`);
+    `Cierre del ${S && S.fecha ? esc(fdy(S.fecha)) : 'SIN DATO'} · descargado: ${S && S.generado_utc ? esc(horaAct(S.generado_utc)) : 'SIN DATO'} · zonas fijas: normal &lt; 135 · elevado ≥ 135 · alto ≥ 140 · zonas relativas (500 sesiones): elevado ≥ p75 · alto ≥ p90 <span class="tag sin" style="margin-left:6px">CRITERIO NEXORA</span>`);
   h += fallo('skew');
   if (!S || S.valor == null) return h + noData('SKEW de Cboe');
   const E = S.esencial || {};
@@ -21,11 +21,19 @@ function pageSkew() {
   const sk = (S.series && S.series.skew) || [];
   const est = S.estudio || null;
 
-  h += '<div class="sect"><h2>Lectura actual</h2><span class="more">SKEW · VIX · crédito · fondos monetarios</span></div><div class="grid g4">';
+  h += '<div class="sect"><h2>Lectura actual</h2><span class="more">SKEW · zona relativa · VIX · crédito · fondos monetarios</span></div><div class="grid g3">';
   h += `<div class="card kpi"><div class="lab">SKEW de Cboe</div><div class="exp">Zona: ${esc(S.zona)}</div><div class="big">${nf(S.valor, 1)}<small> ${S.zona === 'ALTO' ? '≥ 140' : S.zona === 'ELEVADO' ? '≥ 135' : '&lt; 135'}</small></div>
     <table><tr><td>Sesión previa</td><td>${S.previo != null ? nf(S.previo, 1) : '—'}</td></tr><tr><td>Percentil desde 1990</td><td><b>p${S.percentil_hist}</b></td></tr><tr><td>Percentil último año</td><td>p${S.percentil_1a}</td></tr>
     <tr><td>Sesiones en la zona</td><td>${S.racha_sesiones}</td></tr></table>
     <div style="margin:8px 0 2px"><span class="ck ${ZONA_CLS[S.zona] || 'sd'}">${esc(S.zona)}</span></div>${foot(S.fuente.split('(')[0], S.fecha, S.url)}</div>`;
+  if (S.zona_relativa) {
+    const zr = S.zona_relativa;
+    h += `<div class="card kpi"><div class="lab">Zona relativa · últimas ${S.ventana_relativa} sesiones <span class="tag sin" style="margin-left:4px">ALERTA</span></div><div class="exp">Percentil del SKEW dentro de su propia ventana reciente (usa la alerta de Telegram)</div>
+      <div class="big">p${nf(S.percentil_500, 0)}<small><span class="ck ${ZONA_CLS[zr] || 'sd'}">${esc(zr)}</span></small></div>
+      <table><tr><td>Umbral alto (p90)</td><td><b>${nf(S.umbral_alto_500, 1)}</b></td></tr><tr><td>Umbral elevado (p75)</td><td>${nf(S.umbral_elevado_500, 1)}</td></tr><tr><td>Sesiones en la zona</td><td>${S.racha_relativa}</td></tr>
+      <tr><td>Avisos en 3 años (relativa · fija)</td><td>${S.avisos_3_anos ? S.avisos_3_anos.relativa + ' · ' + S.avisos_3_anos.fija : '—'}</td></tr></table>
+      ${foot('Cálculo NEXORA sobre Cboe · SKEW', S.fecha, S.url)}</div>`;
+  }
   conf.forEach((c) => {
     const cls = c.encendida === true ? 'no' : c.encendida === false ? 'ok' : 'sd';
     h += `<div class="card kpi"><div class="lab">${esc(c.nombre)}</div><div class="exp">${c.encendida === true ? 'ENCENDIDA' : c.encendida === false ? 'APAGADA' : 'SIN DATO'}</div>
@@ -36,9 +44,10 @@ function pageSkew() {
   h += '</div>';
 
   /* gráficos: SKEW con umbrales, y S&P 500 */
-  h += '<div class="sect"><h2>SKEW y S&amp;P 500</h2><span class="more">línea ámbar = SKEW · rojo = umbral alto 140 · gris = umbral elevado 135</span></div><div class="grid g2">';
+  h += '<div class="sect"><h2>SKEW y S&amp;P 500</h2><span class="more">ámbar = SKEW · rojo/gris = umbrales fijos 140/135 · violeta/azul = percentiles 90/75 de las últimas 500 sesiones</span></div><div class="grid g2">';
   h += `<div class="card chartcard"><h3>SKEW de Cboe</h3><div class="sub">Últimos ~5 años</div>${lw('cSkew', [{ name: 'SKEW', color: COL.amber, data: sk, prec: 1, area: true },
-    { name: 'Alto (140)', color: COL.neg, data: linea(sk, 140), prec: 0, w: 1 }, { name: 'Elevado (135)', color: COL.gray, data: linea(sk, 135), prec: 0, w: 1 }], { tall: true, init: 730 })}${foot('Cboe · SKEW', S.fecha, S.url)}</div>`;
+    { name: 'Alto fijo (140)', color: COL.neg, data: linea(sk, 140), prec: 0, w: 1 }, { name: 'Elevado fijo (135)', color: COL.gray, data: linea(sk, 135), prec: 0, w: 1 },
+    { name: 'p90 de 500 sesiones', color: COL.violet, data: (S.series && S.series.p90_500) || [], prec: 1, w: 1 }, { name: 'p75 de 500 sesiones', color: COL.blue, data: (S.series && S.series.p75_500) || [], prec: 1, w: 1 }], { tall: true, init: 730 })}${foot('Cboe · SKEW', S.fecha, S.url)}</div>`;
   h += `<div class="card chartcard"><h3>S&amp;P 500 y VIX</h3><div class="sub">S&amp;P 500 (eje izq.) y VIX (eje der.)</div>${lw('cSkSpx', [{ name: 'VIX', color: COL.violet, data: S.series.vix, prec: 2, scale: 'right', w: 1 },
     { name: 'S&P 500', color: COL.blue, data: S.series.spx, prec: 0, scale: 'left' }], { left: true, tall: true, init: 730 })}${foot('Cboe · SPX y VIX', S.fecha, S.url)}</div></div>`;
 
@@ -58,6 +67,18 @@ function pageSkew() {
       <div class="row2"><span>Falsa alarma</span><span class="mono amber">${r.falsas_alarmas} · ${nf(r.pct_falsas, 0)} %</span></div>
       <div class="row2"><span>Tasa base: caída ≥ 5 % en cualquier sesión</span><span class="mono">${nf(b.caida_5_60s_pct, 0)} %</span></div>
       <div class="note">Hecho: el SKEW alto no multiplicó la frecuencia de caídas fuertes posteriores. Interpretación: el SKEW mide el precio de la cobertura, no la probabilidad del evento. Úsalo como contexto de posicionamiento, no como señal de timing.</div></div></div>`;
+    const er = S.estudio_relativo, ef = S.estudio_fijo_misma_muestra;
+    if (er && er.resumen && ef && ef.resumen) {
+      const fila = (nom, e) => {
+        const r = e.resumen, b = e.tasa_base || {};
+        return `<tr><td><b>${nom}</b><small>${esc(e.criterio)}</small></td><td>${r.episodios}</td><td>${r.completos}</td><td>${r.caidas} · ${nf(100 - r.pct_falsas, 0)} %</td><td><b>${r.falsas_alarmas} · ${nf(r.pct_falsas, 0)} %</b></td>
+          <td>${pill((r['5'] || {}).mediana)}</td><td>${pill((r['20'] || {}).mediana)}</td><td>${pill((r['60'] || {}).mediana)}</td><td>${nf(b.caida_5_60s_pct, 0)} %</td></tr>`;
+      };
+      h += `<div class="sect"><h2>Zona relativa frente a zona fija · misma muestra</h2><span class="more">desde ${esc(dmy(er.muestra_desde))} (primera sesión con 500 de historia) · se revalida con el mismo estudio</span></div>
+        <div class="card pad0 scroll"><table class="t"><thead><tr><th>Criterio</th><th>Entradas</th><th>Con 60 s</th><th>Caída ≥ 5 %</th><th>Falsas alarmas</th><th>Mediana 5 s</th><th>Mediana 20 s</th><th>Mediana 60 s</th><th>Tasa base caída ≥ 5 %</th></tr></thead><tbody>
+        ${fila('Zona relativa (≥ p90)', er)}${fila('Zona fija (≥ 140)', ef)}</tbody></table>${footIn('Cboe · SKEW y SPX · cálculo NEXORA (mismas reglas: 5/20/60 sesiones, caída ≥ 5 %, enfriamiento de 10 sesiones)', S.fecha, S.url)}</div>
+        <div class="note">Hecho: con la zona relativa la alerta salta ${er.resumen.episodios} veces desde ${esc(dmy(er.muestra_desde))}; en ${nf(er.resumen.pct_falsas, 0)} % de ellas el S&amp;P 500 no cayó un 5 % en las 60 sesiones siguientes, frente a una tasa base de caída del ${nf((er.tasa_base || {}).caida_5_60s_pct, 0)} % en cualquier sesión. Interpretación: ninguno de los dos criterios mejora la frecuencia de caídas fuertes respecto a una sesión cualquiera; la zona relativa sirve para que la alerta no quede encendida permanentemente cuando el SKEW sube de nivel de forma estructural, no para predecir caídas.</div>`;
+    }
     if (est.episodio_actual) {
       const a = est.episodio_actual;
       h += `<div class="note">Episodio actual: entrada el ${esc(dmy(a.entrada))} con el S&amp;P 500 en ${nf(a.spx_entrada, 0)}; hoy ${nf(a.spx_ultimo, 0)} (${sg(a.ret_desde_entrada_pct, 2, ' %')} desde la entrada, ${a.sesiones} sesiones en zona alta).</div>`;
@@ -78,7 +99,7 @@ function pageSkew() {
     <div class="row2"><span>Total (OFR, N-MFP, mensual)</span><span class="mono">${t ? `${nf(t.valor_bill, 2)} bill. $ <small style="color:var(--dim)">${esc(fd(t.fecha))}</small>` : 'SIN DATO'}</span></div>
     ${t ? `<div class="row2"><span>Variación 1 · 3 · 12 meses</span><span>${pill(t.var_1m_pct)} ${pill(t.var_3m_pct)} ${pill(t.var_12m_pct)}</span></div>` : ''}
     ${m && m.serie ? spark(m.serie, 156) : ''}${foot('FRED WRMFNS · OFR Money Market Fund Monitor', m && m.fecha, m && m.url)}</div></div>`;
-  h += `<div class="note">${esc(S.metodo)} Memoria permanente: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/historico_skew.csv" target="_blank" rel="noopener">data/historico_skew.csv</a>. Alerta de Telegram: una por episodio de zona alta.</div>`;
+  h += `<div class="note">${esc(S.metodo)} Memoria permanente: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/historico_skew.csv" target="_blank" rel="noopener">data/historico_skew.csv</a>. Alerta de Telegram: una por episodio de zona alta relativa (percentil ≥ 90 de las últimas 500 sesiones).</div>`;
   return h + errores(S.errores);
 }
 

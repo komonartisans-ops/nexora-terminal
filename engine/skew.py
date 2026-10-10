@@ -4,8 +4,10 @@ Qué es: el SKEW mide cuánto más caras están las puts muy fuera de dinero del
 paga por cubrirse de una caída fuerte e improbable («cola»). NO predice la fecha ni la magnitud de una caída.
 
 CRITERIO NEXORA (fijo, no optimizado):
-  · Zonas: NORMAL < 135 · ELEVADO ≥ 135 · ALTO ≥ 140.
-  · Episodio: primer cierre en zona ALTA tras ≥ 10 sesiones sin estarlo (evita contar como entradas distintas las oscilaciones alrededor de 140).
+  · Zonas fijas: NORMAL < 135 · ELEVADO ≥ 135 · ALTO ≥ 140.
+  · Zonas relativas (las que usa la alerta de Telegram): percentil del SKEW de hoy dentro de las últimas 500 sesiones (≈ 2 años):
+    ALTO ≥ p90 · ELEVADO ≥ p75 · NORMAL por debajo. Tiene en cuenta que el SKEW vive estructuralmente más alto que hace décadas.
+  · Episodio: primer cierre en zona ALTA (fija o relativa) tras ≥ 10 sesiones sin estarlo (evita contar como entradas distintas las oscilaciones).
   · Resultado: rentabilidad del S&P 500 a 5, 20 y 60 sesiones (≈ 1, 4 y 12 semanas) y peor caída desde el cierre de entrada dentro de las 60 sesiones.
     FALSA ALARMA = el S&P 500 no llegó a caer un 5 % o más desde el cierre de entrada en esas 60 sesiones.
   · Confirmaciones (de 3): VIX ≥ 20 o curva de volatilidad invertida (VIX/VIX3M ≥ 1) · crédito en TENSIÓN (ciclo.py) ·
@@ -24,6 +26,8 @@ import fuentes
 CBOE = "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/{}_History.csv"
 URL_CBOE = "https://www.cboe.com/us/indices/dashboard/skew/"
 Z_ELEVADO, Z_ALTO = 135.0, 140.0
+REL_VENTANA = 500            # sesiones para el percentil relativo
+P_ALTO, P_ELEVADO = 90, 75   # percentiles de las zonas relativas
 ENFRIAMIENTO = 10            # sesiones (2 semanas) sin zona ALTA para considerar una entrada nueva
 HORIZONTES = (5, 20, 60)     # sesiones ≈ 1, 4 y 12 semanas
 CAIDA_FALSA = -5.0           # % : por encima de esta caída máxima a 60 sesiones, la entrada se cuenta como falsa alarma
@@ -73,20 +77,40 @@ def _med(v):
     return round(statistics.median(v), 2) if v else None
 
 
+def rel_serie(skew, n=REL_VENTANA):
+    """[(fecha, percentil, valor_p90, valor_p75)] para cada sesión con n sesiones de historia (la sesión de hoy incluida en la ventana)."""
+    vals = [x for _, x in skew]
+    out = []
+    for i in range(n - 1, len(vals)):
+        w = vals[i - n + 1:i + 1]
+        v = vals[i]
+        pct = 100 * sum(1 for x in w if x <= v) / n
+        ws = sorted(w)
+        out.append((skew[i][0], pct, ws[int(0.90 * n) - 1], ws[int(0.75 * n) - 1]))
+    return out
+
+
+def zona_rel(p):
+    return "ALTO" if p >= P_ALTO else "ELEVADO" if p >= P_ELEVADO else "NORMAL"
+
+
 # ---------------------------------------------------------------- estudio histórico propio
-def estudio(skew, spx):
-    """Qué hizo el S&P 500 tras entrar el SKEW en zona ALTA (incluye las falsas alarmas) frente a la tasa base de cualquier día."""
+def estudio(skew, spx, disparos=None, desde=None, criterio=None):
+    """Qué hizo el S&P 500 tras entrar el SKEW en zona ALTA (incluye las falsas alarmas) frente a la tasa base de cualquier día.
+    `disparos`: conjunto de fechas en zona alta (si no, SKEW ≥ 140). `desde`: primera fecha de la muestra (también para la tasa base)."""
     fechas = [d for d, _ in spx]
     px = [v for _, v in spx]
     idx = {d: i for i, d in enumerate(fechas)}
     n = len(px)
     vixd = {}
     entradas, ultimo = [], None
+    desde = desde or skew[0][0]  # la muestra y la tasa base empiezan donde empieza el SKEW (1990), no donde empieza el S&P 500
+    i0 = next((i for i, d in enumerate(fechas) if d >= desde), 0)
     for d, v in skew:
         i = idx.get(d)
-        if i is None:
+        if i is None or i < i0:
             continue
-        if v >= Z_ALTO:
+        if (d in disparos) if disparos is not None else v >= Z_ALTO:
             if ultimo is None or i - ultimo > ENFRIAMIENTO:
                 entradas.append((d, i, v))
             ultimo = i
@@ -110,9 +134,9 @@ def estudio(skew, spx):
     # tasa base: todos los días con horizonte completo
     base = {}
     for h in HORIZONTES:
-        rs = [(px[i + h] / px[i] - 1) * 100 for i in range(n - h)]
+        rs = [(px[i + h] / px[i] - 1) * 100 for i in range(i0, n - h)]
         base[str(h)] = {"n": len(rs), "media": round(statistics.fmean(rs), 2), "mediana": _med(rs), "pct_positivos": round(100 * sum(1 for x in rs if x > 0) / len(rs), 1)}
-    dds = [(min(px[i:i + hmax + 1]) / px[i] - 1) * 100 for i in range(n - hmax)]
+    dds = [(min(px[i:i + hmax + 1]) / px[i] - 1) * 100 for i in range(i0, n - hmax)]
     base["caida_5_60s_pct"] = round(100 * sum(1 for x in dds if x <= CAIDA_FALSA) / len(dds), 1)
     resumen = {}
     comp = [e for e in eps if e["completo"]]
@@ -127,7 +151,8 @@ def estudio(skew, spx):
     resumen["pct_falsas"] = round(100 * resumen["falsas_alarmas"] / len(comp), 1) if comp else None
     resumen["desde"] = eps[0]["fecha"] if eps else None
     return {"episodios": eps[::-1], "resumen": resumen, "tasa_base": base, "horizontes": list(HORIZONTES), "umbral_caida_pct": CAIDA_FALSA,
-            "enfriamiento": ENFRIAMIENTO, "umbral_skew": Z_ALTO,
+            "enfriamiento": ENFRIAMIENTO, "umbral_skew": Z_ALTO, "criterio": criterio or "SKEW ≥ 140 (zona fija)",
+            "muestra_desde": fechas[i0].isoformat(), "sesiones_base": n - i0,
             "sesgo_del_estudio": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); "
                                  "una media no es una regla. Correlación con caídas ≠ causalidad ni predicción."}
 
@@ -266,12 +291,39 @@ def medir(ciclo=None):
                 est["episodio_actual"] = {"entrada": entrada_alta, "sesiones": racha, "spx_entrada": round(pe[d0], 2), "spx_ultimo": round(spx[-1][1], 2),
                                           "ret_desde_entrada_pct": round((spx[-1][1] / pe[d0] - 1) * 100, 2), "fecha_ultimo": spx[-1][0].isoformat()}
 
-    # entrada del episodio vigente (con enfriamiento): clave de la alerta de Telegram, una por episodio
+    # entrada del episodio vigente (con enfriamiento, zona fija)
     entrada_ep = est["episodios"][0]["fecha"] if (z == "ALTO" and est and est["episodios"]) else None
+
+    # ---- zona RELATIVA: percentil dentro de las últimas 500 sesiones (la que usa la alerta de Telegram)
+    rel = rel_serie(skew)
+    f_rel, p_rel, u90, u75 = rel[-1]
+    zr = zona_rel(p_rel)
+    rzona = {d: zona_rel(p) for d, p, _, _ in rel}
+    racha_rel = 0
+    for d, p, _, _ in reversed(rel):
+        if zona_rel(p) == zr:
+            racha_rel += 1
+        else:
+            break
+    entrada_rel_alta = rel[len(rel) - racha_rel][0].isoformat() if zr == "ALTO" else None
+    est_rel = est_fijo_muestra = None
+    entrada_ep_rel = None
+    if spx:
+        disparos = {d for d, p, _, _ in rel if p >= P_ALTO}
+        d0 = rel[0][0]
+        est_rel = estudio(skew, spx, disparos=disparos, desde=d0, criterio=f"percentil ≥ {P_ALTO} de las últimas {REL_VENTANA} sesiones (zona relativa)")
+        est_fijo_muestra = estudio(skew, spx, desde=d0, criterio="SKEW ≥ 140 (zona fija), misma muestra que la zona relativa")
+        if zr == "ALTO" and est_rel["episodios"]:
+            entrada_ep_rel = est_rel["episodios"][0]["fecha"]
+    # veces que cada criterio habría avisado en los últimos 3 años (para ver cuánto ruido hace cada uno)
+    corte3 = f - dt.timedelta(days=365 * 3)
+    avisos3 = {"fija": len([e for e in (est_fijo_muestra or est or {}).get("episodios", []) if e["fecha"] >= corte3.isoformat()]),
+               "relativa": len([e for e in (est_rel or {}).get("episodios", []) if e["fecha"] >= corte3.isoformat()])}
 
     # texto determinista de «lo esencial»
     zt = {"NORMAL": "en zona normal", "ELEVADO": "en zona elevada (≥ 135)", "ALTO": "en zona alta (≥ 140)"}[z]
     cambio = (f"El SKEW de Cboe cerró en {_n(v)} el {_dmy(f)} (percentil {p_hist} de su historia desde 1990; {p_1a} del último año), {zt}"
+              f"; frente a las últimas {REL_VENTANA} sesiones está en el percentil {_n(p_rel, 0)} (zona relativa {zr.lower()}; el umbral alto relativo está en {_n(u90)})"
               + (f"; entró en zona alta el {_dmy(entrada_alta)} y lleva {racha} sesiones seguidas" if z == "ALTO" else "")
               + (f". Sesión previa: {_n(prev)}." if prev is not None else "."))
     if z == "ALTO":
@@ -294,18 +346,24 @@ def medir(ciclo=None):
         a[1] += x >= Z_ALTO
     distrib = [{"anio": y, "pct_alto": round(100 * c[1] / c[0], 1), "sesiones": c[0]} for y, c in sorted(anual.items())]
     return {"fecha": f.isoformat(), "valor": round(v, 2), "zona": z, "previo": round(prev, 2) if prev is not None else None,
+            "zona_relativa": zr, "percentil_500": round(p_rel, 1), "umbral_alto_500": round(u90, 2), "umbral_elevado_500": round(u75, 2),
+            "ventana_relativa": REL_VENTANA, "racha_relativa": racha_rel, "entrada_zona_alta_relativa": entrada_rel_alta,
+            "entrada_episodio_relativa": entrada_ep_rel, "estudio_relativo": est_rel, "estudio_fijo_misma_muestra": est_fijo_muestra, "avisos_3_anos": avisos3,
+            "umbrales_relativos": {"alto_percentil": P_ALTO, "elevado_percentil": P_ELEVADO},
             "entrada_episodio": entrada_ep, "percentil_hist": p_hist, "percentil_10a": p_10a, "percentil_1a": p_1a, "racha_sesiones": racha, "entrada_zona_alta": entrada_alta,
             "ultima_vez_alto": ult_alto.isoformat() if ult_alto else None,
             "maximo_hist": {"fecha": max_hist[0].isoformat(), "valor": round(max_hist[1], 2)}, "maximo_1a": {"fecha": max_1a[0].isoformat(), "valor": round(max_1a[1], 2)},
             "umbrales": {"elevado": Z_ELEVADO, "alto": Z_ALTO}, "vix": vx, "vix3m": v3,
             "confirmaciones": conf, "confirmaciones_encendidas": encendidas, "confirmaciones_validas": len(validas),
             "fondos_monetarios": fm, "estudio": est, "distribucion_anual": distrib,
-            "series": {"skew": [[d.isoformat(), round(x, 2)] for d, x in skew[-1300:]],
+            "series": {"p90_500": [[d.isoformat(), round(a, 2)] for d, _, a, _ in rel[-1300:]], "p75_500": [[d.isoformat(), round(b, 2)] for d, _, _, b in rel[-1300:]],
+                       "skew": [[d.isoformat(), round(x, 2)] for d, x in skew[-1300:]],
                        "spx": [[d.isoformat(), round(x, 2)] for d, x in spx[-1300:]] if spx else None,
                        "vix": [[d.isoformat(), round(x, 2)] for d, x in vixc[-1300:]] if vixc else None},
             "esencial": {"cambio": cambio, "significa": s1, "vigilar": vig},
             "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)", "url": URL_CBOE, "errores": err,
-            "metodo": ("CRITERIO NEXORA. Zonas: normal < 135, elevado ≥ 135, alto ≥ 140. Episodio = primer cierre en zona alta tras 10 sesiones sin estarlo. "
+            "metodo": ("CRITERIO NEXORA. Zonas fijas: normal < 135, elevado ≥ 135, alto ≥ 140. Zonas relativas (alerta de Telegram): percentil de las últimas 500 sesiones, "
+                       "alto ≥ p90, elevado ≥ p75. Episodio = primer cierre en zona alta tras 10 sesiones sin estarlo. "
                        "Falsa alarma = el S&P 500 no cae ≥ 5 % desde el cierre de entrada en las siguientes 60 sesiones. Los umbrales son convenciones fijas, no optimizadas.")}
 
 
