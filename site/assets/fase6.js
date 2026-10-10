@@ -28,7 +28,7 @@ function pageSkew() {
     <div style="margin:8px 0 2px"><span class="ck ${ZONA_CLS[S.zona] || 'sd'}">${esc(S.zona)}</span></div>${foot(S.fuente.split('(')[0], S.fecha, S.url)}</div>`;
   if (S.zona_relativa) {
     const zr = S.zona_relativa;
-    h += `<div class="card kpi"><div class="lab">Zona relativa · últimas ${S.ventana_relativa} sesiones <span class="tag sin" style="margin-left:4px">ALERTA</span></div><div class="exp">Percentil del SKEW dentro de su propia ventana reciente (usa la alerta de Telegram)</div>
+    h += `<div class="card kpi"><div class="lab">Zona relativa · últimas ${S.ventana_relativa} sesiones <span class="tag sin" style="margin-left:4px">ALERTA</span></div><div class="exp">Percentil del SKEW dentro de su propia ventana reciente (primera condición de la alerta de Telegram)</div>
       <div class="big">p${nf(S.percentil_500, 0)}<small><span class="ck ${ZONA_CLS[zr] || 'sd'}">${esc(zr)}</span></small></div>
       <table><tr><td>Umbral alto (p90)</td><td><b>${nf(S.umbral_alto_500, 1)}</b></td></tr><tr><td>Umbral elevado (p75)</td><td>${nf(S.umbral_elevado_500, 1)}</td></tr><tr><td>Sesiones en la zona</td><td>${S.racha_relativa}</td></tr>
       <tr><td>Avisos en 3 años (relativa · fija)</td><td>${S.avisos_3_anos ? S.avisos_3_anos.relativa + ' · ' + S.avisos_3_anos.fija : '—'}</td></tr></table>
@@ -42,6 +42,15 @@ function pageSkew() {
       ${foot(c.fuente, c.fecha, c.url && c.url.startsWith('http') ? c.url : null)}</div>`;
   });
   h += '</div>';
+  if (S.alerta) {
+    const A = S.alerta;
+    const ck = (ok, t) => `<span class="ck ${ok ? 'ok' : 'no'}">${ok ? 'SÍ' : 'NO'}</span> ${t}`;
+    h += `<div class="card" style="margin-top:12px"><div class="lab">Regla de la alerta de Telegram <span class="tag sin" style="margin-left:4px">CRITERIO NEXORA</span></div>
+      <p class="note" style="margin:6px 0 8px">${esc(A.regla)}</p>
+      <div class="row2"><span>1 · Zona relativa alta (percentil ≥ p90 de ${S.ventana_relativa} sesiones)</span><span>${ck(A.cumple_zona, 'p' + nf(S.percentil_500, 0) + ' · ' + esc(S.zona_relativa || '—'))}</span></div>
+      <div class="row2"><span>2 · Al menos ${A.minimo} confirmaciones encendidas (VIX, crédito, fondos monetarios)</span><span>${ck(A.cumple_confirmaciones, A.confirmaciones_encendidas + ' de ' + A.confirmaciones_validas)}</span></div>
+      <div class="row2"><span><b>Estado hoy</b></span><span><b>${esc(A.estado)}</b></span></div></div>`;
+  }
 
   /* gráficos: SKEW con umbrales, y S&P 500 */
   h += '<div class="sect"><h2>SKEW y S&amp;P 500</h2><span class="more">ámbar = SKEW · rojo/gris = umbrales fijos 140/135 · violeta/azul = percentiles 90/75 de las últimas 500 sesiones</span></div><div class="grid g2">';
@@ -99,7 +108,7 @@ function pageSkew() {
     <div class="row2"><span>Total (OFR, N-MFP, mensual)</span><span class="mono">${t ? `${nf(t.valor_bill, 2)} bill. $ <small style="color:var(--dim)">${esc(fd(t.fecha))}</small>` : 'SIN DATO'}</span></div>
     ${t ? `<div class="row2"><span>Variación 1 · 3 · 12 meses</span><span>${pill(t.var_1m_pct)} ${pill(t.var_3m_pct)} ${pill(t.var_12m_pct)}</span></div>` : ''}
     ${m && m.serie ? spark(m.serie, 156) : ''}${foot('FRED WRMFNS · OFR Money Market Fund Monitor', m && m.fecha, m && m.url)}</div></div>`;
-  h += `<div class="note">${esc(S.metodo)} Memoria permanente: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/historico_skew.csv" target="_blank" rel="noopener">data/historico_skew.csv</a>. Alerta de Telegram: una por episodio de zona alta relativa (percentil ≥ 90 de las últimas 500 sesiones).</div>`;
+  h += `<div class="note">${esc(S.metodo)} Memoria permanente: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/historico_skew.csv" target="_blank" rel="noopener">data/historico_skew.csv</a>. Alerta de Telegram: una por episodio, solo con zona alta relativa (percentil ≥ 90 de las últimas 500 sesiones) Y al menos 2 de las 3 confirmaciones encendidas (VIX, crédito, fondos monetarios).</div>`;
   return h + errores(S.errores);
 }
 

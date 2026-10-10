@@ -19,7 +19,7 @@ LECTURA = [
     "Un bloque con estado 'SIN DATO' o con 'ok': false significa que la fuente falló: dilo, no lo estimes ni lo sustituyas por memoria.",
     "Los bloques 'CRITERIO NEXORA' (gamma, semis/software, zonas del SKEW) son métodos propios, no datos oficiales: menciona el método.",
     "Revisa 'frescura' y 'datos_con_mas_de_48h' antes de afirmar nada sobre el estado actual.",
-    "El tono hawkish/dovish es una lectura léxica con diccionario fijo: antes de citarlo mira 'validacion_vs_siguiente_decision' (muestra y líneas base); en la mayoría de bancos no mejora a «siempre mantiene».",
+    "El tono hawkish/dovish es un bloque SECUNDARIO si 'tono_bancos_centrales.estado_bloque' lo dice: lectura léxica con diccionario fijo, sin demostrar que anticipe la dirección de los tipos frente al azar. Cítalo solo como contexto, con su z-score, su muestra y su estado; nunca como señal de subida o bajada.",
     "La lectura de liquidez global y las zonas relativas del SKEW (percentil de 500 sesiones) son CRITERIO NEXORA; los tipos, fechas de reunión e indicadores del FMI son datos oficiales con su fecha.",
 ]
 
@@ -224,7 +224,7 @@ def _bancos_mundo(B):
                       "divisa_vs_usd_1m_pct": (b.get("fx") or {}).get("cambio_1m_pct"), "divisa_fecha": (b.get("fx") or {}).get("fecha"),
                       "inflacion_fmi": b.get("inflacion"), "pib_fmi": b.get("pib")})
     return {"fecha": B.get("fecha"), "n_bancos": B.get("n_bancos"), "contador_12m": B.get("contador"),
-            "lectura_liquidez_global": B.get("lectura"), "balance_fed_bce_boj": B.get("balance"),
+            "lectura_liquidez_global": B.get("lectura"), "balance_fed_bce_boj": B.get("balance"), "amplitud_ponderada_pib": B.get("amplitud_ponderada"),
             "proximas_reuniones": B.get("proximas_reuniones"), "bancos": filas,
             "zona_euro": {"miembros": (B.get("eurozona") or {}).get("n"), "tipo_bce_pct": next((b.get("tipo") for b in B["bancos"] if b["codigo"] == "XM"), None)},
             "historico_8_grandes": "site/data/bancos.json → historico8 (cambios de tipo desde 2010, BIS)",
@@ -244,10 +244,27 @@ def _tono(T):
             continue
         v[b] = {"muestra": x["n"], "desde": x.get("desde"), "acierto_nivel_pct": x["nivel"]["pct"], "acierto_cambio_pct": x["cambio"].get("pct"),
                 "base_siempre_mantiene_pct": x["base_mantiene"]["pct"], "base_repite_decision_pct": x["base_repite"]["pct"], "correlacion_tono_vs_siguiente_cambio_pp": x.get("correlacion")}
-    return {"fecha": T.get("fecha"), "ultimo_comunicado": {b: ({"fecha": u["fecha"], "indice": u["indice"], "nivel": u["nivel"], "cambio_vs_anterior": u.get("cambio"), "cambio": u.get("cambio_txt")} if u else "SIN DATO")
-                                                          for b, u in (T.get("ultimo") or {}).items()},
-            "validacion_vs_siguiente_decision": v,
-            "oradores_recientes": [{"banco": o["banco"], "orador": o["orador"], "fecha": o["ultimo"]["fecha"], "indice": o["ultimo"]["indice"], "nivel": o["ultimo"]["nivel"],
+    vz = T.get("validacion_z") or {}
+    tz = vz.get("_total") or {}
+    bz = {}
+    for b in ("Fed", "BCE", "BoJ"):
+        x = (vz.get(b) or {}).get("direccion") or {}
+        bz[b] = ({"muestra_movimientos": x["n"], "aciertos": x["aciertos"], "acierto_pct": x["pct"], "azar_pct": x["azar_pct"], "p_valor": x["p_valor"],
+                  "base_repite_decision_pct": x["repite_pct"]} if x.get("n") else "SIN MUESTRA")
+    d = tz.get("direccion") or {}
+    return {"fecha": T.get("fecha"),
+            "estado_bloque": (T.get("estado_bloque") or {}).get("estado", "SECUNDARIO"),
+            "estado_motivo": (T.get("estado_bloque") or {}).get("motivo"),
+            "criterio_estado": tz.get("criterio"),
+            "ultimo_comunicado": {b: ({"fecha": u["fecha"], "indice_crudo": u["indice"], "z_vs_media_2a_propia": u.get("z"), "media_2a": u.get("media_2a"), "sd_2a": u.get("sd_2a"),
+                                       "observaciones_en_ventana": u.get("n_2a"), "cambio_z_vs_intervencion_anterior": u.get("dz"), "cambio_z": u.get("dz_txt"),
+                                       "anterior": u.get("anterior_fecha"), "aviso": ("intervención anterior con pocos términos: Δz poco fiable" if u.get("anterior_pocos_terminos") else None)}
+                                      if u else "SIN DATO") for b, u in (T.get("ultimo") or {}).items()},
+            "validacion_z_dir_siguiente_decision": {"regla": "signo de Δz frente a la dirección de la reunión siguiente, solo cuando esa reunión mueve el tipo", "por_banco": bz,
+                                                    "total": {"muestra_movimientos": d.get("n"), "aciertos": d.get("aciertos"), "acierto_pct": d.get("pct"), "azar_pct": d.get("azar_pct"),
+                                                              "p_valor_binomial": d.get("p_valor"), "base_repite_decision_pct": d.get("repite_pct")}},
+            "validacion_nivel_version_anterior": v,
+            "oradores_recientes": [{"banco": o["banco"], "orador": o["orador"], "fecha": o["ultimo"]["fecha"], "indice_crudo": o["ultimo"]["indice"], "nivel_crudo": o["ultimo"]["nivel"],
                                     "cambio_vs_anterior": o.get("cambio"), "anterior": o.get("anterior")} for o in (T.get("oradores") or [])[:12]],
             "diccionario": {"version": (T.get("diccionario") or {}).get("version"), "n_terminos": (T.get("diccionario") or {}).get("n_terminos")},
             "actualizado_utc": T.get("generado_utc"),

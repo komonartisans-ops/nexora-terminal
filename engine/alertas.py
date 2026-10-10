@@ -4,7 +4,8 @@
 Umbrales = los de las alertas NEXORA (CRITERIO NEXORA, fijos):
   Fed ±15 puntos de probabilidad o cambio del resultado más probable · 2Y ±12 pb · 10Y real ±8 pb · DXY ±0,7 %
   VIX > 25 o +20 % · diferenciales en 5 días: IG +10, BBB +12, HY +25, CCC +60 pb · cambio de señal o de fase del ciclo
-  Oro ±2 % · BTC −7 % / +8 % · salidas de ETF de BTC > 500 M$ · SKEW de Cboe entra en zona alta relativa (percentil ≥ 90 de las últimas 500 sesiones; una alerta por episodio).
+  Oro ±2 % · BTC −7 % / +8 % · salidas de ETF de BTC > 500 M$ · SKEW de Cboe en zona alta relativa (percentil ≥ 90 de las últimas 500 sesiones; una alerta por episodio)
+  Y al menos 2 de 3 confirmaciones encendidas (VIX/curva de plazos, crédito, fondos monetarios).
 Cada alerta se envía UNA vez al día (estado en data/estado_alertas.json).
 Mensaje de 4 líneas: 1 QUÉ HA CAMBIADO (dato + fuente) · 2 QUÉ SIGNIFICA (oro, índices, BTC) · 3 QUÉ VIGILAR (hora de Madrid)
 · 4 EN PALABRAS SENCILLAS. No se describen precios que el usuario ya ve en su gráfico: se explica la causa.
@@ -37,7 +38,7 @@ URL = "https://komonartisans-ops.github.io/nexora-terminal/"
 DIA = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
 U = {"fed_pts": 15, "t2y_pb": 12, "real_pb": 8, "dxy_pct": 0.7, "vix_nivel": 25, "vix_pct": 20,
-     "ig_pb": 10, "bbb_pb": 12, "hy_pb": 25, "ccc_pb": 60, "oro_pct": 2.0, "btc_baja_pct": -7.0, "btc_sube_pct": 8.0, "etf_btc_musd": -500, "skew_alto": 140, "skew_elevado": 135, "skew_percentil_alto": 90, "skew_percentil_elevado": 75, "skew_ventana": 500}
+     "ig_pb": 10, "bbb_pb": 12, "hy_pb": 25, "ccc_pb": 60, "oro_pct": 2.0, "btc_baja_pct": -7.0, "btc_sube_pct": 8.0, "etf_btc_musd": -500, "skew_alto": 140, "skew_elevado": 135, "skew_percentil_alto": 90, "skew_percentil_elevado": 75, "skew_ventana": 500, "skew_confirmaciones_min": 2}
 
 
 def leer(nombre, base=SITE_DATA):
@@ -217,11 +218,15 @@ def evaluar(D, estado):
         estado["ciclo"] = ciclo.nuevo_estado(C, prev, Ac)
     else:
         no_eval["ciclo"] = "SIN DATO (ciclo.json)"
-    # riesgo de cola: el SKEW de Cboe entra en zona ALTA RELATIVA (percentil ≥ 90 de las últimas 500 sesiones). Una alerta por episodio
+    # riesgo de cola: el SKEW de Cboe en zona ALTA RELATIVA (percentil ≥ 90 de las últimas 500 sesiones) Y ≥ 2 confirmaciones. Una alerta por episodio
     # (enfriamiento de 10 sesiones, igual que el estudio histórico). Las zonas fijas 135/140 siguen en la página como referencia.
     S = D.get("skew") or {}
     if S.get("valor") is None or S.get("zona_relativa") is None:
         no_eval["skew"] = "SIN DATO (Cboe SKEW)"
+    elif S.get("zona_relativa") == "ALTO" and S.get("entrada_episodio_relativa") and (S.get("confirmaciones_encendidas") or 0) < U["skew_confirmaciones_min"]:
+        # regla: zona relativa alta Y >= 2 confirmaciones. Con menos, no se envía nada y queda constancia en no_eval (se reevalúa en cada ejecución del episodio)
+        no_eval["skew"] = (f"RETENIDA: zona relativa alta pero solo {S.get('confirmaciones_encendidas')} de {S.get('confirmaciones_validas')} confirmaciones encendidas "
+                           f"(mínimo {U['skew_confirmaciones_min']})")
     elif S.get("zona_relativa") == "ALTO" and S.get("entrada_episodio_relativa"):
         ep = S["entrada_episodio_relativa"]
         clave = f"rel_{ep}"

@@ -8,6 +8,9 @@ CRITERIO NEXORA (fijo, no optimizado):
   · Zonas relativas (las que usa la alerta de Telegram): percentil del SKEW de hoy dentro de las últimas 500 sesiones (≈ 2 años):
     ALTO ≥ p90 · ELEVADO ≥ p75 · NORMAL por debajo. Tiene en cuenta que el SKEW vive estructuralmente más alto que hace décadas.
   · Episodio: primer cierre en zona ALTA (fija o relativa) tras ≥ 10 sesiones sin estarlo (evita contar como entradas distintas las oscilaciones).
+  · ALERTA DE TELEGRAM: solo salta con zona relativa ALTA (≥ p90 de 500 sesiones, una por episodio) Y al menos 2 de las 3 confirmaciones encendidas.
+    Con zona ALTA y menos de 2 confirmaciones NO se envía nada (la página lo muestra como «alerta retenida»); si durante el mismo episodio se encienden
+    las confirmaciones que faltan, la alerta salta entonces, una sola vez.
   · Resultado: rentabilidad del S&P 500 a 5, 20 y 60 sesiones (≈ 1, 4 y 12 semanas) y peor caída desde el cierre de entrada dentro de las 60 sesiones.
     FALSA ALARMA = el S&P 500 no llegó a caer un 5 % o más desde el cierre de entrada en esas 60 sesiones.
   · Confirmaciones (de 3): VIX ≥ 20 o curva de volatilidad invertida (VIX/VIX3M ≥ 1) · crédito en TENSIÓN (ciclo.py) ·
@@ -33,6 +36,7 @@ HORIZONTES = (5, 20, 60)     # sesiones ≈ 1, 4 y 12 semanas
 CAIDA_FALSA = -5.0           # % : por encima de esta caída máxima a 60 sesiones, la entrada se cuenta como falsa alarma
 VIX_ESTRES = 20.0
 FM_PCT_FUERTE = 80
+CONF_MINIMAS = 2             # confirmaciones encendidas (de VIX, crédito, fondos monetarios) que exige la alerta de Telegram además de la zona relativa ALTA
 
 
 def _fecha(s):
@@ -360,10 +364,17 @@ def medir(ciclo=None):
                        "skew": [[d.isoformat(), round(x, 2)] for d, x in skew[-1300:]],
                        "spx": [[d.isoformat(), round(x, 2)] for d, x in spx[-1300:]] if spx else None,
                        "vix": [[d.isoformat(), round(x, 2)] for d, x in vixc[-1300:]] if vixc else None},
+            "alerta": {"regla": (f"La alerta de Telegram salta solo si se cumplen LAS DOS condiciones: (1) zona relativa ALTA (percentil ≥ {P_ALTO} de las últimas {REL_VENTANA} sesiones, "
+                                 f"una alerta por episodio) y (2) al menos {CONF_MINIMAS} de las 3 confirmaciones encendidas (VIX y curva de plazos, crédito de riesgo, fondos monetarios). "
+                                 "Con zona alta y menos confirmaciones no se envía nada."),
+                       "zona_relativa_alta": zr == "ALTO", "confirmaciones_encendidas": encendidas, "confirmaciones_validas": len(validas), "minimo": CONF_MINIMAS,
+                       "cumple_zona": zr == "ALTO", "cumple_confirmaciones": encendidas >= CONF_MINIMAS,
+                       "estado": ("SALTARÍA" if (zr == "ALTO" and encendidas >= CONF_MINIMAS) else
+                                  "RETENIDA (falta confirmación)" if zr == "ALTO" else "SIN ALERTA (zona relativa no alta)")},
             "esencial": {"cambio": cambio, "significa": s1, "vigilar": vig},
             "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)", "url": URL_CBOE, "errores": err,
-            "metodo": ("CRITERIO NEXORA. Zonas fijas: normal < 135, elevado ≥ 135, alto ≥ 140. Zonas relativas (alerta de Telegram): percentil de las últimas 500 sesiones, "
-                       "alto ≥ p90, elevado ≥ p75. Episodio = primer cierre en zona alta tras 10 sesiones sin estarlo. "
+            "metodo": ("CRITERIO NEXORA. Zonas fijas: normal < 135, elevado ≥ 135, alto ≥ 140. Zonas relativas: percentil de las últimas 500 sesiones, "
+                       "alto ≥ p90, elevado ≥ p75. Alerta de Telegram: zona relativa alta Y al menos 2 de 3 confirmaciones encendidas. Episodio = primer cierre en zona alta tras 10 sesiones sin estarlo. "
                        "Falsa alarma = el S&P 500 no cae ≥ 5 % desde el cierre de entrada en las siguientes 60 sesiones. Los umbrales son convenciones fijas, no optimizadas.")}
 
 

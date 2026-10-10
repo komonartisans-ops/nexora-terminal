@@ -13,6 +13,14 @@ CRITERIO NEXORA (fijo, definido antes de mirar los resultados, no optimizado)
 Validación obligatoria: tono de cada comunicado desde 2015 frente a la decisión de la reunión SIGUIENTE; se publica el % de aciertos, el tamaño
 de la muestra y las líneas base (siempre «mantiene» y «repetir la decisión anterior»), tanto si el tono ayuda como si no.
 
+LECTURA RELATIVA (v2): el índice crudo está sesgado por banco (el BoJ casi siempre sale dovish por su vocabulario de «acomodación»). Por eso la
+lectura principal es el Z-SCORE del índice frente a la media móvil de los 2 años anteriores del PROPIO banco (solo observaciones previas, sin mirar
+al futuro; ≥ 8 observaciones; desviación típica muestral) y su CAMBIO frente a la intervención anterior (Δz). No se traduce a «sube/baja».
+Revalidación (criterio fijado ANTES de ver el resultado): cuando la reunión siguiente MUEVE el tipo (±0,10 pp o más), ¿el signo de Δz coincide con
+la dirección del movimiento? Se publica n, aciertos, % frente al azar (50 %), p-valor binomial exacto bilateral y la línea base «repetir la
+decisión anterior» en la misma muestra. El bloque es PRINCIPAL solo si, en el total, n ≥ 30, acierto > 50 % con p < 0,05 y acierto ≥ línea base
+«repetir»; si no, SECUNDARIO (la página y contexto.json lo dicen).
+
 Memoria permanente: data/tono_comunicados.csv y data/tono_discursos.csv (puntuación y términos de cada documento; el texto no se guarda)."""
 from __future__ import annotations
 
@@ -22,6 +30,7 @@ import hashlib
 import html
 import io
 import json
+import math
 import re
 import statistics
 
@@ -38,6 +47,12 @@ MIN_MENCIONES_TEMA = 3
 UMBRAL_DECISION = 0.10
 VENTANA_DECISION = 10          # días tras la reunión en que se mide la variación del tipo
 MAX_NUEVOS = 400
+VENTANA_Z_DIAS = 730           # media móvil de 2 años del propio banco
+MIN_OBS_Z = 8                  # observaciones previas mínimas para puntuar un z
+UMBRAL_DZ = 0.5                # σ: solo etiqueta el cambio (MÁS HAWKISH / MÁS DOVISH); la validación usa el signo
+AVISO_PESO = 5                 # H + D por debajo de esto: el índice se marca como poco fiable (aviso; NO se excluye del z-score)
+MIN_N_PRINCIPAL = 30
+P_PRINCIPAL = 0.05
 URL_ECB_CSV = "https://www.ecb.europa.eu/press/key/shared/data/all_ECB_speeches.csv"
 
 # ---------------------------------------------------------------- diccionario (versionado)
@@ -444,6 +459,116 @@ def validar(series, pasos):
     return out
 
 
+# ---------------------------------------------------------------- z-score relativo al propio banco y su validación
+def z_serie(items):
+    """items ordenados por fecha con 'fecha' e 'indice' (None = no puntúa). Añade z, media_2a, sd_2a, n_2a, dz, dz_txt in situ.
+    Base = observaciones del MISMO banco en los 730 días ANTERIORES a la intervención (excluida ella misma)."""
+    ant = None
+    for x in items:
+        x.update({"z": None, "media_2a": None, "sd_2a": None, "n_2a": 0, "dz": None, "dz_txt": None, "pocos_terminos": False})
+        if x["indice"] is None:
+            continue
+        x["pocos_terminos"] = (x["h"] + x["d"]) < AVISO_PESO
+        f = dt.date.fromisoformat(x["fecha"])
+        base = [y["indice"] for y in items if y["indice"] is not None and dt.date.fromisoformat(y["fecha"]) < f
+                and (f - dt.date.fromisoformat(y["fecha"])).days <= VENTANA_Z_DIAS]
+        x["n_2a"] = len(base)
+        if len(base) >= MIN_OBS_Z:
+            m, sd = statistics.fmean(base), statistics.stdev(base)
+            x["media_2a"], x["sd_2a"] = round(m, 3), round(sd, 3)
+            if sd > 0:
+                x["z"] = round((x["indice"] - m) / sd, 2)
+        if x["z"] is not None and ant is not None:
+            x["dz"] = round(x["z"] - ant["z"], 2)
+            x["dz_txt"] = "MÁS HAWKISH" if x["dz"] >= UMBRAL_DZ else "MÁS DOVISH" if x["dz"] <= -UMBRAL_DZ else "SIN CAMBIO"
+            x["anterior_fecha"], x["anterior_z"], x["anterior_pocos_terminos"] = ant["fecha"], ant["z"], ant["pocos_terminos"]
+        if x["z"] is not None:
+            ant = x
+    return items
+
+
+def _binom_p(k, n, p=0.5):
+    """p-valor bilateral exacto de una binomial (suma de las colas de probabilidad ≤ la observada)."""
+    if n == 0:
+        return None
+    pm = [math.comb(n, i) * p ** i * (1 - p) ** (n - i) for i in range(n + 1)]
+    return round(min(1.0, sum(v for v in pm if v <= pm[k] * (1 + 1e-9))), 4)
+
+
+def _bloque_z(pares, rep):
+    n = len(pares)
+    if not n:
+        return {"n": 0}
+    k = sum(1 for p, r in pares if p == r)
+    kr = sum(1 for p, r in rep if p == r)
+    return {"n": n, "aciertos": k, "pct": round(100 * k / n, 1), "azar_pct": 50.0, "p_valor": _binom_p(k, n),
+            "repite_aciertos": kr, "repite_pct": round(100 * kr / n, 1)}
+
+
+def validar_z(series, pasos):
+    """Δz del comunicado i frente a la dirección de la decisión de la reunión i+1, SOLO cuando esa decisión mueve el tipo."""
+    out, tot, tot_rep, tot_fuerte, tot_fuerte_rep, tot_eco, tot_eco_rep = {}, [], [], [], [], [], []
+    for banco, area in AREA.items():
+        ser, s = series.get(banco) or [], pasos.get(area) or []
+        if len(ser) < 5 or not s:
+            out[banco] = {"n": 0, "motivo": "sin muestra suficiente"}
+            continue
+        dec = [_decision(s, dt.date.fromisoformat(r["fecha"])) for r in ser]
+        par, rep, par_f, rep_f, eco, eco_rep = [], [], [], [], [], []
+        n_mueve = n_mueve_sin_dz = 0
+        for i in range(len(ser) - 1):
+            if dec[i + 1] is None or dec[i + 1][0] == 0:
+                continue
+            n_mueve += 1
+            dz = ser[i].get("dz")
+            if dz is None or dz == 0:
+                n_mueve_sin_dz += 1
+                continue
+            real = dec[i + 1][0]
+            pred = 1 if dz > 0 else -1
+            prev = dec[i][0] if dec[i] is not None else 0
+            par.append((pred, real))
+            rep.append((prev, real))
+            if abs(dz) >= UMBRAL_DZ:
+                par_f.append((pred, real))
+                rep_f.append((prev, real))
+        for i in range(len(ser)):  # eco: ¿Δz acompaña a la decisión de la MISMA reunión? (el comunicado ya refleja lo decidido)
+            if dec[i] is not None and dec[i][0] != 0 and ser[i].get("dz"):
+                eco.append((1 if ser[i]["dz"] > 0 else -1, dec[i][0]))
+                eco_rep.append((0, dec[i][0]))
+        out[banco] = {"reuniones_con_movimiento": n_mueve, "sin_dz": n_mueve_sin_dz, "direccion": _bloque_z(par, rep),
+                      "direccion_dz_fuerte": _bloque_z(par_f, rep_f), "misma_reunion": _bloque_z(eco, eco_rep)}
+        tot += par
+        tot_rep += rep
+        tot_fuerte += par_f
+        tot_fuerte_rep += rep_f
+        tot_eco += eco
+        tot_eco_rep += eco_rep
+    T = {"direccion": _bloque_z(tot, tot_rep), "direccion_dz_fuerte": _bloque_z(tot_fuerte, tot_fuerte_rep), "misma_reunion": _bloque_z(tot_eco, tot_eco_rep)}
+    d = T["direccion"]
+    ok = bool(d.get("n", 0) >= MIN_N_PRINCIPAL and d["pct"] > 50 and d["p_valor"] is not None and d["p_valor"] < P_PRINCIPAL and d["pct"] >= d["repite_pct"])
+    if not d.get("n"):
+        motivo = "sin muestra de movimientos de tipos"
+    elif ok:
+        motivo = (f"Δz acierta la dirección en {d['aciertos']} de {d['n']} movimientos ({d['pct']:.0f} % frente a 50 % del azar, p = {d['p_valor']:.3f}) "
+                  f"y no pierde frente a «repetir la decisión anterior» ({d['repite_pct']:.0f} %).")
+    else:
+        causas = []
+        if d["n"] < MIN_N_PRINCIPAL:
+            causas.append(f"muestra pequeña (n = {d['n']} < {MIN_N_PRINCIPAL})")
+        if d["pct"] <= 50 or d["p_valor"] >= P_PRINCIPAL:
+            causas.append(f"{d['pct']:.0f} % de acierto ({d['aciertos']}/{d['n']}) frente a 50 % del azar, p = {d['p_valor']:.3f}: no distinguible del azar")
+        if d["pct"] < d["repite_pct"]:
+            causas.append(f"peor que «repetir la decisión anterior» ({d['repite_pct']:.0f} %)")
+        motivo = "Δz no mejora: " + "; ".join(causas) + "."
+    T["estado"] = "PRINCIPAL" if ok else "SECUNDARIO"
+    T["motivo"] = motivo
+    T["criterio"] = (f"PRINCIPAL solo si n ≥ {MIN_N_PRINCIPAL}, acierto > 50 % con p < {P_PRINCIPAL} (binomial bilateral) y acierto ≥ línea base «repetir la decisión anterior» "
+                     "en la misma muestra. Criterio fijado antes de ver el resultado.")
+    out["_total"] = T
+    return out
+
+
 # ---------------------------------------------------------------- medición
 def medir(limite=MAX_NUEVOS):
     err = {}
@@ -470,7 +595,10 @@ def medir(limite=MAX_NUEVOS):
     except Exception as e:  # noqa: BLE001
         pasos = {}
         err["pasos"] = f"{type(e).__name__}: {e}"
+    for b in series:
+        z_serie(series[b])
     val = validar(series, pasos)
+    val_z = validar_z(series, pasos)
 
     discursos = actualizar_discursos(limite, err)
     por_orador = {}
@@ -504,7 +632,7 @@ def medir(limite=MAX_NUEVOS):
     ult = {}
     for b, s in series.items():
         p = [x for x in s if x["indice"] is not None]
-        ult[b] = ({**p[-1], "anterior": ({"fecha": p[-2]["fecha"], "indice": p[-2]["indice"]} if len(p) > 1 else None)} if p else None)
+        ult[b] = ({**p[-1], "anterior": ({"fecha": p[-2]["fecha"], "indice": p[-2]["indice"], "z": p[-2].get("z")} if len(p) > 1 else None)} if p else None)
     if not any(series.values()):
         raise RuntimeError("sin comunicados puntuados: " + json.dumps(err)[:300])
     top = sorted(TERMINOS, key=lambda x: (x[2], -abs(x[1]), x[0]))
@@ -513,8 +641,11 @@ def medir(limite=MAX_NUEVOS):
                                                        "dovish": [{"termino": t, "peso": abs(p)} for t, p, k in TERMINOS if k == "dovish"],
                                                        "n_terminos": len(TERMINOS)},
             "reglas": {"umbral_nivel": UMBRAL_NIVEL, "umbral_cambio": UMBRAL_CAMBIO, "min_terminos_discurso": MIN_TERMINOS_DISCURSO, "min_menciones_tema": MIN_MENCIONES_TEMA,
-                       "umbral_decision_pp": UMBRAL_DECISION, "ventana_decision_dias": VENTANA_DECISION},
-            "comunicados": series, "ultimo": ult, "validacion": val, "discursos": lista[:200], "oradores": oradores,
+                       "umbral_decision_pp": UMBRAL_DECISION, "ventana_decision_dias": VENTANA_DECISION,
+                       "ventana_z_dias": VENTANA_Z_DIAS, "min_obs_z": MIN_OBS_Z, "aviso_peso": AVISO_PESO, "umbral_dz": UMBRAL_DZ, "min_n_principal": MIN_N_PRINCIPAL,
+                       "p_principal": P_PRINCIPAL, "criterio_principal": val_z["_total"]["criterio"]},
+            "comunicados": series, "ultimo": ult, "validacion": val, "validacion_z": val_z,
+            "estado_bloque": {"estado": val_z["_total"]["estado"], "motivo": val_z["_total"]["motivo"]}, "discursos": lista[:200], "oradores": oradores,
             "n_discursos_puntuados": len([x for x in lista if x["indice"] is not None]), "n_discursos": len(lista),
             "fuentes": {"Fed": "federalreserve.gov (comunicados FOMC y discursos de la Junta)", "BCE": "ecb.europa.eu (declaración introductoria y discursos)",
                         "BoJ": "boj.or.jp (Statement on Monetary Policy y discursos)"},

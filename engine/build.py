@@ -367,6 +367,29 @@ def etapa_liquidez():
             if e is not None and o is not None:
                 glob.append([d, round(v + e + o, 4)])
         hist["liquidez_global_T"] = glob
+        # Variación a 12 meses SIN efecto divisa: cada balance en su moneda (WALCL en USD, ECB en EUR, JPNASSETS en JPY), ponderada por su tamaño
+        # en USD en la fecha de referencia. La serie en USD mezcla la política monetaria con la depreciación del yen o del euro frente al dólar.
+        try:
+            f1 = dt.date.fromisoformat(glob[-1][0])
+            f0 = f1 - dt.timedelta(days=365)
+            comp = {}
+            for k, sk, hk in (("fed", "WALCL", "balance_fed_T"), ("bce", "ECB", "bce_T"), ("boj", "BOJ", "boj_T")):
+                a = LQ.at_or_before(ser[sk], f1)
+                # referencia a 365 días de la ÚLTIMA observación de ese balance (el del BoJ es mensual y el del BCE semanal con otro día)
+                b0 = LQ.at_or_before(ser[sk], a[0] - dt.timedelta(days=365)) if a else None
+                w = next((v for d, v in reversed(hist[hk]) if d <= f0.isoformat()), None)
+                usd_a = next((v for d, v in reversed(hist[hk]) if d <= f1.isoformat()), None)
+                if not (a and b0 and w and usd_a) or ((a[0] - dt.timedelta(days=365)) - b0[0]).days > 40:
+                    raise ValueError(f"sin referencia a 12 meses para {sk}")
+                comp[k] = {"fecha": a[0].isoformat(), "ref_fecha": b0[0].isoformat(), "var_local_pct": round((a[1] / b0[1] - 1) * 100, 2),
+                           "peso_ref_T": round(w, 3), "valor_T": round(usd_a, 3), "var_usd_pct": round((usd_a / w - 1) * 100, 2)}
+            tw = sum(c["peso_ref_T"] for c in comp.values())
+            for c in comp.values():
+                c["peso"] = round(c["peso_ref_T"] / tw, 3)
+            hist["liquidez_global_12m"] = {"fecha": f1.isoformat(), "ref_fecha": f0.isoformat(), "componentes": comp,
+                                           "var_local_ponderada_pct": round(sum(c["var_local_pct"] * c["peso"] for c in comp.values()), 2)}
+        except Exception as e:  # noqa: BLE001
+            errs["liquidez_global_12m"] = f"{type(e).__name__}: {e}"
     # memoria permanente
     try:
         ln = hist.get("liquidez_neta_T") or []

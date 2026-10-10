@@ -10,7 +10,8 @@ Qué hace
 CRITERIO NEXORA (fijo, no optimizado)
   · Movimiento a 12 meses = tipo hoy − tipo hace 365 días. SUBE ≥ +0,10 pp · BAJA ≤ −0,10 pp · si no, SIN CAMBIOS.
   · Amplitud = (bancos que suben − bancos que bajan) / bancos con dato.  ≥ +0,20 → ENDURECIMIENTO · ≤ −0,20 → RELAJACIÓN · si no, MIXTA.
-  · Balance Fed + BCE + BoJ (liquidez.json): variación a 12 meses ≥ +2 % → EXPANDE · ≤ −2 % → SE CONTRAE · si no, PLANO.
+  · Balance Fed + BCE + BoJ: variación a 12 meses en MONEDA LOCAL (sin efecto divisa), ponderada por tamaño en USD a la fecha de referencia:
+    ≥ +2 % → EXPANDE · ≤ −2 % → SE CONTRAE · si no, PLANO. (Antes se medía en USD y el yen/euro contaminaban la lectura.)
   · La lectura global combina ambas patas; si falta una se dice y se lee solo la otra.
 Los tipos del BIS son un único valor por banco (para la Fed, el punto medio del rango objetivo); la fecha es la de la observación del BIS.
 
@@ -38,6 +39,27 @@ DESDE = "2010-01-01"
 UMBRAL_MOV = 0.10       # pp
 UMBRAL_AMPLITUD = 0.20
 UMBRAL_BALANCE = 2.0    # %
+PONDERAR_PIB = True     # la lectura de TIPOS pondera cada banco por el PIB nominal de su economía (False = un voto por banco, regla anterior)
+
+# Tabla de combinación (CRITERIO NEXORA, fija). Clave = (lectura de los tipos, estado del balance).
+MIX = {("ENDURECIMIENTO", "SE CONTRAE"): "LIQUIDEZ GLOBAL RESTRICTIVA", ("ENDURECIMIENTO", "PLANO"): "LIQUIDEZ GLOBAL ALGO RESTRICTIVA",
+       ("ENDURECIMIENTO", "EXPANDE"): "SEÑALES CONTRADICTORIAS (tipos al alza, balances en expansión)",
+       ("MIXTA", "SE CONTRAE"): "LIQUIDEZ GLOBAL ALGO RESTRICTIVA", ("MIXTA", "PLANO"): "LIQUIDEZ GLOBAL NEUTRA", ("MIXTA", "EXPANDE"): "LIQUIDEZ GLOBAL ALGO EXPANSIVA",
+       ("RELAJACIÓN", "SE CONTRAE"): "SEÑALES CONTRADICTORIAS (tipos a la baja, balances en contracción)", ("RELAJACIÓN", "PLANO"): "LIQUIDEZ GLOBAL ALGO EXPANSIVA",
+       ("RELAJACIÓN", "EXPANDE"): "LIQUIDEZ GLOBAL EXPANSIVA"}
+
+
+def REGLA_TXT():
+    return ("Dos patas que se combinan con una tabla fija. "
+            f"(1) TIPOS: movimiento de cada banco = tipo hoy − tipo hace 365 días, en puntos porcentuales NOMINALES (no se descuenta la inflación, es decir, no son tipos reales). "
+            f"SUBE ≥ +{_c(UMBRAL_MOV)} pp, BAJA ≤ −{_c(UMBRAL_MOV)} pp. Amplitud = (peso que sube − peso que baja) / peso total con dato, con cada banco ponderado por el PIB NOMINAL "
+            f"en USD de su economía (FMI WEO; zona euro = suma de sus países): una Fed o un BCE pesan mucho más que Macedonia o Islandia. "
+            f"≥ +{_c(UMBRAL_AMPLITUD)} ENDURECIMIENTO, ≤ −{_c(UMBRAL_AMPLITUD)} RELAJACIÓN, entre medias MIXTA. Los bancos sin cambios cuentan en el denominador y diluyen la amplitud. "
+            "El recuento por número (un voto por banco) se muestra al lado y se usa solo si falta algún PIB. "
+            f"(2) BALANCE: Fed + BCE + BoJ; variación a 12 meses de cada balance en su MONEDA LOCAL (sin efecto divisa), ponderada por su tamaño en USD a la fecha de referencia. "
+            f"≥ +{UMBRAL_BALANCE:.0f} % EXPANDE, ≤ −{UMBRAL_BALANCE:.0f} % SE CONTRAE, entre medias PLANO. El PBoC no entra. "
+            "(3) COMBINACIÓN: tabla de abajo. Con tipos MIXTA y balance que se contrae, la lectura es «ALGO RESTRICTIVA»: el balance desempata cuando los tipos no tienen dirección clara. "
+            "Es una convención fija de NEXORA, no un modelo ajustado ni validado contra mercado. CAMBIO respecto a la versión anterior: antes un voto por banco y balance medido en USD.")
 
 # código BIS → (banco, país o área, ISO-3 para la ficha, moneda)
 BANCOS = {
@@ -308,7 +330,7 @@ def fmi(hoy):
     así que se rotula «dato o estimación». El año en curso se ofrece aparte como PREVISIÓN."""
     ano, ano_p = hoy.year - 1, hoy.year
     out, err = {}, {}
-    for clave, ind in (("inflacion", "PCPIPCH"), ("pib", "NGDP_RPCH")):
+    for clave, ind in (("inflacion", "PCPIPCH"), ("pib", "NGDP_RPCH"), ("pib_usd", "NGDPD")):
         try:
             v = _imf(ind)
             for iso, serie in v.items():
@@ -415,33 +437,62 @@ def medir(liquidez=None):
     igual = [b for b in ok if b["dir_12m"] == "SIN CAMBIOS"]
     n = len([b for b in ok if b["dir_12m"]])
     amplitud = round((len(sube) - len(baja)) / n, 3) if n else None
-    tipos_txt = None if amplitud is None else ("ENDURECIMIENTO" if amplitud >= UMBRAL_AMPLITUD else "RELAJACIÓN" if amplitud <= -UMBRAL_AMPLITUD else "MIXTA")
-    # balance Fed + BCE + BoJ (liquidez.json)
+    tipos_igual = None if amplitud is None else ("ENDURECIMIENTO" if amplitud >= UMBRAL_AMPLITUD else "RELAJACIÓN" if amplitud <= -UMBRAL_AMPLITUD else "MIXTA")
+    tipos_txt = tipos_igual
+    # amplitud ponderada por PIB nominal (decide la lectura de tipos si PONDERAR_PIB). Zona euro = suma del PIB de sus países miembros.
+    a3_de = {v["a2"]: v["a3"] for v in iso.values()}
+    def _pib_usd(b):
+        if b["iso3"] == "EURO":
+            tot = [((imf.get(a3_de.get(m)) or {}).get("pib_usd") or {}).get("valor") for m in euro]
+            return sum(x for x in tot if x) or None
+        return ((imf.get(b["iso3"]) or {}).get("pib_usd") or {}).get("valor")
+    pond = None
+    con_w = [(b, _pib_usd(b)) for b in ok if b["dir_12m"]]
+    if con_w and all(w for _, w in con_w):
+        tw = sum(w for _, w in con_w)
+        sw = sum(w for b, w in con_w if b["dir_12m"] == "SUBE") / tw
+        bw = sum(w for b, w in con_w if b["dir_12m"] == "BAJA") / tw
+        top = sorted(con_w, key=lambda x: -x[1])[:6]
+        pond = {"sube_pct": round(100 * sw, 1), "baja_pct": round(100 * bw, 1), "sin_cambios_pct": round(100 * (1 - sw - bw), 1), "amplitud": round(sw - bw, 3),
+                "tipos": "ENDURECIMIENTO" if sw - bw >= UMBRAL_AMPLITUD else "RELAJACIÓN" if sw - bw <= -UMBRAL_AMPLITUD else "MIXTA",
+                "ano_pib": hoy.year - 1, "fuente": "FMI WEO · NGDPD (PIB nominal en USD)",
+                "mayores": [{"codigo": b["codigo"], "banco": b["banco"], "peso_pct": round(100 * w / tw, 1), "dir": b["dir_12m"], "cambio_12m": b["cambio_12m"]} for b, w in top]}
+    if PONDERAR_PIB and pond:
+        tipos_txt = pond["tipos"]
+    # balance Fed + BCE + BoJ. Preferente: variación en MONEDA LOCAL ponderada (sin efecto divisa); si falta, se usa USD y se rotula.
     bal = None
     try:
-        g = (liquidez or {}).get("historico", {}).get("liquidez_global_T") or []
-        if len(g) > 10:
+        h = (liquidez or {}).get("historico", {})
+        g12 = h.get("liquidez_global_12m")
+        g = h.get("liquidez_global_T") or []
+        if g12:
+            var = g12["var_local_ponderada_pct"]
+            usd = round((g[-1][1] / next(p for p in reversed(g) if p[0] <= g12["ref_fecha"])[1] - 1) * 100, 2) if g else None
+            bal = {"valor_T": g[-1][1] if g else None, "fecha": g12["fecha"], "ref_fecha": g12["ref_fecha"], "var_12m_pct": var, "var_12m_usd_pct": usd,
+                   "base": "moneda local, ponderada por tamaño en USD a la fecha de referencia (sin efecto divisa)", "componentes": g12["componentes"],
+                   "estado": "EXPANDE" if var >= UMBRAL_BALANCE else "SE CONTRAE" if var <= -UMBRAL_BALANCE else "PLANO",
+                   "fuente": "FRED (WALCL, ECBASSETSW, JPNASSETS) · liquidez.json de este terminal"}
+        elif len(g) > 10:
             ult = g[-1]
             lim = (dt.date.fromisoformat(ult[0]) - dt.timedelta(days=365)).isoformat()
             ref = next((p for p in reversed(g) if p[0] <= lim), None)
             if ref and (dt.date.fromisoformat(lim) - dt.date.fromisoformat(ref[0])).days <= 20:
                 var = round((ult[1] / ref[1] - 1) * 100, 2)
-                bal = {"valor_T": ult[1], "fecha": ult[0], "ref_fecha": ref[0], "var_12m_pct": var,
+                bal = {"valor_T": ult[1], "fecha": ult[0], "ref_fecha": ref[0], "var_12m_pct": var, "var_12m_usd_pct": var,
+                       "base": "USD (SIN corregir por divisa: no se pudo calcular en moneda local en esta ejecución)", "componentes": None,
                        "estado": "EXPANDE" if var >= UMBRAL_BALANCE else "SE CONTRAE" if var <= -UMBRAL_BALANCE else "PLANO",
                        "fuente": "FRED (WALCL, ECBASSETSW, JPNASSETS) · liquidez.json de este terminal"}
     except Exception as e:  # noqa: BLE001
         err["balance"] = f"{type(e).__name__}: {e}"
     partes = []
     if tipos_txt:
-        partes.append(f"tipos: {len(sube)} suben y {len(baja)} bajan de {n} bancos ({tipos_txt.lower()})")
+        extra = (f"; ponderado por PIB: {pond['sube_pct']:.0f} % del PIB sube, {pond['baja_pct']:.0f} % baja → {tipos_txt.lower()}" if pond and PONDERAR_PIB else "")
+        partes.append(f"tipos: {len(sube)} suben y {len(baja)} bajan de {n} bancos (por número: {tipos_igual.lower()}{extra})")
     if bal:
-        partes.append(f"balance Fed+BCE+BoJ {bal['estado'].lower()} ({sg(bal['var_12m_pct'])} % a 12 meses)")
+        partes.append(f"balance Fed+BCE+BoJ {bal['estado'].lower()} ({sg(bal['var_12m_pct'])} % a 12 meses en moneda local; "
+                      f"{sg(bal['var_12m_usd_pct'])} % medido en USD)")
     if tipos_txt and bal:
-        mix = {("ENDURECIMIENTO", "SE CONTRAE"): "LIQUIDEZ GLOBAL RESTRICTIVA", ("ENDURECIMIENTO", "PLANO"): "LIQUIDEZ GLOBAL ALGO RESTRICTIVA",
-               ("ENDURECIMIENTO", "EXPANDE"): "SEÑALES CONTRADICTORIAS (tipos al alza, balances en expansión)",
-               ("MIXTA", "SE CONTRAE"): "LIQUIDEZ GLOBAL ALGO RESTRICTIVA", ("MIXTA", "PLANO"): "LIQUIDEZ GLOBAL NEUTRA", ("MIXTA", "EXPANDE"): "LIQUIDEZ GLOBAL ALGO EXPANSIVA",
-               ("RELAJACIÓN", "SE CONTRAE"): "SEÑALES CONTRADICTORIAS (tipos a la baja, balances en contracción)", ("RELAJACIÓN", "PLANO"): "LIQUIDEZ GLOBAL ALGO EXPANSIVA",
-               ("RELAJACIÓN", "EXPANDE"): "LIQUIDEZ GLOBAL EXPANSIVA"}
+        mix = MIX
         lectura = mix[(tipos_txt, bal["estado"])]
     elif tipos_txt:
         lectura = {"ENDURECIMIENTO": "TIPOS ENDURECIÉNDOSE (balance sin dato)", "RELAJACIÓN": "TIPOS RELAJÁNDOSE (balance sin dato)", "MIXTA": "TIPOS SIN DIRECCIÓN CLARA (balance sin dato)"}[tipos_txt]
@@ -469,12 +520,13 @@ def medir(liquidez=None):
             hist[a] = [[d.isoformat(), val] for d, val in s] + [[hoy.isoformat(), s[-1][1]]]
     sin_banco = {k: v for k, v in fin_bis.items() if k not in BANCOS and k not in ("AT", "BE", "DE", "ES", "FR", "GR", "IT", "NL", "PT", "HR")}
     return {"fecha": hoy.isoformat(), "bancos": bancos, "n_bancos": len(ok), "n_catalogo": len(BANCOS),
-            "contador": {"sube": len(sube), "baja": len(baja), "sin_cambios": len(igual), "total": n, "amplitud": amplitud, "tipos": tipos_txt,
+            "contador": {"sube": len(sube), "baja": len(baja), "sin_cambios": len(igual), "total": n, "amplitud": amplitud, "tipos": tipos_txt, "tipos_por_numero": tipos_igual, "ponderado_pib": bool(PONDERAR_PIB and pond),
                          "bancos_sube": [b["codigo"] for b in sube], "bancos_baja": [b["codigo"] for b in baja]},
             "balance": bal, "lectura": {"etiqueta": lectura, "texto": "; ".join(partes) + "." if partes else "SIN DATO",
-                                        "regla": (f"Movimiento a 12 meses: SUBE ≥ +{_c(UMBRAL_MOV)} pp, BAJA ≤ −{_c(UMBRAL_MOV)} pp. Amplitud = (suben − bajan) / bancos con dato: "
-                                                  f"≥ +{_c(UMBRAL_AMPLITUD)} endurecimiento, ≤ −{_c(UMBRAL_AMPLITUD)} relajación, entre medias mixta. Balance Fed+BCE+BoJ a 12 meses: "
-                                                  f"≥ +{UMBRAL_BALANCE:.0f} % expande, ≤ −{UMBRAL_BALANCE:.0f} % se contrae, entre medias plano. Es una convención fija de NEXORA, no un modelo ajustado.")},
+                                        "regla": REGLA_TXT(),
+                                        "combinacion": [{"tipos": a, "balance": b, "etiqueta": e} for (a, b), e in MIX.items()],
+                                        "umbrales": {"movimiento_pp": UMBRAL_MOV, "amplitud": UMBRAL_AMPLITUD, "balance_pct": UMBRAL_BALANCE}},
+            "amplitud_ponderada": pond,
             "proximas_reuniones": [{"codigo": b["codigo"], "banco": b["banco"], "fecha": b["proxima"]["fecha"], "dias": b["proxima"]["dias"]} for b in futuras],
             "con_calendario": len([b for b in ok if b.get("proxima")]),
             "historico8": hist, "grandes": GRANDES, "eurozona": {"codigo": "XM", "miembros_a2": euro, "n": len(euro),

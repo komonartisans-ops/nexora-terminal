@@ -60,7 +60,7 @@ const PAGES = [
   { id: 'ciclo', g: 'Análisis', t: 'Ciclo y crédito EE. UU.', d: 'Fase del ciclo, 9 señales, probit NY Fed, diferenciales', f: 2 },
   { id: 'bancos', g: 'Análisis', t: 'Bancos centrales', d: 'Fed, BCE y BoJ: tipos, reuniones y FedWatch propio', f: 1 },
   { id: 'mapa', g: 'Análisis', t: 'Bancos centrales del mundo', d: 'Mapa de 38 bancos: tipo, último movimiento, 12 meses, inflación, PIB y divisa', f: 7 },
-  { id: 'tono', g: 'Análisis', t: 'Tono de bancos centrales', d: 'Hawkish/dovish de Fed, BCE y BoJ con diccionario y validación', f: 7 },
+  { id: 'tono', g: 'Análisis', t: 'Tono de bancos centrales', d: 'Tono hawkish/dovish de Fed, BCE y BoJ en z-score propio, con validación frente al azar (bloque secundario)', f: 7 },
   { id: 'liquidez', g: 'Análisis', t: 'Liquidez', d: 'Liquidez neta de la Fed, reservas, TGA, RRP y liquidez global', f: 1 },
   { id: 'divisas', g: 'Análisis', t: 'Sesgo de divisas', d: 'Matriz de ocho divisas por factores', f: 4 },
   { id: 'posicionamiento', g: 'Análisis', t: 'Posicionamiento (COT)', d: 'CFTC: neto no comercial y gestores de activos', f: 4 },
