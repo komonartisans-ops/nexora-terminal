@@ -565,6 +565,48 @@ def etapa_resumen():
     return P
 
 
+# ------------------------------------------------------------------ registro de tesis (verificación posterior)
+def etapa_tesis():
+    """Lee data/registro_tesis.csv (solo se añade) y comprueba cada tesis contra el precio a 1, 5 y 20 sesiones.
+    Regla fija: ALCISTA acierta si el precio sube frente al de referencia; BAJISTA si baja; «SIN TESIS» no se evalúa.
+    Si todavía no hay sesiones suficientes el horizonte queda PENDIENTE (nunca se estima)."""
+    px = {"Oro": "oro", "Bitcoin": "btc", "S&P 500": "spx", "Nasdaq 100": "ndx", "US30 · Dow Jones": "dji", "Russell 2000": "rut"}
+    pr = (leer("precios.json") or {}).get("activos", {})
+    filas = csvlog.leer("registro_tesis.csv")
+    HOR = (1, 5, 20)
+    out, resumen = [], {}
+    for r in sorted(filas, key=lambda x: (x["fecha"], x["activo"])):
+        et = r.get("tesis", "")
+        dire = 1 if et.startswith("ALCISTA") else -1 if et.startswith("BAJISTA") else 0
+        serie = (pr.get(px.get(r["activo"])) or {}).get("serie") or []
+        idx = next((i for i, (d, _) in enumerate(serie) if d >= r["fecha"]), None)
+        try:
+            ref = float(r.get("precio_referencia") or "")
+        except ValueError:
+            ref = serie[idx][1] if idx is not None else None
+        h = {}
+        for n in HOR:
+            j = None if idx is None else idx + n
+            if dire == 0:
+                h[str(n)] = {"estado": "NO EVALUADA"}
+            elif ref is None or j is None or j >= len(serie):
+                h[str(n)] = {"estado": "PENDIENTE"}
+            else:
+                ret = (serie[j][1] / ref - 1) * 100
+                h[str(n)] = {"estado": "ACIERTO" if ret * dire > 0 else "FALLO", "ret_pct": round(ret, 2), "fecha": serie[j][0], "precio": serie[j][1]}
+        out.append({"fecha": r["fecha"], "activo": r["activo"], "tesis": et, "puntuacion": r.get("puntuacion"), "motores": r.get("motores"),
+                    "precio_referencia": ref, "capturado_utc": r.get("capturado_utc"), "horizontes": h})
+        if dire:
+            for n in HOR:
+                e = h[str(n)]["estado"]
+                if e in ("ACIERTO", "FALLO"):
+                    b = resumen.setdefault(r["activo"], {}).setdefault(str(n), {"aciertos": 0, "evaluadas": 0})
+                    b["evaluadas"] += 1
+                    b["aciertos"] += e == "ACIERTO"
+    return {"filas": out[::-1], "n_filas": len(out), "resumen": resumen, "horizontes": list(HOR),
+            "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
+            "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json"}
+
 
 # ------------------------------------------------------------------ ciclo y crédito
 def etapa_ciclo():
@@ -648,9 +690,9 @@ def etapa_alertas():
 
 # ------------------------------------------------------------------ principal
 ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_tipos, "calendario": etapa_calendario,
-          "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen,
+          "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen, "tesis": etapa_tesis,
           "regimen": etapa_regimen, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias, "alertas": etapa_alertas}
-ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "resumen", "regimen", "divisas", "cot", "noticias", "alertas"]
+ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "resumen", "tesis", "regimen", "divisas", "cot", "noticias", "alertas"]
 MODOS = {"horario": ["precios", "fedwatch", "tipos", "noticias", "alertas"], "diario": ORDEN, "todo": ORDEN}
 
 

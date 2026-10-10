@@ -77,7 +77,7 @@ const PLAN = {
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias']);
+const LIVE = new Set(['diario', 'tesis', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias']);
 const D = {};
 const MOUNT = [];
 
@@ -267,6 +267,8 @@ function pageResumen() {
       ${foot(a.fuente, a.fecha)}</div>`;
   }).join('') + '</div>';
 
+  h += typeof bloqueContradicciones === 'function' ? bloqueContradicciones() : '';
+
   h += '<div class="sect"><h2>Panel de mercado</h2><span class="more">▲▼ frente al cierre anterior · vs media de 50 sesiones</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Activo</th><th>Último</th><th>1d</th><th>1 sem</th><th>1 mes</th><th>3 meses</th><th>vs SMA50</th><th>Dato</th><th style="text-align:left">Fuente</th></tr></thead><tbody>';
   const filas = [...orden.map((o) => o[0]), 'vix', 'dxy'];
   h += filas.map((k) => {
@@ -296,9 +298,8 @@ function pageResumen() {
   h += '<div class="grid g2">' + nombres.map(cardTesis).join('') + '</div>';
   /* gráfico grande que llena el hueco bajo las tesis: 2Y vs tipo real a 10 años (Tesoro de EE. UU.) */
   const t2 = T && T.t2y, rl = T && T.real10;
-  h += `<div class="card chartcard" style="margin-top:12px"><h3>Bono a 2 años frente al tipo real a 10 años</h3><div class="sub">Los dos motores que más pesan en oro e índices. Si el 2Y baja y el tipo real no, el mercado espera una Fed más blanda pero sigue exigiendo rentabilidad real.</div>
-    ${lw('cTipos2', [{ name: 'Bono a 2 años', color: COL.amber, data: t2 && t2.serie, prec: 2 }, { name: 'Tipo real 10 años', color: COL.blue, data: rl && rl.serie, prec: 2 }], { fill: true, init: 365 })}
-    ${foot(t2 ? t2.fuente : 'Tesoro de EE. UU.', t2 && t2.fecha, t2 && t2.url)}</div></div><div>`;
+  h += '</div><div>';
+
   h += '<div class="sect" style="margin-top:14px"><h2>Motores macro</h2><span class="more">umbral de sesión</span></div><div class="card pad0"><table class="t"><thead><tr><th>Motor</th><th>Valor</th><th>Hoy</th><th>Umbral</th></tr></thead><tbody>';
   const M = (R && R.motores) || {};
   h += Object.keys(LABEL).map((k) => {
@@ -310,7 +311,11 @@ function pageResumen() {
   const lista = prox.filter((e) => e.importancia !== 'BAJA').slice(0, 7);
   h += lista.length ? lista.map((e) => `<div class="evrow"><span class="when">${esc(fdh(e.fecha, e.hora_madrid))}</span><span class="what">${esc(e.evento)}<span class="aff">${esc(e.afecta)}</span></span></div>`).join('') : SD;
   h += foot('Calendario NEXORA (FRED, ISM, Fed, Nasdaq)', false, null, 'hora de Madrid') + '</div>';
-  h += cardAlertas() + '</div></div>';
+  h += cardAlertas();
+  h += `<div class="card chartcard" style="margin-top:12px;min-height:360px"><h3>Bono a 2 años frente al tipo real a 10 años</h3><div class="sub">Los dos motores que más pesan en oro e índices. Si el 2Y baja y el tipo real no, el mercado espera una Fed más blanda pero sigue exigiendo rentabilidad real.</div>
+    ${lw('cTipos2', [{ name: 'Bono a 2 años', color: COL.amber, data: t2 && t2.serie, prec: 2 }, { name: 'Tipo real 10 años', color: COL.blue, data: rl && rl.serie, prec: 2 }], { fill: true, init: 365 })}
+    ${foot(t2 ? t2.fuente : 'Tesoro de EE. UU.', t2 && t2.fecha, t2 && t2.url)}</div>`;
+  h += '</div></div>';
 
   h += `<div class="sect"><h2>En palabras sencillas</h2></div><div class="card"><div class="simple">${R ? esc(R.sencillo_activos || '') + ' ' + esc(R.sencillo) : SD}</div>
     <ul class="watch" style="margin-top:12px">${R ? R.vigilar.map((v) => `<li>${esc(v)}</li>`).join('') : ''}</ul>
@@ -745,7 +750,7 @@ function route() {
 }
 
 async function cargar() {
-  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias'].map(async (n) => {
+  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis'].map(async (n) => {
     try { const r = await fetch(`data/${n}.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) D[n] = await r.json(); } catch (e) { /* SIN DATO */ }
   }));
 }
