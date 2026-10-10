@@ -7,9 +7,22 @@
    "enviada": true,
    "error": null,
    "l1": "Alerta de prueba con datos actuales (no es una señal)."
+  },
+  {
+   "fecha_utc": "2026-10-10 08:09 UTC",
+   "clave": "skew_2026-08-17",
+   "titulo": "Riesgo de cola (SKEW)",
+   "l1": "El SKEW de Cboe cierra en 154,3 el vie 9 oct: zona alta (≥ 140), percentil 98 de su historia desde 1990; el episodio empezó el lun 17 ago. VIX 14,8 · VIX/VIX3M 0,84; confirmaciones encendidas 1 de 3 (Cboe, ciclo.py, FRED/OFR).",
+   "l2": "Se paga una prima inusual por cubrirse de una caída fuerte del S&P 500; no indica fecha ni magnitud (interpretación). Histórico propio: tras 36 entradas en zona alta, el S&P 500 cayó ≥ 5 % en 10 (28 %) frente a una tasa base del 31 % en cualquier sesión.",
+   "l3": "mié 14 oct · 14:30 (hora de Madrid) · IPC EE. UU. (CPI)",
+   "l4": "Los inversores pagan más de lo normal por seguros contra una caída fuerte de la bolsa. No dice cuándo ni si ocurrirá: en el histórico, la mayoría de las veces no hubo una caída de ese tamaño.",
+   "enviada": true,
+   "error": null
   }
  ],
- "candidatas": [],
+ "candidatas": [
+  "skew_2026-08-17"
+ ],
  "no_evaluables": {},
  "telegram_configurado": true,
  "umbrales": {
@@ -26,11 +39,15 @@
   "oro_pct": 2.0,
   "btc_baja_pct": -7.0,
   "btc_sube_pct": 8.0,
-  "etf_btc_musd": -500
+  "etf_btc_musd": -500,
+  "skew_alto": 140,
+  "skew_elevado": 135
  },
- "enviadas_hoy": [],
- "ultima_evaluacion_utc": "2026-10-09 22:31 UTC",
+ "enviadas_hoy": [
+  "skew_2026-08-17"
+ ],
+ "ultima_evaluacion_utc": "2026-10-10 08:09 UTC",
  "ok": true,
- "generado_utc": "2026-10-09 22:30 UTC",
- "duracion_s": 1.2
+ "generado_utc": "2026-10-10 08:08 UTC",
+ "duracion_s": 1.4
 }

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generado_utc": "2026-10-10 08:06 UTC",
+ "generado_utc": "2026-10-10 08:08 UTC",
  "terminal": "https://komonartisans-ops.github.io/nexora-terminal/",
  "proposito": "Resumen compacto de todo el terminal NEXORA para redactar informes. Fuente y fecha en cada bloque. Sin IA en su generación.",
  "lectura_para_informes": [
@@ -13,7 +13,7 @@
  "frescura": {
   "precios": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-09 22:30 UTC"
+   "ultimo_ok_utc": "2026-10-10 08:08 UTC"
   },
   "fedwatch": {
    "ok": true,
@@ -49,7 +49,7 @@
   },
   "alertas": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-09 22:30 UTC"
+   "ultimo_ok_utc": "2026-10-10 08:08 UTC"
   },
   "monitores": {
    "ok": true,
@@ -73,15 +73,15 @@
   },
   "skew": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 08:00 UTC"
+   "ultimo_ok_utc": "2026-10-10 08:08 UTC"
   },
   "semis": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 08:00 UTC"
+   "ultimo_ok_utc": "2026-10-10 08:08 UTC"
   },
   "gamma": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-10 08:06 UTC"
+   "ultimo_ok_utc": "2026-10-10 08:08 UTC"
   },
   "contexto": {
    "ok": true,
@@ -91,28 +91,28 @@
  "datos_con_mas_de_48h": [],
  "fallos_ultima_ejecucion": [],
  "mercado": {
-  "actualizado_utc": "2026-10-09 22:30 UTC",
+  "actualizado_utc": "2026-10-10 08:08 UTC",
   "activos": {
    "oro": {
     "nombre": "Oro",
-    "valor": 4220.3,
+    "valor": 4216.3,
     "fecha": "2026-10-09",
-    "cambio_1d_pct": 1.52,
-    "cambio_5d_pct": 1.39,
-    "cambio_21d_pct": -4.24,
-    "cambio_63d_pct": 5.36,
-    "vs_sma50_pct": -3.6,
+    "cambio_1d_pct": 1.43,
+    "cambio_5d_pct": 1.3,
+    "cambio_21d_pct": -4.33,
+    "cambio_63d_pct": 5.26,
+    "vs_sma50_pct": -3.7,
     "fuente": "Futuros oro COMEX (Yahoo Finance)"
    },
    "btc": {
     "nombre": "Bitcoin",
-    "valor": 82445.3,
-    "fecha": "2026-10-09",
-    "cambio_1d_pct": 0.94,
-    "cambio_5d_pct": -4.67,
-    "cambio_21d_pct": 1.91,
-    "cambio_63d_pct": 27.07,
-    "vs_sma50_pct": 2.1,
+    "valor": 82754.32,
+    "fecha": "2026-10-10",
+    "cambio_1d_pct": 0.25,
+    "cambio_5d_pct": -3.53,
+    "cambio_21d_pct": 1.87,
+    "cambio_63d_pct": 27.5,
+    "vs_sma50_pct": 2.4,
     "fuente": "BTC-USD (Yahoo Finance)"
    },
    "spx": {
@@ -172,12 +172,12 @@
    },
    "dxy": {
     "nombre": "Índice dólar (DXY)",
-    "valor": 102.23,
+    "valor": 102.21,
     "fecha": "2026-10-09",
-    "cambio_1d_pct": 0.09,
-    "cambio_5d_pct": 0.3,
-    "cambio_21d_pct": 3.17,
-    "cambio_63d_pct": 0.94,
+    "cambio_1d_pct": 0.07,
+    "cambio_5d_pct": 0.27,
+    "cambio_21d_pct": 3.15,
+    "cambio_63d_pct": 0.92,
     "vs_sma50_pct": 2.1,
     "fuente": "ICE DXY (Yahoo Finance)"
    }
@@ -639,7 +639,7 @@
    "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 3. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
    "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
   },
-  "actualizado_utc": "2026-10-10 08:00 UTC",
+  "actualizado_utc": "2026-10-10 08:08 UTC",
   "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)",
   "etiqueta": "CRITERIO NEXORA (zonas y episodios)"
  },
@@ -674,29 +674,29 @@
     "sesion": "2026-10-09",
     "cierre_confirmado": true,
     "spot_indice": 30883.15,
-    "spot_futuro": 31111.75,
-    "base_futuro": 228.6,
+    "spot_futuro": 31112.25,
+    "base_futuro": 229.1,
     "metodo_base": "intradía 5 min (futuro e índice en el mismo minuto)",
     "regimen_gamma": "POSITIVA",
     "gex_neto_musd_por_1pct": 810.6,
     "call_wall": {
      "idx": 31250,
      "musd": 1276.5,
-     "fut": 31478.6
+     "fut": 31479.1
     },
     "put_wall": {
      "idx": 30850,
      "musd": 799.7,
-     "fut": 31078.6
+     "fut": 31079.1
     },
     "gamma_flip": {
      "idx": 30833.9,
-     "fut": 31062.5
+     "fut": 31063.0
     },
-    "resumen": "Call Wall 31.479 NQ (31.250 NDX), Put Wall 31.079 (30.850), Gamma Flip 31.062 (30.834); gamma positiva (+0,8 mm$ por 1 %)"
+    "resumen": "Call Wall 31.479 NQ (31.250 NDX), Put Wall 31.079 (30.850), Gamma Flip 31.063 (30.834); gamma positiva (+0,8 mm$ por 1 %)"
    }
   },
-  "actualizado_utc": "2026-10-10 08:06 UTC",
+  "actualizado_utc": "2026-10-10 08:08 UTC",
   "fuente": "Cboe · cadena de opciones con 15 min de retraso (cdn-api.cboe.com)",
   "etiqueta": "CRITERIO NEXORA (método propio, no dato oficial)",
   "supuesto": "GEX con signo +calls / −puts: hipótesis sobre el posicionamiento de los creadores de mercado, no observable."
@@ -750,7 +750,7 @@
    "semis_pct": 32.49,
    "software_pct": 13.53
   },
-  "actualizado_utc": "2026-10-10 08:00 UTC",
+  "actualizado_utc": "2026-10-10 08:08 UTC",
   "fuente": "Yahoo Finance (SMH, IGV, índices, acciones) · Invesco (pesos QQQ)",
   "etiqueta": "CRITERIO NEXORA"
  },
@@ -1333,8 +1333,14 @@
    "titulo": "Alerta de prueba",
    "enviada": true,
    "l1": "Alerta de prueba con datos actuales (no es una señal)."
+  },
+  {
+   "fecha_utc": "2026-10-10 08:09 UTC",
+   "titulo": "Riesgo de cola (SKEW)",
+   "enviada": true,
+   "l1": "El SKEW de Cboe cierra en 154,3 el vie 9 oct: zona alta (≥ 140), percentil 98 de su historia desde 1990; el episodio empezó el lun 17 ago. VIX 14,8 · VIX/VIX3M 0,84; confirmaciones encendidas 1 de 3 (Cboe, ciclo.py, FRED/OFR)."
   }
  ],
  "ok": true,
- "duracion_s": 0.1
+ "duracion_s": 0.0
 }
