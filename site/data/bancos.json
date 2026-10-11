@@ -1,5 +1,5 @@
 {
- "fecha": "2026-10-10",
+ "fecha": "2026-10-11",
  "bancos": [
   {
    "codigo": "US",
@@ -13,13 +13,13 @@
     "fecha": "2026-09-17",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 23
+    "dias": 24
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
    "proxima": {
     "fecha": "2026-10-28",
-    "dias": 18,
+    "dias": 17,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
     "lectura": "automática en esta ejecución"
@@ -52,13 +52,13 @@
     "fecha": "2026-09-16",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 24
+    "dias": 25
    },
    "cambio_12m": 0.5,
    "dir_12m": "SUBE",
    "proxima": {
     "fecha": "2026-10-29",
-    "dias": 19,
+    "dias": 18,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
     "lectura": "automática en esta ejecución"
@@ -98,13 +98,13 @@
     "fecha": "2026-09-24",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 16
+    "dias": 17
    },
    "cambio_12m": 0.75,
    "dir_12m": "SUBE",
    "proxima": {
     "fecha": "2026-10-30",
-    "dias": 20,
+    "dias": 19,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.boj.or.jp/en/about/calendar/",
     "lectura": "automática en esta ejecución"
@@ -144,13 +144,13 @@
     "fecha": "2025-12-18",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 296
+    "dias": 297
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
    "proxima": {
     "fecha": "2026-11-05",
-    "dias": 26,
+    "dias": 25,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
     "lectura": "automática en esta ejecución"
@@ -190,13 +190,13 @@
     "fecha": "2025-06-20",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 477
+    "dias": 478
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
    "proxima": {
     "fecha": "2026-12-10",
-    "dias": 61,
+    "dias": 60,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.snb.ch/en/services-events/digital-services/event-schedule",
     "lectura": "automática en esta ejecución"
@@ -236,13 +236,13 @@
     "fecha": "2025-10-30",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 345
+    "dias": 346
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
    "proxima": {
     "fecha": "2026-10-28",
-    "dias": 18,
+    "dias": 17,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.bankofcanada.ca/2025/08/bank-canada-publishes-2026-schedule-policy-interest-rate-announcements-other-major-publications/",
     "lectura": "automática en esta ejecución"
@@ -282,13 +282,13 @@
     "fecha": "2026-05-06",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 157
+    "dias": 158
    },
    "cambio_12m": 0.75,
    "dir_12m": "SUBE",
    "proxima": {
     "fecha": "2026-11-03",
-    "dias": 24,
+    "dias": 23,
     "fuente": "Nota oficial del RBA",
     "url": "https://www.rba.gov.au/media-releases/2025/mr-25-02.html",
     "lectura": "verificada a mano el 2026-10-10 (la web del RBA bloquea la descarga automática)"
@@ -328,7 +328,7 @@
     "fecha": "2026-09-03",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 37
+    "dias": 38
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -368,13 +368,13 @@
     "fecha": "2025-10-01",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 374
+    "dias": 375
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
    "proxima": {
     "fecha": "2026-11-04",
-    "dias": 25,
+    "dias": 24,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.riksbank.se/en-gb/press-and-published/calendar/calendar-2026",
     "lectura": "automática en esta ejecución"
@@ -503,7 +503,7 @@
     "fecha": "2026-09-25",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 15
+    "dias": 16
    },
    "cambio_12m": 0.5,
    "dir_12m": "SUBE",
@@ -656,7 +656,7 @@
     "fecha": "2026-09-11",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 29
+    "dias": 30
    },
    "cambio_12m": 0.5,
    "dir_12m": "SUBE",
@@ -813,7 +813,7 @@
     "fecha": "2026-08-19",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 52
+    "dias": 53
    },
    "cambio_12m": 0.5,
    "dir_12m": "SUBE",
@@ -1022,7 +1022,7 @@
     "fecha": "2026-03-05",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 219
+    "dias": 220
    },
    "cambio_12m": -1.0,
    "dir_12m": "BAJA",
@@ -1159,7 +1159,7 @@
     "fecha": "2026-06-19",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 113
+    "dias": 114
    },
    "cambio_12m": 0.25,
    "dir_12m": "SUBE",
@@ -1328,7 +1328,7 @@
     "fecha": "2026-08-26",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 45
+    "dias": 46
    },
    "cambio_12m": -1.0,
    "dir_12m": "BAJA",
@@ -1545,7 +1545,7 @@
     "fecha": "2024-08-08",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 793
+    "dias": 794
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -1682,7 +1682,7 @@
     "fecha": "2024-09-12",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 758
+    "dias": 759
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -1875,7 +1875,7 @@
     "fecha": "2026-06-17",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 115
+    "dias": 116
    },
    "cambio_12m": -1.1,
    "dir_12m": "BAJA",
@@ -2044,7 +2044,7 @@
     "fecha": "2026-01-23",
     "delta": -1.0,
     "direccion": "BAJA",
-    "dias": 260
+    "dias": 261
    },
    "cambio_12m": -3.5,
    "dir_12m": "BAJA",
@@ -2269,7 +2269,7 @@
     "fecha": "2026-07-27",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 75
+    "dias": 76
    },
    "cambio_12m": -3.0,
    "dir_12m": "BAJA",
@@ -2546,7 +2546,7 @@
     "fecha": "2026-09-03",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 37
+    "dias": 38
    },
    "cambio_12m": -1.25,
    "dir_12m": "BAJA",
@@ -2663,7 +2663,7 @@
     "fecha": "2026-09-16",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 24
+    "dias": 25
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -2812,7 +2812,7 @@
     "fecha": "2025-12-11",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 303
+    "dias": 304
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -2929,7 +2929,7 @@
     "fecha": "2026-09-25",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 15
+    "dias": 16
    },
    "cambio_12m": 0.25,
    "dir_12m": "SUBE",
@@ -3094,7 +3094,7 @@
     "fecha": "2025-03-20",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 569
+    "dias": 570
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -3171,7 +3171,7 @@
     "fecha": "2025-05-20",
     "delta": -0.1,
     "direccion": "BAJA",
-    "dias": 508
+    "dias": 509
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -3284,7 +3284,7 @@
     "fecha": "2026-09-17",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 23
+    "dias": 24
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -3725,7 +3725,7 @@
     "fecha": "2025-12-05",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 309
+    "dias": 310
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -3870,7 +3870,7 @@
     "fecha": "2026-08-27",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 44
+    "dias": 45
    },
    "cambio_12m": 0.5,
    "dir_12m": "SUBE",
@@ -4011,7 +4011,7 @@
     "fecha": "2026-06-18",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 114
+    "dias": 115
    },
    "cambio_12m": 1.0,
    "dir_12m": "SUBE",
@@ -4224,7 +4224,7 @@
     "fecha": "2025-07-09",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 458
+    "dias": 459
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -4317,7 +4317,7 @@
     "fecha": "2026-02-25",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 227
+    "dias": 228
    },
    "cambio_12m": -0.5,
    "dir_12m": "BAJA",
@@ -4454,7 +4454,7 @@
     "fecha": "2026-08-28",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 43
+    "dias": 44
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -4639,7 +4639,7 @@
     "fecha": "2026-09-17",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 23
+    "dias": 24
    },
    "cambio_12m": -1.25,
    "dir_12m": "BAJA",
@@ -4908,7 +4908,7 @@
     "fecha": "2026-05-08",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 155
+    "dias": 156
    },
    "cambio_12m": -1.0,
    "dir_12m": "BAJA",
@@ -5177,7 +5177,7 @@
     "fecha": "2025-12-17",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 297
+    "dias": 298
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -5366,7 +5366,7 @@
     "fecha": "2026-10-01",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 9
+    "dias": 10
    },
    "cambio_12m": 3.0,
    "dir_12m": "SUBE",
@@ -5639,7 +5639,7 @@
     "fecha": "2025-09-12",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 393
+    "dias": 394
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -6056,49 +6056,49 @@
    "codigo": "US",
    "banco": "Reserva Federal (Fed)",
    "fecha": "2026-10-28",
-   "dias": 18
+   "dias": 17
   },
   {
    "codigo": "CA",
    "banco": "Banco de Canadá (BoC)",
    "fecha": "2026-10-28",
-   "dias": 18
+   "dias": 17
   },
   {
    "codigo": "XM",
    "banco": "Banco Central Europeo (BCE)",
    "fecha": "2026-10-29",
-   "dias": 19
+   "dias": 18
   },
   {
    "codigo": "JP",
    "banco": "Banco de Japón (BoJ)",
    "fecha": "2026-10-30",
-   "dias": 20
+   "dias": 19
   },
   {
    "codigo": "AU",
    "banco": "Banco de la Reserva de Australia (RBA)",
    "fecha": "2026-11-03",
-   "dias": 24
+   "dias": 23
   },
   {
    "codigo": "SE",
    "banco": "Riksbank",
    "fecha": "2026-11-04",
-   "dias": 25
+   "dias": 24
   },
   {
    "codigo": "GB",
    "banco": "Banco de Inglaterra (BoE)",
    "fecha": "2026-11-05",
-   "dias": 26
+   "dias": 25
   },
   {
    "codigo": "CH",
    "banco": "Banco Nacional Suizo (SNB)",
    "fecha": "2026-12-10",
-   "dias": 61
+   "dias": 60
   }
  ],
  "con_calendario": 8,
@@ -6237,7 +6237,7 @@
     3.875
    ],
    [
-    "2026-10-10",
+    "2026-10-11",
     3.875
    ]
   ],
@@ -6367,7 +6367,7 @@
     2.5
    ],
    [
-    "2026-10-10",
+    "2026-10-11",
     2.5
    ]
   ],
@@ -6409,7 +6409,7 @@
     1.25
    ],
    [
-    "2026-10-10",
+    "2026-10-11",
     1.25
    ]
   ],
@@ -6519,7 +6519,7 @@
     3.75
    ],
    [
-    "2026-10-10",
+    "2026-10-11",
     3.75
    ]
   ],
@@ -6585,7 +6585,7 @@
     0.0
    ],
    [
-    "2026-10-10",
+    "2026-10-11",
     0.0
    ]
   ],
@@ -6723,7 +6723,7 @@
     2.25
    ],
    [
-    "2026-10-10",
+    "2026-10-11",
     2.25
    ]
   ],
@@ -6913,7 +6913,7 @@
     4.35
    ],
    [
-    "2026-10-10",
+    "2026-10-11",
     4.35
    ]
   ],
@@ -7083,7 +7083,7 @@
     2.75
    ],
    [
-    "2026-10-10",
+    "2026-10-11",
     2.75
    ]
   ]
@@ -11061,6 +11061,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-10 16:57 UTC",
- "duracion_s": 13.5
+ "generado_utc": "2026-10-11 11:29 UTC",
+ "duracion_s": 9.4
 }

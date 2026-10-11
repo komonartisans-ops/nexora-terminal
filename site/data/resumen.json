@@ -1,6 +1,6 @@
 {
  "periodo": "hoy",
- "corte": "Datos entre el 2026-10-08 y el 2026-10-09 (cada fuente publica a su hora)",
+ "corte": "Datos entre el 2026-10-08 y el 2026-10-10 (cada fuente publica a su hora)",
  "movido": "El tipo real a 10 años sube 4 pb. En conjunto: el dinero se encarece.",
  "significa": [
   {
@@ -148,9 +148,9 @@
    "valor": 4216.2998046875
   },
   "Bitcoin": {
-   "delta": 1.0428337678270116,
-   "fecha": "2026-10-09",
-   "valor": 82544.71
+   "delta": 0.4435051016594471,
+   "fecha": "2026-10-10",
+   "valor": 82910.8
   },
   "US30 · Dow Jones": {
    "delta": 0.8256558400999037,
@@ -284,7 +284,7 @@
    "etiqueta": "BAJISTA DÉBIL",
    "tesis": "BAJISTA DÉBIL: solo lo empuja su motor propio (SIN GIRO DE LIQUIDEZ); lo otro está neutral. Lo que la rompería: que ganen peso M2 y SOFR (hoy ya empujan en sentido contrario).",
    "hoy": "En contra: sube el tipo real (lo que más les pesa).",
-   "semana": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
+   "semana": "Sin viento claro: la macro no ha cambiado lo suficiente.",
    "viento_semana": "SIN VIENTO CLARO",
    "propio": {
     "veredicto": "SIN GIRO DE LIQUIDEZ",
@@ -417,23 +417,23 @@
  },
  "motores_propios": {
   "oro_xau": {
-   "calculado_utc": "2026-10-10 16:57 UTC",
+   "calculado_utc": "2026-10-11 11:29 UTC",
    "ok": true,
    "disponible": true
   },
   "indices": {
-   "calculado_utc": "2026-10-10 16:57 UTC",
+   "calculado_utc": "2026-10-11 11:29 UTC",
    "ok": true,
    "disponible": true
   },
   "liquidez_cripto": {
-   "calculado_utc": "2026-10-10 16:57 UTC",
+   "calculado_utc": "2026-10-11 11:29 UTC",
    "ok": true,
    "disponible": true
   }
  },
  "sencillo_activos": "Empujan en contra: Bitcoin, US30 · Dow Jones y Russell 2000; sin ventaja clara: Oro, Nasdaq 100 y S&P 500 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-10 16:57 UTC",
- "duracion_s": 102.8
+ "generado_utc": "2026-10-11 11:29 UTC",
+ "duracion_s": 109.8
 }

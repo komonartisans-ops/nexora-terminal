@@ -13,10 +13,6 @@
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
-     "2025-10-10",
-     4000.3999
-    ],
-    [
      "2025-10-13",
      4133.0
     ],
@@ -1021,19 +1017,15 @@
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 82913.25,
-   "fecha": "2026-10-10",
-   "cambio_1d_pct": 0.44,
-   "cambio_5d_pct": -3.35,
-   "cambio_21d_pct": 2.07,
-   "cambio_63d_pct": 27.75,
-   "sma50": 80810.1,
+   "valor": 82976.95,
+   "fecha": "2026-10-11",
+   "cambio_1d_pct": 0.08,
+   "cambio_5d_pct": -3.02,
+   "cambio_21d_pct": 2.26,
+   "cambio_63d_pct": 27.96,
+   "sma50": 80927.95,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-10",
-     113214.3672
-    ],
     [
      "2025-10-11",
      110807.8828
@@ -2492,7 +2484,11 @@
     ],
     [
      "2026-10-10",
-     82913.25
+     82912.2266
+    ],
+    [
+     "2026-10-11",
+     82976.9531
     ]
    ]
   },
@@ -7611,10 +7607,6 @@
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
     [
-     "2025-10-10",
-     98.98
-    ],
-    [
      "2025-10-13",
      99.27
     ],
@@ -8619,6 +8611,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-10 16:57 UTC",
- "duracion_s": 7.1
+ "generado_utc": "2026-10-11 11:29 UTC",
+ "duracion_s": 7.0
 }
