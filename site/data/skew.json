@@ -2097,7 +2097,7 @@
    "fecha": "2026-08-31",
    "fuente": "FRED WRMFNS (fondos monetarios minoristas, semanal)",
    "url": "https://fred.stlouisfed.org/series/WRMFNS",
-   "retraso_dias": 41
+   "retraso_dias": 42
   }
  ],
  "confirmaciones_encendidas": 1,
@@ -2110,7 +2110,7 @@
    "var_13s_pct": 0.35,
    "var_52s_pct": 5.51,
    "percentil_var_13s": 23,
-   "edad_dias": 41,
+   "edad_dias": 42,
    "fuente": "FRED WRMFNS (fondos monetarios minoristas, semanal)",
    "url": "https://fred.stlouisfed.org/series/WRMFNS",
    "serie": [
@@ -2747,7 +2747,7 @@
    "var_1m_pct": 1.41,
    "var_3m_pct": 1.54,
    "var_12m_pct": 10.72,
-   "edad_dias": 41,
+   "edad_dias": 42,
    "fuente": "OFR · Money Market Fund Monitor (SEC N-MFP), total de inversiones, mensual",
    "url": "https://www.financialresearch.gov/money-market-funds/",
    "serie": [
@@ -29771,6 +29771,6 @@
  "errores": {},
  "metodo": "CRITERIO NEXORA. Zonas fijas: normal < 135, elevado ≥ 135, alto ≥ 140. Zonas relativas: percentil de las últimas 500 sesiones, alto ≥ p90, elevado ≥ p75. Alerta de Telegram: zona relativa alta Y al menos 2 de 3 confirmaciones encendidas. Episodio = primer cierre en zona alta tras 10 sesiones sin estarlo. Falsa alarma = el S&P 500 no cae ≥ 5 % desde el cierre de entrada en las siguientes 60 sesiones. Los umbrales son convenciones fijas, no optimizadas.",
  "ok": true,
- "generado_utc": "2026-10-11 11:29 UTC",
- "duracion_s": 1.5
+ "generado_utc": "2026-10-12 15:03 UTC",
+ "duracion_s": 2.3
 }

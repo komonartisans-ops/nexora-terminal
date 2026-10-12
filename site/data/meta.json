@@ -1,20 +1,20 @@
 {
- "actualizado_utc": "2026-10-11 11:29 UTC",
- "modo": "diario",
+ "actualizado_utc": "2026-10-12 15:03 UTC",
+ "modo": "horario",
  "etapas": {
   "precios": {
    "ok": true,
-   "duracion_s": 7.0,
+   "duracion_s": 8.1,
    "error": null,
-   "ejecutada_utc": "2026-10-11 11:29 UTC",
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ejecutada_utc": "2026-10-12 15:03 UTC",
+   "ultimo_ok_utc": "2026-10-12 15:03 UTC"
   },
   "fedwatch": {
    "ok": true,
-   "duracion_s": 8.4,
+   "duracion_s": 10.6,
    "error": null,
-   "ejecutada_utc": "2026-10-11 11:29 UTC",
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ejecutada_utc": "2026-10-12 15:03 UTC",
+   "ultimo_ok_utc": "2026-10-12 15:03 UTC"
   },
   "calendario": {
    "ok": true,
@@ -39,10 +39,10 @@
   },
   "tipos": {
    "ok": true,
-   "duracion_s": 71.9,
+   "duracion_s": 74.6,
    "error": null,
-   "ejecutada_utc": "2026-10-11 11:29 UTC",
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ejecutada_utc": "2026-10-12 15:03 UTC",
+   "ultimo_ok_utc": "2026-10-12 15:03 UTC"
   },
   "ciclo": {
    "ok": true,
@@ -67,10 +67,10 @@
   },
   "alertas": {
    "ok": true,
-   "duracion_s": 0.6,
+   "duracion_s": 0.9,
    "error": null,
-   "ejecutada_utc": "2026-10-11 11:29 UTC",
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ejecutada_utc": "2026-10-12 15:03 UTC",
+   "ultimo_ok_utc": "2026-10-12 15:03 UTC"
   },
   "monitores": {
    "ok": true,
@@ -102,17 +102,17 @@
   },
   "noticias": {
    "ok": true,
-   "duracion_s": 5.9,
+   "duracion_s": 7.0,
    "error": null,
-   "ejecutada_utc": "2026-10-11 11:29 UTC",
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ejecutada_utc": "2026-10-12 15:03 UTC",
+   "ultimo_ok_utc": "2026-10-12 15:03 UTC"
   },
   "skew": {
    "ok": true,
-   "duracion_s": 1.5,
+   "duracion_s": 2.3,
    "error": null,
-   "ejecutada_utc": "2026-10-11 11:29 UTC",
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ejecutada_utc": "2026-10-12 15:03 UTC",
+   "ultimo_ok_utc": "2026-10-12 15:03 UTC"
   },
   "semis": {
    "ok": true,
@@ -132,8 +132,8 @@
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-11 11:29 UTC",
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ejecutada_utc": "2026-10-12 15:03 UTC",
+   "ultimo_ok_utc": "2026-10-12 15:03 UTC"
   },
   "tesis": {
    "ok": true,
@@ -157,5 +157,5 @@
    "ultimo_ok_utc": "2026-10-11 11:29 UTC"
   }
  },
- "duracion_total_s": 539.7
+ "duracion_total_s": 103.6
 }
