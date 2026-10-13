@@ -1,6 +1,36 @@
 {
  "items": [
   {
+   "banco": "BCE",
+   "tipo": "Discurso",
+   "titulo": "The AI opportunity for Europe",
+   "orador": "Philip R. Lane",
+   "fecha_utc": "2026-10-13 18:30",
+   "fecha": "2026-10-13",
+   "enlace": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261013~9db9bf4fd6.en.html",
+   "fuente": "bce"
+  },
+  {
+   "banco": "Fed",
+   "tipo": "Comunicado",
+   "titulo": "Minutes of the Board's discount rate meetings on August 17, September 9, and September 16, 2026",
+   "orador": null,
+   "fecha_utc": "2026-10-13 18:00",
+   "fecha": "2026-10-13",
+   "enlace": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261013a.htm",
+   "fuente": "fed_press"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Minutes of the Money Market Committee meeting – September 2026",
+   "orador": null,
+   "fecha_utc": "2026-10-13 15:04",
+   "fecha": "2026-10-13",
+   "enlace": "https://www.bankofengland.co.uk/minutes/2026/september/money-markets-committee-minutes-september-2026",
+   "fuente": "boe"
+  },
+  {
    "banco": "BoJ",
    "tipo": "Novedad",
    "titulo": "Basic Figures on Fails (Sept.)",
@@ -711,16 +741,6 @@
    "fuente": "fed_speech"
   },
   {
-   "banco": "BCE",
-   "tipo": "Comunicado",
-   "titulo": "ECB amends monetary policy implementation guidelines as part of regular review",
-   "orador": null,
-   "fecha_utc": "2026-09-29 08:00",
-   "fecha": "2026-09-29",
-   "enlace": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260929~050089e922.en.html",
-   "fuente": "bce"
-  },
-  {
    "banco": "Fed",
    "tipo": "Discurso",
    "titulo": "An Update on AI and the Economy",
@@ -933,21 +953,21 @@
   {
    "banco": "Fed",
    "tipo": "Comunicado",
-   "titulo": "Federal Reserve Board announces termination of enforcement action with SNB Bancshares and Bank of Eufaula",
-   "orador": null,
-   "fecha_utc": "2026-09-18 15:00",
-   "fecha": "2026-09-18",
-   "enlace": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260918b.htm",
-   "fuente": "fed_press"
-  },
-  {
-   "banco": "Fed",
-   "tipo": "Comunicado",
    "titulo": "Federal Reserve Board issues enforcement actions with former employee of Northstar Bank, former employee of American Express Travel Related Services Company, Inc., and former employee of Regions Bank",
    "orador": null,
    "fecha_utc": "2026-09-18 15:00",
    "fecha": "2026-09-18",
    "enlace": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260918a.htm",
+   "fuente": "fed_press"
+  },
+  {
+   "banco": "Fed",
+   "tipo": "Comunicado",
+   "titulo": "Federal Reserve Board announces termination of enforcement action with SNB Bancshares and Bank of Eufaula",
+   "orador": null,
+   "fecha_utc": "2026-09-18 15:00",
+   "fecha": "2026-09-18",
+   "enlace": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260918b.htm",
    "fuente": "fed_press"
   },
   {
@@ -1013,26 +1033,6 @@
   {
    "banco": "BoE",
    "tipo": "Noticia",
-   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "Asset Purchase Facility: Gilt Sales – Market Notice 17 September 2026",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
    "titulo": "Exchange of letters between the Governor and the Chancellor regarding CPI Inflation - September 2026",
    "orador": null,
    "fecha_utc": "2026-09-17 11:00",
@@ -1048,6 +1048,26 @@
    "fecha_utc": "2026-09-17 11:00",
    "fecha": "2026-09-17",
    "enlace": "https://www.bankofengland.co.uk/letter/2026/exchange-of-letters-between-the-governor-and-the-chancellor-regarding-qt-and-the-apf",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Asset Purchase Facility: Gilt Sales – Market Notice 17 September 2026",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
    "fuente": "boe"
   },
   {
@@ -1129,16 +1149,6 @@
    "fecha": "2026-09-10",
    "enlace": "https://www.bankofengland.co.uk/news/2026/september/statement-announcing-governors-interview",
    "fuente": "boe"
-  },
-  {
-   "banco": "Fed",
-   "tipo": "Comunicado",
-   "titulo": "Federal Reserve Board announces termination of enforcement actions with United Texas Bank, Quontic Bank Acquisition Corp., and Quontic Bank Holdings Corp.",
-   "orador": null,
-   "fecha_utc": "2026-09-04 15:00",
-   "fecha": "2026-09-04",
-   "enlace": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260904a.htm",
-   "fuente": "fed_press"
   },
   {
    "banco": "Fed",
@@ -1289,16 +1299,6 @@
    "fecha": "2026-07-08",
    "enlace": "https://www.bankofengland.co.uk/minutes/2026/june/uk-money-markets-committee-minutes-june-2026",
    "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "Letter from the Governor to Joe Powell MP",
-   "orador": null,
-   "fecha_utc": "2026-07-08 14:00",
-   "fecha": "2026-07-08",
-   "enlace": "https://www.bankofengland.co.uk/letter/2026/letter-from-the-governor-to-joe-powell",
-   "fuente": "boe"
   }
  ],
  "fuentes": {
@@ -1308,7 +1308,7 @@
    "n": 20,
    "url": "https://www.federalreserve.gov/feeds/press_all.xml",
    "pagina": "https://www.federalreserve.gov/newsevents/pressreleases.htm",
-   "ultimo": "2026-10-09 14:00"
+   "ultimo": "2026-10-13 18:00"
   },
   "fed_speech": {
    "banco": "Fed",
@@ -1324,7 +1324,7 @@
    "n": 15,
    "url": "https://www.ecb.europa.eu/rss/press.html",
    "pagina": "https://www.ecb.europa.eu/press/html/index.en.html",
-   "ultimo": "2026-10-08 11:30"
+   "ultimo": "2026-10-13 18:30"
   },
   "boj": {
    "banco": "BoJ",
@@ -1340,7 +1340,7 @@
    "n": 40,
    "url": "https://www.bankofengland.co.uk/rss/news",
    "pagina": "https://www.bankofengland.co.uk/news",
-   "ultimo": "2026-10-09 09:00"
+   "ultimo": "2026-10-13 15:04"
   },
   "tesoro": {
    "banco": "Tesoro EE. UU.",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-13 13:57 UTC",
- "duracion_s": 6.9
+ "generado_utc": "2026-10-13 20:09 UTC",
+ "duracion_s": 8.5
 }
