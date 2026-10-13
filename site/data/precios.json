@@ -3,13 +3,13 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4196.2,
-   "fecha": "2026-10-12",
-   "cambio_1d_pct": -0.48,
-   "cambio_5d_pct": 0.95,
-   "cambio_21d_pct": -4.82,
-   "cambio_63d_pct": 3.11,
-   "sma50": 4378.76,
+   "valor": 4192.2,
+   "fecha": "2026-10-13",
+   "cambio_1d_pct": 0.04,
+   "cambio_5d_pct": 0.12,
+   "cambio_21d_pct": -3.67,
+   "cambio_63d_pct": 3.47,
+   "sma50": 4380.68,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
@@ -1014,26 +1014,26 @@
     ],
     [
      "2026-10-12",
-     4196.2002
+     4190.6001
+    ],
+    [
+     "2026-10-13",
+     4192.2002
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 82500.44,
-   "fecha": "2026-10-12",
-   "cambio_1d_pct": -1.41,
-   "cambio_5d_pct": -0.93,
-   "cambio_21d_pct": -4.74,
-   "cambio_63d_pct": 29.09,
-   "sma50": 81036.91,
+   "valor": 82729.58,
+   "fecha": "2026-10-13",
+   "cambio_1d_pct": -1.14,
+   "cambio_5d_pct": -0.66,
+   "cambio_21d_pct": -4.47,
+   "cambio_63d_pct": 29.45,
+   "sma50": 81041.49,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-12",
-     115169.7656
-    ],
     [
      "2025-10-13",
      115271.0781
@@ -2491,8 +2491,8 @@
      83679.4688
     ],
     [
-     "2026-10-12",
-     82500.4375
+     "2026-10-13",
+     82729.5781
     ]
    ]
   },
@@ -7597,13 +7597,13 @@
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 102.57,
-   "fecha": "2026-10-12",
-   "cambio_1d_pct": 0.35,
-   "cambio_5d_pct": 0.39,
-   "cambio_21d_pct": 3.48,
-   "cambio_63d_pct": 1.62,
-   "sma50": 100.17,
+   "valor": 102.4,
+   "fecha": "2026-10-13",
+   "cambio_1d_pct": -0.17,
+   "cambio_5d_pct": 0.56,
+   "cambio_21d_pct": 2.96,
+   "cambio_63d_pct": 1.9,
+   "sma50": 100.21,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
     [
@@ -8608,13 +8608,17 @@
     ],
     [
      "2026-10-12",
-     102.572
+     102.58
+    ],
+    [
+     "2026-10-13",
+     102.405
     ]
    ]
   }
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-12 22:28 UTC",
- "duracion_s": 7.7
+ "generado_utc": "2026-10-13 02:41 UTC",
+ "duracion_s": 7.0
 }

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generado_utc": "2026-10-12 22:28 UTC",
+ "generado_utc": "2026-10-13 02:41 UTC",
  "terminal": "https://komonartisans-ops.github.io/nexora-terminal/",
  "proposito": "Resumen compacto de todo el terminal NEXORA para redactar informes. Fuente y fecha en cada bloque. Sin IA en su generación.",
  "lectura_para_informes": [
@@ -15,7 +15,7 @@
  "frescura": {
   "precios": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-12 22:28 UTC"
+   "ultimo_ok_utc": "2026-10-13 02:41 UTC"
   },
   "fedwatch": {
    "ok": true,
@@ -51,7 +51,7 @@
   },
   "alertas": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-12 22:28 UTC"
+   "ultimo_ok_utc": "2026-10-13 02:41 UTC"
   },
   "monitores": {
    "ok": true,
@@ -75,19 +75,19 @@
   },
   "skew": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-12 22:28 UTC"
+   "ultimo_ok_utc": "2026-10-13 02:41 UTC"
   },
   "semis": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ultimo_ok_utc": "2026-10-13 02:41 UTC"
   },
   "gamma": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ultimo_ok_utc": "2026-10-13 02:41 UTC"
   },
   "contexto": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-12 15:03 UTC"
+   "ultimo_ok_utc": "2026-10-12 22:28 UTC"
   },
   "tesis": {
    "ok": true,
@@ -95,38 +95,38 @@
   },
   "bancos": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ultimo_ok_utc": "2026-10-13 02:41 UTC"
   },
   "tono": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-11 11:29 UTC"
+   "ultimo_ok_utc": "2026-10-13 02:41 UTC"
   }
  },
  "datos_con_mas_de_48h": [],
  "fallos_ultima_ejecucion": [],
  "mercado": {
-  "actualizado_utc": "2026-10-12 22:28 UTC",
+  "actualizado_utc": "2026-10-13 02:41 UTC",
   "activos": {
    "oro": {
     "nombre": "Oro",
-    "valor": 4196.2,
-    "fecha": "2026-10-12",
-    "cambio_1d_pct": -0.48,
-    "cambio_5d_pct": 0.95,
-    "cambio_21d_pct": -4.82,
-    "cambio_63d_pct": 3.11,
-    "vs_sma50_pct": -4.2,
+    "valor": 4192.2,
+    "fecha": "2026-10-13",
+    "cambio_1d_pct": 0.04,
+    "cambio_5d_pct": 0.12,
+    "cambio_21d_pct": -3.67,
+    "cambio_63d_pct": 3.47,
+    "vs_sma50_pct": -4.3,
     "fuente": "Futuros oro COMEX (Yahoo Finance)"
    },
    "btc": {
     "nombre": "Bitcoin",
-    "valor": 82500.44,
-    "fecha": "2026-10-12",
-    "cambio_1d_pct": -1.41,
-    "cambio_5d_pct": -0.93,
-    "cambio_21d_pct": -4.74,
-    "cambio_63d_pct": 29.09,
-    "vs_sma50_pct": 1.8,
+    "valor": 82729.58,
+    "fecha": "2026-10-13",
+    "cambio_1d_pct": -1.14,
+    "cambio_5d_pct": -0.66,
+    "cambio_21d_pct": -4.47,
+    "cambio_63d_pct": 29.45,
+    "vs_sma50_pct": 2.1,
     "fuente": "BTC-USD (Yahoo Finance)"
    },
    "spx": {
@@ -186,13 +186,13 @@
    },
    "dxy": {
     "nombre": "Índice dólar (DXY)",
-    "valor": 102.57,
-    "fecha": "2026-10-12",
-    "cambio_1d_pct": 0.35,
-    "cambio_5d_pct": 0.39,
-    "cambio_21d_pct": 3.48,
-    "cambio_63d_pct": 1.62,
-    "vs_sma50_pct": 2.4,
+    "valor": 102.4,
+    "fecha": "2026-10-13",
+    "cambio_1d_pct": -0.17,
+    "cambio_5d_pct": 0.56,
+    "cambio_21d_pct": 2.96,
+    "cambio_63d_pct": 1.9,
+    "vs_sma50_pct": 2.2,
     "fuente": "ICE DXY (Yahoo Finance)"
    }
   }
@@ -598,15 +598,15 @@
   "fuente": "FedWatch NEXORA (futuros ZQ, EFFR, calendario FOMC) · Tesoro de EE. UU."
  },
  "riesgo_de_cola_skew": {
-  "fecha": "2026-10-09",
-  "valor": 154.34,
+  "fecha": "2026-10-12",
+  "valor": 155.06,
   "zona": "ALTO",
   "zona_relativa": {
    "zona_relativa": "ELEVADO",
-   "percentil_500_sesiones": 82.4,
+   "percentil_500_sesiones": 84.0,
    "umbral_alto_p90": 161.21,
    "umbral_elevado_p75": 151.92,
-   "racha_sesiones": 1,
+   "racha_sesiones": 2,
    "entrada_zona_alta": null,
    "alerta_telegram_usa": "zona relativa (percentil ≥ 90 de 500 sesiones)",
    "avisos_ultimos_3_anos": {
@@ -633,16 +633,16 @@
    "alto": 140.0
   },
   "percentil_historico": 98,
-  "percentil_1a": 95,
-  "racha_sesiones": 39,
+  "percentil_1a": 96,
+  "racha_sesiones": 40,
   "entrada_zona_alta": "2026-08-17",
   "confirmaciones": [
    {
     "nombre": "VIX y estructura de plazos",
     "estado": "CALMA",
     "encendida": false,
-    "valor": "VIX 14.8 · VIX/VIX3M 0.83",
-    "fecha": "2026-10-09",
+    "valor": "VIX 15.2 · VIX/VIX3M 0.85",
+    "fecha": "2026-10-12",
     "fuente": "Cboe (VIX y VIX3M)"
    },
    {
@@ -678,123 +678,127 @@
    "aviso": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción."
   },
   "esencial": {
-   "cambio": "El SKEW de Cboe cerró en 154,3 el 09/10/2026 (percentil 98 de su historia desde 1990; 95 del último año), en zona alta (≥ 140); frente a las últimas 500 sesiones está en el percentil 82 (zona relativa elevado; el umbral alto relativo está en 161,2); entró en zona alta el 17/08/2026 y lleva 39 sesiones seguidas. Sesión previa: 149,2.",
+   "cambio": "El SKEW de Cboe cerró en 155,1 el 12/10/2026 (percentil 98 de su historia desde 1990; 96 del último año), en zona alta (≥ 140); frente a las últimas 500 sesiones está en el percentil 84 (zona relativa elevado; el umbral alto relativo está en 161,2); entró en zona alta el 17/08/2026 y lleva 40 sesiones seguidas. Sesión previa: 154,3.",
    "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 3. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
    "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
   },
-  "actualizado_utc": "2026-10-12 22:28 UTC",
+  "actualizado_utc": "2026-10-13 02:41 UTC",
   "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)",
   "etiqueta": "CRITERIO NEXORA (zonas y episodios)"
  },
  "gamma_indices": {
   "indices": {
    "ES": {
-    "sesion": "2026-10-09",
+    "sesion": "2026-10-12",
     "cierre_confirmado": true,
-    "spot_indice": 7811.54,
-    "spot_futuro": 7861.25,
-    "base_futuro": 49.71,
+    "spot_indice": 7807.24,
+    "spot_futuro": 7856.75,
+    "base_futuro": 49.51,
     "metodo_base": "intradía 5 min (futuro e índice en el mismo minuto)",
     "regimen_gamma": "POSITIVA",
-    "gex_neto_musd_por_1pct": 40689.5,
+    "gex_neto_musd_por_1pct": 27419.6,
     "call_wall": {
      "idx": 7820,
-     "musd": 13932.5,
-     "fut": 7869.7
+     "musd": 10434.0,
+     "fut": 7869.5
     },
     "put_wall": {
      "idx": 7800,
-     "musd": 6733.6,
-     "fut": 7849.7
+     "musd": 6618.5,
+     "fut": 7849.5
     },
     "gamma_flip": {
-     "idx": 7768.1,
-     "fut": 7817.8
+     "idx": 7778.2,
+     "fut": 7827.7
     },
-    "resumen": "Call Wall 7.870 ES (7.820 SPX), Put Wall 7.850 (7.800), Gamma Flip 7.818 (7.768); gamma positiva (+40,7 mm$ por 1 %)"
+    "resumen": "Call Wall 7.870 ES (7.820 SPX), Put Wall 7.850 (7.800), Gamma Flip 7.828 (7.778); gamma positiva (+27,4 mm$ por 1 %)"
    },
    "NQ": {
-    "sesion": "2026-10-09",
+    "sesion": "2026-10-12",
     "cierre_confirmado": true,
-    "spot_indice": 30883.15,
-    "spot_futuro": 31112.25,
-    "base_futuro": 229.1,
+    "spot_indice": 30664.7,
+    "spot_futuro": 30896.5,
+    "base_futuro": 231.8,
     "metodo_base": "intradía 5 min (futuro e índice en el mismo minuto)",
-    "regimen_gamma": "POSITIVA",
-    "gex_neto_musd_por_1pct": 812.2,
+    "regimen_gamma": "NEGATIVA",
+    "gex_neto_musd_por_1pct": -3597.3,
     "call_wall": {
-     "idx": 31250,
-     "musd": 1275.2,
-     "fut": 31479.1
+     "idx": 30900,
+     "musd": 1014.0,
+     "fut": 31131.8
     },
     "put_wall": {
-     "idx": 30850,
-     "musd": 801.8,
-     "fut": 31079.1
+     "idx": 30500,
+     "musd": 1198.7,
+     "fut": 30731.8
     },
     "gamma_flip": {
-     "idx": 30833.8,
-     "fut": 31062.9
+     "idx": 30886.9,
+     "fut": 31118.7
     },
-    "resumen": "Call Wall 31.479 NQ (31.250 NDX), Put Wall 31.079 (30.850), Gamma Flip 31.063 (30.834); gamma positiva (+0,8 mm$ por 1 %)"
+    "resumen": "Call Wall 31.132 NQ (30.900 NDX), Put Wall 30.732 (30.500), Gamma Flip 31.119 (30.887); gamma negativa (-3,6 mm$ por 1 %)"
    }
   },
-  "actualizado_utc": "2026-10-11 11:29 UTC",
+  "actualizado_utc": "2026-10-13 02:41 UTC",
   "fuente": "Cboe · cadena de opciones con 15 min de retraso (cdn-api.cboe.com)",
   "etiqueta": "CRITERIO NEXORA (método propio, no dato oficial)",
   "supuesto": "GEX con signo +calls / −puts: hipótesis sobre el posicionamiento de los creadores de mercado, no observable."
  },
  "semis_vs_software": {
-  "fecha": "2026-10-09",
-  "ratio_smh_igv": 5.3548,
-  "vs_sma50_pct": -2.87,
-  "vs_sma200_pct": -1.11,
+  "fecha": "2026-10-12",
+  "ratio_smh_igv": 5.3108,
+  "vs_sma50_pct": -3.53,
+  "vs_sma200_pct": -2.1,
   "tendencia": "LIDERAZGO SOFTWARE",
   "cambios_pct": {
-   "1m": -3.28,
-   "3m": -15.24,
-   "6m": -8.48,
-   "12m": 84.49
+   "1m": -5.17,
+   "3m": -17.17,
+   "6m": -5.72,
+   "12m": 79.2
   },
   "hoy": {
-   "smh_pct": -0.65,
-   "igv_pct": 2.81,
-   "fecha": "2026-10-09",
-   "smh": 603.33,
-   "igv": 112.67
+   "smh_pct": -2.05,
+   "igv_pct": -1.23,
+   "fecha": "2026-10-12",
+   "smh": 590.99,
+   "igv": 111.28
   },
-  "escenario_hoy": "ROTACIÓN HACIA SOFTWARE",
-  "explicacion": "SMH -0,65 % frente a IGV +2,81 % (diferencial -3,46 pp): el dinero se mueve dentro de tecnología hacia el software (menos intensivo en capital).",
+  "escenario_hoy": "DEBILIDAD TECNOLÓGICA",
+  "explicacion": "Semis (-2,05 %) y software (-1,23 %) caen a la vez: no hay compensación dentro del sector. Hipótesis: venta de la tecnología en bloque (tipos, beneficios o riesgo macro) más que una rotación.",
   "impacto": {
    "NQ": {
     "beta_semis": 0.421,
-    "beta_software": 0.188,
-    "r2": 0.904,
-    "real_pct": 0.51,
-    "explicado_pp": 0.25
+    "beta_software": 0.187,
+    "r2": 0.903,
+    "real_pct": -0.71,
+    "explicado_pp": -1.09
    },
    "ES": {
-    "beta_semis": 0.224,
-    "beta_software": 0.145,
-    "r2": 0.708,
-    "real_pct": 0.59,
-    "explicado_pp": 0.26
+    "beta_semis": 0.223,
+    "beta_software": 0.144,
+    "r2": 0.702,
+    "real_pct": -0.06,
+    "explicado_pp": -0.63
    },
    "YM": {
-    "beta_semis": 0.136,
-    "beta_software": 0.114,
-    "r2": 0.306,
-    "real_pct": 0.83,
-    "explicado_pp": 0.23
+    "beta_semis": 0.134,
+    "beta_software": 0.113,
+    "r2": 0.297,
+    "real_pct": 0.38,
+    "explicado_pp": -0.41
    }
   },
-  "peso_ndx": null,
-  "actualizado_utc": "2026-10-11 11:29 UTC",
+  "peso_ndx": {
+   "fecha": "2026-10-09",
+   "semis_pct": 32.07,
+   "software_pct": 13.87
+  },
+  "actualizado_utc": "2026-10-13 02:41 UTC",
   "fuente": "Yahoo Finance (SMH, IGV, índices, acciones) · Invesco (pesos QQQ)",
   "etiqueta": "CRITERIO NEXORA"
  },
  "bancos_centrales_mundo": {
-  "fecha": "2026-10-11",
+  "fecha": "2026-10-13",
   "n_bancos": 38,
   "contador_12m": {
    "sube": 11,
@@ -939,7 +943,7 @@
    "sube_pct": 27.8,
    "baja_pct": 50.5,
    "sin_cambios_pct": 21.7,
-   "amplitud": -0.227,
+   "amplitud": -0.226,
    "tipos": "RELAJACIÓN",
    "ano_pib": 2025,
    "fuente": "FMI WEO · NGDPD (PIB nominal en USD)",
@@ -954,7 +958,7 @@
     {
      "codigo": "CN",
      "banco": "Banco Popular de China (PBoC)",
-     "peso_pct": 18.3,
+     "peso_pct": 18.2,
      "dir": "SIN CAMBIOS",
      "cambio_12m": 0.0
     },
@@ -993,49 +997,49 @@
     "codigo": "US",
     "banco": "Reserva Federal (Fed)",
     "fecha": "2026-10-28",
-    "dias": 17
+    "dias": 15
    },
    {
     "codigo": "CA",
     "banco": "Banco de Canadá (BoC)",
     "fecha": "2026-10-28",
-    "dias": 17
+    "dias": 15
    },
    {
     "codigo": "XM",
     "banco": "Banco Central Europeo (BCE)",
     "fecha": "2026-10-29",
-    "dias": 18
+    "dias": 16
    },
    {
     "codigo": "JP",
     "banco": "Banco de Japón (BoJ)",
     "fecha": "2026-10-30",
-    "dias": 19
+    "dias": 17
    },
    {
     "codigo": "AU",
     "banco": "Banco de la Reserva de Australia (RBA)",
     "fecha": "2026-11-03",
-    "dias": 23
+    "dias": 21
    },
    {
     "codigo": "SE",
     "banco": "Riksbank",
     "fecha": "2026-11-04",
-    "dias": 24
+    "dias": 22
    },
    {
     "codigo": "GB",
     "banco": "Banco de Inglaterra (BoE)",
     "fecha": "2026-11-05",
-    "dias": 25
+    "dias": 23
    },
    {
     "codigo": "CH",
     "banco": "Banco Nacional Suizo (SNB)",
     "fecha": "2026-12-10",
-    "dias": 60
+    "dias": 58
    }
   ],
   "bancos": [
@@ -1058,11 +1062,11 @@
     "inflacion_fmi": {
      "valor": 2.7,
      "ano": 2025,
-     "prevision": 3.2,
+     "prevision": 3.6,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 2.1,
+     "valor": 2.3,
      "ano": 2025,
      "prevision": 2.3,
      "ano_prevision": 2026
@@ -1087,11 +1091,11 @@
     "inflacion_fmi": {
      "valor": 2.1,
      "ano": 2025,
-     "prevision": 2.6,
+     "prevision": 3.1,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 1.4,
+     "valor": 1.2,
      "ano": 2025,
      "prevision": 1.1,
      "ano_prevision": 2026
@@ -1116,7 +1120,7 @@
     "inflacion_fmi": {
      "valor": 3.2,
      "ano": 2025,
-     "prevision": 2.2,
+     "prevision": 2,
      "ano_prevision": 2026
     },
     "pib_fmi": {
@@ -1145,13 +1149,13 @@
     "inflacion_fmi": {
      "valor": 3.4,
      "ano": 2025,
-     "prevision": 3.2,
+     "prevision": 3.3,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 1.3,
+     "valor": 1.2,
      "ano": 2025,
-     "prevision": 0.8,
+     "prevision": 1.3,
      "ano_prevision": 2026
     }
    },
@@ -1174,13 +1178,13 @@
     "inflacion_fmi": {
      "valor": 0.2,
      "ano": 2025,
-     "prevision": 0.5,
+     "prevision": 0.7,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 1.3,
+     "valor": 1.6,
      "ano": 2025,
-     "prevision": 1.3,
+     "prevision": 1.9,
      "ano_prevision": 2026
     }
    },
@@ -1203,13 +1207,13 @@
     "inflacion_fmi": {
      "valor": 2.1,
      "ano": 2025,
-     "prevision": 2.5,
+     "prevision": 2.8,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 1.7,
+     "valor": 1.9,
      "ano": 2025,
-     "prevision": 1.5,
+     "prevision": 1.1,
      "ano_prevision": 2026
     }
    },
@@ -1230,15 +1234,15 @@
     "divisa_vs_usd_1m_pct": -3.07,
     "divisa_fecha": "2026-10-06",
     "inflacion_fmi": {
-     "valor": 2.9,
+     "valor": 2.8,
      "ano": 2025,
-     "prevision": 4,
+     "prevision": 3.9,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 2,
      "ano": 2025,
-     "prevision": 2,
+     "prevision": 1.9,
      "ano_prevision": 2026
     }
    },
@@ -1261,13 +1265,13 @@
     "inflacion_fmi": {
      "valor": 2.8,
      "ano": 2025,
-     "prevision": 3.1,
+     "prevision": 4.1,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 0.2,
+     "valor": 0.3,
      "ano": 2025,
-     "prevision": 2.1,
+     "prevision": 2,
      "ano_prevision": 2026
     }
    },
@@ -1290,13 +1294,13 @@
     "inflacion_fmi": {
      "valor": 2.6,
      "ano": 2025,
-     "prevision": 1.5,
+     "prevision": 1.1,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 1.5,
+     "valor": 1.4,
      "ano": 2025,
-     "prevision": 2,
+     "prevision": 2.5,
      "ano_prevision": 2026
     }
    },
@@ -1319,7 +1323,7 @@
     "inflacion_fmi": {
      "valor": 3,
      "ano": 2025,
-     "prevision": 3.3,
+     "prevision": 3.2,
      "ano_prevision": 2026
     },
     "pib_fmi": {
@@ -1348,13 +1352,13 @@
     "inflacion_fmi": {
      "valor": 1.8,
      "ano": 2025,
-     "prevision": 2,
+     "prevision": 1.8,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 2.9,
+     "valor": 3.5,
      "ano": 2025,
-     "prevision": 2,
+     "prevision": 3.7,
      "ano_prevision": 2026
     }
    },
@@ -1377,13 +1381,13 @@
     "inflacion_fmi": {
      "valor": 4.1,
      "ano": 2025,
-     "prevision": 4.8,
+     "prevision": 5.6,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 1.3,
+     "valor": 1.1,
      "ano": 2025,
-     "prevision": 1.9,
+     "prevision": 1.4,
      "ano_prevision": 2026
     }
    },
@@ -1406,13 +1410,13 @@
     "inflacion_fmi": {
      "valor": 3.6,
      "ano": 2025,
-     "prevision": 3.3,
+     "prevision": 3.2,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 3.6,
+     "valor": 3.7,
      "ano": 2025,
-     "prevision": 3.3,
+     "prevision": 3.4,
      "ano_prevision": 2026
     }
    },
@@ -1435,13 +1439,13 @@
     "inflacion_fmi": {
      "valor": 2.5,
      "ano": 2025,
-     "prevision": 2.4,
+     "prevision": 2.1,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 2.5,
+     "valor": 2.6,
      "ano": 2025,
-     "prevision": 2.2,
+     "prevision": 1.8,
      "ano_prevision": 2026
     }
    },
@@ -1464,13 +1468,13 @@
     "inflacion_fmi": {
      "valor": 4.4,
      "ano": 2025,
-     "prevision": 3.8,
+     "prevision": 1.9,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 0.4,
+     "valor": 0.5,
      "ano": 2025,
-     "prevision": 1.7,
+     "prevision": 1.9,
      "ano_prevision": 2026
     }
    },
@@ -1493,13 +1497,13 @@
     "inflacion_fmi": {
      "valor": 7.3,
      "ano": 2025,
-     "prevision": 7.8,
+     "prevision": 8.2,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 0.7,
      "ano": 2025,
-     "prevision": 0.7,
+     "prevision": -0.5,
      "ano_prevision": 2026
     }
    },
@@ -1522,13 +1526,13 @@
     "inflacion_fmi": {
      "valor": 3.9,
      "ano": 2025,
-     "prevision": 5.2,
+     "prevision": 3.1,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 2,
      "ano": 2025,
-     "prevision": 2.8,
+     "prevision": 3.3,
      "ano_prevision": 2026
     }
    },
@@ -1551,13 +1555,13 @@
     "inflacion_fmi": {
      "valor": 4.1,
      "ano": 2025,
-     "prevision": 4.5,
+     "prevision": 4,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 3.5,
      "ano": 2025,
-     "prevision": 3.1,
+     "prevision": 3.5,
      "ano_prevision": 2026
     }
    },
@@ -1580,13 +1584,13 @@
     "inflacion_fmi": {
      "valor": 34.9,
      "ano": 2025,
-     "prevision": 28.6,
+     "prevision": 31.2,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 3.6,
+     "valor": 3.7,
      "ano": 2025,
-     "prevision": 3.4,
+     "prevision": 2.7,
      "ano_prevision": 2026
     }
    },
@@ -1609,13 +1613,13 @@
     "inflacion_fmi": {
      "valor": 8.7,
      "ano": 2025,
-     "prevision": 5.6,
+     "prevision": 6.1,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 1,
      "ano": 2025,
-     "prevision": 1.1,
+     "prevision": 0.9,
      "ano_prevision": 2026
     }
    },
@@ -1638,13 +1642,13 @@
     "inflacion_fmi": {
      "valor": 3,
      "ano": 2025,
-     "prevision": 2.3,
+     "prevision": 1.8,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 2.9,
+     "valor": 3.5,
      "ano": 2025,
-     "prevision": 3.5,
+     "prevision": 4.5,
      "ano_prevision": 2026
     }
    },
@@ -1667,13 +1671,13 @@
     "inflacion_fmi": {
      "valor": 2,
      "ano": 2025,
-     "prevision": 2.3,
+     "prevision": 1.9,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 4.5,
+     "valor": 4.6,
      "ano": 2025,
-     "prevision": 3.1,
+     "prevision": -3.3,
      "ano_prevision": 2026
     }
    },
@@ -1696,13 +1700,13 @@
     "inflacion_fmi": {
      "valor": 2.4,
      "ano": 2025,
-     "prevision": 2.8,
+     "prevision": 2.2,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 3.5,
+     "valor": 2.7,
      "ano": 2025,
-     "prevision": -0.6,
+     "prevision": -16.7,
      "ano_prevision": 2026
     }
    },
@@ -1725,7 +1729,7 @@
     "inflacion_fmi": {
      "valor": 3.2,
      "ano": 2025,
-     "prevision": 3.9,
+     "prevision": 4.4,
      "ano_prevision": 2026
     },
     "pib_fmi": {
@@ -1749,18 +1753,18 @@
     "direccion_12m": "SIN CAMBIOS",
     "proxima_reunion": "SIN DATO",
     "proxima_fuente": "No se ha localizado un calendario oficial legible por máquina: no se estima",
-    "divisa_vs_usd_1m_pct": 1.29,
+    "divisa_vs_usd_1m_pct": null,
     "divisa_fecha": "2026-08-28",
     "inflacion_fmi": {
      "valor": 0.8,
      "ano": 2025,
-     "prevision": 1.3,
+     "prevision": 0.9,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 4.9,
      "ano": 2025,
-     "prevision": 4.9,
+     "prevision": 4.5,
      "ano_prevision": 2026
     }
    },
@@ -1783,13 +1787,13 @@
     "inflacion_fmi": {
      "valor": 0,
      "ano": 2025,
-     "prevision": 1.2,
+     "prevision": 1,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 5,
      "ano": 2025,
-     "prevision": 4.4,
+     "prevision": 4.5,
      "ano_prevision": 2026
     }
    },
@@ -1812,13 +1816,13 @@
     "inflacion_fmi": {
      "valor": 1.4,
      "ano": 2025,
-     "prevision": 2.1,
+     "prevision": 1.9,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 3.5,
+     "valor": 3.6,
      "ano": 2025,
-     "prevision": 2.4,
+     "prevision": 3.8,
      "ano_prevision": 2026
     }
    },
@@ -1839,15 +1843,15 @@
     "divisa_vs_usd_1m_pct": -2.01,
     "divisa_fecha": "2026-10-06",
     "inflacion_fmi": {
-     "valor": 2.1,
+     "valor": 2,
      "ano": 2025,
-     "prevision": 4.7,
+     "prevision": 5,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 7.6,
+     "valor": 7.8,
      "ano": 2025,
-     "prevision": 6.5,
+     "prevision": 7,
      "ano_prevision": 2026
     }
    },
@@ -1870,13 +1874,13 @@
     "inflacion_fmi": {
      "valor": 2.1,
      "ano": 2025,
-     "prevision": 2.5,
+     "prevision": 2.7,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 1,
+     "valor": 1.1,
      "ano": 2025,
-     "prevision": 1.9,
+     "prevision": 3.3,
      "ano_prevision": 2026
     }
    },
@@ -1899,13 +1903,13 @@
     "inflacion_fmi": {
      "valor": 1.9,
      "ano": 2025,
-     "prevision": 3,
+     "prevision": 3.3,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 5.1,
      "ano": 2025,
-     "prevision": 5,
+     "prevision": 5.1,
      "ano_prevision": 2026
     }
    },
@@ -1928,13 +1932,13 @@
     "inflacion_fmi": {
      "valor": 1.4,
      "ano": 2025,
-     "prevision": 1.9,
+     "prevision": 2.2,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 5.2,
      "ano": 2025,
-     "prevision": 4.7,
+     "prevision": 5.2,
      "ano_prevision": 2026
     }
    },
@@ -1957,13 +1961,13 @@
     "inflacion_fmi": {
      "valor": -0.1,
      "ano": 2025,
-     "prevision": 0.9,
+     "prevision": 2.1,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 2.4,
      "ano": 2025,
-     "prevision": 1.5,
+     "prevision": 2.1,
      "ano_prevision": 2026
     }
    },
@@ -1986,13 +1990,13 @@
     "inflacion_fmi": {
      "valor": 1.7,
      "ano": 2025,
-     "prevision": 4.3,
+     "prevision": 5.6,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 4.4,
      "ano": 2025,
-     "prevision": 4.1,
+     "prevision": 3.4,
      "ano_prevision": 2026
     }
    },
@@ -2015,13 +2019,13 @@
     "inflacion_fmi": {
      "valor": 5,
      "ano": 2025,
-     "prevision": 4,
+     "prevision": 4.4,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 2.3,
      "ano": 2025,
-     "prevision": 1.9,
+     "prevision": 2.2,
      "ano_prevision": 2026
     }
    },
@@ -2044,13 +2048,13 @@
     "inflacion_fmi": {
      "valor": 3.8,
      "ano": 2025,
-     "prevision": 3.9,
+     "prevision": 3.8,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 0.6,
+     "valor": 0.5,
      "ano": 2025,
-     "prevision": 1.6,
+     "prevision": 1.5,
      "ano_prevision": 2026
     }
    },
@@ -2073,13 +2077,13 @@
     "inflacion_fmi": {
      "valor": 4.2,
      "ano": 2025,
-     "prevision": 2.9,
+     "prevision": 3.7,
      "ano_prevision": 2026
     },
     "pib_fmi": {
-     "valor": 2.3,
+     "valor": 2.5,
      "ano": 2025,
-     "prevision": 2.4,
+     "prevision": 0.6,
      "ano_prevision": 2026
     }
    },
@@ -2102,13 +2106,13 @@
     "inflacion_fmi": {
      "valor": 5.1,
      "ano": 2025,
-     "prevision": 5.9,
+     "prevision": 6,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 2.6,
      "ano": 2025,
-     "prevision": 2.3,
+     "prevision": 2.2,
      "ano_prevision": 2026
     }
    },
@@ -2131,13 +2135,13 @@
     "inflacion_fmi": {
      "valor": 1.5,
      "ano": 2025,
-     "prevision": 2.5,
+     "prevision": 3.8,
      "ano_prevision": 2026
     },
     "pib_fmi": {
      "valor": 3.4,
      "ano": 2025,
-     "prevision": 2.8,
+     "prevision": 3,
      "ano_prevision": 2026
     }
    }
@@ -2147,13 +2151,13 @@
    "tipo_bce_pct": 2.5
   },
   "historico_8_grandes": "site/data/bancos.json → historico8 (cambios de tipo desde 2010, BIS)",
-  "actualizado_utc": "2026-10-11 11:29 UTC",
+  "actualizado_utc": "2026-10-13 02:41 UTC",
   "fuente": "BIS WS_CBPOL y WS_XRU · FMI DataMapper (WEO) · calendarios oficiales de cada banco",
   "etiqueta": "Tipos y calendarios: dato oficial. Lectura de liquidez global: CRITERIO NEXORA (regla en la página).",
   "errores": {}
  },
  "tono_bancos_centrales": {
-  "fecha": "2026-10-11",
+  "fecha": "2026-10-13",
   "estado_bloque": "SECUNDARIO",
   "estado_motivo": "Δz no mejora: 44 % de acierto (24/54) frente a 50 % del azar, p = 0.497: no distinguible del azar; peor que «repetir la decisión anterior» (54 %).",
   "criterio_estado": "PRINCIPAL solo si n ≥ 30, acierto > 50 % con p < 0.05 (binomial bilateral) y acierto ≥ línea base «repetir la decisión anterior» en la misma muestra. Criterio fijado antes de ver el resultado.",
@@ -2408,7 +2412,7 @@
    "version": "1.0213cd75",
    "n_terminos": 157
   },
-  "actualizado_utc": "2026-10-11 11:29 UTC",
+  "actualizado_utc": "2026-10-13 02:41 UTC",
   "fuente": "federalreserve.gov, ecb.europa.eu, boj.or.jp · diccionario de términos NEXORA (sin IA)",
   "etiqueta": "CRITERIO NEXORA: lectura léxica, no entiende contexto. Ver validación y líneas base antes de usarla."
  },

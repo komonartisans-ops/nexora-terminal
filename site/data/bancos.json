@@ -1,5 +1,5 @@
 {
- "fecha": "2026-10-11",
+ "fecha": "2026-10-13",
  "bancos": [
   {
    "codigo": "US",
@@ -13,13 +13,13 @@
     "fecha": "2026-09-17",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 24
+    "dias": 26
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
    "proxima": {
     "fecha": "2026-10-28",
-    "dias": 17,
+    "dias": 15,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
     "lectura": "automática en esta ejecución"
@@ -29,11 +29,11 @@
    "inflacion": {
     "valor": 2.7,
     "ano": 2025,
-    "prevision": 3.2,
+    "prevision": 3.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.1,
+    "valor": 2.3,
     "ano": 2025,
     "prevision": 2.3,
     "ano_prevision": 2026
@@ -52,13 +52,13 @@
     "fecha": "2026-09-16",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 25
+    "dias": 27
    },
    "cambio_12m": 0.5,
    "dir_12m": "SUBE",
    "proxima": {
     "fecha": "2026-10-29",
-    "dias": 18,
+    "dias": 16,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
     "lectura": "automática en esta ejecución"
@@ -75,11 +75,11 @@
    "inflacion": {
     "valor": 2.1,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 3.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.4,
+    "valor": 1.2,
     "ano": 2025,
     "prevision": 1.1,
     "ano_prevision": 2026
@@ -98,13 +98,13 @@
     "fecha": "2026-09-24",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 17
+    "dias": 19
    },
    "cambio_12m": 0.75,
    "dir_12m": "SUBE",
    "proxima": {
     "fecha": "2026-10-30",
-    "dias": 19,
+    "dias": 17,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.boj.or.jp/en/about/calendar/",
     "lectura": "automática en esta ejecución"
@@ -121,7 +121,7 @@
    "inflacion": {
     "valor": 3.2,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 2,
     "ano_prevision": 2026
    },
    "pib": {
@@ -144,13 +144,13 @@
     "fecha": "2025-12-18",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 297
+    "dias": 299
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
    "proxima": {
     "fecha": "2026-11-05",
-    "dias": 25,
+    "dias": 23,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
     "lectura": "automática en esta ejecución"
@@ -167,13 +167,13 @@
    "inflacion": {
     "valor": 3.4,
     "ano": 2025,
-    "prevision": 3.2,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.3,
+    "valor": 1.2,
     "ano": 2025,
-    "prevision": 0.8,
+    "prevision": 1.3,
     "ano_prevision": 2026
    },
    "pasos": null
@@ -190,13 +190,13 @@
     "fecha": "2025-06-20",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 478
+    "dias": 480
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
    "proxima": {
     "fecha": "2026-12-10",
-    "dias": 60,
+    "dias": 58,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.snb.ch/en/services-events/digital-services/event-schedule",
     "lectura": "automática en esta ejecución"
@@ -213,13 +213,13 @@
    "inflacion": {
     "valor": 0.2,
     "ano": 2025,
-    "prevision": 0.5,
+    "prevision": 0.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.3,
+    "valor": 1.6,
     "ano": 2025,
-    "prevision": 1.3,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "pasos": null
@@ -236,13 +236,13 @@
     "fecha": "2025-10-30",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 346
+    "dias": 348
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
    "proxima": {
     "fecha": "2026-10-28",
-    "dias": 17,
+    "dias": 15,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.bankofcanada.ca/2025/08/bank-canada-publishes-2026-schedule-policy-interest-rate-announcements-other-major-publications/",
     "lectura": "automática en esta ejecución"
@@ -259,13 +259,13 @@
    "inflacion": {
     "valor": 2.1,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 2.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.7,
+    "valor": 1.9,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 1.1,
     "ano_prevision": 2026
    },
    "pasos": null
@@ -282,13 +282,13 @@
     "fecha": "2026-05-06",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 158
+    "dias": 160
    },
    "cambio_12m": 0.75,
    "dir_12m": "SUBE",
    "proxima": {
     "fecha": "2026-11-03",
-    "dias": 23,
+    "dias": 21,
     "fuente": "Nota oficial del RBA",
     "url": "https://www.rba.gov.au/media-releases/2025/mr-25-02.html",
     "lectura": "verificada a mano el 2026-10-10 (la web del RBA bloquea la descarga automática)"
@@ -303,15 +303,15 @@
     "por_usd": 1.432248
    },
    "inflacion": {
-    "valor": 2.9,
+    "valor": 2.8,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 3.9,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "pasos": null
@@ -328,7 +328,7 @@
     "fecha": "2026-09-03",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 38
+    "dias": 40
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -345,13 +345,13 @@
    "inflacion": {
     "valor": 2.8,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": 4.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.2,
+    "valor": 0.3,
     "ano": 2025,
-    "prevision": 2.1,
+    "prevision": 2,
     "ano_prevision": 2026
    },
    "pasos": null
@@ -368,13 +368,13 @@
     "fecha": "2025-10-01",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 375
+    "dias": 377
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
    "proxima": {
     "fecha": "2026-11-04",
-    "dias": 24,
+    "dias": 22,
     "fuente": "Calendario oficial del banco central",
     "url": "https://www.riksbank.se/en-gb/press-and-published/calendar/calendar-2026",
     "lectura": "automática en esta ejecución"
@@ -391,13 +391,13 @@
    "inflacion": {
     "valor": 2.6,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 1.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.5,
+    "valor": 1.4,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 2.5,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -503,7 +503,7 @@
     "fecha": "2026-09-25",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 16
+    "dias": 18
    },
    "cambio_12m": 0.5,
    "dir_12m": "SUBE",
@@ -520,7 +520,7 @@
    "inflacion": {
     "valor": 3,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 3.2,
     "ano_prevision": 2026
    },
    "pib": {
@@ -656,7 +656,7 @@
     "fecha": "2026-09-11",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 30
+    "dias": 32
    },
    "cambio_12m": 0.5,
    "dir_12m": "SUBE",
@@ -673,13 +673,13 @@
    "inflacion": {
     "valor": 1.8,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.9,
+    "valor": 3.5,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 3.7,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -813,7 +813,7 @@
     "fecha": "2026-08-19",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 53
+    "dias": 55
    },
    "cambio_12m": 0.5,
    "dir_12m": "SUBE",
@@ -830,13 +830,13 @@
    "inflacion": {
     "valor": 4.1,
     "ano": 2025,
-    "prevision": 4.8,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.3,
+    "valor": 1.1,
     "ano": 2025,
-    "prevision": 1.9,
+    "prevision": 1.4,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -1022,7 +1022,7 @@
     "fecha": "2026-03-05",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 220
+    "dias": 222
    },
    "cambio_12m": -1.0,
    "dir_12m": "BAJA",
@@ -1039,13 +1039,13 @@
    "inflacion": {
     "valor": 3.6,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 3.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.6,
+    "valor": 3.7,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 3.4,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -1159,7 +1159,7 @@
     "fecha": "2026-06-19",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 114
+    "dias": 116
    },
    "cambio_12m": 0.25,
    "dir_12m": "SUBE",
@@ -1176,13 +1176,13 @@
    "inflacion": {
     "valor": 2.5,
     "ano": 2025,
-    "prevision": 2.4,
+    "prevision": 2.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.5,
+    "valor": 2.6,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -1328,7 +1328,7 @@
     "fecha": "2026-08-26",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 46
+    "dias": 48
    },
    "cambio_12m": -1.0,
    "dir_12m": "BAJA",
@@ -1345,13 +1345,13 @@
    "inflacion": {
     "valor": 4.4,
     "ano": 2025,
-    "prevision": 3.8,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.4,
+    "valor": 0.5,
     "ano": 2025,
-    "prevision": 1.7,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -1545,7 +1545,7 @@
     "fecha": "2024-08-08",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 794
+    "dias": 796
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -1562,13 +1562,13 @@
    "inflacion": {
     "valor": 7.3,
     "ano": 2025,
-    "prevision": 7.8,
+    "prevision": 8.2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 0.7,
     "ano": 2025,
-    "prevision": 0.7,
+    "prevision": -0.5,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -1682,7 +1682,7 @@
     "fecha": "2024-09-12",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 759
+    "dias": 761
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -1699,13 +1699,13 @@
    "inflacion": {
     "valor": 3.9,
     "ano": 2025,
-    "prevision": 5.2,
+    "prevision": 3.1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -1875,7 +1875,7 @@
     "fecha": "2026-06-17",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 116
+    "dias": 118
    },
    "cambio_12m": -1.1,
    "dir_12m": "BAJA",
@@ -1892,13 +1892,13 @@
    "inflacion": {
     "valor": 4.1,
     "ano": 2025,
-    "prevision": 4.5,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.5,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": 3.5,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -2044,7 +2044,7 @@
     "fecha": "2026-01-23",
     "delta": -1.0,
     "direccion": "BAJA",
-    "dias": 261
+    "dias": 263
    },
    "cambio_12m": -3.5,
    "dir_12m": "BAJA",
@@ -2061,13 +2061,13 @@
    "inflacion": {
     "valor": 34.9,
     "ano": 2025,
-    "prevision": 28.6,
+    "prevision": 31.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.6,
+    "valor": 3.7,
     "ano": 2025,
-    "prevision": 3.4,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -2269,7 +2269,7 @@
     "fecha": "2026-07-27",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 76
+    "dias": 78
    },
    "cambio_12m": -3.0,
    "dir_12m": "BAJA",
@@ -2286,13 +2286,13 @@
    "inflacion": {
     "valor": 8.7,
     "ano": 2025,
-    "prevision": 5.6,
+    "prevision": 6.1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 1,
     "ano": 2025,
-    "prevision": 1.1,
+    "prevision": 0.9,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -2546,7 +2546,7 @@
     "fecha": "2026-09-03",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 38
+    "dias": 40
    },
    "cambio_12m": -1.25,
    "dir_12m": "BAJA",
@@ -2563,13 +2563,13 @@
    "inflacion": {
     "valor": 3,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.9,
+    "valor": 3.5,
     "ano": 2025,
-    "prevision": 3.5,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -2663,7 +2663,7 @@
     "fecha": "2026-09-16",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 25
+    "dias": 27
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -2680,13 +2680,13 @@
    "inflacion": {
     "valor": 2,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4.5,
+    "valor": 4.6,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": -3.3,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -2812,7 +2812,7 @@
     "fecha": "2025-12-11",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 304
+    "dias": 306
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -2829,13 +2829,13 @@
    "inflacion": {
     "valor": 2.4,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.5,
+    "valor": 2.7,
     "ano": 2025,
-    "prevision": -0.6,
+    "prevision": -16.7,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -2929,7 +2929,7 @@
     "fecha": "2026-09-25",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 16
+    "dias": 18
    },
    "cambio_12m": 0.25,
    "dir_12m": "SUBE",
@@ -2946,7 +2946,7 @@
    "inflacion": {
     "valor": 3.2,
     "ano": 2025,
-    "prevision": 3.9,
+    "prevision": 4.4,
     "ano_prevision": 2026
    },
    "pib": {
@@ -3094,7 +3094,7 @@
     "fecha": "2025-03-20",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 570
+    "dias": 572
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -3103,21 +3103,21 @@
    "fx": {
     "valor": 9.2577,
     "fecha": "2026-08-28",
-    "cambio_1m_pct": 1.29,
-    "ref_fecha": "2026-07-29",
+    "cambio_1m_pct": null,
+    "ref_fecha": null,
     "moneda": "MAD",
     "por_usd": 9.2577
    },
    "inflacion": {
     "valor": 0.8,
     "ano": 2025,
-    "prevision": 1.3,
+    "prevision": 0.9,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 4.9,
     "ano": 2025,
-    "prevision": 4.9,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -3171,7 +3171,7 @@
     "fecha": "2025-05-20",
     "delta": -0.1,
     "direccion": "BAJA",
-    "dias": 509
+    "dias": 511
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -3188,13 +3188,13 @@
    "inflacion": {
     "valor": 0,
     "ano": 2025,
-    "prevision": 1.2,
+    "prevision": 1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 5,
     "ano": 2025,
-    "prevision": 4.4,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -3284,7 +3284,7 @@
     "fecha": "2026-09-17",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 24
+    "dias": 26
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -3301,13 +3301,13 @@
    "inflacion": {
     "valor": 1.4,
     "ano": 2025,
-    "prevision": 2.1,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.5,
+    "valor": 3.6,
     "ano": 2025,
-    "prevision": 2.4,
+    "prevision": 3.8,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -3725,7 +3725,7 @@
     "fecha": "2025-12-05",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 310
+    "dias": 312
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -3740,15 +3740,15 @@
     "por_usd": 96.425149
    },
    "inflacion": {
-    "valor": 2.1,
+    "valor": 2,
     "ano": 2025,
-    "prevision": 4.7,
+    "prevision": 5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 7.6,
+    "valor": 7.8,
     "ano": 2025,
-    "prevision": 6.5,
+    "prevision": 7,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -3870,7 +3870,7 @@
     "fecha": "2026-08-27",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 45
+    "dias": 47
    },
    "cambio_12m": 0.5,
    "dir_12m": "SUBE",
@@ -3887,13 +3887,13 @@
    "inflacion": {
     "valor": 2.1,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1,
+    "valor": 1.1,
     "ano": 2025,
-    "prevision": 1.9,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -4011,7 +4011,7 @@
     "fecha": "2026-06-18",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 115
+    "dias": 117
    },
    "cambio_12m": 1.0,
    "dir_12m": "SUBE",
@@ -4028,13 +4028,13 @@
    "inflacion": {
     "valor": 1.9,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 5.1,
     "ano": 2025,
-    "prevision": 5,
+    "prevision": 5.1,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -4224,7 +4224,7 @@
     "fecha": "2025-07-09",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 459
+    "dias": 461
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -4241,13 +4241,13 @@
    "inflacion": {
     "valor": 1.4,
     "ano": 2025,
-    "prevision": 1.9,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 5.2,
     "ano": 2025,
-    "prevision": 4.7,
+    "prevision": 5.2,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -4317,7 +4317,7 @@
     "fecha": "2026-02-25",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 228
+    "dias": 230
    },
    "cambio_12m": -0.5,
    "dir_12m": "BAJA",
@@ -4334,13 +4334,13 @@
    "inflacion": {
     "valor": -0.1,
     "ano": 2025,
-    "prevision": 0.9,
+    "prevision": 2.1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.4,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 2.1,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -4454,7 +4454,7 @@
     "fecha": "2026-08-28",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 44
+    "dias": 46
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -4471,13 +4471,13 @@
    "inflacion": {
     "valor": 1.7,
     "ano": 2025,
-    "prevision": 4.3,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 4.4,
     "ano": 2025,
-    "prevision": 4.1,
+    "prevision": 3.4,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -4639,7 +4639,7 @@
     "fecha": "2026-09-17",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 24
+    "dias": 26
    },
    "cambio_12m": -1.25,
    "dir_12m": "BAJA",
@@ -4656,13 +4656,13 @@
    "inflacion": {
     "valor": 5,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 4.4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.3,
     "ano": 2025,
-    "prevision": 1.9,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -4908,7 +4908,7 @@
     "fecha": "2026-05-08",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 156
+    "dias": 158
    },
    "cambio_12m": -1.0,
    "dir_12m": "BAJA",
@@ -4925,13 +4925,13 @@
    "inflacion": {
     "valor": 3.8,
     "ano": 2025,
-    "prevision": 3.9,
+    "prevision": 3.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.6,
+    "valor": 0.5,
     "ano": 2025,
-    "prevision": 1.6,
+    "prevision": 1.5,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -5177,7 +5177,7 @@
     "fecha": "2025-12-17",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 298
+    "dias": 300
    },
    "cambio_12m": -0.25,
    "dir_12m": "BAJA",
@@ -5194,13 +5194,13 @@
    "inflacion": {
     "valor": 4.2,
     "ano": 2025,
-    "prevision": 2.9,
+    "prevision": 3.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.3,
+    "valor": 2.5,
     "ano": 2025,
-    "prevision": 2.4,
+    "prevision": 0.6,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -5366,7 +5366,7 @@
     "fecha": "2026-10-01",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 10
+    "dias": 12
    },
    "cambio_12m": 3.0,
    "dir_12m": "SUBE",
@@ -5383,13 +5383,13 @@
    "inflacion": {
     "valor": 5.1,
     "ano": 2025,
-    "prevision": 5.9,
+    "prevision": 6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.6,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -5639,7 +5639,7 @@
     "fecha": "2025-09-12",
     "delta": -0.25,
     "direccion": "BAJA",
-    "dias": 394
+    "dias": 396
    },
    "cambio_12m": 0.0,
    "dir_12m": "SIN CAMBIOS",
@@ -5656,13 +5656,13 @@
    "inflacion": {
     "valor": 1.5,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 3.8,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.4,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "pasos": [
@@ -6002,7 +6002,7 @@
   "sube_pct": 27.8,
   "baja_pct": 50.5,
   "sin_cambios_pct": 21.7,
-  "amplitud": -0.227,
+  "amplitud": -0.226,
   "tipos": "RELAJACIÓN",
   "ano_pib": 2025,
   "fuente": "FMI WEO · NGDPD (PIB nominal en USD)",
@@ -6017,7 +6017,7 @@
    {
     "codigo": "CN",
     "banco": "Banco Popular de China (PBoC)",
-    "peso_pct": 18.3,
+    "peso_pct": 18.2,
     "dir": "SIN CAMBIOS",
     "cambio_12m": 0.0
    },
@@ -6056,49 +6056,49 @@
    "codigo": "US",
    "banco": "Reserva Federal (Fed)",
    "fecha": "2026-10-28",
-   "dias": 17
+   "dias": 15
   },
   {
    "codigo": "CA",
    "banco": "Banco de Canadá (BoC)",
    "fecha": "2026-10-28",
-   "dias": 17
+   "dias": 15
   },
   {
    "codigo": "XM",
    "banco": "Banco Central Europeo (BCE)",
    "fecha": "2026-10-29",
-   "dias": 18
+   "dias": 16
   },
   {
    "codigo": "JP",
    "banco": "Banco de Japón (BoJ)",
    "fecha": "2026-10-30",
-   "dias": 19
+   "dias": 17
   },
   {
    "codigo": "AU",
    "banco": "Banco de la Reserva de Australia (RBA)",
    "fecha": "2026-11-03",
-   "dias": 23
+   "dias": 21
   },
   {
    "codigo": "SE",
    "banco": "Riksbank",
    "fecha": "2026-11-04",
-   "dias": 24
+   "dias": 22
   },
   {
    "codigo": "GB",
    "banco": "Banco de Inglaterra (BoE)",
    "fecha": "2026-11-05",
-   "dias": 25
+   "dias": 23
   },
   {
    "codigo": "CH",
    "banco": "Banco Nacional Suizo (SNB)",
    "fecha": "2026-12-10",
-   "dias": 60
+   "dias": 58
   }
  ],
  "con_calendario": 8,
@@ -6237,7 +6237,7 @@
     3.875
    ],
    [
-    "2026-10-11",
+    "2026-10-13",
     3.875
    ]
   ],
@@ -6367,7 +6367,7 @@
     2.5
    ],
    [
-    "2026-10-11",
+    "2026-10-13",
     2.5
    ]
   ],
@@ -6409,7 +6409,7 @@
     1.25
    ],
    [
-    "2026-10-11",
+    "2026-10-13",
     1.25
    ]
   ],
@@ -6519,7 +6519,7 @@
     3.75
    ],
    [
-    "2026-10-11",
+    "2026-10-13",
     3.75
    ]
   ],
@@ -6585,7 +6585,7 @@
     0.0
    ],
    [
-    "2026-10-11",
+    "2026-10-13",
     0.0
    ]
   ],
@@ -6723,7 +6723,7 @@
     2.25
    ],
    [
-    "2026-10-11",
+    "2026-10-13",
     2.25
    ]
   ],
@@ -6913,7 +6913,7 @@
     4.35
    ],
    [
-    "2026-10-11",
+    "2026-10-13",
     4.35
    ]
   ],
@@ -7083,7 +7083,7 @@
     2.75
    ],
    [
-    "2026-10-11",
+    "2026-10-13",
     2.75
    ]
   ]
@@ -7132,13 +7132,13 @@
    "a3": "AFG",
    "banco": null,
    "inflacion": {
-    "valor": 2.9,
+    "valor": 3.6,
     "ano": 2025,
     "prevision": null,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3,
+    "valor": 1.5,
     "ano": 2025,
     "prevision": null,
     "ano_prevision": 2026
@@ -7152,13 +7152,13 @@
    "inflacion": {
     "valor": 2.2,
     "ano": 2025,
-    "prevision": 3.4,
+    "prevision": 3.2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.7,
     "ano": 2025,
-    "prevision": 3.4,
+    "prevision": 3.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7178,11 +7178,11 @@
    "inflacion": {
     "valor": 1.4,
     "ano": 2025,
-    "prevision": 2.9,
+    "prevision": 6.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.8,
+    "valor": 3.9,
     "ano": 2025,
     "prevision": 3.8,
     "ano_prevision": 2026
@@ -7204,13 +7204,13 @@
    "inflacion": {
     "valor": 2.4,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.9,
     "ano": 2025,
-    "prevision": 2.1,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7222,13 +7222,13 @@
    "inflacion": {
     "valor": 20.2,
     "ano": 2025,
-    "prevision": 12.9,
+    "prevision": 10.6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.1,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 4.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7240,13 +7240,13 @@
    "inflacion": {
     "valor": 1.4,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 3.6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 2.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7258,13 +7258,13 @@
    "inflacion": {
     "valor": 5.6,
     "ano": 2025,
-    "prevision": 6,
+    "prevision": 5.8,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 1.4,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 1.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7276,13 +7276,13 @@
    "inflacion": {
     "valor": 41.9,
     "ano": 2025,
-    "prevision": 30.4,
+    "prevision": 32.5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4.4,
+    "valor": 4.5,
     "ano": 2025,
-    "prevision": 3.5,
+    "prevision": 2.1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7292,15 +7292,15 @@
    "a3": "AUS",
    "banco": "AU",
    "inflacion": {
-    "valor": 2.9,
+    "valor": 2.8,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 3.9,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7312,13 +7312,13 @@
    "inflacion": {
     "valor": 3.6,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 3.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.6,
+    "valor": 0.8,
     "ano": 2025,
-    "prevision": 0.7,
+    "prevision": 0.6,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -7328,15 +7328,15 @@
    "a3": "BHS",
    "banco": null,
    "inflacion": {
-    "valor": 0.6,
+    "valor": 1.1,
     "ano": 2025,
-    "prevision": 1.6,
+    "prevision": 3.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.8,
+    "valor": 3.8,
     "ano": 2025,
-    "prevision": 2.1,
+    "prevision": 2.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7348,13 +7348,13 @@
    "inflacion": {
     "valor": -0.1,
     "ano": 2025,
-    "prevision": 2.4,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.1,
+    "valor": 3.5,
     "ano": 2025,
-    "prevision": -0.5,
+    "prevision": -11.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7366,13 +7366,13 @@
    "inflacion": {
     "valor": 10,
     "ano": 2025,
-    "prevision": 9.2,
+    "prevision": 8.7,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.5,
     "ano": 2025,
-    "prevision": 4.7,
+    "prevision": 3.6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7384,13 +7384,13 @@
    "inflacion": {
     "valor": 3.3,
     "ano": 2025,
-    "prevision": 3.6,
+    "prevision": 4.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 7.2,
+    "valor": 7.1,
     "ano": 2025,
-    "prevision": 5.3,
+    "prevision": 5.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7400,15 +7400,15 @@
    "a3": "BRB",
    "banco": null,
    "inflacion": {
-    "valor": 0.8,
+    "valor": 0.9,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 2.6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.7,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7420,7 +7420,7 @@
    "inflacion": {
     "valor": 3,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 3.8,
     "ano_prevision": 2026
    },
    "pib": {
@@ -7446,13 +7446,13 @@
    "inflacion": {
     "valor": 2.6,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 7.1,
+    "valor": 8.2,
     "ano": 2025,
-    "prevision": 7.5,
+    "prevision": 7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7464,13 +7464,13 @@
    "inflacion": {
     "valor": 19.5,
     "ano": 2025,
-    "prevision": 20.7,
+    "prevision": 12.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": -1.2,
+    "valor": -1.6,
     "ano": 2025,
-    "prevision": -3.3,
+    "prevision": -3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7482,13 +7482,13 @@
    "inflacion": {
     "valor": 4,
     "ano": 2025,
-    "prevision": 4.5,
+    "prevision": 5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2,
+    "valor": 2.4,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 2.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7500,13 +7500,13 @@
    "inflacion": {
     "valor": 2.8,
     "ano": 2025,
-    "prevision": 5.1,
+    "prevision": 7.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": -0.9,
+    "valor": -0.7,
     "ano": 2025,
-    "prevision": 4.7,
+    "prevision": 4.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7526,13 +7526,13 @@
    "inflacion": {
     "valor": 5,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 4.4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.3,
     "ano": 2025,
-    "prevision": 1.9,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7544,13 +7544,13 @@
    "inflacion": {
     "valor": 1.1,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 3.5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.7,
+    "valor": 2.6,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7568,15 +7568,15 @@
    "a3": "SLB",
    "banco": null,
    "inflacion": {
-    "valor": 3.4,
+    "valor": 2.7,
     "ano": 2025,
-    "prevision": 3.2,
+    "prevision": 5.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.7,
+    "valor": 3.6,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7596,13 +7596,13 @@
    "inflacion": {
     "valor": -0.3,
     "ano": 2025,
-    "prevision": 1.6,
+    "prevision": 0.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.6,
+    "valor": 1,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7614,13 +7614,13 @@
    "inflacion": {
     "valor": 3.5,
     "ano": 2025,
-    "prevision": 3.8,
+    "prevision": 4.9,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.1,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 2.6,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -7630,15 +7630,15 @@
    "a3": "MMR",
    "banco": null,
    "inflacion": {
-    "valor": 22,
+    "valor": 21.1,
     "ano": 2025,
-    "prevision": 19,
+    "prevision": 20,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": -2,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7648,15 +7648,15 @@
    "a3": "BDI",
    "banco": null,
    "inflacion": {
-    "valor": 34.2,
+    "valor": 34,
     "ano": 2025,
-    "prevision": 14.5,
+    "prevision": 10.5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.9,
+    "valor": 4.2,
     "ano": 2025,
-    "prevision": 3.8,
+    "prevision": 3.6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7668,13 +7668,13 @@
    "inflacion": {
     "valor": 6.6,
     "ano": 2025,
-    "prevision": 6.4,
+    "prevision": 5.1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 1.3,
     "ano": 2025,
-    "prevision": 1.2,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7686,13 +7686,13 @@
    "inflacion": {
     "valor": 2.5,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5,
+    "valor": 5.3,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7702,15 +7702,15 @@
    "a3": "CMR",
    "banco": null,
    "inflacion": {
-    "valor": 3.4,
+    "valor": 3.5,
     "ano": 2025,
-    "prevision": 3.5,
+    "prevision": 3.4,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.1,
+    "valor": 3.5,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 3.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7722,13 +7722,13 @@
    "inflacion": {
     "valor": 2.1,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 2.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.7,
+    "valor": 1.9,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 1.1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7740,13 +7740,13 @@
    "inflacion": {
     "valor": 2.3,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 1.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5.5,
+    "valor": 6.3,
     "ano": 2025,
-    "prevision": 4.8,
+    "prevision": 5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7766,13 +7766,13 @@
    "inflacion": {
     "valor": 1,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 3.5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4.8,
+    "valor": 5.8,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7781,8 +7781,18 @@
    "a2": "LK",
    "a3": "LKA",
    "banco": null,
-   "inflacion": null,
-   "pib": null,
+   "inflacion": {
+    "valor": -0.5,
+    "ano": 2025,
+    "prevision": 5.3,
+    "ano_prevision": 2026
+   },
+   "pib": {
+    "valor": 5,
+    "ano": 2025,
+    "prevision": 4,
+    "ano_prevision": 2026
+   },
    "zona_euro": false
   },
   "148": {
@@ -7792,13 +7802,13 @@
    "inflacion": {
     "valor": -2.6,
     "ano": 2025,
-    "prevision": 0.5,
+    "prevision": -0.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5.6,
+    "valor": 5.1,
     "ano": 2025,
-    "prevision": 5.2,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7810,13 +7820,13 @@
    "inflacion": {
     "valor": 4.2,
     "ano": 2025,
-    "prevision": 2.9,
+    "prevision": 3.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.3,
+    "valor": 2.5,
     "ano": 2025,
-    "prevision": 2.4,
+    "prevision": 0.6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7828,13 +7838,13 @@
    "inflacion": {
     "valor": 0,
     "ano": 2025,
-    "prevision": 1.2,
+    "prevision": 1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 5,
     "ano": 2025,
-    "prevision": 4.4,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7846,13 +7856,13 @@
    "inflacion": {
     "valor": 1.7,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 8.7,
+    "valor": 8.8,
     "ano": 2025,
-    "prevision": 5.2,
+    "prevision": 10.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7880,13 +7890,13 @@
    "inflacion": {
     "valor": 5.1,
     "ano": 2025,
-    "prevision": 5.9,
+    "prevision": 6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.6,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7898,13 +7908,13 @@
    "inflacion": {
     "valor": 3.2,
     "ano": 2025,
-    "prevision": 3.7,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.8,
     "ano": 2025,
-    "prevision": 4.1,
+    "prevision": 2.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7924,13 +7934,13 @@
    "inflacion": {
     "valor": 2.6,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.4,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 3.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7942,13 +7952,13 @@
    "inflacion": {
     "valor": 7.4,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 4.3,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 5.7,
     "ano": 2025,
-    "prevision": 5.9,
+    "prevision": 5.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7968,13 +7978,13 @@
    "inflacion": {
     "valor": -0.1,
     "ano": 2025,
-    "prevision": -0.4,
+    "prevision": -0.8,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 4.6,
     "ano": 2025,
-    "prevision": 3.6,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -7986,13 +7996,13 @@
    "inflacion": {
     "valor": 4.4,
     "ano": 2025,
-    "prevision": 4.4,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.2,
+    "valor": 3.4,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -8012,13 +8022,13 @@
    "inflacion": {
     "valor": 0.8,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 3.7,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.8,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 2.9,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -8030,13 +8040,13 @@
    "inflacion": {
     "valor": 2.5,
     "ano": 2025,
-    "prevision": 2.4,
+    "prevision": 2.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.5,
+    "valor": 2.6,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8048,11 +8058,11 @@
    "inflacion": {
     "valor": 1.1,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 0.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 7.5,
+    "valor": 8.1,
     "ano": 2025,
     "prevision": 7,
     "ano_prevision": 2026
@@ -8066,13 +8076,13 @@
    "inflacion": {
     "valor": 1.8,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.9,
+    "valor": 3.5,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 3.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8082,9 +8092,9 @@
    "a3": "DMA",
    "banco": null,
    "inflacion": {
-    "valor": 2.3,
+    "valor": 0.9,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "pib": {
@@ -8108,7 +8118,7 @@
    "pib": {
     "valor": 2.1,
     "ano": 2025,
-    "prevision": 3.7,
+    "prevision": 4.6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8120,13 +8130,13 @@
    "inflacion": {
     "valor": 0.7,
     "ano": 2025,
-    "prevision": 2.9,
+    "prevision": 2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.7,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8138,13 +8148,13 @@
    "inflacion": {
     "valor": 0.3,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.7,
+    "valor": 3.9,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8154,15 +8164,15 @@
    "a3": "GNQ",
    "banco": null,
    "inflacion": {
-    "valor": 2.8,
+    "valor": 2.3,
     "ano": 2025,
-    "prevision": 3.2,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": -6.4,
+    "valor": -5.8,
     "ano": 2025,
-    "prevision": -2.7,
+    "prevision": -1.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8172,9 +8182,9 @@
    "a3": "ETH",
    "banco": null,
    "inflacion": {
-    "valor": 13.2,
+    "valor": 16,
     "ano": 2025,
-    "prevision": 11.8,
+    "prevision": 11.7,
     "ano_prevision": 2026
    },
    "pib": {
@@ -8200,13 +8210,13 @@
    "inflacion": {
     "valor": 4.8,
     "ano": 2025,
-    "prevision": 3.8,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.6,
+    "valor": 1.3,
     "ano": 2025,
-    "prevision": 1.4,
+    "prevision": 2.1,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -8242,13 +8252,13 @@
    "inflacion": {
     "valor": -1.4,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 4.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.2,
+    "valor": 2.5,
     "ano": 2025,
-    "prevision": 2.4,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8260,13 +8270,13 @@
    "inflacion": {
     "valor": 1.8,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 2.4,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.2,
+    "valor": 0.8,
     "ano": 2025,
-    "prevision": 1,
+    "prevision": 1.7,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -8286,13 +8296,13 @@
    "inflacion": {
     "valor": 0.9,
     "ano": 2025,
-    "prevision": 1.8,
+    "prevision": 2.4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 0.9,
     "ano": 2025,
-    "prevision": 0.9,
+    "prevision": 0.4,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -8328,13 +8338,13 @@
    "inflacion": {
     "valor": -0.3,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 2.3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 6,
+    "valor": 4.9,
     "ano": 2025,
-    "prevision": 6,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8344,15 +8354,15 @@
    "a3": "GAB",
    "banco": null,
    "inflacion": {
-    "valor": 2,
+    "valor": 1.8,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 0.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.5,
+    "valor": 3.2,
     "ano": 2025,
-    "prevision": 2.7,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8364,13 +8374,13 @@
    "inflacion": {
     "valor": 3.9,
     "ano": 2025,
-    "prevision": 4.4,
+    "prevision": 5.4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 7.5,
     "ano": 2025,
-    "prevision": 5.3,
+    "prevision": 7.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8382,11 +8392,11 @@
    "inflacion": {
     "valor": 7.9,
     "ano": 2025,
-    "prevision": 5.8,
+    "prevision": 7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 6,
+    "valor": 5.7,
     "ano": 2025,
     "prevision": 5.1,
     "ano_prevision": 2026
@@ -8414,7 +8424,7 @@
    "pib": {
     "valor": 0.2,
     "ano": 2025,
-    "prevision": 0.8,
+    "prevision": 1.3,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -8426,13 +8436,13 @@
    "inflacion": {
     "valor": 14.2,
     "ano": 2025,
-    "prevision": 5.8,
+    "prevision": 4.8,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 6,
     "ano": 2025,
-    "prevision": 4.8,
+    "prevision": 5.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8450,7 +8460,7 @@
    "a3": "KIR",
    "banco": null,
    "inflacion": {
-    "valor": 6.5,
+    "valor": 5.9,
     "ano": 2025,
     "prevision": 4.5,
     "ano_prevision": 2026
@@ -8458,7 +8468,7 @@
    "pib": {
     "valor": 4.3,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8470,7 +8480,7 @@
    "inflacion": {
     "valor": 2.9,
     "ano": 2025,
-    "prevision": 3.5,
+    "prevision": 4.2,
     "ano_prevision": 2026
    },
    "pib": {
@@ -8496,13 +8506,13 @@
    "inflacion": {
     "valor": 0.6,
     "ano": 2025,
-    "prevision": 1.3,
+    "prevision": 1.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4.4,
+    "valor": 4.8,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": 3.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8530,13 +8540,13 @@
    "inflacion": {
     "valor": 1.6,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4.1,
+    "valor": 4.3,
     "ano": 2025,
-    "prevision": 3.9,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8548,13 +8558,13 @@
    "inflacion": {
     "valor": 3.1,
     "ano": 2025,
-    "prevision": 4.1,
+    "prevision": 6.3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 6.7,
+    "valor": 6.9,
     "ano": 2025,
-    "prevision": 8.7,
+    "prevision": 7.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8572,7 +8582,7 @@
    "pib": {
     "valor": 19.3,
     "ano": 2025,
-    "prevision": 16.2,
+    "prevision": 22.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8584,7 +8594,7 @@
    "inflacion": {
     "valor": 28.3,
     "ano": 2025,
-    "prevision": 23.5,
+    "prevision": 21.5,
     "ano_prevision": 2026
    },
    "pib": {
@@ -8618,11 +8628,11 @@
    "inflacion": {
     "valor": 4.6,
     "ano": 2025,
-    "prevision": 4.4,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.7,
+    "valor": 3.8,
     "ano": 2025,
     "prevision": 3.3,
     "ano_prevision": 2026
@@ -8636,13 +8646,13 @@
    "inflacion": {
     "valor": 1.4,
     "ano": 2025,
-    "prevision": 2.1,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.5,
+    "valor": 3.6,
     "ano": 2025,
-    "prevision": 2.4,
+    "prevision": 3.8,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8654,13 +8664,13 @@
    "inflacion": {
     "valor": 4.4,
     "ano": 2025,
-    "prevision": 3.8,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.4,
+    "valor": 0.5,
     "ano": 2025,
-    "prevision": 1.7,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8672,13 +8682,13 @@
    "inflacion": {
     "valor": 4.1,
     "ano": 2025,
-    "prevision": 4.8,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.3,
+    "valor": 1.1,
     "ano": 2025,
-    "prevision": 1.9,
+    "prevision": 1.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8688,15 +8698,15 @@
    "a3": "IND",
    "banco": "IN",
    "inflacion": {
-    "valor": 2.1,
+    "valor": 2,
     "ano": 2025,
-    "prevision": 4.7,
+    "prevision": 5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 7.6,
+    "valor": 7.8,
     "ano": 2025,
-    "prevision": 6.5,
+    "prevision": 7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8708,13 +8718,13 @@
    "inflacion": {
     "valor": 1.9,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 5.1,
     "ano": 2025,
-    "prevision": 5,
+    "prevision": 5.1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8724,15 +8734,15 @@
    "a3": "IRN",
    "banco": null,
    "inflacion": {
-    "valor": 50.9,
+    "valor": 50.6,
     "ano": 2025,
-    "prevision": 68.9,
+    "prevision": 78.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": -1.5,
+    "valor": -0.9,
     "ano": 2025,
-    "prevision": -6.1,
+    "prevision": -7.6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8744,13 +8754,13 @@
    "inflacion": {
     "valor": 0.3,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 3.5,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": -0.4,
     "ano": 2025,
-    "prevision": -6.8,
+    "prevision": -16,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8762,13 +8772,13 @@
    "inflacion": {
     "valor": 2.1,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": 3.4,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 12.3,
+    "valor": 8,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": -1,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -8780,13 +8790,13 @@
    "inflacion": {
     "valor": 3,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.9,
+    "valor": 3.5,
     "ano": 2025,
-    "prevision": 3.5,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8798,13 +8808,13 @@
    "inflacion": {
     "valor": 1.6,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 0.5,
     "ano": 2025,
-    "prevision": 0.5,
+    "prevision": 0.8,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -8816,13 +8826,13 @@
    "inflacion": {
     "valor": 0.1,
     "ano": 2025,
-    "prevision": 1.8,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 6.5,
     "ano": 2025,
-    "prevision": 6.2,
+    "prevision": 6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8834,13 +8844,13 @@
    "inflacion": {
     "valor": 3.9,
     "ano": 2025,
-    "prevision": 6.1,
+    "prevision": 5.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": -0.1,
+    "valor": 0.1,
     "ano": 2025,
-    "prevision": -1.2,
+    "prevision": 0,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8852,7 +8862,7 @@
    "inflacion": {
     "valor": 3.2,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 2,
     "ano_prevision": 2026
    },
    "pib": {
@@ -8870,13 +8880,13 @@
    "inflacion": {
     "valor": 11.4,
     "ano": 2025,
-    "prevision": 10.7,
+    "prevision": 10.3,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 6.5,
     "ano": 2025,
-    "prevision": 4.6,
+    "prevision": 4.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8888,11 +8898,11 @@
    "inflacion": {
     "valor": 1.8,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 2.5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.7,
+    "valor": 2.8,
     "ano": 2025,
     "prevision": 2.7,
     "ano_prevision": 2026
@@ -8906,11 +8916,11 @@
    "inflacion": {
     "valor": 4.1,
     "ano": 2025,
-    "prevision": 5.9,
+    "prevision": 6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4.9,
+    "valor": 4.6,
     "ano": 2025,
     "prevision": 4.5,
     "ano_prevision": 2026
@@ -8932,13 +8942,13 @@
    "inflacion": {
     "valor": 2.1,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1,
+    "valor": 1.1,
     "ano": 2025,
-    "prevision": 1.9,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8950,13 +8960,13 @@
    "inflacion": {
     "valor": 2.4,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.5,
+    "valor": 2.7,
     "ano": 2025,
-    "prevision": -0.6,
+    "prevision": -16.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8968,13 +8978,13 @@
    "inflacion": {
     "valor": 8.2,
     "ano": 2025,
-    "prevision": 10.6,
+    "prevision": 12.7,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 11.1,
     "ano": 2025,
-    "prevision": 6.1,
+    "prevision": 9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -8986,13 +8996,13 @@
    "inflacion": {
     "valor": 7.7,
     "ano": 2025,
-    "prevision": 9.6,
+    "prevision": 9.2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 4.8,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9020,13 +9030,13 @@
    "a3": "LSO",
    "banco": null,
    "inflacion": {
-    "valor": 4.4,
+    "valor": 4,
     "ano": 2025,
-    "prevision": 4.2,
+    "prevision": 4.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.4,
+    "valor": 1.5,
     "ano": 2025,
     "prevision": 1.1,
     "ano_prevision": 2026
@@ -9040,13 +9050,13 @@
    "inflacion": {
     "valor": 3.8,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 3.6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.1,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 2.3,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -9058,13 +9068,13 @@
    "inflacion": {
     "valor": 8.3,
     "ano": 2025,
-    "prevision": 5.7,
+    "prevision": 5.9,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 5.1,
     "ano": 2025,
-    "prevision": 5.1,
+    "prevision": 5.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9076,13 +9086,13 @@
    "inflacion": {
     "valor": 1.8,
     "ano": 2025,
-    "prevision": 10.5,
+    "prevision": 14.1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 15.9,
     "ano": 2025,
-    "prevision": 6.7,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9094,13 +9104,13 @@
    "inflacion": {
     "valor": 0.2,
     "ano": 2025,
-    "prevision": 0.5,
+    "prevision": 0.7,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 0,
     "ano": 2025,
-    "prevision": -0.4,
+    "prevision": 1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9112,13 +9122,13 @@
    "inflacion": {
     "valor": 3.4,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 5.4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.9,
     "ano": 2025,
-    "prevision": 2.9,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -9130,13 +9140,13 @@
    "inflacion": {
     "valor": 2.5,
     "ano": 2025,
-    "prevision": 2.1,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 0.6,
     "ano": 2025,
-    "prevision": 1.6,
+    "prevision": 1.1,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -9154,7 +9164,7 @@
    "pib": {
     "valor": 4.7,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9166,13 +9176,13 @@
    "inflacion": {
     "valor": 8,
     "ano": 2025,
-    "prevision": 8.3,
+    "prevision": 8.4,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.8,
+    "valor": 3.1,
     "ano": 2025,
-    "prevision": 3.6,
+    "prevision": 3.8,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9184,13 +9194,13 @@
    "inflacion": {
     "valor": 28.4,
     "ano": 2025,
-    "prevision": 24.4,
+    "prevision": 21.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.1,
+    "valor": 2.5,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 2.6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9202,13 +9212,13 @@
    "inflacion": {
     "valor": 1.4,
     "ano": 2025,
-    "prevision": 1.9,
+    "prevision": 2.2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 5.2,
     "ano": 2025,
-    "prevision": 4.7,
+    "prevision": 5.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9220,13 +9230,13 @@
    "inflacion": {
     "valor": 3.5,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5,
+    "valor": 6.3,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9238,7 +9248,7 @@
    "inflacion": {
     "valor": 2.3,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "pib": {
@@ -9256,13 +9266,13 @@
    "inflacion": {
     "valor": 2.4,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 2.4,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4,
+    "valor": 4.7,
     "ano": 2025,
-    "prevision": 3.7,
+    "prevision": 4.2,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -9282,11 +9292,11 @@
    "inflacion": {
     "valor": 1.6,
     "ano": 2025,
-    "prevision": 4.1,
+    "prevision": 8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4.2,
+    "valor": 3.6,
     "ano": 2025,
     "prevision": 4.4,
     "ano_prevision": 2026
@@ -9300,13 +9310,13 @@
    "inflacion": {
     "valor": 3.7,
     "ano": 2025,
-    "prevision": 3.7,
+    "prevision": 4.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.1,
+    "valor": 3.2,
     "ano": 2025,
-    "prevision": 3.4,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9318,13 +9328,13 @@
    "inflacion": {
     "valor": 3.8,
     "ano": 2025,
-    "prevision": 3.9,
+    "prevision": 3.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.6,
+    "valor": 0.5,
     "ano": 2025,
-    "prevision": 1.6,
+    "prevision": 1.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9344,13 +9354,13 @@
    "inflacion": {
     "valor": 8.6,
     "ano": 2025,
-    "prevision": 7.4,
+    "prevision": 11,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 6.8,
     "ano": 2025,
-    "prevision": 5.3,
+    "prevision": 6.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9362,13 +9372,13 @@
    "inflacion": {
     "valor": 7.8,
     "ano": 2025,
-    "prevision": 6.4,
+    "prevision": 7.4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.4,
     "ano": 2025,
-    "prevision": 1.9,
+    "prevision": 1.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9380,13 +9390,13 @@
    "inflacion": {
     "valor": 3.9,
     "ano": 2025,
-    "prevision": 3.2,
+    "prevision": 3.5,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.7,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9406,13 +9416,13 @@
    "inflacion": {
     "valor": 0.8,
     "ano": 2025,
-    "prevision": 1.3,
+    "prevision": 0.9,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 4.9,
     "ano": 2025,
-    "prevision": 4.9,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9424,13 +9434,13 @@
    "inflacion": {
     "valor": 4.4,
     "ano": 2025,
-    "prevision": 4.4,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": -0.5,
+    "valor": -0.2,
     "ano": 2025,
-    "prevision": 0.5,
+    "prevision": 1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9442,13 +9452,13 @@
    "inflacion": {
     "valor": 1,
     "ano": 2025,
-    "prevision": 1.7,
+    "prevision": 3.2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.4,
     "ano": 2025,
-    "prevision": 3.5,
+    "prevision": 4.1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9460,13 +9470,13 @@
    "inflacion": {
     "valor": 3.5,
     "ano": 2025,
-    "prevision": 3.9,
+    "prevision": 4.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.4,
+    "valor": 1.7,
     "ano": 2025,
-    "prevision": 2.4,
+    "prevision": 2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9478,7 +9488,7 @@
    "inflacion": {
     "valor": 6.1,
     "ano": 2025,
-    "prevision": 5.5,
+    "prevision": 5.7,
     "ano_prevision": 2026
    },
    "pib": {
@@ -9500,9 +9510,9 @@
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4.6,
+    "valor": 4.4,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 3.6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9514,13 +9524,13 @@
    "inflacion": {
     "valor": 3,
     "ano": 2025,
-    "prevision": 2.7,
+    "prevision": 2.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.9,
+    "valor": 1.6,
     "ano": 2025,
-    "prevision": 1.2,
+    "prevision": 1.5,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -9540,13 +9550,13 @@
    "inflacion": {
     "valor": 0.1,
     "ano": 2025,
-    "prevision": 1.2,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5.6,
+    "valor": 6.3,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 3.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9580,13 +9590,13 @@
    "a3": "VUT",
    "banco": null,
    "inflacion": {
-    "valor": 1.7,
+    "valor": 0.7,
     "ano": 2025,
-    "prevision": 4.1,
+    "prevision": 2.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.1,
+    "valor": 3.7,
     "ano": 2025,
     "prevision": 3.5,
     "ano_prevision": 2026
@@ -9600,13 +9610,13 @@
    "inflacion": {
     "valor": 2.8,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": 4.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.2,
+    "valor": 0.3,
     "ano": 2025,
-    "prevision": 2.1,
+    "prevision": 2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9634,15 +9644,15 @@
    "a3": "NER",
    "banco": null,
    "inflacion": {
-    "valor": -4.6,
+    "valor": -4.7,
     "ano": 2025,
-    "prevision": 0.4,
+    "prevision": -1.9,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 6.9,
     "ano": 2025,
-    "prevision": 6.7,
+    "prevision": 7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9654,13 +9664,13 @@
    "inflacion": {
     "valor": 23,
     "ano": 2025,
-    "prevision": 16,
+    "prevision": 15.6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 4,
     "ano": 2025,
-    "prevision": 4.1,
+    "prevision": 4.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9688,7 +9698,7 @@
    "inflacion": {
     "valor": 3,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 3.2,
     "ano_prevision": 2026
    },
    "pib": {
@@ -9720,15 +9730,15 @@
    "a3": "FSM",
    "banco": null,
    "inflacion": {
-    "valor": 3.2,
+    "valor": 2.8,
     "ano": 2025,
     "prevision": 3.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.1,
+    "valor": 2.1,
     "ano": 2025,
-    "prevision": 0.7,
+    "prevision": 1.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9738,15 +9748,15 @@
    "a3": "MHL",
    "banco": null,
    "inflacion": {
-    "valor": 5.5,
+    "valor": 4.1,
     "ano": 2025,
-    "prevision": 7.4,
+    "prevision": 8.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.5,
+    "valor": 1.8,
     "ano": 2025,
-    "prevision": 3.7,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9756,15 +9766,15 @@
    "a3": "PLW",
    "banco": null,
    "inflacion": {
-    "valor": 0.3,
+    "valor": 0.2,
     "ano": 2025,
-    "prevision": 5.9,
+    "prevision": 1.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 6.3,
+    "valor": 6,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 4.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9776,11 +9786,11 @@
    "inflacion": {
     "valor": 4.5,
     "ano": 2025,
-    "prevision": 7.2,
+    "prevision": 7.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.1,
+    "valor": 3.2,
     "ano": 2025,
     "prevision": 3.6,
     "ano_prevision": 2026
@@ -9792,15 +9802,15 @@
    "a3": "PAN",
    "banco": null,
    "inflacion": {
-    "valor": 0,
+    "valor": -0.1,
     "ano": 2025,
-    "prevision": 1.4,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 4.4,
     "ano": 2025,
-    "prevision": 3.8,
+    "prevision": 5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9812,13 +9822,13 @@
    "inflacion": {
     "valor": 4.4,
     "ano": 2025,
-    "prevision": 5,
+    "prevision": 4.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5.6,
+    "valor": 6.2,
     "ano": 2025,
-    "prevision": 3.8,
+    "prevision": 3.1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9828,15 +9838,15 @@
    "a3": "PRY",
    "banco": null,
    "inflacion": {
-    "valor": 4.1,
+    "valor": 4,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 3.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 6,
+    "valor": 6.6,
     "ano": 2025,
-    "prevision": 4.2,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9848,13 +9858,13 @@
    "inflacion": {
     "valor": 1.5,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 3.8,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.4,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9866,13 +9876,13 @@
    "inflacion": {
     "valor": 1.7,
     "ano": 2025,
-    "prevision": 4.3,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 4.4,
     "ano": 2025,
-    "prevision": 4.1,
+    "prevision": 3.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9892,13 +9902,13 @@
    "inflacion": {
     "valor": 3.6,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 3.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.6,
+    "valor": 3.7,
     "ano": 2025,
-    "prevision": 3.3,
+    "prevision": 3.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9910,13 +9920,13 @@
    "inflacion": {
     "valor": 2.2,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": 3.2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 1.9,
     "ano": 2025,
-    "prevision": 1.9,
+    "prevision": 2.1,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -9932,9 +9942,9 @@
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5.5,
+    "valor": 5.8,
     "ano": 2025,
-    "prevision": 4.9,
+    "prevision": 4.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9952,7 +9962,7 @@
    "pib": {
     "valor": 4.5,
     "ano": 2025,
-    "prevision": 4.1,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -9962,13 +9972,13 @@
    "a3": "PRI",
    "banco": null,
    "inflacion": {
-    "valor": 1.4,
+    "valor": 1.5,
     "ano": 2025,
-    "prevision": 2.1,
+    "prevision": 3.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": -0.8,
+    "valor": 0.3,
     "ano": 2025,
     "prevision": -0.1,
     "ano_prevision": 2026
@@ -9982,13 +9992,13 @@
    "inflacion": {
     "valor": 0.6,
     "ano": 2025,
-    "prevision": 3.9,
+    "prevision": 3.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.8,
+    "valor": 1.8,
     "ano": 2025,
-    "prevision": -8.6,
+    "prevision": -15.6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10008,13 +10018,13 @@
    "inflacion": {
     "valor": 7.3,
     "ano": 2025,
-    "prevision": 7.8,
+    "prevision": 8.2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 0.7,
     "ano": 2025,
-    "prevision": 0.7,
+    "prevision": -0.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10026,13 +10036,13 @@
    "inflacion": {
     "valor": 8.7,
     "ano": 2025,
-    "prevision": 5.6,
+    "prevision": 6.1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 1,
     "ano": 2025,
-    "prevision": 1.1,
+    "prevision": 0.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10044,13 +10054,13 @@
    "inflacion": {
     "valor": 7,
     "ano": 2025,
-    "prevision": 5.6,
+    "prevision": 12.3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 7,
+    "valor": 9.4,
     "ano": 2025,
-    "prevision": 7.2,
+    "prevision": 7.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10076,15 +10086,15 @@
    "a3": "KNA",
    "banco": null,
    "inflacion": {
-    "valor": 1.3,
+    "valor": 0.8,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": 3.6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 1.5,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10102,15 +10112,15 @@
    "a3": "LCA",
    "banco": null,
    "inflacion": {
-    "valor": 2,
+    "valor": 0.7,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 2.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.7,
+    "valor": -0.6,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 1.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10138,13 +10148,13 @@
    "inflacion": {
     "valor": 0.9,
     "ano": 2025,
-    "prevision": 0.9,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.4,
+    "valor": 2.4,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 2.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10154,7 +10164,7 @@
    "a3": "SMR",
    "banco": null,
    "inflacion": {
-    "valor": 2.3,
+    "valor": 2.2,
     "ano": 2025,
     "prevision": 2.8,
     "ano_prevision": 2026
@@ -10174,13 +10184,13 @@
    "inflacion": {
     "valor": 0.9,
     "ano": 2025,
-    "prevision": 9.6,
+    "prevision": 11,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.1,
+    "valor": 1,
     "ano": 2025,
-    "prevision": 3.4,
+    "prevision": 0.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10192,13 +10202,13 @@
    "inflacion": {
     "valor": 2,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4.5,
+    "valor": 4.6,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": -3.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10210,13 +10220,13 @@
    "inflacion": {
     "valor": 1.4,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": null,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 7.9,
+    "valor": 6.7,
     "ano": 2025,
-    "prevision": 2.2,
+    "prevision": null,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10228,13 +10238,13 @@
    "inflacion": {
     "valor": 3.9,
     "ano": 2025,
-    "prevision": 5.2,
+    "prevision": 3.1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10246,13 +10256,13 @@
    "inflacion": {
     "valor": 0.3,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 0.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5.1,
+    "valor": 5.8,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10264,13 +10274,13 @@
    "inflacion": {
     "valor": 7.6,
     "ano": 2025,
-    "prevision": 7.5,
+    "prevision": 13.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 4.4,
+    "valor": 4.8,
     "ano": 2025,
-    "prevision": 4.5,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10288,7 +10298,7 @@
    "pib": {
     "valor": 5,
     "ano": 2025,
-    "prevision": 3.5,
+    "prevision": 5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10300,13 +10310,13 @@
    "inflacion": {
     "valor": 4.2,
     "ano": 2025,
-    "prevision": 4.2,
+    "prevision": 3.6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 0.8,
     "ano": 2025,
-    "prevision": 0.6,
+    "prevision": 0.8,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -10318,13 +10328,13 @@
    "inflacion": {
     "valor": 3.3,
     "ano": 2025,
-    "prevision": 4.9,
+    "prevision": 4.7,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 8,
     "ano": 2025,
-    "prevision": 7.1,
+    "prevision": 8.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10336,13 +10346,13 @@
    "inflacion": {
     "valor": 2.5,
     "ano": 2025,
-    "prevision": 2.9,
+    "prevision": 3.5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.1,
+    "valor": 1.5,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 3.2,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -10354,13 +10364,13 @@
    "inflacion": {
     "valor": 3.7,
     "ano": 2025,
-    "prevision": 5.9,
+    "prevision": 6.3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3,
+    "valor": 3.1,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 2.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10372,7 +10382,7 @@
    "inflacion": {
     "valor": 3.2,
     "ano": 2025,
-    "prevision": 3.9,
+    "prevision": 4.4,
     "ano_prevision": 2026
    },
    "pib": {
@@ -10390,11 +10400,11 @@
    "inflacion": {
     "valor": 81.4,
     "ano": 2025,
-    "prevision": 8,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 7.5,
+    "valor": 8.3,
     "ano": 2025,
     "prevision": 5,
     "ano_prevision": 2026
@@ -10408,13 +10418,13 @@
    "inflacion": {
     "valor": 2.7,
     "ano": 2025,
-    "prevision": 3,
+    "prevision": 3.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.8,
+    "valor": 2.6,
     "ano": 2025,
-    "prevision": 2.1,
+    "prevision": 2.5,
     "ano_prevision": 2026
    },
    "zona_euro": true
@@ -10426,13 +10436,13 @@
    "inflacion": {
     "valor": 97.6,
     "ano": 2025,
-    "prevision": 14,
+    "prevision": 27.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 46.1,
+    "valor": 41.4,
     "ano": 2025,
-    "prevision": 4.1,
+    "prevision": 10.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10442,15 +10452,15 @@
    "a3": "SDN",
    "banco": null,
    "inflacion": {
-    "valor": 100.2,
+    "valor": 99.9,
     "ano": 2025,
-    "prevision": 75.1,
+    "prevision": 41.3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.2,
+    "valor": 0,
     "ano": 2025,
-    "prevision": 0.7,
+    "prevision": 7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10470,13 +10480,13 @@
    "inflacion": {
     "valor": 9.2,
     "ano": 2025,
-    "prevision": 11.8,
+    "prevision": 10.5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.5,
+    "valor": 4,
     "ano": 2025,
-    "prevision": 3.9,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10496,13 +10506,13 @@
    "inflacion": {
     "valor": 3.1,
     "ano": 2025,
-    "prevision": 3.5,
+    "prevision": 2.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.6,
+    "valor": 4.9,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 3.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10514,13 +10524,13 @@
    "inflacion": {
     "valor": 2.6,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 1.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.5,
+    "valor": 1.4,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 2.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10532,13 +10542,13 @@
    "inflacion": {
     "valor": 0.2,
     "ano": 2025,
-    "prevision": 0.5,
+    "prevision": 0.7,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.3,
+    "valor": 1.6,
     "ano": 2025,
-    "prevision": 1.3,
+    "prevision": 1.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10558,13 +10568,13 @@
    "inflacion": {
     "valor": 3.4,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 4.1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 8.4,
     "ano": 2025,
-    "prevision": 6,
+    "prevision": 7.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10576,13 +10586,13 @@
    "inflacion": {
     "valor": -0.1,
     "ano": 2025,
-    "prevision": 0.9,
+    "prevision": 2.1,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 2.4,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 2.1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10594,11 +10604,11 @@
    "inflacion": {
     "valor": 0.4,
     "ano": 2025,
-    "prevision": 2.8,
+    "prevision": 1.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5.9,
+    "valor": 6.3,
     "ano": 2025,
     "prevision": 5,
     "ano_prevision": 2026
@@ -10618,15 +10628,15 @@
    "a3": "TON",
    "banco": null,
    "inflacion": {
-    "valor": 3.2,
+    "valor": 3.1,
     "ano": 2025,
     "prevision": 3.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.8,
+    "valor": 4.4,
     "ano": 2025,
-    "prevision": 2.3,
+    "prevision": 1.8,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10638,13 +10648,13 @@
    "inflacion": {
     "valor": 1,
     "ano": 2025,
-    "prevision": 1.8,
+    "prevision": 0.8,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 0.8,
+    "valor": -0.5,
     "ano": 2025,
-    "prevision": 0.8,
+    "prevision": 0.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10656,13 +10666,13 @@
    "inflacion": {
     "valor": 1.3,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 4.5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5.8,
+    "valor": 6.2,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": -3.9,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10674,13 +10684,13 @@
    "inflacion": {
     "valor": 5.3,
     "ano": 2025,
-    "prevision": 6.5,
+    "prevision": 5.5,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.5,
+    "valor": 2.7,
     "ano": 2025,
-    "prevision": 2.1,
+    "prevision": 2.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10692,13 +10702,13 @@
    "inflacion": {
     "valor": 34.9,
     "ano": 2025,
-    "prevision": 28.6,
+    "prevision": 31.2,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 3.6,
+    "valor": 3.7,
     "ano": 2025,
-    "prevision": 3.4,
+    "prevision": 2.7,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10710,13 +10720,13 @@
    "inflacion": {
     "valor": 2.7,
     "ano": 2025,
-    "prevision": 3.9,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.6,
     "ano": 2025,
-    "prevision": 2.6,
+    "prevision": 2.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10734,15 +10744,15 @@
    "a3": "TUV",
    "banco": null,
    "inflacion": {
-    "valor": 2,
+    "valor": 2.9,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": 4.3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.2,
+    "valor": 5.2,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 3.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10754,13 +10764,13 @@
    "inflacion": {
     "valor": 3.6,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 4.2,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 6.7,
     "ano": 2025,
-    "prevision": 7.5,
+    "prevision": 6.2,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10772,13 +10782,13 @@
    "inflacion": {
     "valor": 12.7,
     "ano": 2025,
-    "prevision": 6.1,
+    "prevision": 8.9,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 1.8,
     "ano": 2025,
-    "prevision": 2,
+    "prevision": 1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10790,13 +10800,13 @@
    "inflacion": {
     "valor": 4.1,
     "ano": 2025,
-    "prevision": 4.5,
+    "prevision": 4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.5,
     "ano": 2025,
-    "prevision": 3.1,
+    "prevision": 3.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10808,13 +10818,13 @@
    "inflacion": {
     "valor": 20.4,
     "ano": 2025,
-    "prevision": 13.2,
+    "prevision": 13.3,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 4.4,
     "ano": 2025,
-    "prevision": 4.2,
+    "prevision": 5.1,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10826,13 +10836,13 @@
    "inflacion": {
     "valor": 3.4,
     "ano": 2025,
-    "prevision": 3.2,
+    "prevision": 3.3,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.3,
+    "valor": 1.2,
     "ano": 2025,
-    "prevision": 0.8,
+    "prevision": 1.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10874,7 +10884,7 @@
    "pib": {
     "valor": 5.9,
     "ano": 2025,
-    "prevision": 5.9,
+    "prevision": 6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10886,11 +10896,11 @@
    "inflacion": {
     "valor": 2.7,
     "ano": 2025,
-    "prevision": 3.2,
+    "prevision": 3.6,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 2.1,
+    "valor": 2.3,
     "ano": 2025,
     "prevision": 2.3,
     "ano_prevision": 2026
@@ -10912,13 +10922,13 @@
    "inflacion": {
     "valor": -0.5,
     "ano": 2025,
-    "prevision": 1.5,
+    "prevision": 2.1,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 5,
+    "valor": 5.3,
     "ano": 2025,
-    "prevision": 4.9,
+    "prevision": 4.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10936,7 +10946,7 @@
    "pib": {
     "valor": 1.8,
     "ano": 2025,
-    "prevision": 1.8,
+    "prevision": 1.3,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10948,13 +10958,13 @@
    "inflacion": {
     "valor": 8.8,
     "ano": 2025,
-    "prevision": 7,
+    "prevision": 6.9,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 7.7,
     "ano": 2025,
-    "prevision": 6.5,
+    "prevision": 7.8,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10966,13 +10976,13 @@
    "inflacion": {
     "valor": 252,
     "ano": 2025,
-    "prevision": 387.4,
+    "prevision": 467.9,
     "ano_prevision": 2026
    },
    "pib": {
-    "valor": 1.5,
+    "valor": 9,
     "ano": 2025,
-    "prevision": 4,
+    "prevision": 5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -10990,15 +11000,15 @@
    "a3": "WSM",
    "banco": null,
    "inflacion": {
-    "valor": 1.9,
+    "valor": 1.8,
     "ano": 2025,
-    "prevision": 2.5,
+    "prevision": 1.4,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 4.2,
     "ano": 2025,
-    "prevision": 3.2,
+    "prevision": 0.4,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -11008,15 +11018,15 @@
    "a3": "YEM",
    "banco": null,
    "inflacion": {
-    "valor": 21.4,
+    "valor": 20.2,
     "ano": 2025,
-    "prevision": 26.5,
+    "prevision": 5,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": -0.5,
     "ano": 2025,
-    "prevision": 0.5,
+    "prevision": -1.5,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -11028,13 +11038,13 @@
    "inflacion": {
     "valor": 13.9,
     "ano": 2025,
-    "prevision": 9,
+    "prevision": 8,
     "ano_prevision": 2026
    },
    "pib": {
     "valor": 3.8,
     "ano": 2025,
-    "prevision": 4.3,
+    "prevision": 5.6,
     "ano_prevision": 2026
    },
    "zona_euro": false
@@ -11061,6 +11071,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-11 11:29 UTC",
- "duracion_s": 9.4
+ "generado_utc": "2026-10-13 02:41 UTC",
+ "duracion_s": 12.9
 }
