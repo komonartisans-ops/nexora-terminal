@@ -1,6 +1,46 @@
 {
  "items": [
   {
+   "banco": "BoJ",
+   "tipo": "Novedad",
+   "titulo": "Basic Figures on Fails (Sept.)",
+   "orador": null,
+   "fecha_utc": "2026-10-13 07:30",
+   "fecha": "2026-10-13",
+   "enlace": "http://www.boj.or.jp/en/statistics/set/bffail/sjgb2609.pdf",
+   "fuente": "boj"
+  },
+  {
+   "banco": "BoJ",
+   "tipo": "Novedad",
+   "titulo": "Results of the 107th Opinion Survey on the General Public's Views and Behavior",
+   "orador": null,
+   "fecha_utc": "2026-10-13 04:30",
+   "fecha": "2026-10-13",
+   "enlace": "http://www.boj.or.jp/en/research/o_survey/ishiki2610.htm",
+   "fuente": "boj"
+  },
+  {
+   "banco": "BoJ",
+   "tipo": "Novedad",
+   "titulo": "Principal Figures of Financial Institutions (Sept.)",
+   "orador": null,
+   "fecha_utc": "2026-10-12 23:50",
+   "fecha": "2026-10-12",
+   "enlace": "http://www.boj.or.jp/en/statistics/dl/depo/kashi/kasi2609.pdf",
+   "fuente": "boj"
+  },
+  {
+   "banco": "BoJ",
+   "tipo": "Novedad",
+   "titulo": "Corporate Goods Price Index (Sept.)",
+   "orador": null,
+   "fecha_utc": "2026-10-12 23:50",
+   "fecha": "2026-10-12",
+   "enlace": "http://www.boj.or.jp/en/statistics/pi/cgpi_release/cgpi2609.pdf",
+   "fuente": "boj"
+  },
+  {
    "banco": "Fed",
    "tipo": "Comunicado",
    "titulo": "Federal Reserve Board releases results of the 2025 Survey of Consumer Finances, which provides the public and policymakers with detailed insights into the economic condition of American families",
@@ -951,26 +991,6 @@
    "fuente": "boj"
   },
   {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "Amendment to \"Principal Terms and Conditions of the Funds-Supplying Operations to Support Financing for Climate Change Responses\"",
-   "orador": null,
-   "fecha_utc": "2026-09-18 03:15",
-   "fecha": "2026-09-18",
-   "enlace": "http://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/mpr260918a.pdf",
-   "fuente": "boj"
-  },
-  {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "(Reference) Change in the Guideline for Money Market Operations (September 2026 MPM)",
-   "orador": null,
-   "fecha_utc": "2026-09-18 02:54",
-   "fecha": "2026-09-18",
-   "enlace": "http://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260918b.pdf",
-   "fuente": "boj"
-  },
-  {
    "banco": "BoE",
    "tipo": "Noticia",
    "titulo": "Transcript of the Governor's pooled broadcast interview given on 17 September 2026",
@@ -1029,26 +1049,6 @@
    "fecha": "2026-09-17",
    "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
    "fuente": "boe"
-  },
-  {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "Developments in Real Exports and Real Imports",
-   "orador": null,
-   "fecha_utc": "2026-09-17 07:00",
-   "fecha": "2026-09-17",
-   "enlace": "http://www.boj.or.jp/en/research/research_data/reri/index.htm",
-   "fuente": "boj"
-  },
-  {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "Flow of Funds Accounts (2nd Quarter 2026, Preliminary Figures)",
-   "orador": null,
-   "fecha_utc": "2026-09-16 23:50",
-   "fecha": "2026-09-16",
-   "enlace": "http://www.boj.or.jp/en/statistics/sj/sj.htm",
-   "fuente": "boj"
   },
   {
    "banco": "Fed",
@@ -1332,7 +1332,7 @@
    "n": 40,
    "url": "https://www.boj.or.jp/en/rss/whatsnew.xml",
    "pagina": "https://www.boj.or.jp/en/whatsnew.htm",
-   "ultimo": "2026-10-09 09:00"
+   "ultimo": "2026-10-13 07:30"
   },
   "boe": {
    "banco": "BoE",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-12 22:28 UTC",
- "duracion_s": 7.2
+ "generado_utc": "2026-10-13 12:49 UTC",
+ "duracion_s": 7.7
 }

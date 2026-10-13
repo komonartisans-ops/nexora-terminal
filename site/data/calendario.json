@@ -1,34 +1,8 @@
 {
- "generado": "2026-10-11 13:31 Madrid",
- "desde": "2026-09-01",
- "hasta": "2026-11-01",
+ "generado": "2026-10-13 14:51 Madrid",
+ "desde": "2026-09-03",
+ "hasta": "2026-11-03",
  "eventos": [
-  {
-   "fecha": "2026-09-01",
-   "dia": "mar",
-   "hora_ny": "10:00",
-   "hora_madrid": "16:00",
-   "evento": "ISM manufacturero",
-   "importancia": "ALTA",
-   "afecta": "índices · oro",
-   "que_mirar": "≥ 50 expansión, < 50 contracción; precios pagados = presión inflacionista.",
-   "fuente": "ISM (Institute for Supply Management)",
-   "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/rob-report-calendar/",
-   "nota": ""
-  },
-  {
-   "fecha": "2026-09-01",
-   "dia": "mar",
-   "hora_ny": "10:00",
-   "hora_madrid": "16:00",
-   "evento": "Vacantes JOLTS",
-   "importancia": "MEDIA",
-   "afecta": "índices · oro",
-   "que_mirar": "Demanda de trabajo: vacantes ↓ = mercado laboral se enfría.",
-   "fuente": "FRED Release Calendar · Job Openings and Labor Turnover Survey",
-   "url": "https://fred.stlouisfed.org/releases/calendar?rid=192&y=2026",
-   "nota": ""
-  },
   {
    "fecha": "2026-09-03",
    "dia": "jue",
@@ -638,32 +612,6 @@
    "nota": ""
   },
   {
-   "fecha": "2026-10-13",
-   "dia": "mar",
-   "hora_ny": "",
-   "hora_madrid": "",
-   "evento": "Resultados JPMorgan Chase (JPM)",
-   "importancia": "MEDIA",
-   "afecta": "índices",
-   "que_mirar": "BPA estimado $5.94 · antes de la apertura",
-   "fuente": "Nasdaq / Zacks",
-   "url": "https://www.nasdaq.com/market-activity/stocks/jpm/earnings",
-   "nota": "fecha CONFIRMADA"
-  },
-  {
-   "fecha": "2026-10-13",
-   "dia": "mar",
-   "hora_ny": "",
-   "hora_madrid": "",
-   "evento": "Resultados Goldman Sachs (GS)",
-   "importancia": "MEDIA",
-   "afecta": "índices",
-   "que_mirar": "BPA estimado $12.9 · antes de la apertura",
-   "fuente": "Nasdaq / Zacks",
-   "url": "https://www.nasdaq.com/market-activity/stocks/gs/earnings",
-   "nota": "fecha CONFIRMADA"
-  },
-  {
    "fecha": "2026-10-14",
    "dia": "mié",
    "hora_ny": "08:30",
@@ -828,7 +776,7 @@
    "evento": "Resultados Tesla (TSLA)",
    "importancia": "ALTA",
    "afecta": "índices",
-   "que_mirar": "BPA estimado $0.23 · después del cierre",
+   "que_mirar": "BPA estimado $0.22 · después del cierre",
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/tsla/earnings",
    "nota": "fecha CONFIRMADA"
@@ -968,7 +916,7 @@
    "evento": "Resultados Alphabet (GOOGL)",
    "importancia": "ALTA",
    "afecta": "índices",
-   "que_mirar": "BPA estimado $2.95 · después del cierre",
+   "que_mirar": "BPA estimado $2.94 · después del cierre",
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/googl/earnings",
    "nota": "fecha CONFIRMADA"
@@ -1089,7 +1037,7 @@
    "evento": "Resultados Eli Lilly (LLY)",
    "importancia": "MEDIA",
    "afecta": "índices",
-   "que_mirar": "BPA estimado $9.83 · antes de la apertura",
+   "que_mirar": "BPA estimado $7.54 · antes de la apertura",
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/lly/earnings",
    "nota": "fecha CONFIRMADA"
@@ -1119,20 +1067,59 @@
    "fuente": "Bank of Japan",
    "url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
    "nota": "hora de publicación variable (sin hora fija oficial)"
+  },
+  {
+   "fecha": "2026-11-02",
+   "dia": "lun",
+   "hora_ny": "10:00",
+   "hora_madrid": "16:00",
+   "evento": "ISM manufacturero",
+   "importancia": "ALTA",
+   "afecta": "índices · oro",
+   "que_mirar": "≥ 50 expansión, < 50 contracción; precios pagados = presión inflacionista.",
+   "fuente": "ISM (Institute for Supply Management)",
+   "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/rob-report-calendar/",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-02",
+   "dia": "lun",
+   "hora_ny": "",
+   "hora_madrid": "",
+   "evento": "Resultados Apple (AAPL)",
+   "importancia": "ALTA",
+   "afecta": "índices",
+   "que_mirar": "BPA estimado $1.98 · después del cierre",
+   "fuente": "Nasdaq / Zacks",
+   "url": "https://www.nasdaq.com/market-activity/stocks/aapl/earnings",
+   "nota": "fecha CONFIRMADA"
+  },
+  {
+   "fecha": "2026-11-03",
+   "dia": "mar",
+   "hora_ny": "10:00",
+   "hora_madrid": "16:00",
+   "evento": "Vacantes JOLTS",
+   "importancia": "MEDIA",
+   "afecta": "índices · oro",
+   "que_mirar": "Demanda de trabajo: vacantes ↓ = mercado laboral se enfría.",
+   "fuente": "FRED Release Calendar · Job Openings and Labor Turnover Survey",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=192&y=2026",
+   "nota": ""
   }
  ],
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
-   "dias": 17
+   "dias": 15
   },
   "BCE": {
    "fecha": "2026-10-29",
-   "dias": 18
+   "dias": 16
   },
   "Banco de Japón": {
    "fecha": "2026-10-30",
-   "dias": 19
+   "dias": 17
   }
  },
  "errores": {},
@@ -1219,6 +1206,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-11 11:29 UTC",
- "duracion_s": 37.1
+ "generado_utc": "2026-10-13 12:49 UTC",
+ "duracion_s": 37.5
 }
