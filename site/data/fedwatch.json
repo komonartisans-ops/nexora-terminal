@@ -1,6 +1,6 @@
 {
  "fecha_precios": "2026-10-14",
- "generado_utc": "2026-10-14 10:22 UTC",
+ "generado_utc": "2026-10-14 11:34 UTC",
  "rango_objetivo": [
   3.75,
   4.0
@@ -99,17 +99,17 @@
   },
   {
    "reunion": "2027-03-17",
-   "tipo_esperado": 4.4271,
-   "cambio_reunion_pb": 17.7,
-   "cambio_acumulado_pb": 54.7,
+   "tipo_esperado": 4.4161,
+   "cambio_reunion_pb": 16.6,
+   "cambio_acumulado_pb": 53.6,
    "metodo": "mes de la reunión (ZQH27)",
    "prob_reunion": {
-    "subida": 70.9,
-    "mantiene": 29.1,
+    "subida": 66.4,
+    "mantiene": 33.6,
     "bajada": 0,
     "detalle_pb": {
-     "0": 29.1,
-     "25": 70.9
+     "0": 33.6,
+     "25": 66.4
     }
    },
    "prob_acumulada": {
@@ -117,29 +117,29 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 81.1,
-     "75": 18.9
+     "50": 85.6,
+     "75": 14.4
     }
    },
-   "subida_1d_pts": 0.0,
+   "subida_1d_pts": -4.5,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 0.0,
-   "subida_5d_pts": 8.9,
-   "tipo_5d_pb": 6.7
+   "tipo_1d_pb": -1.1,
+   "subida_5d_pts": 4.4,
+   "tipo_5d_pb": 5.6
   },
   {
    "reunion": "2027-04-28",
    "tipo_esperado": 4.51,
-   "cambio_reunion_pb": 8.3,
+   "cambio_reunion_pb": 9.4,
    "cambio_acumulado_pb": 63.0,
    "metodo": "mes siguiente sin reunión (ZQK27)",
    "prob_reunion": {
-    "subida": 33.1,
-    "mantiene": 66.9,
+    "subida": 37.6,
+    "mantiene": 62.4,
     "bajada": 0,
     "detalle_pb": {
-     "0": 66.9,
-     "25": 33.1
+     "0": 62.4,
+     "25": 37.6
     }
    },
    "prob_acumulada": {
@@ -151,25 +151,25 @@
      "75": 52.0
     }
    },
-   "subida_1d_pts": -2.0,
+   "subida_1d_pts": 2.5,
    "bajada_1d_pts": 0,
    "tipo_1d_pb": -0.5,
-   "subida_5d_pts": -4.9,
+   "subida_5d_pts": -0.4,
    "tipo_5d_pb": 5.5
   },
   {
    "reunion": "2027-06-09",
-   "tipo_esperado": 4.6029,
-   "cambio_reunion_pb": 9.3,
-   "cambio_acumulado_pb": 72.3,
+   "tipo_esperado": 4.61,
+   "cambio_reunion_pb": 10.0,
+   "cambio_acumulado_pb": 73.0,
    "metodo": "mes de la reunión (ZQM27)",
    "prob_reunion": {
-    "subida": 37.1,
-    "mantiene": 62.9,
+    "subida": 40.0,
+    "mantiene": 60.0,
     "bajada": 0,
     "detalle_pb": {
-     "0": 62.9,
-     "25": 37.1
+     "0": 60.0,
+     "25": 40.0
     }
    },
    "prob_acumulada": {
@@ -177,15 +177,15 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 10.9,
-     "75": 89.1
+     "50": 8.0,
+     "75": 92.0
     }
    },
-   "subida_1d_pts": -5.8,
+   "subida_1d_pts": -2.9,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": -1.9,
-   "subida_5d_pts": -2.9,
-   "tipo_5d_pb": 4.8
+   "tipo_1d_pb": -1.2,
+   "subida_5d_pts": 0.0,
+   "tipo_5d_pb": 5.5
   }
  ],
  "lectura": "SIN CAMBIO RELEVANTE",
@@ -13555,5 +13555,5 @@
   }
  },
  "ok": true,
- "duracion_s": 11.0
+ "duracion_s": 11.6
 }
