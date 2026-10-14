@@ -1,6 +1,6 @@
 {
  "fecha_precios": "2026-10-14",
- "generado_utc": "2026-10-14 20:32 UTC",
+ "generado_utc": "2026-10-14 23:48 UTC",
  "rango_objetivo": [
   3.75,
   4.0
@@ -9,47 +9,47 @@
  "reuniones": [
   {
    "reunion": "2026-10-28",
-   "tipo_esperado": 3.965,
-   "cambio_reunion_pb": 8.5,
-   "cambio_acumulado_pb": 8.5,
+   "tipo_esperado": 3.955,
+   "cambio_reunion_pb": 7.5,
+   "cambio_acumulado_pb": 7.5,
    "metodo": "mes siguiente sin reunión (ZQX26)",
    "prob_reunion": {
-    "subida": 34.0,
-    "mantiene": 66.0,
+    "subida": 30.0,
+    "mantiene": 70.0,
     "bajada": 0,
     "detalle_pb": {
-     "0": 66.0,
-     "25": 34.0
+     "0": 70.0,
+     "25": 30.0
     }
    },
    "prob_acumulada": {
-    "mas_alto_que_hoy": 34.0,
-    "igual": 66.0,
+    "mas_alto_que_hoy": 30.0,
+    "igual": 70.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "0": 66.0,
-     "25": 34.0
+     "0": 70.0,
+     "25": 30.0
     }
    },
-   "subida_1d_pts": 12.0,
+   "subida_1d_pts": 8.0,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 3.0,
-   "subida_5d_pts": 16.0,
-   "tipo_5d_pb": 4.0
+   "tipo_1d_pb": 2.0,
+   "subida_5d_pts": 12.0,
+   "tipo_5d_pb": 3.0
   },
   {
    "reunion": "2026-12-09",
-   "tipo_esperado": 4.1834,
-   "cambio_reunion_pb": 21.8,
-   "cambio_acumulado_pb": 30.3,
+   "tipo_esperado": 4.1664,
+   "cambio_reunion_pb": 21.1,
+   "cambio_acumulado_pb": 28.6,
    "metodo": "mes de la reunión (ZQZ26)",
    "prob_reunion": {
-    "subida": 87.4,
-    "mantiene": 12.6,
+    "subida": 84.5,
+    "mantiene": 15.5,
     "bajada": 0,
     "detalle_pb": {
-     "0": 12.6,
-     "25": 87.4
+     "0": 15.5,
+     "25": 84.5
     }
    },
    "prob_acumulada": {
@@ -57,29 +57,29 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "25": 78.6,
-     "50": 21.4
+     "25": 85.5,
+     "50": 14.5
     }
    },
-   "subida_1d_pts": 2.9,
+   "subida_1d_pts": 0.0,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 3.7,
-   "subida_5d_pts": 8.5,
-   "tipo_5d_pb": 6.1
+   "tipo_1d_pb": 2.0,
+   "subida_5d_pts": 5.6,
+   "tipo_5d_pb": 4.4
   },
   {
    "reunion": "2027-01-27",
-   "tipo_esperado": 4.3,
-   "cambio_reunion_pb": 11.7,
-   "cambio_acumulado_pb": 42.0,
+   "tipo_esperado": 4.265,
+   "cambio_reunion_pb": 9.9,
+   "cambio_acumulado_pb": 38.5,
    "metodo": "mes siguiente sin reunión (ZQG27)",
    "prob_reunion": {
-    "subida": 46.6,
-    "mantiene": 53.4,
+    "subida": 39.5,
+    "mantiene": 60.5,
     "bajada": 0,
     "detalle_pb": {
-     "0": 53.4,
-     "25": 46.6
+     "0": 60.5,
+     "25": 39.5
     }
    },
    "prob_acumulada": {
@@ -87,21 +87,21 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "25": 32.0,
-     "50": 68.0
+     "25": 46.0,
+     "50": 54.0
     }
    },
-   "subida_1d_pts": 5.1,
+   "subida_1d_pts": -2.0,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 5.0,
-   "subida_5d_pts": 13.5,
-   "tipo_5d_pb": 9.5
+   "tipo_1d_pb": 1.5,
+   "subida_5d_pts": 6.4,
+   "tipo_5d_pb": 6.0
   },
   {
    "reunion": "2027-03-17",
-   "tipo_esperado": 4.4661,
+   "tipo_esperado": 4.4311,
    "cambio_reunion_pb": 16.6,
-   "cambio_acumulado_pb": 58.6,
+   "cambio_acumulado_pb": 55.1,
    "metodo": "mes de la reunión (ZQH27)",
    "prob_reunion": {
     "subida": 66.4,
@@ -117,29 +117,29 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 65.6,
-     "75": 34.4
+     "50": 79.6,
+     "75": 20.4
     }
    },
    "subida_1d_pts": -4.5,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 3.9,
+   "tipo_1d_pb": 0.4,
    "subida_5d_pts": 4.4,
-   "tipo_5d_pb": 10.6
+   "tipo_5d_pb": 7.1
   },
   {
    "reunion": "2027-04-28",
-   "tipo_esperado": 4.565,
-   "cambio_reunion_pb": 9.9,
-   "cambio_acumulado_pb": 68.5,
+   "tipo_esperado": 4.515,
+   "cambio_reunion_pb": 8.4,
+   "cambio_acumulado_pb": 63.5,
    "metodo": "mes siguiente sin reunión (ZQK27)",
    "prob_reunion": {
-    "subida": 39.6,
-    "mantiene": 60.4,
+    "subida": 33.6,
+    "mantiene": 66.4,
     "bajada": 0,
     "detalle_pb": {
-     "0": 60.4,
-     "25": 39.6
+     "0": 66.4,
+     "25": 33.6
     }
    },
    "prob_acumulada": {
@@ -147,29 +147,29 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 26.0,
-     "75": 74.0
+     "50": 46.0,
+     "75": 54.0
     }
    },
-   "subida_1d_pts": 4.5,
+   "subida_1d_pts": -1.5,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 5.0,
-   "subida_5d_pts": 1.6,
-   "tipo_5d_pb": 11.0
+   "tipo_1d_pb": 0.0,
+   "subida_5d_pts": -4.4,
+   "tipo_5d_pb": 6.0
   },
   {
    "reunion": "2027-06-09",
-   "tipo_esperado": 4.6579,
-   "cambio_reunion_pb": 9.3,
-   "cambio_acumulado_pb": 77.8,
+   "tipo_esperado": 4.6221,
+   "cambio_reunion_pb": 10.7,
+   "cambio_acumulado_pb": 74.2,
    "metodo": "mes de la reunión (ZQM27)",
    "prob_reunion": {
-    "subida": 37.1,
-    "mantiene": 62.9,
+    "subida": 42.9,
+    "mantiene": 57.1,
     "bajada": 0,
     "detalle_pb": {
-     "0": 62.9,
-     "25": 37.1
+     "0": 57.1,
+     "25": 42.9
     }
    },
    "prob_acumulada": {
@@ -177,21 +177,21 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "75": 88.9,
-     "100": 11.1
+     "50": 3.1,
+     "75": 96.9
     }
    },
-   "subida_1d_pts": -5.8,
+   "subida_1d_pts": 0.0,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 3.6,
-   "subida_5d_pts": -2.9,
-   "tipo_5d_pb": 10.3
+   "tipo_1d_pb": 0.0,
+   "subida_5d_pts": 2.9,
+   "tipo_5d_pb": 6.7
   }
  ],
  "lectura": "MÁS DURA (el mercado espera tipos más altos)",
- "tipo_esperado_3_reuniones_1d_pb": 5.0,
- "tipo_esperado_3_reuniones_5d_pb": 9.5,
- "resumen": "Reunión del 2026-10-28: subida 34 %, mantener 66 %, bajada 0 % (ayer subida 22 %)",
+ "tipo_esperado_3_reuniones_1d_pb": 1.5,
+ "tipo_esperado_3_reuniones_5d_pb": 6.0,
+ "resumen": "Reunión del 2026-10-28: subida 30 %, mantener 70 %, bajada 0 % (ayer subida 22 %)",
  "historial": [
   {
    "fecha": "2026-10-07",
@@ -225,7 +225,7 @@
   },
   {
    "fecha": "2026-10-14",
-   "prox_subida": 34.0,
+   "prox_subida": 30.0,
    "prox_bajada": 0,
    "reunion": "2026-10-28"
   }
@@ -13571,5 +13571,5 @@
   }
  },
  "ok": true,
- "duracion_s": 12.6
+ "duracion_s": 7.6
 }
