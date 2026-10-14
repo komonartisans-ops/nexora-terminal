@@ -3,19 +3,15 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4185.6,
+   "valor": 4166.7,
    "fecha": "2026-10-14",
-   "cambio_1d_pct": -0.12,
-   "cambio_5d_pct": -0.04,
-   "cambio_21d_pct": -3.82,
-   "cambio_63d_pct": 3.3,
-   "sma50": 4380.55,
+   "cambio_1d_pct": -0.25,
+   "cambio_5d_pct": 0.63,
+   "cambio_21d_pct": -3.83,
+   "cambio_63d_pct": 4.37,
+   "sma50": 4380.66,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-13",
-     4133.0
-    ],
     [
      "2025-10-14",
      4163.3999
@@ -1017,21 +1013,25 @@
      4190.6001
     ],
     [
+     "2026-10-13",
+     4177.2998
+    ],
+    [
      "2026-10-14",
-     4185.6001
+     4166.7002
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 83431.33,
+   "valor": 83277.64,
    "fecha": "2026-10-14",
-   "cambio_1d_pct": 2.04,
-   "cambio_5d_pct": 2.15,
-   "cambio_21d_pct": -3.18,
-   "cambio_63d_pct": 31.28,
-   "sma50": 81111.49,
+   "cambio_1d_pct": 0.22,
+   "cambio_5d_pct": 0.89,
+   "cambio_21d_pct": -1.31,
+   "cambio_63d_pct": 31.35,
+   "sma50": 81199.02,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2491,8 +2491,12 @@
      81762.5625
     ],
     [
+     "2026-10-13",
+     83095.125
+    ],
+    [
      "2026-10-14",
-     83431.3281
+     83277.6406
     ]
    ]
   },
@@ -6564,26 +6568,22 @@
     ],
     [
      "2026-10-13",
-     2783.3689
+     2783.3701
     ]
    ]
   },
   "vix": {
    "nombre": "VIX",
    "simbolo": "^VIX",
-   "valor": 15.27,
-   "fecha": "2026-10-13",
-   "cambio_1d_pct": 0.39,
-   "cambio_5d_pct": 1.73,
-   "cambio_21d_pct": -10.7,
-   "cambio_63d_pct": -8.73,
-   "sma50": 15.45,
+   "valor": 15.25,
+   "fecha": "2026-10-14",
+   "cambio_1d_pct": -0.13,
+   "cambio_5d_pct": 1.13,
+   "cambio_21d_pct": -11.34,
+   "cambio_63d_pct": -18.75,
+   "sma50": 15.44,
    "fuente": "Cboe VIX (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-13",
-     19.03
-    ],
     [
      "2025-10-14",
      20.81
@@ -7595,25 +7595,25 @@
     [
      "2026-10-13",
      15.27
+    ],
+    [
+     "2026-10-14",
+     15.25
     ]
    ]
   },
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 102.16,
+   "valor": 102.23,
    "fecha": "2026-10-14",
-   "cambio_1d_pct": -0.41,
-   "cambio_5d_pct": 0.33,
-   "cambio_21d_pct": 2.72,
-   "cambio_63d_pct": 1.66,
-   "sma50": 100.21,
+   "cambio_1d_pct": 0.05,
+   "cambio_5d_pct": -0.01,
+   "cambio_21d_pct": 2.59,
+   "cambio_63d_pct": 1.49,
+   "sma50": 100.26,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-13",
-     99.27
-    ],
     [
      "2025-10-14",
      99.05
@@ -8615,14 +8615,18 @@
      102.58
     ],
     [
+     "2026-10-13",
+     102.18
+    ],
+    [
      "2026-10-14",
-     102.164
+     102.229
     ]
    ]
   }
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-14 00:31 UTC",
- "duracion_s": 7.1
+ "generado_utc": "2026-10-14 10:22 UTC",
+ "duracion_s": 7.7
 }

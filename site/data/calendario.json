@@ -1,57 +1,8 @@
 {
- "generado": "2026-10-13 14:51 Madrid",
- "desde": "2026-09-03",
- "hasta": "2026-11-03",
+ "generado": "2026-10-14 12:24 Madrid",
+ "desde": "2026-09-04",
+ "hasta": "2026-11-04",
  "eventos": [
-  {
-   "fecha": "2026-09-03",
-   "dia": "jue",
-   "hora_ny": "08:30",
-   "hora_madrid": "14:30",
-   "evento": "Peticiones de paro semanales",
-   "importancia": "MEDIA",
-   "afecta": "índices · oro",
-   "que_mirar": "Media de 4 semanas ↑ = empleo se enfría.",
-   "fuente": "FRED Release Calendar · Unemployment Insurance Weekly Claims Report",
-   "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
-   "nota": "",
-   "publicado": {
-    "periodo": "2026-10-03",
-    "valor": 197000.0,
-    "anterior": 199000.0,
-    "anterior_periodo": "2026-09-26",
-    "descripcion": "Peticiones iniciales, personas",
-    "fuente": "FRED ICSA",
-    "url": "https://fred.stlouisfed.org/series/ICSA",
-    "fecha_publicacion": "2026-10-08"
-   }
-  },
-  {
-   "fecha": "2026-09-03",
-   "dia": "jue",
-   "hora_ny": "10:00",
-   "hora_madrid": "16:00",
-   "evento": "ISM servicios",
-   "importancia": "MEDIA",
-   "afecta": "índices · oro",
-   "que_mirar": "≥ 50 expansión, < 50 contracción; precios pagados = presión inflacionista.",
-   "fuente": "ISM (Institute for Supply Management)",
-   "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/rob-report-calendar/",
-   "nota": ""
-  },
-  {
-   "fecha": "2026-09-03",
-   "dia": "jue",
-   "hora_ny": "16:30",
-   "hora_madrid": "22:30",
-   "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
-   "importancia": "MEDIA",
-   "afecta": "cripto · oro · índices",
-   "que_mirar": "Liquidez: reservas ↑ / TGA ↓ = acompaña.",
-   "fuente": "FRED Release Calendar · H.4.1 Factors Affecting Reserve Balances",
-   "url": "https://fred.stlouisfed.org/releases/calendar?rid=20&y=2026",
-   "nota": ""
-  },
   {
    "fecha": "2026-09-04",
    "dia": "vie",
@@ -157,7 +108,7 @@
     "descripcion": "IPC general, % interanual",
     "fuente": "FRED CPIAUCSL",
     "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
-    "fecha_publicacion": "2026-09-11"
+    "fecha_publicacion": "2026-10-14"
    }
   },
   {
@@ -631,7 +582,7 @@
     "descripcion": "IPC general, % interanual",
     "fuente": "FRED CPIAUCSL",
     "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
-    "fecha_publicacion": "2026-09-11"
+    "fecha_publicacion": "2026-10-14"
    }
   },
   {
@@ -1089,7 +1040,7 @@
    "evento": "Resultados Apple (AAPL)",
    "importancia": "ALTA",
    "afecta": "índices",
-   "que_mirar": "BPA estimado $1.98 · después del cierre",
+   "que_mirar": "BPA estimado $1.99 · después del cierre",
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/aapl/earnings",
    "nota": "fecha CONFIRMADA"
@@ -1106,20 +1057,46 @@
    "fuente": "FRED Release Calendar · Job Openings and Labor Turnover Survey",
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=192&y=2026",
    "nota": ""
+  },
+  {
+   "fecha": "2026-11-04",
+   "dia": "mié",
+   "hora_ny": "10:00",
+   "hora_madrid": "16:00",
+   "evento": "ISM servicios",
+   "importancia": "MEDIA",
+   "afecta": "índices · oro",
+   "que_mirar": "≥ 50 expansión, < 50 contracción; precios pagados = presión inflacionista.",
+   "fuente": "ISM (Institute for Supply Management)",
+   "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/rob-report-calendar/",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-04",
+   "dia": "mié",
+   "hora_ny": "",
+   "hora_madrid": "",
+   "evento": "Resultados Meta Platforms (META)",
+   "importancia": "ALTA",
+   "afecta": "índices",
+   "que_mirar": "BPA estimado $6.39 · momento no publicado",
+   "fuente": "Nasdaq / Zacks",
+   "url": "https://www.nasdaq.com/market-activity/stocks/meta/earnings",
+   "nota": "fecha ESTIMADA por algoritmo (Zacks); puede cambiar"
   }
  ],
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
-   "dias": 15
+   "dias": 14
   },
   "BCE": {
    "fecha": "2026-10-29",
-   "dias": 16
+   "dias": 15
   },
   "Banco de Japón": {
    "fecha": "2026-10-30",
-   "dias": 17
+   "dias": 16
   }
  },
  "errores": {},
@@ -1133,7 +1110,7 @@
    "descripcion": "IPC general, % interanual",
    "fuente": "FRED CPIAUCSL",
    "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
-   "fecha_publicacion": "2026-09-11"
+   "fecha_publicacion": "2026-10-14"
   },
   "Empleo (Employment Situation)": {
    "periodo": "2026-09-01",
@@ -1206,6 +1183,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-13 12:49 UTC",
- "duracion_s": 37.5
+ "generado_utc": "2026-10-14 10:22 UTC",
+ "duracion_s": 39.8
 }

@@ -1,161 +1,161 @@
 {
- "actualizado_utc": "2026-10-14 00:31 UTC",
- "modo": "cierre",
+ "actualizado_utc": "2026-10-14 10:22 UTC",
+ "modo": "diario",
  "etapas": {
   "precios": {
    "ok": true,
-   "duracion_s": 7.1,
+   "duracion_s": 7.7,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:31 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:31 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "fedwatch": {
    "ok": true,
-   "duracion_s": 11.2,
+   "duracion_s": 11.0,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:13 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:13 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "calendario": {
    "ok": true,
-   "duracion_s": 37.5,
+   "duracion_s": 39.8,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "liquidez": {
    "ok": true,
    "duracion_s": 55.3,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "resumen": {
    "ok": true,
-   "duracion_s": 112.1,
+   "duracion_s": 107.1,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "tipos": {
    "ok": true,
-   "duracion_s": 71.6,
+   "duracion_s": 75.6,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:13 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:13 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "ciclo": {
    "ok": true,
    "duracion_s": 6.1,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "publicados": {
    "ok": true,
-   "duracion_s": 4.3,
+   "duracion_s": 5.9,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "regimen": {
    "ok": true,
-   "duracion_s": 19.8,
+   "duracion_s": 20.2,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "alertas": {
    "ok": true,
-   "duracion_s": 1.0,
+   "duracion_s": 1.1,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:31 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:31 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "monitores": {
    "ok": true,
-   "duracion_s": 152.8,
+   "duracion_s": 148.2,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "series": {
    "ok": true,
-   "duracion_s": 11.0,
+   "duracion_s": 11.1,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "divisas": {
    "ok": true,
-   "duracion_s": 8.7,
+   "duracion_s": 10.0,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "cot": {
    "ok": true,
-   "duracion_s": 3.0,
+   "duracion_s": 2.6,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "noticias": {
    "ok": true,
-   "duracion_s": 7.7,
+   "duracion_s": 6.9,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:13 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:13 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "skew": {
    "ok": true,
-   "duracion_s": 1.7,
+   "duracion_s": 1.4,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:31 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:31 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "semis": {
    "ok": true,
-   "duracion_s": 17.8,
+   "duracion_s": 19.4,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:31 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:31 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "gamma": {
    "ok": true,
-   "duracion_s": 6.1,
+   "duracion_s": 6.8,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:31 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:31 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "contexto": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:31 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:31 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "tesis": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-13 12:49 UTC",
-   "ultimo_ok_utc": "2026-10-13 12:49 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "bancos": {
    "ok": true,
-   "duracion_s": 14.5,
+   "duracion_s": 19.6,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:31 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:31 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   },
   "tono": {
    "ok": true,
-   "duracion_s": 29.8,
+   "duracion_s": 27.7,
    "error": null,
-   "ejecutada_utc": "2026-10-14 00:31 UTC",
-   "ultimo_ok_utc": "2026-10-14 00:31 UTC"
+   "ejecutada_utc": "2026-10-14 10:22 UTC",
+   "ultimo_ok_utc": "2026-10-14 10:22 UTC"
   }
  },
- "duracion_total_s": 78.1
+ "duracion_total_s": 583.6
 }

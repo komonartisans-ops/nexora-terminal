@@ -3,6 +3,36 @@
   {
    "banco": "BoJ",
    "tipo": "Novedad",
+   "titulo": "Japanese Government Bonds Held by the Bank of Japan",
+   "orador": null,
+   "fecha_utc": "2026-10-14 08:00",
+   "fecha": "2026-10-14",
+   "enlace": "http://www.boj.or.jp/en/statistics/boj/other/mei/release/2026/mei261009.xlsx",
+   "fuente": "boj"
+  },
+  {
+   "banco": "BoJ",
+   "tipo": "Novedad",
+   "titulo": "Bank of Japan Accounts (October 10)",
+   "orador": null,
+   "fecha_utc": "2026-10-14 01:00",
+   "fecha": "2026-10-14",
+   "enlace": "http://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261010.htm",
+   "fuente": "boj"
+  },
+  {
+   "banco": "BCE",
+   "tipo": "Discurso",
+   "titulo": "Ensuring resilience in the face of uncertainty",
+   "orador": "Frank Elderson",
+   "fecha_utc": "2026-10-14 00:00",
+   "fecha": "2026-10-14",
+   "enlace": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261014~e4ca33588e.en.html",
+   "fuente": "bce"
+  },
+  {
+   "banco": "BoJ",
+   "tipo": "Novedad",
    "titulo": "Money Stock (Sept.)",
    "orador": null,
    "fecha_utc": "2026-10-13 23:50",
@@ -691,16 +721,6 @@
    "fuente": "boj"
   },
   {
-   "banco": "BCE",
-   "tipo": "Discurso",
-   "titulo": "Supervisory risk appetite, efficiency and effectiveness",
-   "orador": "Frank Elderson",
-   "fecha_utc": "2026-09-30 02:20",
-   "fecha": "2026-09-30",
-   "enlace": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260930~d495288355.en.html",
-   "fuente": "bce"
-  },
-  {
    "banco": "BoJ",
    "tipo": "Novedad",
    "titulo": "Payment and Settlement Statistics (Aug.)",
@@ -861,16 +881,6 @@
    "fuente": "boj"
   },
   {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "Results of BIS International Locational Banking Statistics and International Consolidated Banking Statistics in Japan",
-   "orador": null,
-   "fecha_utc": "2026-09-24 23:50",
-   "fecha": "2026-09-24",
-   "enlace": "http://www.boj.or.jp/en/statistics/bis/ibs/index.htm",
-   "fuente": "boj"
-  },
-  {
    "banco": "Fed",
    "tipo": "Comunicado",
    "titulo": "Federal Reserve Board requests public comment on two proposals related to establishing a regulatory framework for Board-supervised payment stablecoin issuers under the GENIUS Act",
@@ -889,16 +899,6 @@
    "fecha": "2026-09-24",
    "enlace": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260924a.htm",
    "fuente": "fed_press"
-  },
-  {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "Statistics on Securities Financing Transactions in Japan",
-   "orador": null,
-   "fecha_utc": "2026-09-23 23:50",
-   "fecha": "2026-09-23",
-   "enlace": "http://www.boj.or.jp/en/statistics/bis/repo/index.htm",
-   "fuente": "boj"
   },
   {
    "banco": "Fed",
@@ -1033,26 +1033,6 @@
   {
    "banco": "BoE",
    "tipo": "Noticia",
-   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "Asset Purchase Facility: Gilt Sales – Market Notice 17 September 2026",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
    "titulo": "Exchange of letters between the Governor and the Chancellor regarding CPI Inflation - September 2026",
    "orador": null,
    "fecha_utc": "2026-09-17 11:00",
@@ -1068,6 +1048,26 @@
    "fecha_utc": "2026-09-17 11:00",
    "fecha": "2026-09-17",
    "enlace": "https://www.bankofengland.co.uk/letter/2026/exchange-of-letters-between-the-governor-and-the-chancellor-regarding-qt-and-the-apf",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Asset Purchase Facility: Gilt Sales – Market Notice 17 September 2026",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
    "fuente": "boe"
   },
   {
@@ -1324,7 +1324,7 @@
    "n": 15,
    "url": "https://www.ecb.europa.eu/rss/press.html",
    "pagina": "https://www.ecb.europa.eu/press/html/index.en.html",
-   "ultimo": "2026-10-13 18:30"
+   "ultimo": "2026-10-14 00:00"
   },
   "boj": {
    "banco": "BoJ",
@@ -1332,7 +1332,7 @@
    "n": 40,
    "url": "https://www.boj.or.jp/en/rss/whatsnew.xml",
    "pagina": "https://www.boj.or.jp/en/whatsnew.htm",
-   "ultimo": "2026-10-13 23:50"
+   "ultimo": "2026-10-14 08:00"
   },
   "boe": {
    "banco": "BoE",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-14 00:13 UTC",
- "duracion_s": 7.7
+ "generado_utc": "2026-10-14 10:22 UTC",
+ "duracion_s": 6.9
 }
