@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-15 20:01 UTC",
+ "generado_utc": "2026-10-15 22:35 UTC",
  "version_reglas": "3.0",
  "ok": true,
  "validacion_giro": {
@@ -143,6 +143,12 @@
      "n": 1,
      "eventos": [
       "NFP-2026-10-02"
+     ]
+    },
+    "SORPRESA DESHECHA": {
+     "n": 1,
+     "eventos": [
+      "PPI+VENTAS-2026-10-15"
      ]
     }
    },
@@ -427,21 +433,62 @@
      },
      "contaminada": false,
      "contaminada_por": []
+    },
+    {
+     "fase": "CIERRE",
+     "objetivo_utc": "2026-10-15 20:00",
+     "barra_utc": "2026-10-15 19:55",
+     "origen": "vivo-tardío",
+     "clasificacion": "MIXTA (sin regla)",
+     "d_y2_pb": 1.05,
+     "d_y10_pb": 0.81,
+     "y10_fuente": "ZN=F×beta (^TNX sin barra)",
+     "d_dxy_pct": -0.085,
+     "d_oro_pct": 0.503,
+     "d_nq_pct": 0.921,
+     "d_es_pct": 0.477,
+     "d_btc_pct": 1.546,
+     "dxy_pico_pct": 0.13,
+     "umbral_origen": "z-score vs 14 eventos previos (60 d)",
+     "umbrales": {
+      "y2": 3.08,
+      "y10": 2.02,
+      "dxy": 0.135,
+      "nq": 0.315
+     },
+     "registrado_utc": "2026-10-15 22:35",
+     "beta_2y": -53.59,
+     "r2_2y": 0.915,
+     "beta_10y": -13.02,
+     "r2_10y": 0.817,
+     "giro": {
+      "dev_y2_pct": 76.4,
+      "dev_y10_pct": 52.4,
+      "y10_base": false,
+      "debil": false,
+      "clase": "SORPRESA DESHECHA",
+      "nota": "tipos al alza · NQ recupera/sube frente a T+5 · 10Y sin base",
+      "version": "3.0"
+     },
+     "contaminada": false,
+     "contaminada_por": []
     }
    ],
    "real10": null,
    "fuente": "Yahoo Finance (API v8 chart, 5 min); calendario: FRED Release Calendar · Advance Monthly Sales for Retail and Food Services | FRED Release Calendar · Producer Price Index",
    "clase_t5": "MIXTA (sin regla)",
-   "clase_cierre": null,
+   "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
    "contaminada_en": [],
    "giro_fases": {
     "T+60": "INVERSIÓN · NQ cae",
-    "T+120": "INVERSIÓN · NQ sube"
+    "T+120": "INVERSIÓN · NQ sube",
+    "CIERRE": "SORPRESA DESHECHA"
    },
    "giro_en": [
     "T+60",
-    "T+120"
+    "T+120",
+    "CIERRE"
    ],
    "diseno": false,
    "sorpresa": {
@@ -775,7 +822,12 @@
      ]
     }
    ],
-   "real10": null,
+   "real10": {
+    "valor": 2.84,
+    "d_pb": -4.0,
+    "nota": "FRED DFII10 (cierre del 2026-10-14 frente al 2026-10-13; es el cambio de TODO el día, no de la ventana del evento)",
+    "origen": "FRED · añadido al día siguiente"
+   },
    "fuente": "Yahoo Finance (API v8 chart, 5 min); calendario: FRED Release Calendar · Consumer Price Index",
    "clase_t5": "FED MÁS DURA",
    "clase_cierre": "MIXTA (sin regla)",
@@ -5369,11 +5421,11 @@
  ],
  "tabla_t5_vs_cierre": {
   "MIXTA (sin regla)": {
-   "n": 8,
-   "igual_cierre": 3,
+   "n": 9,
+   "igual_cierre": 4,
    "cierre": {
     "FED MÁS DURA": 3,
-    "MIXTA (sin regla)": 3,
+    "MIXTA (sin regla)": 4,
     "EMPINAMIENTO POR PLAZO LARGO": 2
    },
    "eventos": [
@@ -5384,7 +5436,8 @@
     "FOMC-2026-09-16",
     "PCE-2026-09-30",
     "PCE+PIB-2026-09-30",
-    "ISM-2026-10-01"
+    "ISM-2026-10-01",
+    "PPI+VENTAS-2026-10-15"
    ]
   },
   "SIN REACCIÓN": {
@@ -5423,8 +5476,10 @@
   }
  },
  "n_eventos": 15,
- "n_con_cierre": 14,
- "avisos_enviados": [],
+ "n_con_cierre": 15,
+ "avisos_enviados": [
+  "PPI+VENTAS-2026-10-15|CIERRE"
+ ],
  "reglas": {
   "clases": [
    {
