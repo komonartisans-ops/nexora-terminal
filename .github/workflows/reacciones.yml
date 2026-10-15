@@ -1,0 +1,63 @@
+name: reacciones
+
+# Fase 8 · monitor de reacción a eventos (IPC, NFP, PCE, FOMC). El job arranca ~60 min antes del evento (el cron de GitHub puede retrasarse)
+# y ESPERA dentro del job, registrando T-5, T+5, T+15, T+30, T+60, T+120 y cierre. Cada cron cubre una de las dos horas UTC posibles
+# (horario de verano / invierno de Nueva York); el script decide si hay evento hoy y es idempotente (no repite filas).
+on:
+  schedule:
+    - cron: "30 11 * * 1-5"   # 07:30 ET en verano  → evento de las 08:30 ET (IPC, NFP, PCE)
+    - cron: "30 12 * * 1-5"   # 07:30 ET en invierno
+    - cron: "0 17 * * 1-5"    # 13:00 ET en verano  → FOMC de las 14:00 ET
+    - cron: "0 18 * * 1-5"    # 13:00 ET en invierno
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "vivo | reconstruir"
+        default: "vivo"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: reacciones
+  cancel-in-progress: false
+
+jobs:
+  reaccion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Registrar reacción
+        env:
+          PYTHONUTF8: "1"
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ "${{ github.event.inputs.modo }}" = "reconstruir" ]; then python engine/reaccion.py --reconstruir; else python engine/reaccion.py --vivo; fi
+      - name: Commit (si el job se cancela por tiempo, igualmente se guarda lo registrado)
+        if: always()
+        run: python engine/push_seguro.py "reacciones $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]"
+
+  deploy:
+    needs: reaccion
+    if: always()
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.dep.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: dep
+        uses: actions/deploy-pages@v4

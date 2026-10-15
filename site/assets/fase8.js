@@ -1,0 +1,72 @@
+/* NEXORA TERMINAL · fase 8: reacción a eventos (IPC, NFP, PCE, FOMC). Se carga después de fase7.js y reutiliza sus helpers.
+   Todo texto dinámico pasa por esc(). Sin dato = SIN DATO. */
+'use strict';
+
+const CLASE_COL = { 'FED MÁS DURA': '#C8463D', 'FED MÁS SUAVE': '#2FA36B', REFUGIO: '#9B87C9', 'EMPINAMIENTO POR PLAZO LARGO': '#C8A24A', 'SIN REACCIÓN': '#8A93A0', 'MIXTA (sin regla)': '#6C8EBF' };
+const chipClase = (c) => (c ? `<span class="chip" style="border:1px solid ${CLASE_COL[c] || '#3a4250'};color:${CLASE_COL[c] || 'var(--muted)'};white-space:nowrap">${esc(c)}</span>` : '<span class="pill flat">—</span>');
+const dv = (v, d, u) => (v == null ? '<span class="sd-val" style="font-size:10px">SIN DATO</span>' : `<span class="${v > 0 ? '' : ''}">${sg(v, d)}${u}</span>`);
+const FASES_ORD = ['T-5', 'T+5', 'T+15', 'T+30', 'T+60', 'T+120', 'CIERRE'];
+
+function pageEventos() {
+  const R = D.reacciones;
+  const stamp = `Actualizado: ${R && R.generado_utc ? esc(R.generado_utc) : 'SIN DATO'} · reglas v${R ? esc(R.version_reglas) : ''} <span class="tag sin" style="margin-left:6px">CRITERIO NEXORA</span>`;
+  let h = head('Análisis', 'Reacción a eventos', 'Qué hacen el 2Y, el 10Y, el dólar, el oro, el Nasdaq y el BTC en las dos horas siguientes a un IPC, un dato de empleo, el PCE o una decisión del FOMC, y cómo lo clasifica una regla fija y publicada. Datos de Yahoo Finance con barras de 5 minutos; fechas y horas del calendario oficial.', stamp);
+  h += fallo('reacciones');
+  if (!R || !R.eventos || !R.eventos.length) return h + noData('Yahoo Finance (5 min) + calendario oficial');
+  const E = R.eventos;
+  const u = E.find((e) => e.id === R.ultimo) || E[0];
+  const f = (n) => u.fases.find((x) => x.fase === n);
+  const f5 = f('T+5'), fc = f('CIERRE');
+  const cad = (x) => (x ? `2Y ${sg(x.d_y2_pb, 1)} pb · 10Y ${sg(x.d_y10_pb, 1)} pb · DXY ${sg(x.d_dxy_pct, 2)} % · oro ${sg(x.d_oro_pct, 2)} % · NQ ${sg(x.d_nq_pct, 2)} % · BTC ${sg(x.d_btc_pct, 2)} %` : 'SIN DATO');
+  const so = u.sorpresa;
+  h += essential(
+    `${esc(u.evento)} · ${esc(fdy(u.fecha))} ${esc(u.hora_ny)} ET${u.reconstruido ? ' (reconstruido con barras de 5 min)' : ''}: en T+5 la lectura es <b style="color:var(--text)">${esc(u.clase_t5 || 'SIN DATO')}</b>. ${esc(cad(f5))} (frente a T-5).`,
+    `${u.giro_en && u.giro_en.length ? `Hecho: la clasificación cambió en ${esc(u.giro_en.join(' y '))} (alerta de giro).` : 'Hecho: la clasificación de T+60 y T+120 no difiere de la de T+5.'} ${fc ? `Al cierre (16:00 ET): <b style="color:var(--text)">${esc(fc.clasificacion)}</b>.` : 'El cierre aún no está registrado.'}`,
+    so ? (so.modo === 'z' ? `Sorpresa: salto del 2Y en T+5 de ${sg(so.pb, 1)} pb = ${sg(so.z, 2)} σ frente a ${so.n} eventos ${esc(u.tipo)} previos.` : `Sorpresa: salto del 2Y en T+5 de ${sg(so.pb, 1)} pb. <i>${esc(so.nota)}</i>`) : 'Sorpresa: SIN DATO.');
+
+  /* secuencia de fases del último evento */
+  h += `<div class="sect"><h2>Último evento · secuencia de fases</h2><span class="more">todos los movimientos frente al precio de T-5 (5 min antes de la publicación)</span></div>`;
+  h += `<div class="card"><div class="note" style="margin:0 0 10px">${esc(u.evento)} · ${esc(fdy(u.fecha))} · ${esc(u.hora_ny)} hora de Nueva York ${u.reconstruido ? '<span class="tag sd">RECONSTRUIDO</span>' : '<span class="tag sin">EN VIVO</span>'}</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">${FASES_ORD.filter((n) => n !== 'T-5').map((n) => { const x = f(n); return `<div style="flex:1 1 110px;min-width:105px"><div class="note" style="margin:0 0 3px">${n}</div>${chipClase(x ? x.clasificacion : null)}</div>`; }).join('')}</div></div>`;
+  h += '<div class="card pad0 scroll" style="margin-top:10px"><table class="t"><thead><tr><th>Fase</th><th>Clase</th><th>2Y pb</th><th>10Y pb</th><th>DXY %</th><th>Oro %</th><th>NQ %</th><th>ES %</th><th>BTC %</th><th>Origen</th></tr></thead><tbody>';
+  h += FASES_ORD.map((n) => {
+    const x = f(n);
+    if (!x) return `<tr><td><b>${n}</b></td><td colspan="9" style="text-align:left;color:var(--dim)">SIN REGISTRO todavía</td></tr>`;
+    if (n === 'T-5') return `<tr><td><b>${n}</b></td><td colspan="8" style="text-align:left;color:var(--dim)">precio base (cierre de la barra de 5 min previa a la publicación)</td><td>${esc(x.origen)}</td></tr>`;
+    return `<tr><td><b>${n}</b></td><td style="text-align:left">${chipClase(x.clasificacion)}</td><td>${dv(x.d_y2_pb, 1, '')}</td><td>${dv(x.d_y10_pb, 1, '')}${x.y10_fuente && x.y10_fuente !== '^TNX' ? ` <small title="${esc(x.y10_fuente)}" style="color:var(--amber)">ZN</small>` : ''}</td>
+      <td>${dv(x.d_dxy_pct, 2, '')}</td><td>${dv(x.d_oro_pct, 2, '')}</td><td>${dv(x.d_nq_pct, 2, '')}</td><td>${dv(x.d_es_pct, 2, '')}</td><td>${dv(x.d_btc_pct, 2, '')}</td><td><small>${esc(x.origen)}</small></td></tr>`;
+  }).join('');
+  h += `</tbody></table>${footIn('Yahoo Finance (ZT=F calibrado, ^TNX, DX-Y.NYB, GC=F, NQ=F, ES=F, BTC-USD)', u.fecha, null, 'barras de 5 min; ZN = 10Y inferido de ZN=F porque ^TNX no cotiza tras las 15:00 ET')}</div>`;
+  const umb = f5 && f5.umbrales ? f5.umbrales : null;
+  if (umb) h += `<div class="note">Umbrales usados en T+5 (${esc(f5.umbral_origen)}): 2Y ±${num(umb.y2, 1)} pb · 10Y ±${num(umb.y10, 1)} pb · DXY ±${num(umb.dxy, 2)} % · NQ ±${num(umb.nq, 2)} %. Pico del DXY en la ventana: ${f5.dxy_pico_pct != null ? sg(f5.dxy_pico_pct, 2) + ' %' : 'SIN DATO'}.</div>`;
+  h += `<div class="note"><b>10Y real (FRED DFII10):</b> ${u.real10 ? `${num(u.real10.valor, 2)} % · cambio de todo el día ${sg(u.real10.d_pb, 1)} pb. Añadido al día siguiente (${esc(u.real10.origen)}); no es el cambio de la ventana del evento.` : 'se añade el día siguiente al evento (FRED publica el dato con un día de retraso): SIN DATO todavía.'}</div>`;
+
+  /* tabla histórica */
+  h += `<div class="sect"><h2>Histórico · qué clasificación de T+5 terminó imponiéndose</h2><span class="more">n = ${R.n_con_cierre} eventos con T+5 y cierre registrados (últimos 60 días): muestra pequeña, lectura orientativa</span></div>`;
+  const T = R.tabla_t5_vs_cierre || {};
+  h += '<div class="card pad0 scroll"><table class="t"><thead><tr><th>Clase en T+5</th><th>n</th><th>Igual al cierre</th><th>%</th><th>Qué fue al cierre</th></tr></thead><tbody>';
+  h += Object.keys(T).length ? Object.entries(T).map(([c, t]) => `<tr><td style="text-align:left">${chipClase(c)}</td><td>${t.n}</td><td>${t.igual_cierre}/${t.n}</td><td><b>${num(100 * t.igual_cierre / t.n, 0)} %</b></td><td style="text-align:left;white-space:normal">${Object.entries(t.cierre).map(([k, v]) => `${esc(k)} ×${v}`).join(' · ')}</td></tr>`).join('') : '<tr><td colspan="5" style="text-align:left;color:var(--dim)">SIN DATO</td></tr>';
+  h += `</tbody></table>${footIn('data/reacciones_eventos.csv · cálculo NEXORA', R.generado_utc && R.generado_utc.slice(0, 10), null, 'frecuencias con n visible; no es una probabilidad')}</div>`;
+  h += '<div class="card pad0 scroll" style="margin-top:10px"><table class="t"><thead><tr><th>Evento</th><th>Fecha</th><th>T+5</th><th>T+60</th><th>T+120</th><th>Cierre</th><th>Giro</th><th>2Y T+5 (pb)</th><th>Origen</th></tr></thead><tbody>';
+  h += E.map((e) => {
+    const c = (n) => { const x = e.fases.find((y) => y.fase === n); return x ? chipClase(x.clasificacion) : '<span class="pill flat">—</span>'; };
+    return `<tr><td style="text-align:left;font-family:var(--sans)">${esc(e.tipo)}</td><td>${esc(fdy(e.fecha))}</td><td style="text-align:left">${c('T+5')}</td><td style="text-align:left">${c('T+60')}</td><td style="text-align:left">${c('T+120')}</td><td style="text-align:left">${c('CIERRE')}</td>
+      <td>${e.giro_en && e.giro_en.length ? `<span class="ck no">SÍ</span> <small>${esc(e.giro_en.join(', '))}</small>` : '<span class="ck ok">NO</span>'}</td><td>${e.sorpresa ? sg(e.sorpresa.pb, 1) + (e.sorpresa.modo === 'z' ? ` <small>(${sg(e.sorpresa.z, 1)} σ)</small>` : '') : '—'}</td><td><small>${e.reconstruido ? 'reconstruido' : 'en vivo'}</small></td></tr>`;
+  }).join('');
+  h += `</tbody></table>${footIn('Yahoo Finance + calendario oficial · registro solo-añadir', R.generado_utc && R.generado_utc.slice(0, 10), null, 'los reconstruidos usan barras de 5 min de Yahoo (últimos 60 días)')}</div>`;
+
+  /* reglas */
+  const RG = R.reglas || {};
+  h += `<div class="sect"><h2>Reglas de clasificación</h2><span class="more">CRITERIO NEXORA · publicadas antes de ver los resultados</span></div>
+    <details class="qa card" open><summary>Clases y umbrales</summary>
+      <table class="t" style="margin-top:8px"><thead><tr><th>Clase</th><th>Regla</th></tr></thead><tbody>${(RG.clases || []).map((c) => `<tr><td style="text-align:left">${chipClase(c.clase)}</td><td style="text-align:left;white-space:normal">${esc(c.regla)}</td></tr>`).join('')}</tbody></table>
+      <p class="note">${esc(RG.precedencia || '')} ${esc(RG.movimiento || '')}</p>
+      <p class="note">${esc(RG.umbral || '')} Suelos: ${Object.entries(RG.suelos || {}).map(([k, v]) => `${esc(k)} ${v}`).join(' · ')}.</p>
+      <p class="note">${esc(RG.giro || '')} ${esc(RG.criterio || '')}</p></details>
+    <details class="qa card"><summary>De dónde sale cada serie</summary><table class="t" style="margin-top:8px"><tbody>${Object.entries(R.series || {}).map(([k, v]) => `<tr><td style="text-align:left"><b>${esc(k)}</b></td><td style="text-align:left;white-space:normal">${esc(v)}</td></tr>`).join('')}</tbody></table>
+      ${R.calibracion ? `<p class="note">Calibración de hoy: 2Y = ${num(R.calibracion.beta_2y, 1)} pb por punto de ZT=F (R² ${num(R.calibracion.r2_2y, 2)}, n = ${R.calibracion.n_2y} días frente al 2 Yr del Tesoro) · 10Y de reserva = ${num(R.calibracion.beta_10y, 1)} pb por punto de ZN=F (R² ${num(R.calibracion.r2_10y, 2)}, n = ${R.calibracion.n_10y} barras de 5 min frente a ^TNX).</p>` : ''}</details>`;
+  h += `<div class="note">${esc(R.fuente || '')} Memoria permanente: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/reacciones_eventos.csv" target="_blank" rel="noopener">data/reacciones_eventos.csv</a>. Alertas de giro enviadas: ${(R.avisos_enviados || []).length ? esc((R.avisos_enviados || []).join(', ')) : 'ninguna'}.</div>`;
+  return h + errores(R.errores);
+}
+
+Object.assign(window.EXTRA_PAGES, { eventos: pageEventos });

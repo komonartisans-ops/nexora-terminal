@@ -20,6 +20,7 @@ LECTURA = [
     "Los bloques 'CRITERIO NEXORA' (gamma, semis/software, zonas del SKEW) son métodos propios, no datos oficiales: menciona el método.",
     "Revisa 'frescura' y 'datos_con_mas_de_48h' antes de afirmar nada sobre el estado actual.",
     "El tono hawkish/dovish es un bloque SECUNDARIO si 'tono_bancos_centrales.estado_bloque' lo dice: lectura léxica con diccionario fijo, sin demostrar que anticipe la dirección de los tipos frente al azar. Cítalo solo como contexto, con su z-score, su muestra y su estado; nunca como señal de subida o bajada.",
+    "La reacción a eventos (IPC, NFP, PCE, FOMC) es CRITERIO NEXORA con muestra pequeña: cita siempre n, si el evento es «reconstruido» y que el 2Y sale de ZT=F calibrado contra el Tesoro.",
     "La lectura de liquidez global y las zonas relativas del SKEW (percentil de 500 sesiones) son CRITERIO NEXORA; los tipos, fechas de reunión e indicadores del FMI son datos oficiales con su fecha.",
 ]
 
@@ -232,6 +233,25 @@ def _bancos_mundo(B):
             "etiqueta": "Tipos y calendarios: dato oficial. Lectura de liquidez global: CRITERIO NEXORA (regla en la página).", "errores": B.get("errores")}
 
 
+def _reacciones(Rc):
+    if not Rc or not Rc.get("eventos"):
+        return _sd("Yahoo Finance (5 min) + calendario oficial")
+    ev = Rc["eventos"]
+    u = next((e for e in ev if e["id"] == Rc.get("ultimo")), ev[0])
+
+    def ff(f):
+        return {"fase": f["fase"], "clasificacion": f["clasificacion"], "d_2y_pb": f["d_y2_pb"], "d_10y_pb": f["d_y10_pb"], "fuente_10y": f["y10_fuente"],
+                "d_dxy_pct": f["d_dxy_pct"], "d_oro_pct": f["d_oro_pct"], "d_nq_pct": f["d_nq_pct"], "d_es_pct": f["d_es_pct"], "d_btc_pct": f["d_btc_pct"],
+                "umbral": f["umbral_origen"], "origen": f["origen"], "barra_utc": f["barra_utc"]}
+    return {"ultimo_evento": {"id": u["id"], "evento": u["evento"], "fecha": u["fecha"], "hora_ny": u["hora_ny"], "reconstruido": u["reconstruido"],
+                              "clase_t5": u["clase_t5"], "clase_cierre": u["clase_cierre"], "giro_en": u["giro_en"], "sorpresa_2y": u["sorpresa"],
+                              "real10_dia_siguiente": u["real10"], "fases": [ff(f) for f in u["fases"]]},
+            "tabla_t5_vs_cierre": Rc.get("tabla_t5_vs_cierre"), "n_eventos": Rc.get("n_eventos"), "n_con_cierre": Rc.get("n_con_cierre"),
+            "avisos_giro_enviados": Rc.get("avisos_enviados"), "reglas": Rc.get("reglas"), "series": Rc.get("series"), "actualizado_utc": Rc.get("generado_utc"),
+            "fuente": Rc.get("fuente"), "etiqueta": "CRITERIO NEXORA: lectura de precios en minutos tras el evento; muestra pequeña (ver n). Los eventos reconstruidos usan barras de 5 min de Yahoo.",
+            "memoria": Rc.get("memoria")}
+
+
 def _tono(T):
     if not T or not T.get("comunicados"):
         return _sd("Webs oficiales de Fed, BCE y BoJ")
@@ -344,7 +364,7 @@ def _contradicciones(C, D, T, R, S):
 
 # ---------------------------------------------------------------- principal
 def construir():
-    J = {n: _leer(n) for n in ("meta", "precios", "resumen", "ciclo", "liquidez", "fedwatch", "tipos", "cot", "divisas", "regimen", "calendario", "skew", "gamma", "semis", "alertas", "bancos", "tono")}
+    J = {n: _leer(n) for n in ("meta", "precios", "resumen", "ciclo", "liquidez", "fedwatch", "tipos", "cot", "divisas", "regimen", "calendario", "skew", "gamma", "semis", "alertas", "bancos", "tono", "reacciones")}
     stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     meta = J["meta"] or {}
     fres, viejos, fallos = {}, [], []
@@ -376,6 +396,7 @@ def construir():
         "gamma_indices": _gamma(J["gamma"] if J["gamma"] and J["gamma"].get("indices") else None),
         "semis_vs_software": _semis(J["semis"] if J["semis"] and J["semis"].get("ratio") else None),
         "bancos_centrales_mundo": _bancos_mundo(J["bancos"] if J["bancos"] and J["bancos"].get("bancos") else None),
+        "reaccion_a_eventos": _reacciones(J["reacciones"] if J["reacciones"] and J["reacciones"].get("eventos") else None),
         "tono_bancos_centrales": _tono(J["tono"] if J["tono"] and J["tono"].get("comunicados") else None),
         "posicionamiento_cot": _cot(J["cot"]),
         "sesgo_divisas": _divisas(J["divisas"]),

@@ -57,16 +57,8 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python engine/alertas.py --prueba
-      - name: Commit de data/ y site/data/ (memoria permanente)
-        run: |
-          git config user.name "nexora-bot"
-          git config user.email "nexora-bot@users.noreply.github.com"
-          git add data site/data
-          if git diff --cached --quiet; then echo "sin cambios"; else
-            git commit -m "datos ${{ steps.modo.outputs.modo }} $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]"
-            git pull --rebase --autostash origin main || true
-            git push origin HEAD:main
-          fi
+      - name: Commit de data/ y site/data/ (memoria permanente; fusiona conflictos con el job de reacciones)
+        run: python engine/push_seguro.py "datos ${{ steps.modo.outputs.modo }} $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]"
 
   deploy:
     needs: build

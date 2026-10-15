@@ -768,6 +768,12 @@ def etapa_tono():
     return M
 
 
+# ------------------------------------------------------------------ fase 8: reacción a eventos (IPC, NFP, PCE, FOMC)
+def etapa_reacciones():
+    import reaccion
+    return reaccion.etapa()
+
+
 # ------------------------------------------------------------------ contexto.json: resumen compacto de todo el terminal (para informes)
 def etapa_contexto():
     import contexto
@@ -785,9 +791,9 @@ ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_t
           "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen, "tesis": etapa_tesis,
           "regimen": etapa_regimen, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias,
           "bancos": etapa_bancos, "tono": etapa_tono,
-          "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "alertas": etapa_alertas, "contexto": etapa_contexto}
+          "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "alertas": etapa_alertas, "reacciones": etapa_reacciones, "contexto": etapa_contexto}
 ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "resumen", "tesis", "regimen", "divisas", "cot", "noticias",
-         "bancos", "tono", "skew", "semis", "gamma", "alertas", "contexto"]
+         "bancos", "tono", "skew", "semis", "gamma", "alertas", "reacciones", "contexto"]
 # horario: el SKEW (Cboe) se publica tras el cierre, por eso entra aquí para que la alerta salga en la hora siguiente; gamma NO (solo al cierre).
 # cierre (cron 21:30 UTC, tras el cierre de Nueva York): snapshot de opciones, semis/software y SKEW del día.
 MODOS = {"horario": ["precios", "fedwatch", "tipos", "noticias", "skew", "alertas", "contexto"],
