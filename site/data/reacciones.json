@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-15 09:48 UTC",
+ "generado_utc": "2026-10-15 09:49 UTC",
  "version_reglas": "2.0",
  "ok": true,
  "validacion_giro": {
@@ -56,6 +56,24 @@
      ]
     },
     "PARCIAL": {
+     "n": 1,
+     "eventos": [
+      "NFP-2026-09-04"
+     ]
+    }
+   },
+   "T+1": {
+    "SIN BASE": {
+     "n": 5,
+     "eventos": [
+      "PCE-2026-08-26",
+      "IPC-2026-09-11",
+      "FOMC-2026-09-16",
+      "PCE-2026-09-30",
+      "NFP-2026-10-02"
+     ]
+    },
+    "SIN DATO": {
      "n": 1,
      "eventos": [
       "NFP-2026-09-04"
@@ -577,6 +595,40 @@
       "clase": "SIN BASE",
       "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
      }
+    },
+    {
+     "fase": "T+1",
+     "objetivo_utc": "2026-10-05 14:00",
+     "barra_utc": "2026-10-05 13:55",
+     "origen": "reconstruido",
+     "clasificacion": "FED MÁS DURA",
+     "d_y2_pb": 4.01,
+     "d_y10_pb": 8.7,
+     "y10_fuente": "^TNX",
+     "d_dxy_pct": 0.279,
+     "d_oro_pct": -1.051,
+     "d_nq_pct": 0.654,
+     "d_es_pct": 0.39,
+     "d_btc_pct": -0.14,
+     "dxy_pico_pct": 0.446,
+     "umbral_origen": "z-score vs 4 eventos previos (60 d)",
+     "umbrales": {
+      "y2": 3.72,
+      "y10": 2.52,
+      "dxy": 0.213,
+      "nq": 0.427
+     },
+     "registrado_utc": "2026-10-15 09:49",
+     "beta_2y": -54.08,
+     "r2_2y": 0.914,
+     "beta_10y": -13.02,
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 173.0,
+      "dev_y10_pct": 267.3,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     }
    ],
    "real10": {
@@ -592,7 +644,8 @@
    "giro_fases": {
     "T+60": "SIN BASE",
     "T+120": "SIN BASE",
-    "CIERRE": "SIN BASE"
+    "CIERRE": "SIN BASE",
+    "T+1": "SIN BASE"
    },
    "giro_en": [],
    "diseno": false,
@@ -847,6 +900,40 @@
       "clase": "SIN BASE",
       "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
      }
+    },
+    {
+     "fase": "T+1",
+     "objetivo_utc": "2026-10-01 14:00",
+     "barra_utc": "2026-10-01 13:55",
+     "origen": "reconstruido",
+     "clasificacion": "EMPINAMIENTO POR PLAZO LARGO",
+     "d_y2_pb": -2.11,
+     "d_y10_pb": 8.7,
+     "y10_fuente": "^TNX",
+     "d_dxy_pct": 0.472,
+     "d_oro_pct": -0.632,
+     "d_nq_pct": 0.514,
+     "d_es_pct": -0.352,
+     "d_btc_pct": 0.074,
+     "dxy_pico_pct": 0.728,
+     "umbral_origen": "fijo (muestra insuficiente: 3 eventos previos < 4)",
+     "umbrales": {
+      "y2": 2.0,
+      "y10": 2.0,
+      "dxy": 0.1,
+      "nq": 0.2
+     },
+     "registrado_utc": "2026-10-15 09:49",
+     "beta_2y": -54.08,
+     "r2_2y": 0.914,
+     "beta_10y": -13.02,
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 47.4,
+      "dev_y10_pct": 557.9,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     }
    ],
    "real10": {
@@ -862,7 +949,8 @@
    "giro_fases": {
     "T+60": "SIN BASE",
     "T+120": "SIN BASE",
-    "CIERRE": "SIN BASE"
+    "CIERRE": "SIN BASE",
+    "T+1": "SIN BASE"
    },
    "giro_en": [],
    "diseno": false,
@@ -1117,6 +1205,40 @@
       "clase": "SIN BASE",
       "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
      }
+    },
+    {
+     "fase": "T+1",
+     "objetivo_utc": "2026-09-17 14:00",
+     "barra_utc": "2026-09-17 13:55",
+     "origen": "reconstruido",
+     "clasificacion": "MIXTA (sin regla)",
+     "d_y2_pb": 6.76,
+     "d_y10_pb": -0.4,
+     "y10_fuente": "^TNX",
+     "d_dxy_pct": 0.384,
+     "d_oro_pct": 0.399,
+     "d_nq_pct": 0.824,
+     "d_es_pct": 0.189,
+     "d_btc_pct": 1.561,
+     "dxy_pico_pct": 0.639,
+     "umbral_origen": "fijo (muestra insuficiente: 2 eventos previos < 4)",
+     "umbrales": {
+      "y2": 2.0,
+      "y10": 2.0,
+      "dxy": 0.1,
+      "nq": 0.2
+     },
+     "registrado_utc": "2026-10-15 09:49",
+     "beta_2y": -54.08,
+     "r2_2y": 0.914,
+     "beta_10y": -13.02,
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -77.9,
+      "dev_y10_pct": 166.7,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     }
    ],
    "real10": {
@@ -1132,7 +1254,8 @@
    "giro_fases": {
     "T+60": "SIN BASE",
     "T+120": "SIN BASE",
-    "CIERRE": "SIN BASE"
+    "CIERRE": "SIN BASE",
+    "T+1": "SIN BASE"
    },
    "giro_en": [],
    "diseno": false,
@@ -1387,6 +1510,40 @@
       "clase": "SIN BASE",
       "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
      }
+    },
+    {
+     "fase": "T+1",
+     "objetivo_utc": "2026-09-14 14:00",
+     "barra_utc": "2026-09-14 13:55",
+     "origen": "reconstruido",
+     "clasificacion": "FED MÁS DURA",
+     "d_y2_pb": 8.03,
+     "d_y10_pb": 4.2,
+     "y10_fuente": "^TNX",
+     "d_dxy_pct": 0.572,
+     "d_oro_pct": -1.347,
+     "d_nq_pct": -1.103,
+     "d_es_pct": -0.363,
+     "d_btc_pct": 1.568,
+     "dxy_pico_pct": 0.573,
+     "umbral_origen": "fijo (muestra insuficiente: 1 eventos previos < 4)",
+     "umbrales": {
+      "y2": 2.0,
+      "y10": 2.0,
+      "dxy": 0.1,
+      "nq": 0.2
+     },
+     "registrado_utc": "2026-10-15 09:49",
+     "beta_2y": -54.08,
+     "r2_2y": 0.914,
+     "beta_10y": -13.02,
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -100.2,
+      "dev_y10_pct": -740.0,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     }
    ],
    "real10": {
@@ -1402,7 +1559,8 @@
    "giro_fases": {
     "T+60": "SIN BASE",
     "T+120": "SIN BASE",
-    "CIERRE": "SIN BASE"
+    "CIERRE": "SIN BASE",
+    "T+1": "SIN BASE"
    },
    "giro_en": [],
    "diseno": false,
@@ -1657,6 +1815,40 @@
       "clase": "PARCIAL",
       "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %)"
      }
+    },
+    {
+     "fase": "T+1",
+     "objetivo_utc": "2026-09-07 14:00",
+     "barra_utc": "2026-09-07 13:55",
+     "origen": "reconstruido",
+     "clasificacion": "SIN DATO",
+     "d_y2_pb": null,
+     "d_y10_pb": null,
+     "y10_fuente": "",
+     "d_dxy_pct": null,
+     "d_oro_pct": null,
+     "d_nq_pct": null,
+     "d_es_pct": null,
+     "d_btc_pct": -2.299,
+     "dxy_pico_pct": 0.281,
+     "umbral_origen": "fijo (muestra insuficiente: 1 eventos previos < 4)",
+     "umbrales": {
+      "y2": 2.0,
+      "y10": 2.0,
+      "dxy": 0.1,
+      "nq": 0.2
+     },
+     "registrado_utc": "2026-10-15 09:49",
+     "beta_2y": -54.08,
+     "r2_2y": 0.914,
+     "beta_10y": -13.02,
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": "SIN DATO",
+      "nota": "falta alguna serie (2Y, 10Y o NQ) en T+5 o en esta fase"
+     }
     }
    ],
    "real10": {
@@ -1672,7 +1864,8 @@
    "giro_fases": {
     "T+60": "PARCIAL",
     "T+120": "PARCIAL",
-    "CIERRE": "PARCIAL"
+    "CIERRE": "PARCIAL",
+    "T+1": "SIN DATO"
    },
    "giro_en": [],
    "diseno": false,
@@ -1927,6 +2120,40 @@
       "clase": "SIN BASE",
       "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
      }
+    },
+    {
+     "fase": "T+1",
+     "objetivo_utc": "2026-08-27 14:00",
+     "barra_utc": "2026-08-27 13:55",
+     "origen": "reconstruido",
+     "clasificacion": "FED MÁS DURA",
+     "d_y2_pb": 10.35,
+     "d_y10_pb": 2.9,
+     "y10_fuente": "^TNX",
+     "d_dxy_pct": 0.165,
+     "d_oro_pct": -1.19,
+     "d_nq_pct": 0.871,
+     "d_es_pct": 0.315,
+     "d_btc_pct": 1.265,
+     "dxy_pico_pct": 0.302,
+     "umbral_origen": "fijo (muestra insuficiente: 0 eventos previos < 4)",
+     "umbrales": {
+      "y2": 2.0,
+      "y10": 2.0,
+      "dxy": 0.1,
+      "nq": 0.2
+     },
+     "registrado_utc": "2026-10-15 09:49",
+     "beta_2y": -54.08,
+     "r2_2y": 0.914,
+     "beta_10y": -13.02,
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -390.5,
+      "dev_y10_pct": -107.1,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     }
    ],
    "real10": {
@@ -1942,7 +2169,8 @@
    "giro_fases": {
     "T+60": "SIN BASE",
     "T+120": "SIN BASE",
-    "CIERRE": "SIN BASE"
+    "CIERRE": "SIN BASE",
+    "T+1": "SIN BASE"
    },
    "giro_en": [],
    "diseno": false,
@@ -2070,5 +2298,15 @@
   "10Y real": "FRED DFII10, solo el día siguiente"
  },
  "fuente": "Yahoo Finance (API v8 chart, barras de 5 min, ~15 min de retraso posible) · calendario: FRED Release Calendar (BLS/BEA) y federalreserve.gov · FRED DFII10",
- "memoria": "data/reacciones_eventos.csv (solo se añade)"
+ "memoria": "data/reacciones_eventos.csv (solo se añade)",
+ "errores": {},
+ "calibracion": {
+  "beta_2y": -54.078,
+  "r2_2y": 0.914,
+  "n_2y": 47,
+  "beta_10y": -13.017,
+  "r2_10y": 0.813,
+  "n_10y": 3867
+ },
+ "filas_nuevas": 6
 }
