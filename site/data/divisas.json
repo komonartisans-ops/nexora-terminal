@@ -36,7 +36,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 17.47,
+     "valor": 17.49,
      "puntos": 0,
      "fecha": "2026-10-15",
      "fuente": null
@@ -84,7 +84,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 17.47,
+     "valor": 17.49,
      "puntos": 0,
      "fecha": "2026-10-15",
      "fuente": null
@@ -93,7 +93,7 @@
    "total": 4,
    "n_factores": 6,
    "sesgo": "FUERTE",
-   "fx_3m_pct": 1.26,
+   "fx_3m_pct": 1.27,
    "inflacion": 3.6
   },
   {
@@ -132,7 +132,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 17.47,
+     "valor": 17.49,
      "puntos": 0,
      "fecha": "2026-10-15",
      "fuente": null
@@ -180,7 +180,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 17.47,
+     "valor": 17.49,
      "puntos": 0,
      "fecha": "2026-10-15",
      "fuente": null
@@ -210,9 +210,9 @@
      "fuente": null
     },
     "bono": {
-     "valor": -1.718,
+     "valor": -1.699,
      "puntos": -1,
-     "fecha": "2026-10-13",
+     "fecha": "2026-10-14",
      "fuente": "BCE · curva AAA de la zona euro (10Y)"
     },
     "crec": {
@@ -228,7 +228,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 17.47,
+     "valor": 17.49,
      "puntos": 0,
      "fecha": "2026-10-15",
      "fuente": null
@@ -276,7 +276,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 17.47,
+     "valor": 17.49,
      "puntos": 0,
      "fecha": "2026-10-15",
      "fuente": null
@@ -324,7 +324,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 17.47,
+     "valor": 17.49,
      "puntos": 0,
      "fecha": "2026-10-15",
      "fuente": null
@@ -372,7 +372,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 17.47,
+     "valor": 17.49,
      "puntos": 0,
      "fecha": "2026-10-15",
      "fuente": null
@@ -412,7 +412,7 @@
   }
  ],
  "riesgo": {
-  "vix": 17.47,
+  "vix": 17.49,
   "fecha": "2026-10-15",
   "regimen": "NEUTRAL"
  },
@@ -455,6 +455,6 @@
   }
  ],
  "ok": true,
- "generado_utc": "2026-10-15 08:30 UTC",
- "duracion_s": 8.6
+ "generado_utc": "2026-10-15 10:08 UTC",
+ "duracion_s": 15.9
 }

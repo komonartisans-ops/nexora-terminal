@@ -35,8 +35,8 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 28 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
-  "mié 21 oct · Resultados Meta Platforms (META): BPA estimado $6.39 · después del cierre",
+  "Fed mié 28 oct: hoy 30 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "mié 21 oct · Resultados Meta Platforms (META): BPA estimado $6.35 · después del cierre",
   "mié 21 oct · Resultados Tesla (TSLA): BPA estimado $0.21 · después del cierre"
  ],
  "tesis": "Viento macro A FAVOR del oro: baja el tipo real (lo que más les ayuda). Lo que puede girarlo: después del cierre.",
@@ -161,10 +161,10 @@
    "fecha": "2026-10-13"
   },
   "fed": {
-   "valor": 28.0,
+   "valor": 30.0,
    "antes": 34.0,
    "reunion": "2026-10-28",
-   "delta": -6.0,
+   "delta": -4.0,
    "fecha": "2026-10-15"
   }
  },
@@ -180,9 +180,9 @@
    "valor": 7718.94
   },
   "Oro": {
-   "delta": 1.6821271038475194,
+   "delta": 1.764892079250413,
    "fecha": "2026-10-15",
-   "valor": 4177.0
+   "valor": 4180.39990234375
   },
   "Bitcoin": {
    "delta": -1.84797018699554,
@@ -210,14 +210,14 @@
    "viento_semana": "SIN VIENTO CLARO",
    "propio": {
     "veredicto": "MIXTO",
-    "detalle": "1 a favor / 1 en contra de 5 datos núcleo · precio: CONFIRMA DEBILIDAD",
+    "detalle": "1 a favor / 2 en contra de 5 datos núcleo · precio: CONFIRMA DEBILIDAD",
     "favor": [
      "10Y REAL / TIPS (PRIORIDAD ALTA) 2.84% · 5d -7 pb · 20d +22 pb (Baja: generalmente favorable (menor coste de oportunidad))",
      "US 10Y 5.19% · 5d -8 pb · 1d -2 pb (Baja: suele aliviar presión · condiciones financieras)"
     ],
     "contra": [
-     "NFCI -0.494 · 4s +0.051 · 1s +0.016 (Sube: condiciones más tensas)",
-     "ETF GOLD FLOWS GLD 1,054.2 t · 5d -6.9 t · 20d +2.2 t · año -10.9 t (Salidas: menor demanda financiera)"
+     "FedWatch 2026-10-28: subida 30 % · mantener 70 % · bajada 0 % (1 sesión -4 pts de subida; tipo esperado a 3 reuniones +6 pb en 5 sesiones · Más restricción descontada)",
+     "NFCI -0.494 · 4s +0.051 · 1s +0.016 (Sube: condiciones más tensas)"
     ],
     "favor_n": [
      "10Y REAL / TIPS (PRIORIDAD ALTA)",
@@ -225,6 +225,7 @@
      "TGA"
     ],
     "contra_n": [
+     "FedWatch",
      "NFCI",
      "ETF GOLD FLOWS"
     ],
@@ -254,7 +255,7 @@
    "viento_semana": "SIN VIENTO CLARO",
    "propio": {
     "veredicto": "MIXTO",
-    "detalle": "2 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud SE DETERIORA · lo propio del Nasdaq 100: 10Y real favorable · semiconductores neutral (Tipos reales + yields + mega-cap growth/tech)",
+    "detalle": "2 risk-on / 3 risk-off de 7 · liquidez NEUTRAL · amplitud SE DETERIORA · lo propio del Nasdaq 100: 10Y real favorable · semiconductores neutral (Tipos reales + yields + mega-cap growth/tech)",
     "favor": [
      "VIX TERM STRUCTURE VIX/VIX3M 0.898 · VIX9D/VIX 0.865 (Contango: estructura normal)",
      "US 10Y 5.19% · 5d -8 pb (Baja: suele aliviar valoraciones)"
@@ -274,6 +275,7 @@
      "VIX",
      "ADV/DECLINE (amplitud)",
      "NFCI",
+     "FedWatch",
      "CPI / PCE"
     ],
     "avisos": [
@@ -305,7 +307,7 @@
    "viento_semana": "SIN VIENTO CLARO",
    "propio": {
     "veredicto": "MIXTO",
-    "detalle": "2 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud SE DETERIORA · lo propio del S&P 500: amplitud desfavorable · beneficios sin dato (Tipos + beneficios + amplitud + mega caps)",
+    "detalle": "2 risk-on / 3 risk-off de 7 · liquidez NEUTRAL · amplitud SE DETERIORA · lo propio del S&P 500: amplitud desfavorable · beneficios sin dato (Tipos + beneficios + amplitud + mega caps)",
     "favor": [
      "VIX TERM STRUCTURE VIX/VIX3M 0.898 · VIX9D/VIX 0.865 (Contango: estructura normal)",
      "US 10Y 5.19% · 5d -8 pb (Baja: suele aliviar valoraciones)"
@@ -325,6 +327,7 @@
      "VIX",
      "ADV/DECLINE (amplitud)",
      "NFCI",
+     "FedWatch",
      "CPI / PCE"
     ],
     "avisos": [
@@ -363,7 +366,7 @@
     ],
     "contra": [
      "Chicago Fed NFCI -0.494 (4s +0.051 (semana al 2026-10-02); nivel <0 = más laxo que la media histórica)",
-     "CME FedWatch 2026-10-28: subida 28 % · mantener 72 % · bajada 0 % (1 sesión -6 pts de subida; tipo esperado a 3 reuniones +5 pb en 5 sesiones)"
+     "CME FedWatch 2026-10-28: subida 30 % · mantener 70 % · bajada 0 % (1 sesión -4 pts de subida; tipo esperado a 3 reuniones +6 pb en 5 sesiones)"
     ],
     "favor_n": [
      "TGA — cuenta del Tesoro",
@@ -409,7 +412,7 @@
    "viento_semana": "SIN VIENTO CLARO",
    "propio": {
     "veredicto": "DESFAVORABLE",
-    "detalle": "2 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud SE DETERIORA · lo propio del US30 · Dow Jones: industriales desfavorable · financieras desfavorable (Ciclo, industriales, financieros, empresas maduras)",
+    "detalle": "2 risk-on / 3 risk-off de 7 · liquidez NEUTRAL · amplitud SE DETERIORA · lo propio del US30 · Dow Jones: industriales desfavorable · financieras desfavorable (Ciclo, industriales, financieros, empresas maduras)",
     "favor": [
      "VIX TERM STRUCTURE VIX/VIX3M 0.898 · VIX9D/VIX 0.865 (Contango: estructura normal)",
      "US 10Y 5.19% · 5d -8 pb (Baja: suele aliviar valoraciones)"
@@ -429,6 +432,7 @@
      "VIX",
      "ADV/DECLINE (amplitud)",
      "NFCI",
+     "FedWatch",
      "CPI / PCE"
     ],
     "avisos": [
@@ -460,7 +464,7 @@
    "viento_semana": "SIN VIENTO CLARO",
    "propio": {
     "veredicto": "DESFAVORABLE",
-    "detalle": "2 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud SE DETERIORA · lo propio del Russell 2000: NFCI desfavorable · crédito high yield desfavorable (Tipos + crédito + condiciones financieras + economía doméstica)",
+    "detalle": "2 risk-on / 3 risk-off de 7 · liquidez NEUTRAL · amplitud SE DETERIORA · lo propio del Russell 2000: NFCI desfavorable · crédito high yield desfavorable (Tipos + crédito + condiciones financieras + economía doméstica)",
     "favor": [
      "VIX TERM STRUCTURE VIX/VIX3M 0.898 · VIX9D/VIX 0.865 (Contango: estructura normal)",
      "US 10Y 5.19% · 5d -8 pb (Baja: suele aliviar valoraciones)"
@@ -480,6 +484,7 @@
      "VIX",
      "ADV/DECLINE (amplitud)",
      "NFCI",
+     "FedWatch",
      "CPI / PCE"
     ],
     "avisos": [
@@ -506,23 +511,23 @@
  },
  "motores_propios": {
   "oro_xau": {
-   "calculado_utc": "2026-10-15 08:30 UTC",
+   "calculado_utc": "2026-10-15 10:08 UTC",
    "ok": true,
    "disponible": true
   },
   "indices": {
-   "calculado_utc": "2026-10-15 08:30 UTC",
+   "calculado_utc": "2026-10-15 10:08 UTC",
    "ok": true,
    "disponible": true
   },
   "liquidez_cripto": {
-   "calculado_utc": "2026-10-15 08:30 UTC",
+   "calculado_utc": "2026-10-15 10:08 UTC",
    "ok": true,
    "disponible": true
   }
  },
  "sencillo_activos": "Empujan en contra: US30 · Dow Jones y Russell 2000; sin ventaja clara: Oro, Nasdaq 100, S&P 500 y Bitcoin (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-15 08:30 UTC",
- "duracion_s": 104.7
+ "generado_utc": "2026-10-15 10:08 UTC",
+ "duracion_s": 108.2
 }

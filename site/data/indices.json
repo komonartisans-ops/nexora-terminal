@@ -1,8 +1,8 @@
 {
  "ok": true,
- "generado_utc": "2026-10-15 08:30 UTC",
+ "generado_utc": "2026-10-15 10:08 UTC",
  "metricas": {
-  "generado_utc": "2026-10-15 08:33 UTC",
+  "generado_utc": "2026-10-15 10:11 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer los índices (S&P 500 · Nasdaq 100 · US30 · Russell 2000)",
   "indices": {
    "S&P 500": {
@@ -202,27 +202,27 @@
   },
   "tiempo_real": {
    "SPY": {
-    "precio": 767.2089,
-    "cambio_pct": -0.31,
-    "hora": "Oct 15, 2026 4:34 AM ET",
+    "precio": 767.525,
+    "cambio_pct": -0.27,
+    "hora": "Oct 15, 2026 6:12 AM ET",
     "estado_mercado": "Pre-Market"
    },
    "QQQ": {
-    "precio": 720.41,
-    "cambio_pct": -1.17,
-    "hora": "Oct 15, 2026 4:34 AM ET",
+    "precio": 721.295,
+    "cambio_pct": -1.05,
+    "hora": "Oct 15, 2026 6:13 AM ET",
     "estado_mercado": "Pre-Market"
    },
    "DIA": {
-    "precio": 517.36,
-    "cambio_pct": 0.34,
-    "hora": "Oct 15, 2026 4:35 AM ET",
+    "precio": 516.9288,
+    "cambio_pct": 0.25,
+    "hora": "Oct 15, 2026 6:06 AM ET",
     "estado_mercado": "Pre-Market"
    },
    "IWM": {
-    "precio": 272.03,
-    "cambio_pct": 0.24,
-    "hora": "Oct 15, 2026 4:34 AM ET",
+    "precio": 272.12,
+    "cambio_pct": 0.28,
+    "hora": "Oct 15, 2026 6:09 AM ET",
     "estado_mercado": "Pre-Market"
    },
    "NDX": {
@@ -546,41 +546,41 @@
    },
    "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "concentracion": {
-    "fecha_pesos": "13-Oct-2026",
+    "fecha_pesos": "14-Oct-2026",
     "pesos": [
      {
       "ticker": "AMZN",
       "nombre": "Amazon.Com Inc",
-      "peso": 23.54
+      "peso": 23.3
      },
      {
       "ticker": "TSLA",
       "nombre": "Tesla Inc",
-      "peso": 18.12
+      "peso": 17.86
      },
      {
       "ticker": "HD",
       "nombre": "Home Depot Inc",
-      "peso": 5.02
+      "peso": 5.09
      },
      {
       "ticker": "TJX",
       "nombre": "Tjx Companies Inc",
-      "peso": 4.22
+      "peso": 4.29
      },
      {
       "ticker": "MCD",
       "nombre": "Mcdonald S Corp",
-      "peso": 4.18
+      "peso": 4.26
      }
     ],
-    "amzn_tsla_peso": 41.66,
+    "amzn_tsla_peso": 41.16,
     "fuente": "State Street SSGA, posiciones diarias de XLY",
     "amzn_13s_pct": 1.68,
     "tsla_13s_pct": -6.11,
-    "contribucion_pp": -0.71,
-    "xly_sin_amzn_tsla_13s_pct": -7.31,
-    "ratio_sin_amzn_tsla_13s_pct": -7.58,
+    "contribucion_pp": -0.7,
+    "xly_sin_amzn_tsla_13s_pct": -7.27,
+    "ratio_sin_amzn_tsla_13s_pct": -7.54,
     "lectura": "MOVIMIENTO AMPLIO (no depende solo de Amazon/Tesla)",
     "nota": "ESTIMACIÓN con los pesos actuales (los pesos cambian con el precio); orientativa."
    }
@@ -720,10 +720,10 @@
     "id": "fedwatch",
     "dato": "FedWatch",
     "que_mirar": "Recortes/subidas descontados",
-    "dir": "→",
-    "valor": "2026-10-28: subida 28 % · mantener 72 % · bajada 0 %",
-    "estado": "NEUTRAL",
-    "lectura": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones +4 pb en 5 sesiones · Sin cambio",
+    "dir": "↑",
+    "valor": "2026-10-28: subida 30 % · mantener 70 % · bajada 0 %",
+    "estado": "DESFAVORABLE",
+    "lectura": "1 sesión -4 pts de subida; tipo esperado a 3 reuniones +6 pb en 5 sesiones · Más restricción",
     "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-15",
     "puntua": true
    },
@@ -841,7 +841,7 @@
   "entorno": {
    "lectura": "MIXTO",
    "risk_on": 2,
-   "risk_off": 2,
+   "risk_off": 3,
    "sin_dato": 0,
    "disponibles": 7,
    "condiciones": [
@@ -878,7 +878,7 @@
     {
      "id": "fedwatch",
      "condicion": "FedWatch más relajado",
-     "estado": "NEUTRAL"
+     "estado": "RISK-OFF"
     }
    ],
    "liquidez": "NEUTRAL",
@@ -988,7 +988,7 @@
     "par": "2Y ↔ FedWatch",
     "busca": "2Y ↓ + más recortes descontados",
     "estado": "NO SE CUMPLE",
-    "detalle": "2Y +3 pb · FedWatch NEUTRAL",
+    "detalle": "2Y +3 pb · FedWatch DESFAVORABLE",
     "lectura": "Relajación de expectativas de tipos"
    },
    {
@@ -1203,7 +1203,7 @@
     "paso": "MACRO",
     "que": "2Y → 10Y → 10Y real → DXY → NFCI → FedWatch → VIX",
     "estado": "NEUTRAL",
-    "detalle": "MIXTO: 2 risk-on, 2 risk-off, 0 sin dato de 7"
+    "detalle": "MIXTO: 2 risk-on, 3 risk-off, 0 sin dato de 7"
    },
    {
     "n": 2,
@@ -1276,7 +1276,7 @@
    {
     "n": 3,
     "pregunta": "¿FedWatch está relajándose o endureciéndose?",
-    "respuesta": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones +4 pb en 5 sesiones · Sin cambio Proxy letras: +7 pb en 5 sesiones."
+    "respuesta": "1 sesión -4 pts de subida; tipo esperado a 3 reuniones +6 pb en 5 sesiones · Más restricción Proxy letras: +7 pb en 5 sesiones."
    },
    {
     "n": 4,
@@ -3288,8 +3288,8 @@
    "lectura": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "historico": "Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %).",
    "aviso": "Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
-   "concentracion": "Amazon + Tesla pesan el 41,7 % de XLY (13-Oct-2026); en 13 semanas Amazon +1,7 %, Tesla -6,1 %. Sin ellas, el ratio habría variado -7,6 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla.",
-   "tesis": "XLY/XLP 1,2956 (2026-10-14) · -6,3 % frente a su media de 200 sesiones · 13 semanas -5,2 % · consumo real firme (2026-08, +0,87 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 41,7 % de XLY (13-Oct-2026); en 13 semanas Amazon +1,7 %, Tesla -6,1 %. Sin ellas, el ratio habría variado -7,6 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
+   "concentracion": "Amazon + Tesla pesan el 41,2 % de XLY (14-Oct-2026); en 13 semanas Amazon +1,7 %, Tesla -6,1 %. Sin ellas, el ratio habría variado -7,5 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla.",
+   "tesis": "XLY/XLP 1,2956 (2026-10-14) · -6,3 % frente a su media de 200 sesiones · 13 semanas -5,2 % · consumo real firme (2026-08, +0,87 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 41,2 % de XLY (14-Oct-2026); en 13 semanas Amazon +1,7 %, Tesla -6,1 %. Sin ellas, el ratio habría variado -7,5 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
    "estado_mercado": "DEFENSIVO",
    "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
   },
