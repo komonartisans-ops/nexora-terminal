@@ -169,6 +169,49 @@ def subastas():
     return out
 
 
+# Miembros con voto en el FOMC de 2026: la Junta (presidente, vicepresidentes y gobernadores, siempre) + presidente de la Fed de Nueva York
+# + los cuatro presidentes regionales que rotan este año (Cleveland, Filadelfia, Dallas, Minneapolis). La rotación cambia cada enero.
+VOTANTES_PRESIDENTES_2026 = ("Williams", "Hammack", "Paulson", "Logan", "Kashkari")
+
+
+def fed_votantes(dias=30):
+    """Discursos, conversaciones, comparecencias y actas FOMC del calendario OFICIAL de la Fed (federalreserve.gov/json/calendar.json),
+    solo de miembros con voto. [{fecha, hora_ny, hora_madrid, evento, url, tipo}]."""
+    import json as _json
+    raw = get("https://www.federalreserve.gov/json/calendar.json", timeout=60).decode("utf-8-sig", "ignore")
+    ev_ = _json.loads(raw)["events"]
+    out = []
+    for e in ev_:
+        tipo, tit = e.get("type"), e.get("title") or ""
+        if tipo not in ("Speeches", "Testimony", "FOMC") or not e.get("month") or not e.get("days"):
+            continue
+        if tipo == "FOMC" and "Minutes" not in tit:
+            continue  # la decisión y la rueda de prensa ya están en el calendario principal
+        if tipo != "FOMC":
+            miembro = re.search(r"Chairman|Chair|Vice Chair|Governor", tit)
+            pres = "President" in tit and any(n in tit for n in VOTANTES_PRESIDENTES_2026)
+            if not (miembro or pres):
+                continue
+        m = re.match(r"(\d{1,2}):(\d{2})\s*([ap])\.m\.", (e.get("time") or "").strip())
+        hh = None
+        if m:
+            h, mi = int(m.group(1)) % 12 + (12 if m.group(3) == "p" else 0), int(m.group(2))
+            hh = f"{h:02d}:{mi:02d}"
+        for dnum in re.findall(r"\d+", str(e["days"])):
+            try:
+                d = dt.date(int(e["month"][:4]), int(e["month"][5:7]), int(dnum))
+            except ValueError:
+                continue
+            if HOY - dt.timedelta(days=1) <= d <= HOY + dt.timedelta(days=dias):
+                evento = tit if tipo == "FOMC" else tit.replace("Speech - ", "Discurso · ").replace("Discussion - ", "Conversación · ").replace("Testimony - ", "Comparecencia · ")
+                x = ev(d, hh, evento, "MEDIA", "oro · índices · cripto (vía expectativas de tipos)", "Mensaje de un miembro con voto sobre tipos o inflación.",
+                       "Federal Reserve (calendario oficial)", e.get("link") or e.get("live") or "https://www.federalreserve.gov/newsevents/calendar.htm")
+                x["tipo"] = tipo
+                out.append(x)
+    out.sort(key=lambda x: (x["fecha"], x["hora_ny"] or "99"))
+    return out
+
+
 def construir(dias=21, pasado=7, con_resultados=True):
     desde, hasta = HOY - dt.timedelta(days=pasado), HOY + dt.timedelta(days=dias)
     years = sorted({desde.year, hasta.year})
@@ -240,10 +283,13 @@ def construir(dias=21, pasado=7, con_resultados=True):
             fut = sorted(x[idx] for x in r if x[idx] >= HOY)
             if fut:
                 prox[nm] = {"fecha": fut[0].isoformat(), "dias": (fut[0] - HOY).days}
+    fv, e = safe(fed_votantes)
+    if e:
+        err["fed_votantes"] = e
     orden = {"ALTA": 0, "MEDIA": 1, "BAJA": 2}
     E.sort(key=lambda x: (x["fecha"], x["hora_ny"] or "99", orden[x["importancia"]]))
     return {"generado": dt.datetime.now(MAD).strftime("%Y-%m-%d %H:%M Madrid"), "desde": desde.isoformat(), "hasta": hasta.isoformat(),
-            "eventos": E, "proximos_bancos_centrales": prox, "errores": err,
+            "eventos": E, "fed_vigilar": fv or [], "proximos_bancos_centrales": prox, "errores": err,
             "nota": "Horas oficiales convertidas a Nueva York y Madrid con cambio de horario incluido. Las fechas de FRED las publican los organismos y pueden cambiar (p. ej., cierre del Gobierno)."}
 
 

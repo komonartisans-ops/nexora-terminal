@@ -11,6 +11,11 @@ tipo efectivo y rango objetivo (FRED: EFFR, DFEDTARL, DFEDTARU), calendario FOMC
 Puede diferir unos puntos de CME (CME usa sus precios de liquidación y su árbol completo de escenarios).
 Si falla una descarga: SIN DATO (nunca se estima).
 
+REGLA DE CONTRATO (v2, como CME): si a la reunión le quedan MENOS DE 10 DÍAS del mes, el tipo posterior a la reunión se toma del futuro ZQ del
+MES SIGUIENTE (casi todo ese mes ya está bajo el tipo nuevo, así que no se divide por pocos días). Si le quedan 10 o más, se usa el ZQ del
+mes de la reunión y se despeja el tipo posterior de la media mensual. Excepción documentada: si el mes siguiente también tiene reunión, su
+futuro mezcla dos decisiones y no sirve; se usa el del mes de la reunión. Cada reunión indica el contrato usado en el campo «contrato».
+
 Uso: python fedwatch.py [--out DIR] [--reuniones 6]
 """
 from __future__ import annotations
@@ -30,6 +35,7 @@ from liquidez_cripto import fred  # noqa: E402
 COD = "FGHJKMNQUVXZ"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36"
 PASO = 0.25
+DIAS_CORTE = 10   # días restantes del mes por debajo de los cuales se usa el ZQ del mes siguiente
 
 
 def zq(y, m):
@@ -78,14 +84,26 @@ def calcular(fecha, fut, effr, reuniones, n=6):
         N = calendar.monthrange(y, m)[1]
         ny, nm = (y + (m == 12), m % 12 + 1)
         f_mes, f_sig = fut.get((y, m)) or {}, fut.get((ny, nm)) or {}
-        if (ny, nm) not in meses_reunion and at_or_before(f_sig, fecha) is not None:
-            end, metodo = at_or_before(f_sig, fecha), f"mes siguiente sin reunión ({zq(ny, nm)[:5]})"
+        restan = N - r.day
+        sig_reunion = (ny, nm) in meses_reunion
+        sig_ok = at_or_before(f_sig, fecha) is not None
+        if restan < DIAS_CORTE and not sig_reunion and sig_ok:
+            end = at_or_before(f_sig, fecha)
+            contrato = zq(ny, nm)[:5]
+            metodo = f"quedan {restan} días del mes (< {DIAS_CORTE}): ZQ del mes siguiente ({contrato}), sin reunión en ese mes"
         else:
             avg = at_or_before(f_mes, fecha)
             if avg is None:
                 break
             d = r.day  # la decisión se aplica desde el día siguiente
-            end, metodo = (avg * N - start * d) / (N - d), f"mes de la reunión ({zq(y, m)[:5]})"
+            end = (avg * N - start * d) / (N - d)
+            contrato = zq(y, m)[:5]
+            if restan < DIAS_CORTE and sig_reunion:
+                metodo = f"quedan {restan} días del mes (< {DIAS_CORTE}) pero el mes siguiente tiene reunión: ZQ del mes de la reunión ({contrato})"
+            elif restan < DIAS_CORTE:
+                metodo = f"quedan {restan} días del mes (< {DIAS_CORTE}) y el ZQ siguiente no tiene dato: ZQ del mes de la reunión ({contrato})"
+            else:
+                metodo = f"quedan {restan} días del mes (≥ {DIAS_CORTE}): ZQ del mes de la reunión ({contrato})"
         cambio = end - start
         pasos = cambio / PASO
         lo = int(pasos // 1)
@@ -102,7 +120,7 @@ def calcular(fecha, fut, effr, reuniones, n=6):
             if p > 0.005:
                 dist_acum[k * 25] = round(p * 100, 1)
         out.append({"reunion": r.isoformat(), "tipo_esperado": round(end, 4), "cambio_reunion_pb": round(cambio * 100, 1),
-                    "cambio_acumulado_pb": round((end - base) * 100, 1), "metodo": metodo,
+                    "cambio_acumulado_pb": round((end - base) * 100, 1), "metodo": metodo, "contrato": contrato, "dias_restantes_mes": restan,
                     "prob_reunion": {"subida": round(sum(v for k, v in dist.items() if k > 0), 1), "mantiene": round(dist.get(0, 0.0), 1),
                                      "bajada": round(sum(v for k, v in dist.items() if k < 0), 1), "detalle_pb": dist},
                     "prob_acumulada": {"mas_alto_que_hoy": round(sum(v for k, v in dist_acum.items() if k > 0), 1),
@@ -129,13 +147,13 @@ def medir(n=6):
         time.sleep(0.3)
     effr = {d: v for d, v in fred("EFFR", (hoy - dt.timedelta(days=60)).isoformat())}
     lo_, hi_ = fred("DFEDTARL", (hoy - dt.timedelta(days=30)).isoformat()), fred("DFEDTARU", (hoy - dt.timedelta(days=30)).isoformat())
-    sesiones = sorted({d for f in fut.values() for d in f})[-6:]
+    sesiones = sorted({d for f in fut.values() for d in f})[-12:]
     serie = [c for c in (calcular(d, fut, effr, reun, n) for d in sesiones) if c and c["reuniones"]]
     if not serie:
         raise RuntimeError("sin precios de futuros ZQ: " + json.dumps(err))
     act = serie[-1]
     prev = serie[-2] if len(serie) > 1 else None
-    p5 = serie[0] if len(serie) > 1 else None
+    p5 = serie[-6] if len(serie) >= 6 else (serie[0] if len(serie) > 1 else None)
     R = act["reuniones"]
 
     def cambio(s0, idx, clave):
@@ -163,10 +181,32 @@ def medir(n=6):
     return {"fecha_precios": act["fecha"], "generado_utc": dt.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
             "rango_objetivo": [lo_[-1][1] if lo_ else None, hi_[-1][1] if hi_ else None], "effr": act["effr"],
             "reuniones": R, "lectura": lectura, "tipo_esperado_3_reuniones_1d_pb": d1, "tipo_esperado_3_reuniones_5d_pb": d5,
-            "resumen": frase, "historial": [{"fecha": s["fecha"], "prox_subida": s["reuniones"][0]["prob_reunion"]["subida"],
-                                             "prox_bajada": s["reuniones"][0]["prob_reunion"]["bajada"], "reunion": s["reuniones"][0]["reunion"]} for s in serie],
+            "resumen": frase, "historial": [_hist(s_) for s_ in serie],
+            "recalculo": [{"fecha_precios": s_["fecha"], "reunion": x["reunion"], "contrato": x["contrato"], "dias_restantes_mes": x["dias_restantes_mes"],
+                           "tipo_esperado": x["tipo_esperado"], "prob_subida": x["prob_reunion"]["subida"], "prob_mantiene": x["prob_reunion"]["mantiene"],
+                           "prob_bajada": x["prob_reunion"]["bajada"], "cambio_acumulado_pb": x["cambio_acumulado_pb"]} for s_ in serie for x in s_["reuniones"]],
+            "regla_contrato": (f"Si a la reunión le quedan menos de {DIAS_CORTE} días del mes se usa el futuro ZQ del mes siguiente (método CME); "
+                               "si le quedan más, el del mes de la reunión. Si el mes siguiente también tiene reunión se usa el del mes de la reunión."),
             "errores": err,
             "fuente": "Cálculo NEXORA con el método de CME FedWatch: futuros de fondos federales ZQ (CBOT, precios vía Yahoo Finance) + EFFR y rango objetivo (FRED) + calendario FOMC (Federal Reserve). Puede diferir unos puntos de CME."}
+
+
+def _modal(pr):
+    s, b = pr["subida"], pr["bajada"]
+    return max((s, "subida"), (pr["mantiene"], "mantener"), (b, "bajada"))[1]
+
+
+def diciembre(reuniones):
+    """Primera reunión de diciembre de la lista (la «reunión de diciembre») o None."""
+    return next((r for r in reuniones if r["reunion"][5:7] == "12"), None)
+
+
+def _hist(s_):
+    r0 = s_["reuniones"][0]
+    dic = diciembre(s_["reuniones"])
+    return {"fecha": s_["fecha"], "reunion": r0["reunion"], "prox_subida": r0["prob_reunion"]["subida"], "prox_bajada": r0["prob_reunion"]["bajada"],
+            "prox_mantiene": r0["prob_reunion"]["mantiene"], "modal": _modal(r0["prob_reunion"]), "contrato": r0["contrato"],
+            "tipo_dic": dic["tipo_esperado"] if dic else None, "reunion_dic": dic["reunion"] if dic else None, "effr": s_["effr"]}
 
 
 def para_monitor(F):

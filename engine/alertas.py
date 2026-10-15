@@ -2,7 +2,7 @@
 """NEXORA · ALERTAS → Telegram. Sin LLM: todo el texto sale de plantillas deterministas.
 
 Umbrales = los de las alertas NEXORA (CRITERIO NEXORA, fijos):
-  Fed ±15 puntos de probabilidad o cambio del resultado más probable · 2Y ±12 pb · 10Y real ±8 pb · DXY ±0,7 %
+  Fed: cambia el resultado más probable de la próxima reunión, o el tipo esperado a diciembre se mueve ≥ 10 pb en 5 sesiones; ambas, confirmadas en 2 ejecuciones seguidas · 2Y ±12 pb · 10Y real ±8 pb · DXY ±0,7 %
   VIX > 25 o +20 % · diferenciales en 5 días: IG +10, BBB +12, HY +25, CCC +60 pb · cambio de señal o de fase del ciclo
   Oro ±2 % · BTC −7 % / +8 % · salidas de ETF de BTC > 500 M$ · SKEW de Cboe en zona alta relativa (percentil ≥ 90 de las últimas 500 sesiones; una alerta por episodio)
   Y al menos 2 de 3 confirmaciones encendidas (VIX/curva de plazos, crédito, fondos monetarios).
@@ -38,7 +38,7 @@ URL = "https://komonartisans-ops.github.io/nexora-terminal/"
 DIA = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
 U = {"fed_pts": 15, "t2y_pb": 12, "real_pb": 8, "dxy_pct": 0.7, "vix_nivel": 25, "vix_pct": 20,
-     "ig_pb": 10, "bbb_pb": 12, "hy_pb": 25, "ccc_pb": 60, "oro_pct": 2.0, "btc_baja_pct": -7.0, "btc_sube_pct": 8.0, "etf_btc_musd": -500, "skew_alto": 140, "skew_elevado": 135, "skew_percentil_alto": 90, "skew_percentil_elevado": 75, "skew_ventana": 500, "skew_confirmaciones_min": 2}
+     "ig_pb": 10, "bbb_pb": 12, "hy_pb": 25, "ccc_pb": 60, "oro_pct": 2.0, "btc_baja_pct": -7.0, "btc_sube_pct": 8.0, "etf_btc_musd": -500, "skew_alto": 140, "skew_elevado": 135, "skew_percentil_alto": 90, "skew_percentil_elevado": 75, "skew_ventana": 500, "skew_confirmaciones_min": 2, "fed_dic_pb": 10, "fed_confirmaciones": 2}
 
 
 def leer(nombre, base=SITE_DATA):
@@ -86,6 +86,134 @@ def vigilar(cal):
     return "sin dato de importancia alta en el calendario próximo"
 
 
+FED_RE = re.compile(r"IPC|\(CPI\)|PCE|Empleo|NFP|FOMC", re.I)
+
+
+def vigilar_fed(cal, dias=21, k=4):
+    """Solo lo que mueve a la Fed, del calendario OFICIAL: IPC, PCE, empleo, FOMC (decisión y actas) y discursos/comparecencias de miembros con voto.
+    Nada de resultados empresariales, subastas ni otros bancos centrales."""
+    ahora = madrid_ahora()
+    tope = (ahora + dt.timedelta(days=dias)).strftime("%Y-%m-%d")
+    lim = ahora.strftime("%Y-%m-%d %H:%M")
+    E = [e for e in (cal or {}).get("eventos", []) if FED_RE.search(e.get("evento", "")) and not e.get("evento", "").startswith(("Resultados", "Subasta", "Decisión de política monetaria del"))]
+    E += (cal or {}).get("fed_vigilar", [])
+    vistos, fut = set(), []
+    for e in sorted(E, key=lambda x: (x["fecha"], x.get("hora_madrid") or "23:59")):
+        clave = (e["fecha"], e["evento"])
+        if clave in vistos or e["fecha"] > tope or f"{e['fecha']} {e.get('hora_madrid') or '23:59'}" <= lim:
+            continue
+        vistos.add(clave)
+        fut.append(e)
+    if not fut:
+        return f"sin eventos de la Fed (IPC, PCE, empleo, FOMC o discursos de miembros con voto) en el calendario oficial de los próximos {dias} días"
+    return " · ".join(f"{fecha_linea(e['fecha'], (e.get('hora_madrid') or None))}{' (hora de Madrid)' if e.get('hora_madrid') else ''}: {e['evento']}" for e in fut[:k])
+
+
+# ---------------------------------------------------------------- Fed: regla de alerta con confirmación
+PASOS = {"bajada": 0, "mantener": 1, "subida": 2}
+
+
+def pasos_txt(x):
+    """x = pasos de 25 pb (con signo) → texto llano."""
+    if abs(x) < 0.15:
+        return "ningún cambio de tipos"
+    v = f"{abs(x):.1f}".replace(".", ",")
+    return f"{v} {'subidas' if x > 0 else 'recortes'} de 25 pb" if abs(x) >= 1.05 or abs(x) < 0.95 else f"1 {'subida' if x > 0 else 'recorte'} de 25 pb"
+
+
+def fed_senales(hist):
+    cur = hist[-1]
+    d5 = None
+    if len(hist) >= 6 and cur.get("tipo_dic") is not None:
+        ref = hist[-6]
+        if ref.get("reunion_dic") == cur.get("reunion_dic") and ref.get("tipo_dic") is not None:
+            d5 = round((cur["tipo_dic"] - ref["tipo_dic"]) * 100, 1)
+    return cur["modal"], d5
+
+
+def evaluar_fed(hist, fs):
+    """hist = F['historial'] (una entrada por sesión, la última es la actual); fs = estado persistente (se modifica).
+    Devuelve {'candidata': {...}|None, 'pendiente': str|None, 'nota': str}. Regla: (A) cambia el resultado más probable de la próxima reunión o
+    (B) el tipo esperado a la reunión de diciembre se mueve ≥ 10 pb en 5 sesiones; cada una debe repetirse en 2 ejecuciones seguidas."""
+    cur = hist[-1]
+    modal, d5 = fed_senales(hist)
+    pend = fs.setdefault("pend", {})
+    if fs.get("reunion") != cur["reunion"] or "modal_base" not in fs:
+        fs.update({"reunion": cur["reunion"], "modal_base": modal, "dic_aviso": None})
+        pend.clear()
+        return {"candidata": None, "pendiente": None, "nota": f"referencia inicial: resultado más probable «{modal}» para {cur['reunion']}", "modal": modal, "d5": d5}
+    cand, pendiente = None, []
+    base = fs["modal_base"]
+    A = B = False
+    if modal != base:
+        p = pend.get("modal") or {}
+        n_ = p.get("n", 0) + 1 if p.get("valor") == modal else 1
+        pend["modal"] = {"valor": modal, "n": n_}
+        if n_ >= U["fed_confirmaciones"]:
+            A = True
+        else:
+            pendiente.append(f"resultado más probable «{base}» → «{modal}»: 1 de {U['fed_confirmaciones']} ejecuciones")
+    else:
+        pend.pop("modal", None)
+    if d5 is not None and abs(d5) >= U["fed_dic_pb"]:
+        dir_ = "up" if d5 > 0 else "dn"
+        p = pend.get("dic") or {}
+        n_ = p.get("n", 0) + 1 if p.get("dir") == dir_ else 1
+        pend["dic"] = {"dir": dir_, "n": n_}
+        if n_ >= U["fed_confirmaciones"]:
+            B = fs.get("dic_aviso") != dir_
+        else:
+            pendiente.append(f"tipo esperado a diciembre {d5:+.0f} pb en 5 sesiones: 1 de {U['fed_confirmaciones']} ejecuciones")
+    else:
+        pend.pop("dic", None)
+        if d5 is not None:
+            fs["dic_aviso"] = None  # la condición se apagó: vuelve a poder avisar
+    if A or B:
+        cand = {"A": A, "B": B, "base": base, "modal": modal, "d5": d5,
+                "post": {**({"modal_base": modal} if A else {}), **({"dic_aviso": ("up" if d5 > 0 else "dn")} if B else {})}}
+    return {"candidata": cand, "pendiente": "; ".join(pendiente) or None, "modal": modal, "d5": d5}
+
+
+def texto_fed(F, hist, c):
+    """(l1, l2, l4) del caso concreto. F = fedwatch.json."""
+    r0 = F["reuniones"][0]
+    cur = hist[-1]
+    dic = next((r for r in F["reuniones"] if r["reunion"][5:7] == "12"), None)
+    effr = F.get("effr")
+    ant = hist[-2] if len(hist) > 1 else None
+    pr = r0["prob_reunion"]
+    verbo = {"subida": "suba tipos", "mantener": "mantenga tipos", "bajada": "baje tipos"}
+    prob = {"subida": pr["subida"], "mantener": pr["mantiene"], "bajada": pr["bajada"]}
+    ayer = {"subida": ant["prox_subida"], "mantener": ant["prox_mantiene"], "bajada": ant["prox_bajada"]} if ant and ant.get("prox_mantiene") is not None else None
+    partes1 = []
+    if c["A"]:
+        partes1.append(f"el resultado más probable de la reunión del {fecha_linea(r0['reunion'])} pasa de «{c['base']}» a «{c['modal']}» "
+                       f"(subida {n(pr['subida'], 0)} %, mantener {n(pr['mantiene'], 0)} %, bajada {n(pr['bajada'], 0)} %; contrato {r0.get('contrato', '—')})")
+    if c["B"] and dic:
+        partes1.append(f"el tipo esperado a la reunión de diciembre ({fecha_linea(dic['reunion'])}) se mueve {c['d5']:+.0f} pb en 5 sesiones, hasta {n(dic['tipo_esperado'], 2)} % "
+                       f"(contrato {dic.get('contrato', '—')})")
+    l1 = "Fed: " + "; ".join(partes1) + f" (FedWatch NEXORA, futuros ZQ, precios del {fecha_linea(F['fecha_precios'])})."
+    sube = (PASOS[c["modal"]] > PASOS[c["base"]]) if c["A"] and not c["B"] else ((c["d5"] or 0) > 0 if c["B"] else PASOS[c["modal"]] > PASOS[c["base"]])
+    l2 = significado("fed", sube) + "."
+    # en palabras sencillas: caso concreto
+    s1 = f"Ahora el mercado da un {n(prob[c['modal']], 0)} % a que la Fed {verbo[c['modal']]} en su reunión del {fecha_linea(r0['reunion'])}"
+    if ayer and c["A"]:
+        s1 += f" (en la sesión anterior daba {n(ayer[c['modal']], 0)} % a esa opción y el resultado más probable era «{c['base']}»)"
+    s1 += "."
+    s2 = ""
+    if dic and effr is not None:
+        pasos = (dic["tipo_esperado"] - effr) / 0.25
+        s2 = (f" Para diciembre espera un tipo de {n(dic['tipo_esperado'], 2)} % frente al {n(effr, 2)} % de hoy: {pasos_txt(pasos)}"
+              + (f", {abs(c['d5']):.0f} pb {'más alto' if c['d5'] > 0 else 'más bajo'} que hace 5 sesiones" if c.get("d5") is not None else "") + ".")
+    s3 = ""
+    if c["B"] and not c["A"]:
+        s3 = " Lo que ha cambiado es la expectativa para diciembre; la próxima reunión sigue igual."
+    elif c["A"] and not c["B"]:
+        s3 = " Lo que ha cambiado es la apuesta para la próxima reunión; diciembre se mantiene en un rango parecido."
+    l4 = s1 + s2 + s3 + " Es lo que descuentan los futuros, no una decisión de la Fed."
+    return l1, l2, l4
+
+
 def explicacion_macro(activo, mot):
     """¿La macro de hoy explica el movimiento del activo? mot = {motor: delta_sesion}."""
     tot, cs = 0.0, []
@@ -129,8 +257,8 @@ def evaluar(D, estado):
     out, no_eval = [], {}
     vig = vigilar(CAL)
 
-    def al(clave, titulo, l1, l2, l4):
-        out.append({"clave": clave, "titulo": titulo, "l1": l1, "l2": l2, "l3": vig, "l4": l4})
+    def al(clave, titulo, l1, l2, l4, l3=None, post=None):
+        out.append({"clave": clave, "titulo": titulo, "l1": l1, "l2": l2, "l3": l3 or vig, "l4": l4, "post": post})
 
     mot = {"t2y": (T.get("t2y") or {}).get("d1_pb"), "real": (T.get("real10") or {}).get("d1_pb"),
            "dxy": (act.get("dxy") or {}).get("cambio_1d_pct"), "vix": (act.get("vix") or {}).get("cambio_1d_pct")}
@@ -162,28 +290,18 @@ def evaluar(D, estado):
     elif v["valor"] > U["vix_nivel"] or (v.get("cambio_1d_pct") or 0) >= U["vix_pct"]:
         al("vix", "Miedo (VIX)", f"El VIX está en {n(v['valor'], 1)} ({sg(v.get('cambio_1d_pct') or 0, 1)} % en la sesión; umbral: >25 o +20 %) (Cboe vía Yahoo Finance, {fecha_linea(v['fecha'])}).",
            significado("vix", True) + ".", SENCILLO["vix"])
-    # Fed
-    if r0:
-        hist = [h for h in (F.get("historial") or []) if h.get("reunion") == r0["reunion"]]
-        s1, b1 = r0["prob_reunion"]["subida"], r0["prob_reunion"]["bajada"]
-        if len(hist) >= 2:
-            s0, b0 = hist[-2]["prox_subida"], hist[-2]["prox_bajada"]
-            ult = estado.get("fed_ultimo") or {}
-            if ult.get("reunion") == r0["reunion"]:  # como alertas_causas.py: también frente al último aviso
-                s0 = ult["subida"] if abs(s1 - ult["subida"]) > abs(s1 - s0) else s0
-            dmax = max(abs(s1 - s0), abs(b1 - b0))
-            rotulo = lambda s, b: max((s, "subida"), (100 - s - b, "mantener"), (b, "bajada"))[1]  # noqa: E731
-            cambio = rotulo(s1, b1) != rotulo(s0, b0)
-            if dmax >= U["fed_pts"] or cambio:
-                sube = (s1 - s0) > (b1 - b0) or (s1 - s0) > 0
-                al("fed", "Fed", f"Fed {fecha_linea(r0['reunion'])}: subida {n(s0, 0)} % → {n(s1, 0)} %, bajada {n(b0, 0)} % → {n(b1, 0)} %; resultado más probable: {rotulo(s1, b1)}"
-                   f"{' (cambia frente a ayer)' if cambio else ''} (FedWatch NEXORA, futuros ZQ, precios del {fecha_linea(F['fecha_precios'])}).",
-                   significado("fed", sube) + ".", SENCILLO["fed"])
-            estado["fed_ultimo"] = {"reunion": r0["reunion"], "subida": s1}
-        else:
-            no_eval["fed"] = "sin sesión previa en el historial de FedWatch"
+    # Fed: cambia el resultado más probable de la próxima reunión, o el tipo esperado a diciembre se mueve ≥ 10 pb en 5 sesiones; confirmada en 2 ejecuciones
+    hist = F.get("historial") or []
+    if r0 and len(hist) >= 2 and hist[-1].get("modal"):
+        fs = estado.setdefault("fed", {})
+        res = evaluar_fed(hist, fs)
+        if res["candidata"]:
+            l1, l2, l4 = texto_fed(F, hist, res["candidata"])
+            al("fed", "Fed", l1, l2, l4, l3=vigilar_fed(CAL), post=res["candidata"]["post"])
+        elif res["pendiente"]:
+            no_eval["fed"] = "pendiente de confirmación: " + res["pendiente"]
     else:
-        no_eval["fed"] = "SIN DATO (FedWatch)"
+        no_eval["fed"] = "SIN DATO (FedWatch) o sin sesión previa en el historial"
     # oro y bitcoin: se explica la causa, no el precio
     g = act.get("oro") or {}
     if g.get("cambio_1d_pct") is not None and abs(g["cambio_1d_pct"]) >= U["oro_pct"]:
@@ -309,6 +427,8 @@ def ejecutar(seco=False, prueba=False, max_envios=6):
         reg.update({"enviada": ok, "error": err})
         if ok:
             ya[a["clave"]] = ahora.strftime("%H:%M")
+            if a.get("post") and a["clave"] == "fed":  # la referencia solo avanza si Telegram aceptó el aviso
+                est.setdefault("fed", {}).update(a["post"])
             if a["clave"].startswith("skew_"):  # un aviso por episodio: solo se marca si Telegram lo aceptó (si falla, se reintenta)
                 est.setdefault("skew_avisados", []).append(a["clave"][5:])
             enviadas += 1

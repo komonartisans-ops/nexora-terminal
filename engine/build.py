@@ -219,6 +219,8 @@ def etapa_fedwatch():
                                               "prob_subida": r["prob_reunion"]["subida"], "prob_mantiene": r["prob_reunion"]["mantiene"],
                                               "prob_bajada": r["prob_reunion"]["bajada"], "fecha_precios": F["fecha_precios"]} for r in F["reuniones"]],
                   ("capturado_utc", "reunion"))
+    # histórico recalculado con la regla de contrato v2 (el CSV anterior se conserva tal cual, calculado con la regla v1)
+    csvlog.anadir("historico_fedwatch_v2.csv", [{**x, "capturado_utc": STAMP} for x in F.get("recalculo", [])], ("fecha_precios", "reunion"))
     return F
 
 
