@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-15 08:09 Madrid",
+ "generado": "2026-10-15 09:16 Madrid",
  "desde": "2026-09-05",
  "hasta": "2026-11-05",
  "eventos": [
@@ -1085,6 +1085,50 @@
    "nota": ""
   }
  ],
+ "fed_vigilar": [
+  {
+   "fecha": "2026-10-14",
+   "dia": "mié",
+   "hora_ny": "05:40",
+   "hora_madrid": "11:40",
+   "evento": "Conversación · Vice Chair for Supervision Michelle W. Bowman",
+   "importancia": "MEDIA",
+   "afecta": "oro · índices · cripto (vía expectativas de tipos)",
+   "que_mirar": "Mensaje de un miembro con voto sobre tipos o inflación.",
+   "fuente": "Federal Reserve (calendario oficial)",
+   "url": "https://www.federalreserve.gov/newsevents/calendar.htm",
+   "nota": "",
+   "tipo": "Speeches"
+  },
+  {
+   "fecha": "2026-10-14",
+   "dia": "mié",
+   "hora_ny": "22:55",
+   "hora_madrid": "04:55",
+   "evento": "Discurso · Vice Chair for Supervision Michelle W. Bowman",
+   "importancia": "MEDIA",
+   "afecta": "oro · índices · cripto (vía expectativas de tipos)",
+   "que_mirar": "Mensaje de un miembro con voto sobre tipos o inflación.",
+   "fuente": "Federal Reserve (calendario oficial)",
+   "url": "https://www.youtube.com/live/V7H5F2C5PNc",
+   "nota": "",
+   "tipo": "Speeches"
+  },
+  {
+   "fecha": "2026-10-15",
+   "dia": "jue",
+   "hora_ny": "23:30",
+   "hora_madrid": "05:30",
+   "evento": "Conversación · Chairman Kevin Warsh",
+   "importancia": "MEDIA",
+   "afecta": "oro · índices · cripto (vía expectativas de tipos)",
+   "que_mirar": "Mensaje de un miembro con voto sobre tipos o inflación.",
+   "fuente": "Federal Reserve (calendario oficial)",
+   "url": "https://www.youtube.com/watch?v=T20jWBJ66X0&list=PLGHsBhoupusk&index=31",
+   "nota": "",
+   "tipo": "Speeches"
+  }
+ ],
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
@@ -1183,6 +1227,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-15 06:07 UTC",
- "duracion_s": 40.4
+ "generado_utc": "2026-10-15 07:14 UTC",
+ "duracion_s": 43.3
 }

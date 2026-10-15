@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-15): reunión del 2026-10-28 subida 28 % / mantener 72 % / bajada 0 % (-6 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +37 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-15): reunión del 2026-10-28 subida 28 % / mantener 72 % / bajada 0 % (-6 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +38 pb vs hoy (más dura (el mercado espera tipos más altos) que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.82 % vs tipo efectivo 3.88 % → +94 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +65 pb (+7 pb en 5 sesiones)"
@@ -133,7 +133,7 @@
      "S&P 500: semana -1.1 · mes +2.2 %",
      "Nasdaq 100: semana -3.9 · mes +3.5 %",
      "Russell 2000: semana -2.3 · mes -4.5 %",
-     "Oro (COMEX GC=F, respaldo): semana -0.0 · mes -5.5 %",
+     "Oro (COMEX GC=F, respaldo): semana +0.1 · mes -5.4 %",
      "Bitcoin: semana -2.1 · mes +4.3 %",
      "Ether: semana -6.0 · mes -3.8 %",
      "10Y nominal: semana -8.0 · mes +19.0 pb",
@@ -169,7 +169,7 @@
     "lectura": "MIXTO",
     "sentido": "NEUTRAL",
     "precio": "CONFIRMA DEBILIDAD",
-    "detalle": "oro 20 sesiones -5.5 %"
+    "detalle": "oro 20 sesiones -5.4 %"
    },
    {
     "monitor": "Índices USA",
@@ -231,8 +231,8 @@
     "unidad": "%"
    },
    "Oro (COMEX GC=F, respaldo)": {
-    "semana": -0.0,
-    "mes": -5.52,
+    "semana": 0.13,
+    "mes": -5.39,
     "unidad": "%"
    },
    "Bitcoin": {
@@ -1052,6 +1052,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-15 06:07 UTC",
- "duracion_s": 18.2
+ "generado_utc": "2026-10-15 07:14 UTC",
+ "duracion_s": 17.2
 }
