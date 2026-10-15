@@ -5,14 +5,11 @@ name: reacciones
 # (horario de verano / invierno de Nueva York); el script decide si hay evento hoy y es idempotente (no repite filas).
 on:
   schedule:
-    - cron: "30 11 * * 1-5"   # 07:30 ET en verano  → evento de las 08:30 ET (IPC, NFP, PCE)
-    - cron: "30 12 * * 1-5"   # 07:30 ET en invierno
-    - cron: "0 17 * * 1-5"    # 13:00 ET en verano  → FOMC de las 14:00 ET
-    - cron: "0 18 * * 1-5"    # 13:00 ET en invierno
-    - cron: "5 20 * * 1-5"    # 16:05 ET en verano  → cierre (16:00 ET) y su alerta de giro
-    - cron: "5 21 * * 1-5"    # 16:05 ET en invierno
-    - cron: "5 14 * * 1-5"    # 10:05 ET en verano  → T+1 (día siguiente, 10:00 ET) y su alerta de giro
-    - cron: "5 15 * * 1-5"    # 10:05 ET en invierno
+    # GitHub NO garantiza los crones (el 15-oct no lanzó ninguno de los cuatro de las 11:30, 12:30, 14:05 y 17:00 UTC; en los últimos días solo ha
+    # ejecutado una fracción de las horas programadas). Por eso hay muchos disparos redundantes y cada ejecución recoge TODO lo vencido (las barras
+    # de 5 min de Yahoo permiten registrar fases pasadas con el mismo valor; solo cambia el origen a «vivo-tardío»). Si no hay nada pendiente, sale en segundos.
+    - cron: "*/15 11-21 * * 1-5"   # 07:00-17:59 ET en verano: datos de las 08:30 y 10:00, FOMC 14:00, cierre 16:00 y T+1 a las 10:00
+    - cron: "*/30 22-23,0-3 * * *" # noche: discursos del presidente de la Fed y fases tardías
   workflow_dispatch:
     inputs:
       modo:
@@ -43,7 +40,7 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          if [ "${{ github.event.inputs.modo }}" = "reconstruir" ]; then python engine/reaccion.py --reconstruir; else python engine/reaccion.py --vivo; fi
+          if [ "${{ github.event.inputs.modo }}" = "reconstruir" ]; then python engine/reaccion.py --reconstruir --gracia 0; else python engine/reaccion.py --vivo; fi
       - name: Commit (si el job se cancela por tiempo, igualmente se guarda lo registrado)
         if: always()
         run: python engine/push_seguro.py "reacciones $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]"

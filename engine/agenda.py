@@ -161,6 +161,9 @@ def texto_diario(cal, hoy=None):
         L.append(f"• <b>{html.escape(hm or 'hora sin confirmar')}</b> · {html.escape(' + '.join(nombres))}" + (f" ({html.escape(hn)} ET)" if hn else "")
                  + (" · dato combinado" if len(nombres) > 1 else ""))
     med = [e for e in B["hoy"] if e["importancia"] == "MEDIA"]
+    ahora = dt.datetime.now(MAD)
+    if hoy == ahora.date():  # «Media» solo muestra lo que falta por salir (los que no tienen hora se conservan)
+        med = [e for e in med if not e["hora_madrid"] or e["hora_madrid"] >= ahora.strftime("%H:%M")]
     if med:
         L.append("Media: " + "; ".join(f"{html.escape(e['hora_madrid'] or '—')} {html.escape(e['evento'])}" for e in med[:5]))
     return "\n".join(L)

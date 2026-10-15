@@ -50,6 +50,13 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python engine/build.py --modo "${{ steps.modo.outputs.modo }}"
+      - name: Catch-up del monitor de reacciones (red de seguridad: los crones de GitHub no están garantizados)
+        continue-on-error: true
+        env:
+          PYTHONUTF8: "1"
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python engine/reaccion.py --vivo
       - name: Alerta de prueba a Telegram (solo si se pide al lanzar a mano)
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.prueba_telegram == 'true' }}
         env:

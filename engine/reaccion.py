@@ -53,7 +53,7 @@ GIRO_ALERTA = ("REFUGIO / RIESGO", "SORPRESA DESHECHA", "ALIVIO DESHECHO", INV_C
 CONGELACION = "Reglas v3, congeladas el 15-10-2026; no se modifican hasta n ≥ 20 eventos en vivo."
 EVENTO_DISENO = "IPC-2026-10-14"  # la regla v2 se diseñó viendo este evento: no cuenta como validación
 RETRASO_RECONSTRUIR_H = 30      # el job en vivo tiene prioridad: reconstruir no toca una fase hasta 30 h después de su instante objetivo
-MAX_ESPERA_FASE_MIN = 150       # el job no espera dentro de una fase más lejana que esto (la recogen los crones de cierre y de T+1)
+MAX_ESPERA_FASE_MIN = 12        # el job no espera por una fase más lejana que esto: recoge lo vencido y sale (los crones frecuentes y el catch-up de actualizar hacen el resto)
 FESTIVOS_NY = {dt.date(2026, 1, 1), dt.date(2026, 1, 19), dt.date(2026, 2, 16), dt.date(2026, 4, 3), dt.date(2026, 5, 25), dt.date(2026, 6, 19), dt.date(2026, 7, 3),
                dt.date(2026, 9, 7), dt.date(2026, 11, 26), dt.date(2026, 12, 25), dt.date(2027, 1, 1), dt.date(2027, 1, 18), dt.date(2027, 2, 15), dt.date(2027, 3, 26),
                dt.date(2027, 5, 31), dt.date(2027, 6, 18), dt.date(2027, 7, 5), dt.date(2027, 9, 6), dt.date(2027, 11, 25), dt.date(2027, 12, 24)}
@@ -426,7 +426,7 @@ def guardar(filas):
 
 
 # ------------------------------------------------------------------ reconstrucción (siembra)
-def reconstruir():
+def reconstruir(gracia_h=RETRASO_RECONSTRUIR_H):
     hoy = ahora().astimezone(NY).date()
     evs = eventos(hoy - dt.timedelta(days=VENTANA_DIAS - 1), hoy)
     B, err = barras("60d")
@@ -438,9 +438,9 @@ def reconstruir():
         if all(f in ya for f, _ in fases_de(ev)):
             continue
         # los eventos de hoy en curso los registra el job en vivo
-        if objetivo(ev, 120) + dt.timedelta(minutes=60) > ahora() and t_evento(ev) - dt.timedelta(hours=3) <= ahora():
+        if gracia_h and objetivo(ev, 120) + dt.timedelta(minutes=60) > ahora() and t_evento(ev) - dt.timedelta(hours=3) <= ahora():
             continue
-        r = medir_evento(ev, B, cal, existentes + nuevas, hasta=ahora() - dt.timedelta(hours=RETRASO_RECONSTRUIR_H), ya=ya, altos=evs)
+        r = medir_evento(ev, B, cal, existentes + nuevas, hasta=ahora() - dt.timedelta(hours=gracia_h), ya=ya, altos=evs)
         nuevas += r
     nuevas += completar_real10(evs, existentes + nuevas)
     n = guardar(nuevas)
@@ -678,10 +678,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--vivo", action="store_true")
     ap.add_argument("--reconstruir", action="store_true")
+    ap.add_argument("--gracia", type=float, default=RETRASO_RECONSTRUIR_H, help="horas de margen al job en vivo (0 = reconstruir todo lo vencido)")
     a = ap.parse_args()
     if a.vivo:
         return vivo()
-    n, err, cal = reconstruir()
+    n, err, cal = reconstruir(a.gracia)
     J = construir_json()
     J["errores"], J["calibracion"], J["filas_nuevas"] = err, {k: (round(v, 3) if isinstance(v, float) else v) for k, v in cal.items()}, n
     escribir_json(J)
