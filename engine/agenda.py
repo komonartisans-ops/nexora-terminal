@@ -39,6 +39,7 @@ def tabla_importancia():
                   "fuente": f"FRED Release Calendar (rid {rid})"})
     T += [{"tipo": "FOMC", "evento": "Decisión FOMC (Fed)", "organismo": "Fed", "importancia": "ALTA", "hora_ny_tipica": "14:00", "fuente": "federalreserve.gov"},
           {"tipo": "ACTAS", "evento": "Actas del FOMC", "organismo": "Fed", "importancia": "ALTA", "hora_ny_tipica": "14:00", "fuente": "federalreserve.gov/json/calendar.json"},
+          {"tipo": "DISCURSO", "evento": "Discursos y comparecencias del presidente de la Fed", "organismo": "Fed", "importancia": "ALTA", "hora_ny_tipica": "", "fuente": "federalreserve.gov/json/calendar.json"},
           {"tipo": "DISCURSOS", "evento": "Discursos y comparecencias de votantes del FOMC", "organismo": "Fed", "importancia": "MEDIA", "hora_ny_tipica": "", "fuente": "federalreserve.gov/json/calendar.json"},
           {"tipo": "ISM", "evento": "ISM manufacturero", "organismo": "ISM", "importancia": "ALTA", "hora_ny_tipica": "10:00", "fuente": "ismworld.org"},
           {"tipo": "ISM_SERV", "evento": "ISM servicios", "organismo": "ISM", "importancia": "MEDIA", "hora_ny_tipica": "10:00", "fuente": "ismworld.org"},
@@ -84,7 +85,31 @@ def eventos_altos(desde, hasta):
                 add("ACTAS", dt.date.fromisoformat(x["fecha"]), x["hora_ny"], "Actas del FOMC", "Federal Reserve (calendario oficial)", x["url"])
     except Exception as e:  # noqa: BLE001
         print(f"agenda ACTAS: {type(e).__name__}: {str(e)[:80]}")
-    return sorted(out.values(), key=lambda x: (x["fecha"], x["hora_ny"]))
+    try:
+        for x in C.fed_votantes(dias=max(1, (hasta - C.HOY).days)):
+            if x.get("presidente") and x["hora_ny"]:
+                add("DISCURSO", dt.date.fromisoformat(x["fecha"]), x["hora_ny"], "Discurso del presidente de la Fed: " + x["evento"], "Federal Reserve (calendario oficial)", x["url"])
+    except Exception as e:  # noqa: BLE001
+        print(f"agenda DISCURSO: {type(e).__name__}: {str(e)[:80]}")
+    # varios ALTA a la misma hora → un único evento combinado («PPI + Ventas minoristas»)
+    grupos = {}
+    for x in sorted(out.values(), key=lambda x: (x["fecha"], x["hora_ny"], x["tipo"])):
+        grupos.setdefault((x["fecha"], x["hora_ny"]), []).append(x)
+    res = []
+    for (d, h), g in grupos.items():
+        if len(g) == 1:
+            res.append(g[0])
+            continue
+        g.sort(key=lambda x: ETIQUETA_ORDEN.get(x["tipo"], 50))
+        tipo = "+".join(x["tipo"] for x in g)
+        res.append({"id": f"{tipo}-{d}", "tipo": tipo, "evento": " + ".join(ETIQUETA.get(x["tipo"], x["evento"]) for x in g), "fecha": d, "hora_ny": h,
+                    "combinado": [x["tipo"] for x in g], "fuente": " | ".join(sorted({x["fuente"] for x in g})), "url": g[0]["url"]})
+    return sorted(res, key=lambda x: (x["fecha"], x["hora_ny"]))
+
+
+ETIQUETA = {"PPI": "PPI", "VENTAS": "Ventas minoristas", "IPC": "IPC", "NFP": "Empleo (NFP)", "PCE": "PCE", "PIB": "PIB", "ECI": "Costes laborales (ECI)", "FOMC": "FOMC",
+            "ACTAS": "Actas del FOMC", "ISM": "ISM manufacturero", "DISCURSO": "Discurso del presidente de la Fed"}
+ETIQUETA_ORDEN = {k: i for i, k in enumerate(ETIQUETA)}
 
 
 # ------------------------------------------------------------------ agenda para contexto.json y Telegram
@@ -101,11 +126,13 @@ def _todos(cal):
 def bloque(cal, hoy=None, dias=7):
     hoy = hoy or dt.datetime.now(MAD).date()
     lim = hoy + dt.timedelta(days=dias)
-    E = [e for e in _todos(cal) if hoy.isoformat() <= e["fecha"] <= lim.isoformat() and e.get("importancia") in ("ALTA", "MEDIA")]
-    E.sort(key=lambda e: (e["fecha"], e.get("hora_ny") or "99", 0 if e["importancia"] == "ALTA" else 1))
-    f = lambda e: {"fecha": e["fecha"], "dia": e.get("dia"), "hora_ny": e.get("hora_ny") or None, "hora_madrid": e.get("hora_madrid") or None,
+    fm = lambda e: e.get("fecha_madrid") or e["fecha"]   # el día que importa es el de Madrid (un acto de 23:30 ET es del día siguiente aquí)
+    E = [e for e in _todos(cal) if hoy.isoformat() <= fm(e) <= lim.isoformat() and e.get("importancia") in ("ALTA", "MEDIA")]
+    E.sort(key=lambda e: (fm(e), e.get("hora_madrid") or "99", 0 if e["importancia"] == "ALTA" else 1))
+    f = lambda e: {"fecha": fm(e), "fecha_et": e["fecha"], "dia": e.get("dia"), "hora_ny": e.get("hora_ny") or None, "hora_madrid": e.get("hora_madrid") or None,
                    "evento": e["evento"], "importancia": e["importancia"], "nota": e.get("nota") or None}
-    return {"hoy": [f(e) for e in E if e["fecha"] == hoy.isoformat()], "proximos_7_dias": [f(e) for e in E if e["fecha"] > hoy.isoformat()],
+    return {"hoy": [f(e) for e in E if fm(e) == hoy.isoformat()], "proximos_7_dias": [f(e) for e in E if fm(e) > hoy.isoformat()],
+            "regla_horas": "Fed: horas del calendario oficial en ET (también en actos en el extranjero); FRED: hora central → ET; todo se convierte a Madrid y el día es el de Madrid.",
             "hasta": lim.isoformat(), "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
             "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)", "generado_utc": dt.datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")}
 
@@ -127,9 +154,12 @@ def texto_diario(cal, hoy=None):
     if not altos:
         return f"{cab}\nHoy sin datos de importancia alta"
     L = [cab, "Hoy, hora de Madrid:"]
-    for e in altos:
-        h = e["hora_madrid"] or "hora sin confirmar"
-        L.append(f"• <b>{html.escape(h)}</b> · {html.escape(e['evento'])}" + (f" ({html.escape(e['hora_ny'])} ET)" if e["hora_ny"] else ""))
+    grupos = {}
+    for e in altos:  # varios datos altos a la misma hora se muestran juntos (el monitor los registra como un único evento combinado)
+        grupos.setdefault((e["hora_madrid"] or "", e["hora_ny"] or ""), []).append(e["evento"])
+    for (hm, hn), nombres in grupos.items():
+        L.append(f"• <b>{html.escape(hm or 'hora sin confirmar')}</b> · {html.escape(' + '.join(nombres))}" + (f" ({html.escape(hn)} ET)" if hn else "")
+                 + (" · dato combinado" if len(nombres) > 1 else ""))
     med = [e for e in B["hoy"] if e["importancia"] == "MEDIA"]
     if med:
         L.append("Media: " + "; ".join(f"{html.escape(e['hora_madrid'] or '—')} {html.escape(e['evento'])}" for e in med[:5]))

@@ -2,6 +2,11 @@
 """
 NEXORA · Calendario macro oficial automático (común a los monitores de cripto, oro e índices).
 
+REGLA DE HORAS: el calendario de la Fed (federalreserve.gov/json/calendar.json) da todas las horas en hora del Este de EE. UU. (ET), también
+en actos en el extranjero (p. ej. «Chairman Warsh, Bangkok, 11:30 p.m.» = 23:30 ET = 10:30 en Bangkok del día siguiente). Se comprueba por coherencia:
+«Vice Chair for Supervision, Bangkok, 5:40 a.m.» solo es posible en ET (16:40 en Bangkok). Se convierte de ET a Madrid sin tocar nada más; la fecha de
+Madrid puede ser distinta de la de ET (campo fecha_madrid). FRED da hora central de EE. UU. y se convierte a ET.
+
 Fuentes oficiales, sin clave (nada se estima; lo que no se descarga queda como SIN DATO):
   · FRED Release Calendar (St. Louis Fed): fechas y horas que publican los propios organismos (BLS, BEA, Census,
     Fed, DOL, U. Michigan, Fed de Filadelfia). FRED da la hora en hora central de EE. UU. → se convierte a Nueva York y Madrid.
@@ -38,7 +43,7 @@ FRED_RELEASES = {
     54: ("Renta y gasto personal (PCE)", "ALTA", "cripto · oro · índices", "PCE subyacente: la medida de inflación que sigue la Fed."),
     53: ("PIB EE. UU.", "ALTA", "índices · oro", "Crecimiento y deflactor; revisiones."),
     192: ("Vacantes JOLTS", "MEDIA", "índices · oro", "Demanda de trabajo: vacantes ↓ = mercado laboral se enfría."),
-    9: ("Ventas minoristas", "MEDIA", "índices", "Consumo: motor del crecimiento."),
+    9: ("Ventas minoristas", "ALTA", "índices", "Consumo: motor del crecimiento."),
     46: ("Precios de producción (PPI)", "ALTA", "oro · índices", "Presión de costes que puede llegar al IPC."),
     180: ("Peticiones de paro semanales", "MEDIA", "índices · oro", "Media de 4 semanas ↑ = empleo se enfría."),
     351: ("Encuesta manufacturera Fed Filadelfia", "MEDIA", "índices", "Actividad industrial adelantada (proxy del ISM)."),
@@ -47,14 +52,15 @@ FRED_RELEASES = {
     21: ("Oferta monetaria M2 (H.6)", "BAJA", "cripto · oro", "Liquidez a medio plazo."),
     13: ("Producción industrial", "BAJA", "índices", "Ciclo industrial (US30)."),
     22: ("Crédito bancario H.8", "BAJA", "índices", "Crédito de bancos comerciales."),
+    11: ("Índice de costes laborales (ECI, BLS)", "ALTA", "índices · oro · cripto", "Salarios y beneficios: coste laboral ↑ = presión inflacionista de servicios (2Y ↑)."),
     27: ("Vivienda iniciada y permisos (Census)", "MEDIA", "índices", "Ciclo inmobiliario sensible a tipos."),
     97: ("Ventas de vivienda nueva (Census)", "MEDIA", "índices", "Demanda de vivienda frente a hipotecas al 6-7 %."),
     95: ("Pedidos de fábrica y bienes duraderos (Census, M3)", "MEDIA", "índices", "Inversión empresarial: pedidos de bienes de capital."),
 }
 # código corto por tipo de evento (clave de la agenda, del monitor de reacciones y del Telegram diario)
-TIPO_FRED = {50: "NFP", 10: "IPC", 54: "PCE", 46: "PPI", 53: "PIB", 192: "JOLTS", 9: "VENTAS", 180: "PARO", 351: "FILADELFIA", 91: "UMICH",
+TIPO_FRED = {11: "ECI", 50: "NFP", 10: "IPC", 54: "PCE", 46: "PPI", 53: "PIB", 192: "JOLTS", 9: "VENTAS", 180: "PARO", 351: "FILADELFIA", 91: "UMICH",
              20: "H41", 21: "M2", 13: "PRODIND", 22: "H8", 27: "VIVIENDA", 97: "VIVIENDA_NUEVA", 95: "PEDIDOS"}
-HORA_TIPICA_NY = {"IPC": "08:30", "NFP": "08:30", "PCE": "08:30", "PPI": "08:30", "PIB": "08:30", "FOMC": "14:00", "ACTAS": "14:00", "ISM": "10:00"}
+HORA_TIPICA_NY = {"ECI": "08:30", "VENTAS": "08:30", "IPC": "08:30", "NFP": "08:30", "PCE": "08:30", "PPI": "08:30", "PIB": "08:30", "FOMC": "14:00", "ACTAS": "14:00", "ISM": "10:00"}
 MES = {m: i for i, m in enumerate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 1)}
 
 
@@ -69,7 +75,8 @@ def ev(fecha, hora_ny, evento, importancia, afecta, que_mirar, fuente, url, nota
         h, m = map(int, hora_ny.split(":"))
         t = dt.datetime.combine(fecha, dt.time(h, m), NY)
         hm = t.astimezone(MAD).strftime("%H:%M")
-    return {"fecha": fecha.isoformat(), "dia": ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"][fecha.weekday()], "hora_ny": hora_ny or "",
+    fm = t.astimezone(MAD).date() if hora_ny else fecha
+    return {"fecha": fecha.isoformat(), "fecha_madrid": fm.isoformat(), "dia": ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"][fecha.weekday()], "hora_ny": hora_ny or "",
             "hora_madrid": hm or "", "evento": evento, "importancia": importancia, "afecta": afecta, "que_mirar": que_mirar,
             "fuente": fuente, "url": url, "nota": nota}
 
@@ -211,9 +218,11 @@ def fed_votantes(dias=30):
                 continue
             if HOY - dt.timedelta(days=1) <= d <= HOY + dt.timedelta(days=dias):
                 evento = tit if tipo == "FOMC" else tit.replace("Speech - ", "Discurso · ").replace("Discussion - ", "Conversación · ").replace("Testimony - ", "Comparecencia · ")
-                x = ev(d, hh, evento, "MEDIA", "oro · índices · cripto (vía expectativas de tipos)", "Mensaje de un miembro con voto sobre tipos o inflación.",
+                pres = tipo in ("Speeches", "Testimony") and bool(re.search(r"Chairman|(?<!Vice )Chair\b", tit)) and "Vice Chair" not in tit
+                x = ev(d, hh, evento, "ALTA" if pres else "MEDIA", "oro · índices · cripto (vía expectativas de tipos)",
+                       "Mensaje del presidente de la Fed sobre tipos o inflación." if pres else "Mensaje de un miembro con voto sobre tipos o inflación.",
                        "Federal Reserve (calendario oficial)", e.get("link") or e.get("live") or "https://www.federalreserve.gov/newsevents/calendar.htm")
-                x["tipo"] = tipo
+                x["tipo"], x["presidente"] = tipo, pres
                 out.append(x)
     out.sort(key=lambda x: (x["fecha"], x["hora_ny"] or "99"))
     return out

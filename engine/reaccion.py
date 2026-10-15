@@ -129,6 +129,12 @@ def eventos(desde, hasta):
     return agenda.eventos_altos(desde, hasta)
 
 
+def fases_de(ev):
+    """Fases aplicables: si el dato sale después del cierre (16:00 ET) no existe «CIERRE» de ese día."""
+    cierre = dt.datetime.combine(ev["fecha"], dt.time(16, 0), NY).astimezone(UTC)
+    return [(f, m) for f, m in FASES if not (f == "CIERRE" and cierre <= t_evento(ev))]
+
+
 def t_evento(ev):
     h, m = map(int, ev["hora_ny"].split(":"))
     return dt.datetime.combine(ev["fecha"], dt.time(h, m), NY).astimezone(UTC)
@@ -333,7 +339,7 @@ def medir_evento(ev, B, cal, filas_previas, hasta=None, origen_base="reconstruid
     base = {k: precio_en(B, k, t5)[0] for k in YAHOO}
     rows = []
     prev = [r for r in filas_previas if r["evento_id"] != ev["id"] and 0 < (ev["fecha"] - dt.date.fromisoformat(r["fecha"])).days <= VENTANA_DIAS]
-    for fase, mins in FASES:
+    for fase, mins in fases_de(ev):
         t = objetivo(ev, mins)
         if t + dt.timedelta(minutes=5) > hasta or fase in ya:
             continue
@@ -429,7 +435,7 @@ def reconstruir():
     nuevas = []
     for ev in evs:
         ya = {r["fase"] for r in existentes + nuevas if r["evento_id"] == ev["id"]}
-        if all(f in ya for f, _ in FASES):
+        if all(f in ya for f, _ in fases_de(ev)):
             continue
         # los eventos de hoy en curso los registra el job en vivo
         if objetivo(ev, 120) + dt.timedelta(minutes=60) > ahora() and t_evento(ev) - dt.timedelta(hours=3) <= ahora():
@@ -591,7 +597,7 @@ def aviso_giro(ev, e, f, cadena):
     cal = alertas.leer("calendario.json") or {}
     sig = alertas.vigilar_fed(cal)
     a = {"titulo": "Reacción a evento",
-         "l1": (f"{ev['evento']} ({ev['fecha']}): en {fase} el movimiento de T+5 se ha deshecho. El 2Y devuelve {g['dev_y2_pct']:.0f} % y el 10Y "
+         "l1": (f"{ev['evento']}{' [dato combinado: ' + ev['tipo'] + ']' if '+' in ev['tipo'] else ''} ({ev['fecha']}): en {fase} el movimiento de T+5 se ha deshecho. El 2Y devuelve {g['dev_y2_pct']:.0f} % y el 10Y "
                 f"{('%.0f %%' % g['dev_y10_pct']) if g['y10_base'] and g['dev_y10_pct'] is not None else 'sin base'} de su movimiento inicial → «{g['clase']}». Cadena frente a T-5: {cadena} (Yahoo Finance; 2Y vía ZT=F calibrado)."),
          "l2": f"Lectura: {SENCILLO_GIRO.get(g['clase'], '—')} (regla de giro v3, CRITERIO NEXORA, congelada el 15-10-2026).",
          "l3": sig,
@@ -621,7 +627,7 @@ def vivo(max_espera_min=150):
         hechas.setdefault(r["evento_id"], set()).add(r["fase"])
     # a vigilar: eventos cercanos o recientes a los que aún les falta alguna fase y cuyo T+1 todavía se puede recoger
     pend = [e for e in evs if objetivo(e, "SIG") + dt.timedelta(minutes=45) > n0 and t_evento(e) - dt.timedelta(minutes=max_espera_min) <= n0
-            and not all(f in hechas.get(e["id"], set()) for f, _ in FASES)]
+            and not all(f in hechas.get(e["id"], set()) for f, _ in fases_de(e))]
     print("eventos recientes:", [e["id"] for e in evs], "· a vigilar:", [e["id"] for e in pend])
     if not pend:
         return 0
@@ -629,7 +635,7 @@ def vivo(max_espera_min=150):
     cal = calibrar(B)
     print("calibración:", cal, "errores:", err)
     for ev in pend:
-        for fase, mins in FASES:
+        for fase, mins in fases_de(ev):
             filas = leer_log()
             ya = {r["fase"] for r in filas if r["evento_id"] == ev["id"]}
             if fase in ya:

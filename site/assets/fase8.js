@@ -33,7 +33,7 @@ function pageEventos() {
 
   /* secuencia de fases del último evento */
   h += `<div class="sect"><h2>Último evento · secuencia de fases</h2><span class="more">todos los movimientos frente al precio de T-5 (5 min antes de la publicación)</span></div>`;
-  h += `<div class="card"><div class="note" style="margin:0 0 10px">${esc(u.evento)} · ${esc(fdy(u.fecha))} · ${esc(u.hora_ny)} hora de Nueva York ${u.reconstruido ? '<span class="tag sd">RECONSTRUIDO</span>' : '<span class="tag sin">EN VIVO</span>'}</div>
+  h += `<div class="card"><div class="note" style="margin:0 0 10px">${esc(u.evento)} · ${esc(fdy(u.fecha))} · ${esc(u.hora_ny)} hora de Nueva York ${u.reconstruido ? '<span class="tag sd">RECONSTRUIDO</span>' : '<span class="tag sin">EN VIVO</span>'}${String(u.tipo).includes('+') ? ' <span class="tag sd" title="varios datos de importancia alta a la misma hora: se registra un único evento">COMBINADO: ' + esc(u.tipo.replace(/\+/g, ' + ')) + '</span>' : ''}</div>
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">${FASES_ORD.filter((n) => n !== 'T-5').map((n) => { const x = f(n); return `<div style="flex:1 1 110px;min-width:105px"><div class="note" style="margin:0 0 3px">${esc(FASE_ROT[n] || n)}</div>${chipClase(x ? x.clasificacion : null)}${x && x.giro && x.giro.clase ? `<div style="margin-top:4px">${chipClase(x.giro.clase)}</div>` : ''}</div>`; }).join('')}</div></div>`;
   h += '<div class="card pad0 scroll" style="margin-top:10px"><table class="t"><thead><tr><th>Fase</th><th>Clase</th><th>2Y pb</th><th>10Y pb</th><th>Dev. 2Y</th><th>Dev. 10Y</th><th>Giro (v3)</th><th>DXY %</th><th>Oro %</th><th>NQ %</th><th>ES %</th><th>BTC %</th><th>Origen</th></tr></thead><tbody>';
   h += FASES_ORD.map((n) => {
