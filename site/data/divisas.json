@@ -6,13 +6,13 @@
    "banco": "Banco de la Reserva de Australia",
    "factores": {
     "tipo": {
-     "valor": 4.35,
+     "valor": 4.6,
      "puntos": 1,
-     "fecha": "2026-09-24",
+     "fecha": "2026-10-08",
      "fuente": "BIS · tipos de política (WS_CBPOL)"
     },
     "real": {
-     "valor": 0.45,
+     "valor": 0.7,
      "puntos": 1,
      "fecha": "WEO 2026",
      "fuente": null
@@ -30,15 +30,15 @@
      "fuente": null
     },
     "giro": {
-     "valor": 0.25,
+     "valor": 0.5,
      "puntos": 1,
-     "fecha": "2026-09-24",
+     "fecha": "2026-10-08",
      "fuente": null
     },
     "riesgo": {
-     "valor": 16.87,
+     "valor": 17.47,
      "puntos": 0,
-     "fecha": "2026-10-14",
+     "fecha": "2026-10-15",
      "fuente": null
     }
    },
@@ -56,7 +56,7 @@
     "tipo": {
      "valor": 3.875,
      "puntos": 1,
-     "fecha": "2026-10-06",
+     "fecha": "2026-10-13",
      "fuente": "BIS · tipos de política (WS_CBPOL)"
     },
     "real": {
@@ -80,20 +80,20 @@
     "giro": {
      "valor": 0.25,
      "puntos": 1,
-     "fecha": "2026-10-06",
+     "fecha": "2026-10-13",
      "fuente": null
     },
     "riesgo": {
-     "valor": 16.87,
+     "valor": 17.47,
      "puntos": 0,
-     "fecha": "2026-10-14",
+     "fecha": "2026-10-15",
      "fuente": null
     }
    },
    "total": 4,
    "n_factores": 6,
    "sesgo": "FUERTE",
-   "fx_3m_pct": 1.38,
+   "fx_3m_pct": 1.26,
    "inflacion": 3.6
   },
   {
@@ -104,7 +104,7 @@
     "tipo": {
      "valor": 3.75,
      "puntos": 1,
-     "fecha": "2026-10-05",
+     "fecha": "2026-10-12",
      "fuente": "BIS · tipos de política (WS_CBPOL)"
     },
     "real": {
@@ -128,13 +128,13 @@
     "giro": {
      "valor": 0.0,
      "puntos": 0,
-     "fecha": "2026-10-05",
+     "fecha": "2026-10-12",
      "fuente": null
     },
     "riesgo": {
-     "valor": 16.87,
+     "valor": 17.47,
      "puntos": 0,
-     "fecha": "2026-10-14",
+     "fecha": "2026-10-15",
      "fuente": null
     }
    },
@@ -152,7 +152,7 @@
     "tipo": {
      "valor": 2.75,
      "puntos": 0,
-     "fecha": "2026-10-02",
+     "fecha": "2026-10-09",
      "fuente": "BIS · tipos de política (WS_CBPOL)"
     },
     "real": {
@@ -176,13 +176,13 @@
     "giro": {
      "valor": 0.5,
      "puntos": 1,
-     "fecha": "2026-10-02",
+     "fecha": "2026-10-09",
      "fuente": null
     },
     "riesgo": {
-     "valor": 16.87,
+     "valor": 17.47,
      "puntos": 0,
-     "fecha": "2026-10-14",
+     "fecha": "2026-10-15",
      "fuente": null
     }
    },
@@ -200,7 +200,7 @@
     "tipo": {
      "valor": 2.5,
      "puntos": 0,
-     "fecha": "2026-10-06",
+     "fecha": "2026-10-13",
      "fuente": "BIS · tipos de política (WS_CBPOL)"
     },
     "real": {
@@ -224,13 +224,13 @@
     "giro": {
      "valor": 0.5,
      "puntos": 1,
-     "fecha": "2026-10-06",
+     "fecha": "2026-10-13",
      "fuente": null
     },
     "riesgo": {
-     "valor": 16.87,
+     "valor": 17.47,
      "puntos": 0,
-     "fecha": "2026-10-14",
+     "fecha": "2026-10-15",
      "fuente": null
     }
    },
@@ -248,7 +248,7 @@
     "tipo": {
      "valor": 2.25,
      "puntos": -1,
-     "fecha": "2026-10-05",
+     "fecha": "2026-10-12",
      "fuente": "BIS · tipos de política (WS_CBPOL)"
     },
     "real": {
@@ -272,13 +272,13 @@
     "giro": {
      "valor": 0.0,
      "puntos": 0,
-     "fecha": "2026-10-05",
+     "fecha": "2026-10-12",
      "fuente": null
     },
     "riesgo": {
-     "valor": 16.87,
+     "valor": 17.47,
      "puntos": 0,
-     "fecha": "2026-10-14",
+     "fecha": "2026-10-15",
      "fuente": null
     }
    },
@@ -296,7 +296,7 @@
     "tipo": {
      "valor": 0.0,
      "puntos": -1,
-     "fecha": "2026-10-06",
+     "fecha": "2026-10-13",
      "fuente": "BIS · tipos de política (WS_CBPOL)"
     },
     "real": {
@@ -320,13 +320,13 @@
     "giro": {
      "valor": 0.0,
      "puntos": 0,
-     "fecha": "2026-10-06",
+     "fecha": "2026-10-13",
      "fuente": null
     },
     "riesgo": {
-     "valor": 16.87,
+     "valor": 17.47,
      "puntos": 0,
-     "fecha": "2026-10-14",
+     "fecha": "2026-10-15",
      "fuente": null
     }
    },
@@ -372,9 +372,9 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 16.87,
+     "valor": 17.47,
      "puntos": 0,
-     "fecha": "2026-10-14",
+     "fecha": "2026-10-15",
      "fuente": null
     }
    },
@@ -412,8 +412,8 @@
   }
  ],
  "riesgo": {
-  "vix": 16.87,
-  "fecha": "2026-10-14",
+  "vix": 17.47,
+  "fecha": "2026-10-15",
   "regimen": "NEUTRAL"
  },
  "boj": {
@@ -426,7 +426,7 @@
  },
  "anio_weo": "2026",
  "esencial": {
-  "cambio": "Sesgo macro más fuerte: AUD (+5); más débil: JPY (-3). Riesgo neutral (VIX 16.9).",
+  "cambio": "Sesgo macro más fuerte: AUD (+5); más débil: JPY (-3). Riesgo neutral (VIX 17.5).",
   "significa": "Hecho: la suma de seis factores objetivos coloca a esa divisa arriba y a la otra abajo. Interpretación: la combinación de tipos, crecimiento y giro de política respalda a la primera frente a la segunda; no dice que vaya a subir ni a bajar.",
   "vigilar": "Próximas reuniones de bancos centrales (calendario), la sorpresa de inflación y el VIX: un VIX por encima de 22 o por debajo de 16 cambia el factor de riesgo de golpe."
  },
@@ -455,6 +455,6 @@
   }
  ],
  "ok": true,
- "generado_utc": "2026-10-15 07:14 UTC",
- "duracion_s": 10.9
+ "generado_utc": "2026-10-15 08:30 UTC",
+ "duracion_s": 8.6
 }

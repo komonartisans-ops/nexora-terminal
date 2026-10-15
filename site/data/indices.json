@@ -1,8 +1,8 @@
 {
  "ok": true,
- "generado_utc": "2026-10-15 07:14 UTC",
+ "generado_utc": "2026-10-15 08:30 UTC",
  "metricas": {
-  "generado_utc": "2026-10-15 07:17 UTC",
+  "generado_utc": "2026-10-15 08:33 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer los índices (S&P 500 · Nasdaq 100 · US30 · Russell 2000)",
   "indices": {
    "S&P 500": {
@@ -202,34 +202,34 @@
   },
   "tiempo_real": {
    "SPY": {
-    "precio": 769.6,
-    "cambio_pct": -1.08,
-    "hora": "Oct 14, 2026",
-    "estado_mercado": "Closed"
+    "precio": 767.2089,
+    "cambio_pct": -0.31,
+    "hora": "Oct 15, 2026 4:34 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "QQQ": {
-    "precio": 728.95,
-    "cambio_pct": -1.97,
-    "hora": "Oct 14, 2026",
-    "estado_mercado": "Closed"
+    "precio": 720.41,
+    "cambio_pct": -1.17,
+    "hora": "Oct 15, 2026 4:34 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "DIA": {
-    "precio": 515.63,
-    "cambio_pct": -0.11,
-    "hora": "Oct 14, 2026",
-    "estado_mercado": "Closed"
+    "precio": 517.36,
+    "cambio_pct": 0.34,
+    "hora": "Oct 15, 2026 4:35 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "IWM": {
-    "precio": 271.37,
-    "cambio_pct": -1.93,
-    "hora": "Oct 14, 2026",
-    "estado_mercado": "Closed"
+    "precio": 272.03,
+    "cambio_pct": 0.24,
+    "hora": "Oct 15, 2026 4:34 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "NDX": {
     "precio": 29950.82,
     "cambio_pct": -2.02,
     "hora": "Oct 14, 2026",
-    "estado_mercado": "Closed"
+    "estado_mercado": "Pre-Market"
    }
   },
   "t2Y": {
@@ -720,10 +720,10 @@
     "id": "fedwatch",
     "dato": "FedWatch",
     "que_mirar": "Recortes/subidas descontados",
-    "dir": "↑",
+    "dir": "→",
     "valor": "2026-10-28: subida 28 % · mantener 72 % · bajada 0 %",
-    "estado": "DESFAVORABLE",
-    "lectura": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones +5 pb en 5 sesiones · Más restricción",
+    "estado": "NEUTRAL",
+    "lectura": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones +4 pb en 5 sesiones · Sin cambio",
     "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-15",
     "puntua": true
    },
@@ -841,7 +841,7 @@
   "entorno": {
    "lectura": "MIXTO",
    "risk_on": 2,
-   "risk_off": 3,
+   "risk_off": 2,
    "sin_dato": 0,
    "disponibles": 7,
    "condiciones": [
@@ -878,7 +878,7 @@
     {
      "id": "fedwatch",
      "condicion": "FedWatch más relajado",
-     "estado": "RISK-OFF"
+     "estado": "NEUTRAL"
     }
    ],
    "liquidez": "NEUTRAL",
@@ -988,7 +988,7 @@
     "par": "2Y ↔ FedWatch",
     "busca": "2Y ↓ + más recortes descontados",
     "estado": "NO SE CUMPLE",
-    "detalle": "2Y +3 pb · FedWatch DESFAVORABLE",
+    "detalle": "2Y +3 pb · FedWatch NEUTRAL",
     "lectura": "Relajación de expectativas de tipos"
    },
    {
@@ -1203,7 +1203,7 @@
     "paso": "MACRO",
     "que": "2Y → 10Y → 10Y real → DXY → NFCI → FedWatch → VIX",
     "estado": "NEUTRAL",
-    "detalle": "MIXTO: 2 risk-on, 3 risk-off, 0 sin dato de 7"
+    "detalle": "MIXTO: 2 risk-on, 2 risk-off, 0 sin dato de 7"
    },
    {
     "n": 2,
@@ -1276,7 +1276,7 @@
    {
     "n": 3,
     "pregunta": "¿FedWatch está relajándose o endureciéndose?",
-    "respuesta": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones +5 pb en 5 sesiones · Más restricción Proxy letras: +7 pb en 5 sesiones."
+    "respuesta": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones +4 pb en 5 sesiones · Sin cambio Proxy letras: +7 pb en 5 sesiones."
    },
    {
     "n": 4,

@@ -8,7 +8,7 @@
    "iso3": "USA",
    "moneda": "USD",
    "tipo": 3.875,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2026-09-17",
     "delta": 0.25,
@@ -47,7 +47,7 @@
    "iso3": "EURO",
    "moneda": "EUR",
    "tipo": 2.5,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2026-09-16",
     "delta": 0.25,
@@ -65,12 +65,12 @@
    },
    "motivo_sin_proxima": null,
    "fx": {
-    "valor": 0.88739,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -3.04,
-    "ref_fecha": "2026-09-04",
+    "valor": 0.893815,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -3.49,
+    "ref_fecha": "2026-09-11",
     "moneda": "EUR",
-    "por_usd": 0.88739
+    "por_usd": 0.893815
    },
    "inflacion": {
     "valor": 2.1,
@@ -93,7 +93,7 @@
    "iso3": "JPN",
    "moneda": "JPY",
    "tipo": 1.25,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2026-09-24",
     "delta": 0.25,
@@ -111,12 +111,12 @@
    },
    "motivo_sin_proxima": null,
    "fx": {
-    "valor": 158.088562,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -1.17,
-    "ref_fecha": "2026-09-04",
+    "valor": 158.124777,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -2.58,
+    "ref_fecha": "2026-09-11",
     "moneda": "JPY",
-    "por_usd": 158.088562
+    "por_usd": 158.124777
    },
    "inflacion": {
     "valor": 3.2,
@@ -139,7 +139,7 @@
    "iso3": "GBR",
    "moneda": "GBP",
    "tipo": 3.75,
-   "fecha_dato": "2026-10-05",
+   "fecha_dato": "2026-10-12",
    "ultimo_movimiento": {
     "fecha": "2025-12-18",
     "delta": -0.25,
@@ -157,12 +157,12 @@
    },
    "motivo_sin_proxima": null,
    "fx": {
-    "valor": 0.753217,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -1.87,
-    "ref_fecha": "2026-09-04",
+    "valor": 0.754916,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -1.94,
+    "ref_fecha": "2026-09-11",
     "moneda": "GBP",
-    "por_usd": 0.753217
+    "por_usd": 0.754916
    },
    "inflacion": {
     "valor": 3.4,
@@ -185,7 +185,7 @@
    "iso3": "CHE",
    "moneda": "CHF",
    "tipo": 0.0,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2025-06-20",
     "delta": -0.25,
@@ -203,12 +203,12 @@
    },
    "motivo_sin_proxima": null,
    "fx": {
-    "valor": 0.830508,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -2.56,
-    "ref_fecha": "2026-09-04",
+    "valor": 0.83232,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -2.04,
+    "ref_fecha": "2026-09-11",
     "moneda": "CHF",
-    "por_usd": 0.830508
+    "por_usd": 0.83232
    },
    "inflacion": {
     "valor": 0.2,
@@ -231,7 +231,7 @@
    "iso3": "CAN",
    "moneda": "CAD",
    "tipo": 2.25,
-   "fecha_dato": "2026-10-05",
+   "fecha_dato": "2026-10-12",
    "ultimo_movimiento": {
     "fecha": "2025-10-30",
     "delta": -0.25,
@@ -249,12 +249,12 @@
    },
    "motivo_sin_proxima": null,
    "fx": {
-    "valor": 1.424971,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -3.16,
-    "ref_fecha": "2026-09-04",
+    "valor": 1.424115,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -2.69,
+    "ref_fecha": "2026-09-11",
     "moneda": "CAD",
-    "por_usd": 1.424971
+    "por_usd": 1.424115
    },
    "inflacion": {
     "valor": 2.1,
@@ -276,15 +276,15 @@
    "pais": "Australia",
    "iso3": "AUS",
    "moneda": "AUD",
-   "tipo": 4.35,
-   "fecha_dato": "2026-09-24",
+   "tipo": 4.6,
+   "fecha_dato": "2026-10-08",
    "ultimo_movimiento": {
-    "fecha": "2026-05-06",
+    "fecha": "2026-09-30",
     "delta": 0.25,
     "direccion": "SUBE",
-    "dias": 162
+    "dias": 15
    },
-   "cambio_12m": 0.75,
+   "cambio_12m": 1.0,
    "dir_12m": "SUBE",
    "proxima": {
     "fecha": "2026-11-03",
@@ -295,12 +295,12 @@
    },
    "motivo_sin_proxima": null,
    "fx": {
-    "valor": 1.432248,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -3.07,
-    "ref_fecha": "2026-09-04",
+    "valor": 1.433053,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -2.71,
+    "ref_fecha": "2026-09-11",
     "moneda": "AUD",
-    "por_usd": 1.432248
+    "por_usd": 1.433053
    },
    "inflacion": {
     "valor": 2.8,
@@ -323,24 +323,24 @@
    "iso3": "NZL",
    "moneda": "NZD",
    "tipo": 2.75,
-   "fecha_dato": "2026-10-02",
+   "fecha_dato": "2026-10-09",
    "ultimo_movimiento": {
     "fecha": "2026-09-03",
     "delta": 0.25,
     "direccion": "SUBE",
     "dias": 42
    },
-   "cambio_12m": -0.25,
-   "dir_12m": "BAJA",
+   "cambio_12m": 0.25,
+   "dir_12m": "SUBE",
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 1.780193,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -4.52,
-    "ref_fecha": "2026-09-04",
+    "valor": 1.781462,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -3.57,
+    "ref_fecha": "2026-09-11",
     "moneda": "NZD",
-    "por_usd": 1.780193
+    "por_usd": 1.781462
    },
    "inflacion": {
     "valor": 2.8,
@@ -363,7 +363,7 @@
    "iso3": "SWE",
    "moneda": "SEK",
    "tipo": 1.75,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2025-10-01",
     "delta": -0.25,
@@ -381,12 +381,12 @@
    },
    "motivo_sin_proxima": null,
    "fx": {
-    "valor": 9.976484,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -4.26,
-    "ref_fecha": "2026-09-04",
+    "valor": 9.983733,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -2.9,
+    "ref_fecha": "2026-09-11",
     "moneda": "SEK",
-    "por_usd": 9.976484
+    "por_usd": 9.983733
    },
    "inflacion": {
     "valor": 2.6,
@@ -498,7 +498,7 @@
    "iso3": "NOR",
    "moneda": "NOK",
    "tipo": 4.5,
-   "fecha_dato": "2026-10-02",
+   "fecha_dato": "2026-10-08",
    "ultimo_movimiento": {
     "fecha": "2026-09-25",
     "delta": 0.25,
@@ -510,12 +510,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 9.564291,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -2.81,
-    "ref_fecha": "2026-09-04",
+    "valor": 9.535663,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -2.47,
+    "ref_fecha": "2026-09-11",
     "moneda": "NOK",
-    "por_usd": 9.564291
+    "por_usd": 9.535663
    },
    "inflacion": {
     "valor": 3,
@@ -651,7 +651,7 @@
    "iso3": "DNK",
    "moneda": "DKK",
    "tipo": 2.1,
-   "fecha_dato": "2026-10-05",
+   "fecha_dato": "2026-10-12",
    "ultimo_movimiento": {
     "fecha": "2026-09-11",
     "delta": 0.25,
@@ -663,12 +663,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 6.632975,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -3.04,
-    "ref_fecha": "2026-09-04",
+    "valor": 6.681534,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -3.49,
+    "ref_fecha": "2026-09-11",
     "moneda": "DKK",
-    "por_usd": 6.632975
+    "por_usd": 6.681534
    },
    "inflacion": {
     "valor": 1.8,
@@ -808,7 +808,7 @@
    "iso3": "ISL",
    "moneda": "ISK",
    "tipo": 8.0,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2026-08-19",
     "delta": 0.25,
@@ -820,12 +820,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 122.28,
-    "fecha": "2026-10-05",
-    "cambio_1m_pct": -0.92,
-    "ref_fecha": "2026-09-04",
+    "valor": 121.99,
+    "fecha": "2026-10-12",
+    "cambio_1m_pct": -1.28,
+    "ref_fecha": "2026-09-11",
     "moneda": "ISK",
-    "por_usd": 122.28
+    "por_usd": 121.99
    },
    "inflacion": {
     "valor": 4.1,
@@ -1017,24 +1017,24 @@
    "iso3": "POL",
    "moneda": "PLN",
    "tipo": 3.75,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2026-03-05",
     "delta": -0.25,
     "direccion": "BAJA",
     "dias": 224
    },
-   "cambio_12m": -1.0,
+   "cambio_12m": -0.75,
    "dir_12m": "BAJA",
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 3.873458,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -4.15,
-    "ref_fecha": "2026-09-04",
+    "valor": 3.912049,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -4.63,
+    "ref_fecha": "2026-09-11",
     "moneda": "PLN",
-    "por_usd": 3.873458
+    "por_usd": 3.912049
    },
    "inflacion": {
     "valor": 3.6,
@@ -1154,7 +1154,7 @@
    "iso3": "CZE",
    "moneda": "CZK",
    "tipo": 3.75,
-   "fecha_dato": "2026-10-05",
+   "fecha_dato": "2026-10-12",
    "ultimo_movimiento": {
     "fecha": "2026-06-19",
     "delta": 0.25,
@@ -1166,12 +1166,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 21.656757,
-    "fecha": "2026-10-06",
+    "valor": 21.780479,
+    "fecha": "2026-10-13",
     "cambio_1m_pct": -3.9,
-    "ref_fecha": "2026-09-04",
+    "ref_fecha": "2026-09-11",
     "moneda": "CZK",
-    "por_usd": 21.656757
+    "por_usd": 21.780479
    },
    "inflacion": {
     "valor": 2.5,
@@ -1323,7 +1323,7 @@
    "iso3": "HUN",
    "moneda": "HUF",
    "tipo": 5.5,
-   "fecha_dato": "2026-09-30",
+   "fecha_dato": "2026-10-07",
    "ultimo_movimiento": {
     "fecha": "2026-08-26",
     "delta": -0.25,
@@ -1335,12 +1335,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 323.853048,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -3.48,
-    "ref_fecha": "2026-09-04",
+    "valor": 325.62567,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -3.45,
+    "ref_fecha": "2026-09-11",
     "moneda": "HUF",
-    "por_usd": 323.853048
+    "por_usd": 325.62567
    },
    "inflacion": {
     "valor": 4.4,
@@ -1540,7 +1540,7 @@
    "iso3": "ROU",
    "moneda": "RON",
    "tipo": 6.5,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2024-08-08",
     "delta": -0.25,
@@ -1552,12 +1552,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 4.748425,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -4.81,
-    "ref_fecha": "2026-09-04",
+    "valor": 4.769664,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -4.96,
+    "ref_fecha": "2026-09-11",
     "moneda": "RON",
-    "por_usd": 4.748425
+    "por_usd": 4.769664
    },
    "inflacion": {
     "valor": 7.3,
@@ -1677,7 +1677,7 @@
    "iso3": "SRB",
    "moneda": "RSD",
    "tipo": 5.75,
-   "fecha_dato": "2026-09-30",
+   "fecha_dato": "2026-10-12",
    "ultimo_movimiento": {
     "fecha": "2024-09-12",
     "delta": -0.25,
@@ -1689,12 +1689,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 103.6668,
-    "fecha": "2026-09-30",
-    "cambio_1m_pct": -2.34,
-    "ref_fecha": "2026-08-31",
+    "valor": 104.7192,
+    "fecha": "2026-10-12",
+    "cambio_1m_pct": -3.46,
+    "ref_fecha": "2026-09-11",
     "moneda": "RSD",
-    "por_usd": 103.6668
+    "por_usd": 104.7192
    },
    "inflacion": {
     "valor": 3.9,
@@ -1870,7 +1870,7 @@
    "iso3": "MKD",
    "moneda": "MKD",
    "tipo": 4.25,
-   "fecha_dato": "2026-10-02",
+   "fecha_dato": "2026-10-09",
    "ultimo_movimiento": {
     "fecha": "2026-06-17",
     "delta": 0.25,
@@ -1882,12 +1882,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 54.57,
-    "fecha": "2026-10-02",
-    "cambio_1m_pct": -2.77,
-    "ref_fecha": "2026-09-02",
+    "valor": 55.15,
+    "fecha": "2026-10-09",
+    "cambio_1m_pct": -4.06,
+    "ref_fecha": "2026-09-09",
     "moneda": "MKD",
-    "por_usd": 54.57
+    "por_usd": 55.15
    },
    "inflacion": {
     "valor": 4.1,
@@ -2039,7 +2039,7 @@
    "iso3": "TUR",
    "moneda": "TRY",
    "tipo": 37.0,
-   "fecha_dato": "2026-10-02",
+   "fecha_dato": "2026-10-09",
    "ultimo_movimiento": {
     "fecha": "2026-01-23",
     "delta": -1.0,
@@ -2051,12 +2051,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 49.178809,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -1.5,
-    "ref_fecha": "2026-09-04",
+    "valor": 49.367626,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -1.56,
+    "ref_fecha": "2026-09-11",
     "moneda": "TRY",
-    "por_usd": 49.178809
+    "por_usd": 49.367626
    },
    "inflacion": {
     "valor": 34.9,
@@ -2264,7 +2264,7 @@
    "iso3": "RUS",
    "moneda": "RUB",
    "tipo": 14.0,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2026-07-27",
     "delta": -0.25,
@@ -2276,12 +2276,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 84.9309,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": 1.95,
-    "ref_fecha": "2026-09-05",
+    "valor": 83.9153,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": 0.41,
+    "ref_fecha": "2026-09-12",
     "moneda": "RUB",
-    "por_usd": 84.9309
+    "por_usd": 83.9153
    },
    "inflacion": {
     "valor": 8.7,
@@ -2553,12 +2553,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 3.048008,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -1.33,
-    "ref_fecha": "2026-09-04",
+    "valor": 3.07508,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -0.97,
+    "ref_fecha": "2026-09-11",
     "moneda": "ILS",
-    "por_usd": 3.048008
+    "por_usd": 3.07508
    },
    "inflacion": {
     "valor": 3,
@@ -2658,7 +2658,7 @@
    "iso3": "SAU",
    "moneda": "SAR",
    "tipo": 4.5,
-   "fecha_dato": "2026-09-30",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2026-09-16",
     "delta": 0.25,
@@ -2671,9 +2671,9 @@
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
     "valor": 3.75,
-    "fecha": "2026-09-30",
+    "fecha": "2026-10-13",
     "cambio_1m_pct": 0.0,
-    "ref_fecha": "2026-08-31",
+    "ref_fecha": "2026-09-11",
     "moneda": "SAR",
     "por_usd": 3.75
    },
@@ -2807,7 +2807,7 @@
    "iso3": "KWT",
    "moneda": "KWD",
    "tipo": 3.5,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2025-12-11",
     "delta": -0.25,
@@ -2819,12 +2819,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 0.30815,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -0.37,
-    "ref_fecha": "2026-09-03",
+    "valor": 0.3083,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -0.54,
+    "ref_fecha": "2026-09-10",
     "moneda": "KWD",
-    "por_usd": 0.30815
+    "por_usd": 0.3083
    },
    "inflacion": {
     "valor": 2.4,
@@ -2924,7 +2924,7 @@
    "iso3": "ZAF",
    "moneda": "ZAR",
    "tipo": 7.25,
-   "fecha_dato": "2026-10-05",
+   "fecha_dato": "2026-10-12",
    "ultimo_movimiento": {
     "fecha": "2026-09-25",
     "delta": 0.25,
@@ -2936,12 +2936,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 16.490283,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -3.17,
-    "ref_fecha": "2026-09-04",
+    "valor": 16.496335,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -2.05,
+    "ref_fecha": "2026-09-11",
     "moneda": "ZAR",
-    "por_usd": 16.490283
+    "por_usd": 16.496335
    },
    "inflacion": {
     "valor": 3.2,
@@ -3166,7 +3166,7 @@
    "iso3": "CHN",
    "moneda": "CNY",
    "tipo": 3.0,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2025-05-20",
     "delta": -0.1,
@@ -3178,12 +3178,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 6.704588,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": 0.09,
-    "ref_fecha": "2026-09-04",
+    "valor": 6.693779,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": 0.22,
+    "ref_fecha": "2026-09-11",
     "moneda": "CNY",
-    "por_usd": 6.704588
+    "por_usd": 6.693779
    },
    "inflacion": {
     "valor": 0,
@@ -3279,7 +3279,7 @@
    "iso3": "HKG",
    "moneda": "HKD",
    "tipo": 4.25,
-   "fecha_dato": "2026-09-29",
+   "fecha_dato": "2026-10-07",
    "ultimo_movimiento": {
     "fecha": "2026-09-17",
     "delta": 0.25,
@@ -3291,12 +3291,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 7.847901,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -0.1,
-    "ref_fecha": "2026-09-04",
+    "valor": 7.847873,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -0.08,
+    "ref_fecha": "2026-09-11",
     "moneda": "HKD",
-    "por_usd": 7.847901
+    "por_usd": 7.847873
    },
    "inflacion": {
     "valor": 1.4,
@@ -3732,12 +3732,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 96.425149,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -2.01,
-    "ref_fecha": "2026-09-04",
+    "valor": 95.280658,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": 0.29,
+    "ref_fecha": "2026-09-11",
     "moneda": "INR",
-    "por_usd": 96.425149
+    "por_usd": 95.280658
    },
    "inflacion": {
     "valor": 2,
@@ -3865,7 +3865,7 @@
    "iso3": "KOR",
    "moneda": "KRW",
    "tipo": 3.0,
-   "fecha_dato": "2026-08-28",
+   "fecha_dato": "2026-10-08",
    "ultimo_movimiento": {
     "fecha": "2026-08-27",
     "delta": 0.25,
@@ -3877,12 +3877,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 1338.778951,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": 0.86,
-    "ref_fecha": "2026-09-04",
+    "valor": 1341.446192,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": 0.1,
+    "ref_fecha": "2026-09-11",
     "moneda": "KRW",
-    "por_usd": 1338.778951
+    "por_usd": 1341.446192
    },
    "inflacion": {
     "valor": 2.1,
@@ -4018,12 +4018,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 17840.802201,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -1.15,
-    "ref_fecha": "2026-09-04",
+    "valor": 17880.64891,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -1.55,
+    "ref_fecha": "2026-09-11",
     "moneda": "IDR",
-    "por_usd": 17840.802201
+    "por_usd": 17880.64891
    },
    "inflacion": {
     "valor": 1.9,
@@ -4219,7 +4219,7 @@
    "iso3": "MYS",
    "moneda": "MYR",
    "tipo": 2.75,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2025-07-09",
     "delta": -0.25,
@@ -4231,12 +4231,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 4.085012,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -0.99,
-    "ref_fecha": "2026-09-04",
+    "valor": 4.085985,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -0.38,
+    "ref_fecha": "2026-09-11",
     "moneda": "MYR",
-    "por_usd": 4.085012
+    "por_usd": 4.085985
    },
    "inflacion": {
     "valor": 1.4,
@@ -4312,7 +4312,7 @@
    "iso3": "THA",
    "moneda": "THB",
    "tipo": 1.0,
-   "fecha_dato": "2026-10-01",
+   "fecha_dato": "2026-10-08",
    "ultimo_movimiento": {
     "fecha": "2026-02-25",
     "delta": -0.25,
@@ -4324,12 +4324,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 33.575295,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -1.95,
-    "ref_fecha": "2026-09-04",
+    "valor": 33.58956,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -1.56,
+    "ref_fecha": "2026-09-11",
     "moneda": "THB",
-    "por_usd": 33.575295
+    "por_usd": 33.58956
    },
    "inflacion": {
     "valor": -0.1,
@@ -4449,7 +4449,7 @@
    "iso3": "PHL",
    "moneda": "PHP",
    "tipo": 5.0,
-   "fecha_dato": "2026-10-02",
+   "fecha_dato": "2026-10-09",
    "ultimo_movimiento": {
     "fecha": "2026-08-28",
     "delta": 0.25,
@@ -4461,12 +4461,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 62.740261,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -0.14,
-    "ref_fecha": "2026-09-04",
+    "valor": 62.768144,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -0.22,
+    "ref_fecha": "2026-09-11",
     "moneda": "PHP",
-    "por_usd": 62.740261
+    "por_usd": 62.768144
    },
    "inflacion": {
     "valor": 1.7,
@@ -4634,7 +4634,7 @@
    "iso3": "BRA",
    "moneda": "BRL",
    "tipo": 13.75,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2026-09-17",
     "delta": -0.25,
@@ -4646,12 +4646,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 4.968586,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": 2.87,
-    "ref_fecha": "2026-09-04",
+    "valor": 5.016536,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": 1.88,
+    "ref_fecha": "2026-09-11",
     "moneda": "BRL",
-    "por_usd": 4.968586
+    "por_usd": 5.016536
    },
    "inflacion": {
     "valor": 5,
@@ -4903,7 +4903,7 @@
    "iso3": "MEX",
    "moneda": "MXN",
    "tipo": 6.5,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2026-05-08",
     "delta": -0.25,
@@ -4915,12 +4915,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 17.944538,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -5.83,
-    "ref_fecha": "2026-09-04",
+    "valor": 18.334465,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -7.4,
+    "ref_fecha": "2026-09-11",
     "moneda": "MXN",
-    "por_usd": 17.944538
+    "por_usd": 18.334465
    },
    "inflacion": {
     "valor": 3.8,
@@ -5172,7 +5172,7 @@
    "iso3": "CHL",
    "moneda": "CLP",
    "tipo": 4.5,
-   "fecha_dato": "2026-10-06",
+   "fecha_dato": "2026-10-13",
    "ultimo_movimiento": {
     "fecha": "2025-12-17",
     "delta": -0.25,
@@ -5184,12 +5184,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 977.25,
-    "fecha": "2026-10-06",
-    "cambio_1m_pct": -4.48,
-    "ref_fecha": "2026-09-04",
+    "valor": 978.61,
+    "fecha": "2026-10-13",
+    "cambio_1m_pct": -4.23,
+    "ref_fecha": "2026-09-11",
     "moneda": "CLP",
-    "por_usd": 977.25
+    "por_usd": 978.61
    },
    "inflacion": {
     "valor": 4.2,
@@ -5361,7 +5361,7 @@
    "iso3": "COL",
    "moneda": "COP",
    "tipo": 12.25,
-   "fecha_dato": "2026-10-02",
+   "fecha_dato": "2026-10-09",
    "ultimo_movimiento": {
     "fecha": "2026-10-01",
     "delta": 0.25,
@@ -5373,12 +5373,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 3307.73,
-    "fecha": "2026-10-02",
-    "cambio_1m_pct": -3.74,
-    "ref_fecha": "2026-09-02",
+    "valor": 3218.75,
+    "fecha": "2026-10-09",
+    "cambio_1m_pct": -3.18,
+    "ref_fecha": "2026-09-09",
     "moneda": "COP",
-    "por_usd": 3307.73
+    "por_usd": 3218.75
    },
    "inflacion": {
     "valor": 5.1,
@@ -5634,7 +5634,7 @@
    "iso3": "PER",
    "moneda": "PEN",
    "tipo": 4.25,
-   "fecha_dato": "2026-10-02",
+   "fecha_dato": "2026-10-12",
    "ultimo_movimiento": {
     "fecha": "2025-09-12",
     "delta": -0.25,
@@ -5646,12 +5646,12 @@
    "proxima": null,
    "motivo_sin_proxima": "No se ha localizado un calendario oficial legible por máquina: no se estima",
    "fx": {
-    "valor": 3.4505,
-    "fecha": "2026-10-01",
-    "cambio_1m_pct": -2.51,
-    "ref_fecha": "2026-09-01",
+    "valor": 3.4535,
+    "fecha": "2026-10-09",
+    "cambio_1m_pct": -2.75,
+    "ref_fecha": "2026-09-09",
     "moneda": "PEN",
-    "por_usd": 3.4505
+    "por_usd": 3.4535
    },
    "inflacion": {
     "valor": 1.5,
@@ -5860,11 +5860,11 @@
  "n_bancos": 38,
  "n_catalogo": 38,
  "contador": {
-  "sube": 11,
-  "baja": 18,
+  "sube": 12,
+  "baja": 17,
   "sin_cambios": 9,
   "total": 38,
-  "amplitud": -0.184,
+  "amplitud": -0.132,
   "tipos": "RELAJACIÓN",
   "tipos_por_numero": "MIXTA",
   "ponderado_pib": true,
@@ -5872,6 +5872,7 @@
    "XM",
    "JP",
    "AU",
+   "NZ",
    "NO",
    "DK",
    "IS",
@@ -5885,7 +5886,6 @@
    "US",
    "GB",
    "CA",
-   "NZ",
    "PL",
    "HU",
    "MK",
@@ -5944,7 +5944,7 @@
  "lectura": {
   "etiqueta": "SEÑALES CONTRADICTORIAS (tipos a la baja, balances en contracción)",
   "revision": "Regla revisada el 15-10-2026; con la anterior (un voto por banco y balance medido en USD) salía ALGO RESTRICTIVA.",
-  "texto": "tipos: 11 suben y 18 bajan de 38 bancos (por número: mixta; ponderado por PIB: 28 % del PIB sube, 50 % baja → relajación); balance Fed+BCE+BoJ se contrae (-2,5 % a 12 meses en moneda local; -5,8 % medido en USD).",
+  "texto": "tipos: 12 suben y 17 bajan de 38 bancos (por número: mixta; ponderado por PIB: 28 % del PIB sube, 50 % baja → relajación); balance Fed+BCE+BoJ se contrae (-2,5 % a 12 meses en moneda local; -5,8 % medido en USD).",
   "regla": "Dos patas que se combinan con una tabla fija. (1) TIPOS: movimiento de cada banco = tipo hoy − tipo hace 365 días, en puntos porcentuales NOMINALES (no se descuenta la inflación, es decir, no son tipos reales). SUBE ≥ +0,10 pp, BAJA ≤ −0,10 pp. Amplitud = (peso que sube − peso que baja) / peso total con dato, con cada banco ponderado por el PIB NOMINAL en USD de su economía (FMI WEO; zona euro = suma de sus países): una Fed o un BCE pesan mucho más que Macedonia o Islandia. ≥ +0,20 ENDURECIMIENTO, ≤ −0,20 RELAJACIÓN, entre medias MIXTA. Los bancos sin cambios cuentan en el denominador y diluyen la amplitud. El recuento por número (un voto por banco) se muestra al lado y se usa solo si falta algún PIB. (2) BALANCE: Fed + BCE + BoJ; variación a 12 meses de cada balance en su MONEDA LOCAL (sin efecto divisa), ponderada por su tamaño en USD a la fecha de referencia. ≥ +2 % EXPANDE, ≤ −2 % SE CONTRAE, entre medias PLANO. El PBoC no entra. (3) COMBINACIÓN: tabla de abajo. Con tipos MIXTA y balance que se contrae, la lectura es «ALGO RESTRICTIVA»: el balance desempata cuando los tipos no tienen dirección clara. Es una convención fija de NEXORA, no un modelo ajustado ni validado contra mercado. CAMBIO respecto a la versión anterior: antes un voto por banco y balance medido en USD.",
   "combinacion": [
    {
@@ -6000,10 +6000,10 @@
   }
  },
  "amplitud_ponderada": {
-  "sube_pct": 27.8,
-  "baja_pct": 50.5,
+  "sube_pct": 28.1,
+  "baja_pct": 50.2,
   "sin_cambios_pct": 21.7,
-  "amplitud": -0.226,
+  "amplitud": -0.222,
   "tipos": "RELAJACIÓN",
   "ano_pib": 2025,
   "fuente": "FMI WEO · NGDPD (PIB nominal en USD)",
@@ -6914,8 +6914,12 @@
     4.35
    ],
    [
+    "2026-09-30",
+    4.6
+   ],
+   [
     "2026-10-15",
-    4.35
+    4.6
    ]
   ],
   "NZ": [
@@ -11072,6 +11076,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-15 07:14 UTC",
- "duracion_s": 19.5
+ "generado_utc": "2026-10-15 08:30 UTC",
+ "duracion_s": 13.7
 }

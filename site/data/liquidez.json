@@ -1,6 +1,6 @@
 {
  "metricas": {
-  "generado_utc": "2026-10-15T07:17:45Z",
+  "generado_utc": "2026-10-15T08:33:21Z",
   "errores": {},
   "reservas": {
    "fecha": "2026-10-07",
@@ -250,20 +250,20 @@
   },
   "adicionales": {
    "stablecoins": {
-    "valor_B": 305.5551882117,
-    "delta_30d_B": 1.8579519456999947,
-    "pct_30d": 0.611777692989167,
-    "delta_7d_B": -1.7770703672999844
+    "valor_B": 305.52268758104,
+    "delta_30d_B": 1.8254513150399703,
+    "pct_30d": 0.6010760379265052,
+    "delta_7d_B": -1.8095709979600088
    },
    "funding_btc": {
-    "anualizado_7d_pct": 2.6208192271356885,
-    "anualizado_30d_pct": 4.581518660638852,
-    "hasta": "2026-10-15T00:00"
+    "anualizado_7d_pct": 2.566699769663066,
+    "anualizado_30d_pct": 4.603926554090381,
+    "hasta": "2026-10-15T08:00"
    },
    "funding_eth": {
-    "anualizado_7d_pct": 0.19322039861033866,
-    "anualizado_30d_pct": 3.6334870558449675,
-    "hasta": "2026-10-15T00:00"
+    "anualizado_7d_pct": 0.4242072041215978,
+    "anualizado_30d_pct": 3.6234795746101938,
+    "hasta": "2026-10-15T08:00"
    },
    "oi_btc": {
     "valor_B": 3.3202078563113,
@@ -276,11 +276,11 @@
     "fecha": "2026-10-14"
    },
    "mercado": {
-    "mcap_total_usd": 2723965591423.461,
-    "volumen_24h_usd": 47091915122453.0,
-    "dominancia_btc_pct": 59.486456420849684,
-    "dominancia_eth_pct": 10.534779100387617,
-    "mcap_cambio_24h_pct": -6.148046776729727
+    "mcap_total_usd": 2713386901352.003,
+    "volumen_24h_usd": 46573128210663.59,
+    "dominancia_btc_pct": 60.00569302836334,
+    "dominancia_eth_pct": 10.64984182987645,
+    "mcap_cambio_24h_pct": -5.800349481531816
    }
   },
   "contexto": {
@@ -332,41 +332,41 @@
    },
    "dvol": {
     "fecha": "2026-10-15",
-    "valor": 39.67,
-    "media_30d": 36.35966666666667,
-    "percentil_1a": 35.57951482479784
+    "valor": 39.3,
+    "media_30d": 36.34733333333333,
+    "percentil_1a": 33.42318059299191
    },
    "opciones": {
-    "put_call_oi": 0.6203041515556442,
-    "oi_total_btc": 396872.6,
-    "precio_ref": 80959.46,
+    "put_call_oi": 0.6164749756672302,
+    "oi_total_btc": 394440.1,
+    "precio_ref": 81170.76,
     "vencimientos": [
      {
       "fecha": "2026-10-30",
-      "oi_btc": 147791.9000000001,
-      "nocional_B": 11.96515241637401
+      "oi_btc": 147848.1000000001,
+      "nocional_B": 12.000942641556007
      },
      {
       "fecha": "2026-10-16",
-      "oi_btc": 17509.6,
-      "nocional_B": 1.417567760816
+      "oi_btc": 17713.1,
+      "nocional_B": 1.437785788956
      },
      {
       "fecha": "2026-10-23",
-      "oi_btc": 12604.099999999999,
-      "nocional_B": 1.020421129786
+      "oi_btc": 12645.600000000002,
+      "nocional_B": 1.0264529626560002
      }
     ]
    },
    "usdt": {
-    "valor_B": 183.85374191294,
-    "delta_30d_B": 0.5528183519400045,
-    "pct_30d": 0.30159059823614814
+    "valor_B": 183.86204006717,
+    "delta_30d_B": 0.5611165061700092,
+    "pct_30d": 0.30611766447716643
    },
    "usdc": {
-    "valor_B": 72.77079203264,
-    "delta_30d_B": -1.646739870359994,
-    "pct_30d": -2.212838598982895
+    "valor_B": 72.77144275562,
+    "delta_30d_B": -1.6460891473799961,
+    "pct_30d": -2.2119641773736887
    }
   }
  },
@@ -485,10 +485,10 @@
     "id": "fedwatch",
     "nombre": "CME FedWatch",
     "nivel": "núcleo",
-    "estado": "NEUTRAL",
-    "dir": "→",
+    "estado": "DESFAVORABLE",
+    "dir": "endurecimiento ↑",
     "valor": "2026-10-28: subida 28 % · mantener 72 % · bajada 0 %",
-    "detalle": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones +4 pb en 5 sesiones",
+    "detalle": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones +5 pb en 5 sesiones",
     "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-15",
     "frecuencia": "diaria"
    },
@@ -539,7 +539,7 @@
    "nfci": "↑",
    "dxy": "↑",
    "h41": "→",
-   "fedwatch": "→"
+   "fedwatch": "endurecimiento ↑"
   },
   "checklist": [
    {
@@ -596,7 +596,7 @@
    "cumple": 4,
    "sin_dato": 0,
    "total": 8,
-   "drenaje": 1
+   "drenaje": 2
   },
   "secuencia": [
    {
@@ -615,7 +615,7 @@
     "n": 3,
     "paso": "FedWatch más relajado",
     "estado": "NO CUMPLE",
-    "detalle": "→"
+    "detalle": "endurecimiento ↑"
    },
    {
     "n": 4,
@@ -650,7 +650,7 @@
   ],
   "nucleo": {
    "fav": 2,
-   "des": 1,
+   "des": 2,
    "n": 8
   },
   "contexto_13": {
@@ -720,22 +720,22 @@
     {
      "nombre": "Volatilidad implícita BTC (DVOL)",
      "estado": "NEUTRAL",
-     "valor": "39.7",
-     "lectura": "media 30d 36.4 · percentil 1 año 36",
+     "valor": "39.3",
+     "lectura": "media 30d 36.3 · percentil 1 año 33",
      "fuente": "Deribit"
     },
     {
      "nombre": "Opciones BTC: put/call (open interest)",
      "estado": "NEUTRAL",
      "valor": "0.62",
-     "lectura": "vencimientos grandes: 2026-10-30 147,792 BTC (~12.0 B$); 2026-10-16 17,510 BTC (~1.4 B$); 2026-10-23 12,604 BTC (~1.0 B$)",
+     "lectura": "vencimientos grandes: 2026-10-30 147,848 BTC (~12.0 B$); 2026-10-16 17,713 BTC (~1.4 B$); 2026-10-23 12,646 BTC (~1.0 B$)",
      "fuente": "Deribit"
     },
     {
      "nombre": "Oferta USDT",
      "estado": "NEUTRAL",
      "valor": "183.9 B$",
-     "lectura": "30d +0.6 B$ (+0.30%) · USDT ≈ demanda offshore",
+     "lectura": "30d +0.6 B$ (+0.31%) · USDT ≈ demanda offshore",
      "fuente": "DefiLlama"
     },
     {
@@ -8476,6 +8476,6 @@
  },
  "errores_historico": {},
  "ok": true,
- "generado_utc": "2026-10-15 07:14 UTC",
- "duracion_s": 59.3
+ "generado_utc": "2026-10-15 08:30 UTC",
+ "duracion_s": 57.8
 }
