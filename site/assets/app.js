@@ -123,9 +123,9 @@ function tick() {
 function head(eyebrow, titulo, lede, stamp) {
   return `<div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(titulo)}</h1><p class="lede">${lede}</p><div class="stamp">${stamp || ''}</div>`;
 }
-function essential(l1, l2, l3) {
+function essential(l1, l2, l3, lab3 = 'Qué vigilar') {
   return `<section class="essential" aria-label="Lo esencial"><div class="h">Lo esencial</div>
-    <p><b>Qué ha cambiado</b>${l1}</p><p><b>Qué significa</b>${l2}</p><p><b>Qué vigilar</b>${l3}</p></section>`;
+    <p><b>Qué ha cambiado</b>${l1}</p><p><b>Qué significa</b>${l2}</p><p><b>${lab3}</b>${l3}</p></section>`;
 }
 function foot(src, fecha, url, extra) {
   const s = url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(src)}</a>` : esc(src);

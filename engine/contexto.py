@@ -242,12 +242,14 @@ def _reacciones(Rc):
     def ff(f):
         return {"fase": f["fase"], "clasificacion": f["clasificacion"], "d_2y_pb": f["d_y2_pb"], "d_10y_pb": f["d_y10_pb"], "fuente_10y": f["y10_fuente"],
                 "d_dxy_pct": f["d_dxy_pct"], "d_oro_pct": f["d_oro_pct"], "d_nq_pct": f["d_nq_pct"], "d_es_pct": f["d_es_pct"], "d_btc_pct": f["d_btc_pct"],
-                "umbral": f["umbral_origen"], "origen": f["origen"], "barra_utc": f["barra_utc"]}
+                "umbral": f["umbral_origen"], "origen": f["origen"], "barra_utc": f["barra_utc"],
+                "devolucion_2y_pct": (f.get("giro") or {}).get("dev_y2_pct"), "devolucion_10y_pct": (f.get("giro") or {}).get("dev_y10_pct"),
+                "giro_v2": (f.get("giro") or {}).get("clase")}
     return {"ultimo_evento": {"id": u["id"], "evento": u["evento"], "fecha": u["fecha"], "hora_ny": u["hora_ny"], "reconstruido": u["reconstruido"],
-                              "clase_t5": u["clase_t5"], "clase_cierre": u["clase_cierre"], "giro_en": u["giro_en"], "sorpresa_2y": u["sorpresa"],
+                              "clase_t5": u["clase_t5"], "clase_cierre": u["clase_cierre"], "giro_en": u["giro_en"], "giro_v2_por_fase": u.get("giro_fases"), "sorpresa_2y": u["sorpresa"],
                               "real10_dia_siguiente": u["real10"], "fases": [ff(f) for f in u["fases"]]},
             "tabla_t5_vs_cierre": Rc.get("tabla_t5_vs_cierre"), "n_eventos": Rc.get("n_eventos"), "n_con_cierre": Rc.get("n_con_cierre"),
-            "avisos_giro_enviados": Rc.get("avisos_enviados"), "reglas": Rc.get("reglas"), "series": Rc.get("series"), "actualizado_utc": Rc.get("generado_utc"),
+            "avisos_giro_enviados": Rc.get("avisos_enviados"), "validacion_giro_v2": Rc.get("validacion_giro"), "reglas": Rc.get("reglas"), "series": Rc.get("series"), "actualizado_utc": Rc.get("generado_utc"),
             "fuente": Rc.get("fuente"), "etiqueta": "CRITERIO NEXORA: lectura de precios en minutos tras el evento; muestra pequeña (ver n). Los eventos reconstruidos usan barras de 5 min de Yahoo.",
             "memoria": Rc.get("memoria")}
 

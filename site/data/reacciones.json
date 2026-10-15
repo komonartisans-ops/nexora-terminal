@@ -1,7 +1,69 @@
 {
- "generado_utc": "2026-10-15 08:30 UTC",
- "version_reglas": "1.0",
+ "generado_utc": "2026-10-15 09:47 UTC",
+ "version_reglas": "2.0",
  "ok": true,
+ "validacion_giro": {
+  "estado": "PENDIENTE DE VALIDAR con eventos nuevos",
+  "evento_diseno": "IPC-2026-10-14",
+  "n_otros": 6,
+  "nota": "La regla v2 se diseñó viendo IPC-2026-10-14; los otros 6 eventos son datos reconstruidos, no una prueba fuera de muestra. Solo cuentan como validación los eventos registrados en vivo después de publicar la regla.",
+  "por_fase": {
+   "T+60": {
+    "SIN BASE": {
+     "n": 5,
+     "eventos": [
+      "PCE-2026-08-26",
+      "IPC-2026-09-11",
+      "FOMC-2026-09-16",
+      "PCE-2026-09-30",
+      "NFP-2026-10-02"
+     ]
+    },
+    "PARCIAL": {
+     "n": 1,
+     "eventos": [
+      "NFP-2026-09-04"
+     ]
+    }
+   },
+   "T+120": {
+    "SIN BASE": {
+     "n": 5,
+     "eventos": [
+      "PCE-2026-08-26",
+      "IPC-2026-09-11",
+      "FOMC-2026-09-16",
+      "PCE-2026-09-30",
+      "NFP-2026-10-02"
+     ]
+    },
+    "PARCIAL": {
+     "n": 1,
+     "eventos": [
+      "NFP-2026-09-04"
+     ]
+    }
+   },
+   "CIERRE": {
+    "SIN BASE": {
+     "n": 5,
+     "eventos": [
+      "PCE-2026-08-26",
+      "IPC-2026-09-11",
+      "FOMC-2026-09-16",
+      "PCE-2026-09-30",
+      "NFP-2026-10-02"
+     ]
+    },
+    "PARCIAL": {
+     "n": 1,
+     "eventos": [
+      "NFP-2026-09-04"
+     ]
+    }
+   }
+  }
+ },
  "ultimo": "IPC-2026-10-14",
  "eventos": [
   {
@@ -37,7 +99,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+5",
@@ -65,7 +133,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+15",
@@ -93,7 +167,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -27.1,
+      "dev_y10_pct": -21.6,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+30",
@@ -121,7 +201,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -39.0,
+      "dev_y10_pct": -39.2,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+60",
@@ -149,7 +235,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -13.6,
+      "dev_y10_pct": -15.5,
+      "clase": "SE CONFIRMA",
+      "nota": ""
+     }
     },
     {
      "fase": "T+120",
@@ -177,7 +269,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 18.6,
+      "dev_y10_pct": 26.8,
+      "clase": "SE CONFIRMA",
+      "nota": ""
+     }
     },
     {
      "fase": "CIERRE",
@@ -205,7 +303,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 72.9,
+      "dev_y10_pct": 93.7,
+      "clase": "REFUGIO / RIESGO",
+      "nota": "NQ cae más que en T+5"
+     }
     }
    ],
    "real10": null,
@@ -213,7 +317,15 @@
    "clase_t5": "FED MÁS DURA",
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
-   "giro_en": [],
+   "giro_fases": {
+    "T+60": "SE CONFIRMA",
+    "T+120": "SE CONFIRMA",
+    "CIERRE": "REFUGIO / RIESGO"
+   },
+   "giro_en": [
+    "CIERRE"
+   ],
+   "diseno": true,
    "sorpresa": {
     "modo": "pb",
     "pb": 12.46,
@@ -254,7 +366,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+5",
@@ -282,7 +400,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+15",
@@ -310,7 +434,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 15.3,
+      "dev_y10_pct": 34.6,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+30",
@@ -338,7 +468,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 23.1,
+      "dev_y10_pct": 15.4,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+60",
@@ -366,7 +502,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 69.2,
+      "dev_y10_pct": 75.0,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     },
     {
      "fase": "T+120",
@@ -394,7 +536,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 107.7,
+      "dev_y10_pct": 71.2,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     },
     {
      "fase": "CIERRE",
@@ -422,7 +570,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 215.5,
+      "dev_y10_pct": 209.4,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     }
    ],
    "real10": {
@@ -435,10 +589,13 @@
    "clase_t5": "FED MÁS SUAVE",
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
-   "giro_en": [
-    "T+60",
-    "T+120"
-   ],
+   "giro_fases": {
+    "T+60": "SIN BASE",
+    "T+120": "SIN BASE",
+    "CIERRE": "SIN BASE"
+   },
+   "giro_en": [],
+   "diseno": false,
    "sorpresa": {
     "modo": "pb",
     "pb": -5.49,
@@ -479,7 +636,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+5",
@@ -507,7 +670,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+15",
@@ -535,7 +704,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -10.7,
+      "dev_y10_pct": 47.4,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+30",
@@ -563,7 +738,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 31.4,
+      "dev_y10_pct": 136.8,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+60",
@@ -591,7 +772,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 5.2,
+      "dev_y10_pct": 100.0,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     },
     {
      "fase": "T+120",
@@ -619,7 +806,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 63.1,
+      "dev_y10_pct": 268.4,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     },
     {
      "fase": "CIERRE",
@@ -647,7 +840,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 94.8,
+      "dev_y10_pct": 249.5,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     }
    ],
    "real10": {
@@ -660,9 +859,13 @@
    "clase_t5": "MIXTA (sin regla)",
    "clase_cierre": "EMPINAMIENTO POR PLAZO LARGO",
    "reconstruido": true,
-   "giro_en": [
-    "T+120"
-   ],
+   "giro_fases": {
+    "T+60": "SIN BASE",
+    "T+120": "SIN BASE",
+    "CIERRE": "SIN BASE"
+   },
+   "giro_en": [],
+   "diseno": false,
    "sorpresa": {
     "modo": "pb",
     "pb": -4.01,
@@ -703,7 +906,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+5",
@@ -731,7 +940,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+15",
@@ -759,7 +974,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -38.9,
+      "dev_y10_pct": -33.3,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+30",
@@ -787,7 +1008,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -38.9,
+      "dev_y10_pct": 33.3,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+60",
@@ -815,7 +1042,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -211.3,
+      "dev_y10_pct": -816.7,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     },
     {
      "fase": "T+120",
@@ -843,7 +1076,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -227.9,
+      "dev_y10_pct": -1050.0,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     },
     {
      "fase": "CIERRE",
@@ -871,7 +1110,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -227.9,
+      "dev_y10_pct": -1050.0,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     }
    ],
    "real10": {
@@ -884,10 +1129,13 @@
    "clase_t5": "MIXTA (sin regla)",
    "clase_cierre": "FED MÁS DURA",
    "reconstruido": true,
-   "giro_en": [
-    "T+60",
-    "T+120"
-   ],
+   "giro_fases": {
+    "T+60": "SIN BASE",
+    "T+120": "SIN BASE",
+    "CIERRE": "SIN BASE"
+   },
+   "giro_en": [],
+   "diseno": false,
    "sorpresa": {
     "modo": "pb",
     "pb": 3.8,
@@ -928,7 +1176,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+5",
@@ -956,7 +1210,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+15",
@@ -984,7 +1244,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 31.4,
+      "dev_y10_pct": 160.0,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+30",
@@ -1012,7 +1278,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 115.7,
+      "dev_y10_pct": 740.0,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+60",
@@ -1040,7 +1312,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 79.1,
+      "dev_y10_pct": 660.0,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     },
     {
      "fase": "T+120",
@@ -1068,7 +1346,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 52.6,
+      "dev_y10_pct": 420.0,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     },
     {
      "fase": "CIERRE",
@@ -1096,7 +1380,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -26.4,
+      "dev_y10_pct": -468.0,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     }
    ],
    "real10": {
@@ -1109,7 +1399,13 @@
    "clase_t5": "MIXTA (sin regla)",
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
+   "giro_fases": {
+    "T+60": "SIN BASE",
+    "T+120": "SIN BASE",
+    "CIERRE": "SIN BASE"
+   },
    "giro_en": [],
+   "diseno": false,
    "sorpresa": {
     "modo": "pb",
     "pb": 4.01,
@@ -1150,7 +1446,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+5",
@@ -1178,7 +1480,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+15",
@@ -1206,7 +1514,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 0.0,
+      "dev_y10_pct": 8.7,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+30",
@@ -1234,7 +1548,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 20.6,
+      "dev_y10_pct": 26.1,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+60",
@@ -1262,7 +1582,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 44.2,
+      "dev_y10_pct": 43.5,
+      "clase": "PARCIAL",
+      "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %)"
+     }
     },
     {
      "fase": "T+120",
@@ -1290,7 +1616,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 58.8,
+      "dev_y10_pct": 73.9,
+      "clase": "PARCIAL",
+      "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %)"
+     }
     },
     {
      "fase": "CIERRE",
@@ -1318,7 +1650,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": 52.9,
+      "dev_y10_pct": 33.7,
+      "clase": "PARCIAL",
+      "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %)"
+     }
     }
    ],
    "real10": {
@@ -1331,10 +1669,13 @@
    "clase_t5": "FED MÁS DURA",
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
-   "giro_en": [
-    "T+60",
-    "T+120"
-   ],
+   "giro_fases": {
+    "T+60": "PARCIAL",
+    "T+120": "PARCIAL",
+    "CIERRE": "PARCIAL"
+   },
+   "giro_en": [],
+   "diseno": false,
    "sorpresa": {
     "modo": "pb",
     "pb": 7.18,
@@ -1375,7 +1716,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+5",
@@ -1403,7 +1750,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": null,
+      "dev_y10_pct": null,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+15",
@@ -1431,7 +1784,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -30.3,
+      "dev_y10_pct": -35.7,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+30",
@@ -1459,7 +1818,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -80.1,
+      "dev_y10_pct": -64.3,
+      "clase": null,
+      "nota": ""
+     }
     },
     {
      "fase": "T+60",
@@ -1487,7 +1852,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -70.1,
+      "dev_y10_pct": -64.3,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     },
     {
      "fase": "T+120",
@@ -1515,7 +1886,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -100.0,
+      "dev_y10_pct": -135.7,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     },
     {
      "fase": "CIERRE",
@@ -1543,7 +1920,13 @@
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
-     "r2_10y": 0.813
+     "r2_10y": 0.813,
+     "giro": {
+      "dev_y2_pct": -50.2,
+      "dev_y10_pct": -59.3,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+     }
     }
    ],
    "real10": {
@@ -1556,10 +1939,13 @@
    "clase_t5": "MIXTA (sin regla)",
    "clase_cierre": "FED MÁS DURA",
    "reconstruido": true,
-   "giro_en": [
-    "T+60",
-    "T+120"
-   ],
+   "giro_fases": {
+    "T+60": "SIN BASE",
+    "T+120": "SIN BASE",
+    "CIERRE": "SIN BASE"
+   },
+   "giro_en": [],
+   "diseno": false,
    "sorpresa": {
     "modo": "pb",
     "pb": 2.11,
@@ -1648,7 +2034,29 @@
   "ventana_dias": 60,
   "umbral": "Umbral de cada serie = máx(suelo, 0.5 × RMS de sus movimientos en la misma fase en los eventos de los 60 días previos); con menos de 4 eventos previos solo se usa el suelo y se marca «fijo».",
   "movimiento": "Todos los movimientos son frente al precio de T-5 (5 minutos antes de la publicación).",
-  "giro": "Si la clase en T+60 o T+120 difiere de la de T+5 se envía una alerta (una por evento y fase).",
+  "giro": "REGLA DE GIRO v2, medida frente a T+5 (no frente a T-5). Devolución = % del movimiento de T+5 que se ha deshecho, en T+60, T+120, cierre y T+1 (día siguiente, 10:00 ET). Alerta Telegram, una por evento y fase, cuando la clase es REFUGIO / RIESGO o SORPRESA DESHECHA.",
+  "giro_clases": [
+   {
+    "clase": "REFUGIO / RIESGO",
+    "regla": "El 2Y y el 10Y, tras subir en T+5 por encima de su umbral, devuelven ≥ 60 % de esa subida y el NQ cae más que en T+5 (el DXY no es obligatorio)."
+   },
+   {
+    "clase": "SORPRESA DESHECHA",
+    "regla": "El 2Y y el 10Y devuelven ≥ 60 % de su subida inicial y el NQ recupera frente a T+5."
+   },
+   {
+    "clase": "SE CONFIRMA",
+    "regla": "La devolución del 2Y y del 10Y es < 30 % (incluye que el movimiento haya continuado)."
+   },
+   {
+    "clase": "PARCIAL",
+    "regla": "Otro caso con base: devolución entre 30 % y 60 %, o solo una de las dos series pasa de 60 %. No genera alerta."
+   },
+   {
+    "clase": "SIN BASE",
+    "regla": "En T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que medir. No genera alerta."
+   }
+  ],
   "criterio": "CRITERIO NEXORA: convención fija y publicada, no un modelo ajustado."
  },
  "series": {
@@ -1662,16 +2070,5 @@
   "10Y real": "FRED DFII10, solo el día siguiente"
  },
  "fuente": "Yahoo Finance (API v8 chart, barras de 5 min, ~15 min de retraso posible) · calendario: FRED Release Calendar (BLS/BEA) y federalreserve.gov · FRED DFII10",
- "memoria": "data/reacciones_eventos.csv (solo se añade)",
- "errores": {},
- "calibracion": {
-  "beta_2y": -54.078,
-  "r2_2y": 0.914,
-  "n_2y": 47,
-  "beta_10y": -13.017,
-  "r2_10y": 0.813,
-  "n_10y": 3867
- },
- "filas_nuevas": 0,
- "duracion_s": 40.1
+ "memoria": "data/reacciones_eventos.csv (solo se añade)"
 }

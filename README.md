@@ -30,9 +30,11 @@ Local: `python engine/build.py --modo diario` y `python -m http.server 8765 -d s
 | Pieza | Detalle |
 |---|---|
 | Motor | `engine/reaccion.py` · eventos IPC, NFP, PCE (FRED Release Calendar: BLS/BEA) y FOMC (federalreserve.gov) |
-| Job | `.github/workflows/reacciones.yml`: arranca ~60 min antes del evento y espera dentro del job; registra T-5, T+5, T+15, T+30, T+60, T+120 y cierre |
+| Job | `.github/workflows/reacciones.yml`: arranca ~60 min antes del evento y espera dentro del job; registra T-5, T+5, T+15, T+30, T+60 y T+120; los crones de 16:05 ET (cierre) y 10:05 ET (T+1, día siguiente) completan el resto |
 | Series | Yahoo (5 min): ZT=F calibrado contra el 2 Yr del Tesoro (2YY=F no tiene barras), ^TNX (ZN=F×beta tras las 15:00 ET), DX-Y.NYB, GC=F, NQ=F, ES=F, BTC-USD; 10Y real FRED DFII10 al día siguiente |
 | Memoria | `data/reacciones_eventos.csv` (solo se añade) y `data/estado_reacciones.json` (avisos de giro enviados) |
-| Alerta | Telegram «la interpretación ha cambiado» si T+60 o T+120 difiere de T+5; una por evento y fase |
+| Alerta | Telegram si la regla de giro v2 da REFUGIO / RIESGO o SORPRESA DESHECHA en T+60, T+120, cierre o T+1; una por evento y fase |
+
+**Regla de giro v2** (medida contra T+5, no contra T-5; pendiente de validar con eventos nuevos): en T+60, T+120, cierre y T+1 se calcula la *devolución* de 2Y y 10Y (% de su movimiento de T+5 ya deshecho). ≥ 60 % de ambos con NQ cayendo más que en T+5 → REFUGIO / RIESGO; ≥ 60 % con NQ recuperando → SORPRESA DESHECHA; < 30 % → SE CONFIRMA. Alerta Telegram, una por evento y fase, en REFUGIO / RIESGO y SORPRESA DESHECHA. El resultado se calcula al construir el JSON desde el CSV (el log sigue siendo solo-añadir).
 
 Las clases (FED MÁS DURA / MÁS SUAVE / REFUGIO / EMPINAMIENTO POR PLAZO LARGO / SIN REACCIÓN) son **CRITERIO NEXORA** y sus reglas están en la página. `engine/push_seguro.py` fusiona los CSV si `actualizar` y `reacciones` escriben a la vez.

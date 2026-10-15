@@ -1,7 +1,7 @@
 name: reacciones
 
 # Fase 8 · monitor de reacción a eventos (IPC, NFP, PCE, FOMC). El job arranca ~60 min antes del evento (el cron de GitHub puede retrasarse)
-# y ESPERA dentro del job, registrando T-5, T+5, T+15, T+30, T+60, T+120 y cierre. Cada cron cubre una de las dos horas UTC posibles
+# y ESPERA dentro del job, registrando T-5, T+5, T+15, T+30, T+60 y T+120 (el cierre y T+1 los recogen los crones de 16:05 y 10:05 ET). Cada cron cubre una de las dos horas UTC posibles
 # (horario de verano / invierno de Nueva York); el script decide si hay evento hoy y es idempotente (no repite filas).
 on:
   schedule:
@@ -9,6 +9,10 @@ on:
     - cron: "30 12 * * 1-5"   # 07:30 ET en invierno
     - cron: "0 17 * * 1-5"    # 13:00 ET en verano  → FOMC de las 14:00 ET
     - cron: "0 18 * * 1-5"    # 13:00 ET en invierno
+    - cron: "5 20 * * 1-5"    # 16:05 ET en verano  → cierre (16:00 ET) y su alerta de giro
+    - cron: "5 21 * * 1-5"    # 16:05 ET en invierno
+    - cron: "5 14 * * 1-5"    # 10:05 ET en verano  → T+1 (día siguiente, 10:00 ET) y su alerta de giro
+    - cron: "5 15 * * 1-5"    # 10:05 ET en invierno
   workflow_dispatch:
     inputs:
       modo:

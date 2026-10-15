@@ -392,3 +392,14 @@ table.t tr.grp td { background: var(--card2); border-top: 1px solid var(--border
   #capas .fbtn { white-space: nowrap; }
 }
 .map-tip[hidden] { display: none; }
+
+/* tablas apilables en móvil (p. ej. «Qué fue al cierre»): cada fila pasa a tarjeta y cada celda lleva su etiqueta */
+@media (max-width: 860px) {
+  table.t.stack thead { display: none; }
+  table.t.stack, table.t.stack tbody, table.t.stack tr, table.t.stack td { display: block; width: 100%; }
+  table.t.stack tr { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  table.t.stack td { border: 0; padding: 3px 0; text-align: left; white-space: normal; display: flex; gap: 10px; justify-content: space-between; }
+  table.t.stack td[data-label]::before { content: attr(data-label); color: var(--dim); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; flex: 0 0 auto; padding-top: 2px; }
+  table.t.stack td[data-label="Qué fue al cierre"] { display: block; }
+  table.t.stack td[data-label="Qué fue al cierre"]::before { display: block; margin-bottom: 2px; }
+}
