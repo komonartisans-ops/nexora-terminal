@@ -50,7 +50,8 @@ GIRO_ALERTA = ("REFUGIO / RIESGO", "SORPRESA DESHECHA")
 EVENTO_DISENO = "IPC-2026-10-14"  # la regla v2 se diseñó viendo este evento: no cuenta como validación
 RETRASO_RECONSTRUIR_H = 30      # el job en vivo tiene prioridad: reconstruir no toca una fase hasta 30 h después de su instante objetivo
 MAX_ESPERA_FASE_MIN = 150       # el job no espera dentro de una fase más lejana que esto (la recogen los crones de cierre y de T+1)
-FESTIVOS_NY = {dt.date(2026, 11, 26), dt.date(2026, 12, 25), dt.date(2027, 1, 1), dt.date(2027, 1, 18), dt.date(2027, 2, 15), dt.date(2027, 3, 26),
+FESTIVOS_NY = {dt.date(2026, 1, 1), dt.date(2026, 1, 19), dt.date(2026, 2, 16), dt.date(2026, 4, 3), dt.date(2026, 5, 25), dt.date(2026, 6, 19), dt.date(2026, 7, 3),
+               dt.date(2026, 9, 7), dt.date(2026, 11, 26), dt.date(2026, 12, 25), dt.date(2027, 1, 1), dt.date(2027, 1, 18), dt.date(2027, 2, 15), dt.date(2027, 3, 26),
                dt.date(2027, 5, 31), dt.date(2027, 6, 18), dt.date(2027, 7, 5), dt.date(2027, 9, 6), dt.date(2027, 11, 25), dt.date(2027, 12, 24)}
 HORA_EVENTO = {"IPC": "08:30", "NFP": "08:30", "PCE": "08:30", "FOMC": "14:00"}
 VENTANA_DIAS = 60
@@ -315,6 +316,8 @@ def medir_evento(ev, B, cal, filas_previas, hasta=None, origen_base="reconstruid
         for k in YAHOO:
             v, s, e = precio_en(B, k, t)
             vals[k], edades[k] = v, e
+        if fase == "T+1" and all(vals[k] is None for k in ("zt", "dxy", "nq")):
+            continue  # festivo o barra aún no publicada: no se fija una fila vacía en el log solo-añadir; se reintenta en la siguiente ejecución
         d = {"y2": None, "y10": None, "dxy": None, "oro": None, "nq": None, "es": None, "btc": None}
         fuente10 = ""
         if fase != "T-5":
