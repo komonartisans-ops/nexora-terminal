@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generado_utc": "2026-10-15 10:08 UTC",
+ "generado_utc": "2026-10-15 11:13 UTC",
  "terminal": "https://komonartisans-ops.github.io/nexora-terminal/",
  "proposito": "Resumen compacto de todo el terminal NEXORA para redactar informes. Fuente y fecha en cada bloque. Sin IA en su generación.",
  "lectura_para_informes": [
@@ -16,11 +16,11 @@
  "frescura": {
   "precios": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-15 10:08 UTC"
+   "ultimo_ok_utc": "2026-10-15 11:13 UTC"
   },
   "fedwatch": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-15 10:08 UTC"
+   "ultimo_ok_utc": "2026-10-15 11:13 UTC"
   },
   "calendario": {
    "ok": true,
@@ -36,7 +36,7 @@
   },
   "tipos": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-15 10:08 UTC"
+   "ultimo_ok_utc": "2026-10-15 11:13 UTC"
   },
   "ciclo": {
    "ok": true,
@@ -52,7 +52,7 @@
   },
   "alertas": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-15 10:08 UTC"
+   "ultimo_ok_utc": "2026-10-15 11:13 UTC"
   },
   "monitores": {
    "ok": true,
@@ -72,11 +72,11 @@
   },
   "noticias": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-15 10:08 UTC"
+   "ultimo_ok_utc": "2026-10-15 11:13 UTC"
   },
   "skew": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-15 10:08 UTC"
+   "ultimo_ok_utc": "2026-10-15 11:13 UTC"
   },
   "semis": {
    "ok": true,
@@ -88,7 +88,7 @@
   },
   "contexto": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-15 08:30 UTC"
+   "ultimo_ok_utc": "2026-10-15 10:08 UTC"
   },
   "tesis": {
    "ok": true,
@@ -110,28 +110,28 @@
  "datos_con_mas_de_48h": [],
  "fallos_ultima_ejecucion": [],
  "mercado": {
-  "actualizado_utc": "2026-10-15 10:08 UTC",
+  "actualizado_utc": "2026-10-15 11:13 UTC",
   "activos": {
    "oro": {
     "nombre": "Oro",
-    "valor": 4181.0,
+    "valor": 4179.0,
     "fecha": "2026-10-15",
-    "cambio_1d_pct": 1.78,
-    "cambio_5d_pct": 0.58,
-    "cambio_21d_pct": -4.71,
-    "cambio_63d_pct": 4.04,
+    "cambio_1d_pct": 1.73,
+    "cambio_5d_pct": 0.53,
+    "cambio_21d_pct": -4.75,
+    "cambio_63d_pct": 3.99,
     "vs_sma50_pct": -4.5,
     "fuente": "Futuros oro COMEX (Yahoo Finance)"
    },
    "btc": {
     "nombre": "Bitcoin",
-    "valor": 81036.76,
+    "valor": 80902.14,
     "fecha": "2026-10-15",
-    "cambio_1d_pct": -0.64,
-    "cambio_5d_pct": -2.26,
-    "cambio_21d_pct": -3.96,
-    "cambio_63d_pct": 27.81,
-    "vs_sma50_pct": -0.2,
+    "cambio_1d_pct": -0.81,
+    "cambio_5d_pct": -2.42,
+    "cambio_21d_pct": -4.12,
+    "cambio_63d_pct": 27.6,
+    "vs_sma50_pct": -0.4,
     "fuente": "BTC-USD (Yahoo Finance)"
    },
    "spx": {
@@ -180,23 +180,23 @@
    },
    "vix": {
     "nombre": "VIX",
-    "valor": 17.49,
+    "valor": 17.62,
     "fecha": "2026-10-15",
-    "cambio_1d_pct": 3.68,
-    "cambio_5d_pct": 13.5,
-    "cambio_21d_pct": -1.24,
-    "cambio_63d_pct": -6.22,
-    "vs_sma50_pct": 12.7,
+    "cambio_1d_pct": 4.45,
+    "cambio_5d_pct": 14.34,
+    "cambio_21d_pct": -0.51,
+    "cambio_63d_pct": -5.52,
+    "vs_sma50_pct": 13.5,
     "fuente": "Cboe VIX (Yahoo Finance)"
    },
    "dxy": {
     "nombre": "Índice dólar (DXY)",
-    "valor": 102.01,
+    "valor": 102.03,
     "fecha": "2026-10-15",
-    "cambio_1d_pct": -0.53,
-    "cambio_5d_pct": -0.13,
-    "cambio_21d_pct": 1.7,
-    "cambio_63d_pct": 1.25,
+    "cambio_1d_pct": -0.51,
+    "cambio_5d_pct": -0.11,
+    "cambio_21d_pct": 1.72,
+    "cambio_63d_pct": 1.27,
     "vs_sma50_pct": 1.7,
     "fuente": "ICE DXY (Yahoo Finance)"
    }
@@ -549,15 +549,15 @@
    },
    {
     "reunion": "2027-01-27",
-    "tipo_esperado": 4.27,
-    "prob_subida_pct": 38.6,
-    "prob_mantiene_pct": 61.4,
+    "tipo_esperado": 4.265,
+    "prob_subida_pct": 36.6,
+    "prob_mantiene_pct": 63.4,
     "prob_bajada_pct": 0,
-    "subida_5d_pts": 3.5
+    "subida_5d_pts": 1.5
    },
    {
     "reunion": "2027-03-17",
-    "tipo_esperado": 4.425,
+    "tipo_esperado": 4.42,
     "prob_subida_pct": 62.0,
     "prob_mantiene_pct": 38.0,
     "prob_bajada_pct": 0,
@@ -600,7 +600,7 @@
     "nota": null
    }
   },
-  "actualizado_utc": "2026-10-15 10:08 UTC",
+  "actualizado_utc": "2026-10-15 11:13 UTC",
   "fuente": "FedWatch NEXORA (futuros ZQ, EFFR, calendario FOMC) · Tesoro de EE. UU."
  },
  "riesgo_de_cola_skew": {
@@ -688,7 +688,7 @@
    "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 2. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
    "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
   },
-  "actualizado_utc": "2026-10-15 10:08 UTC",
+  "actualizado_utc": "2026-10-15 11:13 UTC",
   "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)",
   "etiqueta": "CRITERIO NEXORA (zonas y episodios)"
  },
@@ -2359,79 +2359,105 @@
   "avisos_giro_enviados": [],
   "validacion_giro_v2": {
    "estado": "PENDIENTE DE VALIDAR con eventos nuevos",
+   "congelacion": "Reglas v3, congeladas el 15-10-2026; no se modifican hasta n ≥ 20 eventos en vivo.",
    "evento_diseno": "IPC-2026-10-14",
    "n_otros": 6,
    "nota": "La regla v2 se diseñó viendo IPC-2026-10-14; los otros 6 eventos son datos reconstruidos, no una prueba fuera de muestra. Solo cuentan como validación los eventos registrados en vivo después de publicar la regla.",
    "por_fase": {
     "T+60": {
-     "SIN BASE": {
-      "n": 5,
+     "SE CONFIRMA": {
+      "n": 3,
       "eventos": [
-       "PCE-2026-08-26",
-       "IPC-2026-09-11",
+       "PCE-2026-08-26 (base débil)",
        "FOMC-2026-09-16",
-       "PCE-2026-09-30",
-       "NFP-2026-10-02"
+       "PCE-2026-09-30"
       ]
      },
      "PARCIAL": {
       "n": 1,
       "eventos": [
        "NFP-2026-09-04"
+      ]
+     },
+     "SORPRESA DESHECHA": {
+      "n": 2,
+      "eventos": [
+       "IPC-2026-09-11",
+       "NFP-2026-10-02"
       ]
      }
     },
     "T+120": {
-     "SIN BASE": {
-      "n": 5,
+     "SE CONFIRMA": {
+      "n": 2,
       "eventos": [
-       "PCE-2026-08-26",
-       "IPC-2026-09-11",
-       "FOMC-2026-09-16",
-       "PCE-2026-09-30",
-       "NFP-2026-10-02"
+       "PCE-2026-08-26 (base débil)",
+       "FOMC-2026-09-16"
       ]
      },
      "PARCIAL": {
-      "n": 1,
+      "n": 2,
       "eventos": [
-       "NFP-2026-09-04"
+       "NFP-2026-09-04",
+       "IPC-2026-09-11"
+      ]
+     },
+     "SORPRESA DESHECHA": {
+      "n": 2,
+      "eventos": [
+       "PCE-2026-09-30",
+       "NFP-2026-10-02"
       ]
      }
     },
     "CIERRE": {
-     "SIN BASE": {
-      "n": 5,
+     "SE CONFIRMA": {
+      "n": 3,
       "eventos": [
-       "PCE-2026-08-26",
+       "PCE-2026-08-26 (base débil)",
        "IPC-2026-09-11",
-       "FOMC-2026-09-16",
-       "PCE-2026-09-30",
-       "NFP-2026-10-02"
+       "FOMC-2026-09-16"
       ]
      },
      "PARCIAL": {
       "n": 1,
       "eventos": [
        "NFP-2026-09-04"
+      ]
+     },
+     "ALIVIO DESHECHO": {
+      "n": 1,
+      "eventos": [
+       "PCE-2026-09-30"
+      ]
+     },
+     "INVERSIÓN · NQ cae": {
+      "n": 1,
+      "eventos": [
+       "NFP-2026-10-02"
       ]
      }
     },
     "T+1": {
-     "SIN BASE": {
-      "n": 5,
+     "SE CONFIRMA": {
+      "n": 3,
       "eventos": [
-       "PCE-2026-08-26",
+       "PCE-2026-08-26 (base débil)",
        "IPC-2026-09-11",
-       "FOMC-2026-09-16",
-       "PCE-2026-09-30",
-       "NFP-2026-10-02"
+       "FOMC-2026-09-16"
       ]
      },
      "PARCIAL": {
+      "n": 2,
+      "eventos": [
+       "NFP-2026-09-04",
+       "PCE-2026-09-30"
+      ]
+     },
+     "INVERSIÓN · NQ sube": {
       "n": 1,
       "eventos": [
-       "NFP-2026-09-04"
+       "NFP-2026-10-02"
       ]
      }
     }
@@ -2476,19 +2502,31 @@
    "ventana_dias": 60,
    "umbral": "Umbral de cada serie = máx(suelo, 0.5 × RMS de sus movimientos en la misma fase en los eventos de los 60 días previos); con menos de 4 eventos previos solo se usa el suelo y se marca «fijo».",
    "movimiento": "Todos los movimientos son frente al precio de T-5 (5 minutos antes de la publicación).",
-   "giro": "REGLA DE GIRO v2, medida frente a T+5 (no frente a T-5). Devolución = % del movimiento de T+5 que se ha deshecho, en T+60, T+120, cierre y T+1 (día siguiente, 10:00 ET). Alerta Telegram, una por evento y fase, cuando la clase es REFUGIO / RIESGO o SORPRESA DESHECHA.",
+   "giro": "REGLA DE GIRO v3, medida frente a T+5 (no frente a T-5). Devolución = % del movimiento de T+5 que se ha deshecho, en T+60, T+120, cierre y T+1 (día siguiente, 10:00 ET). Alerta Telegram, una por evento y fase, en REFUGIO / RIESGO, ALIVIO DESHECHO, SORPRESA DESHECHA e INVERSIÓN (no en base débil).",
    "giro_clases": [
     {
      "clase": "REFUGIO / RIESGO",
-     "regla": "El 2Y y el 10Y, tras subir en T+5 por encima de su umbral, devuelven ≥ 60 % de esa subida y el NQ cae más que en T+5 (el DXY no es obligatorio)."
+     "regla": "Base: el 2Y supera su umbral en T+5, al alza o a la baja. Inicio con tipos al alza: la devolución es ≥ 60 % (y < 150 % en el 2Y) y el NQ cae más que en T+5."
+    },
+    {
+     "clase": "ALIVIO DESHECHO",
+     "regla": "Inicio con tipos a la baja: la devolución es ≥ 60 % (y < 150 % en el 2Y) y el NQ cae frente a T+5."
     },
     {
      "clase": "SORPRESA DESHECHA",
-     "regla": "El 2Y y el 10Y devuelven ≥ 60 % de su subida inicial y el NQ recupera frente a T+5."
+     "regla": "La devolución es ≥ 60 % (y < 150 % en el 2Y) y el NQ recupera: si los tipos subían, el NQ no cae más; si bajaban, el NQ sube."
+    },
+    {
+     "clase": "INVERSIÓN · NQ cae",
+     "regla": "La devolución del 2Y es ≥ 150 %: el 2Y ha cruzado al otro lado de su precio de T-5. El NQ cae frente a T+5."
+    },
+    {
+     "clase": "INVERSIÓN · NQ sube",
+     "regla": "La devolución del 2Y es ≥ 150 %: el 2Y ha cruzado al otro lado de su precio de T-5. El NQ sube frente a T+5."
     },
     {
      "clase": "SE CONFIRMA",
-     "regla": "La devolución del 2Y y del 10Y es < 30 % (incluye que el movimiento haya continuado)."
+     "regla": "La devolución es < 30 % (incluye que el movimiento haya continuado)."
     },
     {
      "clase": "PARCIAL",
@@ -2496,9 +2534,18 @@
     },
     {
      "clase": "SIN BASE",
-     "regla": "En T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que medir. No genera alerta."
+     "regla": "En T+5 el 2Y no supera su umbral (ni al alza ni a la baja): no hay movimiento inicial que medir. No genera alerta."
+    },
+    {
+     "clase": "(marca) base débil",
+     "regla": "El 2Y en T+5 está por debajo de 1.25 × su umbral: se clasifica igual, pero no genera alerta."
+    },
+    {
+     "clase": "(marca) 10Y sin base",
+     "regla": "El 10Y solo cuenta en la devolución si su movimiento en T+5 supera su umbral; si no, la devolución usa solo el 2Y."
     }
    ],
+   "congelacion": "Reglas v3, congeladas el 15-10-2026; no se modifican hasta n ≥ 20 eventos en vivo.",
    "criterio": "CRITERIO NEXORA: convención fija y publicada, no un modelo ajustado."
   },
   "series": {
@@ -2511,7 +2558,7 @@
    "BTC": "BTC-USD",
    "10Y real": "FRED DFII10, solo el día siguiente"
   },
-  "actualizado_utc": "2026-10-15 10:08 UTC",
+  "actualizado_utc": "2026-10-15 11:01 UTC",
   "fuente": "Yahoo Finance (API v8 chart, barras de 5 min, ~15 min de retraso posible) · calendario: FRED Release Calendar (BLS/BEA) y federalreserve.gov · FRED DFII10",
   "etiqueta": "CRITERIO NEXORA: lectura de precios en minutos tras el evento; muestra pequeña (ver n). Los eventos reconstruidos usan barras de 5 min de Yahoo.",
   "memoria": "data/reacciones_eventos.csv (solo se añade)"

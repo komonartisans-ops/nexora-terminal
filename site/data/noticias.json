@@ -1,6 +1,16 @@
 {
  "items": [
   {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "David Roberts CV and questionnaire for the Treasury Select Committee",
+   "orador": null,
+   "fecha_utc": "2026-10-15 09:52",
+   "fecha": "2026-10-15",
+   "enlace": "https://www.bankofengland.co.uk/news/2026/october/david-roberts-tsc-reappointment",
+   "fuente": "boe"
+  },
+  {
    "banco": "Fed",
    "tipo": "Discurso",
    "titulo": "Supervisory Modernization After Silicon Valley Bank",
@@ -1289,16 +1299,6 @@
    "fecha": "2026-07-10",
    "enlace": "https://www.bankofengland.co.uk/news/2026/july/uk-financial-regulators-to-begin-overseeing-critical-third-parties-announced-by-hmt",
    "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "Minutes of the UK Money Markets Code Sub-Committee – June 2026",
-   "orador": null,
-   "fecha_utc": "2026-07-08 14:52",
-   "fecha": "2026-07-08",
-   "enlace": "https://www.bankofengland.co.uk/minutes/2026/june/uk-money-markets-committee-minutes-june-2026",
-   "fuente": "boe"
   }
  ],
  "fuentes": {
@@ -1340,7 +1340,7 @@
    "n": 40,
    "url": "https://www.bankofengland.co.uk/rss/news",
    "pagina": "https://www.bankofengland.co.uk/news",
-   "ultimo": "2026-10-13 15:04"
+   "ultimo": "2026-10-15 09:52"
   },
   "tesoro": {
    "banco": "Tesoro EE. UU.",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-15 10:08 UTC",
- "duracion_s": 7.0
+ "generado_utc": "2026-10-15 11:13 UTC",
+ "duracion_s": 6.6
 }
