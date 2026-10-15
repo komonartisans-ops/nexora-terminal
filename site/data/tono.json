@@ -645,7 +645,7 @@
   "ventana_decision_dias": 10,
   "ventana_z_dias": 730,
   "min_obs_z": 8,
-  "aviso_peso": 5,
+  "min_terminos_dz": 5,
   "umbral_dz": 0.5,
   "min_n_principal": 30,
   "p_principal": 0.05,
@@ -680,7 +680,8 @@
     "n_2a": 0,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 8
    },
    {
     "fecha": "2015-03-18",
@@ -710,7 +711,8 @@
     "n_2a": 1,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 9
    },
    {
     "fecha": "2015-04-29",
@@ -740,7 +742,8 @@
     "n_2a": 2,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 10
    },
    {
     "fecha": "2015-06-17",
@@ -768,7 +771,8 @@
     "n_2a": 3,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 8
    },
    {
     "fecha": "2015-07-29",
@@ -797,7 +801,8 @@
     "n_2a": 4,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 9
    },
    {
     "fecha": "2015-09-17",
@@ -827,7 +832,8 @@
     "n_2a": 5,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 11
    },
    {
     "fecha": "2015-10-28",
@@ -857,7 +863,8 @@
     "n_2a": 6,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 12
    },
    {
     "fecha": "2015-12-16",
@@ -885,7 +892,8 @@
     "n_2a": 7,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 10
    },
    {
     "fecha": "2016-01-27",
@@ -913,7 +921,8 @@
     "n_2a": 8,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 11
    },
    {
     "fecha": "2016-03-16",
@@ -942,6 +951,7 @@
     "dz": 1.94,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2016-01-27",
     "anterior_z": -0.78,
     "anterior_pocos_terminos": false
@@ -976,6 +986,7 @@
     "dz": -0.08,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 12,
     "anterior_fecha": "2016-03-16",
     "anterior_z": 1.16,
     "anterior_pocos_terminos": false
@@ -1006,6 +1017,7 @@
     "dz": -1.75,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2016-04-27",
     "anterior_z": 1.08,
     "anterior_pocos_terminos": false
@@ -1037,6 +1049,7 @@
     "dz": 2.1,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2016-06-15",
     "anterior_z": -0.67,
     "anterior_pocos_terminos": false
@@ -1069,6 +1082,7 @@
     "dz": -0.16,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2016-07-27",
     "anterior_z": 1.43,
     "anterior_pocos_terminos": false
@@ -1101,6 +1115,7 @@
     "dz": -0.11,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2016-09-21",
     "anterior_z": 1.27,
     "anterior_pocos_terminos": false
@@ -1132,6 +1147,7 @@
     "dz": -0.09,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2016-11-02",
     "anterior_z": 1.16,
     "anterior_pocos_terminos": false
@@ -1162,6 +1178,7 @@
     "dz": -1.09,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2016-12-14",
     "anterior_z": 1.07,
     "anterior_pocos_terminos": false
@@ -1192,6 +1209,7 @@
     "dz": 1.45,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2017-02-01",
     "anterior_z": -0.02,
     "anterior_pocos_terminos": false
@@ -1223,6 +1241,7 @@
     "dz": -2.02,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2017-03-15",
     "anterior_z": 1.43,
     "anterior_pocos_terminos": false
@@ -1255,6 +1274,7 @@
     "dz": 3.45,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2017-05-03",
     "anterior_z": -0.59,
     "anterior_pocos_terminos": false
@@ -1284,6 +1304,7 @@
     "dz": 0.1,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2017-06-14",
     "anterior_z": 2.86,
     "anterior_pocos_terminos": false
@@ -1313,6 +1334,7 @@
     "dz": -1.43,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2017-07-26",
     "anterior_z": 2.96,
     "anterior_pocos_terminos": false
@@ -1343,6 +1365,7 @@
     "dz": -1.48,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2017-09-20",
     "anterior_z": 1.53,
     "anterior_pocos_terminos": false
@@ -1374,6 +1397,7 @@
     "dz": 1.6,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2017-11-01",
     "anterior_z": 0.05,
     "anterior_pocos_terminos": false
@@ -1404,6 +1428,7 @@
     "dz": -0.22,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2017-12-13",
     "anterior_z": 1.65,
     "anterior_pocos_terminos": false
@@ -1435,6 +1460,7 @@
     "dz": -0.66,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2018-01-31",
     "anterior_z": 1.43,
     "anterior_pocos_terminos": false
@@ -1465,6 +1491,7 @@
     "dz": -0.73,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2018-03-21",
     "anterior_z": 0.77,
     "anterior_pocos_terminos": false
@@ -1495,6 +1522,7 @@
     "dz": 2.19,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2018-05-02",
     "anterior_z": 0.04,
     "anterior_pocos_terminos": false
@@ -1523,6 +1551,7 @@
     "dz": -0.93,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2018-06-13",
     "anterior_z": 2.23,
     "anterior_pocos_terminos": false
@@ -1551,6 +1580,7 @@
     "dz": 2.38,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2018-08-01",
     "anterior_z": 1.3,
     "anterior_pocos_terminos": false
@@ -1579,6 +1609,7 @@
     "dz": -2.5,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2018-09-26",
     "anterior_z": 3.68,
     "anterior_pocos_terminos": false
@@ -1608,6 +1639,7 @@
     "dz": 0.22,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2018-11-08",
     "anterior_z": 1.18,
     "anterior_pocos_terminos": false
@@ -1638,6 +1670,7 @@
     "dz": -3.17,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2018-12-19",
     "anterior_z": 1.4,
     "anterior_pocos_terminos": false
@@ -1668,6 +1701,7 @@
     "dz": 0.2,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2019-01-30",
     "anterior_z": -1.77,
     "anterior_pocos_terminos": false
@@ -1698,6 +1732,7 @@
     "dz": 0.16,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2019-03-20",
     "anterior_z": -1.57,
     "anterior_pocos_terminos": false
@@ -1728,6 +1763,7 @@
     "dz": 1.01,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2019-05-01",
     "anterior_z": -1.41,
     "anterior_pocos_terminos": false
@@ -1758,6 +1794,7 @@
     "dz": -0.36,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2019-06-19",
     "anterior_z": -0.4,
     "anterior_pocos_terminos": false
@@ -1788,6 +1825,7 @@
     "dz": 0.04,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2019-07-31",
     "anterior_z": -0.76,
     "anterior_pocos_terminos": false
@@ -1815,6 +1853,7 @@
     "dz": 0.06,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": true,
+    "n_terminos": 3,
     "anterior_fecha": "2019-09-18",
     "anterior_z": -0.72,
     "anterior_pocos_terminos": false
@@ -1841,12 +1880,14 @@
     "media_2a": 0.222,
     "sd_2a": 0.351,
     "n_2a": 17,
-    "dz": 0.43,
-    "dz_txt": "SIN CAMBIO",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2019-10-11",
     "anterior_z": -0.66,
-    "anterior_pocos_terminos": true
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2019-10-11) tiene solo 3 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2019-12-11",
@@ -1873,6 +1914,7 @@
     "dz": 0.52,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2019-10-30",
     "anterior_z": -0.23,
     "anterior_pocos_terminos": false
@@ -1902,6 +1944,7 @@
     "dz": -0.96,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2019-12-11",
     "anterior_z": 0.29,
     "anterior_pocos_terminos": false
@@ -1928,7 +1971,8 @@
     "n_2a": 17,
     "dz": -1.65,
     "dz_txt": "MÁS DOVISH",
-    "pocos_terminos": false,
+    "pocos_terminos": true,
+    "n_terminos": 4,
     "anterior_fecha": "2020-01-29",
     "anterior_z": -0.67,
     "anterior_pocos_terminos": false
@@ -1957,12 +2001,14 @@
     "media_2a": 0.166,
     "sd_2a": 0.39,
     "n_2a": 18,
-    "dz": 0.91,
-    "dz_txt": "MÁS HAWKISH",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
+    "n_terminos": 12,
     "anterior_fecha": "2020-03-03",
     "anterior_z": -2.32,
-    "anterior_pocos_terminos": false
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2020-03-03) tiene solo 4 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2020-03-23",
@@ -1986,6 +2032,7 @@
     "dz": -1.35,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2020-03-15",
     "anterior_z": -1.41,
     "anterior_pocos_terminos": false
@@ -2012,6 +2059,7 @@
     "dz": 0.51,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2020-03-23",
     "anterior_z": -2.76,
     "anterior_pocos_terminos": false
@@ -2038,6 +2086,7 @@
     "dz": 0.3,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2020-03-31",
     "anterior_z": -2.25,
     "anterior_pocos_terminos": false
@@ -2064,6 +2113,7 @@
     "dz": 0.25,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2020-04-29",
     "anterior_z": -1.95,
     "anterior_pocos_terminos": false
@@ -2091,6 +2141,7 @@
     "dz": 0.2,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2020-06-10",
     "anterior_z": -1.7,
     "anterior_pocos_terminos": false
@@ -2118,6 +2169,7 @@
     "dz": 1.81,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": true,
+    "n_terminos": 4,
     "anterior_fecha": "2020-07-29",
     "anterior_z": -1.5,
     "anterior_pocos_terminos": false
@@ -2143,12 +2195,14 @@
     "media_2a": -0.176,
     "sd_2a": 0.592,
     "n_2a": 21,
-    "dz": -1.7,
-    "dz_txt": "MÁS DOVISH",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2020-08-27",
     "anterior_z": 0.31,
-    "anterior_pocos_terminos": true
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2020-08-27) tiene solo 4 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2020-11-05",
@@ -2174,6 +2228,7 @@
     "dz": 0.07,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2020-09-16",
     "anterior_z": -1.39,
     "anterior_pocos_terminos": false
@@ -2203,6 +2258,7 @@
     "dz": 0.11,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2020-11-05",
     "anterior_z": -1.32,
     "anterior_pocos_terminos": false
@@ -2232,6 +2288,7 @@
     "dz": 0.06,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2020-12-16",
     "anterior_z": -1.21,
     "anterior_pocos_terminos": false
@@ -2259,6 +2316,7 @@
     "dz": 0.1,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2021-01-27",
     "anterior_z": -1.15,
     "anterior_pocos_terminos": false
@@ -2287,6 +2345,7 @@
     "dz": 0.41,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2021-03-17",
     "anterior_z": -1.05,
     "anterior_pocos_terminos": false
@@ -2315,6 +2374,7 @@
     "dz": 0.06,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2021-04-28",
     "anterior_z": -0.64,
     "anterior_pocos_terminos": false
@@ -2343,6 +2403,7 @@
     "dz": 0.07,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2021-06-16",
     "anterior_z": -0.58,
     "anterior_pocos_terminos": false
@@ -2372,6 +2433,7 @@
     "dz": 0.04,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2021-07-28",
     "anterior_z": -0.51,
     "anterior_pocos_terminos": false
@@ -2402,6 +2464,7 @@
     "dz": 0.09,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 12,
     "anterior_fecha": "2021-09-22",
     "anterior_z": -0.47,
     "anterior_pocos_terminos": false
@@ -2432,6 +2495,7 @@
     "dz": 0.5,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 12,
     "anterior_fecha": "2021-11-03",
     "anterior_z": -0.38,
     "anterior_pocos_terminos": false
@@ -2463,6 +2527,7 @@
     "dz": 0.93,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2021-12-15",
     "anterior_z": 0.12,
     "anterior_pocos_terminos": false
@@ -2496,6 +2561,7 @@
     "dz": 5.13,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2022-01-26",
     "anterior_z": 1.05,
     "anterior_pocos_terminos": false
@@ -2531,6 +2597,7 @@
     "dz": -3.0,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 12,
     "anterior_fecha": "2022-03-16",
     "anterior_z": 6.18,
     "anterior_pocos_terminos": false
@@ -2563,6 +2630,7 @@
     "dz": -0.73,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2022-05-04",
     "anterior_z": 3.18,
     "anterior_pocos_terminos": false
@@ -2596,6 +2664,7 @@
     "dz": -0.84,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2022-06-15",
     "anterior_z": 2.45,
     "anterior_pocos_terminos": false
@@ -2628,6 +2697,7 @@
     "dz": 0.12,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2022-07-27",
     "anterior_z": 1.61,
     "anterior_pocos_terminos": false
@@ -2662,6 +2732,7 @@
     "dz": -0.14,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2022-09-21",
     "anterior_z": 1.73,
     "anterior_pocos_terminos": false
@@ -2696,6 +2767,7 @@
     "dz": -0.22,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2022-11-02",
     "anterior_z": 1.59,
     "anterior_pocos_terminos": false
@@ -2729,6 +2801,7 @@
     "dz": -0.81,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2022-12-14",
     "anterior_z": 1.37,
     "anterior_pocos_terminos": false
@@ -2764,6 +2837,7 @@
     "dz": 0.36,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2023-02-01",
     "anterior_z": 0.56,
     "anterior_pocos_terminos": false
@@ -2798,6 +2872,7 @@
     "dz": -0.16,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2023-03-22",
     "anterior_z": 0.92,
     "anterior_pocos_terminos": false
@@ -2831,6 +2906,7 @@
     "dz": -0.1,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2023-05-03",
     "anterior_z": 0.76,
     "anterior_pocos_terminos": false
@@ -2866,6 +2942,7 @@
     "dz": -0.18,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2023-06-14",
     "anterior_z": 0.66,
     "anterior_pocos_terminos": false
@@ -2901,6 +2978,7 @@
     "dz": -0.29,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2023-07-26",
     "anterior_z": 0.48,
     "anterior_pocos_terminos": false
@@ -2935,6 +3013,7 @@
     "dz": 0.06,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2023-09-20",
     "anterior_z": 0.19,
     "anterior_pocos_terminos": false
@@ -2970,6 +3049,7 @@
     "dz": -1.09,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 12,
     "anterior_fecha": "2023-11-01",
     "anterior_z": 0.25,
     "anterior_pocos_terminos": false
@@ -3003,6 +3083,7 @@
     "dz": -3.67,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2023-12-13",
     "anterior_z": -0.84,
     "anterior_pocos_terminos": false
@@ -3035,6 +3116,7 @@
     "dz": 2.0,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2024-01-31",
     "anterior_z": -4.51,
     "anterior_pocos_terminos": false
@@ -3068,6 +3150,7 @@
     "dz": 0.27,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2024-03-20",
     "anterior_z": -2.51,
     "anterior_pocos_terminos": false
@@ -3100,6 +3183,7 @@
     "dz": 0.59,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2024-05-01",
     "anterior_z": -2.24,
     "anterior_pocos_terminos": false
@@ -3132,6 +3216,7 @@
     "dz": -0.7,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2024-06-12",
     "anterior_z": -1.65,
     "anterior_pocos_terminos": false
@@ -3162,6 +3247,7 @@
     "dz": 0.56,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2024-07-31",
     "anterior_z": -2.35,
     "anterior_pocos_terminos": false
@@ -3193,6 +3279,7 @@
     "dz": 0.23,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2024-09-18",
     "anterior_z": -1.79,
     "anterior_pocos_terminos": false
@@ -3224,6 +3311,7 @@
     "dz": 0.2,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2024-11-07",
     "anterior_z": -1.56,
     "anterior_pocos_terminos": false
@@ -3252,6 +3340,7 @@
     "dz": 1.63,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2024-12-18",
     "anterior_z": -1.36,
     "anterior_pocos_terminos": false
@@ -3280,6 +3369,7 @@
     "dz": 0.02,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2025-01-29",
     "anterior_z": 0.27,
     "anterior_pocos_terminos": false
@@ -3309,6 +3399,7 @@
     "dz": 0.49,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2025-03-19",
     "anterior_z": 0.29,
     "anterior_pocos_terminos": false
@@ -3337,6 +3428,7 @@
     "dz": -0.2,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2025-05-07",
     "anterior_z": 0.78,
     "anterior_pocos_terminos": false
@@ -3366,6 +3458,7 @@
     "dz": -0.87,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2025-06-18",
     "anterior_z": 0.58,
     "anterior_pocos_terminos": false
@@ -3417,6 +3510,7 @@
     "dz": -1.5,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2025-07-30",
     "anterior_z": -0.29,
     "anterior_pocos_terminos": false
@@ -3447,6 +3541,7 @@
     "dz": -0.26,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2025-09-17",
     "anterior_z": -1.79,
     "anterior_pocos_terminos": false
@@ -3477,6 +3572,7 @@
     "dz": 0.24,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2025-10-29",
     "anterior_z": -2.05,
     "anterior_pocos_terminos": false
@@ -3504,6 +3600,7 @@
     "dz": 1.82,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": true,
+    "n_terminos": 3,
     "anterior_fecha": "2025-12-10",
     "anterior_z": -1.81,
     "anterior_pocos_terminos": false
@@ -3529,12 +3626,14 @@
     "media_2a": -0.342,
     "sd_2a": 0.428,
     "n_2a": 16,
-    "dz": -0.38,
-    "dz_txt": "SIN CAMBIO",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": true,
+    "n_terminos": 4,
     "anterior_fecha": "2026-01-28",
     "anterior_z": 0.01,
-    "anterior_pocos_terminos": true
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2026-01-28) tiene solo 3 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2026-04-29",
@@ -3556,12 +3655,14 @@
     "media_2a": -0.36,
     "sd_2a": 0.428,
     "n_2a": 16,
-    "dz": 0.43,
-    "dz_txt": "SIN CAMBIO",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": true,
+    "n_terminos": 3,
     "anterior_fecha": "2026-03-18",
     "anterior_z": -0.37,
-    "anterior_pocos_terminos": true
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2026-03-18) tiene solo 4 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2026-06-17",
@@ -3585,12 +3686,14 @@
     "media_2a": -0.375,
     "sd_2a": 0.44,
     "n_2a": 15,
-    "dz": 1.55,
-    "dz_txt": "MÁS HAWKISH",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2026-04-29",
     "anterior_z": 0.06,
-    "anterior_pocos_terminos": true
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2026-04-29) tiene solo 3 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2026-07-29",
@@ -3618,6 +3721,7 @@
     "dz": 0.2,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2026-06-17",
     "anterior_z": 1.61,
     "anterior_pocos_terminos": false
@@ -3650,6 +3754,7 @@
     "dz": -0.37,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2026-07-29",
     "anterior_z": 1.81,
     "anterior_pocos_terminos": false
@@ -3697,7 +3802,8 @@
     "n_2a": 0,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 46
    },
    {
     "fecha": "2015-03-05",
@@ -3735,7 +3841,8 @@
     "n_2a": 1,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 28
    },
    {
     "fecha": "2015-04-15",
@@ -3776,7 +3883,8 @@
     "n_2a": 2,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 44
    },
    {
     "fecha": "2015-06-03",
@@ -3818,7 +3926,8 @@
     "n_2a": 3,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 45
    },
    {
     "fecha": "2015-07-16",
@@ -3860,7 +3969,8 @@
     "n_2a": 4,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 45
    },
    {
     "fecha": "2015-09-03",
@@ -3909,7 +4019,8 @@
     "n_2a": 5,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 51
    },
    {
     "fecha": "2015-10-22",
@@ -3961,7 +4072,8 @@
     "n_2a": 6,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 61
    },
    {
     "fecha": "2015-12-03",
@@ -4011,7 +4123,8 @@
     "n_2a": 7,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 65
    },
    {
     "fecha": "2016-01-21",
@@ -4062,7 +4175,8 @@
     "n_2a": 8,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 44
    },
    {
     "fecha": "2016-03-10",
@@ -4106,6 +4220,7 @@
     "dz": -0.68,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 44,
     "anterior_fecha": "2016-01-21",
     "anterior_z": -0.23,
     "anterior_pocos_terminos": false
@@ -4154,6 +4269,7 @@
     "dz": 0.59,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 38,
     "anterior_fecha": "2016-03-10",
     "anterior_z": -0.91,
     "anterior_pocos_terminos": false
@@ -4203,6 +4319,7 @@
     "dz": -0.52,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 41,
     "anterior_fecha": "2016-04-21",
     "anterior_z": -0.32,
     "anterior_pocos_terminos": false
@@ -4245,6 +4362,7 @@
     "dz": 0.67,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 43,
     "anterior_fecha": "2016-06-02",
     "anterior_z": -0.84,
     "anterior_pocos_terminos": false
@@ -4292,6 +4410,7 @@
     "dz": -0.44,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 43,
     "anterior_fecha": "2016-07-21",
     "anterior_z": -0.17,
     "anterior_pocos_terminos": false
@@ -4337,6 +4456,7 @@
     "dz": 0.28,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 47,
     "anterior_fecha": "2016-09-08",
     "anterior_z": -0.61,
     "anterior_pocos_terminos": false
@@ -4382,6 +4502,7 @@
     "dz": 0.43,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 53,
     "anterior_fecha": "2016-10-20",
     "anterior_z": -0.33,
     "anterior_pocos_terminos": false
@@ -4424,6 +4545,7 @@
     "dz": 0.19,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 39,
     "anterior_fecha": "2016-12-08",
     "anterior_z": 0.1,
     "anterior_pocos_terminos": false
@@ -4469,6 +4591,7 @@
     "dz": 0.52,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 42,
     "anterior_fecha": "2017-01-19",
     "anterior_z": 0.29,
     "anterior_pocos_terminos": false
@@ -4517,6 +4640,7 @@
     "dz": -1.56,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 67,
     "anterior_fecha": "2017-03-09",
     "anterior_z": 0.81,
     "anterior_pocos_terminos": false
@@ -4564,6 +4688,7 @@
     "dz": -0.52,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 52,
     "anterior_fecha": "2017-04-27",
     "anterior_z": -0.75,
     "anterior_pocos_terminos": false
@@ -4612,6 +4737,7 @@
     "dz": 0.46,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 51,
     "anterior_fecha": "2017-06-08",
     "anterior_z": -1.27,
     "anterior_pocos_terminos": false
@@ -4659,6 +4785,7 @@
     "dz": 0.68,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 60,
     "anterior_fecha": "2017-07-20",
     "anterior_z": -0.81,
     "anterior_pocos_terminos": false
@@ -4713,6 +4840,7 @@
     "dz": 1.03,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 66,
     "anterior_fecha": "2017-09-07",
     "anterior_z": -0.13,
     "anterior_pocos_terminos": false
@@ -4757,6 +4885,7 @@
     "dz": -0.07,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 56,
     "anterior_fecha": "2017-10-26",
     "anterior_z": 0.9,
     "anterior_pocos_terminos": false
@@ -4804,6 +4933,7 @@
     "dz": 1.22,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 55,
     "anterior_fecha": "2017-12-14",
     "anterior_z": 0.83,
     "anterior_pocos_terminos": false
@@ -4853,6 +4983,7 @@
     "dz": -3.48,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 66,
     "anterior_fecha": "2018-01-25",
     "anterior_z": 2.05,
     "anterior_pocos_terminos": false
@@ -4902,6 +5033,7 @@
     "dz": 4.48,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 57,
     "anterior_fecha": "2018-03-08",
     "anterior_z": -1.43,
     "anterior_pocos_terminos": false
@@ -4951,6 +5083,7 @@
     "dz": -1.39,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 75,
     "anterior_fecha": "2018-04-26",
     "anterior_z": 3.05,
     "anterior_pocos_terminos": false
@@ -5003,6 +5136,7 @@
     "dz": -1.33,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 65,
     "anterior_fecha": "2018-06-14",
     "anterior_z": 1.66,
     "anterior_pocos_terminos": false
@@ -5057,6 +5191,7 @@
     "dz": -0.03,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 66,
     "anterior_fecha": "2018-07-26",
     "anterior_z": 0.33,
     "anterior_pocos_terminos": false
@@ -5103,6 +5238,7 @@
     "dz": -1.3,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 56,
     "anterior_fecha": "2018-09-13",
     "anterior_z": 0.3,
     "anterior_pocos_terminos": false
@@ -5150,6 +5286,7 @@
     "dz": 1.55,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 55,
     "anterior_fecha": "2018-10-25",
     "anterior_z": -1.0,
     "anterior_pocos_terminos": false
@@ -5202,6 +5339,7 @@
     "dz": -0.37,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 90,
     "anterior_fecha": "2018-12-13",
     "anterior_z": 0.55,
     "anterior_pocos_terminos": false
@@ -5253,6 +5391,7 @@
     "dz": -1.83,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 73,
     "anterior_fecha": "2019-01-24",
     "anterior_z": 0.18,
     "anterior_pocos_terminos": false
@@ -5297,6 +5436,7 @@
     "dz": 0.49,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 49,
     "anterior_fecha": "2019-03-07",
     "anterior_z": -1.65,
     "anterior_pocos_terminos": false
@@ -5343,6 +5483,7 @@
     "dz": 0.42,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 51,
     "anterior_fecha": "2019-04-10",
     "anterior_z": -1.16,
     "anterior_pocos_terminos": false
@@ -5399,6 +5540,7 @@
     "dz": 0.8,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 61,
     "anterior_fecha": "2019-06-06",
     "anterior_z": -0.74,
     "anterior_pocos_terminos": false
@@ -5456,6 +5598,7 @@
     "dz": -0.47,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 77,
     "anterior_fecha": "2019-07-25",
     "anterior_z": 0.06,
     "anterior_pocos_terminos": false
@@ -5505,6 +5648,7 @@
     "dz": -1.07,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 55,
     "anterior_fecha": "2019-09-12",
     "anterior_z": -0.41,
     "anterior_pocos_terminos": false
@@ -5552,6 +5696,7 @@
     "dz": 0.73,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 42,
     "anterior_fecha": "2019-10-24",
     "anterior_z": -1.48,
     "anterior_pocos_terminos": false
@@ -5602,6 +5747,7 @@
     "dz": 1.24,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 52,
     "anterior_fecha": "2019-12-12",
     "anterior_z": -0.75,
     "anterior_pocos_terminos": false
@@ -5655,6 +5801,7 @@
     "dz": -1.57,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 77,
     "anterior_fecha": "2020-01-23",
     "anterior_z": 0.49,
     "anterior_pocos_terminos": false
@@ -5711,6 +5858,7 @@
     "dz": 1.04,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 74,
     "anterior_fecha": "2020-03-12",
     "anterior_z": -1.08,
     "anterior_pocos_terminos": false
@@ -5765,6 +5913,7 @@
     "dz": 0.55,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 70,
     "anterior_fecha": "2020-04-30",
     "anterior_z": -0.04,
     "anterior_pocos_terminos": false
@@ -5822,6 +5971,7 @@
     "dz": 0.78,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 86,
     "anterior_fecha": "2020-06-04",
     "anterior_z": 0.51,
     "anterior_pocos_terminos": false
@@ -5875,6 +6025,7 @@
     "dz": -0.75,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 67,
     "anterior_fecha": "2020-07-16",
     "anterior_z": 1.29,
     "anterior_pocos_terminos": false
@@ -5931,6 +6082,7 @@
     "dz": -0.14,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 72,
     "anterior_fecha": "2020-09-10",
     "anterior_z": 0.54,
     "anterior_pocos_terminos": false
@@ -5981,6 +6133,7 @@
     "dz": 1.13,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 59,
     "anterior_fecha": "2020-10-29",
     "anterior_z": 0.4,
     "anterior_pocos_terminos": false
@@ -6035,6 +6188,7 @@
     "dz": -0.26,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 76,
     "anterior_fecha": "2020-12-10",
     "anterior_z": 1.53,
     "anterior_pocos_terminos": false
@@ -6086,6 +6240,7 @@
     "dz": 0.54,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 67,
     "anterior_fecha": "2021-01-21",
     "anterior_z": 1.27,
     "anterior_pocos_terminos": false
@@ -6141,6 +6296,7 @@
     "dz": 2.22,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 86,
     "anterior_fecha": "2021-03-11",
     "anterior_z": 1.81,
     "anterior_pocos_terminos": false
@@ -6198,6 +6354,7 @@
     "dz": -2.1,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 91,
     "anterior_fecha": "2021-04-22",
     "anterior_z": 4.03,
     "anterior_pocos_terminos": false
@@ -6249,6 +6406,7 @@
     "dz": -0.08,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 56,
     "anterior_fecha": "2021-06-10",
     "anterior_z": 1.93,
     "anterior_pocos_terminos": false
@@ -6296,6 +6454,7 @@
     "dz": -1.24,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 53,
     "anterior_fecha": "2021-07-22",
     "anterior_z": 1.85,
     "anterior_pocos_terminos": false
@@ -6343,6 +6502,7 @@
     "dz": 1.9,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 45,
     "anterior_fecha": "2021-09-09",
     "anterior_z": 0.61,
     "anterior_pocos_terminos": false
@@ -6393,6 +6553,7 @@
     "dz": -3.03,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 99,
     "anterior_fecha": "2021-10-28",
     "anterior_z": 2.51,
     "anterior_pocos_terminos": false
@@ -6446,6 +6607,7 @@
     "dz": 2.56,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 65,
     "anterior_fecha": "2021-12-16",
     "anterior_z": -0.52,
     "anterior_pocos_terminos": false
@@ -6496,6 +6658,7 @@
     "dz": -2.12,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 85,
     "anterior_fecha": "2022-02-03",
     "anterior_z": 2.04,
     "anterior_pocos_terminos": false
@@ -6546,6 +6709,7 @@
     "dz": 2.28,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 79,
     "anterior_fecha": "2022-03-10",
     "anterior_z": -0.08,
     "anterior_pocos_terminos": false
@@ -6608,6 +6772,7 @@
     "dz": 0.13,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 80,
     "anterior_fecha": "2022-04-14",
     "anterior_z": 2.2,
     "anterior_pocos_terminos": false
@@ -6664,6 +6829,7 @@
     "dz": -0.51,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 82,
     "anterior_fecha": "2022-06-09",
     "anterior_z": 2.33,
     "anterior_pocos_terminos": false
@@ -6727,6 +6893,7 @@
     "dz": 0.61,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 98,
     "anterior_fecha": "2022-07-21",
     "anterior_z": 1.82,
     "anterior_pocos_terminos": false
@@ -6789,6 +6956,7 @@
     "dz": -1.4,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 90,
     "anterior_fecha": "2022-09-08",
     "anterior_z": 2.43,
     "anterior_pocos_terminos": false
@@ -6851,6 +7019,7 @@
     "dz": 0.0,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 87,
     "anterior_fecha": "2022-10-27",
     "anterior_z": 1.03,
     "anterior_pocos_terminos": false
@@ -6915,6 +7084,7 @@
     "dz": 0.37,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 106,
     "anterior_fecha": "2022-12-15",
     "anterior_z": 1.03,
     "anterior_pocos_terminos": false
@@ -6976,6 +7146,7 @@
     "dz": -0.48,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 92,
     "anterior_fecha": "2023-02-02",
     "anterior_z": 1.4,
     "anterior_pocos_terminos": false
@@ -7034,6 +7205,7 @@
     "dz": 0.95,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 88,
     "anterior_fecha": "2023-03-16",
     "anterior_z": 0.92,
     "anterior_pocos_terminos": false
@@ -7096,6 +7268,7 @@
     "dz": -0.94,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 67,
     "anterior_fecha": "2023-05-04",
     "anterior_z": 1.87,
     "anterior_pocos_terminos": false
@@ -7156,6 +7329,7 @@
     "dz": 0.37,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 77,
     "anterior_fecha": "2023-06-15",
     "anterior_z": 0.93,
     "anterior_pocos_terminos": false
@@ -7215,6 +7389,7 @@
     "dz": -1.44,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 89,
     "anterior_fecha": "2023-07-27",
     "anterior_z": 1.3,
     "anterior_pocos_terminos": false
@@ -7273,6 +7448,7 @@
     "dz": 0.16,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 72,
     "anterior_fecha": "2023-09-14",
     "anterior_z": -0.14,
     "anterior_pocos_terminos": false
@@ -7326,6 +7502,7 @@
     "dz": -1.19,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 75,
     "anterior_fecha": "2023-10-26",
     "anterior_z": 0.02,
     "anterior_pocos_terminos": false
@@ -7380,6 +7557,7 @@
     "dz": -1.03,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 60,
     "anterior_fecha": "2023-12-14",
     "anterior_z": -1.17,
     "anterior_pocos_terminos": false
@@ -7435,6 +7613,7 @@
     "dz": 1.85,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 63,
     "anterior_fecha": "2024-01-25",
     "anterior_z": -2.2,
     "anterior_pocos_terminos": false
@@ -7490,6 +7669,7 @@
     "dz": -0.53,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 61,
     "anterior_fecha": "2024-03-07",
     "anterior_z": -0.35,
     "anterior_pocos_terminos": false
@@ -7547,6 +7727,7 @@
     "dz": 0.03,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 74,
     "anterior_fecha": "2024-04-11",
     "anterior_z": -0.88,
     "anterior_pocos_terminos": false
@@ -7596,6 +7777,7 @@
     "dz": 0.81,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 62,
     "anterior_fecha": "2024-06-06",
     "anterior_z": -0.85,
     "anterior_pocos_terminos": false
@@ -7647,6 +7829,7 @@
     "dz": -1.05,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 65,
     "anterior_fecha": "2024-07-18",
     "anterior_z": -0.04,
     "anterior_pocos_terminos": false
@@ -7708,6 +7891,7 @@
     "dz": -0.69,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 91,
     "anterior_fecha": "2024-09-12",
     "anterior_z": -1.09,
     "anterior_pocos_terminos": false
@@ -7759,6 +7943,7 @@
     "dz": 0.87,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 79,
     "anterior_fecha": "2024-10-17",
     "anterior_z": -1.78,
     "anterior_pocos_terminos": false
@@ -7814,6 +7999,7 @@
     "dz": 0.29,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 56,
     "anterior_fecha": "2024-12-12",
     "anterior_z": -0.91,
     "anterior_pocos_terminos": false
@@ -7873,6 +8059,7 @@
     "dz": -0.17,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 93,
     "anterior_fecha": "2025-01-30",
     "anterior_z": -0.62,
     "anterior_pocos_terminos": false
@@ -7923,6 +8110,7 @@
     "dz": -1.21,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 66,
     "anterior_fecha": "2025-03-06",
     "anterior_z": -0.79,
     "anterior_pocos_terminos": false
@@ -7978,6 +8166,7 @@
     "dz": -0.08,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 82,
     "anterior_fecha": "2025-04-17",
     "anterior_z": -2.0,
     "anterior_pocos_terminos": false
@@ -8032,6 +8221,7 @@
     "dz": 0.33,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 61,
     "anterior_fecha": "2025-06-05",
     "anterior_z": -2.08,
     "anterior_pocos_terminos": false
@@ -8079,6 +8269,7 @@
     "dz": -0.51,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 42,
     "anterior_fecha": "2025-07-24",
     "anterior_z": -1.75,
     "anterior_pocos_terminos": false
@@ -8133,6 +8324,7 @@
     "dz": 1.26,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 55,
     "anterior_fecha": "2025-09-11",
     "anterior_z": -2.26,
     "anterior_pocos_terminos": false
@@ -8181,6 +8373,7 @@
     "dz": 1.35,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 46,
     "anterior_fecha": "2025-10-30",
     "anterior_z": -1.0,
     "anterior_pocos_terminos": false
@@ -8225,6 +8418,7 @@
     "dz": -0.92,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 35,
     "anterior_fecha": "2025-12-18",
     "anterior_z": 0.35,
     "anterior_pocos_terminos": false
@@ -8266,6 +8460,7 @@
     "dz": 0.08,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 28,
     "anterior_fecha": "2026-02-05",
     "anterior_z": -0.57,
     "anterior_pocos_terminos": false
@@ -8313,6 +8508,7 @@
     "dz": 2.19,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 43,
     "anterior_fecha": "2026-03-19",
     "anterior_z": -0.49,
     "anterior_pocos_terminos": false
@@ -8364,6 +8560,7 @@
     "dz": 0.63,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 52,
     "anterior_fecha": "2026-04-30",
     "anterior_z": 1.7,
     "anterior_pocos_terminos": false
@@ -8411,6 +8608,7 @@
     "dz": -1.07,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 36,
     "anterior_fecha": "2026-06-11",
     "anterior_z": 2.33,
     "anterior_pocos_terminos": false
@@ -8457,6 +8655,7 @@
     "dz": 0.67,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 35,
     "anterior_fecha": "2026-07-23",
     "anterior_z": 1.26,
     "anterior_pocos_terminos": false
@@ -8491,7 +8690,8 @@
     "n_2a": 0,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 23
    },
    {
     "fecha": "2015-02-18",
@@ -8520,7 +8720,8 @@
     "n_2a": 1,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 14
    },
    {
     "fecha": "2015-03-17",
@@ -8549,7 +8750,8 @@
     "n_2a": 2,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 14
    },
    {
     "fecha": "2015-04-08",
@@ -8578,7 +8780,8 @@
     "n_2a": 3,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 13
    },
    {
     "fecha": "2015-04-30",
@@ -8600,7 +8803,8 @@
     "n_2a": 4,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": true
+    "pocos_terminos": true,
+    "n_terminos": 2
    },
    {
     "fecha": "2015-05-22",
@@ -8628,7 +8832,8 @@
     "n_2a": 5,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 11
    },
    {
     "fecha": "2015-06-19",
@@ -8656,7 +8861,8 @@
     "n_2a": 6,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 11
    },
    {
     "fecha": "2015-07-15",
@@ -8685,7 +8891,8 @@
     "n_2a": 7,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 16
    },
    {
     "fecha": "2015-08-07",
@@ -8712,7 +8919,8 @@
     "n_2a": 8,
     "dz": null,
     "dz_txt": null,
-    "pocos_terminos": false
+    "pocos_terminos": false,
+    "n_terminos": 9
    },
    {
     "fecha": "2015-09-15",
@@ -8741,6 +8949,7 @@
     "dz": -0.01,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 13,
     "anterior_fecha": "2015-08-07",
     "anterior_z": -1.01,
     "anterior_pocos_terminos": false
@@ -8772,6 +8981,7 @@
     "dz": 0.1,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 13,
     "anterior_fecha": "2015-09-15",
     "anterior_z": -1.02,
     "anterior_pocos_terminos": false
@@ -8797,6 +9007,7 @@
     "dz": -0.17,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": true,
+    "n_terminos": 2,
     "anterior_fecha": "2015-10-07",
     "anterior_z": -0.92,
     "anterior_pocos_terminos": false
@@ -8825,12 +9036,14 @@
     "media_2a": -0.631,
     "sd_2a": 0.37,
     "n_2a": 12,
-    "dz": 0.34,
-    "dz_txt": "SIN CAMBIO",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
+    "n_terminos": 13,
     "anterior_fecha": "2015-10-30",
     "anterior_z": -1.09,
-    "anterior_pocos_terminos": true
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2015-10-30) tiene solo 2 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2015-12-18",
@@ -8860,6 +9073,7 @@
     "dz": -0.04,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 21,
     "anterior_fecha": "2015-11-19",
     "anterior_z": -0.75,
     "anterior_pocos_terminos": false
@@ -8893,6 +9107,7 @@
     "dz": 0.01,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 45,
     "anterior_fecha": "2015-12-18",
     "anterior_z": -0.79,
     "anterior_pocos_terminos": false
@@ -8928,6 +9143,7 @@
     "dz": 0.06,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 22,
     "anterior_fecha": "2016-01-29",
     "anterior_z": -0.78,
     "anterior_pocos_terminos": false
@@ -8953,7 +9169,8 @@
     "n_2a": 16,
     "dz": -0.13,
     "dz_txt": "SIN CAMBIO",
-    "pocos_terminos": false,
+    "pocos_terminos": true,
+    "n_terminos": 4,
     "anterior_fecha": "2016-03-15",
     "anterior_z": -0.72,
     "anterior_pocos_terminos": false
@@ -8986,12 +9203,14 @@
     "media_2a": -0.724,
     "sd_2a": 0.342,
     "n_2a": 17,
-    "dz": 0.23,
-    "dz_txt": "SIN CAMBIO",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
+    "n_terminos": 18,
     "anterior_fecha": "2016-04-28",
     "anterior_z": -0.85,
-    "anterior_pocos_terminos": false
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2016-04-28) tiene solo 4 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2016-07-29",
@@ -9023,6 +9242,7 @@
     "dz": -0.17,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 23,
     "anterior_fecha": "2016-06-16",
     "anterior_z": -0.62,
     "anterior_pocos_terminos": false
@@ -9068,6 +9288,7 @@
     "dz": 0.64,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 52,
     "anterior_fecha": "2016-07-29",
     "anterior_z": -0.79,
     "anterior_pocos_terminos": false
@@ -9094,6 +9315,7 @@
     "dz": -0.62,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2016-09-21",
     "anterior_z": -0.15,
     "anterior_pocos_terminos": false
@@ -9127,6 +9349,7 @@
     "dz": 0.23,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 19,
     "anterior_fecha": "2016-11-01",
     "anterior_z": -0.77,
     "anterior_pocos_terminos": false
@@ -9154,6 +9377,7 @@
     "dz": -0.21,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2016-12-20",
     "anterior_z": -0.54,
     "anterior_pocos_terminos": false
@@ -9187,6 +9411,7 @@
     "dz": 0.34,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 19,
     "anterior_fecha": "2017-01-31",
     "anterior_z": -0.75,
     "anterior_pocos_terminos": false
@@ -9213,6 +9438,7 @@
     "dz": -0.16,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2017-03-16",
     "anterior_z": -0.41,
     "anterior_pocos_terminos": false
@@ -9245,6 +9471,7 @@
     "dz": 0.63,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 17,
     "anterior_fecha": "2017-04-27",
     "anterior_z": -0.57,
     "anterior_pocos_terminos": false
@@ -9271,6 +9498,7 @@
     "dz": -1.13,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2017-06-16",
     "anterior_z": 0.06,
     "anterior_pocos_terminos": false
@@ -9303,6 +9531,7 @@
     "dz": 3.09,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 14,
     "anterior_fecha": "2017-07-20",
     "anterior_z": -1.07,
     "anterior_pocos_terminos": false
@@ -9329,7 +9558,8 @@
     "n_2a": 16,
     "dz": -2.97,
     "dz_txt": "MÁS DOVISH",
-    "pocos_terminos": false,
+    "pocos_terminos": true,
+    "n_terminos": 4,
     "anterior_fecha": "2017-09-21",
     "anterior_z": 2.02,
     "anterior_pocos_terminos": false
@@ -9361,12 +9591,14 @@
     "media_2a": -0.946,
     "sd_2a": 0.067,
     "n_2a": 15,
-    "dz": 4.95,
-    "dz_txt": "MÁS HAWKISH",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
+    "n_terminos": 14,
     "anterior_fecha": "2017-10-31",
     "anterior_z": -0.95,
-    "anterior_pocos_terminos": false
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2017-10-31) tiene solo 4 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2018-01-23",
@@ -9393,6 +9625,7 @@
     "dz": -1.16,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2017-12-21",
     "anterior_z": 4.0,
     "anterior_pocos_terminos": false
@@ -9428,6 +9661,7 @@
     "dz": -0.08,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 14,
     "anterior_fecha": "2018-01-23",
     "anterior_z": 2.84,
     "anterior_pocos_terminos": false
@@ -9457,6 +9691,7 @@
     "dz": -1.47,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2018-03-09",
     "anterior_z": 2.76,
     "anterior_pocos_terminos": false
@@ -9492,6 +9727,7 @@
     "dz": 0.44,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 15,
     "anterior_fecha": "2018-04-27",
     "anterior_z": 1.29,
     "anterior_pocos_terminos": false
@@ -9523,6 +9759,7 @@
     "dz": -1.3,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 18,
     "anterior_fecha": "2018-06-15",
     "anterior_z": 1.73,
     "anterior_pocos_terminos": false
@@ -9557,6 +9794,7 @@
     "dz": 0.82,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 16,
     "anterior_fecha": "2018-07-31",
     "anterior_z": 0.43,
     "anterior_pocos_terminos": false
@@ -9587,6 +9825,7 @@
     "dz": -1.05,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2018-09-19",
     "anterior_z": 1.25,
     "anterior_pocos_terminos": false
@@ -9620,6 +9859,7 @@
     "dz": 0.51,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 15,
     "anterior_fecha": "2018-10-31",
     "anterior_z": 0.2,
     "anterior_pocos_terminos": false
@@ -9651,6 +9891,7 @@
     "dz": -0.8,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 12,
     "anterior_fecha": "2018-12-20",
     "anterior_z": 0.71,
     "anterior_pocos_terminos": false
@@ -9685,6 +9926,7 @@
     "dz": 0.35,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 18,
     "anterior_fecha": "2019-01-23",
     "anterior_z": -0.09,
     "anterior_pocos_terminos": false
@@ -9719,6 +9961,7 @@
     "dz": 0.16,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 24,
     "anterior_fecha": "2019-03-15",
     "anterior_z": 0.26,
     "anterior_pocos_terminos": false
@@ -9754,6 +9997,7 @@
     "dz": -0.53,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 19,
     "anterior_fecha": "2019-04-25",
     "anterior_z": 0.42,
     "anterior_pocos_terminos": false
@@ -9785,6 +10029,7 @@
     "dz": -0.46,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2019-06-20",
     "anterior_z": -0.11,
     "anterior_pocos_terminos": false
@@ -9819,6 +10064,7 @@
     "dz": 0.18,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 20,
     "anterior_fecha": "2019-07-30",
     "anterior_z": -0.57,
     "anterior_pocos_terminos": false
@@ -9854,6 +10100,7 @@
     "dz": 1.38,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 22,
     "anterior_fecha": "2019-09-19",
     "anterior_z": -0.39,
     "anterior_pocos_terminos": false
@@ -9888,6 +10135,7 @@
     "dz": -1.9,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 20,
     "anterior_fecha": "2019-10-31",
     "anterior_z": 0.99,
     "anterior_pocos_terminos": false
@@ -9918,6 +10166,7 @@
     "dz": -3.03,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2019-12-19",
     "anterior_z": -0.91,
     "anterior_pocos_terminos": false
@@ -9949,6 +10198,7 @@
     "dz": 2.85,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 15,
     "anterior_fecha": "2020-01-21",
     "anterior_z": -3.94,
     "anterior_pocos_terminos": false
@@ -9975,6 +10225,7 @@
     "dz": -1.43,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2020-04-27",
     "anterior_z": -1.09,
     "anterior_pocos_terminos": false
@@ -10008,6 +10259,7 @@
     "dz": 0.48,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 14,
     "anterior_fecha": "2020-05-22",
     "anterior_z": -2.52,
     "anterior_pocos_terminos": false
@@ -10038,6 +10290,7 @@
     "dz": 0.29,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2020-06-16",
     "anterior_z": -2.04,
     "anterior_pocos_terminos": false
@@ -10072,6 +10325,7 @@
     "dz": 0.26,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 16,
     "anterior_fecha": "2020-07-15",
     "anterior_z": -1.75,
     "anterior_pocos_terminos": false
@@ -10102,6 +10356,7 @@
     "dz": 0.17,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2020-09-17",
     "anterior_z": -1.49,
     "anterior_pocos_terminos": false
@@ -10136,6 +10391,7 @@
     "dz": 1.93,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 21,
     "anterior_fecha": "2020-10-29",
     "anterior_z": -1.32,
     "anterior_pocos_terminos": false
@@ -10166,6 +10422,7 @@
     "dz": -1.78,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2020-12-18",
     "anterior_z": 0.61,
     "anterior_pocos_terminos": false
@@ -10206,6 +10463,7 @@
     "dz": 1.3,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 55,
     "anterior_fecha": "2021-01-21",
     "anterior_z": -1.17,
     "anterior_pocos_terminos": false
@@ -10236,6 +10494,7 @@
     "dz": -1.08,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2021-03-19",
     "anterior_z": 0.13,
     "anterior_pocos_terminos": false
@@ -10268,6 +10527,7 @@
     "dz": 0.7,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 17,
     "anterior_fecha": "2021-04-27",
     "anterior_z": -0.95,
     "anterior_pocos_terminos": false
@@ -10297,6 +10557,7 @@
     "dz": -0.6,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2021-06-18",
     "anterior_z": -0.25,
     "anterior_pocos_terminos": false
@@ -10330,6 +10591,7 @@
     "dz": 0.95,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 14,
     "anterior_fecha": "2021-07-16",
     "anterior_z": -0.85,
     "anterior_pocos_terminos": false
@@ -10359,6 +10621,7 @@
     "dz": -0.81,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2021-09-22",
     "anterior_z": 0.1,
     "anterior_pocos_terminos": false
@@ -10390,6 +10653,7 @@
     "dz": 0.04,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 14,
     "anterior_fecha": "2021-10-28",
     "anterior_z": -0.71,
     "anterior_pocos_terminos": false
@@ -10419,6 +10683,7 @@
     "dz": 0.08,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2021-12-17",
     "anterior_z": -0.67,
     "anterior_pocos_terminos": false
@@ -10450,6 +10715,7 @@
     "dz": 0.0,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 13,
     "anterior_fecha": "2022-01-18",
     "anterior_z": -0.59,
     "anterior_pocos_terminos": false
@@ -10479,6 +10745,7 @@
     "dz": 0.09,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2022-03-18",
     "anterior_z": -0.59,
     "anterior_pocos_terminos": false
@@ -10510,6 +10777,7 @@
     "dz": -0.02,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2022-04-28",
     "anterior_z": -0.5,
     "anterior_pocos_terminos": false
@@ -10539,6 +10807,7 @@
     "dz": 0.0,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2022-06-17",
     "anterior_z": -0.52,
     "anterior_pocos_terminos": false
@@ -10570,6 +10839,7 @@
     "dz": 0.0,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 12,
     "anterior_fecha": "2022-07-21",
     "anterior_z": -0.52,
     "anterior_pocos_terminos": false
@@ -10599,6 +10869,7 @@
     "dz": 0.02,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2022-09-22",
     "anterior_z": -0.52,
     "anterior_pocos_terminos": false
@@ -10632,6 +10903,7 @@
     "dz": 0.04,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 14,
     "anterior_fecha": "2022-10-28",
     "anterior_z": -0.5,
     "anterior_pocos_terminos": false
@@ -10661,6 +10933,7 @@
     "dz": 0.01,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2022-12-20",
     "anterior_z": -0.46,
     "anterior_pocos_terminos": false
@@ -10693,6 +10966,7 @@
     "dz": 0.0,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 9,
     "anterior_fecha": "2023-01-18",
     "anterior_z": -0.45,
     "anterior_pocos_terminos": false
@@ -10721,6 +10995,7 @@
     "dz": 0.07,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 7,
     "anterior_fecha": "2023-03-10",
     "anterior_z": -0.45,
     "anterior_pocos_terminos": false
@@ -10753,6 +11028,7 @@
     "dz": 0.01,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2023-04-28",
     "anterior_z": -0.38,
     "anterior_pocos_terminos": false
@@ -10783,6 +11059,7 @@
     "dz": 6.03,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 15,
     "anterior_fecha": "2023-06-16",
     "anterior_z": -0.37,
     "anterior_pocos_terminos": false
@@ -10816,6 +11093,7 @@
     "dz": -6.02,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2023-07-28",
     "anterior_z": 5.66,
     "anterior_pocos_terminos": false
@@ -10846,6 +11124,7 @@
     "dz": 3.01,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2023-09-22",
     "anterior_z": -0.36,
     "anterior_pocos_terminos": false
@@ -10879,6 +11158,7 @@
     "dz": -3.02,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 11,
     "anterior_fecha": "2023-10-31",
     "anterior_z": 2.65,
     "anterior_pocos_terminos": false
@@ -10907,6 +11187,7 @@
     "dz": 0.0,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 6,
     "anterior_fecha": "2023-12-19",
     "anterior_z": -0.37,
     "anterior_pocos_terminos": false
@@ -10945,6 +11226,7 @@
     "dz": 9.64,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 20,
     "anterior_fecha": "2024-01-23",
     "anterior_z": -0.37,
     "anterior_pocos_terminos": false
@@ -10991,7 +11273,8 @@
     "n_2a": 15,
     "dz": -6.56,
     "dz_txt": "MÁS DOVISH",
-    "pocos_terminos": false,
+    "pocos_terminos": true,
+    "n_terminos": 4,
     "anterior_fecha": "2024-03-19",
     "anterior_z": 9.27,
     "anterior_pocos_terminos": false
@@ -11024,12 +11307,14 @@
     "media_2a": -0.931,
     "sd_2a": 0.134,
     "n_2a": 14,
-    "dz": 2.39,
-    "dz_txt": "MÁS HAWKISH",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
+    "n_terminos": 16,
     "anterior_fecha": "2024-06-14",
     "anterior_z": 2.71,
-    "anterior_pocos_terminos": false
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2024-06-14) tiene solo 4 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2024-09-20",
@@ -11054,6 +11339,7 @@
     "dz": -4.31,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2024-07-31",
     "anterior_z": 5.1,
     "anterior_pocos_terminos": false
@@ -11101,6 +11387,7 @@
     "dz": -0.15,
     "dz_txt": "SIN CAMBIO",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2024-09-20",
     "anterior_z": 0.79,
     "anterior_pocos_terminos": false
@@ -11131,6 +11418,7 @@
     "dz": 1.52,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 10,
     "anterior_fecha": "2024-12-19",
     "anterior_z": 0.64,
     "anterior_pocos_terminos": false
@@ -11158,6 +11446,7 @@
     "dz": -1.93,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 5,
     "anterior_fecha": "2025-01-24",
     "anterior_z": 2.16,
     "anterior_pocos_terminos": false
@@ -11210,6 +11499,7 @@
     "dz": -0.92,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": false,
+    "n_terminos": 14,
     "anterior_fecha": "2025-03-19",
     "anterior_z": 0.23,
     "anterior_pocos_terminos": false
@@ -11263,6 +11553,7 @@
     "dz": 0.56,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 12,
     "anterior_fecha": "2025-06-17",
     "anterior_z": -0.69,
     "anterior_pocos_terminos": false
@@ -11316,6 +11607,7 @@
     "dz": 0.69,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 17,
     "anterior_fecha": "2025-09-19",
     "anterior_z": -0.13,
     "anterior_pocos_terminos": false
@@ -11367,6 +11659,7 @@
     "dz": 0.62,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": false,
+    "n_terminos": 8,
     "anterior_fecha": "2025-12-19",
     "anterior_z": 0.56,
     "anterior_pocos_terminos": false
@@ -11392,6 +11685,7 @@
     "dz": -3.08,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": true,
+    "n_terminos": 1,
     "anterior_fecha": "2026-03-19",
     "anterior_z": 1.18,
     "anterior_pocos_terminos": false
@@ -11426,12 +11720,14 @@
     "media_2a": -0.631,
     "sd_2a": 0.247,
     "n_2a": 10,
-    "dz": 2.08,
-    "dz_txt": "MÁS HAWKISH",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
+    "n_terminos": 21,
     "anterior_fecha": "2026-04-28",
     "anterior_z": -1.9,
-    "anterior_pocos_terminos": true
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2026-04-28) tiene solo 1 términos del diccionario (mínimo 5)"
    },
    {
     "fecha": "2026-07-31",
@@ -11454,6 +11750,7 @@
     "dz": 6.75,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": true,
+    "n_terminos": 1,
     "anterior_fecha": "2026-06-16",
     "anterior_z": 0.18,
     "anterior_pocos_terminos": false
@@ -11486,12 +11783,14 @@
     "media_2a": -0.514,
     "sd_2a": 0.54,
     "n_2a": 11,
-    "dz": -6.68,
-    "dz_txt": "MÁS DOVISH",
+    "dz": null,
+    "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
+    "n_terminos": 21,
     "anterior_fecha": "2026-07-31",
     "anterior_z": 6.93,
-    "anterior_pocos_terminos": true
+    "anterior_pocos_terminos": true,
+    "dz_motivo": "la intervención anterior (2026-07-31) tiene solo 1 términos del diccionario (mínimo 5)"
    }
   ]
  },
@@ -11524,6 +11823,7 @@
    "dz": -0.37,
    "dz_txt": "SIN CAMBIO",
    "pocos_terminos": false,
+   "n_terminos": 9,
    "anterior_fecha": "2026-07-29",
    "anterior_z": 1.81,
    "anterior_pocos_terminos": false,
@@ -11575,6 +11875,7 @@
    "dz": 0.67,
    "dz_txt": "MÁS HAWKISH",
    "pocos_terminos": false,
+   "n_terminos": 35,
    "anterior_fecha": "2026-07-23",
    "anterior_z": 1.26,
    "anterior_pocos_terminos": false,
@@ -11612,12 +11913,14 @@
    "media_2a": -0.514,
    "sd_2a": 0.54,
    "n_2a": 11,
-   "dz": -6.68,
-   "dz_txt": "MÁS DOVISH",
+   "dz": null,
+   "dz_txt": "SIN DATO (muestra insuficiente)",
    "pocos_terminos": false,
+   "n_terminos": 21,
    "anterior_fecha": "2026-07-31",
    "anterior_z": 6.93,
    "anterior_pocos_terminos": true,
+   "dz_motivo": "la intervención anterior (2026-07-31) tiene solo 1 términos del diccionario (mínimo 5)",
    "anterior": {
     "fecha": "2026-07-31",
     "indice": 1.0,
@@ -11904,11 +12207,11 @@
     "repite_pct": 44.4
    },
    "misma_reunion": {
-    "n": 31,
+    "n": 29,
     "aciertos": 13,
-    "pct": 41.9,
+    "pct": 44.8,
     "azar_pct": 50.0,
-    "p_valor": 0.4731,
+    "p_valor": 0.7111,
     "repite_aciertos": 0,
     "repite_pct": 0.0
    }
@@ -11966,11 +12269,11 @@
     "repite_pct": 0.0
    },
    "misma_reunion": {
-    "n": 7,
-    "aciertos": 5,
-    "pct": 71.4,
+    "n": 4,
+    "aciertos": 3,
+    "pct": 75.0,
     "azar_pct": 50.0,
-    "p_valor": 0.4531,
+    "p_valor": 0.625,
     "repite_aciertos": 0,
     "repite_pct": 0.0
    }
@@ -11995,11 +12298,11 @@
     "repite_pct": 50.0
    },
    "misma_reunion": {
-    "n": 57,
-    "aciertos": 29,
-    "pct": 50.9,
+    "n": 52,
+    "aciertos": 27,
+    "pct": 51.9,
     "azar_pct": 50.0,
-    "p_valor": 1.0,
+    "p_valor": 0.8899,
     "repite_aciertos": 0,
     "repite_pct": 0.0
    },
@@ -12013,6 +12316,39 @@
   "motivo": "Δz no mejora: 44 % de acierto (24/54) frente a 50 % del azar, p = 0.497: no distinguible del azar; peor que «repetir la decisión anterior» (54 %)."
  },
  "discursos": [
+  {
+   "banco": "BoJ",
+   "orador": "Junko Koeda",
+   "fecha": "2026-10-15",
+   "titulo": "\"Economic Activity, Prices, and Monetary Policy in Japan\" (Speech at a Meeting with Local Leaders in Kumamoto)",
+   "url": "https://www.boj.or.jp/en/about/press/koen_2026/ko261015a.htm",
+   "indice": null,
+   "nivel": "NO PUNTÚA",
+   "n_terminos": 0,
+   "menciones_tema": 15,
+   "palabras": 858,
+   "terminos": {}
+  },
+  {
+   "banco": "Fed",
+   "orador": "Michelle W. Bowman",
+   "fecha": "2026-10-14",
+   "titulo": "Supervisory Modernization After Silicon Valley Bank",
+   "url": "https://www.federalreserve.gov/newsevents/speech/bowman20261014a.htm",
+   "indice": null,
+   "nivel": "NO PUNTÚA",
+   "n_terminos": 7,
+   "menciones_tema": 0,
+   "palabras": 2022,
+   "terminos": {
+    "determined": 1,
+    "raise": 1,
+    "support": 1,
+    "uncertainty": 2,
+    "wait": 1,
+    "weaker": 1
+   }
+  },
   {
    "banco": "Fed",
    "orador": "Christopher J. Waller",
@@ -12945,11 +13281,7 @@
     "uncertain": 2,
     "uncertainty": 3,
     "upward pressure": 2
-   },
-   "anterior_fecha": "2026-05-27",
-   "anterior_indice": -0.143,
-   "cambio": 0.121,
-   "cambio_txt": "MÁS HAWKISH"
+   }
   },
   {
    "banco": "Fed",
@@ -13803,11 +14135,7 @@
     "tighter monetary policy": 1,
     "weakened": 1,
     "weaker": 1
-   },
-   "anterior_fecha": "2026-03-03",
-   "anterior_indice": -0.5,
-   "cambio": 0.757,
-   "cambio_txt": "MÁS HAWKISH"
+   }
   },
   {
    "banco": "Fed",
@@ -17260,66 +17588,6 @@
    "anterior_indice": -0.615,
    "cambio": 0.072,
    "cambio_txt": "SIN CAMBIO"
-  },
-  {
-   "banco": "Fed",
-   "orador": "Christopher J. Waller",
-   "fecha": "2025-10-16",
-   "titulo": "Cutting Rates in the Face of Conflicting Data",
-   "url": "https://www.federalreserve.gov/newsevents/speech/waller20251016a.htm",
-   "indice": -0.38,
-   "nivel": "DOVISH",
-   "n_terminos": 50,
-   "menciones_tema": 40,
-   "palabras": 3191,
-   "terminos": {
-    "accommodation": 1,
-    "contraction": 2,
-    "cuts": 1,
-    "easing": 1,
-    "firm": 2,
-    "gradual": 1,
-    "moderate": 1,
-    "raise": 2,
-    "recession": 1,
-    "resilient": 2,
-    "restrictive": 3,
-    "robust": 1,
-    "slowdown": 2,
-    "slowed": 1,
-    "slowing": 1,
-    "soft": 2,
-    "softening": 5,
-    "solid": 5,
-    "strong": 3,
-    "support": 6,
-    "uncertain": 1,
-    "uncertainty": 2,
-    "wait": 1,
-    "weakened": 1,
-    "weakening": 2
-   },
-   "anterior_fecha": "2025-08-28",
-   "anterior_indice": -0.753,
-   "cambio": 0.373,
-   "cambio_txt": "MÁS HAWKISH"
-  },
-  {
-   "banco": "Fed",
-   "orador": "Michelle W. Bowman",
-   "fecha": "2025-10-16",
-   "titulo": "Welcome Remarks",
-   "url": "https://www.federalreserve.gov/newsevents/speech/bowman20251016a.htm",
-   "indice": null,
-   "nivel": "NO PUNTÚA",
-   "n_terminos": 4,
-   "menciones_tema": 0,
-   "palabras": 762,
-   "terminos": {
-    "determined": 1,
-    "resilient": 1,
-    "robust": 2
-   }
   }
  ],
  "oradores": [
@@ -17664,7 +17932,7 @@
    "banco": "Fed",
    "orador": "Michelle W. Bowman",
    "n": 12,
-   "n_total": 40,
+   "n_total": 41,
    "ultimo": {
     "fecha": "2026-05-29",
     "indice": -0.041,
@@ -17704,7 +17972,7 @@
    "banco": "BoJ",
    "orador": "Junko Koeda",
    "n": 2,
-   "n_total": 2,
+   "n_total": 3,
    "ultimo": {
     "fecha": "2026-05-21",
     "indice": 0.323,
@@ -17839,7 +18107,7 @@
   }
  ],
  "n_discursos_puntuados": 230,
- "n_discursos": 382,
+ "n_discursos": 384,
  "fuentes": {
   "Fed": "federalreserve.gov (comunicados FOMC y discursos de la Junta)",
   "BCE": "ecb.europa.eu (declaración introductoria y discursos)",
@@ -17874,6 +18142,6 @@
  },
  "errores_total": 53,
  "ok": true,
- "generado_utc": "2026-10-15 00:02 UTC",
- "duracion_s": 29.7
+ "generado_utc": "2026-10-15 06:07 UTC",
+ "duracion_s": 19.7
 }

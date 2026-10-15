@@ -5943,6 +5943,7 @@
  },
  "lectura": {
   "etiqueta": "SEÑALES CONTRADICTORIAS (tipos a la baja, balances en contracción)",
+  "revision": "Regla revisada el 15-10-2026; con la anterior (un voto por banco y balance medido en USD) salía ALGO RESTRICTIVA.",
   "texto": "tipos: 11 suben y 18 bajan de 38 bancos (por número: mixta; ponderado por PIB: 28 % del PIB sube, 50 % baja → relajación); balance Fed+BCE+BoJ se contrae (-2,5 % a 12 meses en moneda local; -5,8 % medido en USD).",
   "regla": "Dos patas que se combinan con una tabla fija. (1) TIPOS: movimiento de cada banco = tipo hoy − tipo hace 365 días, en puntos porcentuales NOMINALES (no se descuenta la inflación, es decir, no son tipos reales). SUBE ≥ +0,10 pp, BAJA ≤ −0,10 pp. Amplitud = (peso que sube − peso que baja) / peso total con dato, con cada banco ponderado por el PIB NOMINAL en USD de su economía (FMI WEO; zona euro = suma de sus países): una Fed o un BCE pesan mucho más que Macedonia o Islandia. ≥ +0,20 ENDURECIMIENTO, ≤ −0,20 RELAJACIÓN, entre medias MIXTA. Los bancos sin cambios cuentan en el denominador y diluyen la amplitud. El recuento por número (un voto por banco) se muestra al lado y se usa solo si falta algún PIB. (2) BALANCE: Fed + BCE + BoJ; variación a 12 meses de cada balance en su MONEDA LOCAL (sin efecto divisa), ponderada por su tamaño en USD a la fecha de referencia. ≥ +2 % EXPANDE, ≤ −2 % SE CONTRAE, entre medias PLANO. El PBoC no entra. (3) COMBINACIÓN: tabla de abajo. Con tipos MIXTA y balance que se contrae, la lectura es «ALGO RESTRICTIVA»: el balance desempata cuando los tipos no tienen dirección clara. Es una convención fija de NEXORA, no un modelo ajustado ni validado contra mercado. CAMBIO respecto a la versión anterior: antes un voto por banco y balance medido en USD.",
   "combinacion": [
@@ -11071,6 +11072,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-15 00:02 UTC",
- "duracion_s": 18.5
+ "generado_utc": "2026-10-15 06:07 UTC",
+ "duracion_s": 7.9
 }

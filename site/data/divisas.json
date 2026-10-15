@@ -36,17 +36,65 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 15.25,
-     "puntos": 1,
+     "valor": 16.87,
+     "puntos": 0,
      "fecha": "2026-10-14",
      "fuente": null
     }
    },
-   "total": 6,
+   "total": 5,
    "n_factores": 6,
    "sesgo": "FUERTE",
    "fx_3m_pct": 0.29,
    "inflacion": 3.9
+  },
+  {
+   "clave": "USD",
+   "nombre": "Dólar de EE. UU.",
+   "banco": "Fed",
+   "factores": {
+    "tipo": {
+     "valor": 3.875,
+     "puntos": 1,
+     "fecha": "2026-10-06",
+     "fuente": "BIS · tipos de política (WS_CBPOL)"
+    },
+    "real": {
+     "valor": 0.27,
+     "puntos": 1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "bono": {
+     "valor": 0.0,
+     "puntos": 0,
+     "fecha": "2026-10-13",
+     "fuente": "Tesoro de EE. UU. vía FRED DGS10"
+    },
+    "crec": {
+     "valor": 2.3,
+     "puntos": 1,
+     "fecha": "WEO 2026",
+     "fuente": null
+    },
+    "giro": {
+     "valor": 0.25,
+     "puntos": 1,
+     "fecha": "2026-10-06",
+     "fuente": null
+    },
+    "riesgo": {
+     "valor": 16.87,
+     "puntos": 0,
+     "fecha": "2026-10-14",
+     "fuente": null
+    }
+   },
+   "total": 4,
+   "n_factores": 6,
+   "sesgo": "FUERTE",
+   "fx_3m_pct": 1.33,
+   "inflacion": 3.6
   },
   {
    "clave": "GBP",
@@ -84,7 +132,7 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 15.25,
+     "valor": 16.87,
      "puntos": 0,
      "fecha": "2026-10-14",
      "fuente": null
@@ -132,65 +180,65 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 15.25,
-     "puntos": 1,
+     "valor": 16.87,
+     "puntos": 0,
      "fecha": "2026-10-14",
      "fuente": null
     }
    },
-   "total": 3,
+   "total": 2,
    "n_factores": 6,
-   "sesgo": "FUERTE",
+   "sesgo": "MODERADO",
    "fx_3m_pct": -2.82,
    "inflacion": 4.1
   },
   {
-   "clave": "USD",
-   "nombre": "Dólar de EE. UU.",
-   "banco": "Fed",
+   "clave": "EUR",
+   "nombre": "Euro",
+   "banco": "BCE",
    "factores": {
     "tipo": {
-     "valor": 3.875,
-     "puntos": 1,
+     "valor": 2.5,
+     "puntos": 0,
      "fecha": "2026-10-06",
      "fuente": "BIS · tipos de política (WS_CBPOL)"
     },
     "real": {
-     "valor": 0.27,
-     "puntos": 1,
+     "valor": -0.6,
+     "puntos": 0,
      "fecha": "WEO 2026",
      "fuente": null
     },
     "bono": {
-     "valor": 0.0,
-     "puntos": 0,
-     "fecha": "2026-10-09",
-     "fuente": "Tesoro de EE. UU. vía FRED DGS10"
+     "valor": -1.718,
+     "puntos": -1,
+     "fecha": "2026-10-13",
+     "fuente": "BCE · curva AAA de la zona euro (10Y)"
     },
     "crec": {
-     "valor": 2.3,
-     "puntos": 1,
+     "valor": 1.1,
+     "puntos": -1,
      "fecha": "WEO 2026",
      "fuente": null
     },
     "giro": {
-     "valor": 0.25,
+     "valor": 0.5,
      "puntos": 1,
      "fecha": "2026-10-06",
      "fuente": null
     },
     "riesgo": {
-     "valor": 15.25,
-     "puntos": -1,
+     "valor": 16.87,
+     "puntos": 0,
      "fecha": "2026-10-14",
      "fuente": null
     }
    },
-   "total": 3,
+   "total": -1,
    "n_factores": 6,
-   "sesgo": "FUERTE",
-   "fx_3m_pct": 1.72,
-   "inflacion": 3.6
+   "sesgo": "DÉBIL",
+   "fx_3m_pct": -2.14,
+   "inflacion": 3.1
   },
   {
    "clave": "CAD",
@@ -228,65 +276,17 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 15.25,
-     "puntos": 1,
+     "valor": 16.87,
+     "puntos": 0,
      "fecha": "2026-10-14",
      "fuente": null
     }
    },
-   "total": -1,
+   "total": -2,
    "n_factores": 6,
    "sesgo": "DÉBIL",
    "fx_3m_pct": -0.96,
    "inflacion": 2.8
-  },
-  {
-   "clave": "EUR",
-   "nombre": "Euro",
-   "banco": "BCE",
-   "factores": {
-    "tipo": {
-     "valor": 2.5,
-     "puntos": 0,
-     "fecha": "2026-10-06",
-     "fuente": "BIS · tipos de política (WS_CBPOL)"
-    },
-    "real": {
-     "valor": -0.6,
-     "puntos": 0,
-     "fecha": "WEO 2026",
-     "fuente": null
-    },
-    "bono": {
-     "valor": -1.748,
-     "puntos": -1,
-     "fecha": "2026-10-13",
-     "fuente": "BCE · curva AAA de la zona euro (10Y)"
-    },
-    "crec": {
-     "valor": 1.1,
-     "puntos": -1,
-     "fecha": "WEO 2026",
-     "fuente": null
-    },
-    "giro": {
-     "valor": 0.5,
-     "puntos": 1,
-     "fecha": "2026-10-06",
-     "fuente": null
-    },
-    "riesgo": {
-     "valor": 15.25,
-     "puntos": 0,
-     "fecha": "2026-10-14",
-     "fuente": null
-    }
-   },
-   "total": -1,
-   "n_factores": 6,
-   "sesgo": "DÉBIL",
-   "fx_3m_pct": -2.14,
-   "inflacion": 3.1
   },
   {
    "clave": "CHF",
@@ -324,13 +324,13 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 15.25,
-     "puntos": -1,
+     "valor": 16.87,
+     "puntos": 0,
      "fecha": "2026-10-14",
      "fuente": null
     }
    },
-   "total": -4,
+   "total": -3,
    "n_factores": 6,
    "sesgo": "MUY DÉBIL",
    "fx_3m_pct": -2.95,
@@ -372,13 +372,13 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 15.25,
-     "puntos": -1,
+     "valor": 16.87,
+     "puntos": 0,
      "fecha": "2026-10-14",
      "fuente": null
     }
    },
-   "total": -4,
+   "total": -3,
    "n_factores": 6,
    "sesgo": "MUY DÉBIL",
    "fx_3m_pct": 1.88,
@@ -412,9 +412,9 @@
   }
  ],
  "riesgo": {
-  "vix": 15.25,
+  "vix": 16.87,
   "fecha": "2026-10-14",
-  "regimen": "APETITO"
+  "regimen": "NEUTRAL"
  },
  "boj": {
   "valor": 1.25,
@@ -426,7 +426,7 @@
  },
  "anio_weo": "2026",
  "esencial": {
-  "cambio": "Sesgo macro más fuerte: AUD (+6); más débil: JPY (-4). Riesgo apetito (VIX 15.2).",
+  "cambio": "Sesgo macro más fuerte: AUD (+5); más débil: JPY (-3). Riesgo neutral (VIX 16.9).",
   "significa": "Hecho: la suma de seis factores objetivos coloca a esa divisa arriba y a la otra abajo. Interpretación: la combinación de tipos, crecimiento y giro de política respalda a la primera frente a la segunda; no dice que vaya a subir ni a bajar.",
   "vigilar": "Próximas reuniones de bancos centrales (calendario), la sorpresa de inflación y el VIX: un VIX por encima de 22 o por debajo de 16 cambia el factor de riesgo de golpe."
  },
@@ -455,6 +455,6 @@
   }
  ],
  "ok": true,
- "generado_utc": "2026-10-14 10:22 UTC",
- "duracion_s": 10.0
+ "generado_utc": "2026-10-15 06:07 UTC",
+ "duracion_s": 13.7
 }

@@ -1,6 +1,126 @@
 {
  "filas": [
   {
+   "fecha": "2026-10-15",
+   "activo": "US30 · Dow Jones",
+   "tesis": "BAJISTA DÉBIL",
+   "puntuacion": "-1",
+   "motores": "viento semana: SIN VIENTO CLARO; motor propio: DESFAVORABLE",
+   "precio_referencia": 51621.48,
+   "capturado_utc": "2026-10-15 06:07 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "PENDIENTE"
+    },
+    "5": {
+     "estado": "PENDIENTE"
+    },
+    "20": {
+     "estado": "PENDIENTE"
+    }
+   }
+  },
+  {
+   "fecha": "2026-10-15",
+   "activo": "S&P 500",
+   "tesis": "SIN TESIS",
+   "puntuacion": "0",
+   "motores": "viento semana: SIN VIENTO CLARO; motor propio: MIXTO",
+   "precio_referencia": 7718.94,
+   "capturado_utc": "2026-10-15 06:07 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "NO EVALUADA"
+    },
+    "5": {
+     "estado": "NO EVALUADA"
+    },
+    "20": {
+     "estado": "NO EVALUADA"
+    }
+   }
+  },
+  {
+   "fecha": "2026-10-15",
+   "activo": "Russell 2000",
+   "tesis": "BAJISTA DÉBIL",
+   "puntuacion": "-1",
+   "motores": "viento semana: SIN VIENTO CLARO; motor propio: DESFAVORABLE",
+   "precio_referencia": 2729.53,
+   "capturado_utc": "2026-10-15 06:07 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "PENDIENTE"
+    },
+    "5": {
+     "estado": "PENDIENTE"
+    },
+    "20": {
+     "estado": "PENDIENTE"
+    }
+   }
+  },
+  {
+   "fecha": "2026-10-15",
+   "activo": "Oro",
+   "tesis": "SIN TESIS",
+   "puntuacion": "0",
+   "motores": "viento semana: SIN VIENTO CLARO; motor propio: MIXTO",
+   "precio_referencia": 4159.5,
+   "capturado_utc": "2026-10-15 06:07 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "NO EVALUADA"
+    },
+    "5": {
+     "estado": "NO EVALUADA"
+    },
+    "20": {
+     "estado": "NO EVALUADA"
+    }
+   }
+  },
+  {
+   "fecha": "2026-10-15",
+   "activo": "Nasdaq 100",
+   "tesis": "SIN TESIS",
+   "puntuacion": "0",
+   "motores": "viento semana: SIN VIENTO CLARO; motor propio: MIXTO",
+   "precio_referencia": 29950.82,
+   "capturado_utc": "2026-10-15 06:07 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "NO EVALUADA"
+    },
+    "5": {
+     "estado": "NO EVALUADA"
+    },
+    "20": {
+     "estado": "NO EVALUADA"
+    }
+   }
+  },
+  {
+   "fecha": "2026-10-15",
+   "activo": "Bitcoin",
+   "tesis": "SIN TESIS",
+   "puntuacion": "0",
+   "motores": "viento semana: SIN VIENTO CLARO; motor propio: SEÑALES INICIALES DE GIRO",
+   "precio_referencia": 80564.54,
+   "capturado_utc": "2026-10-15 06:07 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "NO EVALUADA"
+    },
+    "5": {
+     "estado": "NO EVALUADA"
+    },
+    "20": {
+     "estado": "NO EVALUADA"
+    }
+   }
+  },
+  {
    "fecha": "2026-10-14",
    "activo": "US30 · Dow Jones",
    "tesis": "BAJISTA DÉBIL",
@@ -130,7 +250,10 @@
    "capturado_utc": "2026-10-13 12:49 UTC",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "ACIERTO",
+     "ret_pct": -0.44,
+     "fecha": "2026-10-14",
+     "precio": 51621.4805
     },
     "5": {
      "estado": "PENDIENTE"
@@ -170,7 +293,10 @@
    "capturado_utc": "2026-10-13 12:49 UTC",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "ACIERTO",
+     "ret_pct": -2.32,
+     "fecha": "2026-10-14",
+     "precio": 2729.53
     },
     "5": {
      "estado": "PENDIENTE"
@@ -230,10 +356,10 @@
    "capturado_utc": "2026-10-13 12:49 UTC",
    "horizontes": {
     "1": {
-     "estado": "FALLO",
-     "ret_pct": 0.13,
-     "fecha": "2026-10-14",
-     "precio": 83277.6406
+     "estado": "ACIERTO",
+     "ret_pct": -3.13,
+     "fecha": "2026-10-15",
+     "precio": 80564.5391
     },
     "5": {
      "estado": "PENDIENTE"
@@ -632,10 +758,10 @@
      "precio": 82912.2266
     },
     "5": {
-     "estado": "ACIERTO",
-     "ret_pct": 0.17,
-     "fecha": "2026-10-14",
-     "precio": 83277.6406
+     "estado": "FALLO",
+     "ret_pct": -3.1,
+     "fecha": "2026-10-15",
+     "precio": 80564.5391
     },
     "20": {
      "estado": "PENDIENTE"
@@ -763,15 +889,15 @@
    }
   }
  ],
- "n_filas": 36,
+ "n_filas": 42,
  "resumen": {
   "Bitcoin": {
    "1": {
-    "aciertos": 1,
+    "aciertos": 2,
     "evaluadas": 4
    },
    "5": {
-    "aciertos": 1,
+    "aciertos": 0,
     "evaluadas": 1
    }
   },
@@ -789,8 +915,8 @@
   },
   "Russell 2000": {
    "1": {
-    "aciertos": 3,
-    "evaluadas": 3
+    "aciertos": 4,
+    "evaluadas": 4
    }
   },
   "S&P 500": {
@@ -801,8 +927,8 @@
   },
   "US30 · Dow Jones": {
    "1": {
-    "aciertos": 1,
-    "evaluadas": 3
+    "aciertos": 2,
+    "evaluadas": 4
    }
   }
  },
@@ -814,6 +940,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-14 10:22 UTC",
+ "generado_utc": "2026-10-15 06:07 UTC",
  "duracion_s": 0.0
 }

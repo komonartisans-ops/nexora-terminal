@@ -1,6 +1,36 @@
 {
  "items": [
   {
+   "banco": "Fed",
+   "tipo": "Discurso",
+   "titulo": "Supervisory Modernization After Silicon Valley Bank",
+   "orador": "Bowman",
+   "fecha_utc": "2026-10-15 02:55",
+   "fecha": "2026-10-15",
+   "enlace": "https://www.federalreserve.gov/newsevents/speech/bowman20261014a.htm",
+   "fuente": "fed_speech"
+  },
+  {
+   "banco": "BoJ",
+   "tipo": "Novedad",
+   "titulo": "Speech by Board Member KOEDA in Kumamoto (Economic Activity, Prices, and Monetary Policy in Japan)",
+   "orador": null,
+   "fecha_utc": "2026-10-15 01:30",
+   "fecha": "2026-10-15",
+   "enlace": "http://www.boj.or.jp/en/about/press/koen_2026/ko261015a.htm",
+   "fuente": "boj"
+  },
+  {
+   "banco": "BoJ",
+   "tipo": "Novedad",
+   "titulo": "Summary of the \"Meeting on Market Operations\" (October 2026)",
+   "orador": null,
+   "fecha_utc": "2026-10-15 01:00",
+   "fecha": "2026-10-15",
+   "enlace": "http://www.boj.or.jp/en/paym/market/mkt261015a.pdf",
+   "fuente": "boj"
+  },
+  {
    "banco": "BoJ",
    "tipo": "Novedad",
    "titulo": "The Fifteenth Tripartite Governors' Meeting among PBOC, BOJ, and BOK",
@@ -861,26 +891,6 @@
    "fuente": "boj"
   },
   {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "(BOJ Review) Granular Insights into Depositor Dynamics and Deposit Spreads in Japanese G-SIBs' Foreign Currency Deposits",
-   "orador": null,
-   "fecha_utc": "2026-09-25 05:00",
-   "fecha": "2026-09-25",
-   "enlace": "http://www.boj.or.jp/en/research/wps_rev/rev_2026/rev26e12.htm",
-   "fuente": "boj"
-  },
-  {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "Indicators for Core CPI",
-   "orador": null,
-   "fecha_utc": "2026-09-25 05:00",
-   "fecha": "2026-09-25",
-   "enlace": "http://www.boj.or.jp/en/research/research_data/cpi/index.htm",
-   "fuente": "boj"
-  },
-  {
    "banco": "Fed",
    "tipo": "Comunicado",
    "titulo": "Federal Reserve Board requests public comment on two proposals related to establishing a regulatory framework for Board-supervised payment stablecoin issuers under the GENIUS Act",
@@ -1033,6 +1043,16 @@
   {
    "banco": "BoE",
    "tipo": "Noticia",
+   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
    "titulo": "Exchange of letters between the Governor and the Chancellor regarding CPI Inflation - September 2026",
    "orador": null,
    "fecha_utc": "2026-09-17 11:00",
@@ -1058,16 +1078,6 @@
    "fecha_utc": "2026-09-17 11:00",
    "fecha": "2026-09-17",
    "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
    "fuente": "boe"
   },
   {
@@ -1149,16 +1159,6 @@
    "fecha": "2026-09-10",
    "enlace": "https://www.bankofengland.co.uk/news/2026/september/statement-announcing-governors-interview",
    "fuente": "boe"
-  },
-  {
-   "banco": "Fed",
-   "tipo": "Discurso",
-   "titulo": "The Economic Outlook and Some Comments on My Policy Communication",
-   "orador": "Waller",
-   "fecha_utc": "2026-09-03 12:30",
-   "fecha": "2026-09-03",
-   "enlace": "https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm",
-   "fuente": "fed_speech"
   },
   {
    "banco": "BoE",
@@ -1316,7 +1316,7 @@
    "n": 15,
    "url": "https://www.federalreserve.gov/feeds/speeches.xml",
    "pagina": "https://www.federalreserve.gov/newsevents/speeches-testimony.htm",
-   "ultimo": "2026-10-08 08:30"
+   "ultimo": "2026-10-15 02:55"
   },
   "bce": {
    "banco": "BCE",
@@ -1332,7 +1332,7 @@
    "n": 40,
    "url": "https://www.boj.or.jp/en/rss/whatsnew.xml",
    "pagina": "https://www.boj.or.jp/en/whatsnew.htm",
-   "ultimo": "2026-10-14 11:00"
+   "ultimo": "2026-10-15 01:30"
   },
   "boe": {
    "banco": "BoE",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-14 23:48 UTC",
- "duracion_s": 6.0
+ "generado_utc": "2026-10-15 06:07 UTC",
+ "duracion_s": 5.8
 }

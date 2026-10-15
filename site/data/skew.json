@@ -1,14 +1,14 @@
 {
- "fecha": "2026-10-13",
- "valor": 154.74,
+ "fecha": "2026-10-14",
+ "valor": 157.3,
  "zona": "ALTO",
- "previo": 155.06,
+ "previo": 154.74,
  "zona_relativa": "ELEVADO",
- "percentil_500": 83.0,
+ "percentil_500": 87.0,
  "umbral_alto_500": 161.21,
  "umbral_elevado_500": 151.92,
  "ventana_relativa": 500,
- "racha_relativa": 3,
+ "racha_relativa": 4,
  "entrada_zona_alta_relativa": null,
  "entrada_episodio_relativa": null,
  "estudio_relativo": {
@@ -1452,19 +1452,19 @@
   },
   "tasa_base": {
    "5": {
-    "n": 8758,
+    "n": 8759,
     "media": 0.2,
-    "mediana": 0.34,
+    "mediana": 0.33,
     "pct_positivos": 58.0
    },
    "20": {
-    "n": 8743,
+    "n": 8744,
     "media": 0.77,
     "mediana": 1.23,
     "pct_positivos": 63.8
    },
    "60": {
-    "n": 8703,
+    "n": 8704,
     "media": 2.3,
     "mediana": 3.05,
     "pct_positivos": 70.3
@@ -1481,7 +1481,7 @@
   "umbral_skew": 140.0,
   "criterio": "percentil ≥ 90 de las últimas 500 sesiones (zona relativa)",
   "muestra_desde": "1991-12-20",
-  "sesiones_base": 8763,
+  "sesiones_base": 8764,
   "sesgo_del_estudio": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción."
  },
  "estudio_fijo_misma_muestra": {
@@ -1989,19 +1989,19 @@
   },
   "tasa_base": {
    "5": {
-    "n": 8758,
+    "n": 8759,
     "media": 0.2,
-    "mediana": 0.34,
+    "mediana": 0.33,
     "pct_positivos": 58.0
    },
    "20": {
-    "n": 8743,
+    "n": 8744,
     "media": 0.77,
     "mediana": 1.23,
     "pct_positivos": 63.8
    },
    "60": {
-    "n": 8703,
+    "n": 8704,
     "media": 2.3,
     "mediana": 3.05,
     "pct_positivos": 70.3
@@ -2018,7 +2018,7 @@
   "umbral_skew": 140.0,
   "criterio": "SKEW ≥ 140 (zona fija), misma muestra que la zona relativa",
   "muestra_desde": "1991-12-20",
-  "sesiones_base": 8763,
+  "sesiones_base": 8764,
   "sesgo_del_estudio": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción."
  },
  "avisos_3_anos": {
@@ -2030,10 +2030,10 @@
   "elevado_percentil": 75
  },
  "entrada_episodio": "2026-08-17",
- "percentil_hist": 98,
- "percentil_10a": 93,
- "percentil_1a": 95,
- "racha_sesiones": 41,
+ "percentil_hist": 99,
+ "percentil_10a": 96,
+ "percentil_1a": 98,
+ "racha_sesiones": 42,
  "entrada_zona_alta": "2026-08-17",
  "ultima_vez_alto": null,
  "maximo_hist": {
@@ -2049,10 +2049,10 @@
   "alto": 140.0
  },
  "vix": {
-  "valor": 15.27,
-  "fecha": "2026-10-13",
-  "cambio_5d": 0.26,
-  "percentil_1a": 16
+  "valor": 16.87,
+  "fecha": "2026-10-14",
+  "cambio_5d": 1.79,
+  "percentil_1a": 46
  },
  "vix3m": {
   "valor": 18.79,
@@ -2064,44 +2064,49 @@
    "nombre": "VIX y estructura de plazos",
    "encendida": false,
    "estado": "CALMA",
-   "valor": "VIX 15.3 · VIX/VIX3M 0.81",
+   "valor": "VIX 16.9 · VIX/VIX3M 0.90",
    "regla": "Encendida si VIX ≥ 20 o VIX/VIX3M ≥ 1 (curva invertida).",
-   "fecha": "2026-10-13",
+   "fecha": "2026-10-14",
    "fuente": "Cboe (VIX y VIX3M)",
-   "url": "https://www.cboe.com/tradable_products/vix/"
+   "url": "https://www.cboe.com/tradable_products/vix/",
+   "edad_dias": 1
   },
   {
    "clave": "credito",
    "nombre": "Crédito de riesgo (ciclo.py)",
    "encendida": true,
    "estado": "TENSIÓN",
-   "valor": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +177 pb en 1 mes",
+   "valor": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +191 pb en 1 mes",
    "regla": "Encendida si CCC, HY, BBB o IG superan sus umbrales de alerta de ciclo.py (5 días o 1 mes).",
-   "fecha": "2026-10-12",
+   "fecha": "2026-10-13",
    "fuente": "ICE BofA vía FRED · reglas de ciclo.py",
    "url": "#/ciclo",
    "detalle": {
-    "hy_pb": 311,
-    "ccc_pb": 1253,
-    "hy_pct1a": 87,
+    "hy_pb": 316,
+    "ccc_pb": 1267,
+    "hy_pct1a": 92,
     "ccc_pct1a": 100
-   }
+   },
+   "edad_dias": 2
   },
   {
    "clave": "fondos",
    "nombre": "Activos en fondos monetarios",
-   "encendida": false,
-   "estado": "SIN ENTRADAS FUERTES",
-   "valor": "3.03 bill. $ · 13 sem. +0.35 % (percentil 23)",
+   "encendida": null,
+   "estado": "CADUCADA",
+   "valor": "3.03 bill. $ · 13 sem. +0.35 % (percentil 23) · dato de hace 45 días (> 14): no suma",
    "regla": "Encendida si la variación a 13 semanas está en el percentil ≥ 80 de su historia desde 2018.",
    "fecha": "2026-08-31",
    "fuente": "FRED WRMFNS (fondos monetarios minoristas, semanal)",
    "url": "https://fred.stlouisfed.org/series/WRMFNS",
-   "retraso_dias": 45
+   "retraso_dias": 45,
+   "edad_dias": 45,
+   "caducada": true,
+   "encendida_original": false
   }
  ],
  "confirmaciones_encendidas": 1,
- "confirmaciones_validas": 3,
+ "confirmaciones_validas": 2,
  "fondos_monetarios": {
   "minoristas": {
    "fecha": "2026-08-31",
@@ -3512,19 +3517,19 @@
   },
   "tasa_base": {
    "5": {
-    "n": 9257,
+    "n": 9258,
     "media": 0.19,
     "mediana": 0.33,
     "pct_positivos": 57.7
    },
    "20": {
-    "n": 9242,
+    "n": 9243,
     "media": 0.77,
     "mediana": 1.21,
     "pct_positivos": 63.7
    },
    "60": {
-    "n": 9202,
+    "n": 9203,
     "media": 2.32,
     "mediana": 3.05,
     "pct_positivos": 70.4
@@ -3541,15 +3546,15 @@
   "umbral_skew": 140.0,
   "criterio": "SKEW ≥ 140 (zona fija)",
   "muestra_desde": "1990-01-02",
-  "sesiones_base": 9262,
+  "sesiones_base": 9263,
   "sesgo_del_estudio": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción.",
   "episodio_actual": {
    "entrada": "2026-08-17",
-   "sesiones": 41,
+   "sesiones": 42,
    "spx_entrada": 7745.06,
-   "spx_ultimo": 7805.45,
-   "ret_desde_entrada_pct": 0.78,
-   "fecha_ultimo": "2026-10-13"
+   "spx_ultimo": 7718.94,
+   "ret_desde_entrada_pct": -0.34,
+   "fecha_ultimo": "2026-10-14"
   }
  },
  "distribucion_anual": [
@@ -3735,16 +3740,12 @@
   },
   {
    "anio": 2026,
-   "pct_alto": 78.1,
-   "sesiones": 196
+   "pct_alto": 78.2,
+   "sesiones": 197
   }
  ],
  "series": {
   "p90_500": [
-   [
-    "2021-08-09",
-    148.59
-   ],
    [
     "2021-08-10",
     149.04
@@ -8940,13 +8941,13 @@
    [
     "2026-10-13",
     161.21
+   ],
+   [
+    "2026-10-14",
+    161.21
    ]
   ],
   "p75_500": [
-   [
-    "2021-08-09",
-    141.75
-   ],
    [
     "2021-08-10",
     141.77
@@ -14142,13 +14143,13 @@
    [
     "2026-10-13",
     151.92
+   ],
+   [
+    "2026-10-14",
+    151.92
    ]
   ],
   "skew": [
-   [
-    "2021-08-09",
-    153.13
-   ],
    [
     "2021-08-10",
     153.33
@@ -19344,13 +19345,13 @@
    [
     "2026-10-13",
     154.74
+   ],
+   [
+    "2026-10-14",
+    157.3
    ]
   ],
   "spx": [
-   [
-    "2021-08-10",
-    4436.75
-   ],
    [
     "2021-08-11",
     4447.7
@@ -24546,13 +24547,13 @@
    [
     "2026-10-13",
     7805.45
+   ],
+   [
+    "2026-10-14",
+    7718.94
    ]
   ],
   "vix": [
-   [
-    "2021-09-27",
-    18.76
-   ],
    [
     "2021-09-28",
     23.25
@@ -29748,22 +29749,26 @@
    [
     "2026-10-13",
     15.27
+   ],
+   [
+    "2026-10-14",
+    16.87
    ]
   ]
  },
  "alerta": {
-  "regla": "La alerta de Telegram salta solo si se cumplen LAS DOS condiciones: (1) zona relativa ALTA (percentil ≥ 90 de las últimas 500 sesiones, una alerta por episodio) y (2) al menos 2 de las 3 confirmaciones encendidas (VIX y curva de plazos, crédito de riesgo, fondos monetarios). Con zona alta y menos confirmaciones no se envía nada.",
+  "regla": "La alerta de Telegram salta solo si se cumplen LAS DOS condiciones: (1) zona relativa ALTA (percentil ≥ 90 de las últimas 500 sesiones, una alerta por episodio) y (2) al menos 2 de las 3 confirmaciones encendidas (VIX y curva de plazos, crédito de riesgo, fondos monetarios); una confirmación solo cuenta si su dato tiene 14 días o menos, si no se muestra CADUCADA y no suma. Con zona alta y menos confirmaciones no se envía nada.",
   "zona_relativa_alta": false,
   "confirmaciones_encendidas": 1,
-  "confirmaciones_validas": 3,
+  "confirmaciones_validas": 2,
   "minimo": 2,
   "cumple_zona": false,
   "cumple_confirmaciones": false,
   "estado": "SIN ALERTA (zona relativa no alta)"
  },
  "esencial": {
-  "cambio": "El SKEW de Cboe cerró en 154,7 el 13/10/2026 (percentil 98 de su historia desde 1990; 95 del último año), en zona alta (≥ 140); frente a las últimas 500 sesiones está en el percentil 83 (zona relativa elevado; el umbral alto relativo está en 161,2); entró en zona alta el 17/08/2026 y lleva 41 sesiones seguidas. Sesión previa: 155,1.",
-  "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 3. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
+  "cambio": "El SKEW de Cboe cerró en 157,3 el 14/10/2026 (percentil 99 de su historia desde 1990; 98 del último año), en zona alta (≥ 140); frente a las últimas 500 sesiones está en el percentil 87 (zona relativa elevado; el umbral alto relativo está en 161,2); entró en zona alta el 17/08/2026 y lleva 42 sesiones seguidas. Sesión previa: 154,7.",
+  "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 2. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
   "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
  },
  "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)",
@@ -29771,6 +29776,6 @@
  "errores": {},
  "metodo": "CRITERIO NEXORA. Zonas fijas: normal < 135, elevado ≥ 135, alto ≥ 140. Zonas relativas: percentil de las últimas 500 sesiones, alto ≥ p90, elevado ≥ p75. Alerta de Telegram: zona relativa alta Y al menos 2 de 3 confirmaciones encendidas. Episodio = primer cierre en zona alta tras 10 sesiones sin estarlo. Falsa alarma = el S&P 500 no cae ≥ 5 % desde el cierre de entrada en las siguientes 60 sesiones. Los umbrales son convenciones fijas, no optimizadas.",
  "ok": true,
- "generado_utc": "2026-10-15 00:02 UTC",
- "duracion_s": 3.4
+ "generado_utc": "2026-10-15 06:07 UTC",
+ "duracion_s": 1.5
 }

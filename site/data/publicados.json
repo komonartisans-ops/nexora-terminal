@@ -10,16 +10,6 @@
    "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
    "periodos": [
     {
-     "periodo": "2026-03-01",
-     "valor": 3.32,
-     "nivel_original": 330.293,
-     "nivel_actual": 330.293,
-     "revisado": false,
-     "n_revisiones": 0,
-     "visto_primera_vez": "2026-10-08",
-     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
-    },
-    {
      "periodo": "2026-04-01",
      "valor": 3.95,
      "nivel_original": 332.407,
@@ -68,6 +58,16 @@
      "n_revisiones": 0,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-09-01",
+     "valor": 4.02,
+     "nivel_original": 336.298,
+     "nivel_actual": 336.298,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-15",
+     "tipo_primer_registro": "PRIMERA"
     }
    ],
    "fecha_publicacion_calendario": "2026-10-14"
@@ -81,16 +81,6 @@
    "fuente": "FRED CPILFESL",
    "url": "https://fred.stlouisfed.org/series/CPILFESL",
    "periodos": [
-    {
-     "periodo": "2026-03-01",
-     "valor": 2.67,
-     "nivel_original": 334.165,
-     "nivel_actual": 334.165,
-     "revisado": false,
-     "n_revisiones": 0,
-     "visto_primera_vez": "2026-10-08",
-     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
-    },
     {
      "periodo": "2026-04-01",
      "valor": 2.99,
@@ -140,6 +130,16 @@
      "n_revisiones": 0,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-09-01",
+     "valor": 2.79,
+     "nivel_original": 338.896,
+     "nivel_actual": 338.896,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-15",
+     "tipo_primer_registro": "PRIMERA"
     }
    ],
    "fecha_publicacion_calendario": "2026-10-14"
@@ -378,7 +378,7 @@
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     }
    ],
-   "fecha_publicacion_calendario": "2026-10-08"
+   "fecha_publicacion_calendario": "2026-10-15"
   },
   "Ventas minoristas": {
    "serie": "RSAFS",
@@ -450,7 +450,7 @@
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     }
    ],
-   "fecha_publicacion_calendario": "2026-09-28"
+   "fecha_publicacion_calendario": "2026-10-15"
   },
   "IPP EE. UU. (PPI)": {
    "serie": "PPIFIS",
@@ -522,7 +522,7 @@
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     }
    ],
-   "fecha_publicacion_calendario": "2026-09-10"
+   "fecha_publicacion_calendario": "2026-10-15"
   },
   "PIB EE. UU.": {
    "serie": "GDPC1",
@@ -867,13 +867,13 @@
  },
  "revisiones": [],
  "n_revisiones": 0,
- "filas_registro": 704,
+ "filas_registro": 706,
  "registro_desde": "2026-10-08",
- "nuevas_filas": 0,
- "nuevos": 0,
+ "nuevas_filas": 2,
+ "nuevos": 2,
  "errores": {},
  "nota": "El registro de revisiones empieza el día de la primera ejecución: antes de esa fecha no hay vintages guardados y no se inventan.",
  "ok": true,
- "generado_utc": "2026-10-14 10:22 UTC",
- "duracion_s": 5.9
+ "generado_utc": "2026-10-15 06:07 UTC",
+ "duracion_s": 4.1
 }
