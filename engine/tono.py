@@ -50,7 +50,7 @@ MAX_NUEVOS = 400
 VENTANA_Z_DIAS = 730           # media móvil de 2 años del propio banco
 MIN_OBS_Z = 8                  # observaciones previas mínimas para puntuar un z
 UMBRAL_DZ = 0.5                # σ: solo etiqueta el cambio (MÁS HAWKISH / MÁS DOVISH); la validación usa el signo
-AVISO_PESO = 5                 # H + D por debajo de esto: el índice se marca como poco fiable (aviso; NO se excluye del z-score)
+MIN_TERMINOS_DZ = 5            # calidad de dato: si la intervención anterior tiene menos términos del diccionario, NO se calcula Δz (SIN DATO)
 MIN_N_PRINCIPAL = 30
 P_PRINCIPAL = 0.05
 URL_ECB_CSV = "https://www.ecb.europa.eu/press/key/shared/data/all_ECB_speeches.csv"
@@ -468,7 +468,8 @@ def z_serie(items):
         x.update({"z": None, "media_2a": None, "sd_2a": None, "n_2a": 0, "dz": None, "dz_txt": None, "pocos_terminos": False})
         if x["indice"] is None:
             continue
-        x["pocos_terminos"] = (x["h"] + x["d"]) < AVISO_PESO
+        x["n_terminos"] = sum((x.get("terminos") or {}).values())
+        x["pocos_terminos"] = x["n_terminos"] < MIN_TERMINOS_DZ
         f = dt.date.fromisoformat(x["fecha"])
         base = [y["indice"] for y in items if y["indice"] is not None and dt.date.fromisoformat(y["fecha"]) < f
                 and (f - dt.date.fromisoformat(y["fecha"])).days <= VENTANA_Z_DIAS]
@@ -479,9 +480,15 @@ def z_serie(items):
             if sd > 0:
                 x["z"] = round((x["indice"] - m) / sd, 2)
         if x["z"] is not None and ant is not None:
-            x["dz"] = round(x["z"] - ant["z"], 2)
-            x["dz_txt"] = "MÁS HAWKISH" if x["dz"] >= UMBRAL_DZ else "MÁS DOVISH" if x["dz"] <= -UMBRAL_DZ else "SIN CAMBIO"
-            x["anterior_fecha"], x["anterior_z"], x["anterior_pocos_terminos"] = ant["fecha"], ant["z"], ant["pocos_terminos"]
+            x["anterior_fecha"], x["anterior_z"] = ant["fecha"], ant["z"]
+            if ant["pocos_terminos"]:
+                x["anterior_pocos_terminos"] = True
+                x["dz_txt"] = "SIN DATO (muestra insuficiente)"
+                x["dz_motivo"] = f"la intervención anterior ({ant['fecha']}) tiene solo {ant['n_terminos']} términos del diccionario (mínimo {MIN_TERMINOS_DZ})"
+            else:
+                x["anterior_pocos_terminos"] = False
+                x["dz"] = round(x["z"] - ant["z"], 2)
+                x["dz_txt"] = "MÁS HAWKISH" if x["dz"] >= UMBRAL_DZ else "MÁS DOVISH" if x["dz"] <= -UMBRAL_DZ else "SIN CAMBIO"
         if x["z"] is not None:
             ant = x
     return items
@@ -612,7 +619,7 @@ def medir(limite=MAX_NUEVOS):
                 "nivel": nivel(i) if puntua else "NO PUNTÚA", "n_terminos": int(float(r.get("n_terminos") or 0)), "menciones_tema": int(float(r.get("menciones_tema") or 0)),
                 "palabras": int(float(r["palabras"])), "terminos": json.loads(r.get("terminos") or "{}")}
         prev = [x for x in por_orador.get((r["banco"], r["orador"]), []) if x["indice"] is not None]
-        if puntua and prev:
+        if puntua and prev and prev[-1]['n_terminos'] >= MIN_TERMINOS_DZ:
             item["anterior_fecha"], item["anterior_indice"] = prev[-1]["fecha"], prev[-1]["indice"]
             item["cambio"] = round(i - prev[-1]["indice"], 3)
             item["cambio_txt"] = cambio_txt(item["cambio"])
@@ -642,7 +649,7 @@ def medir(limite=MAX_NUEVOS):
                                                        "n_terminos": len(TERMINOS)},
             "reglas": {"umbral_nivel": UMBRAL_NIVEL, "umbral_cambio": UMBRAL_CAMBIO, "min_terminos_discurso": MIN_TERMINOS_DISCURSO, "min_menciones_tema": MIN_MENCIONES_TEMA,
                        "umbral_decision_pp": UMBRAL_DECISION, "ventana_decision_dias": VENTANA_DECISION,
-                       "ventana_z_dias": VENTANA_Z_DIAS, "min_obs_z": MIN_OBS_Z, "aviso_peso": AVISO_PESO, "umbral_dz": UMBRAL_DZ, "min_n_principal": MIN_N_PRINCIPAL,
+                       "ventana_z_dias": VENTANA_Z_DIAS, "min_obs_z": MIN_OBS_Z, "min_terminos_dz": MIN_TERMINOS_DZ, "umbral_dz": UMBRAL_DZ, "min_n_principal": MIN_N_PRINCIPAL,
                        "p_principal": P_PRINCIPAL, "criterio_principal": val_z["_total"]["criterio"]},
             "comunicados": series, "ultimo": ult, "validacion": val, "validacion_z": val_z,
             "estado_bloque": {"estado": val_z["_total"]["estado"], "motivo": val_z["_total"]["motivo"]}, "discursos": lista[:200], "oradores": oradores,

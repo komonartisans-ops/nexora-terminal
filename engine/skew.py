@@ -36,6 +36,7 @@ HORIZONTES = (5, 20, 60)     # sesiones ≈ 1, 4 y 12 semanas
 CAIDA_FALSA = -5.0           # % : por encima de esta caída máxima a 60 sesiones, la entrada se cuenta como falsa alarma
 VIX_ESTRES = 20.0
 FM_PCT_FUERTE = 80
+CONF_MAX_EDAD = 14           # días: una confirmación con dato más viejo se muestra CADUCADA y no suma
 CONF_MINIMAS = 2             # confirmaciones encendidas (de VIX, crédito, fondos monetarios) que exige la alerta de Telegram además de la zona relativa ALTA
 
 
@@ -281,6 +282,15 @@ def medir(ciclo=None):
     fm, e_fm = _fondos_monetarios()
     err.update(e_fm)
     conf = _confirmaciones(vx, v3, ciclo, fm)
+    hoy_c = dt.date.today()
+    for c in conf:
+        if c.get("encendida") is None or not c.get("fecha"):
+            continue
+        edad = (hoy_c - dt.date.fromisoformat(c["fecha"][:10])).days
+        c["edad_dias"] = edad
+        if edad > CONF_MAX_EDAD:
+            c.update({"caducada": True, "encendida_original": c["encendida"], "encendida": None, "estado": "CADUCADA",
+                      "valor": f"{c['valor']} · dato de hace {edad} días (> {CONF_MAX_EDAD}): no suma"})
     validas = [c for c in conf if c["encendida"] is not None]
     encendidas = sum(1 for c in validas if c["encendida"])
 
@@ -365,7 +375,7 @@ def medir(ciclo=None):
                        "spx": [[d.isoformat(), round(x, 2)] for d, x in spx[-1300:]] if spx else None,
                        "vix": [[d.isoformat(), round(x, 2)] for d, x in vixc[-1300:]] if vixc else None},
             "alerta": {"regla": (f"La alerta de Telegram salta solo si se cumplen LAS DOS condiciones: (1) zona relativa ALTA (percentil ≥ {P_ALTO} de las últimas {REL_VENTANA} sesiones, "
-                                 f"una alerta por episodio) y (2) al menos {CONF_MINIMAS} de las 3 confirmaciones encendidas (VIX y curva de plazos, crédito de riesgo, fondos monetarios). "
+                                 f"una alerta por episodio) y (2) al menos {CONF_MINIMAS} de las 3 confirmaciones encendidas (VIX y curva de plazos, crédito de riesgo, fondos monetarios); una confirmación solo cuenta si su dato tiene {CONF_MAX_EDAD} días o menos, si no se muestra CADUCADA y no suma. "
                                  "Con zona alta y menos confirmaciones no se envía nada."),
                        "zona_relativa_alta": zr == "ALTO", "confirmaciones_encendidas": encendidas, "confirmaciones_validas": len(validas), "minimo": CONF_MINIMAS,
                        "cumple_zona": zr == "ALTO", "cumple_confirmaciones": encendidas >= CONF_MINIMAS,

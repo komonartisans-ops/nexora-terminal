@@ -136,7 +136,8 @@ function pageMapa() {
     prox ? `Próximas reuniones con calendario oficial: ${esc(prox)}.` : 'Ningún calendario oficial legible en esta ejecución (SIN DATO).');
 
   /* contador */
-  const tonoAmp = C.tipos === 'ENDURECIMIENTO' ? 'amber' : C.tipos === 'RELAJACIÓN' ? 'up' : 'flat';
+  const contradic = /^SEÑALES/.test(L.etiqueta || '');
+  const tonoAmp = contradic ? '' : C.tipos === 'ENDURECIMIENTO' ? 'amber' : C.tipos === 'RELAJACIÓN' ? 'up' : 'flat';
   h += '<div class="sect"><h2>Contador global · 12 meses</h2><span class="more">cuántos bancos suben, bajan o no se mueven</span></div><div class="grid g4">';
   h += `<div class="card kpi"><div class="lab">Suben tipos</div><div class="exp">Tipo hoy ≥ tipo hace 12 meses + 0,10 pp</div><div class="big amber">${C.sube}<small>de ${C.total}</small></div><div class="note" style="margin:6px 0 0">${(C.bancos_sube || []).map((k) => esc(k)).join(' · ')}</div></div>`;
   h += `<div class="card kpi"><div class="lab">Bajan tipos</div><div class="exp">Tipo hoy ≤ tipo hace 12 meses − 0,10 pp</div><div class="big" style="color:#6fa6d6">${C.baja}<small>de ${C.total}</small></div><div class="note" style="margin:6px 0 0">${(C.bancos_baja || []).map((k) => esc(k)).join(' · ')}</div></div>`;
@@ -147,16 +148,18 @@ function pageMapa() {
   h += '</div>';
   const PW = B.amplitud_ponderada, comp = bal && bal.componentes;
   const nombreC = { fed: 'Fed (WALCL)', bce: 'BCE (ECBASSETSW)', boj: 'BoJ (JPNASSETS)' };
-  let rg = `<p>${esc(L.regla || '')}</p>`;
+  let rg = `<div class="note" style="margin:0 0 8px;color:var(--amber)"><b>Nota de revisión:</b> ${esc(L.revision || '')}</div><p>${esc(L.regla || '')}</p>`;
   rg += '<table class="t" style="margin-top:8px"><thead><tr><th>Pata de tipos</th><th>Suben</th><th>Bajan</th><th>Sin cambios</th><th>Amplitud</th><th>Lectura</th></tr></thead><tbody>';
   rg += `<tr><td style="text-align:left">Por número (un voto por banco)</td><td>${C.sube}</td><td>${C.baja}</td><td>${C.sin_cambios}</td><td>${C.amplitud != null ? sg(C.amplitud, 3) : '—'}</td><td>${esc(C.tipos_por_numero || C.tipos || '—')}</td></tr>`;
   if (PW) rg += `<tr><td style="text-align:left"><b>Ponderado por PIB nominal</b> ${C.ponderado_pib ? '<span class="tag sin">DECIDE LA ETIQUETA</span>' : ''}</td><td>${num(PW.sube_pct, 1)} %</td><td>${num(PW.baja_pct, 1)} %</td><td>${num(PW.sin_cambios_pct, 1)} %</td><td>${sg(PW.amplitud, 3)}</td><td>${esc(PW.tipos)}</td></tr>`;
   rg += '</tbody></table>';
   if (PW && PW.mayores) rg += `<div class="note">Mayores pesos (PIB nominal ${esc(PW.ano_pib)}, FMI): ${PW.mayores.map((x) => `${esc(x.banco.replace(/ \(.*\)/, ''))} ${num(x.peso_pct, 1)} % (${esc(x.dir.toLowerCase())})`).join(' · ')}.</div>`;
   if (comp) {
-    rg += '<table class="t" style="margin-top:8px"><thead><tr><th>Balance</th><th>Peso</th><th>12 m, moneda local</th><th>12 m, en USD</th><th>Último dato</th><th>Referencia</th></tr></thead><tbody>';
-    rg += Object.entries(comp).map(([k, c]) => `<tr><td style="text-align:left">${nombreC[k] || k}</td><td>${num(c.peso * 100, 1)} %</td><td><b>${sg(c.var_local_pct, 2)} %</b></td><td>${sg(c.var_usd_pct, 2)} %</td><td>${esc(fd(c.fecha))} ${esc(c.fecha.slice(0, 4))}</td><td>${esc(fd(c.ref_fecha))} ${esc(c.ref_fecha.slice(0, 4))}</td></tr>`).join('');
-    rg += `<tr><td style="text-align:left"><b>Total ponderado</b></td><td>100 %</td><td><b>${sg(bal.var_12m_pct, 2)} %</b></td><td>${sg(bal.var_12m_usd_pct, 2)} %</td><td colspan="2" style="text-align:left">${esc(bal.estado)} (umbral ±${num((L.umbrales || {}).balance_pct, 0)} %)</td></tr></tbody></table>`;
+    rg += '<table class="t" style="margin-top:8px"><thead><tr><th>Balance</th><th>Peso</th><th>12 m, moneda local</th><th>12 m, en USD</th><th>Contribución</th><th>Último dato</th><th>Referencia</th></tr></thead><tbody>';
+    rg += Object.entries(comp).map(([k, c]) => `<tr><td style="text-align:left">${nombreC[k] || k}</td><td>${num(c.peso * 100, 1)} %</td><td><b>${sg(c.var_local_pct, 2)} %</b></td><td>${sg(c.var_usd_pct, 2)} %</td><td><b>${sg(c.peso * c.var_local_pct, 2)} pp</b></td><td>${esc(fd(c.fecha))} ${esc(c.fecha.slice(0, 4))}</td><td>${esc(fd(c.ref_fecha))} ${esc(c.ref_fecha.slice(0, 4))}</td></tr>`).join('');
+    rg += `<tr><td style="text-align:left"><b>Total ponderado</b></td><td>100 %</td><td><b>${sg(bal.var_12m_pct, 2)} %</b></td><td>${sg(bal.var_12m_usd_pct, 2)} %</td><td><b>${sg(bal.var_12m_pct, 2)} pp</b></td><td colspan="2" style="text-align:left">${esc(bal.estado)} (umbral ±${num((L.umbrales || {}).balance_pct, 0)} %)</td></tr></tbody></table>`;
+    const umb = (L.umbrales || {}).balance_pct || 2, margen = Math.abs(bal.var_12m_pct) - umb;
+    rg += `<div class="note"><b>Margen frente al umbral de −${num(umb, 0)} %:</b> el balance está ${num(Math.abs(margen), 2)} pp ${margen >= 0 ? 'por debajo (dentro de SE CONTRAE)' : 'por encima (todavía PLANO)'}; cambiaría de estado si mejorase ${margen >= 0 ? num(margen, 2) + ' pp' : '—'}. Contribución de cada banco = peso × variación local; la suma es el total.</div>`;
     rg += '<div class="note">La columna «en USD» es la que se usaba antes: mezclaba la política monetaria con la depreciación del yen y del euro. Los pesos son el tamaño de cada balance en USD a la fecha de referencia. El PBoC no entra por falta de serie gratuita fiable.</div>';
   }
   const mixes = L.combinacion || [];
@@ -344,7 +347,7 @@ function pageTono() {
   const TZ = VZ._total || {}, DZ = TZ.direccion || {};
   const secundario = EB.estado !== 'PRINCIPAL';
   const zTxt = (z) => (z == null ? 'SIN BASE' : (z >= 0 ? '+' : '−') + num(Math.abs(z), 2) + ' σ');
-  const l = TONO_BCOS.map((b) => (U[b] && U[b].z != null ? `${b} ${zTxt(U[b].z)} frente a su media de 2 años${U[b].dz != null ? ` (Δ ${sg(U[b].dz, 2)} σ vs. ${esc(fd(U[b].anterior_fecha))})` : ''}` : `${b} sin base de 2 años`)).join(' · ');
+  const l = TONO_BCOS.map((b) => (U[b] && U[b].z != null ? `${b} ${zTxt(U[b].z)} frente a su media de 2 años${U[b].dz != null ? ` (Δ ${sg(U[b].dz, 2)} σ vs. ${esc(fd(U[b].anterior_fecha))})` : ' (Δz: SIN DATO, muestra insuficiente)'}` : `${b} sin base de 2 años`)).join(' · ');
   h += `<div class="banner ${secundario ? 'amber' : ''}" style="margin:10px 0;border:1px solid var(--border);border-radius:6px"><b>Bloque ${esc(EB.estado || 'SECUNDARIO')}.</b> ${esc(EB.motivo || '')}
     <span style="color:var(--muted)"> Se muestra como contexto, no como señal de subida o bajada de tipos.</span></div>`;
   h += essential(`Último comunicado frente a la media móvil de 2 años de cada banco (z-score): ${l}.`,
@@ -360,8 +363,8 @@ function pageTono() {
     if (!u) return `<div class="card kpi"><div class="lab">${b}</div><div class="big">${SD}</div>${foot(T.fuentes[b], false)}</div>`;
     const ser = (T.comunicados[b] || []).filter((x) => x.indice != null);
     return `<div class="card kpi"><div class="lab">${b} · ${esc(u.tipo)} <span class="tag sd" style="margin-left:4px">${secundario ? 'SECUNDARIO' : 'PRINCIPAL'}</span></div><div class="exp">${esc(fdy(u.fecha))}${u.anterior_fecha ? ` · anterior ${esc(fdy(u.anterior_fecha))} (${zTxt(u.anterior_z)})` : ''}</div>
-      <div class="big">${u.z != null ? sg(u.z, 2) : '—'}<small> σ frente a su media de 2 años</small></div><div class="chg">${dzFlecha(u.dz)} <span style="color:var(--dim);font-size:10.5px">${esc(u.dz_txt || '')}</span></div>
-      ${u.anterior_pocos_terminos ? `<div class="note" style="margin:4px 0 0;color:var(--amber)">La intervención anterior tenía muy pocos términos del diccionario: este cambio es poco fiable.</div>` : ''}
+      <div class="big">${u.z != null ? sg(u.z, 2) : '—'}<small> σ frente a su media de 2 años</small></div><div class="chg">${u.dz == null && u.anterior_pocos_terminos ? '<span class="pill flat">SIN DATO</span>' : dzFlecha(u.dz)} <span style="color:var(--dim);font-size:10.5px">${esc(u.dz_txt || '')}</span></div>
+      ${u.anterior_pocos_terminos ? `<div class="note" style="margin:4px 0 0;color:var(--amber)">Δz sin calcular: ${esc(u.dz_motivo || 'la intervención anterior tiene muy pocos términos del diccionario')}.</div>` : ''}
       ${u.z == null ? `<div class="note" style="margin:4px 0 0;color:var(--amber)">SIN BASE: menos de ${R.min_obs_z || 8} comunicados puntuados en los 2 años previos.</div>` : ''}
       <div class="note" style="margin:6px 0 2px"><b style="color:var(--text)">Índice crudo:</b> ${sg(u.indice, 2)} (${esc((u.nivel || '').toLowerCase())}) · media 2 años ${u.media_2a != null ? sg(u.media_2a, 2) : '—'} · σ ${u.sd_2a != null ? num(u.sd_2a, 2) : '—'} · n = ${u.n_2a}</div>
       <div class="note" style="margin:0 0 2px"><b style="color:var(--text)">Términos:</b> ${u.h} hawkish · ${u.d} dovish · ${u.palabras} palabras</div>
@@ -381,17 +384,17 @@ function pageTono() {
 
   /* validación del cambio de z */
   const fila = (nom, x) => (!x || !x.n ? `<tr><td><b>${nom}</b></td><td colspan="6" style="text-align:left;color:var(--dim)">SIN MUESTRA</td></tr>`
-    : `<tr><td><b>${nom}</b></td><td>n = ${x.n}</td><td><b>${num(x.pct, 1)} %</b> <small>${x.aciertos}/${x.n}</small></td><td>${num(x.azar_pct, 0)} %</td><td>${num(x.p_valor, 3)}</td><td>${num(x.repite_pct, 1)} % <small>${x.repite_aciertos}/${x.n}</small></td>
+    : `<tr><td style="text-align:left"><b>${nom}</b></td><td>${x.n}</td><td><b>${num(x.pct, 0)} %</b></td><td>${num(x.azar_pct, 0)} %</td><td>${num(x.p_valor, 2)}</td><td>${num(x.repite_pct, 0)} %</td>
       <td><span class="ck ${x.pct > 50 && x.p_valor < 0.05 && x.pct >= x.repite_pct ? 'ok' : 'no'}">${x.pct > 50 && x.p_valor < 0.05 && x.pct >= x.repite_pct ? 'SÍ' : 'NO'}</span></td></tr>`);
   h += `<div class="sect"><h2>Validación: ¿el cambio de z anticipa la dirección de la siguiente decisión?</h2><span class="more">solo reuniones en las que el tipo se mueve · desde 2015</span></div>`;
   h += `<div class="card"><div class="note" style="margin-top:0">Regla fija, escrita antes de ver el resultado: para cada comunicado se calcula Δz (z de hoy − z de la intervención anterior). Si la reunión siguiente <b>mueve</b> el tipo (± ${num(R.umbral_decision_pp, 2)} pp o más, BIS), se compara el signo de Δz con la dirección del movimiento (Δz &gt; 0 ↔ sube). Las reuniones en que el tipo no cambia no entran. Azar = 50 %. El p-valor es el de una binomial exacta bilateral. «Repetir la decisión anterior» se evalúa en la misma muestra. ${esc(R.criterio_principal || '')}</div></div>`;
-  h += '<div class="card pad0 scroll" style="margin-top:10px"><table class="t"><thead><tr><th>Banco</th><th>Muestra (movimientos)</th><th>Acierto de dirección</th><th>Azar</th><th>p-valor</th><th>Base «repite decisión»</th><th>Supera azar y base</th></tr></thead><tbody>';
+  h += '<div class="card pad0" style="margin-top:10px"><table class="t" style="width:100%;font-size:11px;table-layout:auto"><thead><tr><th>Banco</th><th>n</th><th>Acierto</th><th>Azar</th><th>p</th><th>Repite</th><th>¿Gana?</th></tr></thead><tbody>';
   h += TONO_BCOS.map((b) => fila(b, (VZ[b] || {}).direccion)).join('');
   h += fila('Total', DZ).replace('<tr>', '<tr class="grp">');
-  h += fila('Total · |Δz| ≥ ' + num(UMB_DZ, 1) + ' σ', TZ.direccion_dz_fuerte);
-  h += fila('Eco: misma reunión', TZ.misma_reunion);
+  h += fila('Total |Δz|≥' + num(UMB_DZ, 1), TZ.direccion_dz_fuerte);
+  h += fila('Eco (misma)', TZ.misma_reunion);
   h += `</tbody></table>${footIn('Comunicados oficiales + tipos del BIS · cálculo NEXORA', T.fecha, null, 'muestra = reuniones siguientes en las que el tipo se mueve')}</div>`;
-  h += `<div class="note">Cómo leerlo: el BoJ tiene muy pocos movimientos de tipos en la muestra (n = ${((VZ.BoJ || {}).direccion || {}).n ?? 0}), por lo que su porcentaje no dice nada por sí solo. La fila «eco» mira si Δz acompaña a la decisión de la <i>misma</i> reunión (el comunicado ya la refleja): si ni siquiera eso supera el azar, el diccionario mide poco. Con ${DZ.n || 0} movimientos en total, una diferencia de pocos puntos es indistinguible del azar. Un z muy extremo suele venir de comunicados cortos con pocos términos (aviso en cada tarjeta).</div>`;
+  h += `<div class="note">Columnas: n = reuniones siguientes con movimiento de tipos · Acierto = % en que el signo de Δz coincide · Azar = 50 % · p = binomial exacta · Repite = «repetir la decisión anterior» en la misma muestra · ¿Gana? = supera azar (p &lt; 0,05) y base. Cómo leerlo: el BoJ tiene muy pocos movimientos de tipos en la muestra (n = ${((VZ.BoJ || {}).direccion || {}).n ?? 0}), por lo que su porcentaje no dice nada por sí solo. La fila «eco» mira si Δz acompaña a la decisión de la <i>misma</i> reunión (el comunicado ya la refleja): si ni siquiera eso supera el azar, el diccionario mide poco. Con ${DZ.n || 0} movimientos en total, una diferencia de pocos puntos es indistinguible del azar. Un z muy extremo suele venir de comunicados cortos con pocos términos (aviso en cada tarjeta).</div>`;
   h += `<details class="qa card" style="margin-top:10px"><summary>Validación de la versión anterior (nivel hawkish/dovish traducido a sube/mantiene/baja)</summary>
     <p class="note">Se conserva por transparencia; ya no se usa para leer el tono. Acierto del nivel frente a la decisión siguiente: ${TONO_BCOS.map((b) => (V[b] && V[b].n ? `${b} ${num(V[b].nivel.pct, 0)} % (n = ${V[b].n}) frente a «siempre mantiene» ${num(V[b].base_mantiene.pct, 0)} %` : `${b} SIN DATO`)).join(' · ')}.</p></details>`;
 

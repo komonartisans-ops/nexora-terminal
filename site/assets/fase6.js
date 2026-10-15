@@ -35,8 +35,8 @@ function pageSkew() {
       ${foot('Cálculo NEXORA sobre Cboe · SKEW', S.fecha, S.url)}</div>`;
   }
   conf.forEach((c) => {
-    const cls = c.encendida === true ? 'no' : c.encendida === false ? 'ok' : 'sd';
-    h += `<div class="card kpi"><div class="lab">${esc(c.nombre)}</div><div class="exp">${c.encendida === true ? 'ENCENDIDA' : c.encendida === false ? 'APAGADA' : 'SIN DATO'}</div>
+    const cls = c.caducada ? 'sd' : c.encendida === true ? 'no' : c.encendida === false ? 'ok' : 'sd';
+    h += `<div class="card kpi"><div class="lab">${esc(c.nombre)}</div><div class="exp">${c.caducada ? 'CADUCADA · NO SUMA' : c.encendida === true ? 'ENCENDIDA' : c.encendida === false ? 'APAGADA' : 'SIN DATO'}</div>
       <div style="margin:6px 0"><span class="ck ${cls}">${esc(c.estado)}</span></div><div class="note" style="margin:0 0 6px">${esc(c.valor)}</div><div class="note" style="margin:0;color:var(--dim)">${esc(c.regla)}</div>
       ${c.retraso_dias > 21 ? `<div class="note" style="margin:6px 0 0;color:var(--amber)">Dato con ${c.retraso_dias} días de retraso (publicación de la fuente).</div>` : ''}
       ${foot(c.fuente, c.fecha, c.url && c.url.startsWith('http') ? c.url : null)}</div>`;
