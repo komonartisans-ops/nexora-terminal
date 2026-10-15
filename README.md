@@ -38,3 +38,7 @@ Local: `python engine/build.py --modo diario` y `python -m http.server 8765 -d s
 **Regla de giro v2** (medida contra T+5, no contra T-5; pendiente de validar con eventos nuevos): en T+60, T+120, cierre y T+1 se calcula la *devolución* de 2Y y 10Y (% de su movimiento de T+5 ya deshecho). ≥ 60 % de ambos con NQ cayendo más que en T+5 → REFUGIO / RIESGO; ≥ 60 % con NQ recuperando → SORPRESA DESHECHA; < 30 % → SE CONFIRMA. Alerta Telegram, una por evento y fase, en REFUGIO / RIESGO y SORPRESA DESHECHA. El resultado se calcula al construir el JSON desde el CSV (el log sigue siendo solo-añadir).
 
 Las clases (FED MÁS DURA / MÁS SUAVE / REFUGIO / EMPINAMIENTO POR PLAZO LARGO / SIN REACCIÓN) son **CRITERIO NEXORA** y sus reglas están en la página. `engine/push_seguro.py` fusiona los CSV si `actualizar` y `reacciones` escriben a la vez.
+
+## Agenda (fase 9)
+
+`engine/agenda.py` · agenda desde los calendarios oficiales (FRED Release Calendar: BLS, BEA, Census, Fed, DOL; Federal Reserve; ISM; BCE; BoJ; TreasuryDirect). Importancia ALTA/MEDIA **fija por tipo** (tabla en `site/data/agenda.json` y en la página «Agenda»). Bloque `agenda` en `contexto.json` (hoy y próximos 7 días, hora ET y Madrid). `agenda_diaria.yml`: Telegram cada día laborable a las 8:00 Madrid («Hoy sin datos de importancia alta» si no hay nada). El monitor de reacciones vigila **todos** los eventos ALTA de la agenda (IPC, PPI, NFP, PCE, PIB, FOMC, actas, ISM manufacturero) y marca como *contaminada* la fase en la que otro dato alto cae entre el dato y la fase.

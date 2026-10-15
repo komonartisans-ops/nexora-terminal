@@ -36,10 +36,10 @@ FRED_RELEASES = {
     50: ("Empleo EE. UU. (NFP, paro, salarios)", "ALTA", "cripto · oro · índices", "Empleo fuerte → 2Y ↑ (menos recortes); débil → 2Y ↓. Mirar salarios y revisiones."),
     10: ("IPC EE. UU. (CPI)", "ALTA", "cripto · oro · índices", "Subyacente m/m y servicios: inflación ↑ retrasa recortes (2Y ↑, real ↑)."),
     54: ("Renta y gasto personal (PCE)", "ALTA", "cripto · oro · índices", "PCE subyacente: la medida de inflación que sigue la Fed."),
-    53: ("PIB EE. UU.", "MEDIA", "índices · oro", "Crecimiento y deflactor; revisiones."),
+    53: ("PIB EE. UU.", "ALTA", "índices · oro", "Crecimiento y deflactor; revisiones."),
     192: ("Vacantes JOLTS", "MEDIA", "índices · oro", "Demanda de trabajo: vacantes ↓ = mercado laboral se enfría."),
     9: ("Ventas minoristas", "MEDIA", "índices", "Consumo: motor del crecimiento."),
-    46: ("Precios de producción (PPI)", "MEDIA", "oro · índices", "Presión de costes que puede llegar al IPC."),
+    46: ("Precios de producción (PPI)", "ALTA", "oro · índices", "Presión de costes que puede llegar al IPC."),
     180: ("Peticiones de paro semanales", "MEDIA", "índices · oro", "Media de 4 semanas ↑ = empleo se enfría."),
     351: ("Encuesta manufacturera Fed Filadelfia", "MEDIA", "índices", "Actividad industrial adelantada (proxy del ISM)."),
     91: ("Confianza U. Michigan (expectativas de inflación)", "MEDIA", "oro · índices", "Expectativas de inflación a 1 y 5 años."),
@@ -47,7 +47,14 @@ FRED_RELEASES = {
     21: ("Oferta monetaria M2 (H.6)", "BAJA", "cripto · oro", "Liquidez a medio plazo."),
     13: ("Producción industrial", "BAJA", "índices", "Ciclo industrial (US30)."),
     22: ("Crédito bancario H.8", "BAJA", "índices", "Crédito de bancos comerciales."),
+    27: ("Vivienda iniciada y permisos (Census)", "MEDIA", "índices", "Ciclo inmobiliario sensible a tipos."),
+    97: ("Ventas de vivienda nueva (Census)", "MEDIA", "índices", "Demanda de vivienda frente a hipotecas al 6-7 %."),
+    95: ("Pedidos de fábrica y bienes duraderos (Census, M3)", "MEDIA", "índices", "Inversión empresarial: pedidos de bienes de capital."),
 }
+# código corto por tipo de evento (clave de la agenda, del monitor de reacciones y del Telegram diario)
+TIPO_FRED = {50: "NFP", 10: "IPC", 54: "PCE", 46: "PPI", 53: "PIB", 192: "JOLTS", 9: "VENTAS", 180: "PARO", 351: "FILADELFIA", 91: "UMICH",
+             20: "H41", 21: "M2", 13: "PRODIND", 22: "H8", 27: "VIVIENDA", 97: "VIVIENDA_NUEVA", 95: "PEDIDOS"}
+HORA_TIPICA_NY = {"IPC": "08:30", "NFP": "08:30", "PCE": "08:30", "PPI": "08:30", "PIB": "08:30", "FOMC": "14:00", "ACTAS": "14:00", "ISM": "10:00"}
 MES = {m: i for i, m in enumerate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 1)}
 
 
@@ -260,7 +267,7 @@ def construir(dias=21, pasado=7, con_resultados=True):
     if r:
         for d, h, s, url in r:
             if desde <= d <= hasta:
-                E.append(ev(d, h, s, "MEDIA", "índices · oro", "Demanda débil (cola) → yields ↑.", "TreasuryDirect (U.S. Treasury)", url,
+                E.append(ev(d, h, s, "MEDIA" if re.search(r"(2|10|30)-Year", s) else "BAJA", "índices · oro", "Demanda débil (cola) → yields ↑.", "TreasuryDirect (U.S. Treasury)", url,
                             "" if h else "hora de cierre aún no anunciada"))
     else:
         err["subastas"] = e

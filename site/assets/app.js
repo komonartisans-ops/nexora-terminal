@@ -60,7 +60,8 @@ const PAGES = [
   { id: 'ciclo', g: 'Análisis', t: 'Ciclo y crédito EE. UU.', d: 'Fase del ciclo, 9 señales, probit NY Fed, diferenciales', f: 2 },
   { id: 'bancos', g: 'Análisis', t: 'Bancos centrales', d: 'Fed, BCE y BoJ: tipos, reuniones y FedWatch propio', f: 1 },
   { id: 'mapa', g: 'Análisis', t: 'Bancos centrales del mundo', d: 'Mapa de 38 bancos: tipo, último movimiento, 12 meses, inflación, PIB y divisa', f: 7 },
-  { id: 'eventos', g: 'Análisis', t: 'Reacción a eventos', d: 'IPC, empleo, PCE y FOMC: 2Y, 10Y, DXY, oro, NQ y BTC minuto a minuto, con clasificación', f: 8 },
+  { id: 'agenda', g: 'Análisis', t: 'Agenda', d: 'Hoy y próximos 7 días con hora de Nueva York y Madrid; importancia fija por tipo de dato', f: 9 },
+  { id: 'eventos', g: 'Análisis', t: 'Reacción a eventos', d: 'Todos los datos de importancia alta (IPC, PPI, empleo, PCE, PIB, FOMC, ISM): 2Y, 10Y, DXY, oro, NQ y BTC minuto a minuto', f: 8 },
   { id: 'tono', g: 'Análisis', t: 'Tono de bancos centrales', d: 'Tono hawkish/dovish de Fed, BCE y BoJ en z-score propio, con validación frente al azar (bloque secundario)', f: 7 },
   { id: 'liquidez', g: 'Análisis', t: 'Liquidez', d: 'Liquidez neta de la Fed, reservas, TGA, RRP y liquidez global', f: 1 },
   { id: 'divisas', g: 'Análisis', t: 'Sesgo de divisas', d: 'Matriz de ocho divisas por factores', f: 4 },
@@ -83,7 +84,7 @@ const PLAN = {
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['diario', 'tesis', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos']);
+const LIVE = new Set(['diario', 'tesis', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
 const D = {};
 const MOUNT = [];
 
@@ -757,7 +758,7 @@ function route() {
 }
 
 async function cargar() {
-  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma', 'bancos', 'tono', 'reacciones'].map(async (n) => {
+  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma', 'bancos', 'tono', 'reacciones', 'agenda'].map(async (n) => {
     try { const r = await fetch(`data/${n}.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) D[n] = await r.json(); } catch (e) { /* SIN DATO */ }
   }));
 }

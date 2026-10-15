@@ -254,6 +254,13 @@ def _reacciones(Rc):
             "memoria": Rc.get("memoria")}
 
 
+def _agenda(C):
+    if not C or not C.get("eventos"):
+        return _sd("Calendarios oficiales (FRED, Fed, ISM, BCE, BoJ, TreasuryDirect)")
+    import agenda
+    return agenda.bloque(C)
+
+
 def _tono(T):
     if not T or not T.get("comunicados"):
         return _sd("Webs oficiales de Fed, BCE y BoJ")
@@ -404,6 +411,7 @@ def construir():
         "sesgo_divisas": _divisas(J["divisas"]),
         "contradicciones": _contradicciones(J["ciclo"], J["divisas"], J["cot"], J["regimen"], skew),
         "calendario": _calendario(J["calendario"]),
+        "agenda": _agenda(J["calendario"]),
         "alertas_recientes": [{"fecha_utc": a.get("fecha_utc"), "titulo": a.get("titulo"), "enviada": a.get("enviada"), "l1": a.get("l1")}
                               for a in ((J["alertas"] or {}).get("recientes") or [])[-5:]],
     }

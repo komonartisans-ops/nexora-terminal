@@ -104,7 +104,7 @@ SENCILLO = {
 }
 CAMPOS = ["evento_id", "tipo", "evento", "fecha", "hora_ny", "fase", "objetivo_utc", "barra_utc", "edad_min", "zt", "tnx", "zn", "dxy", "oro", "nq", "es", "btc",
           "d_y2_pb", "d_y10_pb", "y10_fuente", "d_dxy_pct", "d_oro_pct", "d_nq_pct", "d_es_pct", "d_btc_pct", "dxy_pico_pct", "clasificacion", "umbral_origen",
-          "th_y2", "th_y10", "th_dxy", "th_nq", "beta_2y", "r2_2y", "beta_10y", "r2_10y", "real10", "d_real10_pb", "origen", "registrado_utc", "fuente", "estado", "motivo", "version_regla"]
+          "th_y2", "th_y10", "th_dxy", "th_nq", "beta_2y", "r2_2y", "beta_10y", "r2_10y", "real10", "d_real10_pb", "origen", "registrado_utc", "fuente", "estado", "motivo", "version_regla", "contaminada", "contaminada_por"]
 
 
 def ahora():
@@ -124,25 +124,9 @@ def num(x):
 
 # ------------------------------------------------------------------ eventos (calendario oficial de calendario.py)
 def eventos(desde, hasta):
-    import calendario as C
-    years = sorted({desde.year, hasta.year})
-    out = {}
-    for rid, tipo in ((10, "IPC"), (50, "NFP"), (54, "PCE")):
-        try:
-            for d, h, nombre, url in C.fred_calendar(rid, years):
-                if desde <= d <= hasta:
-                    out[f"{tipo}-{d}"] = {"id": f"{tipo}-{d}", "tipo": tipo, "evento": C.FRED_RELEASES[rid][0], "fecha": d, "hora_ny": h or HORA_EVENTO[tipo],
-                                          "fuente": f"FRED Release Calendar · {nombre} (BLS/BEA)", "url": url}
-        except Exception as e:  # noqa: BLE001
-            print(f"calendario {tipo}: {type(e).__name__}: {str(e)[:80]}")
-    try:
-        for d, sep, url in C.fomc():
-            if desde <= d <= hasta:
-                out[f"FOMC-{d}"] = {"id": f"FOMC-{d}", "tipo": "FOMC", "evento": "Decisión FOMC (Fed)", "fecha": d, "hora_ny": HORA_EVENTO["FOMC"],
-                                    "fuente": "federalreserve.gov (calendario FOMC)", "url": url}
-    except Exception as e:  # noqa: BLE001
-        print(f"calendario FOMC: {type(e).__name__}: {str(e)[:80]}")
-    return sorted(out.values(), key=lambda x: (x["fecha"], x["hora_ny"]))
+    """TODOS los eventos de importancia ALTA de la agenda oficial (agenda.py), no una lista fija."""
+    import agenda
+    return agenda.eventos_altos(desde, hasta)
 
 
 def t_evento(ev):
@@ -335,8 +319,14 @@ def giro_fase(f5, f):
     return out
 
 
+def contaminantes(ev, t_fase, altos):
+    """Ids de otros eventos de importancia alta publicados entre el dato de `ev` y el instante `t_fase` (UTC)."""
+    t0 = t_evento(ev)
+    return [x["id"] for x in altos if x["id"] != ev["id"] and t0 < t_evento(x) <= t_fase]
+
+
 # ------------------------------------------------------------------ medición de un evento
-def medir_evento(ev, B, cal, filas_previas, hasta=None, origen_base="reconstruido", ya=()):
+def medir_evento(ev, B, cal, filas_previas, hasta=None, origen_base="reconstruido", ya=(), altos=None):
     """Filas (dict CAMPOS) para las fases de `ev` ya cumplidas (objetivo + 5 min ≤ hasta) que no estén en `ya`."""
     hasta = hasta or ahora()
     t5 = objetivo(ev, -5)
@@ -365,6 +355,7 @@ def medir_evento(ev, B, cal, filas_previas, hasta=None, origen_base="reconstruid
             for k in ("dxy", "oro", "nq", "es", "btc"):
                 if vals[k] is not None and base[k] is not None:
                     d[k] = (vals[k] / base[k] - 1) * 100
+        cont = contaminantes(ev, t, altos) if (altos and fase != "T-5") else []
         pico = pico_dxy(B, t5, t) if fase != "T-5" else None
         th, origen_umb = umbrales(prev, fase) if fase != "T-5" else ({}, "")
         clase = clasificar(d, th, pico) if fase != "T-5" else ""
@@ -380,7 +371,8 @@ def medir_evento(ev, B, cal, filas_previas, hasta=None, origen_base="reconstruid
                "th_y2": fnum(th.get("y2"), 2), "th_y10": fnum(th.get("y10"), 2), "th_dxy": fnum(th.get("dxy"), 3), "th_nq": fnum(th.get("nq"), 3),
                "beta_2y": fnum(cal.get("beta_2y"), 2), "r2_2y": fnum(cal.get("r2_2y"), 3), "beta_10y": fnum(cal.get("beta_10y"), 2), "r2_10y": fnum(cal.get("r2_10y"), 3),
                "real10": "", "d_real10_pb": "", "origen": origen_base if tarde > RETRASO_VIVO_MIN else "vivo",
-               "registrado_utc": ahora().strftime("%Y-%m-%d %H:%M"), "fuente": "Yahoo Finance (API v8 chart, 5 min); calendario: " + ev["fuente"], "estado": "", "motivo": "", "version_regla": VERSION_REGLAS}
+               "registrado_utc": ahora().strftime("%Y-%m-%d %H:%M"), "fuente": "Yahoo Finance (API v8 chart, 5 min); calendario: " + ev["fuente"], "estado": "", "motivo": "", "version_regla": VERSION_REGLAS,
+               "contaminada": "" if altos is None else ("SI" if cont else ""), "contaminada_por": ",".join(cont)}
         rows.append(row)
         filas_previas = filas_previas + [row]
     return rows
@@ -442,7 +434,7 @@ def reconstruir():
         # los eventos de hoy en curso los registra el job en vivo
         if objetivo(ev, 120) + dt.timedelta(minutes=60) > ahora() and t_evento(ev) - dt.timedelta(hours=3) <= ahora():
             continue
-        r = medir_evento(ev, B, cal, existentes + nuevas, hasta=ahora() - dt.timedelta(hours=RETRASO_RECONSTRUIR_H), ya=ya)
+        r = medir_evento(ev, B, cal, existentes + nuevas, hasta=ahora() - dt.timedelta(hours=RETRASO_RECONSTRUIR_H), ya=ya, altos=evs)
         nuevas += r
     nuevas += completar_real10(evs, existentes + nuevas)
     n = guardar(nuevas)
@@ -463,7 +455,8 @@ def construir_json():
                            "d_oro_pct": num(r["d_oro_pct"]), "d_nq_pct": num(r["d_nq_pct"]), "d_es_pct": num(r["d_es_pct"]), "d_btc_pct": num(r["d_btc_pct"]),
                            "dxy_pico_pct": num(r["dxy_pico_pct"]), "umbral_origen": r["umbral_origen"],
                            "umbrales": {"y2": num(r["th_y2"]), "y10": num(r["th_y10"]), "dxy": num(r["th_dxy"]), "nq": num(r["th_nq"])},
-                           "registrado_utc": r["registrado_utc"], "beta_2y": num(r["beta_2y"]), "r2_2y": num(r["r2_2y"]), "beta_10y": num(r["beta_10y"]), "r2_10y": num(r["r2_10y"])})
+                           "registrado_utc": r["registrado_utc"], "contaminada_fila": r.get("contaminada"), "contaminada_por_fila": r.get("contaminada_por") or "",
+                           "beta_2y": num(r["beta_2y"]), "r2_2y": num(r["r2_2y"]), "beta_10y": num(r["beta_10y"]), "r2_10y": num(r["r2_10y"])})
         e["fuente"] = r["fuente"]
     orden = {f: i for i, (f, _) in enumerate(FASES)}
     lista = sorted(ev.values(), key=lambda x: (x["fecha"], x["hora_ny"]))
@@ -473,8 +466,22 @@ def construir_json():
         e["clase_t5"], e["clase_cierre"] = cl.get("T+5") or None, cl.get("CIERRE") or None
         e["reconstruido"] = any(f["origen"] == "reconstruido" for f in e["fases"])
         f5g = next((f for f in e["fases"] if f["fase"] == "T+5"), None)
+        te0 = t_evento({"fecha": dt.date.fromisoformat(e["fecha"]), "hora_ny": e["hora_ny"]})
         for f in e["fases"]:
             f["giro"] = giro_fase(f5g, f)
+            # contaminada: otro evento alto entre el dato y la fase. Se usa la marca guardada en la fila; si la fila es anterior a la marca, se
+            # deduce de los eventos del registro (puede quedarse corta: solo conoce los eventos registrados)
+            if f["fase"] in ("T-5", "REAL10"):
+                f["contaminada"], f["contaminada_por"] = False, []
+            elif f.pop("contaminada_fila") is not None:
+                por = [x for x in f.pop("contaminada_por_fila").split(",") if x]
+                f["contaminada"], f["contaminada_por"] = bool(por), por
+            else:
+                f.pop("contaminada_por_fila", None)
+                tf = dt.datetime.strptime(f["objetivo_utc"], "%Y-%m-%d %H:%M").replace(tzinfo=UTC)
+                por = [o["id"] for o in lista if o["id"] != e["id"] and te0 < t_evento({"fecha": dt.date.fromisoformat(o["fecha"]), "hora_ny": o["hora_ny"]}) <= tf]
+                f["contaminada"], f["contaminada_por"] = bool(por), por
+        e["contaminada_en"] = [f["fase"] for f in e["fases"] if f.get("contaminada")]
         e["giro_fases"] = {f["fase"]: f["giro"]["clase"] for f in e["fases"] if f["giro"]["clase"]}
         e["giro_en"] = [f["fase"] for f in e["fases"] if f["giro"]["clase"] in GIRO_ALERTA]
         e["diseno"] = e["id"] == EVENTO_DISENO
@@ -514,7 +521,8 @@ def construir_json():
     por_fase = {}
     for e in otros:
         for fase, c in e["giro_fases"].items():
-            por_fase.setdefault(fase, {}).setdefault(c, []).append(e["id"] + (" (base débil)" if next(f for f in e["fases"] if f["fase"] == fase)["giro"]["debil"] else ""))
+            por_fase.setdefault(fase, {}).setdefault(c, []).append(e["id"] + (" (base débil)" if next(f for f in e["fases"] if f["fase"] == fase)["giro"]["debil"] else "")
+                                                       + (" (contaminada)" if fase in e["contaminada_en"] else ""))
     validacion = {"estado": "PENDIENTE DE VALIDAR con eventos nuevos", "congelacion": CONGELACION, "evento_diseno": EVENTO_DISENO, "n_otros": len(otros),
                   "nota": f"La regla v2 se diseñó viendo {EVENTO_DISENO}; los otros {len(otros)} eventos son datos reconstruidos, no una prueba fuera de muestra. "
                           "Solo cuentan como validación los eventos registrados en vivo después de publicar la regla.",
@@ -587,7 +595,7 @@ def aviso_giro(ev, e, f, cadena):
                 f"{('%.0f %%' % g['dev_y10_pct']) if g['y10_base'] and g['dev_y10_pct'] is not None else 'sin base'} de su movimiento inicial → «{g['clase']}». Cadena frente a T-5: {cadena} (Yahoo Finance; 2Y vía ZT=F calibrado)."),
          "l2": f"Lectura: {SENCILLO_GIRO.get(g['clase'], '—')} (regla de giro v3, CRITERIO NEXORA, congelada el 15-10-2026).",
          "l3": sig,
-         "l4": f"En T+5 la clase era «{e['clase_t5']}». Es una lectura de precios frente al movimiento de los primeros 5 minutos, no una decisión de la Fed."}
+         "l4": f"En T+5 la clase era «{e['clase_t5']}»." + (f" ATENCIÓN: fase contaminada por {', '.join(f['contaminada_por'])} (otro dato de importancia alta entre medias)." if f.get("contaminada") else "") + f" Es una lectura de precios frente al movimiento de los primeros 5 minutos, no una decisión de la Fed."}
     ok, err = telegram.enviar(alertas.mensaje(a))
     if ok:
         est["avisados"].append(clave)
@@ -645,7 +653,7 @@ def vivo(max_espera_min=150):
                     break
                 time.sleep(60)
             filas = leer_log()
-            r = medir_evento(ev, B, cal, filas, ya=ya, origen_base="vivo-tardío")
+            r = medir_evento(ev, B, cal, filas, ya=ya, origen_base="vivo-tardío", altos=evs)
             guardar(r)
             escribir_json(construir_json())
         # giro (regla v2): T+60, T+120, cierre y T+1 frente a T+5. Las filas reconstruidas son historia: no se avisa

@@ -1,0 +1,297 @@
+{
+ "generado_utc": "2026-10-15 11:17 UTC",
+ "tabla_importancia": [
+  {
+   "tipo": "ACTAS",
+   "evento": "Actas del FOMC",
+   "organismo": "Fed",
+   "importancia": "ALTA",
+   "hora_ny_tipica": "14:00",
+   "fuente": "federalreserve.gov/json/calendar.json"
+  },
+  {
+   "tipo": "FOMC",
+   "evento": "Decisión FOMC (Fed)",
+   "organismo": "Fed",
+   "importancia": "ALTA",
+   "hora_ny_tipica": "14:00",
+   "fuente": "federalreserve.gov"
+  },
+  {
+   "tipo": "IPC",
+   "evento": "IPC EE. UU. (CPI)",
+   "organismo": "BLS",
+   "importancia": "ALTA",
+   "hora_ny_tipica": "08:30",
+   "fuente": "FRED Release Calendar (rid 10)"
+  },
+  {
+   "tipo": "ISM",
+   "evento": "ISM manufacturero",
+   "organismo": "ISM",
+   "importancia": "ALTA",
+   "hora_ny_tipica": "10:00",
+   "fuente": "ismworld.org"
+  },
+  {
+   "tipo": "NFP",
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "organismo": "BLS",
+   "importancia": "ALTA",
+   "hora_ny_tipica": "08:30",
+   "fuente": "FRED Release Calendar (rid 50)"
+  },
+  {
+   "tipo": "PCE",
+   "evento": "Renta y gasto personal (PCE)",
+   "organismo": "BEA",
+   "importancia": "ALTA",
+   "hora_ny_tipica": "08:30",
+   "fuente": "FRED Release Calendar (rid 54)"
+  },
+  {
+   "tipo": "PIB",
+   "evento": "PIB EE. UU.",
+   "organismo": "BEA",
+   "importancia": "ALTA",
+   "hora_ny_tipica": "08:30",
+   "fuente": "FRED Release Calendar (rid 53)"
+  },
+  {
+   "tipo": "PPI",
+   "evento": "Precios de producción (PPI)",
+   "organismo": "BLS",
+   "importancia": "ALTA",
+   "hora_ny_tipica": "08:30",
+   "fuente": "FRED Release Calendar (rid 46)"
+  },
+  {
+   "tipo": "BCE",
+   "evento": "Decisión de política monetaria del BCE",
+   "organismo": "BCE",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "ecb.europa.eu"
+  },
+  {
+   "tipo": "BOJ",
+   "evento": "Decisión de política monetaria del Banco de Japón",
+   "organismo": "BoJ",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "boj.or.jp"
+  },
+  {
+   "tipo": "DISCURSOS",
+   "evento": "Discursos y comparecencias de votantes del FOMC",
+   "organismo": "Fed",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "federalreserve.gov/json/calendar.json"
+  },
+  {
+   "tipo": "FILADELFIA",
+   "evento": "Encuesta manufacturera Fed Filadelfia",
+   "organismo": "Fed de Filadelfia",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 351)"
+  },
+  {
+   "tipo": "H41",
+   "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
+   "organismo": "Fed",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 20)"
+  },
+  {
+   "tipo": "ISM_SERV",
+   "evento": "ISM servicios",
+   "organismo": "ISM",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "10:00",
+   "fuente": "ismworld.org"
+  },
+  {
+   "tipo": "JOLTS",
+   "evento": "Vacantes JOLTS",
+   "organismo": "BLS",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 192)"
+  },
+  {
+   "tipo": "PARO",
+   "evento": "Peticiones de paro semanales",
+   "organismo": "DOL",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 180)"
+  },
+  {
+   "tipo": "PEDIDOS",
+   "evento": "Pedidos de fábrica y bienes duraderos (Census, M3)",
+   "organismo": "Census",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 95)"
+  },
+  {
+   "tipo": "SUBASTA",
+   "evento": "Subastas del Tesoro a 2, 10 y 30 años (resto de plazos: BAJA)",
+   "organismo": "Tesoro",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "13:00",
+   "fuente": "TreasuryDirect"
+  },
+  {
+   "tipo": "UMICH",
+   "evento": "Confianza U. Michigan (expectativas de inflación)",
+   "organismo": "U. Michigan",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 91)"
+  },
+  {
+   "tipo": "VENTAS",
+   "evento": "Ventas minoristas",
+   "organismo": "Census",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 9)"
+  },
+  {
+   "tipo": "VIVIENDA",
+   "evento": "Vivienda iniciada y permisos (Census)",
+   "organismo": "Census",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 27)"
+  },
+  {
+   "tipo": "VIVIENDA_NUEVA",
+   "evento": "Ventas de vivienda nueva (Census)",
+   "organismo": "Census",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 97)"
+  },
+  {
+   "tipo": "H8",
+   "evento": "Crédito bancario H.8",
+   "organismo": "Fed",
+   "importancia": "BAJA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 22)"
+  },
+  {
+   "tipo": "M2",
+   "evento": "Oferta monetaria M2 (H.6)",
+   "organismo": "Fed",
+   "importancia": "BAJA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 21)"
+  },
+  {
+   "tipo": "PRODIND",
+   "evento": "Producción industrial",
+   "organismo": "Fed",
+   "importancia": "BAJA",
+   "hora_ny_tipica": "",
+   "fuente": "FRED Release Calendar (rid 13)"
+  }
+ ],
+ "agenda": {
+  "hoy": [
+   {
+    "fecha": "2026-10-15",
+    "dia": "jue",
+    "hora_ny": "08:30",
+    "hora_madrid": "14:30",
+    "evento": "Precios de producción (PPI)",
+    "importancia": "ALTA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-15",
+    "dia": "jue",
+    "hora_ny": "08:30",
+    "hora_madrid": "14:30",
+    "evento": "Ventas minoristas",
+    "importancia": "MEDIA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-15",
+    "dia": "jue",
+    "hora_ny": "08:30",
+    "hora_madrid": "14:30",
+    "evento": "Peticiones de paro semanales",
+    "importancia": "MEDIA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-15",
+    "dia": "jue",
+    "hora_ny": "08:30",
+    "hora_madrid": "14:30",
+    "evento": "Encuesta manufacturera Fed Filadelfia",
+    "importancia": "MEDIA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-15",
+    "dia": "jue",
+    "hora_ny": "16:30",
+    "hora_madrid": "22:30",
+    "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
+    "importancia": "MEDIA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-15",
+    "dia": "jue",
+    "hora_ny": "23:30",
+    "hora_madrid": "05:30",
+    "evento": "Conversación · Chairman Kevin Warsh",
+    "importancia": "MEDIA",
+    "nota": null
+   }
+  ],
+  "proximos_7_dias": [
+   {
+    "fecha": "2026-10-20",
+    "dia": "mar",
+    "hora_ny": "08:30",
+    "hora_madrid": "14:30",
+    "evento": "Vivienda iniciada y permisos (Census)",
+    "importancia": "MEDIA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-22",
+    "dia": "jue",
+    "hora_ny": "08:30",
+    "hora_madrid": "14:30",
+    "evento": "Peticiones de paro semanales",
+    "importancia": "MEDIA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-22",
+    "dia": "jue",
+    "hora_ny": "16:30",
+    "hora_madrid": "22:30",
+    "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
+    "importancia": "MEDIA",
+    "nota": null
+   }
+  ],
+  "hasta": "2026-10-22",
+  "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
+  "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
+  "generado_utc": "2026-10-15 11:17 UTC"
+ },
+ "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
+}

@@ -309,6 +309,11 @@ def etapa_calendario():
     C["ultimos_publicados"] = pub
     csvlog.anadir("eventos_macro.csv", [{"fecha": e["fecha"], "hora_madrid": e.get("hora_madrid") or "", "evento": e["evento"], "importancia": e.get("importancia", ""),
                                          "fuente": e.get("fuente", ""), "visto_utc": STAMP} for e in C["eventos"]], ("fecha", "evento"))
+    try:
+        import agenda
+        agenda.escribir_json(C)  # tabla de importancia + hoy y próximos 7 días (site/data/agenda.json)
+    except Exception as e:  # noqa: BLE001
+        print("agenda.json:", type(e).__name__, str(e)[:80])
     return C
 
 

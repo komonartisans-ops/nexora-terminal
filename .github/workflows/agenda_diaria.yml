@@ -1,0 +1,39 @@
+name: agenda_diaria
+
+# Telegram cada día laborable a las 8:00 Madrid. Dos crones (verano UTC+2 / invierno UTC+1); el script envía una sola vez por día
+# (estado en data/estado_agenda.json) y solo si ya son las 8:00 en Madrid.
+on:
+  schedule:
+    - cron: "0 6 * * 1-5"
+    - cron: "0 7 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      forzar:
+        description: "Enviar aunque ya se haya enviado hoy (true | false)"
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agenda_diaria
+  cancel-in-progress: false
+
+jobs:
+  agenda:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Enviar agenda del día
+        env:
+          PYTHONUTF8: "1"
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ "${{ github.event.inputs.forzar }}" = "true" ]; then python engine/agenda.py --diario --forzar; else python engine/agenda.py --diario; fi
+      - name: Guardar estado (un envío por día)
+        run: python engine/push_seguro.py "agenda diaria $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]"

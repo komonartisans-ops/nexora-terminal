@@ -1,6 +1,6 @@
 name: reacciones
 
-# Fase 8 · monitor de reacción a eventos (IPC, NFP, PCE, FOMC). El job arranca ~60 min antes del evento (el cron de GitHub puede retrasarse)
+# Fase 8 · monitor de reacción a TODOS los eventos de importancia alta de la agenda oficial (IPC, PPI, NFP, PCE, PIB, FOMC, actas, ISM manufacturero). El job arranca ~60 min antes del evento (el cron de GitHub puede retrasarse)
 # y ESPERA dentro del job, registrando T-5, T+5, T+15, T+30, T+60 y T+120 (el cierre y T+1 los recogen los crones de 16:05 y 10:05 ET). Cada cron cubre una de las dos horas UTC posibles
 # (horario de verano / invierno de Nueva York); el script decide si hay evento hoy y es idempotente (no repite filas).
 on:

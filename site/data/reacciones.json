@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-15 11:01 UTC",
+ "generado_utc": "2026-10-15 11:17 UTC",
  "version_reglas": "3.0",
  "ok": true,
  "validacion_giro": {
@@ -140,6 +140,8 @@
       "nq": null
      },
      "registrado_utc": "2026-10-15 08:26",
+     "contaminada_fila": null,
+     "contaminada_por_fila": "",
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
@@ -152,7 +154,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+5",
@@ -189,7 +193,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+15",
@@ -226,7 +232,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+30",
@@ -263,7 +271,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+60",
@@ -300,7 +310,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ cae frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+120",
@@ -337,7 +349,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ cae frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "CIERRE",
@@ -374,7 +388,9 @@
       "clase": "REFUGIO / RIESGO",
       "nota": "tipos al alza · NQ cae frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     }
    ],
    "real10": null,
@@ -382,6 +398,7 @@
    "clase_t5": "FED MÁS DURA",
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
+   "contaminada_en": [],
    "giro_fases": {
     "T+60": "SE CONFIRMA",
     "T+120": "SE CONFIRMA",
@@ -428,6 +445,8 @@
       "nq": null
      },
      "registrado_utc": "2026-10-15 08:26",
+     "contaminada_fila": null,
+     "contaminada_por_fila": "",
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
@@ -440,7 +459,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+5",
@@ -477,7 +498,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+15",
@@ -514,7 +537,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+30",
@@ -551,7 +576,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+60",
@@ -588,7 +615,9 @@
       "clase": "SORPRESA DESHECHA",
       "nota": "tipos a la baja · NQ recupera/sube frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+120",
@@ -625,7 +654,9 @@
       "clase": "SORPRESA DESHECHA",
       "nota": "tipos a la baja · NQ recupera/sube frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "CIERRE",
@@ -662,7 +693,9 @@
       "clase": "INVERSIÓN · NQ cae",
       "nota": "tipos a la baja · NQ cae frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+1",
@@ -699,7 +732,9 @@
       "clase": "INVERSIÓN · NQ sube",
       "nota": "tipos a la baja · NQ recupera/sube frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     }
    ],
    "real10": {
@@ -712,6 +747,7 @@
    "clase_t5": "FED MÁS SUAVE",
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
+   "contaminada_en": [],
    "giro_fases": {
     "T+60": "SORPRESA DESHECHA",
     "T+120": "SORPRESA DESHECHA",
@@ -762,6 +798,8 @@
       "nq": null
      },
      "registrado_utc": "2026-10-15 08:26",
+     "contaminada_fila": null,
+     "contaminada_por_fila": "",
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
@@ -774,7 +812,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+5",
@@ -811,7 +851,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+15",
@@ -848,7 +890,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+30",
@@ -885,7 +929,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+60",
@@ -922,7 +968,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos a la baja · NQ cae frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+120",
@@ -959,7 +1007,9 @@
       "clase": "SORPRESA DESHECHA",
       "nota": "tipos a la baja · NQ recupera/sube frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "CIERRE",
@@ -996,7 +1046,9 @@
       "clase": "ALIVIO DESHECHO",
       "nota": "tipos a la baja · NQ cae frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+1",
@@ -1033,7 +1085,9 @@
       "clase": "PARCIAL",
       "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %) · tipos a la baja · NQ recupera/sube frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     }
    ],
    "real10": {
@@ -1046,6 +1100,7 @@
    "clase_t5": "MIXTA (sin regla)",
    "clase_cierre": "EMPINAMIENTO POR PLAZO LARGO",
    "reconstruido": true,
+   "contaminada_en": [],
    "giro_fases": {
     "T+60": "SE CONFIRMA",
     "T+120": "SORPRESA DESHECHA",
@@ -1094,6 +1149,8 @@
       "nq": null
      },
      "registrado_utc": "2026-10-15 08:26",
+     "contaminada_fila": null,
+     "contaminada_por_fila": "",
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
@@ -1106,7 +1163,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+5",
@@ -1143,7 +1202,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+15",
@@ -1180,7 +1241,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+30",
@@ -1217,7 +1280,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+60",
@@ -1254,7 +1319,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ cae frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+120",
@@ -1291,7 +1358,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ cae frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "CIERRE",
@@ -1328,7 +1397,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ cae frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+1",
@@ -1365,7 +1436,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ recupera/sube frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     }
    ],
    "real10": {
@@ -1378,6 +1451,7 @@
    "clase_t5": "MIXTA (sin regla)",
    "clase_cierre": "FED MÁS DURA",
    "reconstruido": true,
+   "contaminada_en": [],
    "giro_fases": {
     "T+60": "SE CONFIRMA",
     "T+120": "SE CONFIRMA",
@@ -1423,6 +1497,8 @@
       "nq": null
      },
      "registrado_utc": "2026-10-15 08:26",
+     "contaminada_fila": null,
+     "contaminada_por_fila": "",
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
@@ -1435,7 +1511,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+5",
@@ -1472,7 +1550,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+15",
@@ -1509,7 +1589,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+30",
@@ -1546,7 +1628,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+60",
@@ -1583,7 +1667,9 @@
       "clase": "SORPRESA DESHECHA",
       "nota": "tipos al alza · NQ recupera/sube frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+120",
@@ -1620,7 +1706,9 @@
       "clase": "PARCIAL",
       "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %) · tipos al alza · NQ recupera/sube frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "CIERRE",
@@ -1657,7 +1745,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ recupera/sube frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+1",
@@ -1694,7 +1784,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ cae frente a T+5 · 10Y sin base",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     }
    ],
    "real10": {
@@ -1707,6 +1799,7 @@
    "clase_t5": "MIXTA (sin regla)",
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
+   "contaminada_en": [],
    "giro_fases": {
     "T+60": "SORPRESA DESHECHA",
     "T+120": "PARCIAL",
@@ -1754,6 +1847,8 @@
       "nq": null
      },
      "registrado_utc": "2026-10-15 08:26",
+     "contaminada_fila": null,
+     "contaminada_por_fila": "",
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
@@ -1766,7 +1861,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+5",
@@ -1803,7 +1900,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+15",
@@ -1840,7 +1939,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+30",
@@ -1877,7 +1978,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+60",
@@ -1914,7 +2017,9 @@
       "clase": "PARCIAL",
       "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %) · tipos al alza · NQ recupera/sube frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+120",
@@ -1951,7 +2056,9 @@
       "clase": "PARCIAL",
       "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %) · tipos al alza · NQ recupera/sube frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "CIERRE",
@@ -1988,7 +2095,9 @@
       "clase": "PARCIAL",
       "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %) · tipos al alza · NQ recupera/sube frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+1",
@@ -2025,7 +2134,9 @@
       "clase": "PARCIAL",
       "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %) · tipos al alza · NQ cae frente a T+5",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     }
    ],
    "real10": {
@@ -2038,6 +2149,7 @@
    "clase_t5": "FED MÁS DURA",
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
+   "contaminada_en": [],
    "giro_fases": {
     "T+60": "PARCIAL",
     "T+120": "PARCIAL",
@@ -2083,6 +2195,8 @@
       "nq": null
      },
      "registrado_utc": "2026-10-15 08:26",
+     "contaminada_fila": null,
+     "contaminada_por_fila": "",
      "beta_2y": -54.08,
      "r2_2y": 0.914,
      "beta_10y": -12.99,
@@ -2095,7 +2209,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+5",
@@ -2132,7 +2248,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+15",
@@ -2169,7 +2287,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+30",
@@ -2206,7 +2326,9 @@
       "clase": null,
       "nota": "",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+60",
@@ -2243,7 +2365,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ cae frente a T+5 · 10Y sin base · base débil",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+120",
@@ -2280,7 +2404,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ recupera/sube frente a T+5 · 10Y sin base · base débil",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "CIERRE",
@@ -2317,7 +2443,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ recupera/sube frente a T+5 · 10Y sin base · base débil",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     },
     {
      "fase": "T+1",
@@ -2354,7 +2482,9 @@
       "clase": "SE CONFIRMA",
       "nota": "tipos al alza · NQ recupera/sube frente a T+5 · 10Y sin base · base débil",
       "version": "3.0"
-     }
+     },
+     "contaminada": false,
+     "contaminada_por": []
     }
    ],
    "real10": {
@@ -2367,6 +2497,7 @@
    "clase_t5": "MIXTA (sin regla)",
    "clase_cierre": "FED MÁS DURA",
    "reconstruido": true,
+   "contaminada_en": [],
    "giro_fases": {
     "T+60": "SE CONFIRMA",
     "T+120": "SE CONFIRMA",
@@ -2520,15 +2651,5 @@
   "10Y real": "FRED DFII10, solo el día siguiente"
  },
  "fuente": "Yahoo Finance (API v8 chart, barras de 5 min, ~15 min de retraso posible) · calendario: FRED Release Calendar (BLS/BEA) y federalreserve.gov · FRED DFII10",
- "memoria": "data/reacciones_eventos.csv (solo se añade)",
- "errores": {},
- "calibracion": {
-  "beta_2y": -54.078,
-  "r2_2y": 0.914,
-  "n_2y": 47,
-  "beta_10y": -13.055,
-  "r2_10y": 0.815,
-  "n_10y": 3871
- },
- "filas_nuevas": 0
+ "memoria": "data/reacciones_eventos.csv (solo se añade)"
 }
