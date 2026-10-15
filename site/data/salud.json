@@ -1,0 +1,42 @@
+{
+ "generado_utc": "2026-10-15 15:43 UTC",
+ "workflows": [
+  {
+   "workflow": "actualizar",
+   "horario_esperado": "cada hora, 06-22 UTC, lun-vie",
+   "esperadas_hasta_ahora": 10,
+   "hoy_ejecutadas": 6,
+   "hoy_fallidas": 0,
+   "ultima_utc": "2026-10-15 11:13",
+   "ultima_evento": "schedule",
+   "ultima_estado": "success",
+   "horas_desde_ultima": 4.5
+  },
+  {
+   "workflow": "reacciones",
+   "horario_esperado": "cada 5 min, 12:00-21:00 UTC, lun-vie",
+   "esperadas_hasta_ahora": 45,
+   "hoy_ejecutadas": 6,
+   "hoy_fallidas": 0,
+   "ultima_utc": "2026-10-15 15:28",
+   "ultima_evento": "workflow_dispatch",
+   "ultima_estado": "success",
+   "horas_desde_ultima": 0.3
+  },
+  {
+   "workflow": "agenda_diaria",
+   "horario_esperado": "8:00 Madrid, lun-vie",
+   "esperadas_hasta_ahora": 1,
+   "hoy_ejecutadas": 1,
+   "hoy_fallidas": 0,
+   "ultima_utc": "2026-10-15 11:25",
+   "ultima_evento": "workflow_dispatch",
+   "ultima_estado": "success",
+   "horas_desde_ultima": 4.3
+  }
+ ],
+ "actualizar_parada": true,
+ "aviso_telegram_enviado": false,
+ "umbral_actualizar_h": 2.0,
+ "nota": "Esperadas = horario del disparo externo (cron-job.org); los crones de GitHub son respaldo y no están garantizados. Ejecutadas = ejecuciones creadas hoy (UTC)."
+}

@@ -20,6 +20,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: reacciones
@@ -28,6 +29,8 @@ concurrency:
 jobs:
   reaccion:
     runs-on: ubuntu-latest
+    outputs:
+      cambios: ${{ steps.push.outputs.cambios }}
     timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
@@ -41,13 +44,25 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           if [ "${{ github.event.inputs.modo }}" = "reconstruir" ]; then python engine/reaccion.py --reconstruir --gracia 0; else python engine/reaccion.py --vivo; fi
+      - name: Salud de los workflows (última ejecución y esperadas de hoy; aviso si actualizar lleva más de 2 h parado)
+        continue-on-error: true
+        env:
+          PYTHONUTF8: "1"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python engine/salud.py
       - name: Commit (si el job se cancela por tiempo, igualmente se guarda lo registrado)
+        id: push
         if: always()
-        run: python engine/push_seguro.py "reacciones $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]"
+        run: |
+          OUT=$(python engine/push_seguro.py "reacciones $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]")
+          echo "$OUT"
+          if echo "$OUT" | grep -q "push ok"; then echo "cambios=true" >> "$GITHUB_OUTPUT"; else echo "cambios=false" >> "$GITHUB_OUTPUT"; fi
 
   deploy:
     needs: reaccion
-    if: always()
+    if: ${{ always() && needs.reaccion.outputs.cambios == 'true' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages

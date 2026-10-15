@@ -22,6 +22,20 @@ function pageAgenda() {
   h += (A.tabla_importancia || []).map((t) => `<tr><td style="text-align:left"><b>${esc(t.tipo)}</b></td><td style="text-align:left;white-space:normal">${esc(t.evento)}</td><td>${esc(t.organismo)}</td><td>${esc(t.hora_ny_tipica || '—')}</td><td><span class="ck ${t.importancia === 'ALTA' ? 'no' : t.importancia === 'MEDIA' ? 'par' : 'sd'}">${esc(t.importancia)}</span></td><td><small>${esc(t.fuente)}</small></td></tr>`).join('');
   h += '</tbody></table></div>';
   h += `<div class="note">${esc(A.contaminacion || '')} Sin consenso de analistas (es de pago): solo fechas y horas oficiales.</div>`;
+  /* salud de los workflows */
+  const S = D.salud;
+  h += '<div class="sect"><h2>Salud de los workflows</h2>' + (S ? `<span class="more">${esc(S.generado_utc)}</span>` : '') + '</div>';
+  if (!S || !S.workflows) h += noData('API de GitHub Actions');
+  else {
+    h += S.actualizar_parada ? `<div class="note" style="border-left:3px solid var(--neg);padding-left:10px"><b>actualizar lleva más de ${esc(S.umbral_actualizar_h)} h sin ejecutarse</b> (aviso por Telegram enviado).</div>` : '';
+    h += '<div class="card pad0 scroll"><table class="t"><thead><tr><th>Workflow</th><th>Última ejecución (UTC)</th><th>Hace</th><th>Resultado</th><th>Hoy: hechas / esperadas</th><th>Fallidas hoy</th><th>Horario esperado</th></tr></thead><tbody>';
+    h += S.workflows.map((w) => {
+      const ok = w.esperadas_hasta_ahora === 0 || (w.hoy_ejecutadas || 0) >= w.esperadas_hasta_ahora * 0.8;
+      return `<tr><td style="text-align:left"><b>${esc(w.workflow)}</b></td><td>${esc(w.ultima_utc || 'SIN DATO')}</td><td>${w.horas_desde_ultima != null ? num(w.horas_desde_ultima, 1) + ' h' : '—'}</td><td>${esc(w.ultima_estado || '—')}</td>
+        <td><span class="ck ${ok ? 'ok' : 'no'}">${w.hoy_ejecutadas != null ? esc(w.hoy_ejecutadas) : '—'} / ${esc(w.esperadas_hasta_ahora)}</span></td><td>${w.hoy_fallidas != null ? esc(w.hoy_fallidas) : '—'}</td><td style="text-align:left;white-space:normal"><small>${esc(w.horario_esperado)}</small>${w.error ? ` <small style="color:var(--neg)">${esc(w.error)}</small>` : ''}</td></tr>`;
+    }).join('');
+    h += `</tbody></table>${footIn('API de GitHub Actions', S.generado_utc && S.generado_utc.slice(0, 10), null, 'verde si hechas ≥ 80 % de las esperadas hasta ahora')}</div><div class="note">${esc(S.nota || '')}</div>`;
+  }
   return h + errores(A.errores);
 }
 

@@ -42,3 +42,4 @@ Las clases (FED MÁS DURA / MÁS SUAVE / REFUGIO / EMPINAMIENTO POR PLAZO LARGO 
 ## Agenda (fase 9)
 
 `engine/agenda.py` · agenda desde los calendarios oficiales (FRED Release Calendar: BLS, BEA, Census, Fed, DOL; Federal Reserve; ISM; BCE; BoJ; TreasuryDirect). Importancia ALTA/MEDIA **fija por tipo** (tabla en `site/data/agenda.json` y en la página «Agenda»). Bloque `agenda` en `contexto.json` (hoy y próximos 7 días, hora ET y Madrid). `agenda_diaria.yml`: Telegram cada día laborable a las 8:00 Madrid («Hoy sin datos de importancia alta» si no hay nada). El monitor de reacciones vigila **todos** los eventos ALTA de la agenda (IPC, PPI, NFP, PCE, PIB, FOMC, actas, ISM manufacturero) y marca como *contaminada* la fase en la que otro dato alto cae entre el dato y la fase.
+- Disparo externo (cron-job.org) y salud de los workflows: `docs/DISPARO_EXTERNO.md`, `engine/salud.py`, página Agenda → Salud.

@@ -19,6 +19,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: actualizar
@@ -57,6 +58,14 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python engine/reaccion.py --vivo
+      - name: Salud de los workflows
+        continue-on-error: true
+        env:
+          PYTHONUTF8: "1"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python engine/salud.py
       - name: Alerta de prueba a Telegram (solo si se pide al lanzar a mano)
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.prueba_telegram == 'true' }}
         env:
