@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-15 15:29 UTC",
+ "generado_utc": "2026-10-15 19:21 UTC",
  "version_reglas": "3.0",
  "ok": true,
  "validacion_giro": {
@@ -5521,15 +5521,5 @@
   "10Y real": "FRED DFII10, solo el día siguiente"
  },
  "fuente": "Yahoo Finance (API v8 chart, barras de 5 min, ~15 min de retraso posible) · calendario: FRED Release Calendar (BLS/BEA) y federalreserve.gov · FRED DFII10",
- "memoria": "data/reacciones_eventos.csv (solo se añade)",
- "errores": {},
- "calibracion": {
-  "beta_2y": -54.078,
-  "r2_2y": 0.914,
-  "n_2y": 47,
-  "beta_10y": -13.012,
-  "r2_10y": 0.818,
-  "n_10y": 3901
- },
- "filas_nuevas": 70
+ "memoria": "data/reacciones_eventos.csv (solo se añade)"
 }
