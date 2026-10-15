@@ -46,7 +46,7 @@ FASES = [("T-5", -5), ("T+5", 5), ("T+15", 15), ("T+30", 30), ("T+60", 60), ("T+
 GIRO_FASES = ("T+60", "T+120", "CIERRE", "T+1")   # fases en las que se aplica la regla de giro
 DEV_GIRO = 60.0                 # % de devolución a partir del cual el movimiento inicial se da por deshecho
 DEV_CONFIRMA = 30.0             # por debajo de este % el movimiento inicial se confirma
-GIRO_ALERTA = ("REFUGIO / RIESGO", "SORPRESA DESHECHA")
+GIRO_ALERTA = ("REFUGIO / RIESGO", "SORPRESA DESHECHA", "ALIVIO DESHECHO")
 EVENTO_DISENO = "IPC-2026-10-14"  # la regla v2 se diseñó viendo este evento: no cuenta como validación
 RETRASO_RECONSTRUIR_H = 30      # el job en vivo tiene prioridad: reconstruir no toca una fase hasta 30 h después de su instante objetivo
 MAX_ESPERA_FASE_MIN = 150       # el job no espera dentro de una fase más lejana que esto (la recogen los crones de cierre y de T+1)
@@ -72,15 +72,17 @@ REGLAS = [
 ]
 PRECEDENCIA = "Se evalúan en el orden de la lista: la primera que se cumple gana."
 GIRO_REGLAS = [
-    {"clase": "REFUGIO / RIESGO", "regla": f"El 2Y y el 10Y, tras subir en T+5 por encima de su umbral, devuelven ≥ {DEV_GIRO:.0f} % de esa subida y el NQ cae más que en T+5 (el DXY no es obligatorio)."},
-    {"clase": "SORPRESA DESHECHA", "regla": f"El 2Y y el 10Y devuelven ≥ {DEV_GIRO:.0f} % de su subida inicial y el NQ recupera frente a T+5."},
+    {"clase": "REFUGIO / RIESGO", "regla": f"Base: el 2Y supera su umbral en T+5, en cualquier dirección. Inicio con tipos al alza: 2Y y 10Y devuelven ≥ {DEV_GIRO:.0f} % de su movimiento inicial y el NQ cae más que en T+5."},
+    {"clase": "ALIVIO DESHECHO", "regla": f"Inicio con tipos a la baja: 2Y y 10Y devuelven ≥ {DEV_GIRO:.0f} % de su movimiento inicial y el NQ cae frente a T+5."},
+    {"clase": "SORPRESA DESHECHA", "regla": f"2Y y 10Y devuelven ≥ {DEV_GIRO:.0f} % del movimiento inicial (al alza o a la baja) y el NQ recupera: si los tipos subían, el NQ no cae más; si bajaban, el NQ sube."},
     {"clase": "SE CONFIRMA", "regla": f"La devolución del 2Y y del 10Y es < {DEV_CONFIRMA:.0f} % (incluye que el movimiento haya continuado)."},
     {"clase": "PARCIAL", "regla": f"Otro caso con base: devolución entre {DEV_CONFIRMA:.0f} % y {DEV_GIRO:.0f} %, o solo una de las dos series pasa de {DEV_GIRO:.0f} %. No genera alerta."},
-    {"clase": "SIN BASE", "regla": "En T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que medir. No genera alerta."},
+    {"clase": "SIN BASE", "regla": "En T+5 el 2Y no supera su umbral (ni al alza ni a la baja): no hay movimiento inicial que medir. El 10Y no es obligatorio para la base, pero sí cuenta en la devolución. No genera alerta."},
 ]
 SENCILLO_GIRO = {
     "REFUGIO / RIESGO": "la subida de tipos de los primeros minutos se ha deshecho y la bolsa cae más: el mercado pasa de leer el dato como Fed más dura a buscar refugio",
-    "SORPRESA DESHECHA": "la subida de tipos de los primeros minutos se ha deshecho y la bolsa se recupera: el mercado ha dado el dato por descontado",
+    "ALIVIO DESHECHO": "la bajada de tipos de los primeros minutos se ha deshecho y la bolsa cae: el alivio inicial se ha desvanecido",
+    "SORPRESA DESHECHA": "el movimiento de tipos de los primeros minutos se ha deshecho y la bolsa no confirma el miedo: el mercado ha dado el dato por descontado",
 }
 SENCILLO = {
     "FED MÁS DURA": "el mercado lee que la Fed será más dura: suben los tipos a corto y largo y sube el dólar",
@@ -92,7 +94,7 @@ SENCILLO = {
 }
 CAMPOS = ["evento_id", "tipo", "evento", "fecha", "hora_ny", "fase", "objetivo_utc", "barra_utc", "edad_min", "zt", "tnx", "zn", "dxy", "oro", "nq", "es", "btc",
           "d_y2_pb", "d_y10_pb", "y10_fuente", "d_dxy_pct", "d_oro_pct", "d_nq_pct", "d_es_pct", "d_btc_pct", "dxy_pico_pct", "clasificacion", "umbral_origen",
-          "th_y2", "th_y10", "th_dxy", "th_nq", "beta_2y", "r2_2y", "beta_10y", "r2_10y", "real10", "d_real10_pb", "origen", "registrado_utc", "fuente"]
+          "th_y2", "th_y10", "th_dxy", "th_nq", "beta_2y", "r2_2y", "beta_10y", "r2_10y", "real10", "d_real10_pb", "origen", "registrado_utc", "fuente", "estado", "motivo"]
 
 
 def ahora():
@@ -276,7 +278,7 @@ def devolucion(d5, d):
 
 def giro_fase(f5, f):
     """f5 y f = fases (dict de construir_json). Devuelve {dev_y2_pct, dev_y10_pct, clase, nota}. La clase solo se da en GIRO_FASES.
-    Base: el 2Y y el 10Y han subido en T+5 por encima de su umbral (la regla se definió para una subida inicial)."""
+    Base: el 2Y supera su umbral en T+5, al alza o a la baja. La devolución de cada serie se mide contra el signo de su propio movimiento inicial."""
     out = {"dev_y2_pct": None, "dev_y10_pct": None, "clase": None, "nota": ""}
     if not f5 or f["fase"] in ("T-5", "T+5", "REAL10"):
         return out
@@ -285,14 +287,20 @@ def giro_fase(f5, f):
     if f["fase"] not in GIRO_FASES:
         return out
     th = f5.get("umbrales") or {}
-    nq5, nqf = f5.get("d_nq_pct"), f.get("d_nq_pct")
-    if None in (dv2, dv10, nq5, nqf, th.get("y2"), th.get("y10")):
+    nq5, nqf, y5 = f5.get("d_nq_pct"), f.get("d_nq_pct"), f5.get("d_y2_pb")
+    if y5 is None or th.get("y2") is None:
+        out["clase"], out["nota"] = "SIN DATO", "falta el 2Y o su umbral en T+5"
+    elif abs(y5) < th["y2"]:
+        out["clase"], out["nota"] = "SIN BASE", "en T+5 el 2Y no supera su umbral: no hay movimiento inicial que deshacer"
+    elif None in (dv2, dv10, nq5, nqf):
         out["clase"], out["nota"] = "SIN DATO", "falta alguna serie (2Y, 10Y o NQ) en T+5 o en esta fase"
-    elif not (f5["d_y2_pb"] >= th["y2"] and f5["d_y10_pb"] >= th["y10"]):
-        out["clase"], out["nota"] = "SIN BASE", "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
     elif dv2 >= DEV_GIRO and dv10 >= DEV_GIRO:
-        out["clase"] = "REFUGIO / RIESGO" if nqf < nq5 else "SORPRESA DESHECHA"
-        out["nota"] = "NQ cae más que en T+5" if nqf < nq5 else "NQ recupera frente a T+5"
+        cae = nqf < nq5
+        if y5 > 0:
+            out["clase"] = "REFUGIO / RIESGO" if cae else "SORPRESA DESHECHA"
+        else:
+            out["clase"] = "ALIVIO DESHECHO" if cae else "SORPRESA DESHECHA"
+        out["nota"] = ("tipos al alza" if y5 > 0 else "tipos a la baja") + (" · NQ cae frente a T+5" if cae else " · NQ recupera/sube frente a T+5")
     elif dv2 < DEV_CONFIRMA and dv10 < DEV_CONFIRMA:
         out["clase"] = "SE CONFIRMA"
     else:
@@ -376,8 +384,20 @@ def completar_real10(evs, filas):
     return nuevas
 
 
+def leer_log():
+    """Filas vigentes de data/reacciones_eventos.csv. El log es solo-añadir: una fila con estado=ANULADA anula las filas ANTERIORES del mismo
+    (evento_id, fase); las posteriores valen. Las filas ANULADAS no se devuelven."""
+    vig = []
+    for r in csvlog.leer(CSV):
+        if (r.get("estado") or "") == "ANULADA":
+            vig = [x for x in vig if (x["evento_id"], x["fase"]) != (r["evento_id"], r["fase"])]
+        else:
+            vig.append(r)
+    return vig
+
+
 def guardar(filas):
-    return csvlog.anadir(CSV, filas, ("evento_id", "fase"))
+    return csvlog.anadir(CSV, filas, ("evento_id", "fase", "estado"))
 
 
 # ------------------------------------------------------------------ reconstrucción (siembra)
@@ -386,7 +406,7 @@ def reconstruir():
     evs = eventos(hoy - dt.timedelta(days=VENTANA_DIAS - 1), hoy)
     B, err = barras("60d")
     cal = calibrar(B)
-    existentes = csvlog.leer(CSV)
+    existentes = leer_log()
     nuevas = []
     for ev in evs:
         ya = {r["fase"] for r in existentes + nuevas if r["evento_id"] == ev["id"]}
@@ -404,7 +424,7 @@ def reconstruir():
 
 # ------------------------------------------------------------------ JSON de la página y de contexto.json
 def construir_json():
-    filas = csvlog.leer(CSV)
+    filas = leer_log()
     ev = {}
     for r in filas:
         e = ev.setdefault(r["evento_id"], {"id": r["evento_id"], "tipo": r["tipo"], "evento": r["evento"], "fecha": r["fecha"], "hora_ny": r["hora_ny"], "fases": [], "real10": None})
@@ -537,7 +557,7 @@ def aviso_giro(ev, e, f, cadena):
     sig = alertas.vigilar_fed(cal)
     a = {"titulo": "Reacción a evento",
          "l1": (f"{ev['evento']} ({ev['fecha']}): en {fase} el movimiento de T+5 se ha deshecho. El 2Y devuelve {g['dev_y2_pct']:.0f} % y el 10Y "
-                f"{g['dev_y10_pct']:.0f} % de su subida inicial → «{g['clase']}». Cadena frente a T-5: {cadena} (Yahoo Finance; 2Y vía ZT=F calibrado)."),
+                f"{g['dev_y10_pct']:.0f} % de su movimiento inicial → «{g['clase']}». Cadena frente a T-5: {cadena} (Yahoo Finance; 2Y vía ZT=F calibrado)."),
          "l2": f"Lectura: {SENCILLO_GIRO.get(g['clase'], '—')} (regla de giro v2, CRITERIO NEXORA; pendiente de validar con eventos nuevos).",
          "l3": sig,
          "l4": f"En T+5 la clase era «{e['clase_t5']}». Es una lectura de precios frente al movimiento de los primeros 5 minutos, no una decisión de la Fed."}
@@ -562,7 +582,7 @@ def vivo(max_espera_min=150):
     hoy = n0.astimezone(NY).date()
     evs = eventos(hoy - dt.timedelta(days=6), hoy)
     hechas = {}
-    for r in csvlog.leer(CSV):
+    for r in leer_log():
         hechas.setdefault(r["evento_id"], set()).add(r["fase"])
     # a vigilar: eventos cercanos o recientes a los que aún les falta alguna fase y cuyo T+1 todavía se puede recoger
     pend = [e for e in evs if objetivo(e, "SIG") + dt.timedelta(minutes=45) > n0 and t_evento(e) - dt.timedelta(minutes=max_espera_min) <= n0
@@ -575,7 +595,7 @@ def vivo(max_espera_min=150):
     print("calibración:", cal, "errores:", err)
     for ev in pend:
         for fase, mins in FASES:
-            filas = csvlog.leer(CSV)
+            filas = leer_log()
             ya = {r["fase"] for r in filas if r["evento_id"] == ev["id"]}
             if fase in ya:
                 continue
@@ -597,7 +617,7 @@ def vivo(max_espera_min=150):
                 if v is not None or intento == 3:
                     break
                 time.sleep(60)
-            filas = csvlog.leer(CSV)
+            filas = leer_log()
             r = medir_evento(ev, B, cal, filas, ya=ya, origen_base="vivo-tardío")
             guardar(r)
             escribir_json(construir_json())
@@ -608,7 +628,7 @@ def vivo(max_espera_min=150):
             for f in e["fases"]:
                 if f["fase"] in GIRO_FASES and f["giro"]["clase"] in GIRO_ALERTA and f["origen"] != "reconstruido":
                     aviso_giro(ev, e, f, _cadena(f))
-    guardar(completar_real10(evs, csvlog.leer(CSV)))
+    guardar(completar_real10(evs, leer_log()))
     escribir_json(construir_json())
     return 0
 

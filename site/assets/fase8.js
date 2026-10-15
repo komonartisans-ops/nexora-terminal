@@ -3,7 +3,7 @@
 'use strict';
 
 const CLASE_COL = { 'FED MÁS DURA': '#C8463D', 'FED MÁS SUAVE': '#2FA36B', REFUGIO: '#9B87C9', 'EMPINAMIENTO POR PLAZO LARGO': '#C8A24A', 'SIN REACCIÓN': '#8A93A0', 'MIXTA (sin regla)': '#6C8EBF',
-  'REFUGIO / RIESGO': '#9B87C9', 'SORPRESA DESHECHA': '#4FA3C7', 'SE CONFIRMA': '#8A93A0', PARCIAL: '#C8A24A', 'SIN BASE': '#5b6470', 'SIN DATO': '#5b6470' };
+  'REFUGIO / RIESGO': '#9B87C9', 'ALIVIO DESHECHO': '#D9843B', 'SORPRESA DESHECHA': '#4FA3C7', 'SE CONFIRMA': '#8A93A0', PARCIAL: '#C8A24A', 'SIN BASE': '#5b6470', 'SIN DATO': '#5b6470' };
 const chipClase = (c) => (c ? `<span class="chip" style="border:1px solid ${CLASE_COL[c] || '#3a4250'};color:${CLASE_COL[c] || 'var(--muted)'};white-space:nowrap">${esc(c)}</span>` : '<span class="pill flat">—</span>');
 const dv = (v, d, u) => (v == null ? '<span class="sd-val" style="font-size:10px">SIN DATO</span>' : `<span class="${v > 0 ? '' : ''}">${sg(v, d)}${u}</span>`);
 const FASES_ORD = ['T-5', 'T+5', 'T+15', 'T+30', 'T+60', 'T+120', 'CIERRE', 'T+1'];
@@ -27,7 +27,7 @@ function pageEventos() {
   const GIRO_FASES = ['T+60', 'T+120', 'CIERRE', 'T+1'];
   h += essential(
     `${esc(u.evento)} · ${esc(fdy(u.fecha))} ${esc(u.hora_ny)} ET${u.reconstruido ? ' (reconstruido con barras de 5 min)' : ''}: en T+5 la lectura es <b style="color:var(--text)">${esc(u.clase_t5 || 'SIN DATO')}</b>. ${esc(cad(f5))} (frente a T-5).`,
-    `${GIRO_FASES.map((n) => { const x = f(n); const g = x && x.giro; return `${n === 'CIERRE' ? 'Cierre' : n}: <b style="color:var(--text)">${g && g.clase ? esc(g.clase) : 'sin registro'}</b>${g && g.dev_y2_pct != null ? ` (2Y ${num(g.dev_y2_pct, 0)} % · 10Y ${num(g.dev_y10_pct, 0)} %)` : ''}`; }).join(' · ')}. ${u.giro_en && u.giro_en.length ? `Alerta de giro en ${esc(u.giro_en.join(' y '))}.` : 'Sin giro: ninguna fase deshace ≥ 60 % de la subida de T+5 con la bolsa recuperando o cayendo más.'} ${fc ? `Al cierre la lectura de la regla v1 es <b style="color:var(--text)">${esc(fc.clasificacion)}</b>.` : 'El cierre aún no está registrado.'} <i>Devolución = % de la subida de T+5 ya deshecho.</i>`,
+    `${GIRO_FASES.map((n) => { const x = f(n); const g = x && x.giro; return `${n === 'CIERRE' ? 'Cierre' : n}: <b style="color:var(--text)">${g && g.clase ? esc(g.clase) : 'sin registro'}</b>${g && g.dev_y2_pct != null ? ` (2Y ${num(g.dev_y2_pct, 0)} % · 10Y ${num(g.dev_y10_pct, 0)} %)` : ''}`; }).join(' · ')}. ${u.giro_en && u.giro_en.length ? `Alerta de giro en ${esc(u.giro_en.join(' y '))}.` : 'Sin giro: ninguna fase deshace ≥ 60 % del movimiento de T+5.'} ${fc ? `Al cierre la lectura de la regla v1 es <b style="color:var(--text)">${esc(fc.clasificacion)}</b>.` : 'El cierre aún no está registrado.'} <i>Devolución = % del movimiento de T+5 ya deshecho.</i>`,
     so ? (so.modo === 'z' ? `Salto del 2Y en T+5 de ${sg(so.pb, 1)} pb = ${sg(so.z, 2)} σ frente a ${so.n} eventos ${esc(u.tipo)} previos.` : `Salto del 2Y en T+5 de ${sg(so.pb, 1)} pb. <i>${esc(so.nota)}</i>`) : 'Salto del 2Y en T+5: SIN DATO.',
     'Sorpresa');
 
@@ -67,7 +67,7 @@ function pageEventos() {
   /* regla de giro v2: validación */
   const VG = R.validacion_giro;
   if (VG) {
-    const orden = ['REFUGIO / RIESGO', 'SORPRESA DESHECHA', 'SE CONFIRMA', 'PARCIAL', 'SIN BASE', 'SIN DATO'];
+    const orden = ['REFUGIO / RIESGO', 'ALIVIO DESHECHO', 'SORPRESA DESHECHA', 'SE CONFIRMA', 'PARCIAL', 'SIN BASE', 'SIN DATO'];
     h += `<div class="sect"><h2>Regla de giro v2 · resultado en los otros ${VG.n_otros} eventos</h2><span class="more"><span class="tag sd">${esc(VG.estado)}</span></span></div>
       <div class="card pad0 scroll"><table class="t"><thead><tr><th>Fase</th>${orden.map((c) => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${['T+60', 'T+120', 'CIERRE', 'T+1'].map((n) => { const d = (VG.por_fase || {})[n] || {}; return `<tr><td><b>${esc(FASE_ROT[n] || n)}</b></td>${orden.map((c) => `<td>${d[c] ? `<span title="${esc(d[c].eventos.join(', '))}">${d[c].n}</span>` : '·'}</td>`).join('')}</tr>`; }).join('')}</tbody></table>
       ${footIn('data/reacciones_eventos.csv · cálculo NEXORA', R.generado_utc && R.generado_utc.slice(0, 10), null, 'n = eventos; pase el cursor sobre la cifra para ver cuáles')}</div>
@@ -84,7 +84,7 @@ function pageEventos() {
       <p class="note">${esc(RG.giro || '')} ${esc(RG.criterio || '')}</p></details>
     <details class="qa card" open><summary>Regla de giro v2 (medida contra T+5) · PENDIENTE DE VALIDAR con eventos nuevos</summary>
       <table class="t" style="margin-top:8px"><thead><tr><th>Clase</th><th>Regla</th></tr></thead><tbody>${(RG.giro_clases || []).map((c) => `<tr><td style="text-align:left">${chipClase(c.clase)}</td><td style="text-align:left;white-space:normal">${esc(c.regla)}</td></tr>`).join('')}</tbody></table>
-      <p class="note">Devolución = (movimiento en T+5 − movimiento en la fase) / movimiento en T+5, sobre 2Y y 10Y, ambos frente a T-5. Se evalúa en T+60, T+120, cierre y T+1 (día siguiente 10:00 ET).</p></details>
+      <p class="note">Base: el 2Y supera su umbral en T+5, al alza o a la baja (el 10Y no es obligatorio para la base). Devolución = (movimiento en T+5 − movimiento en la fase) / movimiento en T+5, sobre 2Y y 10Y, ambos frente a T-5; se mide contra el signo del movimiento inicial. Se evalúa en T+60, T+120, cierre y T+1 (día siguiente 10:00 ET).</p></details>
     <details class="qa card"><summary>De dónde sale cada serie</summary><table class="t" style="margin-top:8px"><tbody>${Object.entries(R.series || {}).map(([k, v]) => `<tr><td style="text-align:left"><b>${esc(k)}</b></td><td style="text-align:left;white-space:normal">${esc(v)}</td></tr>`).join('')}</tbody></table>
       ${R.calibracion ? `<p class="note">Calibración de hoy: 2Y = ${num(R.calibracion.beta_2y, 1)} pb por punto de ZT=F (R² ${num(R.calibracion.r2_2y, 2)}, n = ${R.calibracion.n_2y} días frente al 2 Yr del Tesoro) · 10Y de reserva = ${num(R.calibracion.beta_10y, 1)} pb por punto de ZN=F (R² ${num(R.calibracion.r2_10y, 2)}, n = ${R.calibracion.n_10y} barras de 5 min frente a ^TNX).</p>` : ''}</details>`;
   h += `<div class="note">${esc(R.fuente || '')} Memoria permanente: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/reacciones_eventos.csv" target="_blank" rel="noopener">data/reacciones_eventos.csv</a>. Alertas de giro enviadas: ${(R.avisos_enviados || []).length ? esc((R.avisos_enviados || []).join(', ')) : 'ninguna'}.</div>`;

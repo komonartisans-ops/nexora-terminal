@@ -24,7 +24,7 @@ def anadir(nombre, filas, claves):
         return 0
     os.makedirs(DATA, exist_ok=True)
     p = os.path.join(DATA, nombre)
-    vistas = {tuple(r.get(c, "") for c in claves) for r in leer(nombre)}
+    vistas = {tuple(r.get(c) or "" for c in claves) for r in leer(nombre)}
     nuevas = []
     for fila in filas:
         k = tuple(str(fila.get(c, "")) for c in claves)

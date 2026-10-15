@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-15 09:51 UTC",
+ "generado_utc": "2026-10-15 10:10 UTC",
  "version_reglas": "2.0",
  "ok": true,
  "validacion_giro": {
@@ -9,74 +9,94 @@
   "nota": "La regla v2 se diseñó viendo IPC-2026-10-14; los otros 6 eventos son datos reconstruidos, no una prueba fuera de muestra. Solo cuentan como validación los eventos registrados en vivo después de publicar la regla.",
   "por_fase": {
    "T+60": {
-    "SIN BASE": {
-     "n": 5,
+    "SE CONFIRMA": {
+     "n": 2,
      "eventos": [
       "PCE-2026-08-26",
-      "IPC-2026-09-11",
-      "FOMC-2026-09-16",
-      "PCE-2026-09-30",
-      "NFP-2026-10-02"
+      "FOMC-2026-09-16"
      ]
     },
     "PARCIAL": {
-     "n": 1,
+     "n": 2,
      "eventos": [
-      "NFP-2026-09-04"
+      "NFP-2026-09-04",
+      "PCE-2026-09-30"
+     ]
+    },
+    "SORPRESA DESHECHA": {
+     "n": 2,
+     "eventos": [
+      "IPC-2026-09-11",
+      "NFP-2026-10-02"
      ]
     }
    },
    "T+120": {
-    "SIN BASE": {
-     "n": 5,
+    "SE CONFIRMA": {
+     "n": 2,
      "eventos": [
       "PCE-2026-08-26",
-      "IPC-2026-09-11",
-      "FOMC-2026-09-16",
-      "PCE-2026-09-30",
-      "NFP-2026-10-02"
+      "FOMC-2026-09-16"
      ]
     },
     "PARCIAL": {
-     "n": 1,
+     "n": 2,
      "eventos": [
-      "NFP-2026-09-04"
+      "NFP-2026-09-04",
+      "IPC-2026-09-11"
+     ]
+    },
+    "SORPRESA DESHECHA": {
+     "n": 2,
+     "eventos": [
+      "PCE-2026-09-30",
+      "NFP-2026-10-02"
      ]
     }
    },
    "CIERRE": {
-    "SIN BASE": {
-     "n": 5,
+    "SE CONFIRMA": {
+     "n": 3,
      "eventos": [
       "PCE-2026-08-26",
       "IPC-2026-09-11",
-      "FOMC-2026-09-16",
-      "PCE-2026-09-30",
-      "NFP-2026-10-02"
+      "FOMC-2026-09-16"
      ]
     },
     "PARCIAL": {
      "n": 1,
      "eventos": [
       "NFP-2026-09-04"
+     ]
+    },
+    "ALIVIO DESHECHO": {
+     "n": 2,
+     "eventos": [
+      "PCE-2026-09-30",
+      "NFP-2026-10-02"
      ]
     }
    },
    "T+1": {
-    "SIN BASE": {
-     "n": 5,
+    "SE CONFIRMA": {
+     "n": 2,
      "eventos": [
       "PCE-2026-08-26",
-      "IPC-2026-09-11",
-      "FOMC-2026-09-16",
-      "PCE-2026-09-30",
-      "NFP-2026-10-02"
+      "IPC-2026-09-11"
      ]
     },
     "PARCIAL": {
+     "n": 3,
+     "eventos": [
+      "NFP-2026-09-04",
+      "FOMC-2026-09-16",
+      "PCE-2026-09-30"
+     ]
+    },
+    "SORPRESA DESHECHA": {
      "n": 1,
      "eventos": [
-      "NFP-2026-09-04"
+      "NFP-2026-10-02"
      ]
     }
    }
@@ -326,7 +346,7 @@
       "dev_y2_pct": 72.9,
       "dev_y10_pct": 93.7,
       "clase": "REFUGIO / RIESGO",
-      "nota": "NQ cae más que en T+5"
+      "nota": "tipos al alza · NQ cae frente a T+5"
      }
     }
    ],
@@ -524,8 +544,8 @@
      "giro": {
       "dev_y2_pct": 69.2,
       "dev_y10_pct": 75.0,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SORPRESA DESHECHA",
+      "nota": "tipos a la baja · NQ recupera/sube frente a T+5"
      }
     },
     {
@@ -558,8 +578,8 @@
      "giro": {
       "dev_y2_pct": 107.7,
       "dev_y10_pct": 71.2,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SORPRESA DESHECHA",
+      "nota": "tipos a la baja · NQ recupera/sube frente a T+5"
      }
     },
     {
@@ -592,8 +612,8 @@
      "giro": {
       "dev_y2_pct": 215.5,
       "dev_y10_pct": 209.4,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "ALIVIO DESHECHO",
+      "nota": "tipos a la baja · NQ cae frente a T+5"
      }
     },
     {
@@ -626,8 +646,8 @@
      "giro": {
       "dev_y2_pct": 173.0,
       "dev_y10_pct": 267.3,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SORPRESA DESHECHA",
+      "nota": "tipos a la baja · NQ recupera/sube frente a T+5"
      }
     }
    ],
@@ -642,12 +662,17 @@
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
    "giro_fases": {
-    "T+60": "SIN BASE",
-    "T+120": "SIN BASE",
-    "CIERRE": "SIN BASE",
-    "T+1": "SIN BASE"
+    "T+60": "SORPRESA DESHECHA",
+    "T+120": "SORPRESA DESHECHA",
+    "CIERRE": "ALIVIO DESHECHO",
+    "T+1": "SORPRESA DESHECHA"
    },
-   "giro_en": [],
+   "giro_en": [
+    "T+60",
+    "T+120",
+    "CIERRE",
+    "T+1"
+   ],
    "diseno": false,
    "sorpresa": {
     "modo": "pb",
@@ -829,8 +854,8 @@
      "giro": {
       "dev_y2_pct": 5.2,
       "dev_y10_pct": 100.0,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "PARCIAL",
+      "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %)"
      }
     },
     {
@@ -863,8 +888,8 @@
      "giro": {
       "dev_y2_pct": 63.1,
       "dev_y10_pct": 268.4,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SORPRESA DESHECHA",
+      "nota": "tipos a la baja · NQ recupera/sube frente a T+5"
      }
     },
     {
@@ -897,8 +922,8 @@
      "giro": {
       "dev_y2_pct": 94.8,
       "dev_y10_pct": 249.5,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "ALIVIO DESHECHO",
+      "nota": "tipos a la baja · NQ cae frente a T+5"
      }
     },
     {
@@ -931,8 +956,8 @@
      "giro": {
       "dev_y2_pct": 47.4,
       "dev_y10_pct": 557.9,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "PARCIAL",
+      "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %)"
      }
     }
    ],
@@ -947,12 +972,15 @@
    "clase_cierre": "EMPINAMIENTO POR PLAZO LARGO",
    "reconstruido": true,
    "giro_fases": {
-    "T+60": "SIN BASE",
-    "T+120": "SIN BASE",
-    "CIERRE": "SIN BASE",
-    "T+1": "SIN BASE"
+    "T+60": "PARCIAL",
+    "T+120": "SORPRESA DESHECHA",
+    "CIERRE": "ALIVIO DESHECHO",
+    "T+1": "PARCIAL"
    },
-   "giro_en": [],
+   "giro_en": [
+    "T+120",
+    "CIERRE"
+   ],
    "diseno": false,
    "sorpresa": {
     "modo": "pb",
@@ -1134,8 +1162,8 @@
      "giro": {
       "dev_y2_pct": -211.3,
       "dev_y10_pct": -816.7,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SE CONFIRMA",
+      "nota": ""
      }
     },
     {
@@ -1168,8 +1196,8 @@
      "giro": {
       "dev_y2_pct": -227.9,
       "dev_y10_pct": -1050.0,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SE CONFIRMA",
+      "nota": ""
      }
     },
     {
@@ -1202,8 +1230,8 @@
      "giro": {
       "dev_y2_pct": -227.9,
       "dev_y10_pct": -1050.0,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SE CONFIRMA",
+      "nota": ""
      }
     },
     {
@@ -1236,8 +1264,8 @@
      "giro": {
       "dev_y2_pct": -77.9,
       "dev_y10_pct": 166.7,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "PARCIAL",
+      "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %)"
      }
     }
    ],
@@ -1252,10 +1280,10 @@
    "clase_cierre": "FED MÁS DURA",
    "reconstruido": true,
    "giro_fases": {
-    "T+60": "SIN BASE",
-    "T+120": "SIN BASE",
-    "CIERRE": "SIN BASE",
-    "T+1": "SIN BASE"
+    "T+60": "SE CONFIRMA",
+    "T+120": "SE CONFIRMA",
+    "CIERRE": "SE CONFIRMA",
+    "T+1": "PARCIAL"
    },
    "giro_en": [],
    "diseno": false,
@@ -1439,8 +1467,8 @@
      "giro": {
       "dev_y2_pct": 79.1,
       "dev_y10_pct": 660.0,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SORPRESA DESHECHA",
+      "nota": "tipos al alza · NQ recupera/sube frente a T+5"
      }
     },
     {
@@ -1473,8 +1501,8 @@
      "giro": {
       "dev_y2_pct": 52.6,
       "dev_y10_pct": 420.0,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "PARCIAL",
+      "nota": "devolución entre 30 % y 60 % (o solo una de las dos series supera 60 %)"
      }
     },
     {
@@ -1507,8 +1535,8 @@
      "giro": {
       "dev_y2_pct": -26.4,
       "dev_y10_pct": -468.0,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SE CONFIRMA",
+      "nota": ""
      }
     },
     {
@@ -1541,8 +1569,8 @@
      "giro": {
       "dev_y2_pct": -100.2,
       "dev_y10_pct": -740.0,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SE CONFIRMA",
+      "nota": ""
      }
     }
    ],
@@ -1557,12 +1585,14 @@
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
    "giro_fases": {
-    "T+60": "SIN BASE",
-    "T+120": "SIN BASE",
-    "CIERRE": "SIN BASE",
-    "T+1": "SIN BASE"
+    "T+60": "SORPRESA DESHECHA",
+    "T+120": "PARCIAL",
+    "CIERRE": "SE CONFIRMA",
+    "T+1": "SE CONFIRMA"
    },
-   "giro_en": [],
+   "giro_en": [
+    "T+60"
+   ],
    "diseno": false,
    "sorpresa": {
     "modo": "pb",
@@ -2049,8 +2079,8 @@
      "giro": {
       "dev_y2_pct": -70.1,
       "dev_y10_pct": -64.3,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SE CONFIRMA",
+      "nota": ""
      }
     },
     {
@@ -2083,8 +2113,8 @@
      "giro": {
       "dev_y2_pct": -100.0,
       "dev_y10_pct": -135.7,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SE CONFIRMA",
+      "nota": ""
      }
     },
     {
@@ -2117,8 +2147,8 @@
      "giro": {
       "dev_y2_pct": -50.2,
       "dev_y10_pct": -59.3,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SE CONFIRMA",
+      "nota": ""
      }
     },
     {
@@ -2151,8 +2181,8 @@
      "giro": {
       "dev_y2_pct": -390.5,
       "dev_y10_pct": -107.1,
-      "clase": "SIN BASE",
-      "nota": "en T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que deshacer"
+      "clase": "SE CONFIRMA",
+      "nota": ""
      }
     }
    ],
@@ -2167,10 +2197,10 @@
    "clase_cierre": "FED MÁS DURA",
    "reconstruido": true,
    "giro_fases": {
-    "T+60": "SIN BASE",
-    "T+120": "SIN BASE",
-    "CIERRE": "SIN BASE",
-    "T+1": "SIN BASE"
+    "T+60": "SE CONFIRMA",
+    "T+120": "SE CONFIRMA",
+    "CIERRE": "SE CONFIRMA",
+    "T+1": "SE CONFIRMA"
    },
    "giro_en": [],
    "diseno": false,
@@ -2266,11 +2296,15 @@
   "giro_clases": [
    {
     "clase": "REFUGIO / RIESGO",
-    "regla": "El 2Y y el 10Y, tras subir en T+5 por encima de su umbral, devuelven ≥ 60 % de esa subida y el NQ cae más que en T+5 (el DXY no es obligatorio)."
+    "regla": "Base: el 2Y supera su umbral en T+5, en cualquier dirección. Inicio con tipos al alza: 2Y y 10Y devuelven ≥ 60 % de su movimiento inicial y el NQ cae más que en T+5."
+   },
+   {
+    "clase": "ALIVIO DESHECHO",
+    "regla": "Inicio con tipos a la baja: 2Y y 10Y devuelven ≥ 60 % de su movimiento inicial y el NQ cae frente a T+5."
    },
    {
     "clase": "SORPRESA DESHECHA",
-    "regla": "El 2Y y el 10Y devuelven ≥ 60 % de su subida inicial y el NQ recupera frente a T+5."
+    "regla": "2Y y 10Y devuelven ≥ 60 % del movimiento inicial (al alza o a la baja) y el NQ recupera: si los tipos subían, el NQ no cae más; si bajaban, el NQ sube."
    },
    {
     "clase": "SE CONFIRMA",
@@ -2282,7 +2316,7 @@
    },
    {
     "clase": "SIN BASE",
-    "regla": "En T+5 el 2Y y el 10Y no suben a la vez por encima de su umbral: no hay subida inicial que medir. No genera alerta."
+    "regla": "En T+5 el 2Y no supera su umbral (ni al alza ni a la baja): no hay movimiento inicial que medir. El 10Y no es obligatorio para la base, pero sí cuenta en la devolución. No genera alerta."
    }
   ],
   "criterio": "CRITERIO NEXORA: convención fija y publicada, no un modelo ajustado."
@@ -2298,15 +2332,5 @@
   "10Y real": "FRED DFII10, solo el día siguiente"
  },
  "fuente": "Yahoo Finance (API v8 chart, barras de 5 min, ~15 min de retraso posible) · calendario: FRED Release Calendar (BLS/BEA) y federalreserve.gov · FRED DFII10",
- "memoria": "data/reacciones_eventos.csv (solo se añade)",
- "errores": {},
- "calibracion": {
-  "beta_2y": -54.078,
-  "r2_2y": 0.914,
-  "n_2y": 47,
-  "beta_10y": -13.017,
-  "r2_10y": 0.813,
-  "n_10y": 3867
- },
- "filas_nuevas": 1
+ "memoria": "data/reacciones_eventos.csv (solo se añade)"
 }
