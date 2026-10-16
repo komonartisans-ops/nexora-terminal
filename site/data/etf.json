@@ -1,0 +1,187 @@
+{
+ "etf": {
+  "btc": {
+   "nombre": "Bitcoin",
+   "serie": [
+    [
+     "2026-09-28",
+     31.0
+    ],
+    [
+     "2026-09-29",
+     66.2
+    ],
+    [
+     "2026-09-30",
+     -148.7
+    ],
+    [
+     "2026-10-01",
+     102.7
+    ],
+    [
+     "2026-10-02",
+     189.9
+    ],
+    [
+     "2026-10-05",
+     -89.8
+    ],
+    [
+     "2026-10-06",
+     118.8
+    ],
+    [
+     "2026-10-07",
+     -484.9
+    ],
+    [
+     "2026-10-08",
+     -244.1
+    ],
+    [
+     "2026-10-09",
+     21.1
+    ],
+    [
+     "2026-10-12",
+     -65.4
+    ],
+    [
+     "2026-10-13",
+     175.7
+    ],
+    [
+     "2026-10-14",
+     -261.4
+    ],
+    [
+     "2026-10-15",
+     5.1
+    ]
+   ],
+   "ultimo": {
+    "fecha": "2026-10-15",
+    "total_musd": 5.1,
+    "por_etf": {
+     "IBIT": 16.8,
+     "BTCO": -4.1,
+     "BTC": -7.6
+    }
+   },
+   "acum_5d_musd": -124.9,
+   "acum_dias": 14,
+   "filas_descartadas": 0,
+   "tickers": [
+    "IBIT",
+    "FBTC",
+    "BITB",
+    "ARKB",
+    "BTCO",
+    "EZBC",
+    "BRRR",
+    "HODL",
+    "BTCW",
+    "MSBT",
+    "GBTC",
+    "BTC"
+   ],
+   "fuente": "https://farside.co.uk/btc/",
+   "url": "https://farside.co.uk/btc/"
+  },
+  "eth": {
+   "nombre": "Ether",
+   "serie": [
+    [
+     "2026-09-28",
+     17.1
+    ],
+    [
+     "2026-09-29",
+     -2.8
+    ],
+    [
+     "2026-09-30",
+     -59.6
+    ],
+    [
+     "2026-10-01",
+     -55.4
+    ],
+    [
+     "2026-10-02",
+     -37.4
+    ],
+    [
+     "2026-10-05",
+     -50.8
+    ],
+    [
+     "2026-10-06",
+     -201.9
+    ],
+    [
+     "2026-10-07",
+     -160.9
+    ],
+    [
+     "2026-10-08",
+     -72.5
+    ],
+    [
+     "2026-10-09",
+     -56.1
+    ],
+    [
+     "2026-10-12",
+     -85.4
+    ],
+    [
+     "2026-10-13",
+     24.8
+    ],
+    [
+     "2026-10-14",
+     -129.5
+    ],
+    [
+     "2026-10-15",
+     -60.3
+    ]
+   ],
+   "ultimo": {
+    "fecha": "2026-10-15",
+    "total_musd": -60.3,
+    "por_etf": {
+     "ETHA": -44.4,
+     "FETH": 2.4,
+     "ETHE": -18.3
+    }
+   },
+   "acum_5d_musd": -306.5,
+   "acum_dias": 14,
+   "filas_descartadas": 0,
+   "tickers": [
+    "ETHA",
+    "ETHB",
+    "FETH",
+    "ETHW",
+    "TETH",
+    "ETHV",
+    "QETH",
+    "EZET",
+    "MSSE",
+    "ETHE",
+    "ETH"
+   ],
+   "fuente": "https://farside.co.uk/eth/",
+   "url": "https://farside.co.uk/eth/"
+  }
+ },
+ "errores": {},
+ "fuente": "Farside Investors (tabla HTML, validada fila a fila)",
+ "corte": "Día de negociación D hasta el cierre de EE. UU. (16:00 ET); Farside no fija hora de publicación; las correcciones se guardan como filas nuevas en data/historico_etf_flujos.csv",
+ "ok": true,
+ "generado_utc": "2026-10-16 11:07 UTC",
+ "duracion_s": 3.0
+}

@@ -1,6 +1,16 @@
 {
  "items": [
   {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Banknote imagery advisory group minutes – 15 July 2026",
+   "orador": null,
+   "fecha_utc": "2026-10-16 11:00",
+   "fecha": "2026-10-16",
+   "enlace": "https://www.bankofengland.co.uk/minutes/2026/july/banknote-advisory-minutes-15-july",
+   "fuente": "boe"
+  },
+  {
    "banco": "BoJ",
    "tipo": "Novedad",
    "titulo": "BOJ Current Account Balances by Sector (Sept.)",
@@ -1289,16 +1299,6 @@
    "fecha": "2026-07-14",
    "enlace": "https://www.bankofengland.co.uk/news/2026/july/pra-and-fca-propose-new-captive-insurance-regime-to-drive-uk-growth-and-competitiveness",
    "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "Minutes of the Money Market Committee meeting – June 2026",
-   "orador": null,
-   "fecha_utc": "2026-07-13 12:32",
-   "fecha": "2026-07-13",
-   "enlace": "https://www.bankofengland.co.uk/minutes/2026/june/money-markets-committee-minutes-june-2026",
-   "fuente": "boe"
   }
  ],
  "fuentes": {
@@ -1340,7 +1340,7 @@
    "n": 40,
    "url": "https://www.bankofengland.co.uk/rss/news",
    "pagina": "https://www.bankofengland.co.uk/news",
-   "ultimo": "2026-10-15 09:52"
+   "ultimo": "2026-10-16 11:00"
   },
   "tesoro": {
    "banco": "Tesoro EE. UU.",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-16 10:11 UTC",
- "duracion_s": 6.4
+ "generado_utc": "2026-10-16 11:07 UTC",
+ "duracion_s": 6.9
 }
