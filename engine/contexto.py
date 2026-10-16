@@ -102,6 +102,29 @@ def _liquidez(L):
             "avisos": (E.get("avisos") or [])[:3], "actualizado_utc": L.get("generado_utc"), "fuente": "FRED (WALCL, WTREGEN, RRPONTSYD, WRESBAL), Tesoro, Fed"}
 
 
+def _tipos_un_dia(L):
+    """SOFR y EFFR (FRED, diarios) con su diferencial y los repos inversos: ON RRP (facilidad) SEPARADO del total del H.4.1 (incluye la cuenta extranjera)."""
+    H = (L or {}).get("historico") or {}
+    if not H.get("sofr_effr") and not H.get("repos_inversos"):
+        return _sd("FRED SOFR, EFFR, WLRRAL, RRPONTSYD (liquidez.json)")
+    se, ri = H.get("sofr_effr"), H.get("repos_inversos")
+    return {"sofr_effr": {"fecha": se["fecha"], "sofr_pct": se["sofr"], "effr_pct": se["effr"], "sofr_menos_effr_pb": se["spread_pb"], "fuente": se["fuente"]} if se else _sd("FRED SOFR / EFFR"),
+            "on_rrp_facilidad_RRPONTSYD": {"valor_mm_usd": ri["on_rrp_B"], "fecha": ri["on_rrp_fecha"]} if ri else _sd("FRED RRPONTSYD"),
+            "repos_inversos_totales_incluye_cuenta_extranjera": {"valor_mm_usd": ri["total_B"], "de_los_cuales_cuenta_extranjera_mm_usd": ri["extranjeros_B"], "fecha": ri["fecha"],
+                                                                 "nota": "Pasivo de la Fed del H.4.1 (miércoles). NO es el ON RRP.", "fuente": ri["fuente"]} if ri else _sd("FRED WLRRAL"),
+            "actualizado_utc": L.get("generado_utc")}
+
+
+def _etf_flujos(E):
+    if not E or not E.get("etf"):
+        return _sd("Farside Investors (etf.json)")
+    out = {}
+    for k, x in E["etf"].items():
+        out[k] = ({"estado": "SIN DATO", "motivo": (E.get("errores") or {}).get(k)} if x.get("sin_dato") else
+                  {"ultimo_dia": x["ultimo"]["fecha"], "total_musd": x["ultimo"]["total_musd"], "por_etf_no_cero_musd": x["ultimo"]["por_etf"], "acum_5_sesiones_musd": x["acum_5d_musd"]})
+    return {**out, "corte": E.get("corte"), "fuente": E.get("fuente"), "actualizado_utc": E.get("generado_utc")}
+
+
 def _fed(F, T):
     if not F or not F.get("reuniones"):
         return _sd("FedWatch NEXORA (futuros ZQ del CBOT)")
@@ -373,7 +396,7 @@ def _contradicciones(C, D, T, R, S):
 
 # ---------------------------------------------------------------- principal
 def construir():
-    J = {n: _leer(n) for n in ("meta", "precios", "resumen", "ciclo", "liquidez", "fedwatch", "tipos", "cot", "divisas", "regimen", "calendario", "skew", "gamma", "semis", "alertas", "bancos", "tono", "reacciones")}
+    J = {n: _leer(n) for n in ("meta", "precios", "resumen", "ciclo", "liquidez", "etf", "fedwatch", "tipos", "cot", "divisas", "regimen", "calendario", "skew", "gamma", "semis", "alertas", "bancos", "tono", "reacciones")}
     stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     meta = J["meta"] or {}
     fres, viejos, fallos = {}, [], []
@@ -400,6 +423,8 @@ def construir():
         "ciclo": _ciclo(J["ciclo"]),
         "credito": _credito(J["ciclo"]),
         "liquidez": _liquidez(J["liquidez"]),
+        "tipos_a_un_dia_y_repos": _tipos_un_dia(J["liquidez"]),
+        "etf_flujos_btc_eth": _etf_flujos(J["etf"]),
         "fedwatch_y_tipos": _fed(J["fedwatch"], J["tipos"]),
         "riesgo_de_cola_skew": _skew(skew),
         "gamma_indices": _gamma(J["gamma"] if J["gamma"] and J["gamma"].get("indices") else None),
