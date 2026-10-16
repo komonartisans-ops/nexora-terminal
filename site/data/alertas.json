@@ -29,9 +29,22 @@
    "l4": "La Fed pone el precio del dinero. Cuando el mercado deja de esperar que lo suba, los bonos pasan a pagar menos y el dinero busca rentabilidad en bolsa, oro y cripto; cuando espera subidas, ocurre lo contrario.",
    "enviada": true,
    "error": null
+  },
+  {
+   "fecha_utc": "2026-10-16 18:12 UTC",
+   "clave": "vix",
+   "titulo": "Miedo (VIX)",
+   "l1": "El VIX está en 19,9 (+21,2 % en la sesión; umbral: >25 o +20 %) (Cboe vía Yahoo Finance, vie 16 oct).",
+   "l2": "Oro a favor, Índices en contra, BTC en contra (interpretación según sensibilidades fijas, no hecho).",
+   "l3": "mié 21 oct (hora de Madrid) · Resultados Meta Platforms (META)",
+   "l4": "El VIX mide cuánto pagan los inversores por protegerse. Si sube, hay miedo y se vende riesgo; si baja, vuelve la calma.",
+   "enviada": true,
+   "error": null
   }
  ],
- "candidatas": [],
+ "candidatas": [
+  "vix"
+ ],
  "no_evaluables": {},
  "telegram_configurado": true,
  "umbrales": {
@@ -58,9 +71,11 @@
   "fed_dic_pb": 10,
   "fed_confirmaciones": 2
  },
- "enviadas_hoy": [],
- "ultima_evaluacion_utc": "2026-10-16 17:12 UTC",
+ "enviadas_hoy": [
+  "vix"
+ ],
+ "ultima_evaluacion_utc": "2026-10-16 18:12 UTC",
  "ok": true,
- "generado_utc": "2026-10-16 17:07 UTC",
- "duracion_s": 0.0
+ "generado_utc": "2026-10-16 18:07 UTC",
+ "duracion_s": 0.5
 }
