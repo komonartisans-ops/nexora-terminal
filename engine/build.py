@@ -813,8 +813,29 @@ ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", 
          "bancos", "tono", "skew", "semis", "gamma", "alertas", "reacciones", "contexto"]
 # horario: el SKEW (Cboe) se publica tras el cierre, por eso entra aquí para que la alerta salga en la hora siguiente; gamma NO (solo al cierre).
 # cierre (cron 21:30 UTC, tras el cierre de Nueva York): snapshot de opciones, semis/software y SKEW del día.
-MODOS = {"horario": ["precios", "fedwatch", "tipos", "noticias", "skew", "alertas", "contexto"],
+# calendario y publicados entran en el horario porque el día de una publicación (IPC, PPI, ventas…) el dato sale a las 12:30-13:30 UTC y la web no puede esperar
+# al build diario; calendario escribe también site/data/agenda.json (sin esto la página Agenda mostraba el «hoy» de ayer).
+MODOS = {"horario": ["precios", "fedwatch", "tipos", "calendario", "publicados", "noticias", "skew", "alertas", "contexto"],
          "cierre": ["precios", "semis", "bancos", "tono", "skew", "gamma", "alertas", "contexto"], "diario": ORDEN, "todo": ORDEN}
+
+
+def escalar(modo, estado, ahora=None):
+    """Los crones de GitHub no están garantizados (el 15-oct el diario salió 4,6 h tarde y el cierre 2,3 h tarde; el 16-oct no salió el diario) y cron-job.org
+    solo dispara el modo horario. Si ya toca el build DIARIO (≥ 05:30 UTC) o el CIERRE (≥ 21:30 UTC) y hoy todavía no se ha completado, la ejecución
+    horaria incluye esas etapas. Devuelve (modo_efectivo, etapas_extra). Sin efecto fuera del modo horario ni con --solo."""
+    if modo != "horario":
+        return modo, []
+    ahora = ahora or NOW
+    hoy = ahora.strftime("%Y-%m-%d")
+    hm = ahora.strftime("%H:%M")
+
+    def hecho(etapa):  # «ejecutada» (no «ok»): una fuente caída no debe relanzar el build completo cada hora
+        return str((estado.get(etapa) or {}).get("ejecutada_utc") or "")[:10] >= hoy
+    if hm >= "05:30" and not hecho("ciclo"):
+        return "horario+diario", MODOS["diario"]
+    if hm >= "21:30" and not hecho("gamma"):
+        return "horario+cierre", MODOS["cierre"]
+    return modo, []
 
 
 def main():
@@ -822,9 +843,12 @@ def main():
     ap.add_argument("--modo", default="diario", choices=list(MODOS))
     ap.add_argument("--solo", default="")
     a = ap.parse_args()
-    etapas = [e for e in ORDEN if e in (a.solo.split(",") if a.solo else MODOS[a.modo])]
-    t0 = time.time()
     estado = (leer("meta.json") or {}).get("etapas", {})
+    modo_ef, extra = (a.modo, []) if a.solo else escalar(a.modo, estado)
+    if extra:
+        print(f"== modo {a.modo} escalado a {modo_ef}: el build programado de hoy no se ha completado", flush=True)
+    etapas = [e for e in ORDEN if e in (a.solo.split(",") if a.solo else MODOS[a.modo] + extra)]
+    t0 = time.time()
     for e in etapas:
         print(f"== {e}", flush=True)
         r = con_respaldo(f"{e}.json", ETAPAS[e])
@@ -834,13 +858,13 @@ def main():
         else:
             r["ultimo_ok_utc"] = estado.get(e, {}).get("ultimo_ok_utc")
         estado[e] = r
-        escribir("meta.json", {"actualizado_utc": STAMP, "modo": a.modo, "etapas": estado, "duracion_total_s": round(time.time() - t0, 1)})  # contexto.json lee la frescura de aquí
+        escribir("meta.json", {"actualizado_utc": STAMP, "modo": modo_ef, "etapas": estado, "duracion_total_s": round(time.time() - t0, 1)})  # contexto.json lee la frescura de aquí
         print(f"   {'OK' if r['ok'] else 'FALLO'} {r['duracion_s']} s {r['error'] or ''}", flush=True)
     dur = round(time.time() - t0, 1)
-    escribir("meta.json", {"actualizado_utc": STAMP, "modo": a.modo, "etapas": estado, "duracion_total_s": dur})
+    escribir("meta.json", {"actualizado_utc": STAMP, "modo": modo_ef, "etapas": estado, "duracion_total_s": dur})
     # una fila por ejecución (garantiza que data/ crece en cada run)
     ok = [e for e in etapas if estado[e]["ok"]]
-    csvlog.anadir("ejecuciones.csv", [{"capturado_utc": STAMP, "modo": a.modo, "evento": os.environ.get("GITHUB_EVENT_NAME", "local"),
+    csvlog.anadir("ejecuciones.csv", [{"capturado_utc": STAMP, "modo": modo_ef, "evento": os.environ.get("GITHUB_EVENT_NAME", "local"),
                                        "etapas_ok": ",".join(ok), "etapas_fallo": ",".join(e for e in etapas if e not in ok), "duracion_s": dur}], ("capturado_utc", "modo"))
     return 0
 
