@@ -1,13 +1,13 @@
 {
- "actualizado_utc": "2026-10-16 21:07 UTC",
- "modo": "horario",
+ "actualizado_utc": "2026-10-16 21:30 UTC",
+ "modo": "cierre",
  "etapas": {
   "precios": {
    "ok": true,
-   "duracion_s": 8.7,
+   "duracion_s": 8.6,
    "error": null,
-   "ejecutada_utc": "2026-10-16 21:07 UTC",
-   "ultimo_ok_utc": "2026-10-16 21:07 UTC"
+   "ejecutada_utc": "2026-10-16 21:30 UTC",
+   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
   },
   "fedwatch": {
    "ok": true,
@@ -69,8 +69,8 @@
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-16 21:07 UTC",
-   "ultimo_ok_utc": "2026-10-16 21:07 UTC"
+   "ejecutada_utc": "2026-10-16 21:30 UTC",
+   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
   },
   "monitores": {
    "ok": true,
@@ -109,31 +109,31 @@
   },
   "skew": {
    "ok": true,
-   "duracion_s": 1.5,
+   "duracion_s": 1.4,
    "error": null,
-   "ejecutada_utc": "2026-10-16 21:07 UTC",
-   "ultimo_ok_utc": "2026-10-16 21:07 UTC"
+   "ejecutada_utc": "2026-10-16 21:30 UTC",
+   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
   },
   "semis": {
    "ok": true,
-   "duracion_s": 17.6,
+   "duracion_s": 19.5,
    "error": null,
-   "ejecutada_utc": "2026-10-16 11:20 UTC",
-   "ultimo_ok_utc": "2026-10-16 11:20 UTC"
+   "ejecutada_utc": "2026-10-16 21:30 UTC",
+   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
   },
   "gamma": {
    "ok": true,
-   "duracion_s": 6.3,
+   "duracion_s": 6.8,
    "error": null,
-   "ejecutada_utc": "2026-10-16 11:20 UTC",
-   "ultimo_ok_utc": "2026-10-16 11:20 UTC"
+   "ejecutada_utc": "2026-10-16 21:30 UTC",
+   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
   },
   "contexto": {
    "ok": true,
-   "duracion_s": 0.0,
+   "duracion_s": 0.1,
    "error": null,
-   "ejecutada_utc": "2026-10-16 21:07 UTC",
-   "ultimo_ok_utc": "2026-10-16 21:07 UTC"
+   "ejecutada_utc": "2026-10-16 21:30 UTC",
+   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
   },
   "tesis": {
    "ok": true,
@@ -144,17 +144,17 @@
   },
   "bancos": {
    "ok": true,
-   "duracion_s": 14.6,
+   "duracion_s": 27.1,
    "error": null,
-   "ejecutada_utc": "2026-10-16 11:20 UTC",
-   "ultimo_ok_utc": "2026-10-16 11:20 UTC"
+   "ejecutada_utc": "2026-10-16 21:30 UTC",
+   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
   },
   "tono": {
    "ok": true,
-   "duracion_s": 29.1,
+   "duracion_s": 26.2,
    "error": null,
-   "ejecutada_utc": "2026-10-16 11:20 UTC",
-   "ultimo_ok_utc": "2026-10-16 11:20 UTC"
+   "ejecutada_utc": "2026-10-16 21:30 UTC",
+   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
   },
   "reacciones": {
    "ok": true,
@@ -178,5 +178,5 @@
    "ultimo_ok_utc": "2026-10-16 21:07 UTC"
   }
  },
- "duracion_total_s": 268.0
+ "duracion_total_s": 89.7
 }
