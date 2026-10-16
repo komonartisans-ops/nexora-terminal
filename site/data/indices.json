@@ -723,9 +723,9 @@
     "dato": "FedWatch",
     "que_mirar": "Recortes/subidas descontados",
     "dir": "→",
-    "valor": "2026-10-28: subida 18 % · mantener 82 % · bajada 0 %",
+    "valor": "2026-10-28: subida 16 % · mantener 84 % · bajada 0 %",
     "estado": "NEUTRAL",
-    "lectura": "1 sesión -10 pts de subida; tipo esperado a 3 reuniones +0 pb en 5 sesiones · Sin cambio",
+    "lectura": "1 sesión -12 pts de subida; tipo esperado a 3 reuniones -1 pb en 5 sesiones · Sin cambio",
     "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-16",
     "puntua": true
    },
@@ -1284,7 +1284,7 @@
    {
     "n": 3,
     "pregunta": "¿FedWatch está relajándose o endureciéndose?",
-    "respuesta": "1 sesión -10 pts de subida; tipo esperado a 3 reuniones +0 pb en 5 sesiones · Sin cambio Proxy letras: +7 pb en 5 sesiones."
+    "respuesta": "1 sesión -12 pts de subida; tipo esperado a 3 reuniones -1 pb en 5 sesiones · Sin cambio Proxy letras: +7 pb en 5 sesiones."
    },
    {
     "n": 4,
@@ -3315,6 +3315,6 @@
   },
   "reacciones": null
  },
- "evaluado_utc": "2026-10-16 19:07 UTC",
+ "evaluado_utc": "2026-10-16 19:53 UTC",
  "fedwatch_fecha_precios": "2026-10-16"
 }

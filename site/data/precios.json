@@ -3,13 +3,13 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4178.0,
+   "valor": 4190.8,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": 0.19,
-   "cambio_5d_pct": -0.91,
-   "cambio_21d_pct": -5.04,
-   "cambio_63d_pct": 4.04,
-   "sma50": 4374.35,
+   "cambio_1d_pct": 0.5,
+   "cambio_5d_pct": -0.6,
+   "cambio_21d_pct": -4.75,
+   "cambio_63d_pct": 4.36,
+   "sma50": 4374.61,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
@@ -1018,20 +1018,20 @@
     ],
     [
      "2026-10-16",
-     4178.0
+     4190.7998
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 80969.68,
+   "valor": 81408.53,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -1.43,
-   "cambio_5d_pct": -3.24,
-   "cambio_21d_pct": -3.65,
-   "cambio_63d_pct": 28.57,
-   "sma50": 81241.24,
+   "cambio_1d_pct": -0.89,
+   "cambio_5d_pct": -2.71,
+   "cambio_21d_pct": -3.13,
+   "cambio_63d_pct": 29.27,
+   "sma50": 81250.01,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2496,20 +2496,20 @@
     ],
     [
      "2026-10-16",
-     80969.6797
+     81408.5312
     ]
    ]
   },
   "spx": {
    "nombre": "S&P 500",
    "simbolo": "^GSPC",
-   "valor": 7633.64,
+   "valor": 7658.18,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -1.43,
-   "cambio_5d_pct": -2.28,
-   "cambio_21d_pct": -0.05,
-   "cambio_63d_pct": 2.56,
-   "sma50": 7705.9,
+   "cambio_1d_pct": -1.11,
+   "cambio_5d_pct": -1.96,
+   "cambio_21d_pct": 0.27,
+   "cambio_63d_pct": 2.89,
+   "sma50": 7706.39,
    "fuente": "S&P 500 (Yahoo Finance)",
    "serie": [
     [
@@ -3518,20 +3518,20 @@
     ],
     [
      "2026-10-16",
-     7633.6401
+     7658.1802
     ]
    ]
   },
   "ndx": {
    "nombre": "Nasdaq 100",
    "simbolo": "^NDX",
-   "valor": 29083.22,
+   "valor": 29175.24,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -2.85,
-   "cambio_5d_pct": -5.83,
-   "cambio_21d_pct": -1.24,
-   "cambio_63d_pct": 1.67,
-   "sma50": 29865.91,
+   "cambio_1d_pct": -2.54,
+   "cambio_5d_pct": -5.53,
+   "cambio_21d_pct": -0.92,
+   "cambio_63d_pct": 2.0,
+   "sma50": 29867.75,
    "fuente": "Nasdaq 100 (Yahoo Finance)",
    "serie": [
     [
@@ -4540,20 +4540,20 @@
     ],
     [
      "2026-10-16",
-     29083.2227
+     29175.2402
     ]
    ]
   },
   "dji": {
    "nombre": "US30 · Dow Jones",
    "simbolo": "^DJI",
-   "valor": 51854.33,
+   "valor": 51969.69,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -0.62,
-   "cambio_5d_pct": 0.39,
-   "cambio_21d_pct": 0.15,
-   "cambio_63d_pct": 0.03,
-   "sma50": 52457.35,
+   "cambio_1d_pct": -0.4,
+   "cambio_5d_pct": 0.61,
+   "cambio_21d_pct": 0.37,
+   "cambio_63d_pct": 0.25,
+   "sma50": 52459.65,
    "fuente": "Dow Jones (Yahoo Finance)",
    "serie": [
     [
@@ -5562,17 +5562,17 @@
     ],
     [
      "2026-10-16",
-     51854.3281
+     51969.6914
     ]
    ]
   },
   "rut": {
    "nombre": "Russell 2000",
    "simbolo": "^RUT",
-   "valor": 2719.72,
+   "valor": 2719.82,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -1.72,
-   "cambio_5d_pct": -3.11,
+   "cambio_1d_pct": -1.71,
+   "cambio_5d_pct": -3.1,
    "cambio_21d_pct": -5.39,
    "cambio_63d_pct": -7.57,
    "sma50": 2907.48,
@@ -6584,20 +6584,20 @@
     ],
     [
      "2026-10-16",
-     2719.718
+     2719.825
     ]
    ]
   },
   "vix": {
    "nombre": "VIX",
    "simbolo": "^VIX",
-   "valor": 20.52,
+   "valor": 20.12,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": 24.67,
-   "cambio_5d_pct": 38.27,
-   "cambio_21d_pct": 32.9,
-   "cambio_63d_pct": 20.35,
-   "sma50": 15.61,
+   "cambio_1d_pct": 22.24,
+   "cambio_5d_pct": 35.58,
+   "cambio_21d_pct": 30.31,
+   "cambio_63d_pct": 18.01,
+   "sma50": 15.6,
    "fuente": "Cboe VIX (Yahoo Finance)",
    "serie": [
     [
@@ -7614,19 +7614,19 @@
     ],
     [
      "2026-10-16",
-     20.52
+     20.12
     ]
    ]
   },
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.85,
+   "valor": 101.8,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -0.15,
-   "cambio_5d_pct": -0.36,
-   "cambio_21d_pct": 1.62,
-   "cambio_63d_pct": 0.85,
+   "cambio_1d_pct": -0.2,
+   "cambio_5d_pct": -0.4,
+   "cambio_21d_pct": 1.58,
+   "cambio_63d_pct": 0.8,
    "sma50": 100.35,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
@@ -8636,7 +8636,7 @@
     ],
     [
      "2026-10-16",
-     101.845
+     101.8
     ]
    ]
   },
@@ -8648,7 +8648,7 @@
    "cambio_1d_pct": -1.36,
    "cambio_5d_pct": 0.4,
    "cambio_21d_pct": 25.23,
-   "cambio_63d_pct": 42.64,
+   "cambio_63d_pct": 42.63,
    "sma50": 85.09,
    "fuente": "ICE BofA MOVE (Yahoo Finance ^MOVE)",
    "serie": [
@@ -9650,13 +9650,13 @@
     ],
     [
      "2026-10-16",
-     101.1003
+     101.0994
     ]
    ]
   }
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-16 19:07 UTC",
- "duracion_s": 8.0
+ "generado_utc": "2026-10-16 19:53 UTC",
+ "duracion_s": 9.0
 }
