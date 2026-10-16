@@ -129,7 +129,8 @@ def bloque(cal, hoy=None, dias=7):
     fm = lambda e: e.get("fecha_madrid") or e["fecha"]   # el día que importa es el de Madrid (un acto de 23:30 ET es del día siguiente aquí)
     E = [e for e in _todos(cal) if hoy.isoformat() <= fm(e) <= lim.isoformat() and e.get("importancia") in ("ALTA", "MEDIA")]
     E.sort(key=lambda e: (fm(e), e.get("hora_madrid") or "99", 0 if e["importancia"] == "ALTA" else 1))
-    f = lambda e: {"fecha": fm(e), "fecha_et": e["fecha"], "dia": e.get("dia"), "hora_ny": e.get("hora_ny") or None, "hora_madrid": e.get("hora_madrid") or None,
+    dia = lambda e: ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"][dt.date.fromisoformat(fm(e)).weekday()]  # el día de la semana es el de Madrid, como la fecha mostrada
+    f = lambda e: {"fecha": fm(e), "fecha_et": e["fecha"], "dia": dia(e), "hora_ny": e.get("hora_ny") or None, "hora_madrid": e.get("hora_madrid") or None,
                    "evento": e["evento"], "importancia": e["importancia"], "nota": e.get("nota") or None}
     return {"hoy": [f(e) for e in E if fm(e) == hoy.isoformat()], "proximos_7_dias": [f(e) for e in E if fm(e) > hoy.isoformat()],
             "regla_horas": "Fed: horas del calendario oficial en ET (también en actos en el extranjero); FRED: hora central → ET; todo se convierte a Madrid y el día es el de Madrid.",

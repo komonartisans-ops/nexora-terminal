@@ -78,11 +78,16 @@ def significado(motor, sube):
     return ", ".join(partes) + " (interpretación según sensibilidades fijas, no hecho)"
 
 
+def fm(e):
+    """Fecha de MADRID del evento: junto a la hora de Madrid, la fecha de Nueva York sería un día antes en actos de noche (23:30 ET = 05:30 del día siguiente)."""
+    return e.get("fecha_madrid") or e["fecha"]
+
+
 def vigilar(cal):
     ahora = madrid_ahora().strftime("%Y-%m-%d %H:%M")
     for e in (cal or {}).get("eventos", []):
-        if e.get("importancia") == "ALTA" and f"{e['fecha']} {e.get('hora_madrid') or '23:59'}" > ahora:
-            return f"{fecha_linea(e['fecha'], e.get('hora_madrid') or None)} (hora de Madrid) · {e['evento']}"
+        if e.get("importancia") == "ALTA" and f"{fm(e)} {e.get('hora_madrid') or '23:59'}" > ahora:
+            return f"{fecha_linea(fm(e), e.get('hora_madrid') or None)} (hora de Madrid) · {e['evento']}"
     return "sin dato de importancia alta en el calendario próximo"
 
 
@@ -98,15 +103,15 @@ def vigilar_fed(cal, dias=21, k=4):
     E = [e for e in (cal or {}).get("eventos", []) if FED_RE.search(e.get("evento", "")) and not e.get("evento", "").startswith(("Resultados", "Subasta", "Decisión de política monetaria del"))]
     E += (cal or {}).get("fed_vigilar", [])
     vistos, fut = set(), []
-    for e in sorted(E, key=lambda x: (x["fecha"], x.get("hora_madrid") or "23:59")):
-        clave = (e["fecha"], e["evento"])
-        if clave in vistos or e["fecha"] > tope or f"{e['fecha']} {e.get('hora_madrid') or '23:59'}" <= lim:
+    for e in sorted(E, key=lambda x: (fm(x), x.get("hora_madrid") or "23:59")):
+        clave = (fm(e), e["evento"])
+        if clave in vistos or fm(e) > tope or f"{fm(e)} {e.get('hora_madrid') or '23:59'}" <= lim:
             continue
         vistos.add(clave)
         fut.append(e)
     if not fut:
         return f"sin eventos de la Fed (IPC, PCE, empleo, FOMC o discursos de miembros con voto) en el calendario oficial de los próximos {dias} días"
-    return " · ".join(f"{fecha_linea(e['fecha'], (e.get('hora_madrid') or None))}{' (hora de Madrid)' if e.get('hora_madrid') else ''}: {e['evento']}" for e in fut[:k])
+    return " · ".join(f"{fecha_linea(fm(e), (e.get('hora_madrid') or None))}{' (hora de Madrid)' if e.get('hora_madrid') else ''}: {e['evento']}" for e in fut[:k])
 
 
 # ---------------------------------------------------------------- Fed: regla de alerta con confirmación

@@ -60,6 +60,9 @@ FRED_RELEASES = {
 # código corto por tipo de evento (clave de la agenda, del monitor de reacciones y del Telegram diario)
 TIPO_FRED = {11: "ECI", 50: "NFP", 10: "IPC", 54: "PCE", 46: "PPI", 53: "PIB", 192: "JOLTS", 9: "VENTAS", 180: "PARO", 351: "FILADELFIA", 91: "UMICH",
              20: "H41", 21: "M2", 13: "PRODIND", 22: "H8", 27: "VIVIENDA", 97: "VIVIENDA_NUEVA", 95: "PEDIDOS"}
+# Hora oficial (ET) que manda sobre la que se deduce de la página de FRED. G.17 (rid 13): federalreserve.gov/json/calendar.json la da a las 9:15 a.m. ET
+# todos los meses; la deducida de FRED salía a las 12:15 ET (3 h tarde). Las demás publicaciones de la Fed (H.4.1, H.6, H.8) coinciden con el calendario de la Fed.
+HORA_OFICIAL_ET = {13: "09:15"}
 HORA_TIPICA_NY = {"ECI": "08:30", "VENTAS": "08:30", "IPC": "08:30", "NFP": "08:30", "PCE": "08:30", "PPI": "08:30", "PIB": "08:30", "FOMC": "14:00", "ACTAS": "14:00", "ISM": "10:00"}
 MES = {m: i for i, m in enumerate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 1)}
 
@@ -239,7 +242,7 @@ def construir(dias=21, pasado=7, con_resultados=True):
             continue
         for d, h, nombre_fred, url in r:
             if desde <= d <= hasta:
-                E.append(ev(d, h, nm, imp, af, qm, f"FRED Release Calendar · {nombre_fred}", url))
+                E.append(ev(d, HORA_OFICIAL_ET.get(rid, h), nm, imp, af, qm, f"FRED Release Calendar · {nombre_fred}", url))
     r, e = safe(fomc)
     if r:
         for d, sep, url in r:
