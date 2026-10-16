@@ -147,3 +147,14 @@ Resultado automático: 0 errores de consola, 0 peticiones 4xx/5xx, 0 `NaN/undefi
 Matiz sobre gamma: el GEX del cierre cambia si se mide antes o después de la actualización matinal del OI de la OCC (el snapshot de las 07:07 UTC dio −29,2 mm$ frente a −35,7 mm$ del cierre del 15-oct a las 23:46 UTC, con los mismos precios). Está documentado en la cabecera de `gamma.py`; no es un error pero el histórico depende de la hora de medida.
 
 **Coherencia de cifras** (`tools/coherencia_fed.py`): `fedwatch.json` (16-oct 07:07 UTC, 12 % de subida el 28-oct) = `indices`, `liquidez`, `oro`, `regimen`, `contexto`; sin incoherencias. Una única fuente por dato: probabilidades de la Fed → `fedwatch.json`; 2Y, 10Y y 10Y real → Tesoro (`tipos.json`; las cifras de los monitores son del mismo día y llevan su fecha); G3 → serie de Liquidez; precios → `precios.json`.
+
+## 10. Mejoras posteriores (16-oct)
+
+| Mejora | Estado | Fuente y corte |
+|---|---|---|
+| Precios de importación/exportación en la Agenda | Funciona (MEDIA, 08:30 ET) | FRED Release Calendar rid 188; fechas 16-oct, 17-nov, 17-dic (API de FRED) |
+| SOFR junto a EFFR y su diferencial | Funciona | FRED SOFR y EFFR (diarios; el diferencial usa la última fecha común) |
+| MOVE | Funciona; SIN DATO si Yahoo falla (no hay respaldo gratuito) | Yahoo `^MOVE`, cierre diario |
+| ETF spot de BTC y ETH | Funciona con riesgo conocido: es una tabla HTML (sin API gratuita); validada fila a fila y SIN DATO si cambia | Farside Investors; día de negociación hasta el cierre de EE. UU.; sin hora fija de publicación; revisiones en `data/historico_etf_flujos.csv` |
+| ON RRP separado de los repos inversos totales | Hecho | ON RRP = FRED RRPONTSYD (0,2 mm $); totales = FRED WLRRAL (326,8 mm $, de ellos 326,6 cuenta extranjera) |
+| `contexto.json` | Hecho | bloques `tipos_a_un_dia_y_repos` y `etf_flujos_btc_eth`; MOVE dentro de `mercado`; importación/exportación dentro de `calendario` |
