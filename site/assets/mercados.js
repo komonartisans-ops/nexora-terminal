@@ -64,7 +64,7 @@ function barras(id, etiquetas, series, opts = {}) {
     const eje = opts.horizontal ? 'x' : 'y';
     new Chart(el, {
       type: 'bar',
-      data: { labels: etiquetas, datasets: series.map((s, i) => ({ label: s.name, data: s.data, backgroundColor: s.data.map((v) => (v == null ? '#2A313B' : v >= 0 ? V[i % 3] : R[i % 3])), borderRadius: 2, maxBarThickness: opts.fino || 18 })) },
+      data: { labels: etiquetas, datasets: series.map((s, i) => ({ label: s.name, data: s.data, backgroundColor: s.data.map((v, k) => (v == null ? '#2A313B' : (v >= 0 ? V[i % 3] : R[i % 3]) + (opts.tenue && opts.tenue[k] ? '55' : ''))), borderRadius: 2, maxBarThickness: opts.fino || 18 })) },
       options: {
         responsive: true, maintainAspectRatio: false, indexAxis: opts.horizontal ? 'y' : 'x',
         plugins: { legend: { display: series.length > 1, labels: { color: '#8A93A0', boxWidth: 10, font: { family: 'IBM Plex Mono', size: 10 } } },

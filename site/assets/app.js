@@ -77,33 +77,44 @@ const PAGES = [
   { id: 'publicados', g: 'Noticias', t: 'Datos publicados', d: 'Últimas publicaciones y revisiones (original → revisado)', f: 2 },
   { id: 'diario', g: 'Personal', t: 'Diario de operaciones', d: 'Calendario mensual con P&L y notas', f: 5 },
   { id: 'tesis', g: 'Personal', t: 'Registro de tesis', d: 'Histórico de tesis y su resultado', f: 5 },
+  { id: 'operativa', g: 'Personal', t: 'Mi operativa', d: 'Tus resultados según lo que decía el sistema al entrar (solo con el Diario conectado)', f: 9, priv: true },
 ];
+/* páginas privadas: solo aparecen en el menú y el buscador si hay token del Diario en este navegador (la propia página lo vuelve a comprobar) */
+const diarioConectado = () => { const c = lsGet('nexora.diario.gh.v1', null); return !!(c && typeof c.token === 'string' && c.token); };
+const paginasVisibles = () => PAGES.filter((p) => !p.priv || diarioConectado());
 const PLAN = {
   3: 'Oro, Índices USA y Cripto.',
   4: 'COT (CFTC), Sesgo de divisas y Noticias RSS de bancos centrales.',
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['diario', 'tesis', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
+const LIVE = new Set(['diario', 'tesis', 'operativa', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
 const D = {};
 const MOUNT = [];
 
-function buildNav() {
+function pintarMenu() {
   const nav = $('#nav');
   nav.innerHTML = GROUPS.map((g) => `<div class="nav-item" data-g="${g}">
     <button class="nav-btn">${g} <span class="chev">▾</span></button>
-    <div class="menu">${PAGES.filter((p) => p.g === g).map((p) => `<a href="#/${p.id}" data-id="${p.id}"><div class="t">${esc(p.t)}${!LIVE.has(p.id) ? `<span class="fase">F${p.f}</span>` : ''}</div><div class="d">${esc(p.d)}</div></a>`).join('')}</div>
+    <div class="menu">${paginasVisibles().filter((p) => p.g === g).map((p) => `<a href="#/${p.id}" data-id="${p.id}"><div class="t">${esc(p.t)}${!LIVE.has(p.id) ? `<span class="fase">F${p.f}</span>` : ''}</div><div class="d">${esc(p.d)}</div></a>`).join('')}</div>
   </div>`).join('');
   $$('.nav-item', nav).forEach((it) => {
     $('.nav-btn', it).addEventListener('click', (e) => { e.stopPropagation(); const o = it.classList.contains('open'); $$('.nav-item').forEach((x) => x.classList.remove('open')); if (!o) it.classList.add('open'); });
   });
+  $$('.menu a', nav).forEach((a) => a.addEventListener('click', () => { nav.classList.remove('show'); $$('.nav-item').forEach((x) => x.classList.remove('open')); }));
+  const cur = $(`.menu a[data-id="${(location.hash.replace(/^#\//, '') || 'resumen').split('?')[0]}"]`, nav);
+  if (cur) { cur.classList.add('cur'); const b = $('.nav-btn', cur.closest('.nav-item')); if (b) b.classList.add('active'); }
+}
+window.addEventListener('nexora:diario-conexion', pintarMenu);  // conectar o desconectar el Diario muestra u oculta las páginas privadas
+function buildNav() {
+  const nav = $('#nav');
+  pintarMenu();
   document.addEventListener('click', () => $$('.nav-item').forEach((x) => x.classList.remove('open')));
   $('#burger').addEventListener('click', () => nav.classList.toggle('show'));
-  $$('.menu a', nav).forEach((a) => a.addEventListener('click', () => { nav.classList.remove('show'); $$('.nav-item').forEach((x) => x.classList.remove('open')); }));
   const q = $('#q'), res = $('#results');
   const draw = () => {
     const t = q.value.trim().toLowerCase();
-    const m = PAGES.filter((p) => !t || (p.t + ' ' + p.d + ' ' + p.g).toLowerCase().includes(t)).slice(0, 8);
+    const m = paginasVisibles().filter((p) => !t || (p.t + ' ' + p.d + ' ' + p.g).toLowerCase().includes(t)).slice(0, 8);
     res.innerHTML = m.map((p) => `<a href="#/${p.id}">${esc(p.t)} <span class="fase">${p.g}</span></a>`).join('') || '<a>Sin resultados</a>';
     res.classList.add('show');
   };

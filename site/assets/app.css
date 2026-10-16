@@ -307,7 +307,7 @@ button.jd:hover { border-color: var(--border2); background: var(--hover); }
 .jform label input, .jform label select { text-transform: none; letter-spacing: 0; font-size: 12.5px; color: var(--text); }
 .jform .full, .full { grid-column: 1 / -1; }
 .jlist { margin-top: 12px; }
-.jop { display: grid; grid-template-columns: auto 1fr auto auto; gap: 10px; align-items: center; padding: 7px 0; border-top: 1px solid var(--border); }
+.jop { display: grid; grid-template-columns: auto 1fr auto auto auto; gap: 10px; align-items: center; padding: 7px 0; border-top: 1px solid var(--border); }
 .jop .nt { grid-column: 1 / -1; color: var(--muted); font-size: 11.5px; }
 .wnueva { display: flex; gap: 8px; margin: 14px 0 6px; }
 .wnueva input { width: 260px; max-width: 100%; }
@@ -414,3 +414,13 @@ table.t tr.grp td { background: var(--card2); border-top: 1px solid var(--border
   .sect { flex-wrap: wrap; gap: 4px 14px; }
   .sect .more { flex: 1 1 auto; text-align: right; }
 }
+
+/* Diario conectado con el sistema: foto de cada operación y página «Mi operativa» */
+.jop.editando { background: var(--amber-bg); box-shadow: inset 2px 0 0 var(--amber); }
+.jop .x[data-edit] { color: var(--dim); }
+.jop .x[data-edit]:hover { color: var(--amber); }
+details.ft { font-size: 11.5px; color: var(--muted); }
+details.ft summary { cursor: pointer; color: var(--dim); font-size: 11px; }
+details.ft ul { margin: 6px 0 0; padding-left: 16px; line-height: 1.6; }
+details.ft li b:first-child { color: var(--text); font-weight: 500; }
+tr.poca td { opacity: .8; }
