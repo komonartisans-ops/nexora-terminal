@@ -485,7 +485,7 @@ function evHtml(e) {
   let chips = (e.afecta || '').split('·').map((x) => x.trim()).filter(Boolean).map((x) => `<span class="chip">${esc(x)}</span>`).join('');
   if (pub && !pub.sin_dato) {
     const u = pub.descripcion && /%/.test(pub.descripcion) ? ' %' : '';
-    chips = `<span class="chip">${pasado ? 'Publicado' : 'Último dato'} <b>${num(pub.valor, Math.abs(pub.valor) >= 1000 ? 0 : 2)}${u}</b> · periodo ${esc(fdm(pub.periodo))}</span><span class="chip">Anterior <b>${num(pub.anterior, Math.abs(pub.anterior) >= 1000 ? 0 : 2)}${u}</b></span>` + chips;
+    chips = `<span class="chip">${pasado ? 'Publicado' : 'Último dato'} <b>${num(pub.valor, Math.abs(pub.valor) >= 1000 ? 0 : 2)}${u}</b> · periodo ${esc(fdm(pub.periodo))}</span><span class="chip">Anterior <b>${pub.anterior == null ? 'SIN DATO' : num(pub.anterior, Math.abs(pub.anterior) >= 1000 ? 0 : 2) + u}</b></span>` + chips;
   }
   const key = 'nx.consenso.' + e.fecha + '.' + e.evento;
   chips += `<span class="chip">Consenso (manual) <input data-k="${esc(key)}" value="${esc(lsGet(key, ''))}" placeholder="—" style="width:54px;background:none;border:0;border-bottom:1px solid var(--border2);color:var(--amber);font:inherit;text-align:center"></span>`;
@@ -528,7 +528,7 @@ function pageCalendario() {
   const U = C.ultimos_publicados || {};
   h += '<div class="sect"><h2>Últimos datos de referencia</h2><span class="more">periodo ≠ fecha de publicación · sin consenso</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Dato</th><th>Periodo</th><th>Valor</th><th>Anterior</th><th>Publicado</th><th style="text-align:left">Fuente</th></tr></thead><tbody>'
     + Object.entries(U).map(([n, v]) => v.sin_dato ? `<tr><td>${esc(n)}</td><td colspan="4" style="color:var(--dim);text-align:left">SIN DATO</td><td style="text-align:left;color:var(--dim)">${esc(v.fuente)}</td></tr>`
-      : `<tr><td>${esc(n)}<small>${esc(v.descripcion)}</small></td><td>${esc(fdm(v.periodo))}</td><td>${num(v.valor, Math.abs(v.valor) >= 1000 ? 0 : 2)}</td><td>${num(v.anterior, Math.abs(v.anterior) >= 1000 ? 0 : 2)} <small>${esc(fdm(v.anterior_periodo))}</small></td><td>${v.fecha_publicacion ? esc(fdy(v.fecha_publicacion)) : '<span style="color:var(--dim)">fuera del rango</span>'}</td><td style="text-align:left"><a class="src" href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.fuente)}</a></td></tr>`).join('')
+      : `<tr><td>${esc(n)}<small>${esc(v.descripcion)}</small></td><td>${esc(fdm(v.periodo))}</td><td>${num(v.valor, Math.abs(v.valor) >= 1000 ? 0 : 2)}</td><td>${v.anterior == null ? 'SIN DATO' : num(v.anterior, Math.abs(v.anterior) >= 1000 ? 0 : 2)} <small>${esc(fdm(v.anterior_periodo))}</small></td><td>${v.fecha_publicacion ? esc(fdy(v.fecha_publicacion)) : '<span style="color:var(--dim)">fuera del rango</span>'}</td><td style="text-align:left"><a class="src" href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.fuente)}</a></td></tr>`).join('')
     + '</tbody></table></div>';
   if (C.errores && Object.keys(C.errores).length) h += `<div class="note">Fuentes sin dato (SIN DATO): ${Object.entries(C.errores).map(([k, v]) => esc(k + ': ' + String(v).slice(0, 90))).join(' · ')}</div>`;
   return h;

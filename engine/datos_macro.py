@@ -18,6 +18,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import csvlog  # noqa: E402
+import mensual as MS  # noqa: E402
 from liquidez_cripto import fred  # noqa: E402
 
 # serie FRED → (nombre, unidad, organismo)  [lista del script original]
@@ -70,8 +71,8 @@ def transformar(s, modo):
         try:
             if modo == "nivel":
                 v = s[i][1]
-            elif modo == "yoy" and i >= 12:
-                v = (s[i][1] / s[i - 12][1] - 1) * 100
+            elif modo == "yoy":
+                v = MS.var_pct(s, i, 12)  # por fecha: si falta el mes de hace 12 meses (IPC de oct-2025) el punto no se calcula
             elif modo == "mom" and i >= 1:
                 v = (s[i][1] / s[i - 1][1] - 1) * 100
             elif modo == "diff" and i >= 1:
@@ -130,10 +131,11 @@ def actualizar(calendario=None):
             per.append({"periodo": fecha.isoformat(), "valor": round(v, dec), "nivel_original": orig,
                         "nivel_actual": float(h[-1]["valor"]) if h else None, "revisado": bool(revs), "n_revisiones": len(revs),
                         "visto_primera_vez": h[0]["fecha_captura"] if h else None, "tipo_primer_registro": h[0]["tipo"] if h else None})
+        # fecha de publicación del ÚLTIMO periodo (solo si el evento ya ha salido y corresponde a ese periodo; si no, None)
         pub = None
-        for e in (calendario or {}).get("eventos", []):
-            if e["fecha"] <= hoy and any(c in e["evento"].lower() for c in claves):
-                pub = max(pub or "", e["fecha"])
+        if per:
+            tipo = "semana" if sid == "ICSA" else "trimestre" if modo == "qoq_anual" else "mes"
+            pub = MS.fecha_publicacion((calendario or {}).get("eventos", []), claves, per[-1]["periodo"], tipo, 50 if sid == "JTSJOL" else None)
         out[nombre] = {"serie": sid, "modo": modo, "unidad": unidad, "descripcion": desc, "decimales": dec, "fuente": f"FRED {sid}",
                        "url": f"https://fred.stlouisfed.org/series/{sid}", "periodos": per, "fecha_publicacion_calendario": pub}
     nombres = {sid: SERIES[sid][0] for sid in SERIES}

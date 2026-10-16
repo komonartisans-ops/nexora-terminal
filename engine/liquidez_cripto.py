@@ -35,6 +35,9 @@ import statistics
 import sys
 import time
 import urllib.request
+import os as _os, sys as _sys  # noqa: E402
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import mensual as MS  # noqa: E402
 
 UA = {"User-Agent": "curl/8.0"}  # FRED corta UAs de navegador o personalizados
 TODAY = dt.date.today()
@@ -585,8 +588,9 @@ def medir():
         a = change(rrp, 28)
         M["rrp"] = {"fecha": a["fecha"], "valor_B": a["valor"], "delta_4s_B": a["delta"]}
     if m2 and len(m2) >= 14:
-        yoy = (m2[-1][1] / m2[-13][1] - 1) * 100
-        prev = (m2[-2][1] / m2[-14][1] - 1) * 100
+        yoy, prev = MS.var_pct(m2, -1, 12), MS.var_pct(m2, -2, 12)
+        if yoy is None or prev is None:
+            raise RuntimeError("M2: falta el mismo mes de hace 12 meses (SIN DATO, no se estima)")
         M["m2"] = {"mes": m2[-1][0].strftime("%Y-%m"), "valor_T": m2[-1][1] / 1000, "yoy": yoy, "yoy_prev": prev,
                    "ann_3m": ((m2[-1][1] / m2[-4][1]) ** 4 - 1) * 100}
     for key, ser in (("t2y", dgs2), ("t10y", dgs10)):

@@ -25,6 +25,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from liquidez_cripto import fred, safe  # noqa: E402
+import mensual as MS  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 HOY = dt.date.today()
@@ -91,7 +92,8 @@ def last(s, k=1):
 
 
 def yoy(s, k=12):
-    return (s[-1][1] / s[-1 - k][1] - 1) * 100 if s and len(s) > k else None
+    """Interanual contra el MISMO MES de hace k meses (por fecha, mensual.py); None si ese mes no existe en la serie."""
+    return MS.var_pct(s, -1, k) if s else None
 
 
 def ann3(s):
@@ -145,13 +147,19 @@ def evaluar(R, calendario=None):
     r = S.get("RSAFS")
     if r and len(r) > 13:
         a3, a12 = ann3(r), yoy(r)
-        pts += voto(a3 - a12, U["retail_pp"])
-        ev.append(f"Ventas minoristas 3 meses anualizado {a3:+.1f} % vs {a12:+.1f} % interanual ({r[-1][0]:%Y-%m})")
+        if a12 is None:
+            ev.append(f"Ventas minoristas: SIN DATO interanual (falta el mes de hace 12 meses en la fuente; no se estima) ({r[-1][0]:%Y-%m})")
+        else:
+            pts += voto(a3 - a12, U["retail_pp"])
+            ev.append(f"Ventas minoristas 3 meses anualizado {a3:+.1f} % vs {a12:+.1f} % interanual ({r[-1][0]:%Y-%m})")
     ip = S.get("INDPRO")
     if ip and len(ip) > 13:
         a3, a12 = ann3(ip), yoy(ip)
-        pts += voto(a3 - a12, U["indpro_pp"])
-        ev.append(f"Producción industrial 3 meses anualizado {a3:+.1f} % vs {a12:+.1f} % interanual ({ip[-1][0]:%Y-%m})")
+        if a12 is None:
+            ev.append(f"Producción industrial: SIN DATO interanual (falta el mes de hace 12 meses en la fuente; no se estima) ({ip[-1][0]:%Y-%m})")
+        else:
+            pts += voto(a3 - a12, U["indpro_pp"])
+            ev.append(f"Producción industrial 3 meses anualizado {a3:+.1f} % vs {a12:+.1f} % interanual ({ip[-1][0]:%Y-%m})")
     c = S.get("ICSA")
     if c and len(c) > 17:
         m4, m13 = statistics.mean(x[1] for x in c[-4:]), statistics.mean(x[1] for x in c[-17:-4])
@@ -178,6 +186,9 @@ def evaluar(R, calendario=None):
         s = S.get(sid)
         if s and len(s) > 13:
             a3, a12 = ann3(s), yoy(s)
+            if a12 is None:
+                ev.append(f"{nm}: SIN DATO interanual (falta el mes de hace 12 meses en la fuente; no se estima); 3 meses anualizado {a3:.1f} % ({s[-1][0]:%Y-%m})")
+                continue
             pts += voto(a3 - a12, U["infl_pp"])
             ev.append(f"{nm}: 3 meses anualizado {a3:.1f} % vs {a12:.1f} % interanual ({s[-1][0]:%Y-%m})")
     be = S.get("T10YIE")
@@ -283,7 +294,7 @@ def evaluar(R, calendario=None):
                   + (f" ({r0['subida_1d_pts']:+.0f} pts en 1 sesión)" if r0.get("subida_1d_pts") is not None else "")
                   + f"; tipo esperado tras la reunión del {rk['reunion']} {dif:+.0f} pb vs hoy ({FW['lectura'].lower()} que hace 5 sesiones) → el mercado {mercado.lower()}")
     pc = S.get("PCEPILFE")
-    if ef and pc and len(pc) > 12:
+    if ef and pc and len(pc) > 12 and yoy(pc) is not None:
         rr = ef[-1][1] - yoy(pc)
         ev.append(f"Tipo real de la Fed (efectivo − PCE subyacente) {rr:+.2f} %")
     ex = I.get("expectativas_letras")
@@ -523,7 +534,7 @@ def evaluar(R, calendario=None):
     # cuadrante simplificado comparable con el histórico (encuesta Filadelfia + IPC subyacente)
     simp = None
     ph, cp = S.get("GACDFSA066MSFRBPHI"), S.get("CPILFESL")
-    if ph and cp and len(ph) > 6 and len(cp) > 13:
+    if ph and cp and len(ph) > 6 and len(cp) > 13 and yoy(cp) is not None:
         g = statistics.mean(x[1] for x in ph[-3:]) - statistics.mean(x[1] for x in ph[-6:-3])
         inf = ann3(cp) - yoy(cp)
         simp = {"crecimiento": "↑" if g > 0 else "↓", "inflacion": "↑" if inf > 0 else "↓",

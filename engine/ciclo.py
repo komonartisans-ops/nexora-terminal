@@ -29,6 +29,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from liquidez_cripto import fred, get  # noqa: E402
+import mensual as MS  # noqa: E402
 
 INICIO = "1959-01-01"
 HORIZONTE = 18  # meses: una señal "acierta" si empieza una recesión en los 18 meses siguientes a su activación (CRITERIO NEXORA)
@@ -54,8 +55,13 @@ def trimestral_a_mensual(serie):
 
 
 def yoy(m):
-    ks = sorted(m)
-    return {k: (m[k] / m[ks[i - 12]] - 1) * 100 for i, k in enumerate(ks) if i >= 12 and m[ks[i - 12]]}
+    """Interanual por FECHA ({'AAAA-MM': v}): contra el mismo mes de hace 12 meses; sin ese mes no hay valor (no se compara con otro mes)."""
+    out = {}
+    for k in sorted(m):
+        v = MS.var_pct_dict(m, k, 12)
+        if v is not None:
+            out[k] = v
+    return out
 
 
 def phi(x):

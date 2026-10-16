@@ -30,6 +30,7 @@ os.makedirs(DATA, exist_ok=True)
 
 import csvlog  # noqa: E402
 import liquidez_cripto as LQ  # noqa: E402
+import mensual as MS  # noqa: E402
 
 NOW = dt.datetime.now(dt.timezone.utc)
 STAMP = NOW.strftime("%Y-%m-%d %H:%M UTC")
@@ -271,20 +272,26 @@ PUBLICADOS = [
 
 
 def valor_publicado(sid, modo):
+    """Último valor y el anterior. El interanual se calcula contra el MISMO MES del año anterior (mensual.py): si la fuente no publicó ese mes
+    (IPC de octubre de 2025) el resultado es SIN DATO, nunca una comparación contra otro mes."""
     s = LQ.fred(sid, (dt.date.today() - dt.timedelta(days=900)).isoformat())
     if modo == "nivel":
         a, b = s[-1], s[-2]
         return {"periodo": a[0].isoformat(), "valor": a[1], "anterior": b[1], "anterior_periodo": b[0].isoformat()}
+
     def f(i):
         if modo == "yoy":
-            return (s[i][1] / s[i - 12][1] - 1) * 100
+            return MS.var_pct(s, i, 12)
         if modo == "mom":
             return (s[i][1] / s[i - 1][1] - 1) * 100
         if modo == "diff":
             return s[i][1] - s[i - 1][1]
         if modo == "qoq_anual":
             return ((s[i][1] / s[i - 1][1]) ** 4 - 1) * 100
-    return {"periodo": s[-1][0].isoformat(), "valor": round(f(-1), 2), "anterior": round(f(-2), 2), "anterior_periodo": s[-2][0].isoformat()}
+    a, b = f(-1), f(-2)
+    if a is None:
+        raise RuntimeError(f"SIN DATO: falta el mismo mes de hace 12 meses en la serie de la fuente ({s[-1][0].strftime('%Y-%m')}); no se estima")
+    return {"periodo": s[-1][0].isoformat(), "valor": round(a, 2), "anterior": round(b, 2) if b is not None else None, "anterior_periodo": s[-2][0].isoformat()}
 
 
 def etapa_calendario():
@@ -298,13 +305,18 @@ def etapa_calendario():
             pub[nombre] = v
         except Exception as e:  # noqa: BLE001
             pub[nombre] = {"sin_dato": True, "error": f"{type(e).__name__}: {e}", "fuente": f"FRED {sid}"}
-    hoy_iso = dt.date.today().isoformat()
+    # periodo ≠ publicación: la fecha de publicación solo se asigna si el evento YA ha salido y corresponde al último periodo mostrado (mensual.fecha_publicacion)
+    tipo_de = {"nivel": "semana", "qoq_anual": "trimestre"}
+    for nombre, sid, modo, _ in PUBLICADOS:
+        v = pub.get(nombre)
+        if v and not v.get("sin_dato"):
+            fp = MS.fecha_publicacion(C["eventos"], [nombre.split(" (")[0].lower()], v["periodo"], tipo_de.get(modo, "mes"))
+            if fp:
+                v["fecha_publicacion"] = fp
     for e in C["eventos"]:
         for nombre, v in pub.items():
             if nombre.split(" (")[0].lower() in e["evento"].lower():
                 e["publicado"] = v
-                if e["fecha"] <= hoy_iso and not v.get("sin_dato"):
-                    v["fecha_publicacion"] = max(v.get("fecha_publicacion", ""), e["fecha"])  # periodo ≠ publicación: se muestran las dos
                 break
     C["ultimos_publicados"] = pub
     csvlog.anadir("eventos_macro.csv", [{"fecha": e["fecha"], "hora_madrid": e.get("hora_madrid") or "", "evento": e["evento"], "importancia": e.get("importancia", ""),

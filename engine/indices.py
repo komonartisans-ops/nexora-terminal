@@ -39,6 +39,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from liquidez_cripto import (TODAY, UMBRAL as U_LIQ, at_or_before, change, dts_tga, dxy_replica, ecb_fx,  # noqa: E402
                              fred, get, get_json, nyfed_rrp, nyfed_sofr, safe)
 from oro_xau import corr, delta_n, dirv, pct_n, r2, serie, sma, treasury, z_vel  # noqa: E402
+import mensual as MS  # noqa: E402
+
+
+def _f(v, spec):
+    """Número formateado o «SIN DATO» (nunca un 0 inventado cuando falta el dato)."""
+    return "SIN DATO" if v is None else format(v, spec)
 
 BROWSER = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -507,7 +513,8 @@ def medir():
         M["reservas"] = {"valor_T": r2(c["valor"] / 1e6, 3), "fecha": c["fecha"], "4s_pct": r2(c["delta_pct"]), "3m_pct": r2(c3["delta_pct"]) if c3 else None,
                          "fuente": "Fed H.4.1, WRESBAL (FRED), semanal"}
     if m2:
-        yoy = [(m2[i][0], (m2[i][1] / m2[i - 12][1] - 1) * 100) for i in range(12, len(m2))]
+        yoy = [(m2[i][0], MS.var_pct(m2, i, 12)) for i in range(len(m2))]
+        yoy = [x for x in yoy if x[1] is not None]
         M["m2"] = {"yoy_pct": r2(yoy[-1][1]), "yoy_prev_pct": r2(yoy[-2][1]), "mes": m2[-1][0].strftime("%Y-%m"), "fuente": "Fed H.6, M2SL (FRED)"}
     if nom and effr:
         rows = []
@@ -534,7 +541,7 @@ def medir():
         G["paro"] = {"mes": u[-1][0].strftime("%Y-%m"), "valor": u[-1][1], "previo": u[-2][1], "fuente": "BLS vía FRED (UNRATE)"}
     if macro.get("ahe"):
         a = macro["ahe"]
-        G["salarios"] = {"mes": a[-1][0].strftime("%Y-%m"), "yoy_pct": r2((a[-1][1] / a[-13][1] - 1) * 100), "mm_pct": r2((a[-1][1] / a[-2][1] - 1) * 100),
+        G["salarios"] = {"mes": a[-1][0].strftime("%Y-%m"), "yoy_pct": r2(MS.var_pct(a, -1, 12)) if MS.var_pct(a, -1, 12) is not None else None, "mm_pct": r2((a[-1][1] / a[-2][1] - 1) * 100),
                          "fuente": "BLS vía FRED (ganancia media por hora)"}
     if macro.get("icsa"):
         c = macro["icsa"]
@@ -543,7 +550,7 @@ def medir():
     for k, nm in (("cpi", "IPC general"), ("cpi_core", "IPC subyacente"), ("pce_core", "PCE subyacente")):
         s = macro.get(k)
         if s:
-            G[k] = {"nombre": nm, "mes": s[-1][0].strftime("%Y-%m"), "yoy_pct": r2((s[-1][1] / s[-13][1] - 1) * 100), "mm_pct": r2((s[-1][1] / s[-2][1] - 1) * 100),
+            G[k] = {"nombre": nm, "mes": s[-1][0].strftime("%Y-%m"), "yoy_pct": r2(MS.var_pct(s, -1, 12)) if MS.var_pct(s, -1, 12) is not None else None, "mm_pct": r2((s[-1][1] / s[-2][1] - 1) * 100),
                     "mm_prev_pct": r2((s[-2][1] / s[-3][1] - 1) * 100), "tendencia_3m_anualizada": r2(((s[-1][1] / s[-4][1]) ** 4 - 1) * 100),
                     "fuente": "BLS/BEA vía FRED"}
     if macro.get("retail"):
@@ -758,14 +765,14 @@ def evaluar(M, fedwatch=None, ism=None):
         n = G["nfp"]
         s_ = G.get("salarios", {})
         add("nfp", "NFP / EMPLEO", "Empleo + salarios", "↑" if n["cambio_miles"] > n["previo_miles"] else "↓",
-            f"NFP {n['cambio_miles']:+,} mil ({n['mes']}; previo {n['previo_miles']:+,}; media 3m {n['media_3m']:+,}) · paro {G.get('paro', {}).get('valor', '—')}% · salarios {s_.get('yoy_pct', 0):+.1f}% a/a",
+            f"NFP {n['cambio_miles']:+,} mil ({n['mes']}; previo {n['previo_miles']:+,}; media 3m {n['media_3m']:+,}) · paro {G.get('paro', {}).get('valor', '—')}% · salarios {_f(s_.get('yoy_pct'), '+.1f')}% a/a",
             CTX, "Hay que interpretar el motivo (CH): fuerte puede retrasar recortes pero apoya crecimiento; débil puede traer recortes pero también recesión.", n["fuente"])
     if G.get("cpi_core") or G.get("pce_core"):
         c = G.get("pce_core") or G.get("cpi_core")
         d = "↑" if c["mm_pct"] > c["mm_prev_pct"] + 0.05 else "↓" if c["mm_pct"] < c["mm_prev_pct"] - 0.05 else "→"
         cpi = G.get("cpi_core", {})
         add("inflacion", "CPI / PCE", "Inflación + tendencia", d,
-            f"IPC subyacente {cpi.get('mm_pct', 0):+.2f}% m/m · {cpi.get('yoy_pct', 0):.1f}% a/a ({cpi.get('mes', '')}) · PCE subyacente {G.get('pce_core', {}).get('yoy_pct', 0):.1f}% a/a ({G.get('pce_core', {}).get('mes', '')}) · {c['nombre']} 3m anualizado {c['tendencia_3m_anualizada']:.1f}%",
+            f"IPC subyacente {_f(cpi.get('mm_pct'), '+.2f')}% m/m · {_f(cpi.get('yoy_pct'), '.1f')}% a/a ({cpi.get('mes', '')}) · PCE subyacente {_f(G.get('pce_core', {}).get('yoy_pct'), '.1f')}% a/a ({G.get('pce_core', {}).get('mes', '')}) · {c['nombre']} 3m anualizado {c['tendencia_3m_anualizada']:.1f}%",
             FAV if d == "↓" else CON if d == "↑" else NEU, "Baja: puede permitir más relajación" if d == "↓" else "Sube: puede retrasar recortes" if d == "↑" else "Estable", c["fuente"])
     I = M.get("indices") or {}
     sp = I.get("S&P 500") or {}

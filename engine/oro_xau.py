@@ -34,6 +34,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from liquidez_cripto import (TODAY, UMBRAL as U_LIQ, at_or_before, change, dts_tga, dxy_replica, ecb_fx,  # noqa: E402
                              fred, get, get_json, nyfed_rrp, nyfed_sofr, safe)
+import mensual as MS  # noqa: E402
 
 # ----------------------------------------------------------------- UMBRALES (CRITERIO NEXORA)
 U = {
@@ -353,7 +354,8 @@ def medir():
         M["reservas"] = {"valor_T": r2(c["valor"] / 1e6, 3), "fecha": c["fecha"], "4s_pct": r2(c["delta_pct"]), "3m_pct": r2(c3["delta_pct"]) if c3 else None,
                          "fuente": "Fed H.4.1, WRESBAL (FRED), semanal"}
     if m2:
-        yoy = [(m2[i][0], (m2[i][1] / m2[i - 12][1] - 1) * 100) for i in range(12, len(m2))]
+        yoy = [(m2[i][0], MS.var_pct(m2, i, 12)) for i in range(len(m2))]
+        yoy = [x for x in yoy if x[1] is not None]
         M["m2"] = {"yoy_pct": r2(yoy[-1][1]), "yoy_prev_pct": r2(yoy[-2][1]), "mes": m2[-1][0].strftime("%Y-%m"), "fuente": "Fed H.6, M2SL (FRED), mensual"}
     if sofr and iorb:
         M["sofr"] = {"valor": sofr[-1][1], "fecha": sofr[-1][0].isoformat(), "iorb": iorb[-1][1]}
