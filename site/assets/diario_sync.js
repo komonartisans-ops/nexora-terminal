@@ -27,7 +27,8 @@ const DSYNC = (() => {
   };
   function merge(r, l) {
     const borrados = Object.assign({}, r.borrados, l.borrados), mp = new Map();
-    [...r.trades, ...l.trades].forEach((t) => { if (t && t.id && !borrados[t.id]) mp.set(t.id, t); });
+    /* misma operación en las dos copias: gana la editada más tarde (campo mod); a igualdad, la local */
+    [...r.trades, ...l.trades].forEach((t) => { if (!t || !t.id || borrados[t.id]) return; const p = mp.get(t.id); if (!p || String(t.mod || '') >= String(p.mod || '')) mp.set(t.id, t); });
     const notas = {}, notasMod = {};
     new Set([...Object.keys(r.notas), ...Object.keys(l.notas)]).forEach((d) => {
       const tr = r.notasMod[d] || '', tl = l.notasMod[d] || '';
@@ -154,6 +155,7 @@ const DSYNC = (() => {
       const loc = norm(io.get());
       lsSet(KM, { sha: null, dirty: !vacio(loc), pend: 'merge' });
       abierto = false;
+      window.dispatchEvent(new Event('nexora:diario-conexion'));
     } catch (e) {
       try { localStorage.removeItem(KC); } catch (x) { /* sin almacenamiento */ }
       fase(e instanceof TypeError ? 'offline' : 'error', e instanceof TypeError ? 'Sin conexión: no se pudo comprobar el token.' : e.message);
@@ -164,6 +166,8 @@ const DSYNC = (() => {
   function desconectar() {
     try { localStorage.removeItem(KC); localStorage.removeItem(KM); } catch (e) { /* sin almacenamiento */ }
     abierto = false; S.hora = null; fase('off');
+    window.dispatchEvent(new Event('nexora:diario-conexion'));
+    if ((location.hash || '').startsWith('#/operativa')) route();
   }
 
   window.addEventListener('online', () => { if (io && cfg()) ejecutar(); });
