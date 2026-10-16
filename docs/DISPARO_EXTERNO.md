@@ -96,3 +96,15 @@ El script envía como mucho una vez por día (estado en `data/estado_agenda.json
 - La página **Agenda → Salud de los workflows** muestra la última ejecución de cada workflow y cuántas de las esperadas (el horario de arriba) se hicieron hoy. Solo cuentan ejecuciones lanzadas por `schedule` o `workflow_dispatch`.
 - Si `actualizar` lleva más de 2 h sin ejecutarse en horario laborable (06-22 UTC, lun-vie), `engine/salud.py` envía un aviso por Telegram (uno por parada). `salud.py` corre dentro de `reacciones` y de `actualizar`; si ambos dejan de ejecutarse el aviso tampoco sale, y cron-job.org (*Notify on failure*) es la segunda red.
 - Seguridad: el token solo puede lanzar workflows de este repositorio. Si sospechas que se ha filtrado, revócalo en GitHub y crea otro.
+
+## 4. El modo horario recupera el diario y el cierre (auditoría 16-oct-2026)
+
+cron-job.org solo dispara `modo=horario`; el build **diario** (05:30 UTC) y el **cierre** (21:30 UTC) dependen de los crones de GitHub, que no están garantizados
+(15-oct: diario +4,6 h y cierre +2,3 h; 16-oct: el diario no salió). Por eso `engine/build.py` **escala** el modo horario: si ya son las 05:30 UTC y hoy no se ejecutó
+`ciclo`, esa ejecución añade todas las etapas del diario; si son las 21:30 UTC y hoy no se ejecutó `gamma`, añade las del cierre. Se mide «ejecutada» (no «ok») para que
+una fuente caída no relance el build completo cada hora. El modo efectivo queda en `meta.json` y en `data/ejecuciones.csv` (`horario+diario`, `horario+cierre`).
+
+El modo horario incluye además `calendario` y `publicados` (y con ellos `agenda.json`), para que el día de una publicación el dato salga a la web en la hora siguiente.
+
+*Opcional (no necesario ahora):* dos tareas más en cron-job.org con el mismo cuerpo que la tarea A (`{"ref":"main","inputs":{"modo":"diario"}}` a las 05:30 UTC lun-vie y
+`{"ref":"main","inputs":{"modo":"cierre"}}` a las 21:30 UTC lun-vie) dejan al diario y al cierre a su hora exacta; sin ellas llegan con hasta una hora de retraso.
