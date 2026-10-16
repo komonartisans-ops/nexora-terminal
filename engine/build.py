@@ -553,6 +553,17 @@ def etf_btc_serie():
     return out[-250:]
 
 
+def etapa_etf():
+    """Flujos diarios de los ETF spot de BTC y ETH (Farside, validados). Memoria: data/historico_etf_flujos.csv, solo-añadir; un valor distinto para la misma
+    fecha se guarda como fila nueva (revisión visible)."""
+    import etf_flujos
+    R = etf_flujos.medir()
+    filas = [{"fecha": d, "activo": k, "total_musd": t, "capturado_utc": STAMP, "fuente": x["fuente"]}
+             for k, x in R["etf"].items() if not x.get("sin_dato") for d, t in x["serie"]]
+    csvlog.anadir("historico_etf_flujos.csv", filas, ("fecha", "activo", "total_musd"))
+    return R
+
+
 def etapa_series():
     err, out, cr = {}, {}, {}
     for k, sym, nombre in SERIES_YAHOO:
@@ -590,9 +601,7 @@ def etapa_series():
     oi = toma("oi_btc", LQ.okx_oi, "BTC")
     if oi:
         cr["oi_btc"] = serie_json(oi)
-    et = toma("etf_btc", etf_btc_serie)
-    if et:
-        cr["etf_btc_musd"] = serie_json(et)
+    # los flujos de ETF salen de su propia etapa (etf.json, engine/etf_flujos.py): una única fuente, validada fila a fila
     if not out and not cr:
         raise RuntimeError("ninguna serie respondió: " + json.dumps(err)[:300])
     return {"yahoo": out, "cripto": cr, "errores": err}
@@ -858,17 +867,17 @@ def etapa_alertas():
 
 # ------------------------------------------------------------------ principal
 ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_tipos, "calendario": etapa_calendario,
-          "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen, "tesis": etapa_tesis,
+          "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "etf": etapa_etf, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen, "tesis": etapa_tesis,
           "regimen": etapa_regimen, "reevaluar": etapa_reevaluar, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias,
           "bancos": etapa_bancos, "tono": etapa_tono,
           "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "alertas": etapa_alertas, "reacciones": etapa_reacciones, "contexto": etapa_contexto}
-ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "reevaluar", "resumen", "tesis", "regimen", "divisas", "cot", "noticias",
+ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "etf", "ciclo", "publicados", "reevaluar", "resumen", "tesis", "regimen", "divisas", "cot", "noticias",
          "bancos", "tono", "skew", "semis", "gamma", "alertas", "reacciones", "contexto"]
 # horario: el SKEW (Cboe) se publica tras el cierre, por eso entra aquí para que la alerta salga en la hora siguiente; gamma NO (solo al cierre).
 # cierre (cron 21:30 UTC, tras el cierre de Nueva York): snapshot de opciones, semis/software y SKEW del día.
 # calendario y publicados entran en el horario porque el día de una publicación (IPC, PPI, ventas…) el dato sale a las 12:30-13:30 UTC y la web no puede esperar
 # al build diario; calendario escribe también site/data/agenda.json (sin esto la página Agenda mostraba el «hoy» de ayer).
-MODOS = {"horario": ["precios", "fedwatch", "tipos", "calendario", "publicados", "reevaluar", "resumen", "tesis", "regimen", "noticias", "skew", "alertas", "contexto"],
+MODOS = {"horario": ["precios", "fedwatch", "tipos", "calendario", "publicados", "reevaluar", "resumen", "tesis", "regimen", "etf", "noticias", "skew", "alertas", "contexto"],
          "cierre": ["precios", "semis", "bancos", "tono", "skew", "gamma", "alertas", "contexto"], "diario": ORDEN, "todo": ORDEN}
 
 

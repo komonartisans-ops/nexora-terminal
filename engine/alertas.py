@@ -319,9 +319,11 @@ def evaluar(D, estado):
            "Cripto reacciona a liquidez y tipos reales; un movimiento sin motor macro suele ser de flujos y apalancamiento.", SENCILLO["real"])
     # ETF BTC
     try:
-        e = etf_btc()
+        j = leer("etf.json") or {}
+        x = (j.get("etf") or {}).get("btc") or {}
+        e = (dt.date.fromisoformat(x["ultimo"]["fecha"]), x["ultimo"]["total_musd"]) if x.get("ultimo") else None  # misma fuente validada que la web (etf_flujos.py)
         if e is None:
-            no_eval["etf_btc"] = "Farside sin día con dato"
+            no_eval["etf_btc"] = "SIN DATO (Farside: sin fila válida)"
         elif e[1] < U["etf_btc_musd"]:
             al("etf_btc", "ETF de BTC", f"Los ETF de bitcoin de EE. UU. registran salidas netas de {n(abs(e[1]), 0)} M$ el {fecha_linea(e[0].isoformat())} (Farside Investors).",
                "Salidas fuertes de ETF restan demanda al BTC; no afectan directamente a oro ni a índices (interpretación).",
