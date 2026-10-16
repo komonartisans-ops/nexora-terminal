@@ -418,7 +418,16 @@ def leer_log():
             vig = [x for x in vig if (x["evento_id"], x["fase"]) != (r["evento_id"], r["fase"])]
         else:
             vig.append(r)
-    return vig
+    # dos ejecuciones simultáneas (p. ej. dos disparos externos en el mismo segundo) pueden añadir la misma fase dos veces: la fusión de push_seguro une
+    # por líneas y no ve que (evento_id, fase) ya existía. El log no se toca (solo-añadir); al LEER vale la primera fila registrada de cada (evento_id, fase).
+    vistos, unicas = set(), []
+    for r in vig:
+        k = (r["evento_id"], r["fase"])
+        if k in vistos:
+            continue
+        vistos.add(k)
+        unicas.append(r)
+    return unicas
 
 
 def guardar(filas):
