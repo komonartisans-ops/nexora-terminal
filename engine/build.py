@@ -32,6 +32,7 @@ import csvlog  # noqa: E402
 import liquidez_cripto as LQ  # noqa: E402
 import mensual as MS  # noqa: E402
 
+MODO_EFECTIVO = ""  # lo fija main(): horario, cierre, diario, horario+cierre…
 NOW = dt.datetime.now(dt.timezone.utc)
 STAMP = NOW.strftime("%Y-%m-%d %H:%M UTC")
 
@@ -776,7 +777,12 @@ def etapa_gamma():
                 descartados[k] = {"snapshot_et": x["ultima_operacion_et"], "motivo": "snapshot intradía: se conserva el último cierre de Nueva York"}
                 M["indices"][k] = p
     M["descartados_intradia"] = descartados
-    gamma.guardar_historico(M)
+    # el histórico solo lo escribe la ejecución de CIERRE (21:30 UTC, tras el cierre de NY y antes de la actualización matinal del interés abierto) y solo
+    # con la sesión del día; el diario y el horario muestran la gamma en la web pero no escriben (el mismo cierre medido por la mañana da otro GEX)
+    cierre_hoy = "cierre" in MODO_EFECTIVO and all(x.get("sesion") == NOW.strftime("%Y-%m-%d") for x in M["indices"].values())
+    M["historico_escrito"] = bool(cierre_hoy)
+    if cierre_hoy:
+        gamma.guardar_historico(M, STAMP)
     hist = csvlog.leer("historico_gamma.csv")
     rev, err = {}, {}
     for clave, cfg in gamma.INDICES.items():
@@ -869,6 +875,8 @@ def main():
     a = ap.parse_args()
     estado = (leer("meta.json") or {}).get("etapas", {})
     modo_ef, extra = (a.modo, []) if a.solo else escalar(a.modo, estado)
+    global MODO_EFECTIVO
+    MODO_EFECTIVO = modo_ef
     if extra:
         print(f"== modo {a.modo} escalado a {modo_ef}: el build programado de hoy no se ha completado", flush=True)
     etapas = [e for e in ORDEN if e in (a.solo.split(",") if a.solo else MODOS[a.modo] + extra)]

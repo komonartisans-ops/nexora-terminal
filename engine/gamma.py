@@ -335,8 +335,10 @@ def medir():
             "etiqueta": "CRITERIO NEXORA", "metodo": re.sub(r"\n {4,}", " ", __doc__.split("Método:")[1].split("Solo se guarda")[0].strip()), "dias_max": DIAS_MAX, "banda_strikes": BANDA}
 
 
-def guardar_historico(M):
-    """Memoria permanente: solo se añade y solo si el snapshot es del cierre de Nueva York (una fila por sesión e índice)."""
+def guardar_historico(M, medido_utc=None):
+    """Memoria permanente: solo se añade y solo si el snapshot es del cierre de Nueva York (una fila por sesión e índice).
+    `medido_utc` = hora de la medición (cada fila la lleva): el GEX cambia si el interés abierto ya se actualizó (la OCC lo hace cada mañana), así que el
+    histórico solo debe escribirlo la ejecución de cierre (21:30 UTC), antes de esa actualización; build.etapa_gamma lo exige."""
     filas = []
     for clave, x in M["indices"].items():
         if not x["cierre_confirmado"]:
@@ -349,7 +351,7 @@ def guardar_historico(M):
                       "call_wall_idx": g(x["call_wall"]), "put_wall_idx": g(x["put_wall"]), "flip_idx": g(x["flip"]),
                       "call_wall_fut": h(x["call_wall"]), "put_wall_fut": h(x["put_wall"]), "flip_fut": h(x["flip"]),
                       "gex_neto_musd": x["gex_neto_musd"], "regimen": x["regimen"], "n_vencimientos": x["n_vencimientos"], "n_grupos": x["n_grupos"],
-                      "ultima_operacion_et": x["ultima_operacion_et"]})
+                      "ultima_operacion_et": x["ultima_operacion_et"], "medido_utc": medido_utc or ""})
     return csvlog.anadir("historico_gamma.csv", filas, ("fecha_sesion", "indice"))
 
 
