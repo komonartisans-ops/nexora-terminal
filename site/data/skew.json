@@ -1,14 +1,14 @@
 {
- "fecha": "2026-10-14",
- "valor": 157.3,
+ "fecha": "2026-10-15",
+ "valor": 160.45,
  "zona": "ALTO",
- "previo": 154.74,
+ "previo": 157.3,
  "zona_relativa": "ELEVADO",
- "percentil_500": 87.0,
+ "percentil_500": 89.4,
  "umbral_alto_500": 161.21,
  "umbral_elevado_500": 151.92,
  "ventana_relativa": 500,
- "racha_relativa": 4,
+ "racha_relativa": 5,
  "entrada_zona_alta_relativa": null,
  "entrada_episodio_relativa": null,
  "estudio_relativo": {
@@ -1452,19 +1452,19 @@
   },
   "tasa_base": {
    "5": {
-    "n": 8759,
+    "n": 8760,
     "media": 0.2,
     "mediana": 0.33,
     "pct_positivos": 58.0
    },
    "20": {
-    "n": 8744,
+    "n": 8745,
     "media": 0.77,
     "mediana": 1.23,
-    "pct_positivos": 63.8
+    "pct_positivos": 63.9
    },
    "60": {
-    "n": 8704,
+    "n": 8705,
     "media": 2.3,
     "mediana": 3.05,
     "pct_positivos": 70.3
@@ -1481,7 +1481,7 @@
   "umbral_skew": 140.0,
   "criterio": "percentil ≥ 90 de las últimas 500 sesiones (zona relativa)",
   "muestra_desde": "1991-12-20",
-  "sesiones_base": 8764,
+  "sesiones_base": 8765,
   "sesgo_del_estudio": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción."
  },
  "estudio_fijo_misma_muestra": {
@@ -1989,19 +1989,19 @@
   },
   "tasa_base": {
    "5": {
-    "n": 8759,
+    "n": 8760,
     "media": 0.2,
     "mediana": 0.33,
     "pct_positivos": 58.0
    },
    "20": {
-    "n": 8744,
+    "n": 8745,
     "media": 0.77,
     "mediana": 1.23,
-    "pct_positivos": 63.8
+    "pct_positivos": 63.9
    },
    "60": {
-    "n": 8704,
+    "n": 8705,
     "media": 2.3,
     "mediana": 3.05,
     "pct_positivos": 70.3
@@ -2018,7 +2018,7 @@
   "umbral_skew": 140.0,
   "criterio": "SKEW ≥ 140 (zona fija), misma muestra que la zona relativa",
   "muestra_desde": "1991-12-20",
-  "sesiones_base": 8764,
+  "sesiones_base": 8765,
   "sesgo_del_estudio": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción."
  },
  "avisos_3_anos": {
@@ -2031,9 +2031,9 @@
  },
  "entrada_episodio": "2026-08-17",
  "percentil_hist": 99,
- "percentil_10a": 96,
- "percentil_1a": 98,
- "racha_sesiones": 42,
+ "percentil_10a": 97,
+ "percentil_1a": 99,
+ "racha_sesiones": 43,
  "entrada_zona_alta": "2026-08-17",
  "ultima_vez_alto": null,
  "maximo_hist": {
@@ -2049,10 +2049,10 @@
   "alto": 140.0
  },
  "vix": {
-  "valor": 16.87,
-  "fecha": "2026-10-14",
-  "cambio_5d": 1.79,
-  "percentil_1a": 46
+  "valor": 16.46,
+  "fecha": "2026-10-15",
+  "cambio_5d": 1.05,
+  "percentil_1a": 40
  },
  "vix3m": {
   "valor": 18.49,
@@ -2064,9 +2064,9 @@
    "nombre": "VIX y estructura de plazos",
    "encendida": false,
    "estado": "CALMA",
-   "valor": "VIX 16.9 · VIX/VIX3M 0.91",
+   "valor": "VIX 16.5 · VIX/VIX3M 0.89",
    "regla": "Encendida si VIX ≥ 20 o VIX/VIX3M ≥ 1 (curva invertida).",
-   "fecha": "2026-10-14",
+   "fecha": "2026-10-15",
    "fuente": "Cboe (VIX y VIX3M)",
    "url": "https://www.cboe.com/tradable_products/vix/",
    "edad_dias": 1
@@ -2087,20 +2087,20 @@
     "hy_pct1a": 92,
     "ccc_pct1a": 100
    },
-   "edad_dias": 2
+   "edad_dias": 3
   },
   {
    "clave": "fondos",
    "nombre": "Activos en fondos monetarios",
    "encendida": null,
    "estado": "CADUCADA",
-   "valor": "3.03 bill. $ · 13 sem. +0.35 % (percentil 23) · dato de hace 45 días (> 14): no suma",
+   "valor": "3.03 bill. $ · 13 sem. +0.35 % (percentil 23) · dato de hace 46 días (> 14): no suma",
    "regla": "Encendida si la variación a 13 semanas está en el percentil ≥ 80 de su historia desde 2018.",
    "fecha": "2026-08-31",
    "fuente": "FRED WRMFNS (fondos monetarios minoristas, semanal)",
    "url": "https://fred.stlouisfed.org/series/WRMFNS",
-   "retraso_dias": 45,
-   "edad_dias": 45,
+   "retraso_dias": 46,
+   "edad_dias": 46,
    "caducada": true,
    "encendida_original": false
   }
@@ -2115,7 +2115,7 @@
    "var_13s_pct": 0.35,
    "var_52s_pct": 5.51,
    "percentil_var_13s": 23,
-   "edad_dias": 45,
+   "edad_dias": 46,
    "fuente": "FRED WRMFNS (fondos monetarios minoristas, semanal)",
    "url": "https://fred.stlouisfed.org/series/WRMFNS",
    "serie": [
@@ -2752,7 +2752,7 @@
    "var_1m_pct": 1.41,
    "var_3m_pct": 1.54,
    "var_12m_pct": 10.72,
-   "edad_dias": 45,
+   "edad_dias": 46,
    "fuente": "OFR · Money Market Fund Monitor (SEC N-MFP), total de inversiones, mensual",
    "url": "https://www.financialresearch.gov/money-market-funds/",
    "serie": [
@@ -3517,19 +3517,19 @@
   },
   "tasa_base": {
    "5": {
-    "n": 9258,
+    "n": 9259,
     "media": 0.19,
     "mediana": 0.33,
     "pct_positivos": 57.7
    },
    "20": {
-    "n": 9243,
+    "n": 9244,
     "media": 0.77,
     "mediana": 1.21,
     "pct_positivos": 63.7
    },
    "60": {
-    "n": 9203,
+    "n": 9204,
     "media": 2.32,
     "mediana": 3.05,
     "pct_positivos": 70.4
@@ -3546,15 +3546,15 @@
   "umbral_skew": 140.0,
   "criterio": "SKEW ≥ 140 (zona fija)",
   "muestra_desde": "1990-01-02",
-  "sesiones_base": 9263,
+  "sesiones_base": 9264,
   "sesgo_del_estudio": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción.",
   "episodio_actual": {
    "entrada": "2026-08-17",
-   "sesiones": 42,
+   "sesiones": 43,
    "spx_entrada": 7745.06,
-   "spx_ultimo": 7718.94,
-   "ret_desde_entrada_pct": -0.34,
-   "fecha_ultimo": "2026-10-14"
+   "spx_ultimo": 7744.06,
+   "ret_desde_entrada_pct": -0.01,
+   "fecha_ultimo": "2026-10-15"
   }
  },
  "distribucion_anual": [
@@ -3740,16 +3740,12 @@
   },
   {
    "anio": 2026,
-   "pct_alto": 78.2,
-   "sesiones": 197
+   "pct_alto": 78.3,
+   "sesiones": 198
   }
  ],
  "series": {
   "p90_500": [
-   [
-    "2021-08-10",
-    149.04
-   ],
    [
     "2021-08-11",
     149.35
@@ -8945,13 +8941,13 @@
    [
     "2026-10-14",
     161.21
+   ],
+   [
+    "2026-10-15",
+    161.21
    ]
   ],
   "p75_500": [
-   [
-    "2021-08-10",
-    141.77
-   ],
    [
     "2021-08-11",
     141.81
@@ -14147,13 +14143,13 @@
    [
     "2026-10-14",
     151.92
+   ],
+   [
+    "2026-10-15",
+    151.92
    ]
   ],
   "skew": [
-   [
-    "2021-08-10",
-    153.33
-   ],
    [
     "2021-08-11",
     154.32
@@ -19349,13 +19345,13 @@
    [
     "2026-10-14",
     157.3
+   ],
+   [
+    "2026-10-15",
+    160.45
    ]
   ],
   "spx": [
-   [
-    "2021-08-11",
-    4447.7
-   ],
    [
     "2021-08-12",
     4460.83
@@ -24551,13 +24547,13 @@
    [
     "2026-10-14",
     7718.94
+   ],
+   [
+    "2026-10-15",
+    7744.06
    ]
   ],
   "vix": [
-   [
-    "2021-09-28",
-    23.25
-   ],
    [
     "2021-09-29",
     22.56
@@ -29753,6 +29749,10 @@
    [
     "2026-10-14",
     16.87
+   ],
+   [
+    "2026-10-15",
+    16.46
    ]
   ]
  },
@@ -29767,7 +29767,7 @@
   "estado": "SIN ALERTA (zona relativa no alta)"
  },
  "esencial": {
-  "cambio": "El SKEW de Cboe cerró en 157,3 el 14/10/2026 (percentil 99 de su historia desde 1990; 98 del último año), en zona alta (≥ 140); frente a las últimas 500 sesiones está en el percentil 87 (zona relativa elevado; el umbral alto relativo está en 161,2); entró en zona alta el 17/08/2026 y lleva 42 sesiones seguidas. Sesión previa: 154,7.",
+  "cambio": "El SKEW de Cboe cerró en 160,4 el 15/10/2026 (percentil 99 de su historia desde 1990; 99 del último año), en zona alta (≥ 140); frente a las últimas 500 sesiones está en el percentil 89 (zona relativa elevado; el umbral alto relativo está en 161,2); entró en zona alta el 17/08/2026 y lleva 43 sesiones seguidas. Sesión previa: 157,3.",
   "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 2. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
   "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
  },
@@ -29776,6 +29776,6 @@
  "errores": {},
  "metodo": "CRITERIO NEXORA. Zonas fijas: normal < 135, elevado ≥ 135, alto ≥ 140. Zonas relativas: percentil de las últimas 500 sesiones, alto ≥ p90, elevado ≥ p75. Alerta de Telegram: zona relativa alta Y al menos 2 de 3 confirmaciones encendidas. Episodio = primer cierre en zona alta tras 10 sesiones sin estarlo. Falsa alarma = el S&P 500 no cae ≥ 5 % desde el cierre de entrada en las siguientes 60 sesiones. Los umbrales son convenciones fijas, no optimizadas.",
  "ok": true,
- "generado_utc": "2026-10-15 23:46 UTC",
- "duracion_s": 1.4
+ "generado_utc": "2026-10-16 05:55 UTC",
+ "duracion_s": 2.9
 }

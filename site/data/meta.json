@@ -1,20 +1,20 @@
 {
- "actualizado_utc": "2026-10-15 23:46 UTC",
- "modo": "cierre",
+ "actualizado_utc": "2026-10-16 05:55 UTC",
+ "modo": "horario",
  "etapas": {
   "precios": {
    "ok": true,
    "duracion_s": 7.1,
    "error": null,
-   "ejecutada_utc": "2026-10-15 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-15 23:46 UTC"
+   "ejecutada_utc": "2026-10-16 05:55 UTC",
+   "ultimo_ok_utc": "2026-10-16 05:55 UTC"
   },
   "fedwatch": {
    "ok": true,
-   "duracion_s": 15.5,
+   "duracion_s": 22.8,
    "error": null,
-   "ejecutada_utc": "2026-10-15 22:59 UTC",
-   "ultimo_ok_utc": "2026-10-15 22:59 UTC"
+   "ejecutada_utc": "2026-10-16 05:55 UTC",
+   "ultimo_ok_utc": "2026-10-16 05:55 UTC"
   },
   "calendario": {
    "ok": true,
@@ -39,10 +39,10 @@
   },
   "tipos": {
    "ok": true,
-   "duracion_s": 75.5,
+   "duracion_s": 76.9,
    "error": null,
-   "ejecutada_utc": "2026-10-15 22:59 UTC",
-   "ultimo_ok_utc": "2026-10-15 22:59 UTC"
+   "ejecutada_utc": "2026-10-16 05:55 UTC",
+   "ultimo_ok_utc": "2026-10-16 05:55 UTC"
   },
   "ciclo": {
    "ok": true,
@@ -69,8 +69,8 @@
    "ok": true,
    "duracion_s": 1.2,
    "error": null,
-   "ejecutada_utc": "2026-10-15 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-15 23:46 UTC"
+   "ejecutada_utc": "2026-10-16 05:55 UTC",
+   "ultimo_ok_utc": "2026-10-16 05:55 UTC"
   },
   "monitores": {
    "ok": true,
@@ -104,15 +104,15 @@
    "ok": true,
    "duracion_s": 7.3,
    "error": null,
-   "ejecutada_utc": "2026-10-15 22:59 UTC",
-   "ultimo_ok_utc": "2026-10-15 22:59 UTC"
+   "ejecutada_utc": "2026-10-16 05:55 UTC",
+   "ultimo_ok_utc": "2026-10-16 05:55 UTC"
   },
   "skew": {
    "ok": true,
-   "duracion_s": 1.4,
+   "duracion_s": 2.9,
    "error": null,
-   "ejecutada_utc": "2026-10-15 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-15 23:46 UTC"
+   "ejecutada_utc": "2026-10-16 05:55 UTC",
+   "ultimo_ok_utc": "2026-10-16 05:55 UTC"
   },
   "semis": {
    "ok": true,
@@ -132,8 +132,8 @@
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-15 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-15 23:46 UTC"
+   "ejecutada_utc": "2026-10-16 05:55 UTC",
+   "ultimo_ok_utc": "2026-10-16 05:55 UTC"
   },
   "tesis": {
    "ok": true,
@@ -164,5 +164,5 @@
    "ultimo_ok_utc": "2026-10-15 10:08 UTC"
   }
  },
- "duracion_total_s": 77.7
+ "duracion_total_s": 118.4
 }
