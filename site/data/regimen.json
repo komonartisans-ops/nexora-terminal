@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-16): reunión del 2026-10-28 subida 16 % / mantener 84 % / bajada 0 % (-12 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +36 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-16): reunión del 2026-10-28 subida 18 % / mantener 82 % / bajada 0 % (-10 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +36 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.77 % vs tipo efectivo 3.88 % → +89 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +61 pb (+7 pb en 5 sesiones)"
@@ -133,7 +133,7 @@
      "S&P 500: semana -0.3 · mes +1.4 %",
      "Nasdaq 100: semana -2.6 · mes +1.7 %",
      "Russell 2000: semana -1.0 · mes -3.7 %",
-     "Oro (COMEX GC=F, respaldo): semana -0.4 · mes -5.1 %",
+     "Oro (COMEX GC=F, respaldo): semana -0.5 · mes -5.2 %",
      "Bitcoin: semana +0.5 · mes +8.7 %",
      "Ether: semana -1.4 · mes +1.8 %",
      "10Y nominal: semana -18.0 · mes +9.0 pb",
@@ -169,14 +169,14 @@
     "lectura": "MIXTO",
     "sentido": "NEUTRAL",
     "precio": "CONFIRMA DEBILIDAD",
-    "detalle": "oro 20 sesiones -5.1 %"
+    "detalle": "oro 20 sesiones -5.2 %"
    },
    {
     "monitor": "Índices USA",
     "lectura": "MIXTO",
     "sentido": "NEUTRAL",
     "precio": "CONFIRMA FUERZA",
-    "detalle": "amplitud NEUTRA · S&P 20 sesiones +1.4 %"
+    "detalle": "amplitud CONFIRMA · S&P 20 sesiones +1.4 %"
    }
   ],
   "concordancia": "LOS TRES COINCIDEN: NEUTRAL",
@@ -231,8 +231,8 @@
     "unidad": "%"
    },
    "Oro (COMEX GC=F, respaldo)": {
-    "semana": -0.39,
-    "mes": -5.08,
+    "semana": -0.49,
+    "mes": -5.18,
     "unidad": "%"
    },
    "Bitcoin": {
@@ -337,7 +337,7 @@
    },
    {
     "pregunta": "¿Qué hacen los bancos centrales?",
-    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 16 %, mantener 84 %, bajada 0 % (ayer subida 28 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
+    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 18 %, mantener 82 %, bajada 0 % (ayer subida 28 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
    },
    {
     "pregunta": "¿Qué dice el consumo (mercado frente a datos reales)?",
@@ -1035,8 +1035,8 @@
    "lectura": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "historico": "Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %).",
    "aviso": "Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
-   "concentracion": "Amazon + Tesla pesan el 41,2 % de XLY (14-Oct-2026); en 13 semanas Amazon +3,0 %, Tesla -4,8 %. Sin ellas, el ratio habría variado -4,4 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla.",
-   "tesis": "XLY/XLP 1,3084 (2026-10-15) · -5,3 % frente a su media de 200 sesiones · 13 semanas -3,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 41,2 % de XLY (14-Oct-2026); en 13 semanas Amazon +3,0 %, Tesla -4,8 %. Sin ellas, el ratio habría variado -4,4 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
+   "concentracion": "Amazon + Tesla pesan el 40,3 % de XLY (15-Oct-2026); en 13 semanas Amazon +3,0 %, Tesla -4,8 %. Sin ellas, el ratio habría variado -4,4 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla.",
+   "tesis": "XLY/XLP 1,3084 (2026-10-15) · -5,3 % frente a su media de 200 sesiones · 13 semanas -3,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 40,3 % de XLY (15-Oct-2026); en 13 semanas Amazon +3,0 %, Tesla -4,8 %. Sin ellas, el ratio habría variado -4,4 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
    "estado_mercado": "DEFENSIVO",
    "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
   }
@@ -1048,6 +1048,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-16 11:13 UTC",
- "duracion_s": 17.2
+ "generado_utc": "2026-10-16 11:20 UTC",
+ "duracion_s": 6.6
 }
