@@ -1,7 +1,7 @@
 {
  "periodo": "hoy",
  "corte": "Datos entre el 2026-10-15 y el 2026-10-16 (cada fuente publica a su hora)",
- "movido": "El dólar se debilita 0,39 %; la probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 28 % a 16 %. En conjunto: el dinero se abarata.",
+ "movido": "El dólar se debilita 0,39 %; la probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 28 % a 18 %. En conjunto: el dinero se abarata.",
  "significa": [
   {
    "activo": "Oro",
@@ -35,7 +35,7 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 16 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 18 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 21 oct · Resultados Meta Platforms (META): BPA estimado $6.67 · después del cierre",
   "mié 21 oct · Resultados Tesla (TSLA): BPA estimado $0.21 · después del cierre"
  ],
@@ -59,7 +59,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 1.8,
+    "peso": 1.5,
     "razon": "la Fed se ve menos dura"
    }
   ],
@@ -73,7 +73,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 1.2,
+    "peso": 1.0,
     "razon": "la Fed se ve menos dura"
    }
   ],
@@ -87,7 +87,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 1.2,
+    "peso": 1.0,
     "razon": "la Fed se ve menos dura"
    }
   ],
@@ -101,7 +101,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 1.8,
+    "peso": 1.5,
     "razon": "la Fed se ve menos dura"
    }
   ],
@@ -115,7 +115,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 0.9,
+    "peso": 0.75,
     "razon": "la Fed se ve menos dura"
    }
   ],
@@ -123,7 +123,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 2.4,
+    "peso": 2.0,
     "razon": "la Fed se ve menos dura"
    }
   ]
@@ -155,10 +155,10 @@
    "fecha": "2026-10-15"
   },
   "fed": {
-   "valor": 16.0,
+   "valor": 18.0,
    "antes": 28.0,
    "reunion": "2026-10-28",
-   "delta": -12.0,
+   "delta": -10.0,
    "fecha": "2026-10-16"
   }
  },
@@ -174,9 +174,9 @@
    "valor": 7744.06
   },
   "Oro": {
-   "delta": 0.4867941826842248,
+   "delta": 0.4388337032433576,
    "fecha": "2026-10-16",
-   "valor": 4190.39990234375
+   "valor": 4188.39990234375
   },
   "Bitcoin": {
    "delta": 0.6928965385087471,
@@ -234,7 +234,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 1.2,
+     "peso": 1.0,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -283,7 +283,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 1.8,
+     "peso": 1.5,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -332,7 +332,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 1.2,
+     "peso": 1.0,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -386,7 +386,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 1.8,
+     "peso": 1.5,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -435,7 +435,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 0.9,
+     "peso": 0.75,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -478,7 +478,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 2.4,
+     "peso": 2.0,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -503,6 +503,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100 y S&P 500; sin ventaja clara: Bitcoin, US30 · Dow Jones y Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-16 19:53 UTC",
- "duracion_s": 108.3
+ "generado_utc": "2026-10-16 20:07 UTC",
+ "duracion_s": 102.6
 }
