@@ -24,7 +24,7 @@ SALIDA, ESTADO = os.path.join(SITE_DATA, "salud.json"), os.path.join(DATA, "esta
 REPO = os.environ.get("GITHUB_REPOSITORY", "komonartisans-ops/nexora-terminal")
 UTC, MAD = dt.timezone.utc, zoneinfo.ZoneInfo("Europe/Madrid")
 UMBRAL_ACTUALIZAR_H = 2.0
-MIN_ENTRE_ESCRITURAS = 30
+MIN_ENTRE_ESCRITURAS = 10  # antes 30: la tarjeta de salud quedaba hasta media hora por detrás de la última ejecución (16-oct: 05:53 con actualizar ya corrido a las 06:07)
 
 
 def _api(ruta):
