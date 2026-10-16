@@ -1,6 +1,6 @@
 {
  "fecha_precios": "2026-10-16",
- "generado_utc": "2026-10-16 16:31 UTC",
+ "generado_utc": "2026-10-16 17:07 UTC",
  "rango_objetivo": [
   3.75,
   4.0
@@ -41,19 +41,19 @@
   },
   {
    "reunion": "2026-12-09",
-   "tipo_esperado": 4.1434,
-   "cambio_reunion_pb": 21.8,
-   "cambio_acumulado_pb": 26.3,
+   "tipo_esperado": 4.1505,
+   "cambio_reunion_pb": 22.5,
+   "cambio_acumulado_pb": 27.0,
    "metodo": "quedan 22 días del mes (≥ 10): ZQ del mes de la reunión (ZQZ26)",
    "contrato": "ZQZ26",
    "dias_restantes_mes": 22,
    "prob_reunion": {
-    "subida": 87.4,
-    "mantiene": 12.6,
+    "subida": 90.2,
+    "mantiene": 9.8,
     "bajada": 0,
     "detalle_pb": {
-     "0": 12.6,
-     "25": 87.4
+     "0": 9.8,
+     "25": 90.2
     }
    },
    "prob_acumulada": {
@@ -61,31 +61,31 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "25": 94.6,
-     "50": 5.4
+     "25": 91.8,
+     "50": 8.2
     }
    },
-   "subida_1d_pts": 0.0,
+   "subida_1d_pts": 2.8,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": -2.5,
-   "subida_5d_pts": 5.7,
-   "tipo_5d_pb": 1.4
+   "tipo_1d_pb": -1.8,
+   "subida_5d_pts": 8.5,
+   "tipo_5d_pb": 2.1
   },
   {
    "reunion": "2027-01-27",
-   "tipo_esperado": 4.245,
-   "cambio_reunion_pb": 10.2,
-   "cambio_acumulado_pb": 36.5,
+   "tipo_esperado": 4.25,
+   "cambio_reunion_pb": 10.0,
+   "cambio_acumulado_pb": 37.0,
    "metodo": "quedan 4 días del mes (< 10): ZQ del mes siguiente (ZQG27), sin reunión en ese mes",
    "contrato": "ZQG27",
    "dias_restantes_mes": 4,
    "prob_reunion": {
-    "subida": 40.6,
-    "mantiene": 59.4,
+    "subida": 39.8,
+    "mantiene": 60.2,
     "bajada": 0,
     "detalle_pb": {
-     "0": 59.4,
-     "25": 40.6
+     "0": 60.2,
+     "25": 39.8
     }
    },
    "prob_acumulada": {
@@ -93,21 +93,21 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "25": 54.0,
-     "50": 46.0
+     "25": 52.0,
+     "50": 48.0
     }
    },
-   "subida_1d_pts": 6.0,
+   "subida_1d_pts": 5.2,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": -1.0,
-   "subida_5d_pts": 0.3,
-   "tipo_5d_pb": 1.5
+   "tipo_1d_pb": -0.5,
+   "subida_5d_pts": -0.5,
+   "tipo_5d_pb": 2.0
   },
   {
    "reunion": "2027-03-17",
-   "tipo_esperado": 4.4221,
+   "tipo_esperado": 4.4271,
    "cambio_reunion_pb": 17.7,
-   "cambio_acumulado_pb": 54.2,
+   "cambio_acumulado_pb": 54.7,
    "metodo": "quedan 14 días del mes (≥ 10): ZQ del mes de la reunión (ZQH27)",
    "contrato": "ZQH27",
    "dias_restantes_mes": 14,
@@ -125,31 +125,31 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 83.1,
-     "75": 16.9
+     "50": 81.1,
+     "75": 18.9
     }
    },
    "subida_1d_pts": 4.5,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 0.1,
+   "tipo_1d_pb": 0.6,
    "subida_5d_pts": 0.0,
-   "tipo_5d_pb": 1.5
+   "tipo_5d_pb": 2.0
   },
   {
    "reunion": "2027-04-28",
-   "tipo_esperado": 4.505,
-   "cambio_reunion_pb": 8.3,
-   "cambio_acumulado_pb": 62.5,
+   "tipo_esperado": 4.52,
+   "cambio_reunion_pb": 9.3,
+   "cambio_acumulado_pb": 64.0,
    "metodo": "quedan 2 días del mes (< 10): ZQ del mes siguiente (ZQK27), sin reunión en ese mes",
    "contrato": "ZQK27",
    "dias_restantes_mes": 2,
    "prob_reunion": {
-    "subida": 33.1,
-    "mantiene": 66.9,
+    "subida": 37.1,
+    "mantiene": 62.9,
     "bajada": 0,
     "detalle_pb": {
-     "0": 66.9,
-     "25": 33.1
+     "0": 62.9,
+     "25": 37.1
     }
    },
    "prob_acumulada": {
@@ -157,21 +157,21 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 50.0,
-     "75": 50.0
+     "50": 44.0,
+     "75": 56.0
     }
    },
-   "subida_1d_pts": -0.5,
+   "subida_1d_pts": 3.5,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 0.0,
-   "subida_5d_pts": -4.0,
-   "tipo_5d_pb": 0.5
+   "tipo_1d_pb": 1.5,
+   "subida_5d_pts": 0.0,
+   "tipo_5d_pb": 2.0
   },
   {
    "reunion": "2027-06-09",
-   "tipo_esperado": 4.5979,
+   "tipo_esperado": 4.6129,
    "cambio_reunion_pb": 9.3,
-   "cambio_acumulado_pb": 71.8,
+   "cambio_acumulado_pb": 73.3,
    "metodo": "quedan 21 días del mes (≥ 10): ZQ del mes de la reunión (ZQM27)",
    "contrato": "ZQM27",
    "dias_restantes_mes": 21,
@@ -189,20 +189,20 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 12.9,
-     "75": 87.1
+     "50": 6.9,
+     "75": 93.1
     }
    },
    "subida_1d_pts": 2.8,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 0.7,
+   "tipo_1d_pb": 2.2,
    "subida_5d_pts": -5.8,
-   "tipo_5d_pb": -0.9
+   "tipo_5d_pb": 0.6
   }
  ],
  "lectura": "SIN CAMBIO RELEVANTE",
- "tipo_esperado_3_reuniones_1d_pb": -1.0,
- "tipo_esperado_3_reuniones_5d_pb": 1.5,
+ "tipo_esperado_3_reuniones_1d_pb": -0.5,
+ "tipo_esperado_3_reuniones_5d_pb": 2.0,
  "resumen": "Reunión del 2026-10-28: subida 18 %, mantener 82 %, bajada 0 % (ayer subida 28 %)",
  "historial": [
   {
@@ -345,7 +345,7 @@
    "prox_mantiene": 82.0,
    "modal": "mantener",
    "contrato": "ZQX26",
-   "tipo_dic": 4.1434,
+   "tipo_dic": 4.1505,
    "reunion_dic": "2026-12-09",
    "effr": 3.88
   }
@@ -1093,55 +1093,55 @@
    "reunion": "2026-12-09",
    "contrato": "ZQZ26",
    "dias_restantes_mes": 22,
-   "tipo_esperado": 4.1434,
-   "prob_subida": 87.4,
-   "prob_mantiene": 12.6,
+   "tipo_esperado": 4.1505,
+   "prob_subida": 90.2,
+   "prob_mantiene": 9.8,
    "prob_bajada": 0,
-   "cambio_acumulado_pb": 26.3
+   "cambio_acumulado_pb": 27.0
   },
   {
    "fecha_precios": "2026-10-16",
    "reunion": "2027-01-27",
    "contrato": "ZQG27",
    "dias_restantes_mes": 4,
-   "tipo_esperado": 4.245,
-   "prob_subida": 40.6,
-   "prob_mantiene": 59.4,
+   "tipo_esperado": 4.25,
+   "prob_subida": 39.8,
+   "prob_mantiene": 60.2,
    "prob_bajada": 0,
-   "cambio_acumulado_pb": 36.5
+   "cambio_acumulado_pb": 37.0
   },
   {
    "fecha_precios": "2026-10-16",
    "reunion": "2027-03-17",
    "contrato": "ZQH27",
    "dias_restantes_mes": 14,
-   "tipo_esperado": 4.4221,
+   "tipo_esperado": 4.4271,
    "prob_subida": 70.9,
    "prob_mantiene": 29.1,
    "prob_bajada": 0,
-   "cambio_acumulado_pb": 54.2
+   "cambio_acumulado_pb": 54.7
   },
   {
    "fecha_precios": "2026-10-16",
    "reunion": "2027-04-28",
    "contrato": "ZQK27",
    "dias_restantes_mes": 2,
-   "tipo_esperado": 4.505,
-   "prob_subida": 33.1,
-   "prob_mantiene": 66.9,
+   "tipo_esperado": 4.52,
+   "prob_subida": 37.1,
+   "prob_mantiene": 62.9,
    "prob_bajada": 0,
-   "cambio_acumulado_pb": 62.5
+   "cambio_acumulado_pb": 64.0
   },
   {
    "fecha_precios": "2026-10-16",
    "reunion": "2027-06-09",
    "contrato": "ZQM27",
    "dias_restantes_mes": 21,
-   "tipo_esperado": 4.5979,
+   "tipo_esperado": 4.6129,
    "prob_subida": 37.1,
    "prob_mantiene": 62.9,
    "prob_bajada": 0,
-   "cambio_acumulado_pb": 71.8
+   "cambio_acumulado_pb": 73.3
   }
  ],
  "regla_contrato": "Si a la reunión le quedan menos de 10 días del mes se usa el futuro ZQ del mes siguiente (método CME); si le quedan más, el del mes de la reunión. Si el mes siguiente también tiene reunión se usa el del mes de la reunión.",
@@ -14494,5 +14494,5 @@
   }
  },
  "ok": true,
- "duracion_s": 15.2
+ "duracion_s": 12.2
 }
