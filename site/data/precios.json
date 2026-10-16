@@ -3,13 +3,13 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4194.2,
+   "valor": 4195.5,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": 0.58,
-   "cambio_5d_pct": -0.52,
-   "cambio_21d_pct": -4.67,
-   "cambio_63d_pct": 4.44,
-   "sma50": 4374.68,
+   "cambio_1d_pct": 0.61,
+   "cambio_5d_pct": -0.49,
+   "cambio_21d_pct": -4.64,
+   "cambio_63d_pct": 4.47,
+   "sma50": 4374.7,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
@@ -1018,20 +1018,20 @@
     ],
     [
      "2026-10-16",
-     4194.2002
+     4195.5
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 82328.03,
+   "valor": 81931.9,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": 0.23,
-   "cambio_5d_pct": -1.62,
-   "cambio_21d_pct": -2.03,
-   "cambio_63d_pct": 30.73,
-   "sma50": 81268.4,
+   "cambio_1d_pct": -0.26,
+   "cambio_5d_pct": -2.09,
+   "cambio_21d_pct": -2.5,
+   "cambio_63d_pct": 30.1,
+   "sma50": 81260.48,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2496,7 +2496,7 @@
     ],
     [
      "2026-10-16",
-     82328.0312
+     81931.8984
     ]
    ]
   },
@@ -6575,12 +6575,12 @@
   "vix": {
    "nombre": "VIX",
    "simbolo": "^VIX",
-   "valor": 16.14,
+   "valor": 16.0,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -1.94,
-   "cambio_5d_pct": 8.76,
-   "cambio_21d_pct": 4.53,
-   "cambio_63d_pct": -5.34,
+   "cambio_1d_pct": -2.79,
+   "cambio_5d_pct": 7.82,
+   "cambio_21d_pct": 3.63,
+   "cambio_63d_pct": -6.16,
    "sma50": 15.52,
    "fuente": "Cboe VIX (Yahoo Finance)",
    "serie": [
@@ -7598,20 +7598,20 @@
     ],
     [
      "2026-10-16",
-     16.14
+     16.0
     ]
    ]
   },
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.69,
+   "valor": 101.78,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -0.3,
-   "cambio_5d_pct": -0.51,
-   "cambio_21d_pct": 1.47,
-   "cambio_63d_pct": 0.69,
-   "sma50": 100.34,
+   "cambio_1d_pct": -0.21,
+   "cambio_5d_pct": -0.42,
+   "cambio_21d_pct": 1.56,
+   "cambio_63d_pct": 0.79,
+   "sma50": 100.35,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
     [
@@ -8620,7 +8620,7 @@
     ],
     [
      "2026-10-16",
-     101.689
+     101.783
     ]
    ]
   },
@@ -9637,6 +9637,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-16 12:07 UTC",
- "duracion_s": 8.4
+ "generado_utc": "2026-10-16 12:57 UTC",
+ "duracion_s": 7.9
 }
