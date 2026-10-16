@@ -403,3 +403,14 @@ table.t tr.grp td { background: var(--card2); border-top: 1px solid var(--border
   table.t.stack td[data-label="Qué fue al cierre"] { display: block; }
   table.t.stack td[data-label="Qué fue al cierre"]::before { display: block; margin-bottom: 2px; }
 }
+
+/* Auditoría 16-oct-2026 · móvil: las tablas anchas dejaban la columna de texto en ~60 px (una palabra por línea) o se cortaban sin aviso de scroll.
+   Ahora la tabla conserva un ancho mínimo y la tarjeta se desplaza en horizontal; el documento nunca se desplaza. */
+@media (max-width: 860px) {
+  .card.pad0, details.qa { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .card.pad0 table.t:not(.stack):not(.mini), details.qa table.t { min-width: 600px; }
+  table.t.stack td[data-label="Evento"] { min-width: 0; }
+  table.t td[style*="white-space:normal"] { min-width: 230px; }
+  .sect { flex-wrap: wrap; gap: 4px 14px; }
+  .sect .more { flex: 1 1 auto; text-align: right; }
+}

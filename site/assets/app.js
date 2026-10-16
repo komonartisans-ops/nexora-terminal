@@ -290,7 +290,7 @@ function pageResumen() {
   const nombres = ['Oro', 'Nasdaq 100', 'S&P 500', 'Bitcoin', 'US30 · Dow Jones', 'Russell 2000'];
   const MP = (R && R.motores_propios) || {};
   const monDe = { 'Oro': 'oro_xau', 'Bitcoin': 'liquidez_cripto' };
-  const cut = (x, n) => { x = String(x ?? ''); return x.length > n ? x.slice(0, n - 1) + '…' : x; };
+  const cut = (x, n) => { x = String(x ?? ''); if (x.length <= n) return x; const k = x.lastIndexOf(' ', n - 1); return x.slice(0, k > n * 0.6 ? k : n - 1).replace(/[\s·,;:(\-–]+$/, '') + '…'; }; /* corta en el último espacio, no a media palabra */
   const lst = (arr) => (arr && arr.length ? arr.map((x) => esc(cut(x, 120))).join(' · ') : '');
   const cardTesis = (n) => {
     const t = TES[n];
