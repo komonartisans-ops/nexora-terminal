@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-16 14:04 UTC",
+ "generado_utc": "2026-10-16 14:06 UTC",
  "version_reglas": "3.0",
  "ok": true,
  "validacion_giro": {
@@ -166,11 +166,12 @@
      ]
     },
     "SIN BASE": {
-     "n": 3,
+     "n": 4,
      "eventos": [
       "ISM-2026-09-01",
       "VENTAS-2026-09-16 (contaminada)",
-      "VENTAS-2026-09-28"
+      "VENTAS-2026-09-28",
+      "DISCURSO-2026-10-15"
      ]
     },
     "PARCIAL": {
@@ -186,6 +187,12 @@
      "eventos": [
       "ISM-2026-10-01 (base débil) (contaminada)",
       "NFP-2026-10-02"
+     ]
+    },
+    "REFUGIO / RIESGO": {
+     "n": 1,
+     "eventos": [
+      "PPI+VENTAS-2026-10-15 (contaminada)"
      ]
     }
    }
@@ -435,6 +442,45 @@
      },
      "contaminada": false,
      "contaminada_por": []
+    },
+    {
+     "fase": "T+1",
+     "objetivo_utc": "2026-10-16 14:00",
+     "barra_utc": "2026-10-16 13:55",
+     "origen": "vivo",
+     "clasificacion": "MIXTA (sin regla)",
+     "d_y2_pb": -2.93,
+     "d_y10_pb": -0.0,
+     "y10_fuente": "ZN=F×beta (^TNX sin barra)",
+     "d_dxy_pct": -0.31,
+     "d_oro_pct": 0.367,
+     "d_nq_pct": -0.978,
+     "d_es_pct": -0.128,
+     "d_btc_pct": -0.019,
+     "dxy_pico_pct": 0.046,
+     "umbral_origen": "z-score vs 14 eventos previos (60 d)",
+     "umbrales": {
+      "y2": 3.5,
+      "y10": 3.47,
+      "dxy": 0.156,
+      "nq": 0.614
+     },
+     "registrado_utc": "2026-10-16 14:06",
+     "beta_2y": -53.61,
+     "r2_2y": 0.912,
+     "beta_10y": -13.04,
+     "r2_10y": 0.819,
+     "giro": {
+      "dev_y2_pct": -1295.2,
+      "dev_y10_pct": 100.0,
+      "y10_base": false,
+      "debil": false,
+      "clase": "SIN BASE",
+      "nota": "en T+5 el 2Y no supera su umbral: no hay movimiento inicial que deshacer",
+      "version": "3.0"
+     },
+     "contaminada": false,
+     "contaminada_por": []
     }
    ],
    "real10": null,
@@ -445,7 +491,8 @@
    "contaminada_en": [],
    "giro_fases": {
     "T+60": "SIN BASE",
-    "T+120": "SIN BASE"
+    "T+120": "SIN BASE",
+    "T+1": "SIN BASE"
    },
    "giro_en": [],
    "diseno": false,
@@ -737,6 +784,47 @@
      },
      "contaminada": false,
      "contaminada_por": []
+    },
+    {
+     "fase": "T+1",
+     "objetivo_utc": "2026-10-16 14:00",
+     "barra_utc": "2026-10-16 13:55",
+     "origen": "vivo",
+     "clasificacion": "MIXTA (sin regla)",
+     "d_y2_pb": -1.26,
+     "d_y10_pb": 2.1,
+     "y10_fuente": "^TNX",
+     "d_dxy_pct": -0.442,
+     "d_oro_pct": 0.767,
+     "d_nq_pct": -0.203,
+     "d_es_pct": 0.348,
+     "d_btc_pct": 1.077,
+     "dxy_pico_pct": 0.13,
+     "umbral_origen": "z-score vs 14 eventos previos (60 d)",
+     "umbrales": {
+      "y2": 3.5,
+      "y10": 3.47,
+      "dxy": 0.156,
+      "nq": 0.614
+     },
+     "registrado_utc": "2026-10-16 14:06",
+     "beta_2y": -53.61,
+     "r2_2y": 0.912,
+     "beta_10y": -13.04,
+     "r2_10y": 0.819,
+     "giro": {
+      "dev_y2_pct": 128.4,
+      "dev_y10_pct": -23.5,
+      "y10_base": false,
+      "debil": false,
+      "clase": "REFUGIO / RIESGO",
+      "nota": "tipos al alza · NQ cae frente a T+5 · 10Y sin base",
+      "version": "3.0"
+     },
+     "contaminada": true,
+     "contaminada_por": [
+      "DISCURSO-2026-10-15"
+     ]
     }
    ],
    "real10": null,
@@ -744,16 +832,20 @@
    "clase_t5": "MIXTA (sin regla)",
    "clase_cierre": "MIXTA (sin regla)",
    "reconstruido": true,
-   "contaminada_en": [],
+   "contaminada_en": [
+    "T+1"
+   ],
    "giro_fases": {
     "T+60": "INVERSIÓN · NQ cae",
     "T+120": "INVERSIÓN · NQ sube",
-    "CIERRE": "SORPRESA DESHECHA"
+    "CIERRE": "SORPRESA DESHECHA",
+    "T+1": "REFUGIO / RIESGO"
    },
    "giro_en": [
     "T+60",
     "T+120",
-    "CIERRE"
+    "CIERRE",
+    "T+1"
    ],
    "diseno": false,
    "sorpresa": {
@@ -5743,7 +5835,8 @@
  "n_eventos": 16,
  "n_con_cierre": 15,
  "avisos_enviados": [
-  "PPI+VENTAS-2026-10-15|CIERRE"
+  "PPI+VENTAS-2026-10-15|CIERRE",
+  "PPI+VENTAS-2026-10-15|T+1"
  ],
  "reglas": {
   "clases": [
