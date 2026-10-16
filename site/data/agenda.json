@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-16 21:09 UTC",
+ "generado_utc": "2026-10-16 22:09 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -227,28 +227,7 @@
   }
  ],
  "agenda": {
-  "hoy": [
-   {
-    "fecha": "2026-10-16",
-    "fecha_et": "2026-10-15",
-    "dia": "vie",
-    "hora_ny": "23:30",
-    "hora_madrid": "05:30",
-    "evento": "Conversación · Chairman Kevin Warsh",
-    "importancia": "ALTA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-16",
-    "fecha_et": "2026-10-16",
-    "dia": "vie",
-    "hora_ny": "08:30",
-    "hora_madrid": "14:30",
-    "evento": "Precios de importación y exportación (BLS)",
-    "importancia": "MEDIA",
-    "nota": null
-   }
-  ],
+  "hoy": [],
   "proximos_7_dias": [
    {
     "fecha": "2026-10-20",
@@ -322,10 +301,10 @@
    }
   ],
   "regla_horas": "Fed: horas del calendario oficial en ET (también en actos en el extranjero); FRED: hora central → ET; todo se convierte a Madrid y el día es el de Madrid.",
-  "hasta": "2026-10-23",
+  "hasta": "2026-10-24",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-16 21:09 UTC"
+  "generado_utc": "2026-10-16 22:09 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }
