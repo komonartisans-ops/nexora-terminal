@@ -479,6 +479,30 @@ def etapa_monitores():
     return {"monitores": est}
 
 
+# ------------------------------------------------------------------ reevaluar: los tres monitores con el FedWatch de ESTA ejecución (sin descargar nada)
+def etapa_reevaluar():
+    """liquidez.json, oro.json e indices.json guardan sus métricas (descargadas en el build diario) y su evaluación, que cita las probabilidades de la Fed.
+    evaluar() es una función pura de (métricas, fedwatch): se recalcula cada hora con fedwatch.json, de modo que toda cifra de la Fed de la web
+    (monitores, resumen, régimen, contexto) sale de la misma fuente y la misma hora. Las métricas y su fecha (`generado_utc`) no se tocan."""
+    import fedwatch
+    import indices as IDX
+    import oro_xau
+    F = leer("fedwatch.json")
+    fw = fedwatch.para_monitor(F) if F and F.get("ok") else None
+    est = {}
+    for arch, ev in (("liquidez.json", lambda M: LQ.evaluar(M, fw)), ("oro.json", lambda M: oro_xau.evaluar(M, fw)), ("indices.json", lambda M: IDX.evaluar(M, fw))):
+        J = leer(arch)
+        if not J or not J.get("metricas"):
+            est[arch] = "SIN DATO (no hay métricas guardadas)"
+            continue
+        J["evaluacion"] = json.loads(json.dumps(ev(J["metricas"]), default=str, ensure_ascii=False))
+        J["evaluado_utc"] = STAMP
+        J["fedwatch_fecha_precios"] = (F or {}).get("fecha_precios")
+        escribir(arch, J)
+        est[arch] = "ok"
+    return {"monitores": est, "fedwatch_fecha_precios": (F or {}).get("fecha_precios")}
+
+
 # ------------------------------------------------------------------ series para los gráficos de Oro, Índices y Cripto (solo fuentes gratuitas; si falla = SIN DATO)
 SERIES_YAHOO = [("xly", "XLY", "Consumo discrecional (ETF XLY)"), ("xlp", "XLP", "Consumo básico (ETF XLP)"), ("rsp", "RSP", "S&P 500 igual peso (ETF RSP)"),
                 ("spy", "SPY", "S&P 500 (ETF SPY)"), ("iwm", "IWM", "Russell 2000 (ETF IWM)"), ("qqq", "QQQ", "Nasdaq 100 (ETF QQQ)"),
@@ -693,7 +717,7 @@ def etapa_regimen():
     cal = leer("calendario.json")
     def ruta_si(n):  # los monitores ya calculados hoy se reutilizan (no se vuelven a descargar)
         return ruta(n) if (leer(n) or {}).get("evaluacion") else None
-    R = regimen.medir(cripto=ruta_si("liquidez.json"), oro=ruta_si("oro.json"), indices=ruta_si("indices.json"))
+    R = regimen.medir(cripto=ruta_si("liquidez.json"), oro=ruta_si("oro.json"), indices=ruta_si("indices.json"), fedwatch_json=leer("fedwatch.json"))
     E = regimen.evaluar(R, cal if cal and cal.get("eventos") else None)
     E.pop("fedwatch", None)
     if "respaldo: LBMA no respondió" in json.dumps(E, ensure_ascii=False):  # que la etiqueta no diga LBMA si el oro viene de COMEX
@@ -806,16 +830,16 @@ def etapa_alertas():
 # ------------------------------------------------------------------ principal
 ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_tipos, "calendario": etapa_calendario,
           "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen, "tesis": etapa_tesis,
-          "regimen": etapa_regimen, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias,
+          "regimen": etapa_regimen, "reevaluar": etapa_reevaluar, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias,
           "bancos": etapa_bancos, "tono": etapa_tono,
           "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "alertas": etapa_alertas, "reacciones": etapa_reacciones, "contexto": etapa_contexto}
-ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "resumen", "tesis", "regimen", "divisas", "cot", "noticias",
+ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "ciclo", "publicados", "reevaluar", "resumen", "tesis", "regimen", "divisas", "cot", "noticias",
          "bancos", "tono", "skew", "semis", "gamma", "alertas", "reacciones", "contexto"]
 # horario: el SKEW (Cboe) se publica tras el cierre, por eso entra aquí para que la alerta salga en la hora siguiente; gamma NO (solo al cierre).
 # cierre (cron 21:30 UTC, tras el cierre de Nueva York): snapshot de opciones, semis/software y SKEW del día.
 # calendario y publicados entran en el horario porque el día de una publicación (IPC, PPI, ventas…) el dato sale a las 12:30-13:30 UTC y la web no puede esperar
 # al build diario; calendario escribe también site/data/agenda.json (sin esto la página Agenda mostraba el «hoy» de ayer).
-MODOS = {"horario": ["precios", "fedwatch", "tipos", "calendario", "publicados", "noticias", "skew", "alertas", "contexto"],
+MODOS = {"horario": ["precios", "fedwatch", "tipos", "calendario", "publicados", "reevaluar", "resumen", "tesis", "regimen", "noticias", "skew", "alertas", "contexto"],
          "cierre": ["precios", "semis", "bancos", "tono", "skew", "gamma", "alertas", "contexto"], "diario": ORDEN, "todo": ORDEN}
 
 

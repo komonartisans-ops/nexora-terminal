@@ -54,7 +54,7 @@ def cargar(path):
     return D["metricas"], D["evaluacion"]
 
 
-def medir(cripto=None, oro=None, indices=None):
+def medir(cripto=None, oro=None, indices=None, fedwatch_json=None):
     R, err = {"generado_utc": dt.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")}, {}
     for nm, path, mod in (("cripto", cripto, "liquidez_cripto"), ("oro", oro, "oro_xau"), ("indices", indices, "indices")):
         if path:
@@ -78,8 +78,11 @@ def medir(cripto=None, oro=None, indices=None):
             S[sid] = v
     R["fred"] = S
     try:
-        import fedwatch
-        R["fedwatch"] = fedwatch.medir()
+        if fedwatch_json and fedwatch_json.get("reuniones"):
+            R["fedwatch"] = fedwatch_json  # la MISMA lectura (y hora) que muestra fedwatch.json: una única fuente para las cifras de la Fed
+        else:
+            import fedwatch
+            R["fedwatch"] = fedwatch.medir()
     except Exception as e:  # noqa: BLE001
         err["fedwatch"] = f"{type(e).__name__}: {e}"
     R["errores"] = err
