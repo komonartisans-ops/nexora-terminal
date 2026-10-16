@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-16 11:09 Madrid",
+ "generado": "2026-10-16 12:01 Madrid",
  "desde": "2026-09-06",
  "hasta": "2026-11-06",
  "eventos": [
@@ -116,6 +116,20 @@
     "url": "https://fred.stlouisfed.org/series/RSAFS",
     "fecha_publicacion": "2026-10-15"
    }
+  },
+  {
+   "fecha": "2026-09-16",
+   "fecha_madrid": "2026-09-16",
+   "dia": "mié",
+   "hora_ny": "08:30",
+   "hora_madrid": "14:30",
+   "evento": "Precios de importación y exportación (BLS)",
+   "importancia": "MEDIA",
+   "afecta": "oro · índices",
+   "que_mirar": "Inflación importada: precios de importación ↑ (sobre todo sin combustibles) anticipan presión en bienes del IPC; dólar fuerte los modera.",
+   "fuente": "FRED Release Calendar · U.S. Import and Export Price Indexes",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=188&y=2026",
+   "nota": ""
   },
   {
    "fecha": "2026-09-16",
@@ -745,6 +759,20 @@
    "fecha": "2026-10-16",
    "fecha_madrid": "2026-10-16",
    "dia": "vie",
+   "hora_ny": "08:30",
+   "hora_madrid": "14:30",
+   "evento": "Precios de importación y exportación (BLS)",
+   "importancia": "MEDIA",
+   "afecta": "oro · índices",
+   "que_mirar": "Inflación importada: precios de importación ↑ (sobre todo sin combustibles) anticipan presión en bienes del IPC; dólar fuerte los modera.",
+   "fuente": "FRED Release Calendar · U.S. Import and Export Price Indexes",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=188&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-16",
+   "fecha_madrid": "2026-10-16",
+   "dia": "vie",
    "hora_ny": "09:15",
    "hora_madrid": "15:15",
    "evento": "Producción industrial",
@@ -830,7 +858,7 @@
    "evento": "Resultados Meta Platforms (META)",
    "importancia": "ALTA",
    "afecta": "índices",
-   "que_mirar": "BPA estimado $6.35 · después del cierre",
+   "que_mirar": "BPA estimado $6.67 · después del cierre",
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/meta/earnings",
    "nota": "fecha CONFIRMADA"
@@ -1150,7 +1178,7 @@
    "evento": "Resultados Eli Lilly (LLY)",
    "importancia": "MEDIA",
    "afecta": "índices",
-   "que_mirar": "BPA estimado $6.4 · antes de la apertura",
+   "que_mirar": "BPA estimado $5.38 · antes de la apertura",
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/lly/earnings",
    "nota": "fecha CONFIRMADA"
@@ -1460,6 +1488,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-16 09:07 UTC",
- "duracion_s": 46.7
+ "generado_utc": "2026-10-16 09:59 UTC",
+ "duracion_s": 53.4
 }

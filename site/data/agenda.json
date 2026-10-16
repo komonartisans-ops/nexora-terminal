@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-16 09:09 UTC",
+ "generado_utc": "2026-10-16 10:01 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -130,6 +130,14 @@
    "fuente": "FRED Release Calendar (rid 20)"
   },
   {
+   "tipo": "IMPORT",
+   "evento": "Precios de importación y exportación (BLS)",
+   "organismo": "BLS",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "08:30",
+   "fuente": "FRED Release Calendar (rid 188)"
+  },
+  {
    "tipo": "ISM_SERV",
    "evento": "ISM servicios",
    "organismo": "ISM",
@@ -229,6 +237,16 @@
     "evento": "Conversación · Chairman Kevin Warsh",
     "importancia": "ALTA",
     "nota": null
+   },
+   {
+    "fecha": "2026-10-16",
+    "fecha_et": "2026-10-16",
+    "dia": "vie",
+    "hora_ny": "08:30",
+    "hora_madrid": "14:30",
+    "evento": "Precios de importación y exportación (BLS)",
+    "importancia": "MEDIA",
+    "nota": null
    }
   ],
   "proximos_7_dias": [
@@ -307,7 +325,7 @@
   "hasta": "2026-10-23",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-16 09:09 UTC"
+  "generado_utc": "2026-10-16 10:01 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }
