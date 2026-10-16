@@ -104,6 +104,8 @@ ACTIVOS = [
     ("rut", "Russell 2000", "^RUT", "Russell 2000 (Yahoo Finance)"),
     ("vix", "VIX", "^VIX", "Cboe VIX (Yahoo Finance)"),
     ("dxy", "Índice dólar (DXY)", "DX-Y.NYB", "ICE DXY (Yahoo Finance)"),
+    # volatilidad implícita de los bonos del Tesoro (ICE BofA MOVE). Sin respaldo gratuito (ni FRED ni Cboe lo publican): si Yahoo falla = SIN DATO
+    ("move", "MOVE (volatilidad de bonos)", "^MOVE", "ICE BofA MOVE (Yahoo Finance ^MOVE)"),
 ]
 
 

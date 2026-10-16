@@ -277,7 +277,7 @@ function pageResumen() {
   h += typeof bloqueContradicciones === 'function' ? bloqueContradicciones() : '';
 
   h += '<div class="sect"><h2>Panel de mercado</h2><span class="more">▲▼ frente al cierre anterior · vs media de 50 sesiones</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Activo</th><th>Último</th><th>1d</th><th>1 sem</th><th>1 mes</th><th>3 meses</th><th>vs SMA50</th><th>Dato</th><th style="text-align:left">Fuente</th></tr></thead><tbody>';
-  const filas = [...orden.map((o) => o[0]), 'vix', 'dxy'];
+  const filas = [...orden.map((o) => o[0]), 'vix', 'move', 'dxy'];
   h += filas.map((k) => {
     const a = act[k];
     if (!a || a.valor == null) return `<tr><td>${esc((a && a.nombre) || k)}</td><td colspan="7" style="text-align:left;color:var(--dim)">SIN DATO</td><td style="text-align:left;color:var(--dim)">${esc((a && a.fuente) || '')}</td></tr>`;
