@@ -23,7 +23,7 @@
     "evidencia": [
      "IPC subyacente: 3 meses anualizado 3.4 % vs 2.6 % interanual (2026-09)",
      "PCE subyacente: 3 meses anualizado 2.0 % vs 3.0 % interanual (2026-08)",
-     "Inflación esperada a 10 años (breakeven) 2.32 % (-1 pb en 20 sesiones)",
+     "Inflación esperada a 10 años (breakeven) 2.35 % (+2 pb en 20 sesiones)",
      "Expectativas de inflación a 1 año (U. Michigan) 4.0 % (-0.8 pp en 3 meses)"
     ],
     "fuente": "BLS, BEA, U. Michigan, Tesoro vía FRED",
@@ -57,15 +57,15 @@
    },
    {
     "dimension": "CRÉDITO",
-    "estado": "SE ENDURECE (menos crédito, diferenciales ↑) · ESTRÉS EN HIGH YIELD",
-    "dir": "↓",
+    "estado": "ESTABLE · ESTRÉS EN HIGH YIELD",
+    "dir": "→",
     "evidencia": [
      "Diferencial high yield 323 pb (+53 pb en 20 sesiones)",
      "Diferencial grado de inversión 84 pb (+6 pb en 20 sesiones)",
-     "Crédito bancario 13 semanas anualizado +4.7 % vs +5.9 % interanual (H.8)"
+     "Crédito bancario 13 semanas anualizado +5.6 % vs +6.2 % interanual (H.8)"
     ],
     "fuente": "ICE BofA y Fed H.8 vía FRED",
-    "puntos": -2
+    "puntos": -1
    },
    {
     "dimension": "POLÍTICA MONETARIA",
@@ -109,7 +109,7 @@
     "dir": "",
     "evidencia": [
      "2s10s +33 pb (+6 pb en 20 sesiones: 2Y +3 pb, 10Y +9 pb) → BEAR STEEPENING (sube más el largo: prima por plazo, fiscal o inflación)",
-     "10 años − 3 meses +82 pb (2026-10-15)"
+     "10 años − 3 meses +83 pb (2026-10-16)"
     ],
     "fuente": "U.S. Treasury; FRED T10Y3M",
     "puntos": null
@@ -325,7 +325,7 @@
    },
    {
     "pregunta": "¿Qué está desacelerando?",
-    "respuesta": "crédito"
+    "respuesta": "Nada con claridad."
    },
    {
     "pregunta": "¿Dónde aparece estrés?",
@@ -1048,6 +1048,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-16 20:07 UTC",
- "duracion_s": 21.6
+ "generado_utc": "2026-10-16 21:07 UTC",
+ "duracion_s": 11.3
 }
