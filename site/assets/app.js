@@ -421,12 +421,24 @@ function pageLiquidez() {
   h += kpi({ lab: 'Liquidez neta de la Fed', exp: 'Balance − TGA − RRP: el dinero realmente disponible para el sistema', serie: H.liquidez_neta_T, unidad: 'bill. $', suf: 'bill.', fuente: 'FRED WALCL, WTREGEN, RRPONTSYD', url: 'https://fred.stlouisfed.org/series/WALCL' });
   h += kpi({ lab: 'Balance de la Reserva Federal', exp: 'Activos totales (QE sube, QT baja)', serie: H.balance_fed_T, unidad: 'bill. $', suf: 'bill.', fuente: 'FRED WALCL', url: 'https://fred.stlouisfed.org/series/WALCL' });
   h += kpi({ lab: 'TGA · cuenta del Tesoro', exp: 'Si sube, drena liquidez (rojo); si baja, la inyecta', serie: H.tga_T, unidad: 'bill. $', suf: 'bill.', inv: true, fuente: 'FRED WTREGEN', url: 'https://fred.stlouisfed.org/series/WTREGEN' });
-  h += kpi({ lab: 'Repo inverso (RRP)', exp: 'Efectivo aparcado en la Fed; agotado = ya no aporta', serie: H.rrp_T, k: 1000, unidad: 'mm $', suf: 'mm $', dec: 1, inv: true, fuente: 'FRED RRPONTSYD', url: 'https://fred.stlouisfed.org/series/RRPONTSYD' });
+  h += kpi({ lab: 'ON RRP (facilidad, RRPONTSYD)', exp: 'Efectivo que fondos monetarios y otras contrapartes aparcan cada noche en la facilidad de la Fed; agotado = ya no aporta. No incluye la cuenta extranjera', serie: H.rrp_T, k: 1000, unidad: 'mm $', suf: 'mm $', dec: 1, inv: true, fuente: 'FRED RRPONTSYD', url: 'https://fred.stlouisfed.org/series/RRPONTSYD' });
   h += kpi({ lab: 'Reservas bancarias', exp: 'Colchón de los bancos en la Fed', serie: H.reservas_T, unidad: 'bill. $', suf: 'bill.', fuente: 'FRED WRESBAL', url: 'https://fred.stlouisfed.org/series/WRESBAL' });
   h += kpi({ lab: 'Liquidez global G3', exp: 'Fed + BCE + Banco de Japón en dólares (sin PBoC)', serie: H.liquidez_global_T, unidad: 'bill. $', suf: 'bill.', fuente: 'FRED WALCL, ECBASSETSW, JPNASSETS, DEX*', url: 'https://fred.stlouisfed.org/series/ECBASSETSW' });
   h += kpi({ lab: 'Balance del BCE', exp: 'Activos del Eurosistema en dólares', serie: H.bce_T, unidad: 'bill. $', suf: 'bill.', fuente: 'FRED ECBASSETSW', url: 'https://fred.stlouisfed.org/series/ECBASSETSW' });
   h += kpi({ lab: 'Balance del Banco de Japón', exp: 'Activos en dólares (dato mensual)', serie: H.boj_T, unidad: 'bill. $', suf: 'bill.', fuente: 'FRED JPNASSETS', url: 'https://fred.stlouisfed.org/series/JPNASSETS', filas: [['1 mes', 28], ['3 meses', 90], ['12 meses', 365]] });
   h += '</div>';
+
+  /* tipos a un día y repos inversos: SOFR frente a EFFR, y el total de repos inversos del H.4.1 separado del ON RRP para no confundirlos */
+  const SE = H.sofr_effr, RI = H.repos_inversos;
+  h += '<div class="sect"><h2>Tipos a un día y repos inversos</h2><span class="more">SOFR y EFFR diarios · repos inversos del H.4.1 (miércoles)</span></div><div class="grid g4">';
+  h += SE ? `<div class="card kpi"><div class="lab">SOFR (FRED SOFR)</div><div class="exp">Tipo del préstamo garantizado a un día (repo con Tesoro); NY Fed</div><div class="big">${num(SE.sofr, 2)}<small>%</small></div>
+    <table><tr><td>EFFR (fondos federales)</td><td>${num(SE.effr, 2)} %</td></tr><tr><td>SOFR − EFFR</td><td>${pill(SE.spread_pb, 0, ' pb', true)}</td></tr><tr><td>Último SOFR / EFFR</td><td>${esc(fd(SE.sofr_ultima_fecha))} / ${esc(fd(SE.effr_ultima_fecha))}</td></tr></table>${foot(SE.fuente, SE.fecha, 'https://fred.stlouisfed.org/series/SOFR')}</div>`
+    : `<div class="card kpi"><div class="lab">SOFR (FRED SOFR)</div><div class="big">${SD}</div>${foot('FRED SOFR y EFFR', false)}</div>`;
+  h += RI ? `<div class="card kpi"><div class="lab">Repos inversos totales (incluye cuenta extranjera)</div><div class="exp">Pasivo de la Fed en el H.4.1: NO es el ON RRP. Casi todo es la cuenta de oficiales extranjeros e internacionales</div><div class="big">${num(RI.total_B, 0)}<small>mm $</small></div>
+    <table><tr><td>Cuenta extranjera</td><td>${RI.extranjeros_B == null ? 'SIN DATO' : num(RI.extranjeros_B, 0) + ' mm $'}</td></tr><tr><td>Otros</td><td>${RI.otros_B == null ? 'SIN DATO' : num(RI.otros_B, 0) + ' mm $'}</td></tr><tr><td>ON RRP (facilidad)</td><td>${RI.on_rrp_B == null ? 'SIN DATO' : num(RI.on_rrp_B, 1) + ' mm $'} <small>${esc(fd(RI.on_rrp_fecha))}</small></td></tr></table>${foot(RI.fuente, RI.fecha, 'https://fred.stlouisfed.org/series/WLRRAL')}</div>`
+    : `<div class="card kpi"><div class="lab">Repos inversos totales (incluye cuenta extranjera)</div><div class="big">${SD}</div>${foot('FRED WLRRAL', false)}</div>`;
+  h += '</div><div class="card chartcard" style="margin-top:12px"><h3>SOFR y tipo efectivo de fondos federales (EFFR)</h3><div class="sub">Si SOFR supera de forma sostenida al EFFR, el mercado de repo está tenso</div>'
+    + lw('cSofr', [{ name: 'SOFR', color: COL.amber, data: H.sofr, prec: 2 }, { name: 'EFFR', color: COL.blue, data: H.effr, prec: 2 }], {}) + foot('FRED SOFR · EFFR', (lastOf(H.sofr) || [])[0]) + '</div>';
 
   const desde = (H.sp500 && H.sp500.length ? H.sp500[0][0] : '2025-01-01');
   const lnS = (H.liquidez_neta_T || []).filter((x) => x[0] >= desde);

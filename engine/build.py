@@ -345,7 +345,8 @@ def etapa_liquidez():
     desde = (hoy - dt.timedelta(days=800)).isoformat()
     ser, errs = {}, {}
     for k, sid in (("WALCL", "WALCL"), ("WTREGEN", "WTREGEN"), ("RRP", "RRPONTSYD"), ("WRESBAL", "WRESBAL"), ("SP500", "SP500"),
-                   ("ECB", "ECBASSETSW"), ("BOJ", "JPNASSETS"), ("EURUSD", "DEXUSEU"), ("JPYUSD", "DEXJPUS"), ("NFCI", "NFCI"), ("M2", "M2SL")):
+                   ("ECB", "ECBASSETSW"), ("BOJ", "JPNASSETS"), ("EURUSD", "DEXUSEU"), ("JPYUSD", "DEXJPUS"), ("NFCI", "NFCI"), ("M2", "M2SL"),
+                   ("SOFR", "SOFR"), ("EFFR", "EFFR"), ("WLRRAL", "WLRRAL"), ("WLRRAFOIAL", "WLRRAFOIAL")):
         try:
             ser[k] = LQ.fred(sid, desde)
         except Exception as e:  # noqa: BLE001
@@ -377,6 +378,26 @@ def etapa_liquidez():
                                     if LQ.at_or_before(ser["JPYUSD"], d)])
     if "NFCI" in ser:
         hist["nfci"] = serie_json(ser["NFCI"])
+    # SOFR (secured, FRED SOFR) junto al tipo efectivo de fondos federales (EFFR) y su diferencial en la última fecha con los dos datos
+    if "SOFR" in ser and "EFFR" in ser:
+        hist["sofr"], hist["effr"] = serie_json(ser["SOFR"]), serie_json(ser["EFFR"])
+        e_ = dict(ser["EFFR"])
+        comun = [(d, v) for d, v in ser["SOFR"] if d in e_]
+        if comun:
+            d, v = comun[-1]
+            hist["sofr_effr"] = {"fecha": d.isoformat(), "sofr": v, "effr": e_[d], "spread_pb": round((v - e_[d]) * 100, 1),
+                                 "sofr_ultima_fecha": ser["SOFR"][-1][0].isoformat(), "effr_ultima_fecha": ser["EFFR"][-1][0].isoformat(),
+                                 "fuente": "FRED SOFR y EFFR (NY Fed), diarios; el diferencial usa la última fecha con los dos datos"}
+    # Repos inversos TOTALES del H.4.1 (pasivo de la Fed, miércoles; incluye la cuenta de oficiales extranjeros) ≠ ON RRP (facilidad con contrapartes, RRPONTSYD)
+    if "WLRRAL" in ser:
+        hist["repos_inversos_totales_B"] = serie_json([(d, v / 1000) for d, v in ser["WLRRAL"]])
+        ult = ser["WLRRAL"][-1]
+        ext = dict(ser.get("WLRRAFOIAL", [])).get(ult[0])
+        on = LQ.at_or_before(ser["RRP"], ult[0]) if "RRP" in ser else None
+        hist["repos_inversos"] = {"fecha": ult[0].isoformat(), "total_B": round(ult[1] / 1000, 1), "extranjeros_B": round(ext / 1000, 1) if ext is not None else None,
+                                  "otros_B": round((ult[1] - ext) / 1000, 1) if ext is not None else None,
+                                  "on_rrp_B": on[1] if on else None, "on_rrp_fecha": on[0].isoformat() if on else None,
+                                  "fuente": "FRED WLRRAL (H.4.1, nivel del miércoles), WLRRAFOIAL (cuenta de oficiales extranjeros e internacionales) y RRPONTSYD (ON RRP)"}
     # liquidez global = Fed + BCE + BoJ en T$ (solo fechas con los tres)
     if all(k in hist for k in ("balance_fed_T", "bce_T", "boj_T")):
         b, j = dict(hist["bce_T"]), dict(hist["boj_T"])

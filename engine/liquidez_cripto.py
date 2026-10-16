@@ -736,7 +736,7 @@ def evaluar(M, fedwatch=None):
         "U.S. Treasury Daily Treasury Statement", "diaria")
     q = g("rrp")
     agot = bool(q) and q["valor_B"] < U["rrp_agotado_b"]
-    add(3, "rrp", "Reverse Repo (ON RRP)", "núcleo", est(d.get("rrp") == "↓", d.get("rrp") == "↑", bool(q)),
+    add(3, "rrp", "ON RRP (facilidad, RRPONTSYD)", "núcleo", est(d.get("rrp") == "↓", d.get("rrp") == "↑", bool(q)),
         f"{q['valor_B']:,.1f} B$" if q else "—", f"4s {q['delta_4s_B']:+,.1f} B$ ({q['fecha']})" if q else "",
         "NY Fed Markets API", "diaria",
         "AVISO: saldo < 50 B$, colchón agotado; la dirección cumple la regla pero su efecto sobre la liquidez es despreciable" if agot else "")
