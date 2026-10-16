@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-16 07:10 UTC",
+ "generado_utc": "2026-10-16 08:09 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -296,8 +296,8 @@
     "fecha": "2026-10-23",
     "fecha_et": "2026-10-23",
     "dia": "vie",
-    "hora_ny": "11:00",
-    "hora_madrid": "17:00",
+    "hora_ny": "10:00",
+    "hora_madrid": "16:00",
     "evento": "Confianza U. Michigan (expectativas de inflación)",
     "importancia": "MEDIA",
     "nota": null
@@ -307,7 +307,7 @@
   "hasta": "2026-10-23",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-16 07:10 UTC"
+  "generado_utc": "2026-10-16 08:09 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }

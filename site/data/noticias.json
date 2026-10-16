@@ -1,6 +1,16 @@
 {
  "items": [
   {
+   "banco": "BoJ",
+   "tipo": "Novedad",
+   "titulo": "BOJ Current Account Balances by Sector (Sept.)",
+   "orador": null,
+   "fecha_utc": "2026-10-16 08:00",
+   "fecha": "2026-10-16",
+   "enlace": "http://www.boj.or.jp/en/statistics/boj/other/cabs/cabs.xlsx",
+   "fuente": "boj"
+  },
+  {
    "banco": "BoE",
    "tipo": "Noticia",
    "titulo": "David Roberts CV and questionnaire for the Treasury Select Committee",
@@ -901,16 +911,6 @@
    "fuente": "boe"
   },
   {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "(BOJ Review)The Expansion and Diversification of Private Credit Funds",
-   "orador": null,
-   "fecha_utc": "2026-09-25 05:00",
-   "fecha": "2026-09-25",
-   "enlace": "http://www.boj.or.jp/en/research/wps_rev/rev_2026/rev26e13.htm",
-   "fuente": "boj"
-  },
-  {
    "banco": "Fed",
    "tipo": "Comunicado",
    "titulo": "Federal Reserve Board requests public comment on two proposals related to establishing a regulatory framework for Board-supervised payment stablecoin issuers under the GENIUS Act",
@@ -1332,7 +1332,7 @@
    "n": 40,
    "url": "https://www.boj.or.jp/en/rss/whatsnew.xml",
    "pagina": "https://www.boj.or.jp/en/whatsnew.htm",
-   "ultimo": "2026-10-15 01:30"
+   "ultimo": "2026-10-16 08:00"
   },
   "boe": {
    "banco": "BoE",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-16 07:07 UTC",
- "duracion_s": 7.0
+ "generado_utc": "2026-10-16 08:07 UTC",
+ "duracion_s": 6.2
 }

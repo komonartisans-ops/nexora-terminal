@@ -3,13 +3,13 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4208.6,
+   "valor": 4208.7,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": 0.92,
+   "cambio_1d_pct": 0.93,
    "cambio_5d_pct": -0.18,
    "cambio_21d_pct": -4.34,
    "cambio_63d_pct": 4.8,
-   "sma50": 4374.96,
+   "sma50": 4374.97,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
@@ -1018,20 +1018,20 @@
     ],
     [
      "2026-10-16",
-     4208.6001
+     4208.7002
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 82055.13,
+   "valor": 82181.31,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -0.11,
-   "cambio_5d_pct": -1.94,
-   "cambio_21d_pct": -2.36,
-   "cambio_63d_pct": 30.3,
-   "sma50": 81262.95,
+   "cambio_1d_pct": 0.05,
+   "cambio_5d_pct": -1.79,
+   "cambio_21d_pct": -2.21,
+   "cambio_63d_pct": 30.5,
+   "sma50": 81265.47,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2496,7 +2496,7 @@
     ],
     [
      "2026-10-16",
-     82055.1328
+     82181.3125
     ]
    ]
   },
@@ -6575,12 +6575,12 @@
   "vix": {
    "nombre": "VIX",
    "simbolo": "^VIX",
-   "valor": 16.03,
+   "valor": 16.06,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -2.61,
-   "cambio_5d_pct": 8.02,
-   "cambio_21d_pct": 3.82,
-   "cambio_63d_pct": -5.98,
+   "cambio_1d_pct": -2.43,
+   "cambio_5d_pct": 8.22,
+   "cambio_21d_pct": 4.02,
+   "cambio_63d_pct": -5.81,
    "sma50": 15.52,
    "fuente": "Cboe VIX (Yahoo Finance)",
    "serie": [
@@ -7598,19 +7598,19 @@
     ],
     [
      "2026-10-16",
-     16.03
+     16.06
     ]
    ]
   },
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.8,
+   "valor": 101.82,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -0.2,
-   "cambio_5d_pct": -0.4,
-   "cambio_21d_pct": 1.57,
-   "cambio_63d_pct": 0.8,
+   "cambio_1d_pct": -0.18,
+   "cambio_5d_pct": -0.39,
+   "cambio_21d_pct": 1.59,
+   "cambio_63d_pct": 0.82,
    "sma50": 100.35,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
@@ -8620,13 +8620,13 @@
     ],
     [
      "2026-10-16",
-     101.797
+     101.815
     ]
    ]
   }
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-16 07:34 UTC",
- "duracion_s": 7.5
+ "generado_utc": "2026-10-16 08:07 UTC",
+ "duracion_s": 7.0
 }

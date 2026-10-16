@@ -1,7 +1,7 @@
 {
  "periodo": "hoy",
  "corte": "Datos entre el 2026-10-14 y el 2026-10-16 (cada fuente publica a su hora)",
- "movido": "La probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 28 % a 12 %; el tipo real a 10 años baja 6 pb; financiarse le cuesta más a las empresas de riesgo (+9 pb). En conjunto: el dinero se abarata.",
+ "movido": "El tipo real a 10 años baja 6 pb; la probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 28 % a 16 %; financiarse le cuesta más a las empresas de riesgo (+9 pb). En conjunto: el dinero se abarata.",
  "significa": [
   {
    "activo": "Oro",
@@ -16,7 +16,7 @@
   {
    "activo": "S&P 500",
    "viento": "A FAVOR",
-   "texto": "A favor: la Fed se ve menos dura (pesa más que: el crédito se encarece)."
+   "texto": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: el crédito se encarece)."
   },
   {
    "activo": "Bitcoin",
@@ -35,15 +35,15 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 12 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 16 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 21 oct · Resultados Meta Platforms (META): BPA estimado $6.35 · después del cierre",
   "mié 21 oct · Resultados Tesla (TSLA): BPA estimado $0.21 · después del cierre"
  ],
  "tesis": "Viento macro A FAVOR del oro: baja el tipo real (lo que más les ayuda). Lo que puede girarlo: después del cierre.",
- "sencillo": "La Fed pone el precio del dinero. Cuando el mercado deja de esperar que lo suba, los bonos pasan a pagar menos y el dinero busca rentabilidad en bolsa, oro y cripto; cuando espera subidas, ocurre lo contrario.",
+ "sencillo": "El tipo real es lo que paga un bono después de descontar la inflación. Si sube, guardar el dinero en bonos se vuelve atractivo y pierden atractivo lo que no paga intereses (oro, bitcoin) y las tecnológicas.",
  "motores_significativos": [
-  "fed",
   "real",
+  "fed",
   "hy",
   "t2y"
  ],
@@ -53,16 +53,16 @@
  "detalle_viento": {
   "Nasdaq 100": [
    {
-    "motor": "fed",
-    "sube": false,
-    "peso": 2.4,
-    "razon": "la Fed se ve menos dura"
-   },
-   {
     "motor": "real",
     "sube": false,
     "peso": 3.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.8,
+    "razon": "la Fed se ve menos dura"
    },
    {
     "motor": "hy",
@@ -79,16 +79,16 @@
   ],
   "S&P 500": [
    {
-    "motor": "fed",
-    "sube": false,
-    "peso": 1.6,
-    "razon": "la Fed se ve menos dura"
-   },
-   {
     "motor": "real",
     "sube": false,
     "peso": 1.5,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.2,
+    "razon": "la Fed se ve menos dura"
    },
    {
     "motor": "hy",
@@ -105,16 +105,16 @@
   ],
   "Oro": [
    {
-    "motor": "fed",
-    "sube": false,
-    "peso": 1.6,
-    "razon": "la Fed se ve menos dura"
-   },
-   {
     "motor": "real",
     "sube": false,
     "peso": 3.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.2,
+    "razon": "la Fed se ve menos dura"
    },
    {
     "motor": "t2y",
@@ -125,16 +125,16 @@
   ],
   "Bitcoin": [
    {
-    "motor": "fed",
-    "sube": false,
-    "peso": 2.4,
-    "razon": "la Fed se ve menos dura"
-   },
-   {
     "motor": "real",
     "sube": false,
     "peso": 1.5,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.8,
+    "razon": "la Fed se ve menos dura"
    },
    {
     "motor": "hy",
@@ -151,16 +151,16 @@
   ],
   "US30 · Dow Jones": [
    {
-    "motor": "fed",
-    "sube": false,
-    "peso": 1.2,
-    "razon": "la Fed se ve menos dura"
-   },
-   {
     "motor": "real",
     "sube": false,
     "peso": 1.5,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 0.9,
+    "razon": "la Fed se ve menos dura"
    },
    {
     "motor": "hy",
@@ -177,16 +177,16 @@
   ],
   "Russell 2000": [
    {
-    "motor": "fed",
-    "sube": false,
-    "peso": 3.2,
-    "razon": "la Fed se ve menos dura"
-   },
-   {
     "motor": "real",
     "sube": false,
     "peso": 2.25,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 2.4,
+    "razon": "la Fed se ve menos dura"
    },
    {
     "motor": "hy",
@@ -229,10 +229,10 @@
    "fecha": "2026-10-14"
   },
   "fed": {
-   "valor": 12.0,
+   "valor": 16.0,
    "antes": 28.0,
    "reunion": "2026-10-28",
-   "delta": -16.0,
+   "delta": -12.0,
    "fecha": "2026-10-16"
   }
  },
@@ -248,9 +248,9 @@
    "valor": 7744.06
   },
   "Oro": {
-   "delta": 0.7745570593294282,
+   "delta": 0.8848685038637116,
    "fecha": "2026-10-16",
-   "valor": 4202.39990234375
+   "valor": 4207.0
   },
   "Bitcoin": {
    "delta": 0.6928965385087471,
@@ -300,16 +300,16 @@
    "motor_propio_nombre": "dólar, tipo real, flujos de ETF y posicionamiento COMEX",
    "motores": [
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 1.6,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "real",
      "sube": false,
      "peso": 3.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.2,
+     "razon": "la Fed se ve menos dura"
     },
     {
      "motor": "t2y",
@@ -354,16 +354,16 @@
    "motor_propio_nombre": "tipos, amplitud, beneficios y volatilidad",
    "motores": [
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 2.4,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "real",
      "sube": false,
      "peso": 3.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.8,
+     "razon": "la Fed se ve menos dura"
     },
     {
      "motor": "hy",
@@ -382,7 +382,7 @@
   "S&P 500": {
    "etiqueta": "SIN TESIS",
    "tesis": "SIN TESIS: ni la macro ni su motor propio (MIXTO) marcan dirección.",
-   "hoy": "A favor: la Fed se ve menos dura (pesa más que: el crédito se encarece).",
+   "hoy": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: el crédito se encarece).",
    "semana": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero el crédito se encarece.",
    "viento_semana": "SIN VIENTO CLARO",
    "propio": {
@@ -414,16 +414,16 @@
    "motor_propio_nombre": "tipos, amplitud, beneficios y volatilidad",
    "motores": [
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 1.6,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "real",
      "sube": false,
      "peso": 1.5,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.2,
+     "razon": "la Fed se ve menos dura"
     },
     {
      "motor": "hy",
@@ -479,16 +479,16 @@
    "motor_propio_nombre": "liquidez en dólares (Tesoro, Fed, stablecoins) y apetito de riesgo",
    "motores": [
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 2.4,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "real",
      "sube": false,
      "peso": 1.5,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.8,
+     "razon": "la Fed se ve menos dura"
     },
     {
      "motor": "hy",
@@ -539,16 +539,16 @@
    "motor_propio_nombre": "ciclo, industriales, financieras y empresas maduras",
    "motores": [
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 1.2,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "real",
      "sube": false,
      "peso": 1.5,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 0.9,
+     "razon": "la Fed se ve menos dura"
     },
     {
      "motor": "hy",
@@ -599,16 +599,16 @@
    "motor_propio_nombre": "tipos, crédito high yield, condiciones financieras y economía doméstica",
    "motores": [
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 3.2,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "real",
      "sube": false,
      "peso": 2.25,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 2.4,
+     "razon": "la Fed se ve menos dura"
     },
     {
      "motor": "hy",
@@ -644,6 +644,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro y Nasdaq 100; empujan en contra: Bitcoin, US30 · Dow Jones y Russell 2000; sin ventaja clara: S&P 500 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-16 07:07 UTC",
- "duracion_s": 124.4
+ "generado_utc": "2026-10-16 08:07 UTC",
+ "duracion_s": 103.2
 }
