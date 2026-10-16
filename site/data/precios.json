@@ -3,13 +3,13 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4195.5,
+   "valor": 4186.6,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": 0.61,
-   "cambio_5d_pct": -0.49,
-   "cambio_21d_pct": -4.64,
-   "cambio_63d_pct": 4.47,
-   "sma50": 4374.7,
+   "cambio_1d_pct": 0.4,
+   "cambio_5d_pct": -0.7,
+   "cambio_21d_pct": -4.84,
+   "cambio_63d_pct": 4.25,
+   "sma50": 4374.52,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
@@ -1018,20 +1018,20 @@
     ],
     [
      "2026-10-16",
-     4195.5
+     4186.6001
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 81931.9,
+   "valor": 81913.14,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -0.26,
-   "cambio_5d_pct": -2.09,
-   "cambio_21d_pct": -2.5,
-   "cambio_63d_pct": 30.1,
-   "sma50": 81260.48,
+   "cambio_1d_pct": -0.28,
+   "cambio_5d_pct": -2.11,
+   "cambio_21d_pct": -2.52,
+   "cambio_63d_pct": 30.07,
+   "sma50": 81260.11,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2496,7 +2496,7 @@
     ],
     [
      "2026-10-16",
-     81931.8984
+     81913.1406
     ]
    ]
   },
@@ -6575,12 +6575,12 @@
   "vix": {
    "nombre": "VIX",
    "simbolo": "^VIX",
-   "valor": 16.0,
+   "valor": 15.98,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -2.79,
-   "cambio_5d_pct": 7.82,
-   "cambio_21d_pct": 3.63,
-   "cambio_63d_pct": -6.16,
+   "cambio_1d_pct": -2.92,
+   "cambio_5d_pct": 7.68,
+   "cambio_21d_pct": 3.5,
+   "cambio_63d_pct": -6.28,
    "sma50": 15.52,
    "fuente": "Cboe VIX (Yahoo Finance)",
    "serie": [
@@ -7598,17 +7598,17 @@
     ],
     [
      "2026-10-16",
-     16.0
+     15.98
     ]
    ]
   },
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.78,
+   "valor": 101.79,
    "fecha": "2026-10-16",
    "cambio_1d_pct": -0.21,
-   "cambio_5d_pct": -0.42,
+   "cambio_5d_pct": -0.41,
    "cambio_21d_pct": 1.56,
    "cambio_63d_pct": 0.79,
    "sma50": 100.35,
@@ -8620,7 +8620,7 @@
     ],
     [
      "2026-10-16",
-     101.783
+     101.787
     ]
    ]
   },
@@ -9637,6 +9637,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-16 12:57 UTC",
- "duracion_s": 7.9
+ "generado_utc": "2026-10-16 13:07 UTC",
+ "duracion_s": 8.3
 }
