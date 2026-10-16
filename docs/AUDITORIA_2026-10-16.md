@@ -10,7 +10,7 @@ Reglas respetadas: no se tocaron reglas congeladas (reacciones v3), criterios CR
 |---|---|---|---|---|
 | CRÍTICO | 1 | 1 | 0 | 0 |
 | ALTO | 6 | 6 | 0 | 0 |
-| MEDIO | 10 | 6 | 0 | 4 (F-15, F-16, F-17, F-19) |
+| MEDIO | 10 | 8 | 0 | 2 (F-15, F-19) |
 | BAJO | 5 | 1 | 0 | 4 (F-18 y F-22 sin acción posible; F-20, F-21 pendientes) |
 
 Lo más grave: **el IPC interanual de la web era falso** (4,02 % en vez de 3,72 % para sep-26; subyacente 2,79 % en vez de 2,57 %) porque FRED no tiene el IPC de octubre de 2025 y el motor calculaba «hace 12 meses» por posición. Arreglado y verificado contra FRED.
@@ -33,10 +33,10 @@ Lo que está bien: precios (Yahoo), Tesoro 2Y/10Y/real, liquidez (WALCL, reserva
 | F-10 | MEDIO | Bancos centrales (FedWatch) | `fecha_precios` = hoy con la barra de la sesión en curso comparada con «ayer» (cierre), sin aviso | Dato intradía de Yahoo | Etiqueta «SESIÓN EN CURSO · NO ES CIERRE» (`ff3e5b1`) | Sí (render local) |
 | F-12 | MEDIO | Calendario / Agenda | Producción industrial 18:15 Madrid (12:15 ET); Fed: 9:15 a.m. ET | Hora deducida de FRED | `HORA_OFICIAL_ET` (`3e708cc`) | Sí contra `federalreserve.gov/json/calendar.json`; H.4.1, H.6 y H.8 coinciden |
 | F-13 | MEDIO | `data/reacciones_eventos.csv` | 7 fases del discurso del 15-oct duplicadas (dos disparos a 05:51:17 y :18) | `push_seguro` une por líneas y no ve la clave | `leer_log()` valida la primera fila por (evento, fase); CSV intacto (`e944323`) | Sí: 147 filas → 139 vigentes, 0 duplicadas |
-| F-16 | MEDIO | Resumen / Régimen / Contexto / Cripto | Mismo documento con «30 % de subida» (resumen, 15-oct) y «14 %» (FedWatch, 16-oct); G3 17,41 (cripto, 1-sep) frente a 17,35 (liquidez, 7-oct); BTC 14-oct frente a 16-oct | Etapas con cadencias distintas; cada bloque lleva su fecha | Sin cambio de código: parte se reduce con el horario ampliado; el resto es diseño dated | No (pendiente de decisión) |
+| F-16 | MEDIO | Resumen / Régimen / Contexto / monitores / Cripto | Mismo documento con «30 % de subida» (resumen, 15-oct) y «14 %» (FedWatch, 16-oct); G3 17,41 (cripto, 1-sep) frente a 17,35 (liquidez, 7-oct) | Bloques diarios citando cifras de bloques horarios; G3 con dos cálculos | Etapa `reevaluar` (evaluación pura de liquidez/oro/índices con el `fedwatch.json` de la ejecución) + resumen, tesis y régimen en el horario; `regimen.medir()` usa `fedwatch.json` en vez de re-descargar; G3 de Cripto lee la serie de Liquidez; `tools/coherencia_fed.py` (`3576847`) | Sí: 0 incoherencias entre `fedwatch.json` y los 6 JSON que citan la probabilidad. Producción en la tabla §9 |
 | F-15 | MEDIO | Noticias | `fuentes.tesoro: HTTP 404` en todas las ejecuciones | El RSS de press-releases del Tesoro ya no existe (probadas 6 variantes de URL) | — | Pendiente: no hay RSS gratuito alternativo |
 | F-19 | MEDIO | Tono de bancos centrales | 25+ «discurso BCE … texto demasiado corto (0 palabras)» | Texto de discursos del BCE no extraíble | — | Pendiente (bloque marcado SECUNDARIO en la web) |
-| F-17 | MEDIO | Calendario | Confianza U. Michigan 11:00 ET (suele ser 10:00 ET) | Misma deducción desde FRED que F-12 | — | No verificable (FRED inaccesible desde este equipo y la Fed no publica esa hora); importancia MEDIA |
+| F-17 | MEDIO | Calendario | Confianza U. Michigan 11:00 ET | Hora deducida de FRED | `HORA_OFICIAL_ET[91] = 10:00` (`acf01f8`) | Sí: sca.isr.umich.edu, «Next data release: Friday, October 23, 2026 … at 10am ET» |
 | F-09 | BAJO | Encabezados `.sect` (móvil) | «CONTRADICCIONESlo que…» | Sin separación | `gap` + wrap (`ecdd6a3`) | Sí |
 | F-18 | BAJO | Oro, Régimen | `lbma_*: HTTP 403` desde Actions | LBMA bloquea la IP | Ya rotulado como respaldo COMEX en la web | Nada que hacer |
 | F-20 | BAJO | CSV | `reacciones_eventos.csv`: filas de 41/43/46 columnas (migraciones) y CRLF/LF mezclados → diffs ruidosos (79 «borradas» = normalización) | Evolución del esquema | — | Pendiente (los valores no se pierden) |
@@ -121,8 +121,29 @@ Resultado automático: 0 errores de consola, 0 peticiones 4xx/5xx, 0 `NaN/undefi
 
 ## 8. Pendiente y por qué
 
-1. **F-16** (coherencia entre bloques con cadencias distintas): decisión de diseño; ahora los bloques se refrescan cada hora, pero `resumen`, `regimen`, `liquidez` y `monitores` siguen siendo diarios.
+1. ~~F-16~~ resuelto en la segunda vuelta (§9). Quedan diarios `liquidez` y `monitores` (descargas pesadas), pero su evaluación se recalcula cada hora.
 2. **F-15** (RSS del Tesoro, 404 permanente): no hay alternativa gratuita; la página lo rotula como SIN DATO.
-3. **F-19, F-17, F-20, F-21**: baja prioridad o no verificables desde aquí.
-4. Dos tareas opcionales en cron-job.org (diario y cierre) para quitar la dependencia de los crones de GitHub: no se crearon porque la instrucción era no tocar cron-job.org.
-5. Sin verificar: gamma, semis, tono, GLD (§3).
+3. **F-19, F-20, F-21**: baja prioridad o no verificables desde aquí.
+4. ~~Tareas de cron-job.org~~ creadas con aprobación (§9).
+5. Sin verificar de forma independiente: tono, GLD, amplitud de mercado, noticias RSS, NQ (mismo método que ES).
+
+## 9. Segunda vuelta (aprobada por el usuario)
+
+**Tareas en cron-job.org** (creadas por API con las cabeceras de la tarea A; UTC, lun–vie, aviso solo de fallo, sin aviso de éxito): `NEXORA diario 05:30 UTC` (id 8656942, cuerpo `{"ref":"main","inputs":{"modo":"diario"}}`) y `NEXORA cierre 21:30 UTC` (id 8656948, `modo:"cierre"`). Prueba: POST con los mismos datos de la tarea de cierre → **HTTP 204** y ejecución `actualizar` lanzada por `workflow_dispatch` a las 07:34 UTC. Con las 6 tareas, el diario y el cierre ya no dependen de los crones de GitHub (el escalado de `build.py` queda como red de seguridad).
+
+**Hora de la Confianza U. Michigan**: 10:00 ET (web de la Universidad de Michigan). Corregida (F-17).
+
+**Contraste adicional**
+
+| Página | Cifra | Web | Fuente | Fecha dato | Resultado |
+|---|---|---|---|---|---|
+| Gamma | Call Wall ES (tramo 7800 SPX) GEX | 11.030 mm$ | Cboe `_SPX`+`SPY` recalculado con Black-Scholes sobre la IV de Cboe: 11.299 mm$ | 15-oct | OK (−2,4 %); mismo tramo ganador |
+| Gamma | Put Wall ES (tramo 7700) GEX | 11.506 mm$ | 11.626 mm$ (−1,0 %) | 15-oct | OK; mismo tramo ganador |
+| Gamma | Call/Put Wall (argmax por tramos de 10) | 7800 / 7700 | 7800 / 7700 | 15-oct | OK |
+| Gamma | Con la gamma publicada por Cboe (sin recalcular) | — | 21.033 y 16.464 mm$ (×1,9 y ×1,4) | 15-oct | **No comparable**: Cboe publica la gamma redondeada a 4 decimales (la mayoría de strikes lejanos < 0,002); el método y su validación (error mediano 3,9 % donde sí es comparable) ya constan en el JSON y en la página |
+| Mapa | Inflación y PIB (valor y previsión) de los 38 bancos | 76 cifras | FMI DataMapper `PCPIPCH` y `NGDP_RPCH` | 2025 / 2026 | OK 76/76 |
+| Semis | Ratio SMH/IGV | 5,0989 | Yahoo: 558,84 / 109,60 = 5,0989 | 15-oct | OK |
+
+Matiz sobre gamma: el GEX del cierre cambia si se mide antes o después de la actualización matinal del OI de la OCC (el snapshot de las 07:07 UTC dio −29,2 mm$ frente a −35,7 mm$ del cierre del 15-oct a las 23:46 UTC, con los mismos precios). Está documentado en la cabecera de `gamma.py`; no es un error pero el histórico depende de la hora de medida.
+
+**Coherencia de cifras** (`tools/coherencia_fed.py`): `fedwatch.json` (16-oct 07:07 UTC, 12 % de subida el 28-oct) = `indices`, `liquidez`, `oro`, `regimen`, `contexto`; sin incoherencias. Una única fuente por dato: probabilidades de la Fed → `fedwatch.json`; 2Y, 10Y y 10Y real → Tesoro (`tipos.json`; las cifras de los monitores son del mismo día y llevan su fecha); G3 → serie de Liquidez; precios → `precios.json`.
