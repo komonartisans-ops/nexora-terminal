@@ -33,7 +33,7 @@ def tabla_importancia():
     import calendario as C
     T = []
     for rid, (nm, imp, af, qm) in C.FRED_RELEASES.items():
-        org = {50: "BLS", 10: "BLS", 46: "BLS", 192: "BLS", 54: "BEA", 53: "BEA", 9: "Census", 27: "Census", 97: "Census", 95: "Census", 13: "Fed", 20: "Fed", 21: "Fed",
+        org = {50: "BLS", 10: "BLS", 46: "BLS", 192: "BLS", 188: "BLS", 54: "BEA", 53: "BEA", 9: "Census", 27: "Census", 97: "Census", 95: "Census", 13: "Fed", 20: "Fed", 21: "Fed",
                22: "Fed", 180: "DOL", 351: "Fed de Filadelfia", 91: "U. Michigan"}.get(rid, "FRED")
         T.append({"tipo": C.TIPO_FRED.get(rid, str(rid)), "evento": nm, "organismo": org, "importancia": imp, "hora_ny_tipica": C.HORA_TIPICA_NY.get(C.TIPO_FRED.get(rid, ""), ""),
                   "fuente": f"FRED Release Calendar (rid {rid})"})

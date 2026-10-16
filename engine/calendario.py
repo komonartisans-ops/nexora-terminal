@@ -52,6 +52,7 @@ FRED_RELEASES = {
     21: ("Oferta monetaria M2 (H.6)", "BAJA", "cripto · oro", "Liquidez a medio plazo."),
     13: ("Producción industrial", "BAJA", "índices", "Ciclo industrial (US30)."),
     22: ("Crédito bancario H.8", "BAJA", "índices", "Crédito de bancos comerciales."),
+    188: ("Precios de importación y exportación (BLS)", "MEDIA", "oro · índices", "Inflación importada: precios de importación ↑ (sobre todo sin combustibles) anticipan presión en bienes del IPC; dólar fuerte los modera."),
     11: ("Índice de costes laborales (ECI, BLS)", "ALTA", "índices · oro · cripto", "Salarios y beneficios: coste laboral ↑ = presión inflacionista de servicios (2Y ↑)."),
     27: ("Vivienda iniciada y permisos (Census)", "MEDIA", "índices", "Ciclo inmobiliario sensible a tipos."),
     97: ("Ventas de vivienda nueva (Census)", "MEDIA", "índices", "Demanda de vivienda frente a hipotecas al 6-7 %."),
@@ -59,11 +60,11 @@ FRED_RELEASES = {
 }
 # código corto por tipo de evento (clave de la agenda, del monitor de reacciones y del Telegram diario)
 TIPO_FRED = {11: "ECI", 50: "NFP", 10: "IPC", 54: "PCE", 46: "PPI", 53: "PIB", 192: "JOLTS", 9: "VENTAS", 180: "PARO", 351: "FILADELFIA", 91: "UMICH",
-             20: "H41", 21: "M2", 13: "PRODIND", 22: "H8", 27: "VIVIENDA", 97: "VIVIENDA_NUEVA", 95: "PEDIDOS"}
+             188: "IMPORT", 20: "H41", 21: "M2", 13: "PRODIND", 22: "H8", 27: "VIVIENDA", 97: "VIVIENDA_NUEVA", 95: "PEDIDOS"}
 # Hora oficial (ET) que manda sobre la que se deduce de la página de FRED. G.17 (rid 13): federalreserve.gov/json/calendar.json la da a las 9:15 a.m. ET
 # todos los meses; la deducida de FRED salía a las 12:15 ET (3 h tarde). Las demás publicaciones de la Fed (H.4.1, H.6, H.8) coinciden con el calendario de la Fed.
-HORA_OFICIAL_ET = {13: "09:15", 91: "10:00"}  # 91 = Confianza U. Michigan: sca.isr.umich.edu «Next data release: Friday, October 23, 2026 … at 10am ET» (FRED daba 11:00)
-HORA_TIPICA_NY = {"ECI": "08:30", "VENTAS": "08:30", "IPC": "08:30", "NFP": "08:30", "PCE": "08:30", "PPI": "08:30", "PIB": "08:30", "FOMC": "14:00", "ACTAS": "14:00", "ISM": "10:00"}
+HORA_OFICIAL_ET = {13: "09:15", 91: "10:00", 188: "08:30"}  # 188 = Precios de importación/exportación: BLS publica a las 8:30 a.m. ET  # 91 = Confianza U. Michigan: sca.isr.umich.edu «Next data release: Friday, October 23, 2026 … at 10am ET» (FRED daba 11:00)
+HORA_TIPICA_NY = {"IMPORT": "08:30", "ECI": "08:30", "VENTAS": "08:30", "IPC": "08:30", "NFP": "08:30", "PCE": "08:30", "PPI": "08:30", "PIB": "08:30", "FOMC": "14:00", "ACTAS": "14:00", "ISM": "10:00"}
 MES = {m: i for i, m in enumerate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 1)}
 
 
