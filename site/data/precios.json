@@ -3,13 +3,13 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4196.3,
+   "valor": 4198.6,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": 0.63,
-   "cambio_5d_pct": -0.47,
-   "cambio_21d_pct": -4.62,
-   "cambio_63d_pct": 4.49,
-   "sma50": 4374.72,
+   "cambio_1d_pct": 0.68,
+   "cambio_5d_pct": -0.42,
+   "cambio_21d_pct": -4.57,
+   "cambio_63d_pct": 4.55,
+   "sma50": 4374.76,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
@@ -1018,20 +1018,20 @@
     ],
     [
      "2026-10-16",
-     4196.2998
+     4198.6001
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 81986.1,
+   "valor": 82065.76,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": 0.52,
-   "cambio_5d_pct": -1.12,
-   "cambio_21d_pct": -2.84,
-   "cambio_63d_pct": 29.31,
-   "sma50": 81223.89,
+   "cambio_1d_pct": 0.62,
+   "cambio_5d_pct": -1.02,
+   "cambio_21d_pct": -2.74,
+   "cambio_63d_pct": 29.44,
+   "sma50": 81225.48,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2492,7 +2492,7 @@
     ],
     [
      "2026-10-16",
-     81986.1016
+     82065.7578
     ]
    ]
   },
@@ -6581,10 +6581,6 @@
    "fuente": "Cboe VIX (Yahoo Finance)",
    "serie": [
     [
-     "2025-10-15",
-     20.64
-    ],
-    [
      "2025-10-16",
      25.31
     ],
@@ -7601,12 +7597,12 @@
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.95,
+   "valor": 101.86,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -0.05,
-   "cambio_5d_pct": -0.25,
-   "cambio_21d_pct": 1.73,
-   "cambio_63d_pct": 0.95,
+   "cambio_1d_pct": -0.13,
+   "cambio_5d_pct": -0.34,
+   "cambio_21d_pct": 1.64,
+   "cambio_63d_pct": 0.87,
    "sma50": 100.35,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
@@ -8616,13 +8612,13 @@
     ],
     [
      "2026-10-16",
-     101.951
+     101.864
     ]
    ]
   }
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-16 06:07 UTC",
- "duracion_s": 7.4
+ "generado_utc": "2026-10-16 07:07 UTC",
+ "duracion_s": 7.0
 }

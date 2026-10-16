@@ -2076,18 +2076,18 @@
    "nombre": "Crédito de riesgo (ciclo.py)",
    "encendida": true,
    "estado": "TENSIÓN",
-   "valor": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +191 pb en 1 mes",
+   "valor": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +201 pb en 1 mes",
    "regla": "Encendida si CCC, HY, BBB o IG superan sus umbrales de alerta de ciclo.py (5 días o 1 mes).",
-   "fecha": "2026-10-13",
+   "fecha": "2026-10-14",
    "fuente": "ICE BofA vía FRED · reglas de ciclo.py",
    "url": "#/ciclo",
    "detalle": {
-    "hy_pb": 316,
-    "ccc_pb": 1267,
-    "hy_pct1a": 92,
+    "hy_pb": 325,
+    "ccc_pb": 1282,
+    "hy_pct1a": 98,
     "ccc_pct1a": 100
    },
-   "edad_dias": 3
+   "edad_dias": 2
   },
   {
    "clave": "fondos",
@@ -29776,6 +29776,6 @@
  "errores": {},
  "metodo": "CRITERIO NEXORA. Zonas fijas: normal < 135, elevado ≥ 135, alto ≥ 140. Zonas relativas: percentil de las últimas 500 sesiones, alto ≥ p90, elevado ≥ p75. Alerta de Telegram: zona relativa alta Y al menos 2 de 3 confirmaciones encendidas. Episodio = primer cierre en zona alta tras 10 sesiones sin estarlo. Falsa alarma = el S&P 500 no cae ≥ 5 % desde el cierre de entrada en las siguientes 60 sesiones. Los umbrales son convenciones fijas, no optimizadas.",
  "ok": true,
- "generado_utc": "2026-10-16 06:07 UTC",
- "duracion_s": 1.4
+ "generado_utc": "2026-10-16 07:07 UTC",
+ "duracion_s": 1.3
 }

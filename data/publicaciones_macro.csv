@@ -705,3 +705,15 @@ fecha_captura,serie,nombre,periodo,valor,tipo,valor_previo_mismo_periodo,unidad,
 2026-10-08,FEDFUNDS,Tipo efectivo de fondos federales (mensual),2026-09-01,3.75,HISTÓRICO (carga inicial),,%,Fed,FRED FEDFUNDS
 2026-10-15,CPIAUCSL,IPC general (índice),2026-09-01,336.298,PRIMERA,,índice,BLS,FRED CPIAUCSL
 2026-10-15,CPILFESL,IPC subyacente (índice),2026-09-01,338.896,PRIMERA,,índice,BLS,FRED CPILFESL
+2026-10-16,ICSA,Peticiones iniciales de subsidio (semanal),2026-10-03,198000,REVISIÓN,197000,personas,Dpto. de Trabajo,FRED ICSA
+2026-10-16,ICSA,Peticiones iniciales de subsidio (semanal),2026-10-10,199000,PRIMERA,,personas,Dpto. de Trabajo,FRED ICSA
+2026-10-16,CCSA,Peticiones continuadas de subsidio (semanal),2026-09-26,1714000,REVISIÓN,1716000,personas,Dpto. de Trabajo,FRED CCSA
+2026-10-16,CCSA,Peticiones continuadas de subsidio (semanal),2026-10-03,1710000,PRIMERA,,personas,Dpto. de Trabajo,FRED CCSA
+2026-10-16,PPIFIS,"Precios de producción, demanda final (índice)",2026-05-01,156.874,REVISIÓN,156.864,índice,BLS,FRED PPIFIS
+2026-10-16,PPIFIS,"Precios de producción, demanda final (índice)",2026-06-01,156.683,REVISIÓN,156.667,índice,BLS,FRED PPIFIS
+2026-10-16,PPIFIS,"Precios de producción, demanda final (índice)",2026-07-01,156.924,REVISIÓN,156.784,índice,BLS,FRED PPIFIS
+2026-10-16,PPIFIS,"Precios de producción, demanda final (índice)",2026-08-01,157.662,REVISIÓN,157.411,índice,BLS,FRED PPIFIS
+2026-10-16,PPIFIS,"Precios de producción, demanda final (índice)",2026-09-01,159.78,PRIMERA,,índice,BLS,FRED PPIFIS
+2026-10-16,RSAFS,Ventas minoristas,2026-07-01,729915,REVISIÓN,729538,M US$,Census,FRED RSAFS
+2026-10-16,RSAFS,Ventas minoristas,2026-08-01,739322,REVISIÓN,737763,M US$,Census,FRED RSAFS
+2026-10-16,RSAFS,Ventas minoristas,2026-09-01,745021,PRIMERA,,M US$,Census,FRED RSAFS

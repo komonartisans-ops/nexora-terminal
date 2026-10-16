@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-15 11:24 UTC",
+ "generado_utc": "2026-10-16 07:10 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -221,77 +221,17 @@
  "agenda": {
   "hoy": [
    {
-    "fecha": "2026-10-15",
-    "fecha_et": "2026-10-14",
-    "dia": "mié",
-    "hora_ny": "22:55",
-    "hora_madrid": "04:55",
-    "evento": "Discurso · Vice Chair for Supervision Michelle W. Bowman",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-15",
-    "fecha_et": "2026-10-15",
-    "dia": "jue",
-    "hora_ny": "08:30",
-    "hora_madrid": "14:30",
-    "evento": "Ventas minoristas",
-    "importancia": "ALTA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-15",
-    "fecha_et": "2026-10-15",
-    "dia": "jue",
-    "hora_ny": "08:30",
-    "hora_madrid": "14:30",
-    "evento": "Precios de producción (PPI)",
-    "importancia": "ALTA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-15",
-    "fecha_et": "2026-10-15",
-    "dia": "jue",
-    "hora_ny": "08:30",
-    "hora_madrid": "14:30",
-    "evento": "Peticiones de paro semanales",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-15",
-    "fecha_et": "2026-10-15",
-    "dia": "jue",
-    "hora_ny": "08:30",
-    "hora_madrid": "14:30",
-    "evento": "Encuesta manufacturera Fed Filadelfia",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-15",
-    "fecha_et": "2026-10-15",
-    "dia": "jue",
-    "hora_ny": "16:30",
-    "hora_madrid": "22:30",
-    "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
-    "importancia": "MEDIA",
-    "nota": null
-   }
-  ],
-  "proximos_7_dias": [
-   {
     "fecha": "2026-10-16",
     "fecha_et": "2026-10-15",
-    "dia": "jue",
+    "dia": "vie",
     "hora_ny": "23:30",
     "hora_madrid": "05:30",
     "evento": "Conversación · Chairman Kevin Warsh",
     "importancia": "ALTA",
     "nota": null
-   },
+   }
+  ],
+  "proximos_7_dias": [
    {
     "fecha": "2026-10-20",
     "fecha_et": "2026-10-20",
@@ -303,6 +243,36 @@
     "nota": null
    },
    {
+    "fecha": "2026-10-20",
+    "fecha_et": "2026-10-20",
+    "dia": "mar",
+    "hora_ny": null,
+    "hora_madrid": null,
+    "evento": "Resultados Netflix (NFLX)",
+    "importancia": "MEDIA",
+    "nota": "fecha CONFIRMADA"
+   },
+   {
+    "fecha": "2026-10-21",
+    "fecha_et": "2026-10-21",
+    "dia": "mié",
+    "hora_ny": null,
+    "hora_madrid": null,
+    "evento": "Resultados Meta Platforms (META)",
+    "importancia": "ALTA",
+    "nota": "fecha CONFIRMADA"
+   },
+   {
+    "fecha": "2026-10-21",
+    "fecha_et": "2026-10-21",
+    "dia": "mié",
+    "hora_ny": null,
+    "hora_madrid": null,
+    "evento": "Resultados Tesla (TSLA)",
+    "importancia": "ALTA",
+    "nota": "fecha CONFIRMADA"
+   },
+   {
     "fecha": "2026-10-22",
     "fecha_et": "2026-10-22",
     "dia": "jue",
@@ -321,13 +291,23 @@
     "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
     "importancia": "MEDIA",
     "nota": null
+   },
+   {
+    "fecha": "2026-10-23",
+    "fecha_et": "2026-10-23",
+    "dia": "vie",
+    "hora_ny": "11:00",
+    "hora_madrid": "17:00",
+    "evento": "Confianza U. Michigan (expectativas de inflación)",
+    "importancia": "MEDIA",
+    "nota": null
    }
   ],
   "regla_horas": "Fed: horas del calendario oficial en ET (también en actos en el extranjero); FRED: hora central → ET; todo se convierte a Madrid y el día es el de Madrid.",
-  "hasta": "2026-10-22",
+  "hasta": "2026-10-23",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-15 11:24 UTC"
+  "generado_utc": "2026-10-16 07:10 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }

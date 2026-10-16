@@ -11,7 +11,7 @@
    "periodos": [
     {
      "periodo": "2026-04-01",
-     "valor": 3.95,
+     "valor": 3.78,
      "nivel_original": 332.407,
      "nivel_actual": 332.407,
      "revisado": false,
@@ -21,7 +21,7 @@
     },
     {
      "periodo": "2026-05-01",
-     "valor": 4.27,
+     "valor": 4.17,
      "nivel_original": 333.979,
      "nivel_actual": 333.979,
      "revisado": false,
@@ -31,7 +31,7 @@
     },
     {
      "periodo": "2026-06-01",
-     "valor": 3.73,
+     "valor": 3.46,
      "nivel_original": 332.568,
      "nivel_actual": 332.568,
      "revisado": false,
@@ -41,7 +41,7 @@
     },
     {
      "periodo": "2026-07-01",
-     "valor": 3.54,
+     "valor": 3.3,
      "nivel_original": 332.813,
      "nivel_actual": 332.813,
      "revisado": false,
@@ -51,7 +51,7 @@
     },
     {
      "periodo": "2026-08-01",
-     "valor": 3.71,
+     "valor": 3.35,
      "nivel_original": 334.131,
      "nivel_actual": 334.131,
      "revisado": false,
@@ -61,7 +61,7 @@
     },
     {
      "periodo": "2026-09-01",
-     "valor": 4.02,
+     "valor": 3.72,
      "nivel_original": 336.298,
      "nivel_actual": 336.298,
      "revisado": false,
@@ -83,7 +83,7 @@
    "periodos": [
     {
      "periodo": "2026-04-01",
-     "valor": 2.99,
+     "valor": 2.74,
      "nivel_original": 335.423,
      "nivel_actual": 335.423,
      "revisado": false,
@@ -93,7 +93,7 @@
     },
     {
      "periodo": "2026-05-01",
-     "valor": 2.96,
+     "valor": 2.82,
      "nivel_original": 336.121,
      "nivel_actual": 336.121,
      "revisado": false,
@@ -103,7 +103,7 @@
     },
     {
      "periodo": "2026-06-01",
-     "valor": 2.81,
+     "valor": 2.57,
      "nivel_original": 336.065,
      "nivel_actual": 336.065,
      "revisado": false,
@@ -113,7 +113,7 @@
     },
     {
      "periodo": "2026-07-01",
-     "valor": 2.79,
+     "valor": 2.47,
      "nivel_original": 336.789,
      "nivel_actual": 336.789,
      "revisado": false,
@@ -123,7 +123,7 @@
     },
     {
      "periodo": "2026-08-01",
-     "valor": 2.76,
+     "valor": 2.45,
      "nivel_original": 337.765,
      "nivel_actual": 337.765,
      "revisado": false,
@@ -133,7 +133,7 @@
     },
     {
      "periodo": "2026-09-01",
-     "valor": 2.79,
+     "valor": 2.57,
      "nivel_original": 338.896,
      "nivel_actual": 338.896,
      "revisado": false,
@@ -298,16 +298,6 @@
    "url": "https://fred.stlouisfed.org/series/ICSA",
    "periodos": [
     {
-     "periodo": "2026-08-15",
-     "valor": 207000.0,
-     "nivel_original": 207000.0,
-     "nivel_actual": 207000.0,
-     "revisado": false,
-     "n_revisiones": 0,
-     "visto_primera_vez": "2026-10-08",
-     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
-    },
-    {
      "periodo": "2026-08-22",
      "valor": 204000.0,
      "nivel_original": 204000.0,
@@ -369,13 +359,23 @@
     },
     {
      "periodo": "2026-10-03",
-     "valor": 197000.0,
+     "valor": 198000.0,
      "nivel_original": 197000.0,
-     "nivel_actual": 197000.0,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 198000.0,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-10-10",
+     "valor": 199000.0,
+     "nivel_original": 199000.0,
+     "nivel_actual": 199000.0,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-16",
+     "tipo_primer_registro": "PRIMERA"
     }
    ],
    "fecha_publicacion_calendario": "2026-10-15"
@@ -389,16 +389,6 @@
    "fuente": "FRED RSAFS",
    "url": "https://fred.stlouisfed.org/series/RSAFS",
    "periodos": [
-    {
-     "periodo": "2026-03-01",
-     "valor": 1.66,
-     "nivel_original": 719700.0,
-     "nivel_actual": 719700.0,
-     "revisado": false,
-     "n_revisiones": 0,
-     "visto_primera_vez": "2026-10-08",
-     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
-    },
     {
      "periodo": "2026-04-01",
      "valor": 0.59,
@@ -431,23 +421,33 @@
     },
     {
      "periodo": "2026-07-01",
-     "valor": -0.46,
+     "valor": -0.41,
      "nivel_original": 729538.0,
-     "nivel_actual": 729538.0,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 729915.0,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     },
     {
      "periodo": "2026-08-01",
-     "valor": 1.13,
+     "valor": 1.29,
      "nivel_original": 737763.0,
-     "nivel_actual": 737763.0,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 739322.0,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-09-01",
+     "valor": 0.77,
+     "nivel_original": 745021.0,
+     "nivel_actual": 745021.0,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-16",
+     "tipo_primer_registro": "PRIMERA"
     }
    ],
    "fecha_publicacion_calendario": "2026-10-15"
@@ -462,16 +462,6 @@
    "url": "https://fred.stlouisfed.org/series/PPIFIS",
    "periodos": [
     {
-     "periodo": "2026-03-01",
-     "valor": 4.28,
-     "nivel_original": 154.393,
-     "nivel_actual": 154.393,
-     "revisado": false,
-     "n_revisiones": 0,
-     "visto_primera_vez": "2026-10-08",
-     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
-    },
-    {
      "periodo": "2026-04-01",
      "valor": 5.69,
      "nivel_original": 156.061,
@@ -483,43 +473,53 @@
     },
     {
      "periodo": "2026-05-01",
-     "valor": 5.88,
+     "valor": 5.89,
      "nivel_original": 156.864,
-     "nivel_actual": 156.864,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 156.874,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     },
     {
      "periodo": "2026-06-01",
-     "valor": 5.58,
+     "valor": 5.59,
      "nivel_original": 156.667,
-     "nivel_actual": 156.667,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 156.683,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     },
     {
      "periodo": "2026-07-01",
-     "valor": 4.8,
+     "valor": 4.9,
      "nivel_original": 156.784,
-     "nivel_actual": 156.784,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 156.924,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     },
     {
      "periodo": "2026-08-01",
-     "valor": 5.41,
+     "valor": 5.58,
      "nivel_original": 157.411,
-     "nivel_actual": 157.411,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 157.662,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-09-01",
+     "valor": 6.35,
+     "nivel_original": 159.78,
+     "nivel_actual": 159.78,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-16",
+     "tipo_primer_registro": "PRIMERA"
     }
    ],
    "fecha_publicacion_calendario": "2026-10-15"
@@ -865,15 +865,88 @@
    "fecha_publicacion_calendario": "2026-09-29"
   }
  },
- "revisiones": [],
- "n_revisiones": 0,
- "filas_registro": 706,
+ "revisiones": [
+  {
+   "serie": "Peticiones iniciales de subsidio (semanal)",
+   "id": "ICSA",
+   "periodo": "2026-10-03",
+   "original": 197000.0,
+   "revisado": 198000.0,
+   "visto": "2026-10-16",
+   "unidad": "personas"
+  },
+  {
+   "serie": "Peticiones continuadas de subsidio (semanal)",
+   "id": "CCSA",
+   "periodo": "2026-09-26",
+   "original": 1716000.0,
+   "revisado": 1714000.0,
+   "visto": "2026-10-16",
+   "unidad": "personas"
+  },
+  {
+   "serie": "Precios de producción, demanda final (índice)",
+   "id": "PPIFIS",
+   "periodo": "2026-05-01",
+   "original": 156.864,
+   "revisado": 156.874,
+   "visto": "2026-10-16",
+   "unidad": "índice"
+  },
+  {
+   "serie": "Precios de producción, demanda final (índice)",
+   "id": "PPIFIS",
+   "periodo": "2026-06-01",
+   "original": 156.667,
+   "revisado": 156.683,
+   "visto": "2026-10-16",
+   "unidad": "índice"
+  },
+  {
+   "serie": "Precios de producción, demanda final (índice)",
+   "id": "PPIFIS",
+   "periodo": "2026-07-01",
+   "original": 156.784,
+   "revisado": 156.924,
+   "visto": "2026-10-16",
+   "unidad": "índice"
+  },
+  {
+   "serie": "Precios de producción, demanda final (índice)",
+   "id": "PPIFIS",
+   "periodo": "2026-08-01",
+   "original": 157.411,
+   "revisado": 157.662,
+   "visto": "2026-10-16",
+   "unidad": "índice"
+  },
+  {
+   "serie": "Ventas minoristas",
+   "id": "RSAFS",
+   "periodo": "2026-07-01",
+   "original": 729538.0,
+   "revisado": 729915.0,
+   "visto": "2026-10-16",
+   "unidad": "M US$"
+  },
+  {
+   "serie": "Ventas minoristas",
+   "id": "RSAFS",
+   "periodo": "2026-08-01",
+   "original": 737763.0,
+   "revisado": 739322.0,
+   "visto": "2026-10-16",
+   "unidad": "M US$"
+  }
+ ],
+ "n_revisiones": 8,
+ "filas_registro": 718,
  "registro_desde": "2026-10-08",
- "nuevas_filas": 0,
- "nuevos": 0,
+ "nuevas_filas": 12,
+ "nuevos": 4,
  "errores": {},
  "nota": "El registro de revisiones empieza el día de la primera ejecución: antes de esa fecha no hay vintages guardados y no se inventan.",
  "ok": true,
- "generado_utc": "2026-10-15 10:08 UTC",
- "duracion_s": 7.3
+ "generado_utc": "2026-10-16 07:07 UTC",
+ "duracion_s": 26.8
 }

@@ -1,15 +1,16 @@
 {
- "generado": "2026-10-15 12:10 Madrid",
- "desde": "2026-09-05",
- "hasta": "2026-11-05",
+ "generado": "2026-10-16 09:09 Madrid",
+ "desde": "2026-09-06",
+ "hasta": "2026-11-06",
  "eventos": [
   {
    "fecha": "2026-09-10",
+   "fecha_madrid": "2026-09-10",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
    "evento": "Precios de producción (PPI)",
-   "importancia": "MEDIA",
+   "importancia": "ALTA",
    "afecta": "oro · índices",
    "que_mirar": "Presión de costes que puede llegar al IPC.",
    "fuente": "FRED Release Calendar · Producer Price Index",
@@ -18,6 +19,7 @@
   },
   {
    "fecha": "2026-09-10",
+   "fecha_madrid": "2026-09-10",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -29,10 +31,10 @@
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-10-03",
-    "valor": 197000.0,
-    "anterior": 199000.0,
-    "anterior_periodo": "2026-09-26",
+    "periodo": "2026-10-10",
+    "valor": 199000.0,
+    "anterior": 198000.0,
+    "anterior_periodo": "2026-10-03",
     "descripcion": "Peticiones iniciales, personas",
     "fuente": "FRED ICSA",
     "url": "https://fred.stlouisfed.org/series/ICSA",
@@ -41,6 +43,7 @@
   },
   {
    "fecha": "2026-09-10",
+   "fecha_madrid": "2026-09-10",
    "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "22:30",
@@ -54,6 +57,7 @@
   },
   {
    "fecha": "2026-09-11",
+   "fecha_madrid": "2026-09-11",
    "dia": "vie",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -66,8 +70,8 @@
    "nota": "",
    "publicado": {
     "periodo": "2026-09-01",
-    "valor": 4.02,
-    "anterior": 3.71,
+    "valor": 3.72,
+    "anterior": 3.35,
     "anterior_periodo": "2026-08-01",
     "descripcion": "IPC general, % interanual",
     "fuente": "FRED CPIAUCSL",
@@ -77,6 +81,7 @@
   },
   {
    "fecha": "2026-09-11",
+   "fecha_madrid": "2026-09-11",
    "dia": "vie",
    "hora_ny": "16:15",
    "hora_madrid": "22:15",
@@ -90,21 +95,22 @@
   },
   {
    "fecha": "2026-09-16",
+   "fecha_madrid": "2026-09-16",
    "dia": "mié",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
    "evento": "Ventas minoristas",
-   "importancia": "MEDIA",
+   "importancia": "ALTA",
    "afecta": "índices",
    "que_mirar": "Consumo: motor del crecimiento.",
    "fuente": "FRED Release Calendar · Advance Monthly Sales for Retail and Food Services",
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=9&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-08-01",
-    "valor": 1.13,
-    "anterior": -0.46,
-    "anterior_periodo": "2026-07-01",
+    "periodo": "2026-09-01",
+    "valor": 0.77,
+    "anterior": 1.29,
+    "anterior_periodo": "2026-08-01",
     "descripcion": "Ventas minoristas, % mensual",
     "fuente": "FRED RSAFS",
     "url": "https://fred.stlouisfed.org/series/RSAFS",
@@ -113,6 +119,7 @@
   },
   {
    "fecha": "2026-09-16",
+   "fecha_madrid": "2026-09-16",
    "dia": "mié",
    "hora_ny": "14:00",
    "hora_madrid": "20:00",
@@ -126,6 +133,7 @@
   },
   {
    "fecha": "2026-09-17",
+   "fecha_madrid": "2026-09-17",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -137,10 +145,10 @@
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-10-03",
-    "valor": 197000.0,
-    "anterior": 199000.0,
-    "anterior_periodo": "2026-09-26",
+    "periodo": "2026-10-10",
+    "valor": 199000.0,
+    "anterior": 198000.0,
+    "anterior_periodo": "2026-10-03",
     "descripcion": "Peticiones iniciales, personas",
     "fuente": "FRED ICSA",
     "url": "https://fred.stlouisfed.org/series/ICSA",
@@ -149,6 +157,7 @@
   },
   {
    "fecha": "2026-09-17",
+   "fecha_madrid": "2026-09-17",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -162,6 +171,21 @@
   },
   {
    "fecha": "2026-09-17",
+   "fecha_madrid": "2026-09-17",
+   "dia": "jue",
+   "hora_ny": "08:30",
+   "hora_madrid": "14:30",
+   "evento": "Vivienda iniciada y permisos (Census)",
+   "importancia": "MEDIA",
+   "afecta": "índices",
+   "que_mirar": "Ciclo inmobiliario sensible a tipos.",
+   "fuente": "FRED Release Calendar · New Residential Construction",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=27&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-09-17",
+   "fecha_madrid": "2026-09-17",
    "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "22:30",
@@ -175,9 +199,10 @@
   },
   {
    "fecha": "2026-09-18",
+   "fecha_madrid": "2026-09-18",
    "dia": "vie",
-   "hora_ny": "12:15",
-   "hora_madrid": "18:15",
+   "hora_ny": "09:15",
+   "hora_madrid": "15:15",
    "evento": "Producción industrial",
    "importancia": "BAJA",
    "afecta": "índices",
@@ -198,6 +223,7 @@
   },
   {
    "fecha": "2026-09-18",
+   "fecha_madrid": "2026-09-18",
    "dia": "vie",
    "hora_ny": "16:15",
    "hora_madrid": "22:15",
@@ -211,6 +237,7 @@
   },
   {
    "fecha": "2026-09-18",
+   "fecha_madrid": "2026-09-18",
    "dia": "vie",
    "hora_ny": "",
    "hora_madrid": "",
@@ -224,6 +251,7 @@
   },
   {
    "fecha": "2026-09-22",
+   "fecha_madrid": "2026-09-22",
    "dia": "mar",
    "hora_ny": "13:00",
    "hora_madrid": "19:00",
@@ -237,6 +265,7 @@
   },
   {
    "fecha": "2026-09-24",
+   "fecha_madrid": "2026-09-24",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -248,10 +277,10 @@
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-10-03",
-    "valor": 197000.0,
-    "anterior": 199000.0,
-    "anterior_periodo": "2026-09-26",
+    "periodo": "2026-10-10",
+    "valor": 199000.0,
+    "anterior": 198000.0,
+    "anterior_periodo": "2026-10-03",
     "descripcion": "Peticiones iniciales, personas",
     "fuente": "FRED ICSA",
     "url": "https://fred.stlouisfed.org/series/ICSA",
@@ -260,6 +289,35 @@
   },
   {
    "fecha": "2026-09-24",
+   "fecha_madrid": "2026-09-24",
+   "dia": "jue",
+   "hora_ny": "10:00",
+   "hora_madrid": "16:00",
+   "evento": "Vivienda iniciada y permisos (Census)",
+   "importancia": "MEDIA",
+   "afecta": "índices",
+   "que_mirar": "Ciclo inmobiliario sensible a tipos.",
+   "fuente": "FRED Release Calendar · New Residential Construction",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=27&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-09-24",
+   "fecha_madrid": "2026-09-24",
+   "dia": "jue",
+   "hora_ny": "10:00",
+   "hora_madrid": "16:00",
+   "evento": "Ventas de vivienda nueva (Census)",
+   "importancia": "MEDIA",
+   "afecta": "índices",
+   "que_mirar": "Demanda de vivienda frente a hipotecas al 6-7 %.",
+   "fuente": "FRED Release Calendar · New Residential Sales",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=97&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-09-24",
+   "fecha_madrid": "2026-09-24",
    "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "22:30",
@@ -273,6 +331,21 @@
   },
   {
    "fecha": "2026-09-25",
+   "fecha_madrid": "2026-09-25",
+   "dia": "vie",
+   "hora_ny": "08:30",
+   "hora_madrid": "14:30",
+   "evento": "Pedidos de fábrica y bienes duraderos (Census, M3)",
+   "importancia": "MEDIA",
+   "afecta": "índices",
+   "que_mirar": "Inversión empresarial: pedidos de bienes de capital.",
+   "fuente": "FRED Release Calendar · Manufacturer&#039;s Shipments, Inventories, and Orders (M3) Survey",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=95&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-09-25",
+   "fecha_madrid": "2026-09-25",
    "dia": "vie",
    "hora_ny": "11:00",
    "hora_madrid": "17:00",
@@ -286,6 +359,7 @@
   },
   {
    "fecha": "2026-09-25",
+   "fecha_madrid": "2026-09-25",
    "dia": "vie",
    "hora_ny": "16:15",
    "hora_madrid": "22:15",
@@ -299,21 +373,22 @@
   },
   {
    "fecha": "2026-09-28",
+   "fecha_madrid": "2026-09-28",
    "dia": "lun",
    "hora_ny": "10:00",
    "hora_madrid": "16:00",
    "evento": "Ventas minoristas",
-   "importancia": "MEDIA",
+   "importancia": "ALTA",
    "afecta": "índices",
    "que_mirar": "Consumo: motor del crecimiento.",
    "fuente": "FRED Release Calendar · Advance Monthly Sales for Retail and Food Services",
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=9&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-08-01",
-    "valor": 1.13,
-    "anterior": -0.46,
-    "anterior_periodo": "2026-07-01",
+    "periodo": "2026-09-01",
+    "valor": 0.77,
+    "anterior": 1.29,
+    "anterior_periodo": "2026-08-01",
     "descripcion": "Ventas minoristas, % mensual",
     "fuente": "FRED RSAFS",
     "url": "https://fred.stlouisfed.org/series/RSAFS",
@@ -322,6 +397,7 @@
   },
   {
    "fecha": "2026-09-29",
+   "fecha_madrid": "2026-09-29",
    "dia": "mar",
    "hora_ny": "10:00",
    "hora_madrid": "16:00",
@@ -335,6 +411,7 @@
   },
   {
    "fecha": "2026-09-30",
+   "fecha_madrid": "2026-09-30",
    "dia": "mié",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -358,11 +435,12 @@
   },
   {
    "fecha": "2026-09-30",
+   "fecha_madrid": "2026-09-30",
    "dia": "mié",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
    "evento": "PIB EE. UU.",
-   "importancia": "MEDIA",
+   "importancia": "ALTA",
    "afecta": "índices · oro",
    "que_mirar": "Crecimiento y deflactor; revisiones.",
    "fuente": "FRED Release Calendar · Gross Domestic Product",
@@ -381,6 +459,7 @@
   },
   {
    "fecha": "2026-10-01",
+   "fecha_madrid": "2026-10-01",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -392,10 +471,10 @@
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-10-03",
-    "valor": 197000.0,
-    "anterior": 199000.0,
-    "anterior_periodo": "2026-09-26",
+    "periodo": "2026-10-10",
+    "valor": 199000.0,
+    "anterior": 198000.0,
+    "anterior_periodo": "2026-10-03",
     "descripcion": "Peticiones iniciales, personas",
     "fuente": "FRED ICSA",
     "url": "https://fred.stlouisfed.org/series/ICSA",
@@ -404,6 +483,7 @@
   },
   {
    "fecha": "2026-10-01",
+   "fecha_madrid": "2026-10-01",
    "dia": "jue",
    "hora_ny": "10:00",
    "hora_madrid": "16:00",
@@ -417,6 +497,7 @@
   },
   {
    "fecha": "2026-10-01",
+   "fecha_madrid": "2026-10-01",
    "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "22:30",
@@ -430,6 +511,7 @@
   },
   {
    "fecha": "2026-10-02",
+   "fecha_madrid": "2026-10-02",
    "dia": "vie",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -453,6 +535,21 @@
   },
   {
    "fecha": "2026-10-02",
+   "fecha_madrid": "2026-10-02",
+   "dia": "vie",
+   "hora_ny": "10:00",
+   "hora_madrid": "16:00",
+   "evento": "Pedidos de fábrica y bienes duraderos (Census, M3)",
+   "importancia": "MEDIA",
+   "afecta": "índices",
+   "que_mirar": "Inversión empresarial: pedidos de bienes de capital.",
+   "fuente": "FRED Release Calendar · Manufacturer&#039;s Shipments, Inventories, and Orders (M3) Survey",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=95&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-02",
+   "fecha_madrid": "2026-10-02",
    "dia": "vie",
    "hora_ny": "16:15",
    "hora_madrid": "22:15",
@@ -466,6 +563,7 @@
   },
   {
    "fecha": "2026-10-05",
+   "fecha_madrid": "2026-10-05",
    "dia": "lun",
    "hora_ny": "10:00",
    "hora_madrid": "16:00",
@@ -479,6 +577,7 @@
   },
   {
    "fecha": "2026-10-08",
+   "fecha_madrid": "2026-10-08",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -490,10 +589,10 @@
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-10-03",
-    "valor": 197000.0,
-    "anterior": 199000.0,
-    "anterior_periodo": "2026-09-26",
+    "periodo": "2026-10-10",
+    "valor": 199000.0,
+    "anterior": 198000.0,
+    "anterior_periodo": "2026-10-03",
     "descripcion": "Peticiones iniciales, personas",
     "fuente": "FRED ICSA",
     "url": "https://fred.stlouisfed.org/series/ICSA",
@@ -502,6 +601,7 @@
   },
   {
    "fecha": "2026-10-08",
+   "fecha_madrid": "2026-10-08",
    "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "22:30",
@@ -515,6 +615,7 @@
   },
   {
    "fecha": "2026-10-09",
+   "fecha_madrid": "2026-10-09",
    "dia": "vie",
    "hora_ny": "16:15",
    "hora_madrid": "22:15",
@@ -528,6 +629,7 @@
   },
   {
    "fecha": "2026-10-14",
+   "fecha_madrid": "2026-10-14",
    "dia": "mié",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -540,8 +642,8 @@
    "nota": "",
    "publicado": {
     "periodo": "2026-09-01",
-    "valor": 4.02,
-    "anterior": 3.71,
+    "valor": 3.72,
+    "anterior": 3.35,
     "anterior_periodo": "2026-08-01",
     "descripcion": "IPC general, % interanual",
     "fuente": "FRED CPIAUCSL",
@@ -551,21 +653,22 @@
   },
   {
    "fecha": "2026-10-15",
+   "fecha_madrid": "2026-10-15",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
    "evento": "Ventas minoristas",
-   "importancia": "MEDIA",
+   "importancia": "ALTA",
    "afecta": "índices",
    "que_mirar": "Consumo: motor del crecimiento.",
    "fuente": "FRED Release Calendar · Advance Monthly Sales for Retail and Food Services",
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=9&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-08-01",
-    "valor": 1.13,
-    "anterior": -0.46,
-    "anterior_periodo": "2026-07-01",
+    "periodo": "2026-09-01",
+    "valor": 0.77,
+    "anterior": 1.29,
+    "anterior_periodo": "2026-08-01",
     "descripcion": "Ventas minoristas, % mensual",
     "fuente": "FRED RSAFS",
     "url": "https://fred.stlouisfed.org/series/RSAFS",
@@ -574,11 +677,12 @@
   },
   {
    "fecha": "2026-10-15",
+   "fecha_madrid": "2026-10-15",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
    "evento": "Precios de producción (PPI)",
-   "importancia": "MEDIA",
+   "importancia": "ALTA",
    "afecta": "oro · índices",
    "que_mirar": "Presión de costes que puede llegar al IPC.",
    "fuente": "FRED Release Calendar · Producer Price Index",
@@ -587,6 +691,7 @@
   },
   {
    "fecha": "2026-10-15",
+   "fecha_madrid": "2026-10-15",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -598,10 +703,10 @@
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-10-03",
-    "valor": 197000.0,
-    "anterior": 199000.0,
-    "anterior_periodo": "2026-09-26",
+    "periodo": "2026-10-10",
+    "valor": 199000.0,
+    "anterior": 198000.0,
+    "anterior_periodo": "2026-10-03",
     "descripcion": "Peticiones iniciales, personas",
     "fuente": "FRED ICSA",
     "url": "https://fred.stlouisfed.org/series/ICSA",
@@ -610,6 +715,7 @@
   },
   {
    "fecha": "2026-10-15",
+   "fecha_madrid": "2026-10-15",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -623,6 +729,7 @@
   },
   {
    "fecha": "2026-10-15",
+   "fecha_madrid": "2026-10-15",
    "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "22:30",
@@ -636,9 +743,10 @@
   },
   {
    "fecha": "2026-10-16",
+   "fecha_madrid": "2026-10-16",
    "dia": "vie",
-   "hora_ny": "12:15",
-   "hora_madrid": "18:15",
+   "hora_ny": "09:15",
+   "hora_madrid": "15:15",
    "evento": "Producción industrial",
    "importancia": "BAJA",
    "afecta": "índices",
@@ -659,6 +767,7 @@
   },
   {
    "fecha": "2026-10-16",
+   "fecha_madrid": "2026-10-16",
    "dia": "vie",
    "hora_ny": "16:15",
    "hora_madrid": "22:15",
@@ -672,6 +781,21 @@
   },
   {
    "fecha": "2026-10-20",
+   "fecha_madrid": "2026-10-20",
+   "dia": "mar",
+   "hora_ny": "08:30",
+   "hora_madrid": "14:30",
+   "evento": "Vivienda iniciada y permisos (Census)",
+   "importancia": "MEDIA",
+   "afecta": "índices",
+   "que_mirar": "Ciclo inmobiliario sensible a tipos.",
+   "fuente": "FRED Release Calendar · New Residential Construction",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=27&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-20",
+   "fecha_madrid": "2026-10-20",
    "dia": "mar",
    "hora_ny": "",
    "hora_madrid": "",
@@ -685,6 +809,21 @@
   },
   {
    "fecha": "2026-10-21",
+   "fecha_madrid": "2026-10-21",
+   "dia": "mié",
+   "hora_ny": "13:00",
+   "hora_madrid": "19:00",
+   "evento": "Subasta del Tesoro Bond 19-Year 10-Month (13 MM$)",
+   "importancia": "BAJA",
+   "afecta": "índices · oro",
+   "que_mirar": "Demanda débil (cola) → yields ↑.",
+   "fuente": "TreasuryDirect (U.S. Treasury)",
+   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-21",
+   "fecha_madrid": "2026-10-21",
    "dia": "mié",
    "hora_ny": "",
    "hora_madrid": "",
@@ -698,6 +837,7 @@
   },
   {
    "fecha": "2026-10-21",
+   "fecha_madrid": "2026-10-21",
    "dia": "mié",
    "hora_ny": "",
    "hora_madrid": "",
@@ -710,20 +850,8 @@
    "nota": "fecha CONFIRMADA"
   },
   {
-   "fecha": "2026-10-21",
-   "dia": "mié",
-   "hora_ny": "",
-   "hora_madrid": "",
-   "evento": "Subasta del Tesoro Bond 19-Year 10-Month",
-   "importancia": "MEDIA",
-   "afecta": "índices · oro",
-   "que_mirar": "Demanda débil (cola) → yields ↑.",
-   "fuente": "TreasuryDirect (U.S. Treasury)",
-   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
-   "nota": "hora de cierre aún no anunciada"
-  },
-  {
    "fecha": "2026-10-22",
+   "fecha_madrid": "2026-10-22",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -735,10 +863,10 @@
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-10-03",
-    "valor": 197000.0,
-    "anterior": 199000.0,
-    "anterior_periodo": "2026-09-26",
+    "periodo": "2026-10-10",
+    "valor": 199000.0,
+    "anterior": 198000.0,
+    "anterior_periodo": "2026-10-03",
     "descripcion": "Peticiones iniciales, personas",
     "fuente": "FRED ICSA",
     "url": "https://fred.stlouisfed.org/series/ICSA",
@@ -747,6 +875,21 @@
   },
   {
    "fecha": "2026-10-22",
+   "fecha_madrid": "2026-10-22",
+   "dia": "jue",
+   "hora_ny": "13:00",
+   "hora_madrid": "19:00",
+   "evento": "Subasta del Tesoro Note 5-Year (26 MM$)",
+   "importancia": "BAJA",
+   "afecta": "índices · oro",
+   "que_mirar": "Demanda débil (cola) → yields ↑.",
+   "fuente": "TreasuryDirect (U.S. Treasury)",
+   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-22",
+   "fecha_madrid": "2026-10-22",
    "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "22:30",
@@ -759,20 +902,8 @@
    "nota": ""
   },
   {
-   "fecha": "2026-10-22",
-   "dia": "jue",
-   "hora_ny": "",
-   "hora_madrid": "",
-   "evento": "Subasta del Tesoro Note 5-Year",
-   "importancia": "MEDIA",
-   "afecta": "índices · oro",
-   "que_mirar": "Demanda débil (cola) → yields ↑.",
-   "fuente": "TreasuryDirect (U.S. Treasury)",
-   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
-   "nota": "hora de cierre aún no anunciada"
-  },
-  {
    "fecha": "2026-10-23",
+   "fecha_madrid": "2026-10-23",
    "dia": "vie",
    "hora_ny": "11:00",
    "hora_madrid": "17:00",
@@ -786,6 +917,7 @@
   },
   {
    "fecha": "2026-10-23",
+   "fecha_madrid": "2026-10-23",
    "dia": "vie",
    "hora_ny": "16:15",
    "hora_madrid": "22:15",
@@ -799,6 +931,49 @@
   },
   {
    "fecha": "2026-10-27",
+   "fecha_madrid": "2026-10-27",
+   "dia": "mar",
+   "hora_ny": "08:30",
+   "hora_madrid": "13:30",
+   "evento": "Pedidos de fábrica y bienes duraderos (Census, M3)",
+   "importancia": "MEDIA",
+   "afecta": "índices",
+   "que_mirar": "Inversión empresarial: pedidos de bienes de capital.",
+   "fuente": "FRED Release Calendar · Manufacturer&#039;s Shipments, Inventories, and Orders (M3) Survey",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=95&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-27",
+   "fecha_madrid": "2026-10-27",
+   "dia": "mar",
+   "hora_ny": "10:00",
+   "hora_madrid": "15:00",
+   "evento": "Vivienda iniciada y permisos (Census)",
+   "importancia": "MEDIA",
+   "afecta": "índices",
+   "que_mirar": "Ciclo inmobiliario sensible a tipos.",
+   "fuente": "FRED Release Calendar · New Residential Construction",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=27&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-27",
+   "fecha_madrid": "2026-10-27",
+   "dia": "mar",
+   "hora_ny": "10:00",
+   "hora_madrid": "15:00",
+   "evento": "Ventas de vivienda nueva (Census)",
+   "importancia": "MEDIA",
+   "afecta": "índices",
+   "que_mirar": "Demanda de vivienda frente a hipotecas al 6-7 %.",
+   "fuente": "FRED Release Calendar · New Residential Sales",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=97&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-27",
+   "fecha_madrid": "2026-10-27",
    "dia": "mar",
    "hora_ny": "13:00",
    "hora_madrid": "18:00",
@@ -812,6 +987,7 @@
   },
   {
    "fecha": "2026-10-28",
+   "fecha_madrid": "2026-10-28",
    "dia": "mié",
    "hora_ny": "14:00",
    "hora_madrid": "19:00",
@@ -825,6 +1001,7 @@
   },
   {
    "fecha": "2026-10-28",
+   "fecha_madrid": "2026-10-28",
    "dia": "mié",
    "hora_ny": "",
    "hora_madrid": "",
@@ -838,6 +1015,7 @@
   },
   {
    "fecha": "2026-10-28",
+   "fecha_madrid": "2026-10-28",
    "dia": "mié",
    "hora_ny": "",
    "hora_madrid": "",
@@ -851,6 +1029,7 @@
   },
   {
    "fecha": "2026-10-29",
+   "fecha_madrid": "2026-10-29",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "13:30",
@@ -874,11 +1053,12 @@
   },
   {
    "fecha": "2026-10-29",
+   "fecha_madrid": "2026-10-29",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "13:30",
    "evento": "PIB EE. UU.",
-   "importancia": "MEDIA",
+   "importancia": "ALTA",
    "afecta": "índices · oro",
    "que_mirar": "Crecimiento y deflactor; revisiones.",
    "fuente": "FRED Release Calendar · Gross Domestic Product",
@@ -897,6 +1077,7 @@
   },
   {
    "fecha": "2026-10-29",
+   "fecha_madrid": "2026-10-29",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "13:30",
@@ -908,10 +1089,10 @@
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-10-03",
-    "valor": 197000.0,
-    "anterior": 199000.0,
-    "anterior_periodo": "2026-09-26",
+    "periodo": "2026-10-10",
+    "valor": 199000.0,
+    "anterior": 198000.0,
+    "anterior_periodo": "2026-10-03",
     "descripcion": "Peticiones iniciales, personas",
     "fuente": "FRED ICSA",
     "url": "https://fred.stlouisfed.org/series/ICSA",
@@ -920,6 +1101,7 @@
   },
   {
    "fecha": "2026-10-29",
+   "fecha_madrid": "2026-10-29",
    "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "21:30",
@@ -933,6 +1115,7 @@
   },
   {
    "fecha": "2026-10-29",
+   "fecha_madrid": "2026-10-29",
    "dia": "jue",
    "hora_ny": "",
    "hora_madrid": "",
@@ -946,6 +1129,7 @@
   },
   {
    "fecha": "2026-10-29",
+   "fecha_madrid": "2026-10-29",
    "dia": "jue",
    "hora_ny": "",
    "hora_madrid": "",
@@ -959,19 +1143,35 @@
   },
   {
    "fecha": "2026-10-29",
+   "fecha_madrid": "2026-10-29",
    "dia": "jue",
    "hora_ny": "",
    "hora_madrid": "",
    "evento": "Resultados Eli Lilly (LLY)",
    "importancia": "MEDIA",
    "afecta": "índices",
-   "que_mirar": "BPA estimado $7.54 · antes de la apertura",
+   "que_mirar": "BPA estimado $6.4 · antes de la apertura",
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/lly/earnings",
    "nota": "fecha CONFIRMADA"
   },
   {
    "fecha": "2026-10-30",
+   "fecha_madrid": "2026-10-30",
+   "dia": "vie",
+   "hora_ny": "08:30",
+   "hora_madrid": "13:30",
+   "evento": "Índice de costes laborales (ECI, BLS)",
+   "importancia": "ALTA",
+   "afecta": "índices · oro · cripto",
+   "que_mirar": "Salarios y beneficios: coste laboral ↑ = presión inflacionista de servicios (2Y ↑).",
+   "fuente": "FRED Release Calendar · Employment Cost Index",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=11&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-30",
+   "fecha_madrid": "2026-10-30",
    "dia": "vie",
    "hora_ny": "16:15",
    "hora_madrid": "21:15",
@@ -985,6 +1185,7 @@
   },
   {
    "fecha": "2026-10-30",
+   "fecha_madrid": "2026-10-30",
    "dia": "vie",
    "hora_ny": "",
    "hora_madrid": "",
@@ -998,6 +1199,7 @@
   },
   {
    "fecha": "2026-11-02",
+   "fecha_madrid": "2026-11-02",
    "dia": "lun",
    "hora_ny": "10:00",
    "hora_madrid": "16:00",
@@ -1011,6 +1213,7 @@
   },
   {
    "fecha": "2026-11-02",
+   "fecha_madrid": "2026-11-02",
    "dia": "lun",
    "hora_ny": "",
    "hora_madrid": "",
@@ -1024,6 +1227,7 @@
   },
   {
    "fecha": "2026-11-03",
+   "fecha_madrid": "2026-11-03",
    "dia": "mar",
    "hora_ny": "10:00",
    "hora_madrid": "16:00",
@@ -1036,7 +1240,22 @@
    "nota": ""
   },
   {
+   "fecha": "2026-11-03",
+   "fecha_madrid": "2026-11-03",
+   "dia": "mar",
+   "hora_ny": "10:30",
+   "hora_madrid": "16:30",
+   "evento": "Pedidos de fábrica y bienes duraderos (Census, M3)",
+   "importancia": "MEDIA",
+   "afecta": "índices",
+   "que_mirar": "Inversión empresarial: pedidos de bienes de capital.",
+   "fuente": "FRED Release Calendar · Manufacturer&#039;s Shipments, Inventories, and Orders (M3) Survey",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=95&y=2026",
+   "nota": ""
+  },
+  {
    "fecha": "2026-11-04",
+   "fecha_madrid": "2026-11-04",
    "dia": "mié",
    "hora_ny": "10:00",
    "hora_madrid": "16:00",
@@ -1050,6 +1269,7 @@
   },
   {
    "fecha": "2026-11-05",
+   "fecha_madrid": "2026-11-05",
    "dia": "jue",
    "hora_ny": "08:30",
    "hora_madrid": "14:30",
@@ -1061,10 +1281,10 @@
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
    "nota": "",
    "publicado": {
-    "periodo": "2026-10-03",
-    "valor": 197000.0,
-    "anterior": 199000.0,
-    "anterior_periodo": "2026-09-26",
+    "periodo": "2026-10-10",
+    "valor": 199000.0,
+    "anterior": 198000.0,
+    "anterior_periodo": "2026-10-03",
     "descripcion": "Peticiones iniciales, personas",
     "fuente": "FRED ICSA",
     "url": "https://fred.stlouisfed.org/series/ICSA",
@@ -1073,6 +1293,7 @@
   },
   {
    "fecha": "2026-11-05",
+   "fecha_madrid": "2026-11-05",
    "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "22:30",
@@ -1083,64 +1304,76 @@
    "fuente": "FRED Release Calendar · H.4.1 Factors Affecting Reserve Balances",
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=20&y=2026",
    "nota": ""
+  },
+  {
+   "fecha": "2026-11-06",
+   "fecha_madrid": "2026-11-06",
+   "dia": "vie",
+   "hora_ny": "08:30",
+   "hora_madrid": "14:30",
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "importancia": "ALTA",
+   "afecta": "cripto · oro · índices",
+   "que_mirar": "Empleo fuerte → 2Y ↑ (menos recortes); débil → 2Y ↓. Mirar salarios y revisiones.",
+   "fuente": "FRED Release Calendar · Employment Situation",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=50&y=2026",
+   "nota": "",
+   "publicado": {
+    "periodo": "2026-09-01",
+    "valor": 29.0,
+    "anterior": 133.0,
+    "anterior_periodo": "2026-08-01",
+    "descripcion": "Nóminas no agrícolas, variación en miles",
+    "fuente": "FRED PAYEMS",
+    "url": "https://fred.stlouisfed.org/series/PAYEMS",
+    "fecha_publicacion": "2026-10-02"
+   }
+  },
+  {
+   "fecha": "2026-11-06",
+   "fecha_madrid": "2026-11-06",
+   "dia": "vie",
+   "hora_ny": "16:15",
+   "hora_madrid": "22:15",
+   "evento": "Crédito bancario H.8",
+   "importancia": "BAJA",
+   "afecta": "índices",
+   "que_mirar": "Crédito de bancos comerciales.",
+   "fuente": "FRED Release Calendar · H.8 Assets and Liabilities of Commercial Banks in the United States",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=22&y=2026",
+   "nota": ""
   }
  ],
  "fed_vigilar": [
   {
-   "fecha": "2026-10-14",
-   "dia": "mié",
-   "hora_ny": "05:40",
-   "hora_madrid": "11:40",
-   "evento": "Conversación · Vice Chair for Supervision Michelle W. Bowman",
-   "importancia": "MEDIA",
-   "afecta": "oro · índices · cripto (vía expectativas de tipos)",
-   "que_mirar": "Mensaje de un miembro con voto sobre tipos o inflación.",
-   "fuente": "Federal Reserve (calendario oficial)",
-   "url": "https://www.federalreserve.gov/newsevents/calendar.htm",
-   "nota": "",
-   "tipo": "Speeches"
-  },
-  {
-   "fecha": "2026-10-14",
-   "dia": "mié",
-   "hora_ny": "22:55",
-   "hora_madrid": "04:55",
-   "evento": "Discurso · Vice Chair for Supervision Michelle W. Bowman",
-   "importancia": "MEDIA",
-   "afecta": "oro · índices · cripto (vía expectativas de tipos)",
-   "que_mirar": "Mensaje de un miembro con voto sobre tipos o inflación.",
-   "fuente": "Federal Reserve (calendario oficial)",
-   "url": "https://www.youtube.com/live/V7H5F2C5PNc",
-   "nota": "",
-   "tipo": "Speeches"
-  },
-  {
    "fecha": "2026-10-15",
+   "fecha_madrid": "2026-10-16",
    "dia": "jue",
    "hora_ny": "23:30",
    "hora_madrid": "05:30",
    "evento": "Conversación · Chairman Kevin Warsh",
-   "importancia": "MEDIA",
+   "importancia": "ALTA",
    "afecta": "oro · índices · cripto (vía expectativas de tipos)",
-   "que_mirar": "Mensaje de un miembro con voto sobre tipos o inflación.",
+   "que_mirar": "Mensaje del presidente de la Fed sobre tipos o inflación.",
    "fuente": "Federal Reserve (calendario oficial)",
    "url": "https://www.youtube.com/watch?v=T20jWBJ66X0&list=PLGHsBhoupusk&index=31",
    "nota": "",
-   "tipo": "Speeches"
+   "tipo": "Speeches",
+   "presidente": true
   }
  ],
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
-   "dias": 13
+   "dias": 12
   },
   "BCE": {
    "fecha": "2026-10-29",
-   "dias": 14
+   "dias": 13
   },
   "Banco de Japón": {
    "fecha": "2026-10-30",
-   "dias": 15
+   "dias": 14
   }
  },
  "errores": {},
@@ -1148,8 +1381,8 @@
  "ultimos_publicados": {
   "IPC EE. UU. (CPI)": {
    "periodo": "2026-09-01",
-   "valor": 4.02,
-   "anterior": 3.71,
+   "valor": 3.72,
+   "anterior": 3.35,
    "anterior_periodo": "2026-08-01",
    "descripcion": "IPC general, % interanual",
    "fuente": "FRED CPIAUCSL",
@@ -1167,30 +1400,30 @@
    "fecha_publicacion": "2026-10-02"
   },
   "Peticiones de paro semanales": {
-   "periodo": "2026-10-03",
-   "valor": 197000.0,
-   "anterior": 199000.0,
-   "anterior_periodo": "2026-09-26",
+   "periodo": "2026-10-10",
+   "valor": 199000.0,
+   "anterior": 198000.0,
+   "anterior_periodo": "2026-10-03",
    "descripcion": "Peticiones iniciales, personas",
    "fuente": "FRED ICSA",
    "url": "https://fred.stlouisfed.org/series/ICSA",
    "fecha_publicacion": "2026-10-15"
   },
   "Ventas minoristas": {
-   "periodo": "2026-08-01",
-   "valor": 1.13,
-   "anterior": -0.46,
-   "anterior_periodo": "2026-07-01",
+   "periodo": "2026-09-01",
+   "valor": 0.77,
+   "anterior": 1.29,
+   "anterior_periodo": "2026-08-01",
    "descripcion": "Ventas minoristas, % mensual",
    "fuente": "FRED RSAFS",
    "url": "https://fred.stlouisfed.org/series/RSAFS",
    "fecha_publicacion": "2026-10-15"
   },
   "IPP EE. UU. (PPI)": {
-   "periodo": "2026-08-01",
-   "valor": 5.41,
-   "anterior": 4.8,
-   "anterior_periodo": "2026-07-01",
+   "periodo": "2026-09-01",
+   "valor": 6.35,
+   "anterior": 5.58,
+   "anterior_periodo": "2026-08-01",
    "descripcion": "IPP demanda final, % interanual",
    "fuente": "FRED PPIFIS",
    "url": "https://fred.stlouisfed.org/series/PPIFIS"
@@ -1227,6 +1460,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-15 10:08 UTC",
- "duracion_s": 46.1
+ "generado_utc": "2026-10-16 07:07 UTC",
+ "duracion_s": 91.2
 }
