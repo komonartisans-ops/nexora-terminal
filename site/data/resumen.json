@@ -1,12 +1,12 @@
 {
  "periodo": "hoy",
  "corte": "Datos entre el 2026-10-15 y el 2026-10-16 (cada fuente publica a su hora)",
- "movido": "El tipo real a 10 años baja 6 pb; la probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 28 % a 14 %; el dólar se debilita 0,39 %. En conjunto: el dinero se abarata.",
+ "movido": "El tipo real a 10 años baja 6 pb; el dólar se debilita 0,39 %; el bono a 2 años baja 5 pb (hasta 4,77 %). En conjunto: el dinero se abarata.",
  "significa": [
   {
    "activo": "Oro",
    "viento": "A FAVOR",
-   "texto": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro."
+   "texto": "A favor: baja el tipo real (lo que más les ayuda)."
   },
   {
    "activo": "Nasdaq 100",
@@ -21,7 +21,7 @@
   {
    "activo": "Bitcoin",
    "viento": "A FAVOR",
-   "texto": "A favor: la Fed se ve menos dura."
+   "texto": "A favor: el dólar se debilita."
   },
   {
    "activo": "US30 · Dow Jones",
@@ -31,11 +31,11 @@
   {
    "activo": "Russell 2000",
    "viento": "A FAVOR",
-   "texto": "A favor: la Fed se ve menos dura. Su movimiento lo explica la macro."
+   "texto": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro."
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 14 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 18 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 21 oct · Resultados Meta Platforms (META): BPA estimado $6.67 · después del cierre",
   "mié 21 oct · Resultados Tesla (TSLA): BPA estimado $0.21 · después del cierre"
  ],
@@ -43,9 +43,9 @@
  "sencillo": "El tipo real es lo que paga un bono después de descontar la inflación. Si sube, guardar el dinero en bonos se vuelve atractivo y pierden atractivo lo que no paga intereses (oro, bitcoin) y las tecnológicas.",
  "motores_significativos": [
   "real",
-  "fed",
   "dxy",
-  "t2y"
+  "t2y",
+  "fed"
  ],
  "errores": {
   "lbma": "HTTPError: HTTP Error 403: Forbidden"
@@ -59,12 +59,6 @@
     "razon": "baja el tipo real (lo que más les ayuda)"
    },
    {
-    "motor": "fed",
-    "sube": false,
-    "peso": 2.1,
-    "razon": "la Fed se ve menos dura"
-   },
-   {
     "motor": "dxy",
     "sube": false,
     "peso": 0.65,
@@ -75,6 +69,12 @@
     "sube": false,
     "peso": 1.0,
     "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.5,
+    "razon": "la Fed se ve menos dura"
    }
   ],
   "S&P 500": [
@@ -85,12 +85,6 @@
     "razon": "baja el tipo real (lo que más les ayuda)"
    },
    {
-    "motor": "fed",
-    "sube": false,
-    "peso": 1.4,
-    "razon": "la Fed se ve menos dura"
-   },
-   {
     "motor": "dxy",
     "sube": false,
     "peso": 0.65,
@@ -101,6 +95,12 @@
     "sube": false,
     "peso": 1.0,
     "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.0,
+    "razon": "la Fed se ve menos dura"
    }
   ],
   "Oro": [
@@ -109,12 +109,6 @@
     "sube": false,
     "peso": 3.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
-   },
-   {
-    "motor": "fed",
-    "sube": false,
-    "peso": 1.4,
-    "razon": "la Fed se ve menos dura"
    },
    {
     "motor": "dxy",
@@ -127,6 +121,12 @@
     "sube": false,
     "peso": 1.0,
     "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.0,
+    "razon": "la Fed se ve menos dura"
    }
   ],
   "Bitcoin": [
@@ -135,12 +135,6 @@
     "sube": false,
     "peso": 1.5,
     "razon": "baja el tipo real (lo que más les ayuda)"
-   },
-   {
-    "motor": "fed",
-    "sube": false,
-    "peso": 2.1,
-    "razon": "la Fed se ve menos dura"
    },
    {
     "motor": "dxy",
@@ -153,6 +147,12 @@
     "sube": false,
     "peso": 1.0,
     "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.5,
+    "razon": "la Fed se ve menos dura"
    }
   ],
   "US30 · Dow Jones": [
@@ -161,12 +161,6 @@
     "sube": false,
     "peso": 1.5,
     "razon": "baja el tipo real (lo que más les ayuda)"
-   },
-   {
-    "motor": "fed",
-    "sube": false,
-    "peso": 1.05,
-    "razon": "la Fed se ve menos dura"
    },
    {
     "motor": "dxy",
@@ -179,6 +173,12 @@
     "sube": false,
     "peso": 0.5,
     "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 0.75,
+    "razon": "la Fed se ve menos dura"
    }
   ],
   "Russell 2000": [
@@ -189,16 +189,16 @@
     "razon": "baja el tipo real (lo que más les ayuda)"
    },
    {
-    "motor": "fed",
-    "sube": false,
-    "peso": 2.8,
-    "razon": "la Fed se ve menos dura"
-   },
-   {
     "motor": "t2y",
     "sube": false,
     "peso": 1.5,
     "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 2.0,
+    "razon": "la Fed se ve menos dura"
    }
   ]
  },
@@ -229,10 +229,10 @@
    "fecha": "2026-10-15"
   },
   "fed": {
-   "valor": 14.0,
+   "valor": 18.0,
    "antes": 28.0,
    "reunion": "2026-10-28",
-   "delta": -14.0,
+   "delta": -10.0,
    "fecha": "2026-10-16"
   }
  },
@@ -248,9 +248,9 @@
    "valor": 7744.06
   },
   "Oro": {
-   "delta": 0.846497778490729,
+   "delta": 0.4867941826842248,
    "fecha": "2026-10-16",
-   "valor": 4205.39990234375
+   "valor": 4190.39990234375
   },
   "Bitcoin": {
    "delta": 0.6928965385087471,
@@ -273,7 +273,7 @@
   "Oro": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro.",
+   "hoy": "A favor: baja el tipo real (lo que más les ayuda).",
    "semana": "A favor: baja el tipo real (lo que más les ayuda).",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -306,12 +306,6 @@
      "razon": "baja el tipo real (lo que más les ayuda)"
     },
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 1.4,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "dxy",
      "sube": false,
      "peso": 2.61,
@@ -322,6 +316,12 @@
      "sube": false,
      "peso": 1.0,
      "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.0,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   },
@@ -367,12 +367,6 @@
      "razon": "baja el tipo real (lo que más les ayuda)"
     },
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 2.1,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "dxy",
      "sube": false,
      "peso": 0.65,
@@ -383,6 +377,12 @@
      "sube": false,
      "peso": 1.0,
      "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.5,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   },
@@ -428,12 +428,6 @@
      "razon": "baja el tipo real (lo que más les ayuda)"
     },
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 1.4,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "dxy",
      "sube": false,
      "peso": 0.65,
@@ -444,13 +438,19 @@
      "sube": false,
      "peso": 1.0,
      "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.0,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   },
   "Bitcoin": {
    "etiqueta": "SIN TESIS",
    "tesis": "SIN TESIS: choque de fuerzas. La macro de la semana va a favor, pero su motor propio dice SIN GIRO DE LIQUIDEZ. Hasta que una gane, no hay ventaja.",
-   "hoy": "A favor: la Fed se ve menos dura.",
+   "hoy": "A favor: el dólar se debilita.",
    "semana": "A favor: baja el tipo real (lo que más les ayuda).",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -494,12 +494,6 @@
      "razon": "baja el tipo real (lo que más les ayuda)"
     },
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 2.1,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "dxy",
      "sube": false,
      "peso": 1.96,
@@ -510,6 +504,12 @@
      "sube": false,
      "peso": 1.0,
      "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.5,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   },
@@ -555,12 +555,6 @@
      "razon": "baja el tipo real (lo que más les ayuda)"
     },
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 1.05,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "dxy",
      "sube": false,
      "peso": 0.65,
@@ -571,13 +565,19 @@
      "sube": false,
      "peso": 0.5,
      "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 0.75,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   },
   "Russell 2000": {
    "etiqueta": "SIN TESIS",
    "tesis": "SIN TESIS: choque de fuerzas. La macro de la semana va a favor, pero su motor propio dice DESFAVORABLE. Hasta que una gane, no hay ventaja.",
-   "hoy": "A favor: la Fed se ve menos dura. Su movimiento lo explica la macro.",
+   "hoy": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro.",
    "semana": "A favor: baja el tipo real (lo que más les ayuda).",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -616,16 +616,16 @@
      "razon": "baja el tipo real (lo que más les ayuda)"
     },
     {
-     "motor": "fed",
-     "sube": false,
-     "peso": 2.8,
-     "razon": "la Fed se ve menos dura"
-    },
-    {
      "motor": "t2y",
      "sube": false,
      "peso": 1.5,
      "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 2.0,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   }
@@ -649,6 +649,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100 y S&P 500; sin ventaja clara: Bitcoin, US30 · Dow Jones y Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-16 15:07 UTC",
- "duracion_s": 103.5
+ "generado_utc": "2026-10-16 16:07 UTC",
+ "duracion_s": 106.4
 }
