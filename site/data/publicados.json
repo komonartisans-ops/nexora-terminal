@@ -730,67 +730,67 @@
    "url": "https://fred.stlouisfed.org/series/INDPRO",
    "periodos": [
     {
-     "periodo": "2026-03-01",
-     "valor": -0.17,
-     "nivel_original": 101.7336,
-     "nivel_actual": 101.7336,
-     "revisado": false,
-     "n_revisiones": 0,
-     "visto_primera_vez": "2026-10-08",
-     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
-    },
-    {
      "periodo": "2026-04-01",
      "valor": 0.83,
      "nivel_original": 102.5783,
-     "nivel_actual": 102.5783,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 102.5768,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     },
     {
      "periodo": "2026-05-01",
-     "valor": 0.06,
+     "valor": 0.14,
      "nivel_original": 102.6396,
-     "nivel_actual": 102.6396,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 102.7232,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     },
     {
      "periodo": "2026-06-01",
-     "valor": 0.2,
+     "valor": 0.23,
      "nivel_original": 102.842,
-     "nivel_actual": 102.842,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 102.961,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     },
     {
      "periodo": "2026-07-01",
-     "valor": 0.2,
+     "valor": 0.23,
      "nivel_original": 103.0454,
-     "nivel_actual": 103.0454,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 103.2006,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
     },
     {
      "periodo": "2026-08-01",
-     "valor": 0.02,
+     "valor": 0.06,
      "nivel_original": 103.0682,
-     "nivel_actual": 103.0682,
-     "revisado": false,
-     "n_revisiones": 0,
+     "nivel_actual": 103.2664,
+     "revisado": true,
+     "n_revisiones": 1,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-09-01",
+     "valor": 0.66,
+     "nivel_original": 103.9506,
+     "nivel_actual": 103.9506,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-16",
+     "tipo_primer_registro": "PRIMERA"
     }
    ],
-   "fecha_publicacion_calendario": "2026-09-18"
+   "fecha_publicacion_calendario": "2026-10-16"
   },
   "Ofertas de empleo (JOLTS)": {
    "serie": "JTSJOL",
@@ -937,16 +937,61 @@
    "revisado": 739322.0,
    "visto": "2026-10-16",
    "unidad": "M US$"
+  },
+  {
+   "serie": "Producción industrial (índice)",
+   "id": "INDPRO",
+   "periodo": "2026-04-01",
+   "original": 102.5783,
+   "revisado": 102.5768,
+   "visto": "2026-10-16",
+   "unidad": "índice"
+  },
+  {
+   "serie": "Producción industrial (índice)",
+   "id": "INDPRO",
+   "periodo": "2026-05-01",
+   "original": 102.6396,
+   "revisado": 102.7232,
+   "visto": "2026-10-16",
+   "unidad": "índice"
+  },
+  {
+   "serie": "Producción industrial (índice)",
+   "id": "INDPRO",
+   "periodo": "2026-06-01",
+   "original": 102.842,
+   "revisado": 102.961,
+   "visto": "2026-10-16",
+   "unidad": "índice"
+  },
+  {
+   "serie": "Producción industrial (índice)",
+   "id": "INDPRO",
+   "periodo": "2026-07-01",
+   "original": 103.0454,
+   "revisado": 103.2006,
+   "visto": "2026-10-16",
+   "unidad": "índice"
+  },
+  {
+   "serie": "Producción industrial (índice)",
+   "id": "INDPRO",
+   "periodo": "2026-08-01",
+   "original": 103.0682,
+   "revisado": 103.2664,
+   "visto": "2026-10-16",
+   "unidad": "índice"
   }
  ],
- "n_revisiones": 8,
- "filas_registro": 718,
+ "n_revisiones": 13,
+ "filas_registro": 724,
  "registro_desde": "2026-10-08",
- "nuevas_filas": 0,
- "nuevos": 0,
+ "nuevas_filas": 6,
+ "nuevos": 1,
  "errores": {},
  "nota": "El registro de revisiones empieza el día de la primera ejecución: antes de esa fecha no hay vintages guardados y no se inventan.",
  "ok": true,
- "generado_utc": "2026-10-16 13:07 UTC",
- "duracion_s": 6.8
+ "generado_utc": "2026-10-16 14:07 UTC",
+ "duracion_s": 11.2
 }

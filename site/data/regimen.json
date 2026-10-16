@@ -9,12 +9,12 @@
      "Encuestas manufactureras Fed (Filadelfia, NY, Dallas), media 3 meses +20.3 vs +10.0 los 3 anteriores",
      "Empleo (NFP) media 3 meses +51 mil vs +81 mil (2026-09)",
      "Ventas minoristas 3 meses anualizado +6.8 % vs +6.3 % interanual (2026-09)",
-     "Producción industrial 3 meses anualizado +1.7 % vs +1.4 % interanual (2026-08)",
+     "Producción industrial 3 meses anualizado +3.9 % vs +2.2 % interanual (2026-09)",
      "Peticiones de paro media 4 semanas 198,500 vs 206,231 las 13 anteriores (-3.7 %)",
      "Confirmación de mercado (no vota): XLY/XLP 1,3084 (2026-10-15) · -5,3 % frente a su media de 200 sesiones · 13 semanas -3,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) → DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
     ],
     "fuente": "Fed regionales, BLS, Census, Fed G.17, DOL vía FRED",
-    "puntos": 0
+    "puntos": 1
    },
    {
     "dimension": "INFLACIÓN",
@@ -60,7 +60,7 @@
     "estado": "SE ENDURECE (menos crédito, diferenciales ↑) · ESTRÉS EN HIGH YIELD",
     "dir": "↓",
     "evidencia": [
-     "Diferencial high yield 325 pb (+55 pb en 20 sesiones)",
+     "Diferencial high yield 323 pb (+53 pb en 20 sesiones)",
      "Diferencial grado de inversión 84 pb (+6 pb en 20 sesiones)",
      "Crédito bancario 13 semanas anualizado +4.7 % vs +5.9 % interanual (H.8)"
     ],
@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-16): reunión del 2026-10-28 subida 16 % / mantener 84 % / bajada 0 % (-12 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +36 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-16): reunión del 2026-10-28 subida 14 % / mantener 86 % / bajada 0 % (-14 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +35 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.77 % vs tipo efectivo 3.88 % → +89 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +61 pb (+7 pb en 5 sesiones)"
@@ -140,14 +140,14 @@
      "10Y real: semana -14.0 · mes +10.0 pb",
      "DXY: semana -0.2 · mes +1.9 %",
      "VIX: semana +6.8 · mes — %",
-     "High yield: semana — · mes +55.0 pb"
+     "High yield: semana — · mes +53.0 pb"
     ],
     "fuente": "Cboe, FRED, Coinbase, Tesoro, BCE; oro: COMEX GC=F (Yahoo Finance), respaldo: LBMA no respondió (datos de los tres monitores)",
     "puntos": null
    }
   ],
   "cuadrante": "SIN RÉGIMEN CLARO (crecimiento o inflación sin dirección)",
-  "fuerza": "crecimiento +0 e inflación -1 votos",
+  "fuerza": "crecimiento +1 e inflación -1 votos",
   "cuadrante_simple": {
    "crecimiento": "↑",
    "inflacion": "↑",
@@ -267,7 +267,7 @@
    },
    "High yield": {
     "semana": null,
-    "mes": 54.999999999999986,
+    "mes": 52.99999999999998,
     "unidad": "pb"
    }
   },
@@ -317,7 +317,7 @@
   "preguntas": [
    {
     "pregunta": "¿En qué fase del ciclo estamos?",
-    "respuesta": "SIN RÉGIMEN CLARO (crecimiento o inflación sin dirección) (crecimiento +0 e inflación -1 votos). Crecimiento estable, inflación estable, empleo estable."
+    "respuesta": "SIN RÉGIMEN CLARO (crecimiento o inflación sin dirección) (crecimiento +1 e inflación -1 votos). Crecimiento estable, inflación estable, empleo estable."
    },
    {
     "pregunta": "¿Qué está acelerando?",
@@ -337,7 +337,7 @@
    },
    {
     "pregunta": "¿Qué hacen los bancos centrales?",
-    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 16 %, mantener 84 %, bajada 0 % (ayer subida 28 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
+    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 14 %, mantener 86 %, bajada 0 % (ayer subida 28 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
    },
    {
     "pregunta": "¿Qué dice el consumo (mercado frente a datos reales)?",
@@ -1048,6 +1048,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-16 13:07 UTC",
- "duracion_s": 10.8
+ "generado_utc": "2026-10-16 14:07 UTC",
+ "duracion_s": 13.1
 }
