@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generado_utc": "2026-10-16 22:45 UTC",
+ "generado_utc": "2026-10-16 23:48 UTC",
  "terminal": "https://komonartisans-ops.github.io/nexora-terminal/",
  "proposito": "Resumen compacto de todo el terminal NEXORA para redactar informes. Fuente y fecha en cada bloque. Sin IA en su generación.",
  "lectura_para_informes": [
@@ -16,7 +16,7 @@
  "frescura": {
   "precios": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-16 22:45 UTC"
+   "ultimo_ok_utc": "2026-10-16 23:48 UTC"
   },
   "fedwatch": {
    "ok": true,
@@ -52,7 +52,7 @@
   },
   "alertas": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-16 22:45 UTC"
+   "ultimo_ok_utc": "2026-10-16 23:48 UTC"
   },
   "monitores": {
    "ok": true,
@@ -76,19 +76,19 @@
   },
   "skew": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-16 22:45 UTC"
+   "ultimo_ok_utc": "2026-10-16 23:48 UTC"
   },
   "semis": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
+   "ultimo_ok_utc": "2026-10-16 23:48 UTC"
   },
   "gamma": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
+   "ultimo_ok_utc": "2026-10-16 23:48 UTC"
   },
   "contexto": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-16 22:07 UTC"
+   "ultimo_ok_utc": "2026-10-16 22:45 UTC"
   },
   "tesis": {
    "ok": true,
@@ -96,11 +96,11 @@
   },
   "bancos": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
+   "ultimo_ok_utc": "2026-10-16 23:48 UTC"
   },
   "tono": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-16 21:30 UTC"
+   "ultimo_ok_utc": "2026-10-16 23:48 UTC"
   },
   "reacciones": {
    "ok": true,
@@ -118,7 +118,7 @@
  "datos_con_mas_de_48h": [],
  "fallos_ultima_ejecucion": [],
  "mercado": {
-  "actualizado_utc": "2026-10-16 22:45 UTC",
+  "actualizado_utc": "2026-10-16 23:48 UTC",
   "activos": {
    "oro": {
     "nombre": "Oro",
@@ -133,13 +133,13 @@
    },
    "btc": {
     "nombre": "Bitcoin",
-    "valor": 81665.55,
+    "valor": 81516.84,
     "fecha": "2026-10-16",
-    "cambio_1d_pct": -0.58,
-    "cambio_5d_pct": -2.41,
-    "cambio_21d_pct": -2.82,
-    "cambio_63d_pct": 29.68,
-    "vs_sma50_pct": 0.5,
+    "cambio_1d_pct": -0.76,
+    "cambio_5d_pct": -2.58,
+    "cambio_21d_pct": -3.0,
+    "cambio_63d_pct": 29.44,
+    "vs_sma50_pct": 0.3,
     "fuente": "BTC-USD (Yahoo Finance)"
    },
    "spx": {
@@ -745,7 +745,7 @@
    "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 2. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
    "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
   },
-  "actualizado_utc": "2026-10-16 22:45 UTC",
+  "actualizado_utc": "2026-10-16 23:48 UTC",
   "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)",
   "etiqueta": "CRITERIO NEXORA (zonas y episodios)"
  },
@@ -759,22 +759,22 @@
     "base_futuro": 43.31,
     "metodo_base": "intradía 5 min (futuro e índice en el mismo minuto)",
     "regimen_gamma": "NEGATIVA",
-    "gex_neto_musd_por_1pct": -62619.8,
+    "gex_neto_musd_por_1pct": -63630.5,
     "call_wall": {
      "idx": 7800,
-     "musd": 3570.2,
+     "musd": 3806.6,
      "fut": 7843.3
     },
     "put_wall": {
      "idx": 7650,
-     "musd": 6740.1,
+     "musd": 7935.2,
      "fut": 7693.3
     },
     "gamma_flip": {
-     "idx": 7772.6,
-     "fut": 7815.9
+     "idx": 7775.5,
+     "fut": 7818.8
     },
-    "resumen": "Call Wall 7.843 ES (7.800 SPX), Put Wall 7.693 (7.650), Gamma Flip 7.816 (7.773); gamma negativa (-62,6 mm$ por 1 %)"
+    "resumen": "Call Wall 7.843 ES (7.800 SPX), Put Wall 7.693 (7.650), Gamma Flip 7.819 (7.776); gamma negativa (-63,6 mm$ por 1 %)"
    },
    "NQ": {
     "sesion": "2026-10-16",
@@ -784,25 +784,25 @@
     "base_futuro": 191.95,
     "metodo_base": "intradía 5 min (futuro e índice en el mismo minuto)",
     "regimen_gamma": "NEGATIVA",
-    "gex_neto_musd_por_1pct": -8455.0,
+    "gex_neto_musd_por_1pct": -8570.9,
     "call_wall": {
-     "idx": 29600,
-     "musd": 237.0,
-     "fut": 29792.0
+     "idx": 30950,
+     "musd": 216.8,
+     "fut": 31142.0
     },
     "put_wall": {
-     "idx": 28800,
-     "musd": 1072.8,
-     "fut": 28992.0
+     "idx": 28850,
+     "musd": 1009.8,
+     "fut": 29042.0
     },
     "gamma_flip": {
-     "idx": 30431.7,
-     "fut": 30623.7
+     "idx": 30503.0,
+     "fut": 30695.0
     },
-    "resumen": "Call Wall 29.792 NQ (29.600 NDX), Put Wall 28.992 (28.800), Gamma Flip 30.624 (30.432); gamma negativa (-8,5 mm$ por 1 %)"
+    "resumen": "Call Wall 31.142 NQ (30.950 NDX), Put Wall 29.042 (28.850), Gamma Flip 30.695 (30.503); gamma negativa (-8,6 mm$ por 1 %)"
    }
   },
-  "actualizado_utc": "2026-10-16 21:30 UTC",
+  "actualizado_utc": "2026-10-16 23:48 UTC",
   "fuente": "Cboe · cadena de opciones con 15 min de retraso (cdn-api.cboe.com)",
   "etiqueta": "CRITERIO NEXORA (método propio, no dato oficial)",
   "supuesto": "GEX con signo +calls / −puts: hipótesis sobre el posicionamiento de los creadores de mercado, no observable."
@@ -856,7 +856,7 @@
    "semis_pct": 30.63,
    "software_pct": 13.9
   },
-  "actualizado_utc": "2026-10-16 21:30 UTC",
+  "actualizado_utc": "2026-10-16 23:48 UTC",
   "fuente": "Yahoo Finance (SMH, IGV, índices, acciones) · Invesco (pesos QQQ)",
   "etiqueta": "CRITERIO NEXORA"
  },
@@ -2215,7 +2215,7 @@
    "tipo_bce_pct": 2.5
   },
   "historico_8_grandes": "site/data/bancos.json → historico8 (cambios de tipo desde 2010, BIS)",
-  "actualizado_utc": "2026-10-16 21:30 UTC",
+  "actualizado_utc": "2026-10-16 23:48 UTC",
   "fuente": "BIS WS_CBPOL y WS_XRU · FMI DataMapper (WEO) · calendarios oficiales de cada banco",
   "etiqueta": "Tipos y calendarios: dato oficial. Lectura de liquidez global: CRITERIO NEXORA (regla en la página).",
   "errores": {}
@@ -2985,7 +2985,7 @@
    "version": "1.0213cd75",
    "n_terminos": 157
   },
-  "actualizado_utc": "2026-10-16 21:30 UTC",
+  "actualizado_utc": "2026-10-16 23:48 UTC",
   "fuente": "federalreserve.gov, ecb.europa.eu, boj.or.jp · diccionario de términos NEXORA (sin IA)",
   "etiqueta": "CRITERIO NEXORA: lectura léxica, no entiende contexto. Ver validación y líneas base antes de usarla."
  },
@@ -3660,7 +3660,7 @@
   "hasta": "2026-10-24",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-16 22:51 UTC"
+  "generado_utc": "2026-10-16 23:50 UTC"
  },
  "alertas_recientes": [
   {
