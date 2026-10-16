@@ -926,6 +926,12 @@ def main():
         print(f"   {'OK' if r['ok'] else 'FALLO'} {r['duracion_s']} s {r['error'] or ''}", flush=True)
     dur = round(time.time() - t0, 1)
     escribir("meta.json", {"actualizado_utc": STAMP, "modo": modo_ef, "etapas": estado, "duracion_total_s": dur})
+    if "contexto" in etapas and estado["contexto"]["ok"]:
+        # memoria permanente: la foto del sistema de esta hora, tal como queda publicada (no rompe el build si falla)
+        import historico_contexto
+        publicado = leer("contexto.json")
+        if publicado:
+            historico_contexto.archivar(publicado)
     # una fila por ejecución (garantiza que data/ crece en cada run)
     ok = [e for e in etapas if estado[e]["ok"]]
     csvlog.anadir("ejecuciones.csv", [{"capturado_utc": STAMP, "modo": modo_ef, "evento": os.environ.get("GITHUB_EVENT_NAME", "local"),
