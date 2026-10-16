@@ -165,6 +165,21 @@ def cftc_indices():
     return out
 
 
+def _pdf_texto(p, paginas=15):
+    """Texto de las primeras páginas de un PDF: pdftotext si está instalado; si no, pypdf (que el workflow ya instala para los comunicados del BoJ).
+    En Actions faltaba pdftotext y el bloque de beneficios salía SIN DATO en todas las ejecuciones."""
+    try:
+        r = subprocess.run(["pdftotext", "-l", str(paginas), p, "-"], capture_output=True)
+        t = (r.stdout or b"").decode("utf-8", "replace")
+        if r.returncode == 0 and t.strip():
+            return t
+    except FileNotFoundError:
+        pass
+    import pypdf
+    rd = pypdf.PdfReader(p)
+    return "\n".join((pg.extract_text() or "") for pg in rd.pages[:paginas])
+
+
 def factset_earnings():
     """FactSet Earnings Insight (PDF semanal público, viernes). Devuelve las métricas clave citadas literalmente."""
     for k in range(0, 5):
@@ -180,7 +195,7 @@ def factset_earnings():
         with tempfile.TemporaryDirectory() as td:
             p = os.path.join(td, "f.pdf")
             open(p, "wb").write(raw)
-            txt = subprocess.run(["pdftotext", "-l", "15", p, "-"], capture_output=True, text=True).stdout
+            txt = _pdf_texto(p)
         txt1 = re.sub(r"\s+", " ", txt)
         km = re.search(r"Key Metrics(.*?)To receive this report", txt1)
         bullets = [b.strip() for b in (km.group(1).split("•") if km else []) if b.strip()]
@@ -191,7 +206,7 @@ def factset_earnings():
         m = re.search(r"On ([A-Z][a-z]+ \d+), the estimated \(year-over-year\) earnings growth rate for the S&P 500 for Q\d \d{4} was (-?[\d.]+)%", txt1)
         if m:
             out["referencia_fecha"], out["crecimiento_referencia_pct"] = m.group(1), float(m.group(2))
-        m = re.search(r"forward 12-month P/E ratio for the S&P 500 is (\d+\.\d+)", txt1)
+        m = re.search(r"forward 12-month P/E ratio (?:for the S&P 500 )?is (\d+\.\d+)", txt1)
         if m:
             out["per_12m"] = float(m.group(1))
         m = re.search(r"5-year average \(?(\d+\.\d+)", txt1)
