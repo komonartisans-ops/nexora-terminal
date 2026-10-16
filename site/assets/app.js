@@ -338,7 +338,7 @@ function cuentaAtras(iso) {
 function pageBancos() {
   const F = D.fedwatch, C = D.calendario, L = D.liquidez;
   const hist = (L && L.historico) || {};
-  let h = head('Análisis', 'Bancos centrales', 'Tipos oficiales, próxima reunión y lo que descuenta el mercado de futuros de la Fed (FedWatch propio, mismo método que CME, calculado con futuros ZQ).', `FedWatch: ${F && F.generado_utc ? esc(horaAct(F.generado_utc)) : 'SIN DATO'} · precios de futuros del ${F ? esc(fdy(F.fecha_precios)) : 'SIN DATO'}`);
+  let h = head('Análisis', 'Bancos centrales', 'Tipos oficiales, próxima reunión y lo que descuenta el mercado de futuros de la Fed (FedWatch propio, mismo método que CME, calculado con futuros ZQ).', `FedWatch: ${F && F.generado_utc ? esc(horaAct(F.generado_utc)) : 'SIN DATO'} · precios de futuros del ${F ? esc(fdy(F.fecha_precios)) : 'SIN DATO'}${F && F.fecha_precios && F.generado_utc && F.fecha_precios === F.generado_utc.slice(0, 10) && +F.generado_utc.slice(11, 13) < 22 ? ' <span class="tag sin" title="El último precio de la sesión de hoy aún no es el cierre; «ayer» sí es un cierre">SESIÓN EN CURSO · NO ES CIERRE</span>' : ''}`);
   h += fallo('fedwatch');
   if (!F || !F.reuniones) return h + noData('FedWatch');
   const R = F.reuniones, r0 = R[0], pr = r0.prob_reunion;
