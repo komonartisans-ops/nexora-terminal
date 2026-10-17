@@ -3,19 +3,15 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4186.7,
+   "valor": 4181.1,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": 0.4,
-   "cambio_5d_pct": -0.7,
-   "cambio_21d_pct": -4.84,
-   "cambio_63d_pct": 4.25,
-   "sma50": 4374.53,
+   "cambio_1d_pct": 0.26,
+   "cambio_5d_pct": -0.83,
+   "cambio_21d_pct": -4.97,
+   "cambio_63d_pct": 4.11,
+   "sma50": 4374.41,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-16",
-     4304.6001
-    ],
     [
      "2025-10-17",
      4213.2998
@@ -1018,26 +1014,22 @@
     ],
     [
      "2026-10-16",
-     4186.7002
+     4181.1001
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 81516.84,
-   "fecha": "2026-10-16",
-   "cambio_1d_pct": -0.76,
-   "cambio_5d_pct": -2.58,
-   "cambio_21d_pct": -3.0,
-   "cambio_63d_pct": 29.44,
-   "sma50": 81252.18,
+   "valor": 81565.39,
+   "fecha": "2026-10-17",
+   "cambio_1d_pct": 0.08,
+   "cambio_5d_pct": -0.24,
+   "cambio_21d_pct": -3.37,
+   "cambio_63d_pct": 29.42,
+   "sma50": 81326.56,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-16",
-     108186.0391
-    ],
     [
      "2025-10-17",
      106467.7891
@@ -2496,7 +2488,11 @@
     ],
     [
      "2026-10-16",
-     81516.8438
+     81500.8047
+    ],
+    [
+     "2026-10-17",
+     81565.3906
     ]
    ]
   },
@@ -4532,7 +4528,7 @@
     ],
     [
      "2026-10-16",
-     29187.5488
+     29187.5508
     ]
    ]
   },
@@ -7605,19 +7601,15 @@
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.78,
+   "valor": 101.84,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -0.22,
-   "cambio_5d_pct": -0.42,
-   "cambio_21d_pct": 1.56,
-   "cambio_63d_pct": 0.78,
+   "cambio_1d_pct": -0.16,
+   "cambio_5d_pct": -0.36,
+   "cambio_21d_pct": 1.62,
+   "cambio_63d_pct": 0.84,
    "sma50": 100.35,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-16",
-     98.39
-    ],
     [
      "2025-10-17",
      98.43
@@ -8620,7 +8612,7 @@
     ],
     [
      "2026-10-16",
-     101.779
+     101.84
     ]
    ]
   },
@@ -8629,9 +8621,9 @@
    "simbolo": "^MOVE",
    "valor": 101.1,
    "fecha": "2026-10-16",
-   "cambio_1d_pct": -1.35,
+   "cambio_1d_pct": -1.36,
    "cambio_5d_pct": 0.4,
-   "cambio_21d_pct": 25.24,
+   "cambio_21d_pct": 25.23,
    "cambio_63d_pct": 42.64,
    "sma50": 85.09,
    "fuente": "ICE BofA MOVE (Yahoo Finance ^MOVE)",
@@ -9630,13 +9622,13 @@
     ],
     [
      "2026-10-16",
-     101.1029
+     101.1
     ]
    ]
   }
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-16 23:48 UTC",
- "duracion_s": 7.9
+ "generado_utc": "2026-10-17 09:31 UTC",
+ "duracion_s": 8.4
 }

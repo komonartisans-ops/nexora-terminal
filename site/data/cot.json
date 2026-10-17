@@ -1,5 +1,5 @@
 {
- "fecha_informe": "2026-10-06",
+ "fecha_informe": "2026-10-13",
  "publicado": "viernes siguiente, 15:30 ET (datos del martes)",
  "contratos": [
   {
@@ -9,16 +9,16 @@
    "codigo": "098662",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": 12011,
-    "largos": 30526,
-    "cortos": 18515,
-    "cambio_semana": 130,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 71,
+    "fecha": "2026-10-13",
+    "neto": 12919,
+    "largos": 32596,
+    "cortos": 19677,
+    "cambio_semana": 908,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 72,
     "min_3a": -16347,
     "max_3a": 22499,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -647,21 +647,25 @@
      [
       "2026-10-06",
       12011
+     ],
+     [
+      "2026-10-13",
+      12919
      ]
     ],
     "estado": "LARGO ELEVADO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 19096,
-    "largos": 22843,
-    "cortos": 3747,
-    "cambio_semana": 1089,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 94,
+    "fecha": "2026-10-13",
+    "neto": 18164,
+    "largos": 20486,
+    "cortos": 2322,
+    "cambio_semana": -932,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 89,
     "min_3a": -11063,
     "max_3a": 22246,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -1290,22 +1294,26 @@
      [
       "2026-10-06",
       19096
+     ],
+     [
+      "2026-10-13",
+      18164
      ]
     ],
-    "estado": "EXTREMO LARGO",
+    "estado": "LARGO ELEVADO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": 864,
-    "largos": 15283,
-    "cortos": 14419,
-    "cambio_semana": 503,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 62,
+    "fecha": "2026-10-13",
+    "neto": 2076,
+    "largos": 19008,
+    "cortos": 16932,
+    "cambio_semana": 1212,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 69,
     "min_3a": -24785,
     "max_3a": 26733,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -1934,6 +1942,10 @@
      [
       "2026-10-06",
       864
+     ],
+     [
+      "2026-10-13",
+      2076
      ]
     ],
     "estado": "INTERMEDIO"
@@ -1946,16 +1958,16 @@
    "codigo": "099741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -99332,
-    "largos": 243020,
-    "cortos": 342352,
-    "cambio_semana": -36076,
-    "fecha_previa": "2026-09-29",
+    "fecha": "2026-10-13",
+    "neto": -137573,
+    "largos": 222929,
+    "cortos": 360502,
+    "cambio_semana": -38241,
+    "fecha_previa": "2026-10-06",
     "percentil_3a": 1,
-    "min_3a": -99332,
+    "min_3a": -137573,
     "max_3a": 180305,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -2584,21 +2596,25 @@
      [
       "2026-10-06",
       -99332
+     ],
+     [
+      "2026-10-13",
+      -137573
      ]
     ],
     "estado": "EXTREMO CORTO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 189881,
-    "largos": 499449,
-    "cortos": 309568,
-    "cambio_semana": -30722,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 10,
+    "fecha": "2026-10-13",
+    "neto": 199918,
+    "largos": 502676,
+    "cortos": 302758,
+    "cambio_semana": 10037,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 12,
     "min_3a": 150321,
     "max_3a": 413713,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -3227,22 +3243,26 @@
      [
       "2026-10-06",
       189881
+     ],
+     [
+      "2026-10-13",
+      199918
      ]
     ],
-    "estado": "EXTREMO CORTO",
+    "estado": "CORTO ELEVADO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -44261,
-    "largos": 135367,
-    "cortos": 179628,
-    "cambio_semana": -4996,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 6,
-    "min_3a": -65198,
+    "fecha": "2026-10-13",
+    "neto": -68001,
+    "largos": 120021,
+    "cortos": 188022,
+    "cambio_semana": -23740,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 1,
+    "min_3a": -68001,
     "max_3a": 56107,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -3871,6 +3891,10 @@
      [
       "2026-10-06",
       -44261
+     ],
+     [
+      "2026-10-13",
+      -68001
      ]
     ],
     "estado": "EXTREMO CORTO"
@@ -3883,16 +3907,16 @@
    "codigo": "097741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": 62325,
-    "largos": 190368,
-    "cortos": 128043,
-    "cambio_semana": 6885,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 78,
+    "fecha": "2026-10-13",
+    "neto": 50207,
+    "largos": 191256,
+    "cortos": 141049,
+    "cambio_semana": -12118,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 72,
     "min_3a": -184223,
     "max_3a": 179212,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -4521,21 +4545,25 @@
      [
       "2026-10-06",
       62325
+     ],
+     [
+      "2026-10-13",
+      50207
      ]
     ],
     "estado": "LARGO ELEVADO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 67795,
-    "largos": 143300,
-    "cortos": 75505,
-    "cambio_semana": 16161,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 75,
+    "fecha": "2026-10-13",
+    "neto": 65819,
+    "largos": 146227,
+    "cortos": 80408,
+    "cambio_semana": -1976,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 74,
     "min_3a": -100036,
     "max_3a": 127275,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -5164,22 +5192,26 @@
      [
       "2026-10-06",
       67795
+     ],
+     [
+      "2026-10-13",
+      65819
      ]
     ],
     "estado": "LARGO ELEVADO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -25043,
-    "largos": 66123,
-    "cortos": 91166,
-    "cambio_semana": -10882,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 72,
+    "fecha": "2026-10-13",
+    "neto": -33673,
+    "largos": 65309,
+    "cortos": 98982,
+    "cambio_semana": -8630,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 66,
     "min_3a": -115400,
     "max_3a": 38497,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -5808,9 +5840,13 @@
      [
       "2026-10-06",
       -25043
+     ],
+     [
+      "2026-10-13",
+      -33673
      ]
     ],
-    "estado": "LARGO ELEVADO"
+    "estado": "INTERMEDIO"
    }
   },
   {
@@ -5820,16 +5856,16 @@
    "codigo": "096742",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -97611,
-    "largos": 45259,
-    "cortos": 142870,
-    "cambio_semana": -6536,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 2,
-    "min_3a": -105719,
+    "fecha": "2026-10-13",
+    "neto": -106964,
+    "largos": 44185,
+    "cortos": 151149,
+    "cambio_semana": -9353,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 1,
+    "min_3a": -106964,
     "max_3a": 142183,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -6458,21 +6494,25 @@
      [
       "2026-10-06",
       -97611
+     ],
+     [
+      "2026-10-13",
+      -106964
      ]
     ],
     "estado": "EXTREMO CORTO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": -145442,
-    "largos": 17746,
-    "cortos": 163188,
-    "cambio_semana": -16898,
-    "fecha_previa": "2026-09-29",
+    "fecha": "2026-10-13",
+    "neto": -145735,
+    "largos": 18995,
+    "cortos": 164730,
+    "cambio_semana": -293,
+    "fecha_previa": "2026-10-06",
     "percentil_3a": 2,
     "min_3a": -156307,
     "max_3a": 24646,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -7101,22 +7141,26 @@
      [
       "2026-10-06",
       -145442
+     ],
+     [
+      "2026-10-13",
+      -145735
      ]
     ],
     "estado": "EXTREMO CORTO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": 12432,
-    "largos": 57368,
-    "cortos": 44936,
-    "cambio_semana": 7826,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 10,
+    "fecha": "2026-10-13",
+    "neto": 10313,
+    "largos": 55726,
+    "cortos": 45413,
+    "cambio_semana": -2119,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 9,
     "min_3a": -12063,
     "max_3a": 83168,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -7745,6 +7789,10 @@
      [
       "2026-10-06",
       12432
+     ],
+     [
+      "2026-10-13",
+      10313
      ]
     ],
     "estado": "EXTREMO CORTO"
@@ -7757,16 +7805,16 @@
    "codigo": "092741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -23740,
-    "largos": 27818,
-    "cortos": 51558,
-    "cambio_semana": 877,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 71,
+    "fecha": "2026-10-13",
+    "neto": -22078,
+    "largos": 27447,
+    "cortos": 49525,
+    "cambio_semana": 1662,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 77,
     "min_3a": -49793,
     "max_3a": -3445,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -8395,21 +8443,25 @@
      [
       "2026-10-06",
       -23740
+     ],
+     [
+      "2026-10-13",
+      -22078
      ]
     ],
     "estado": "LARGO ELEVADO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": -37379,
-    "largos": 19529,
-    "cortos": 56908,
-    "cambio_semana": -968,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 34,
+    "fecha": "2026-10-13",
+    "neto": -31456,
+    "largos": 22676,
+    "cortos": 54132,
+    "cambio_semana": 5923,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 54,
     "min_3a": -55687,
     "max_3a": -211,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -9038,22 +9090,26 @@
      [
       "2026-10-06",
       -37379
+     ],
+     [
+      "2026-10-13",
+      -31456
      ]
     ],
     "estado": "INTERMEDIO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -11350,
-    "largos": 12900,
-    "cortos": 24250,
-    "cambio_semana": 2645,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 23,
+    "fecha": "2026-10-13",
+    "neto": -14941,
+    "largos": 9935,
+    "cortos": 24876,
+    "cambio_semana": -3591,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 11,
     "min_3a": -22902,
     "max_3a": 4488,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -9682,6 +9738,10 @@
      [
       "2026-10-06",
       -11350
+     ],
+     [
+      "2026-10-13",
+      -14941
      ]
     ],
     "estado": "CORTO ELEVADO"
@@ -9694,16 +9754,16 @@
    "codigo": "090741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -90163,
-    "largos": 91109,
-    "cortos": 181272,
-    "cambio_semana": -11492,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 48,
+    "fecha": "2026-10-13",
+    "neto": -94765,
+    "largos": 89986,
+    "cortos": 184751,
+    "cambio_semana": -4602,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 45,
     "min_3a": -196263,
     "max_3a": 36159,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -10332,21 +10392,25 @@
      [
       "2026-10-06",
       -90163
+     ],
+     [
+      "2026-10-13",
+      -94765
      ]
     ],
     "estado": "INTERMEDIO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": -35806,
-    "largos": 97612,
-    "cortos": 133418,
-    "cambio_semana": -8225,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 71,
+    "fecha": "2026-10-13",
+    "neto": -30804,
+    "largos": 102895,
+    "cortos": 133699,
+    "cambio_semana": 5002,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 73,
     "min_3a": -162229,
     "max_3a": 69512,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -10975,22 +11039,26 @@
      [
       "2026-10-06",
       -35806
+     ],
+     [
+      "2026-10-13",
+      -30804
      ]
     ],
     "estado": "LARGO ELEVADO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -79625,
-    "largos": 31682,
-    "cortos": 111307,
-    "cambio_semana": -9981,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 17,
+    "fecha": "2026-10-13",
+    "neto": -88112,
+    "largos": 23811,
+    "cortos": 111923,
+    "cambio_semana": -8487,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 10,
     "min_3a": -103134,
     "max_3a": -12452,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -11619,9 +11687,13 @@
      [
       "2026-10-06",
       -79625
+     ],
+     [
+      "2026-10-13",
+      -88112
      ]
     ],
-    "estado": "CORTO ELEVADO"
+    "estado": "EXTREMO CORTO"
    }
   },
   {
@@ -11631,16 +11703,16 @@
    "codigo": "232741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -98588,
-    "largos": 100138,
-    "cortos": 198726,
-    "cambio_semana": -35349,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 4,
-    "min_3a": -107538,
+    "fecha": "2026-10-13",
+    "neto": -117299,
+    "largos": 98389,
+    "cortos": 215688,
+    "cambio_semana": -18711,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 1,
+    "min_3a": -117299,
     "max_3a": 85644,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -12269,21 +12341,25 @@
      [
       "2026-10-06",
       -98588
+     ],
+     [
+      "2026-10-13",
+      -117299
      ]
     ],
     "estado": "EXTREMO CORTO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": -101428,
-    "largos": 87156,
-    "cortos": 188584,
-    "cambio_semana": -28229,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 3,
-    "min_3a": -115753,
+    "fecha": "2026-10-13",
+    "neto": -115920,
+    "largos": 84332,
+    "cortos": 200252,
+    "cambio_semana": -14492,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 1,
+    "min_3a": -115920,
     "max_3a": 47551,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -12912,22 +12988,26 @@
      [
       "2026-10-06",
       -101428
+     ],
+     [
+      "2026-10-13",
+      -115920
      ]
     ],
     "estado": "EXTREMO CORTO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": 54133,
-    "largos": 86777,
-    "cortos": 32644,
-    "cambio_semana": -6459,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 92,
+    "fecha": "2026-10-13",
+    "neto": 50591,
+    "largos": 87632,
+    "cortos": 37041,
+    "cambio_semana": -3542,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 89,
     "min_3a": -44281,
     "max_3a": 70260,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -13556,9 +13636,13 @@
      [
       "2026-10-06",
       54133
+     ],
+     [
+      "2026-10-13",
+      50591
      ]
     ],
-    "estado": "EXTREMO LARGO"
+    "estado": "LARGO ELEVADO"
    }
   },
   {
@@ -13568,16 +13652,16 @@
    "codigo": "112741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -29346,
-    "largos": 27821,
-    "cortos": 57167,
-    "cambio_semana": -12031,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 38,
+    "fecha": "2026-10-13",
+    "neto": -47001,
+    "largos": 24619,
+    "cortos": 71620,
+    "cambio_semana": -17655,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 18,
     "min_3a": -65189,
     "max_3a": 30743,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -14206,21 +14290,25 @@
      [
       "2026-10-06",
       -29346
+     ],
+     [
+      "2026-10-13",
+      -47001
      ]
     ],
-    "estado": "INTERMEDIO"
+    "estado": "CORTO ELEVADO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": -32534,
-    "largos": 11223,
-    "cortos": 43757,
-    "cambio_semana": -11306,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 33,
+    "fecha": "2026-10-13",
+    "neto": -44139,
+    "largos": 12106,
+    "cortos": 56245,
+    "cambio_semana": -11605,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 11,
     "min_3a": -63543,
     "max_3a": 14024,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -14849,22 +14937,26 @@
      [
       "2026-10-06",
       -32534
+     ],
+     [
+      "2026-10-13",
+      -44139
      ]
     ],
-    "estado": "INTERMEDIO",
+    "estado": "CORTO ELEVADO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -787,
-    "largos": 27439,
-    "cortos": 28226,
-    "cambio_semana": 279,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 59,
+    "fecha": "2026-10-13",
+    "neto": -11619,
+    "largos": 17668,
+    "cortos": 29287,
+    "cambio_semana": -10832,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 27,
     "min_3a": -33461,
     "max_3a": 18126,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -15493,9 +15585,13 @@
      [
       "2026-10-06",
       -787
+     ],
+     [
+      "2026-10-13",
+      -11619
      ]
     ],
-    "estado": "INTERMEDIO"
+    "estado": "CORTO ELEVADO"
    }
   },
   {
@@ -15505,16 +15601,16 @@
    "codigo": "088691",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": 210335,
-    "largos": 245403,
-    "cortos": 35068,
-    "cambio_semana": -8297,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 52,
+    "fecha": "2026-10-13",
+    "neto": 207879,
+    "largos": 245300,
+    "cortos": 37421,
+    "cambio_semana": -2456,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 51,
     "min_3a": 71433,
     "max_3a": 315390,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -16143,21 +16239,25 @@
      [
       "2026-10-06",
       210335
+     ],
+     [
+      "2026-10-13",
+      207879
      ]
     ],
     "estado": "INTERMEDIO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 110987,
-    "largos": 127101,
-    "cortos": 16114,
-    "cambio_semana": -9331,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 33,
+    "fecha": "2026-10-13",
+    "neto": 107089,
+    "largos": 124747,
+    "cortos": 17658,
+    "cambio_semana": -3898,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 28,
     "min_3a": -26767,
     "max_3a": 219029,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -16786,9 +16886,13 @@
      [
       "2026-10-06",
       110987
+     ],
+     [
+      "2026-10-13",
+      107089
      ]
     ],
-    "estado": "INTERMEDIO",
+    "estado": "CORTO ELEVADO",
     "informe": "Dinero gestionado (Disaggregated)"
    },
    "apalancados": null
@@ -16800,16 +16904,16 @@
    "codigo": "13874+",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -155651,
-    "largos": 213525,
-    "cortos": 369176,
-    "cambio_semana": -10695,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 24,
+    "fecha": "2026-10-13",
+    "neto": -142709,
+    "largos": 224888,
+    "cortos": 367597,
+    "cambio_semana": 12942,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 29,
     "min_3a": -231862,
     "max_3a": 120581,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -17438,21 +17542,25 @@
      [
       "2026-10-06",
       -155651
+     ],
+     [
+      "2026-10-13",
+      -142709
      ]
     ],
     "estado": "CORTO ELEVADO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 909302,
-    "largos": 1109404,
-    "cortos": 200102,
-    "cambio_semana": 3043,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 36,
+    "fecha": "2026-10-13",
+    "neto": 918097,
+    "largos": 1112656,
+    "cortos": 194559,
+    "cambio_semana": 8795,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 42,
     "min_3a": 606338,
     "max_3a": 1105609,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -18081,22 +18189,26 @@
      [
       "2026-10-06",
       909302
+     ],
+     [
+      "2026-10-13",
+      918097
      ]
     ],
     "estado": "INTERMEDIO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -415909,
-    "largos": 114660,
-    "cortos": 530569,
-    "cambio_semana": -41902,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 19,
+    "fecha": "2026-10-13",
+    "neto": -410518,
+    "largos": 121198,
+    "cortos": 531716,
+    "cambio_semana": 5391,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 22,
     "min_3a": -523882,
     "max_3a": -184892,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -18725,6 +18837,10 @@
      [
       "2026-10-06",
       -415909
+     ],
+     [
+      "2026-10-13",
+      -410518
      ]
     ],
     "estado": "CORTO ELEVADO"
@@ -18737,16 +18853,16 @@
    "codigo": "20974+",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": 54111,
-    "largos": 84033,
-    "cortos": 29922,
-    "cambio_semana": 8715,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 100,
+    "fecha": "2026-10-13",
+    "neto": 42334,
+    "largos": 79759,
+    "cortos": 37425,
+    "cambio_semana": -11777,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 92,
     "min_3a": -42905,
     "max_3a": 54111,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -19375,21 +19491,25 @@
      [
       "2026-10-06",
       54111
+     ],
+     [
+      "2026-10-13",
+      42334
      ]
     ],
     "estado": "EXTREMO LARGO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 74856,
-    "largos": 112821,
-    "cortos": 37965,
-    "cambio_semana": 4055,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 50,
+    "fecha": "2026-10-13",
+    "neto": 76402,
+    "largos": 113679,
+    "cortos": 37277,
+    "cambio_semana": 1546,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 53,
     "min_3a": 33754,
     "max_3a": 100037,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -20018,22 +20138,26 @@
      [
       "2026-10-06",
       74856
+     ],
+     [
+      "2026-10-13",
+      76402
      ]
     ],
     "estado": "INTERMEDIO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -26738,
-    "largos": 48139,
-    "cortos": 74877,
-    "cambio_semana": 7044,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 68,
+    "fecha": "2026-10-13",
+    "neto": -21891,
+    "largos": 43778,
+    "cortos": 65669,
+    "cambio_semana": 4847,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 73,
     "min_3a": -100640,
     "max_3a": 15648,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -20662,9 +20786,13 @@
      [
       "2026-10-06",
       -26738
+     ],
+     [
+      "2026-10-13",
+      -21891
      ]
     ],
-    "estado": "INTERMEDIO"
+    "estado": "LARGO ELEVADO"
    }
   },
   {
@@ -20674,16 +20802,16 @@
    "codigo": "12460+",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": 11803,
-    "largos": 23931,
-    "cortos": 12128,
-    "cambio_semana": 1777,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 75,
+    "fecha": "2026-10-13",
+    "neto": 9721,
+    "largos": 19679,
+    "cortos": 9958,
+    "cambio_semana": -2082,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 68,
     "min_3a": -37076,
     "max_3a": 25831,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -21312,21 +21440,25 @@
      [
       "2026-10-06",
       11803
+     ],
+     [
+      "2026-10-13",
+      9721
      ]
     ],
-    "estado": "LARGO ELEVADO"
+    "estado": "INTERMEDIO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 19595,
-    "largos": 23215,
-    "cortos": 3620,
-    "cambio_semana": 4684,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 98,
+    "fecha": "2026-10-13",
+    "neto": 10871,
+    "largos": 17111,
+    "cortos": 6240,
+    "cambio_semana": -8724,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 75,
     "min_3a": -12950,
     "max_3a": 22972,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -21955,22 +22087,26 @@
      [
       "2026-10-06",
       19595
+     ],
+     [
+      "2026-10-13",
+      10871
      ]
     ],
-    "estado": "EXTREMO LARGO",
+    "estado": "LARGO ELEVADO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -1894,
-    "largos": 13880,
-    "cortos": 15774,
-    "cambio_semana": 3492,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 46,
+    "fecha": "2026-10-13",
+    "neto": 4327,
+    "largos": 14832,
+    "cortos": 10505,
+    "cambio_semana": 6221,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 75,
     "min_3a": -26697,
     "max_3a": 20355,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -22599,9 +22735,13 @@
      [
       "2026-10-06",
       -1894
+     ],
+     [
+      "2026-10-13",
+      4327
      ]
     ],
-    "estado": "INTERMEDIO"
+    "estado": "LARGO ELEVADO"
    }
   },
   {
@@ -22611,16 +22751,16 @@
    "codigo": "239742",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -87845,
-    "largos": 87450,
-    "cortos": 175295,
-    "cambio_semana": -10405,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 2,
+    "fecha": "2026-10-13",
+    "neto": -61003,
+    "largos": 112145,
+    "cortos": 173148,
+    "cambio_semana": 26842,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 16,
     "min_3a": -95231,
     "max_3a": 26337,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -23249,21 +23389,25 @@
      [
       "2026-10-06",
       -87845
+     ],
+     [
+      "2026-10-13",
+      -61003
      ]
     ],
-    "estado": "EXTREMO CORTO"
+    "estado": "CORTO ELEVADO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 45495,
-    "largos": 154689,
-    "cortos": 109194,
-    "cambio_semana": 5727,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 62,
+    "fecha": "2026-10-13",
+    "neto": 29528,
+    "largos": 143186,
+    "cortos": 113658,
+    "cambio_semana": -15967,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 46,
     "min_3a": -20910,
     "max_3a": 176132,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -23892,22 +24036,26 @@
      [
       "2026-10-06",
       45495
+     ],
+     [
+      "2026-10-13",
+      29528
      ]
     ],
     "estado": "INTERMEDIO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -105317,
-    "largos": 83927,
-    "cortos": 189244,
-    "cambio_semana": 9237,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 6,
+    "fecha": "2026-10-13",
+    "neto": -91647,
+    "largos": 101532,
+    "cortos": 193179,
+    "cambio_semana": 13670,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 13,
     "min_3a": -117122,
     "max_3a": 18269,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -24536,9 +24684,13 @@
      [
       "2026-10-06",
       -105317
+     ],
+     [
+      "2026-10-13",
+      -91647
      ]
     ],
-    "estado": "EXTREMO CORTO"
+    "estado": "CORTO ELEVADO"
    }
   },
   {
@@ -24548,16 +24700,16 @@
    "codigo": "042601",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -852904,
-    "largos": 707098,
-    "cortos": 1560002,
-    "cambio_semana": -60880,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 99,
+    "fecha": "2026-10-13",
+    "neto": -911579,
+    "largos": 711317,
+    "cortos": 1622896,
+    "cambio_semana": -58675,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 96,
     "min_3a": -1743353,
     "max_3a": -792024,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -25186,21 +25338,25 @@
      [
       "2026-10-06",
       -852904
+     ],
+     [
+      "2026-10-13",
+      -911579
      ]
     ],
     "estado": "EXTREMO LARGO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 1679087,
-    "largos": 2471312,
-    "cortos": 792225,
-    "cambio_semana": 40609,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 24,
+    "fecha": "2026-10-13",
+    "neto": 1795866,
+    "largos": 2532974,
+    "cortos": 737108,
+    "cambio_semana": 116779,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 33,
     "min_3a": 1127517,
     "max_3a": 2602967,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -25829,22 +25985,26 @@
      [
       "2026-10-06",
       1679087
+     ],
+     [
+      "2026-10-13",
+      1795866
      ]
     ],
-    "estado": "CORTO ELEVADO",
+    "estado": "INTERMEDIO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -1257484,
-    "largos": 693301,
-    "cortos": 1950785,
-    "cambio_semana": -91504,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 98,
+    "fecha": "2026-10-13",
+    "neto": -1367408,
+    "largos": 715286,
+    "cortos": 2082694,
+    "cambio_semana": -109924,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 91,
     "min_3a": -2692373,
     "max_3a": -1165980,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -26473,6 +26633,10 @@
      [
       "2026-10-06",
       -1257484
+     ],
+     [
+      "2026-10-13",
+      -1367408
      ]
     ],
     "estado": "EXTREMO LARGO"
@@ -26485,16 +26649,16 @@
    "codigo": "043602",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -896481,
-    "largos": 686494,
-    "cortos": 1582975,
-    "cambio_semana": 4134,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 18,
+    "fecha": "2026-10-13",
+    "neto": -988102,
+    "largos": 649216,
+    "cortos": 1637318,
+    "cambio_semana": -91621,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 5,
     "min_3a": -1143889,
     "max_3a": -307692,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -27123,21 +27287,25 @@
      [
       "2026-10-06",
       -896481
+     ],
+     [
+      "2026-10-13",
+      -988102
      ]
     ],
-    "estado": "CORTO ELEVADO"
+    "estado": "EXTREMO CORTO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 2828139,
-    "largos": 3602149,
-    "cortos": 774010,
-    "cambio_semana": 51608,
-    "fecha_previa": "2026-09-29",
+    "fecha": "2026-10-13",
+    "neto": 2898562,
+    "largos": 3672796,
+    "cortos": 774234,
+    "cambio_semana": 70423,
+    "fecha_previa": "2026-10-06",
     "percentil_3a": 100,
     "min_3a": 1117271,
-    "max_3a": 2828139,
-    "semanas": 157,
+    "max_3a": 2898562,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -27766,22 +27934,26 @@
      [
       "2026-10-06",
       2828139
+     ],
+     [
+      "2026-10-13",
+      2898562
      ]
     ],
     "estado": "EXTREMO LARGO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -2139785,
-    "largos": 510611,
-    "cortos": 2650396,
-    "cambio_semana": -103353,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 21,
+    "fecha": "2026-10-13",
+    "neto": -2205937,
+    "largos": 489362,
+    "cortos": 2695299,
+    "cambio_semana": -66152,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 17,
     "min_3a": -2534616,
     "max_3a": -1066372,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -28410,6 +28582,10 @@
      [
       "2026-10-06",
       -2139785
+     ],
+     [
+      "2026-10-13",
+      -2205937
      ]
     ],
     "estado": "CORTO ELEVADO"
@@ -28422,16 +28598,16 @@
    "codigo": "020601",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": -119812,
-    "largos": 221234,
-    "cortos": 341046,
-    "cambio_semana": 67063,
-    "fecha_previa": "2026-09-29",
+    "fecha": "2026-10-13",
+    "neto": -126438,
+    "largos": 199232,
+    "cortos": 325670,
+    "cambio_semana": -6626,
+    "fecha_previa": "2026-10-06",
     "percentil_3a": 25,
     "min_3a": -219012,
     "max_3a": 47781,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -29060,21 +29236,25 @@
      [
       "2026-10-06",
       -119812
+     ],
+     [
+      "2026-10-13",
+      -126438
      ]
     ],
     "estado": "CORTO ELEVADO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 405628,
-    "largos": 1096523,
-    "cortos": 690895,
-    "cambio_semana": -31328,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 6,
+    "fecha": "2026-10-13",
+    "neto": 391534,
+    "largos": 1072776,
+    "cortos": 681242,
+    "cambio_semana": -14094,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 4,
     "min_3a": 371474,
     "max_3a": 655965,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -29703,22 +29883,26 @@
      [
       "2026-10-06",
       405628
+     ],
+     [
+      "2026-10-13",
+      391534
      ]
     ],
     "estado": "EXTREMO CORTO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -189678,
-    "largos": 172246,
-    "cortos": 361924,
-    "cambio_semana": 61717,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 98,
+    "fecha": "2026-10-13",
+    "neto": -154020,
+    "largos": 173217,
+    "cortos": 327237,
+    "cambio_semana": 35658,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 100,
     "min_3a": -595139,
-    "max_3a": -162052,
-    "semanas": 157,
+    "max_3a": -154020,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -30347,6 +30531,10 @@
      [
       "2026-10-06",
       -189678
+     ],
+     [
+      "2026-10-13",
+      -154020
      ]
     ],
     "estado": "EXTREMO LARGO"
@@ -30359,16 +30547,16 @@
    "codigo": "133741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-06",
-    "neto": 2540,
-    "largos": 18313,
-    "cortos": 15773,
-    "cambio_semana": 75,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 92,
+    "fecha": "2026-10-13",
+    "neto": 2534,
+    "largos": 17320,
+    "cortos": 14786,
+    "cambio_semana": -6,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 91,
     "min_3a": -2486,
     "max_3a": 3904,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -30997,21 +31185,25 @@
      [
       "2026-10-06",
       2540
+     ],
+     [
+      "2026-10-13",
+      2534
      ]
     ],
     "estado": "EXTREMO LARGO"
    },
    "gestores": {
-    "fecha": "2026-10-06",
-    "neto": 3532,
-    "largos": 5174,
-    "cortos": 1642,
-    "cambio_semana": -54,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 10,
+    "fecha": "2026-10-13",
+    "neto": 3642,
+    "largos": 5079,
+    "cortos": 1437,
+    "cambio_semana": 110,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 11,
     "min_3a": 2000,
     "max_3a": 19802,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -31640,22 +31832,26 @@
      [
       "2026-10-06",
       3532
+     ],
+     [
+      "2026-10-13",
+      3642
      ]
     ],
-    "estado": "EXTREMO CORTO",
+    "estado": "CORTO ELEVADO",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-06",
-    "neto": -6852,
-    "largos": 5731,
-    "cortos": 12583,
-    "cambio_semana": 4,
-    "fecha_previa": "2026-09-29",
-    "percentil_3a": 95,
+    "fecha": "2026-10-13",
+    "neto": -5844,
+    "largos": 5520,
+    "cortos": 11364,
+    "cambio_semana": 1008,
+    "fecha_previa": "2026-10-06",
+    "percentil_3a": 99,
     "min_3a": -23197,
     "max_3a": -5313,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-10",
@@ -32284,6 +32480,10 @@
      [
       "2026-10-06",
       -6852
+     ],
+     [
+      "2026-10-13",
+      -5844
      ]
     ],
     "estado": "EXTREMO LARGO"
@@ -32295,6 +32495,6 @@
  "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
  "metodo": "Neto = largos − cortos. Percentil = posición del neto actual entre las ~156 semanas anteriores (≥90 extremo largo, ≤10 extremo corto).",
  "ok": true,
- "generado_utc": "2026-10-16 11:20 UTC",
- "duracion_s": 2.6
+ "generado_utc": "2026-10-17 09:31 UTC",
+ "duracion_s": 1.7
 }

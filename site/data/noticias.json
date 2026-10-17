@@ -1,6 +1,16 @@
 {
  "items": [
   {
+   "banco": "BCE",
+   "tipo": "Discurso",
+   "titulo": "IMFC Statement",
+   "orador": "Christine Lagarde",
+   "fecha_utc": "2026-10-17 05:00",
+   "fecha": "2026-10-17",
+   "enlace": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261017~7015ea3099.en.html",
+   "fuente": "bce"
+  },
+  {
    "banco": "Fed",
    "tipo": "Comunicado",
    "titulo": "Federal Reserve Board announces termination of enforcement actions with Gardner Bancshares, Inc. and Small Business Bank",
@@ -761,16 +771,6 @@
    "fuente": "bce"
   },
   {
-   "banco": "BCE",
-   "tipo": "Discurso",
-   "titulo": "Monetary policy in a world of overlapping shocks",
-   "orador": "Isabel Schnabel",
-   "fecha_utc": "2026-09-30 15:45",
-   "fecha": "2026-09-30",
-   "enlace": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260930_1~7c6c120482.en.html",
-   "fuente": "bce"
-  },
-  {
    "banco": "Fed",
    "tipo": "Comunicado",
    "titulo": "Federal Reserve Board finalizes changes to enhance the transparency and public accountability of its stress test and reduce volatility in its stress test-related capital requirements",
@@ -1083,26 +1083,6 @@
   {
    "banco": "BoE",
    "tipo": "Noticia",
-   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "Asset Purchase Facility: Gilt Sales – Market Notice 17 September 2026",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
    "titulo": "Exchange of letters between the Governor and the Chancellor regarding CPI Inflation - September 2026",
    "orador": null,
    "fecha_utc": "2026-09-17 11:00",
@@ -1118,6 +1098,26 @@
    "fecha_utc": "2026-09-17 11:00",
    "fecha": "2026-09-17",
    "enlace": "https://www.bankofengland.co.uk/letter/2026/exchange-of-letters-between-the-governor-and-the-chancellor-regarding-qt-and-the-apf",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Asset Purchase Facility: Gilt Sales – Market Notice 17 September 2026",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
    "fuente": "boe"
   },
   {
@@ -1324,7 +1324,7 @@
    "n": 15,
    "url": "https://www.ecb.europa.eu/rss/press.html",
    "pagina": "https://www.ecb.europa.eu/press/html/index.en.html",
-   "ultimo": "2026-10-14 00:00"
+   "ultimo": "2026-10-17 05:00"
   },
   "boj": {
    "banco": "BoJ",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-16 22:45 UTC",
- "duracion_s": 6.4
+ "generado_utc": "2026-10-17 09:31 UTC",
+ "duracion_s": 6.6
 }

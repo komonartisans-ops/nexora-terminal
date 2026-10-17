@@ -40,12 +40,25 @@
    "l4": "El VIX mide cuánto pagan los inversores por protegerse. Si sube, hay miedo y se vende riesgo; si baja, vuelve la calma.",
    "enviada": true,
    "error": null
+  },
+  {
+   "fecha_utc": "2026-10-17 09:41 UTC",
+   "clave": "vix",
+   "titulo": "Miedo (VIX)",
+   "l1": "El VIX está en 20,0 (+21,4 % en la sesión; umbral: >25 o +20 %) (Cboe vía Yahoo Finance, vie 16 oct).",
+   "l2": "Oro a favor, Índices en contra, BTC en contra (interpretación según sensibilidades fijas, no hecho).",
+   "l3": "mié 21 oct (hora de Madrid) · Resultados Meta Platforms (META)",
+   "l4": "El VIX mide cuánto pagan los inversores por protegerse. Si sube, hay miedo y se vende riesgo; si baja, vuelve la calma.",
+   "enviada": true,
+   "error": null
   }
  ],
  "candidatas": [
   "vix"
  ],
- "no_evaluables": {},
+ "no_evaluables": {
+  "skew": "RETENIDA: zona relativa alta pero solo 1 de 2 confirmaciones encendidas (mínimo 2)"
+ },
  "telegram_configurado": true,
  "umbrales": {
   "fed_pts": 15,
@@ -74,8 +87,8 @@
  "enviadas_hoy": [
   "vix"
  ],
- "ultima_evaluacion_utc": "2026-10-16 23:50 UTC",
+ "ultima_evaluacion_utc": "2026-10-17 09:41 UTC",
  "ok": true,
- "generado_utc": "2026-10-16 23:48 UTC",
- "duracion_s": 0.1
+ "generado_utc": "2026-10-17 09:31 UTC",
+ "duracion_s": 0.5
 }

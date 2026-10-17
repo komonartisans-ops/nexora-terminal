@@ -11,7 +11,7 @@
      "Ventas minoristas 3 meses anualizado +6.8 % vs +6.3 % interanual (2026-09)",
      "Producción industrial 3 meses anualizado +3.9 % vs +2.2 % interanual (2026-09)",
      "Peticiones de paro media 4 semanas 198,500 vs 206,231 las 13 anteriores (-3.7 %)",
-     "Confirmación de mercado (no vota): XLY/XLP 1,3084 (2026-10-15) · -5,3 % frente a su media de 200 sesiones · 13 semanas -3,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) → DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
+     "Confirmación de mercado (no vota): XLY/XLP 1,2835 (2026-10-16) · -7,0 % frente a su media de 200 sesiones · 13 semanas -5,0 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) → DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
     ],
     "fuente": "Fed regionales, BLS, Census, Fed G.17, DOL vía FRED",
     "puntos": 1
@@ -45,15 +45,15 @@
     "estado": "NEUTRAL",
     "dir": "→",
     "evidencia": [
-     "Monitor de liquidez cripto: SIN GIRO DE LIQUIDEZ (3/8 condiciones, 2 en drenaje)",
+     "Monitor de liquidez cripto: SEÑALES INICIALES DE GIRO (5/8 condiciones, 1 en drenaje)",
      "Balance de la Fed 6.76 T$ (+0.2 % en 13 semanas)",
-     "TGA 885.8 B$ (-105.9 B$ en 4 semanas)",
-     "RRP 1.2 B$ (+0.9 B$ en 4 semanas)",
+     "TGA 934.7 B$ (-38.0 B$ en 4 semanas)",
+     "RRP 0.1 B$ (-0.5 B$ en 4 semanas)",
      "Reservas bancarias 3.022 T$ (1 mes +0.28 %, 3 meses -3.84 %)",
      "M2 +5.66 % interanual (2026-08)"
     ],
     "fuente": "Fed H.4.1, Tesoro DTS, NY Fed, H.6; monitor cripto NEXORA",
-    "puntos": 0
+    "puntos": 1
    },
    {
     "dimension": "CRÉDITO",
@@ -73,10 +73,10 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-16): reunión del 2026-10-28 subida 18 % / mantener 82 % / bajada 0 % (-10 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +34 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
-     "Bono a 2 años 4.77 % vs tipo efectivo 3.88 % → +89 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
+     "FedWatch NEXORA (2026-10-16): reunión del 2026-10-28 subida 16 % / mantener 84 % / bajada 0 % (-12 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +36 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "Bono a 2 años 4.74 % vs tipo efectivo 3.88 % → +86 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
-     "Letra 1 año − tipo efectivo +61 pb (+7 pb en 5 sesiones)"
+     "Letra 1 año − tipo efectivo +58 pb (+2 pb en 5 sesiones)"
     ],
     "fuente": "Fed vía FRED, U.S. Treasury",
     "puntos": null
@@ -98,7 +98,7 @@
     "dir": "↑",
     "evidencia": [
      "NFCI -0.499 (+0.037 en 4 semanas; negativo = más laxas que la media) · 2026-10-09",
-     "VIX 16.5 (percentil 40 del último año)"
+     "VIX 20.0 (percentil 82 del último año)"
     ],
     "fuente": "Chicago Fed NFCI vía FRED; Cboe",
     "puntos": null
@@ -108,7 +108,7 @@
     "estado": "POSITIVA · BEAR STEEPENING",
     "dir": "",
     "evidencia": [
-     "2s10s +33 pb (+6 pb en 20 sesiones: 2Y +3 pb, 10Y +9 pb) → BEAR STEEPENING (sube más el largo: prima por plazo, fiscal o inflación)",
+     "2s10s +35 pb (+8 pb en 20 sesiones: 2Y +7 pb, 10Y +15 pb) → BEAR STEEPENING (sube más el largo: prima por plazo, fiscal o inflación)",
      "10 años − 3 meses +83 pb (2026-10-16)"
     ],
     "fuente": "U.S. Treasury; FRED T10Y3M",
@@ -119,7 +119,7 @@
     "estado": "SE FORTALECE",
     "dir": "↑",
     "evidencia": [
-     "DXY (réplica BCE) 102.11 (-0.24 % 5 sesiones, +1.95 % 20 sesiones)",
+     "DXY (réplica BCE) 101.71 (-0.46 % 5 sesiones, +1.19 % 20 sesiones)",
      "Dólar amplio (Fed) 121.60 (+0.7 % en 3 meses)"
     ],
     "fuente": "BCE; Fed H.10 vía FRED",
@@ -127,19 +127,19 @@
    },
    {
     "dimension": "CROSS-ASSET",
-    "estado": "SIN PATRÓN DOMINANTE",
+    "estado": "PATRÓN: ESTRÉS DE CRÉDITO",
     "dir": "",
     "evidencia": [
-     "S&P 500: semana -0.3 · mes +1.4 %",
+     "S&P 500: semana -1.9 · mes +0.1 %",
      "Nasdaq 100: semana -2.6 · mes +1.7 %",
-     "Russell 2000: semana -1.0 · mes -3.7 %",
-     "Oro (COMEX GC=F, respaldo): semana -0.5 · mes -5.2 %",
-     "Bitcoin: semana +0.5 · mes +8.7 %",
-     "Ether: semana -1.4 · mes +1.8 %",
-     "10Y nominal: semana -18.0 · mes +9.0 pb",
-     "10Y real: semana -14.0 · mes +10.0 pb",
-     "DXY: semana -0.2 · mes +1.9 %",
-     "VIX: semana +6.8 · mes — %",
+     "Russell 2000: semana -3.0 · mes -4.9 %",
+     "Oro (COMEX GC=F, respaldo): semana -0.8 · mes -5.5 %",
+     "Bitcoin: semana -1.3 · mes +7.0 %",
+     "Ether: semana -2.6 · mes +0.1 %",
+     "10Y nominal: semana -13.0 · mes +15.0 pb",
+     "10Y real: semana -13.0 · mes +13.0 pb",
+     "DXY: semana -0.5 · mes +1.2 %",
+     "VIX: semana +34.7 · mes — %",
      "High yield: semana — · mes +53.0 pb"
     ],
     "fuente": "Cboe, FRED, Coinbase, Tesoro, BCE; oro: COMEX GC=F (Yahoo Finance), respaldo: LBMA no respondió (datos de los tres monitores)",
@@ -159,42 +159,42 @@
   "monitores": [
    {
     "monitor": "Liquidez cripto",
-    "lectura": "SIN GIRO DE LIQUIDEZ",
-    "sentido": "NEUTRAL",
+    "lectura": "SEÑALES INICIALES DE GIRO",
+    "sentido": "FAVORABLE",
     "precio": "BTC CONFIRMA",
-    "detalle": "checklist 3/8 · BTC 30 días +8.7 %"
+    "detalle": "checklist 5/8 · BTC 30 días +7.0 %"
    },
    {
     "monitor": "Oro (XAU/USD)",
     "lectura": "MIXTO",
     "sentido": "NEUTRAL",
     "precio": "CONFIRMA DEBILIDAD",
-    "detalle": "oro 20 sesiones -5.2 %"
+    "detalle": "oro 20 sesiones -5.5 %"
    },
    {
     "monitor": "Índices USA",
     "lectura": "MIXTO",
     "sentido": "NEUTRAL",
-    "precio": "CONFIRMA FUERZA",
-    "detalle": "amplitud CONFIRMA · S&P 20 sesiones +1.4 %"
+    "precio": "NO CONFIRMA",
+    "detalle": "amplitud CONFIRMA · S&P 20 sesiones +0.1 %"
    }
   ],
-  "concordancia": "LOS TRES COINCIDEN: NEUTRAL",
+  "concordancia": "2 DE 3: NEUTRAL (Liquidez cripto: FAVORABLE)",
   "motor": [
    {
     "motor": "Bono a 2 años",
-    "valor": "+0 pb",
+    "valor": "-1 pb",
     "efecto": "NEUTRAL"
    },
    {
     "motor": "10Y real",
-    "valor": "-14 pb",
+    "valor": "-13 pb",
     "efecto": "A FAVOR de oro, bolsa y cripto"
    },
    {
     "motor": "Dólar (DXY)",
-    "valor": "-0.24 %",
-    "efecto": "NEUTRAL"
+    "valor": "-0.46 %",
+    "efecto": "A FAVOR de oro, bolsa y cripto"
    },
    {
     "motor": "Condiciones financieras (NFCI)",
@@ -203,8 +203,8 @@
    },
    {
     "motor": "VIX (aversión al riesgo)",
-    "valor": "+6.81 %",
-    "efecto": "NEUTRAL"
+    "valor": "+34.70 %",
+    "efecto": "EN CONTRA de oro, bolsa y cripto"
    },
    {
     "motor": "Liquidez (TGA/RRP/reservas/Fed)",
@@ -216,8 +216,8 @@
   "motor_historico": "SIN MOTOR COMÚN",
   "cross_asset": {
    "S&P 500": {
-    "semana": -0.27,
-    "mes": 1.39,
+    "semana": -1.95,
+    "mes": 0.12,
     "unidad": "%"
    },
    "Nasdaq 100": {
@@ -226,42 +226,42 @@
     "unidad": "%"
    },
    "Russell 2000": {
-    "semana": -0.96,
-    "mes": -3.73,
+    "semana": -3.05,
+    "mes": -4.86,
     "unidad": "%"
    },
    "Oro (COMEX GC=F, respaldo)": {
-    "semana": -0.49,
-    "mes": -5.18,
+    "semana": -0.83,
+    "mes": -5.51,
     "unidad": "%"
    },
    "Bitcoin": {
-    "semana": 0.5369751724723981,
-    "mes": 8.662250309820173,
+    "semana": -1.2655807985757161,
+    "mes": 7.032701691864407,
     "unidad": "%"
    },
    "Ether": {
-    "semana": -1.3522639502767997,
-    "mes": 1.8074903803617426,
+    "semana": -2.6279257855409743,
+    "mes": 0.13862623470455304,
     "unidad": "%"
    },
    "10Y nominal": {
-    "semana": -18.0,
-    "mes": 9.0,
+    "semana": -13.0,
+    "mes": 15.0,
     "unidad": "pb"
    },
    "10Y real": {
-    "semana": -14.0,
-    "mes": 10.0,
+    "semana": -13.0,
+    "mes": 13.0,
     "unidad": "pb"
    },
    "DXY": {
-    "semana": -0.24,
-    "mes": 1.95,
+    "semana": -0.46,
+    "mes": 1.19,
     "unidad": "%"
    },
    "VIX": {
-    "semana": 6.81,
+    "semana": 34.7,
     "mes": null,
     "unidad": "%"
    },
@@ -273,16 +273,28 @@
   },
   "patrones": [
    {
+    "patron": "ESTRÉS DE CRÉDITO",
+    "cumple": 3,
+    "de": 4,
+    "pct": 75
+   },
+   {
     "patron": "SHOCK DE TIPOS REALES",
     "cumple": 3,
     "de": 5,
     "pct": 60
    },
    {
-    "patron": "ESTRÉS DE CRÉDITO",
+    "patron": "CRECIMIENTO / REFLACIÓN",
+    "cumple": 3,
+    "de": 5,
+    "pct": 60
+   },
+   {
+    "patron": "HUIDA AL REFUGIO (risk-off clásico)",
     "cumple": 2,
-    "de": 4,
-    "pct": 50
+    "de": 5,
+    "pct": 40
    },
    {
     "patron": "EXPANSIÓN DE LIQUIDEZ",
@@ -291,27 +303,17 @@
     "pct": 40
    },
    {
-    "patron": "CRECIMIENTO / REFLACIÓN",
-    "cumple": 2,
-    "de": 5,
-    "pct": 40
-   },
-   {
-    "patron": "HUIDA AL REFUGIO (risk-off clásico)",
-    "cumple": 1,
-    "de": 5,
-    "pct": 20
-   },
-   {
     "patron": "DESINFLACIÓN FAVORABLE (goldilocks)",
     "cumple": 1,
     "de": 5,
     "pct": 20
    }
   ],
-  "patron_dominante": [],
+  "patron_dominante": [
+   "ESTRÉS DE CRÉDITO"
+  ],
   "contradicciones": [
-   "Bitcoin sube +8.7 % en 30 días sin soporte de liquidez y con el tipo real al alza: el motor es propio de cripto (flujos, posicionamiento), no macro. Históricamente estos movimientos son menos fiables (ver monitor cripto).",
+   "Bitcoin sube +7.0 % en 30 días sin soporte de liquidez y con el tipo real al alza: el motor es propio de cripto (flujos, posicionamiento), no macro. Históricamente estos movimientos son menos fiables (ver monitor cripto).",
    "Divergencia bolsa-crédito: el high yield se amplía mientras el S&P sigue cerca de máximos. Históricamente el crédito suele adelantarse, aunque no siempre."
   ],
   "preguntas": [
@@ -333,11 +335,11 @@
    },
    {
     "pregunta": "¿Entra o sale liquidez?",
-    "respuesta": "NEUTRAL. Monitor cripto: SIN GIRO DE LIQUIDEZ."
+    "respuesta": "NEUTRAL. Monitor cripto: SEÑALES INICIALES DE GIRO."
    },
    {
     "pregunta": "¿Qué hacen los bancos centrales?",
-    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 18 %, mantener 82 %, bajada 0 % (ayer subida 28 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
+    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 16 %, mantener 84 %, bajada 0 % (ayer subida 28 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
    },
    {
     "pregunta": "¿Qué dice el consumo (mercado frente a datos reales)?",
@@ -345,7 +347,7 @@
    },
    {
     "pregunta": "¿Coinciden los tres monitores?",
-    "respuesta": "LOS TRES COINCIDEN: NEUTRAL"
+    "respuesta": "2 DE 3: NEUTRAL (Liquidez cripto: FAVORABLE)"
    },
    {
     "pregunta": "¿Hay un motor común?",
@@ -1031,12 +1033,12 @@
    "nota": "Evidencia descriptiva: medianas y % de veces positivo. Ventanas solapadas; valores finales de FRED con desfase de publicación. No es predicción."
   },
   "consumo": {
-   "valor": "XLY/XLP 1,3084 (2026-10-15) · -5,3 % frente a su media de 200 sesiones · 13 semanas -3,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores)",
+   "valor": "XLY/XLP 1,2835 (2026-10-16) · -7,0 % frente a su media de 200 sesiones · 13 semanas -5,0 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores)",
    "lectura": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "historico": "Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %).",
    "aviso": "Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
-   "concentracion": "Amazon + Tesla pesan el 40,3 % de XLY (15-Oct-2026); en 13 semanas Amazon +3,0 %, Tesla -4,8 %. Sin ellas, el ratio habría variado -4,4 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla.",
-   "tesis": "XLY/XLP 1,3084 (2026-10-15) · -5,3 % frente a su media de 200 sesiones · 13 semanas -3,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 40,3 % de XLY (15-Oct-2026); en 13 semanas Amazon +3,0 %, Tesla -4,8 %. Sin ellas, el ratio habría variado -4,4 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
+   "concentracion": "Amazon + Tesla pesan el 40,3 % de XLY (15-Oct-2026); en 13 semanas Amazon +0,0 %, Tesla -4,0 %. Sin ellas, el ratio habría variado -5,1 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla.",
+   "tesis": "XLY/XLP 1,2835 (2026-10-16) · -7,0 % frente a su media de 200 sesiones · 13 semanas -5,0 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 40,3 % de XLY (15-Oct-2026); en 13 semanas Amazon +0,0 %, Tesla -4,0 %. Sin ellas, el ratio habría variado -5,1 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
    "estado_mercado": "DEFENSIVO",
    "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
   }
@@ -1048,6 +1050,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-16 22:45 UTC",
- "duracion_s": 32.6
+ "generado_utc": "2026-10-17 09:31 UTC",
+ "duracion_s": 8.7
 }
