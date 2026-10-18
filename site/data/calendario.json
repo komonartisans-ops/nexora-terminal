@@ -1,7 +1,7 @@
 {
- "generado": "2026-10-17 14:08 Madrid",
- "desde": "2026-09-07",
- "hasta": "2026-11-07",
+ "generado": "2026-10-18 11:47 Madrid",
+ "desde": "2026-09-08",
+ "hasta": "2026-11-08",
  "eventos": [
   {
    "fecha": "2026-09-10",
@@ -839,20 +839,6 @@
    "fecha": "2026-10-21",
    "fecha_madrid": "2026-10-21",
    "dia": "mié",
-   "hora_ny": "13:00",
-   "hora_madrid": "19:00",
-   "evento": "Subasta del Tesoro Bond 19-Year 10-Month (13 MM$)",
-   "importancia": "BAJA",
-   "afecta": "índices · oro",
-   "que_mirar": "Demanda débil (cola) → yields ↑.",
-   "fuente": "TreasuryDirect (U.S. Treasury)",
-   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
-   "nota": ""
-  },
-  {
-   "fecha": "2026-10-21",
-   "fecha_madrid": "2026-10-21",
-   "dia": "mié",
    "hora_ny": "",
    "hora_madrid": "",
    "evento": "Resultados Meta Platforms (META)",
@@ -905,20 +891,6 @@
    "fecha": "2026-10-22",
    "fecha_madrid": "2026-10-22",
    "dia": "jue",
-   "hora_ny": "13:00",
-   "hora_madrid": "19:00",
-   "evento": "Subasta del Tesoro Note 5-Year (26 MM$)",
-   "importancia": "BAJA",
-   "afecta": "índices · oro",
-   "que_mirar": "Demanda débil (cola) → yields ↑.",
-   "fuente": "TreasuryDirect (U.S. Treasury)",
-   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
-   "nota": ""
-  },
-  {
-   "fecha": "2026-10-22",
-   "fecha_madrid": "2026-10-22",
-   "dia": "jue",
    "hora_ny": "16:30",
    "hora_madrid": "22:30",
    "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
@@ -956,20 +928,6 @@
    "fuente": "FRED Release Calendar · H.8 Assets and Liabilities of Commercial Banks in the United States",
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=22&y=2026",
    "nota": ""
-  },
-  {
-   "fecha": "2026-10-26",
-   "fecha_madrid": "2026-10-26",
-   "dia": "lun",
-   "hora_ny": "",
-   "hora_madrid": "",
-   "evento": "Subasta del Tesoro Note 2-Year",
-   "importancia": "BAJA",
-   "afecta": "índices · oro",
-   "que_mirar": "Demanda débil (cola) → yields ↑.",
-   "fuente": "TreasuryDirect (U.S. Treasury)",
-   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
-   "nota": "hora de cierre aún no anunciada"
   },
   {
    "fecha": "2026-10-27",
@@ -1028,20 +986,6 @@
    "nota": ""
   },
   {
-   "fecha": "2026-10-27",
-   "fecha_madrid": "2026-10-27",
-   "dia": "mar",
-   "hora_ny": "",
-   "hora_madrid": "",
-   "evento": "Subasta del Tesoro Note 5-Year",
-   "importancia": "BAJA",
-   "afecta": "índices · oro",
-   "que_mirar": "Demanda débil (cola) → yields ↑.",
-   "fuente": "TreasuryDirect (U.S. Treasury)",
-   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
-   "nota": "hora de cierre aún no anunciada"
-  },
-  {
    "fecha": "2026-10-28",
    "fecha_madrid": "2026-10-28",
    "dia": "mié",
@@ -1082,20 +1026,6 @@
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/googl/earnings",
    "nota": "fecha CONFIRMADA"
-  },
-  {
-   "fecha": "2026-10-28",
-   "fecha_madrid": "2026-10-28",
-   "dia": "mié",
-   "hora_ny": "",
-   "hora_madrid": "",
-   "evento": "Subasta del Tesoro Note 2-Year",
-   "importancia": "BAJA",
-   "afecta": "índices · oro",
-   "que_mirar": "Demanda débil (cola) → yields ↑.",
-   "fuente": "TreasuryDirect (U.S. Treasury)",
-   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
-   "nota": "hora de cierre aún no anunciada"
   },
   {
    "fecha": "2026-10-29",
@@ -1224,20 +1154,6 @@
    "fuente": "Nasdaq / Zacks",
    "url": "https://www.nasdaq.com/market-activity/stocks/lly/earnings",
    "nota": "fecha CONFIRMADA"
-  },
-  {
-   "fecha": "2026-10-29",
-   "fecha_madrid": "2026-10-29",
-   "dia": "jue",
-   "hora_ny": "",
-   "hora_madrid": "",
-   "evento": "Subasta del Tesoro Note 7-Year",
-   "importancia": "BAJA",
-   "afecta": "índices · oro",
-   "que_mirar": "Demanda débil (cola) → yields ↑.",
-   "fuente": "TreasuryDirect (U.S. Treasury)",
-   "url": "https://www.treasurydirect.gov/TA_WS/securities/upcoming?format=json",
-   "nota": "hora de cierre aún no anunciada"
   },
   {
    "fecha": "2026-10-30",
@@ -1432,18 +1348,20 @@
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
-   "dias": 11
+   "dias": 10
   },
   "BCE": {
    "fecha": "2026-10-29",
-   "dias": 12
+   "dias": 11
   },
   "Banco de Japón": {
    "fecha": "2026-10-30",
-   "dias": 13
+   "dias": 12
   }
  },
- "errores": {},
+ "errores": {
+  "subastas": "KeyError: 'auctionDate'"
+ },
  "nota": "Horas oficiales convertidas a Nueva York y Madrid con cambio de horario incluido. Las fechas de FRED las publican los organismos y pueden cambiar (p. ej., cierre del Gobierno).",
  "ultimos_publicados": {
   "IPC EE. UU. (CPI)": {
@@ -1527,6 +1445,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-17 12:05 UTC",
- "duracion_s": 43.1
+ "generado_utc": "2026-10-18 09:45 UTC",
+ "duracion_s": 34.1
 }

@@ -1,6 +1,6 @@
 {
  "fecha_precios": "2026-10-16",
- "generado_utc": "2026-10-17 12:05 UTC",
+ "generado_utc": "2026-10-18 09:45 UTC",
  "rango_objetivo": [
   3.75,
   4.0
@@ -1149,10 +1149,6 @@
  "fuente": "Cálculo NEXORA con el método de CME FedWatch: futuros de fondos federales ZQ (CBOT, precios vía Yahoo Finance) + EFFR y rango objetivo (FRED) + calendario FOMC (Federal Reserve). Puede diferir unos puntos de CME.",
  "tipos_historico": {
   "fed_max": [
-   [
-    "2024-04-30",
-    5.5
-   ],
    [
     "2024-05-01",
     5.5
@@ -4756,10 +4752,6 @@
   ],
   "fed_min": [
    [
-    "2024-04-30",
-    5.25
-   ],
-   [
     "2024-05-01",
     5.25
    ],
@@ -8362,10 +8354,6 @@
   ],
   "effr": [
    [
-    "2024-04-30",
-    5.33
-   ],
-   [
     "2024-05-01",
     5.33
    ],
@@ -10831,10 +10819,6 @@
    ]
   ],
   "bce_deposito": [
-   [
-    "2024-04-30",
-    4.0
-   ],
    [
     "2024-05-01",
     4.0
@@ -14434,7 +14418,7 @@
   ],
   "boj_politica": [
    [
-    "2024-04-30",
+    "2024-05-01",
     0.05
    ],
    [
@@ -14458,7 +14442,7 @@
     1.25
    ],
    [
-    "2026-10-17",
+    "2026-10-18",
     1.25
    ]
   ]
@@ -14486,5 +14470,5 @@
   }
  },
  "ok": true,
- "duracion_s": 11.1
+ "duracion_s": 8.3
 }

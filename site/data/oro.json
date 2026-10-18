@@ -1,8 +1,8 @@
 {
  "ok": true,
- "generado_utc": "2026-10-17 12:05 UTC",
+ "generado_utc": "2026-10-18 09:45 UTC",
  "metricas": {
-  "generado_utc": "2026-10-17 12:09 UTC",
+  "generado_utc": "2026-10-18 09:48 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer el oro (XAU/USD)",
   "oro": {
    "lbma_pm": 4181.10009765625,
@@ -22,17 +22,17 @@
   },
   "oro_intradia": {
    "xaut_okx": {
-    "precio": 4162.0,
-    "hora_utc": "2026-10-17 12:10",
-    "max24h": 4190.9,
-    "min24h": 4154.2
+    "precio": 4158.8,
+    "hora_utc": "2026-10-18 09:49",
+    "max24h": 4163.3,
+    "min24h": 4146.5
    },
    "paxg_coinbase": {
-    "precio": 4158.95,
-    "hora_utc": "2026-10-17 12:07"
+    "precio": 4153.75,
+    "hora_utc": "2026-10-18 09:47"
    },
    "nota": "Proxy: tokens respaldados por oro físico, cotizan 24/7; pueden desviarse unas décimas del spot XAU/USD.",
-   "divergencia_pct": 0.073
+   "divergencia_pct": 0.122
   },
   "dxy": {
    "valor": 101.71,
@@ -224,10 +224,10 @@
   },
   "niveles": {
    "fuente": "XAUT-USDT (OKX), velas diarias UTC completas — proxy del spot; verificar en el gráfico de XAU/USD",
-   "ultimo_cierre": 4159.3,
-   "fecha": "2026-10-16",
-   "PDH": 4190.9,
-   "PDL": 4143.0,
+   "ultimo_cierre": 4153.5,
+   "fecha": "2026-10-17",
+   "PDH": 4163.3,
+   "PDL": 4146.5,
    "PWH": 4197.8,
    "PWL": 4075.9,
    "PMH": 4500.0,
@@ -244,7 +244,7 @@
     4200,
     4300
    ],
-   "atr14": 46.5,
+   "atr14": 47.1,
    "semanales": [
     {
      "semana": "2026-08-31",
@@ -568,94 +568,94 @@
   },
   "chuleta_60s": "SIN CONFLUENCIA COMPLETA",
   "pools": {
-   "referencia": 4162.0,
-   "atr14": 46.5,
+   "referencia": 4158.8,
+   "atr14": 47.1,
    "encima": [
     {
      "id": "PDH",
      "nombre": "máx. día anterior",
-     "nivel": 4190.9,
-     "dist_pct": 0.69,
-     "dist_atr": 0.6
+     "nivel": 4163.3,
+     "dist_pct": 0.11,
+     "dist_atr": 0.1
     },
     {
      "id": "PWH",
      "nombre": "máx. semana anterior",
      "nivel": 4197.8,
-     "dist_pct": 0.86,
+     "dist_pct": 0.94,
      "dist_atr": 0.8
     },
     {
      "id": "semana_actual_max",
      "nombre": "máx. semana en curso",
      "nivel": 4210.7,
-     "dist_pct": 1.17,
-     "dist_atr": 1.0
+     "dist_pct": 1.25,
+     "dist_atr": 1.1
     },
     {
      "id": "PMH",
      "nombre": "máx. mes anterior",
      "nivel": 4500.0,
-     "dist_pct": 8.12,
-     "dist_atr": 7.3
+     "dist_pct": 8.2,
+     "dist_atr": 7.2
     },
     {
      "id": "max_20s",
      "nombre": "máx. 20 semanas",
      "nivel": 4679.8,
-     "dist_pct": 12.44,
+     "dist_pct": 12.53,
      "dist_atr": 11.1
     },
     {
      "id": "max_52s",
      "nombre": "máx. 52 semanas",
      "nivel": 5609.9,
-     "dist_pct": 34.79,
-     "dist_atr": 31.1
+     "dist_pct": 34.89,
+     "dist_atr": 30.8
     }
    ],
    "debajo": [
     {
      "id": "PDL",
      "nombre": "mín. día anterior",
-     "nivel": 4143.0,
-     "dist_pct": -0.46,
-     "dist_atr": -0.4
+     "nivel": 4146.5,
+     "dist_pct": -0.3,
+     "dist_atr": -0.3
     },
     {
      "id": "PML",
      "nombre": "mín. mes anterior",
      "nivel": 4117.5,
-     "dist_pct": -1.07,
-     "dist_atr": -1.0
+     "dist_pct": -0.99,
+     "dist_atr": -0.9
     },
     {
      "id": "semana_actual_min",
      "nombre": "mín. semana en curso",
      "nivel": 4078.7,
-     "dist_pct": -2.0,
-     "dist_atr": -1.8
+     "dist_pct": -1.93,
+     "dist_atr": -1.7
     },
     {
      "id": "PWL",
      "nombre": "mín. semana anterior",
      "nivel": 4075.9,
-     "dist_pct": -2.07,
-     "dist_atr": -1.9
+     "dist_pct": -1.99,
+     "dist_atr": -1.8
     },
     {
      "id": "min_20s",
      "nombre": "mín. 20 semanas",
      "nivel": 3943.1,
-     "dist_pct": -5.26,
-     "dist_atr": -4.7
+     "dist_pct": -5.19,
+     "dist_atr": -4.6
     },
     {
      "id": "min_52s",
      "nombre": "mín. 52 semanas",
      "nivel": 3892.7,
-     "dist_pct": -6.47,
-     "dist_atr": -5.8
+     "dist_pct": -6.4,
+     "dist_atr": -5.6
     }
    ]
   },
@@ -728,7 +728,7 @@
     "paso": "LIQUIDEZ DEL GRÁFICO",
     "que": "Pools de liquidez; sweep/inducción (modelo ICT)",
     "estado": "CONTEXTO",
-    "detalle": "Ref. 4,162.0 (ATR14 46.5) — encima: máx. día anterior 4,190.9 (+0.6 ATR) · máx. semana anterior 4,197.8 (+0.8 ATR) · máx. semana en curso 4,210.7 (+1.0 ATR) · máx. mes anterior 4,500.0 (+7.3 ATR) — debajo: mín. día anterior 4,143.0 (-0.4 ATR) · mín. mes anterior 4,117.5 (-1.0 ATR) · mín. semana en curso 4,078.7 (-1.8 ATR) · mín. semana anterior 4,075.9 (-1.9 ATR)"
+    "detalle": "Ref. 4,158.8 (ATR14 47.1) — encima: máx. día anterior 4,163.3 (+0.1 ATR) · máx. semana anterior 4,197.8 (+0.8 ATR) · máx. semana en curso 4,210.7 (+1.1 ATR) · máx. mes anterior 4,500.0 (+7.2 ATR) — debajo: mín. día anterior 4,146.5 (-0.3 ATR) · mín. mes anterior 4,117.5 (-0.9 ATR) · mín. semana en curso 4,078.7 (-1.7 ATR) · mín. semana anterior 4,075.9 (-1.8 ATR)"
    },
    {
     "n": 7,
@@ -789,7 +789,7 @@
    {
     "n": 9,
     "pregunta": "¿Dónde está la liquidez en el gráfico y qué nivel puede barrerse?",
-    "respuesta": "Ref. 4,162.0 (ATR14 46.5) — encima: máx. día anterior 4,190.9 (+0.6 ATR) · máx. semana anterior 4,197.8 (+0.8 ATR) · máx. semana en curso 4,210.7 (+1.0 ATR) · máx. mes anterior 4,500.0 (+7.3 ATR) — debajo: mín. día anterior 4,143.0 (-0.4 ATR) · mín. mes anterior 4,117.5 (-1.0 ATR) · mín. semana en curso 4,078.7 (-1.8 ATR) · mín. semana anterior 4,075.9 (-1.9 ATR) (proxy XAUT; verificar en tu gráfico)"
+    "respuesta": "Ref. 4,158.8 (ATR14 47.1) — encima: máx. día anterior 4,163.3 (+0.1 ATR) · máx. semana anterior 4,197.8 (+0.8 ATR) · máx. semana en curso 4,210.7 (+1.1 ATR) · máx. mes anterior 4,500.0 (+7.2 ATR) — debajo: mín. día anterior 4,146.5 (-0.3 ATR) · mín. mes anterior 4,117.5 (-0.9 ATR) · mín. semana en curso 4,078.7 (-1.7 ATR) · mín. semana anterior 4,075.9 (-1.8 ATR) (proxy XAUT; verificar en tu gráfico)"
    },
    {
     "n": 10,
@@ -5014,6 +5014,6 @@
    ]
   ]
  },
- "evaluado_utc": "2026-10-17 12:05 UTC",
+ "evaluado_utc": "2026-10-18 09:45 UTC",
  "fedwatch_fecha_precios": "2026-10-16"
 }
