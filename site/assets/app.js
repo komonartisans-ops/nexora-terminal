@@ -60,6 +60,7 @@ const PAGES = [
   { id: 'ciclo', g: 'Análisis', t: 'Ciclo y crédito EE. UU.', d: 'Fase del ciclo, 9 señales, probit NY Fed, diferenciales', f: 2 },
   { id: 'bancos', g: 'Análisis', t: 'Bancos centrales', d: 'Fed, BCE y BoJ: tipos, reuniones y FedWatch propio', f: 1 },
   { id: 'mapa', g: 'Análisis', t: 'Bancos centrales del mundo', d: 'Mapa de 38 bancos: tipo, último movimiento, 12 meses, inflación, PIB y divisa', f: 7 },
+  { id: 'marcador', g: 'Análisis', t: 'Marcador de señales', d: 'Aciertos de las señales del sistema a T+1, T+5 y T+20 frente al azar; vivas y reconstruidas por separado', f: 10 },
   { id: 'agenda', g: 'Análisis', t: 'Agenda', d: 'Hoy y próximos 7 días con hora de Nueva York y Madrid; importancia fija por tipo de dato', f: 9 },
   { id: 'eventos', g: 'Análisis', t: 'Reacción a eventos', d: 'Todos los datos de importancia alta (IPC, PPI, empleo, PCE, PIB, FOMC, ISM): 2Y, 10Y, DXY, oro, NQ y BTC minuto a minuto', f: 8 },
   { id: 'tono', g: 'Análisis', t: 'Tono de bancos centrales', d: 'Tono hawkish/dovish de Fed, BCE y BoJ en z-score propio, con validación frente al azar (bloque secundario)', f: 7 },
@@ -88,7 +89,7 @@ const PLAN = {
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['diario', 'tesis', 'operativa', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
+const LIVE = new Set(['diario', 'tesis', 'operativa', 'marcador', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
 const D = {};
 const MOUNT = [];
 
