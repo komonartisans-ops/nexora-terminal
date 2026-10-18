@@ -33,6 +33,9 @@ MAX_LINEAS = 10
 DIAS = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 TIPOS = [("FOMC", "FOMC"), ("Actas", "ACTAS"), ("Discurso", "DISCURSO"), ("IPC", "IPC"), ("PCE", "PCE"), ("Empleo", "NFP"), ("NFP", "NFP"), ("PPI", "PPI"),
          ("Ventas minoristas", "VENTAS"), ("ISM", "ISM"), ("PIB", "PIB")]
+# Resultados de empresas: la agenda no trae hora. Si la fuente (Nasdaq/Zacks, vía calendario.json) dice «antes de la apertura» o «después del cierre» y la FECHA está
+# confirmada, se usa una hora TÍPICA (marcada en el aviso como no confirmada). Sin indicación de momento, o con fecha estimada, no se avisa.
+HORA_TIPICA = {"antes de la apertura": "08:00", "después del cierre": "16:05"}
 TIPOS_FED = {"FOMC", "ACTAS", "DISCURSO"}    # para estos se muestra FedWatch; para el resto, consenso (solo si una fuente oficial lo trae)
 
 
@@ -94,6 +97,23 @@ def eventos_alta(raiz):
         h, m = map(int, e["hora_ny"].split(":"))
         t = dt.datetime.combine(dt.date.fromisoformat(fecha), dt.time(h, m), NY).astimezone(UTC)
         out.append({"key": key, "evento": e["evento"], "tipo": tipo_de(e["evento"]), "t": t, "fecha_et": fecha, "hora_ny": e["hora_ny"], "nota": e.get("nota"), "consenso": e.get("consenso")})
+    # resultados de empresas ALTA sin hora en la agenda: hora típica según el momento que publica la fuente
+    C = leer_json(P(raiz, "site", "data", "calendario.json")) or {}
+    for e in C.get("eventos") or []:
+        if e.get("importancia") != "ALTA" or not str(e.get("evento", "")).startswith("Resultados") or e.get("hora_ny"):
+            continue
+        momento = next((m for m in HORA_TIPICA if m in str(e.get("que_mirar", ""))), None)
+        if not momento or "CONFIRMADA" not in str(e.get("nota", "")).upper() or "NO CONFIRMADA" in str(e.get("nota", "")).upper():
+            continue
+        hora = HORA_TIPICA[momento]
+        key = f"{e['fecha']}|{hora}|{e['evento']}"
+        if key in vistos:
+            continue
+        vistos.add(key)
+        h, m = map(int, hora.split(":"))
+        t = dt.datetime.combine(dt.date.fromisoformat(e["fecha"]), dt.time(h, m), NY).astimezone(UTC)
+        out.append({"key": key, "evento": e["evento"], "tipo": "RESULTADOS", "t": t, "fecha_et": e["fecha"], "hora_ny": hora, "nota": e.get("nota"), "consenso": None,
+                    "hora_tipica": momento, "fuente_hora": e.get("fuente") or "Nasdaq / Zacks", "que_mirar": e.get("que_mirar")})
     return sorted(out, key=lambda x: x["t"])
 
 
@@ -128,6 +148,9 @@ def linea_mercado(ev, raiz):
         if dic and dic.get("tipo_esperado") is not None:
             l.append(f"Tipo esperado en diciembre ({fdate(dic['reunion'])}): {es(dic['tipo_esperado'], 2)} % frente al {es(F.get('effr'), 2)} % actual.")
         return l
+    if ev["tipo"] == "RESULTADOS":
+        bpa = str(ev.get("que_mirar") or "").split("·")[0].strip()
+        return [f"Consenso: {bpa} [{ev.get('fuente_hora')}]." if "BPA" in bpa else "Consenso: SIN DATO (la fuente no publica BPA estimado)."]
     cons = None
     for k in ("consenso", "prevision", "previsión"):
         if ev.get(k):
@@ -156,6 +179,8 @@ def linea_contexto(raiz):
 def historial(ev, raiz):
     """n, mediana del 2Y a T+5 y T+60 y % de SE CONFIRMA vs INVERSIÓN para ese tipo de evento. Con n < 5: «historial insuficiente»."""
     tipo = ev["tipo"]
+    if tipo == "RESULTADOS":
+        return "Historia: el monitor de reacción mide datos macro y la Fed, no resultados de empresas (SIN DATO)."
     if not tipo:
         return "Historia: tipo de evento no reconocido (SIN DATO)."
     filas = [r for r in leer_csv(P(raiz, "data", "reacciones_eventos.csv")) if r.get("origen") != "anulación" and tipo in (r.get("tipo") or "").split("+")]
@@ -192,8 +217,11 @@ def mensaje(ev, minutos, todos, raiz=RAIZ):
     """Texto en HTML de Telegram (solo <b>), máximo 10 líneas, sin recomendaciones ni niveles de precio."""
     from telegram import esc
     h_mad, h_ny = ev["t"].astimezone(MAD), ev["t"].astimezone(NY)
-    L = [f"<b>Aviso previo · {esc(ev['evento'])}</b>",
-         f"Empieza en {minutos:.0f} min: {h_mad.strftime('%H:%M')} Madrid · {h_ny.strftime('%H:%M')} ET ({DIAS[h_ny.weekday()]} {h_ny.strftime('%d-%m-%Y')}).",
+    hora = f"Empieza en {minutos:.0f} min: {h_mad.strftime('%H:%M')} Madrid · {h_ny.strftime('%H:%M')} ET ({DIAS[h_ny.weekday()]} {h_ny.strftime('%d-%m-%Y')})."
+    if ev.get("hora_tipica"):
+        hora = (f"Hora típica, no confirmada ({ev['hora_tipica']} → {h_ny.strftime('%H:%M')} ET; la empresa no ha publicado la hora): {h_mad.strftime('%H:%M')} Madrid · "
+                f"{h_ny.strftime('%H:%M')} ET ({DIAS[h_ny.weekday()]} {h_ny.strftime('%d-%m-%Y')}), en {minutos:.0f} min. Fuente del momento: {ev.get('fuente_hora')}.")
+    L = [f"<b>Aviso previo · {esc(ev['evento'])}</b>", hora,
          contaminacion(ev, todos)]
     L += linea_mercado(ev, raiz)
     L += linea_contexto(raiz)

@@ -174,5 +174,29 @@ A.ejecutar(en("2026-10-28", "17:30:00"), raiz=T, enviar=falso_ok)      # avisa e
 A.ejecutar(en("2026-10-28", "17:31:00"), raiz=T, enviar=falso_ok)
 assert len(ENVIADOS) == 2 and "IPC" in ENVIADOS[0] and "FOMC" in ENVIADOS[1]
 print("11) OK dos eventos el mismo día: un mensaje cada uno, en su ventana")
+# ---------------------------------------------------------------- 12) resultados de empresas: hora típica solo si la fuente da el momento y la fecha está confirmada
+T = nueva_raiz(); agenda(T, [])
+def emp(nombre, fecha, momento, nota, imp="ALTA"):
+    return {"fecha": fecha, "hora_ny": "", "evento": nombre, "importancia": imp, "que_mirar": f"BPA estimado $6.67 · {momento}", "fuente": "Nasdaq / Zacks", "nota": nota}
+json.dump({"eventos": [emp("Resultados Meta Platforms (META)", "2026-10-21", "después del cierre", "fecha CONFIRMADA"),
+                       emp("Resultados Microsoft (MSFT)", "2026-10-28", "antes de la apertura", "fecha CONFIRMADA"),
+                       emp("Resultados Tesla (TSLA)", "2026-10-21", "momento no publicado", "fecha CONFIRMADA"),
+                       emp("Resultados Alphabet (GOOGL)", "2026-10-28", "después del cierre", "fecha ESTIMADA"),
+                       emp("Resultados Netflix (NFLX)", "2026-10-20", "después del cierre", "fecha CONFIRMADA", imp="MEDIA")]},
+          open(os.path.join(T, "site/data/calendario.json"), "w", encoding="utf-8"), ensure_ascii=False)
+E = {e["evento"]: e for e in A.eventos_alta(T)}
+assert set(E) == {"Resultados Meta Platforms (META)", "Resultados Microsoft (MSFT)"}, set(E)
+meta, msft = E["Resultados Meta Platforms (META)"], E["Resultados Microsoft (MSFT)"]
+assert meta["t"] == en("2026-10-21", "20:05:00") and msft["t"] == en("2026-10-28", "12:00:00"), (meta["t"], msft["t"])      # 16:05 ET y 08:00 ET en horario de verano
+for e in (meta, msft):
+    ini = (e["t"] - dt.timedelta(minutes=35)).hour
+    assert 11 <= ini <= 21, "la ventana de aviso debe caer dentro de la franja 11-21 UTC de la tarea B1"
+tx = A.ejecutar(meta["t"] - dt.timedelta(minutes=30), seco=True, raiz=T)[0][2]
+assert "Hora típica, no confirmada" in tx and "después del cierre" in tx and "16:05 ET" in tx and "Consenso: BPA estimado $6,67" not in tx
+assert "Consenso: BPA estimado $6.67 [Nasdaq / Zacks]" in tx and "no resultados de empresas" in tx
+tx2 = A.ejecutar(msft["t"] - dt.timedelta(minutes=30), seco=True, raiz=T)[0][2]
+assert "antes de la apertura" in tx2 and "08:00 ET" in tx2 and "13:00 Madrid" in tx2 and len(tx.splitlines()) <= 10
+print("12) OK resultados: META «después del cierre» → 16:05 ET (hora típica, no confirmada) y MSFT «antes de la apertura» → 08:00 ET; TSLA sin momento y GOOGL con fecha estimada NO se avisan")
+print("    aviso de META (ejemplo):"); print(tx)
 assert "telegram" not in sys.modules or not os.environ.get("TELEGRAM_TOKEN")
 print("\nTODO OK · sin envíos reales ni lectura de token")

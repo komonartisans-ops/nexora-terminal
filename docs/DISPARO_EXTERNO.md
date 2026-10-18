@@ -62,17 +62,17 @@ Base de las URL: `https://api.github.com/repos/komonartisans-ops/nexora-terminal
 
 *(Opcionales, mismas cabeceras)*: `diario` a las 05:30 UTC lun-vie → `{"ref":"main","inputs":{"modo":"diario"}}`; `cierre` a las 21:30 UTC lun-vie → `{"ref":"main","inputs":{"modo":"cierre"}}`.
 
-### Tarea B · reacciones, cada 5 minutos de 12:00 a 21:00 UTC en días laborables
+### Tarea B · reacciones, cada 5 minutos de 11:00 a 21:55 UTC en días laborables
 
-Se necesitan dos tareas porque las 21:00 son una sola ejecución:
+Desde el 18-oct-2026 B1 cubre 11-21 UTC (antes 12-20) para que el aviso previo por Telegram llegue a los eventos de las 08:00 ET (aviso a las 11:30 UTC en verano) y a los resultados «después del cierre» de invierno (16:05 ET = 21:05 UTC, aviso a las 20:30 UTC). B2 (21:00) queda como respaldo redundante: la concurrencia de GitHub evita ejecuciones solapadas.
 
 | Campo | B1 | B2 |
 |---|---|---|
-| Title | `nexora reacciones 12-20h` | `nexora reacciones 21h` |
+| Title | `NEXORA reacciones 11-21h` | `nexora reacciones 21h` |
 | URL | `https://api.github.com/repos/komonartisans-ops/nexora-terminal/actions/workflows/reacciones.yml/dispatches` | igual |
 | Time zone | `UTC` | `UTC` |
 | Minutos | `0,5,10,…,55` | `0` |
-| Horas | `12,13,…,20` | `21` |
+| Horas | `11,12,…,21` | `21` |
 | Días de la semana | lunes a viernes | lunes a viernes |
 | Body | `{"ref":"main","inputs":{"modo":"vivo"}}` | `{"ref":"main","inputs":{"modo":"vivo"}}` |
 
