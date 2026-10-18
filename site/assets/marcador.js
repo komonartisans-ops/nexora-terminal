@@ -31,9 +31,9 @@ function mcTabla(res, titulo, sub) {
     const corto = b.n < 20;
     return `<tr class="${corto ? 'poca' : ''}"><td data-label="Tipo" style="text-align:left"><b>${esc(nom)}</b><small>${d.no_puntuables ? d.no_puntuables + ' sin dirección (no puntuables)' : ''}</small></td><td data-label="Señales" class="mono">${d.n_senales}</td>
       <td data-label="Medidas" class="mono">${b.n}${b.pendientes ? `<small>${b.pendientes} pendientes</small>` : ''}</td>
-      <td data-label="% acierto">${b.n ? `${mcPct(b.acierto_pct)}<small>${b.aciertos} acierto · ${b.fallos} fallo · ${b.neutrales} neutral</small>` : '—'}</td>
+      <td data-label="% acierto">${b.n ? `${mcPct(b.acierto_pct)}<small>${b.aciertos} acierto · ${b.fallos} fallo${t === 'skew' ? '' : ' · ' + b.neutrales + ' neutral'}</small>${t === 'skew' ? `<small>caída ≥ 1σ: ${b.comp_caida} · VIX ≥ +20 %: ${b.comp_vix}</small>` : ''}` : '—'}</td>
       <td data-label="Azar">${mcPct(b.base_media_pct)}</td><td data-label="Dif. (pp)" class="${mcCls(b.diferencia_pp)}">${b.diferencia_pp == null ? '—' : (b.diferencia_pp > 0 ? '+' : '') + num(b.diferencia_pp, 1)}</td>
-      <td data-label="Retorno medio" class="${mcCls(b.ret_medio)}">${mcRet(b.ret_medio, u)}</td><td data-label="Peor caso" class="${mcCls(b.peor_ret)}">${mcRet(b.peor_ret, u)}</td><td data-label="Peor adverso" class="${mcCls(b.peor_mae)}">${mcRet(b.peor_mae, u)}</td>
+      <td data-label="Retorno medio" title="${t === 'skew' ? 'Retorno del S&P 500 a ese horizonte (no direccional)' : 'Retorno en la dirección esperada'}" class="${mcCls(b.ret_medio)}">${mcRet(b.ret_medio, u)}</td><td data-label="Peor caso" class="${mcCls(b.peor_ret)}">${mcRet(b.peor_ret, u)}</td><td data-label="Peor adverso" title="${t === 'skew' ? 'Mayor caída máxima intrahorizonte del S&P 500' : 'Peor retorno entre la referencia y el horizonte, en la dirección esperada'}" class="${mcCls(b.peor_mae)}">${mcRet(b.peor_mae, u)}</td>
       <td data-label="Fiabilidad" style="text-align:left;white-space:normal;min-width:150px">${b.n === 0 ? '<span class="ck sd">sin medidas</span>' : corto ? '<span class="ck par" title="Con menos de 20 señales medidas la diferencia con el azar no se distingue del ruido">muestra insuficiente (n &lt; 20)</span>' : '<span class="ck ok">n ≥ 20</span>'}</td></tr>`;
   }).join('');
   return h + '</tbody></table></div>';
@@ -45,8 +45,9 @@ function mcHtml(M) {
   const nv = cuenta(viv), nb = cuenta(bf);
   const btn = (h) => `<button class="fbtn ${MC.h === h ? 'on' : ''}" data-h="${h}">T+${h} sesiones</button>`;
   let h = essential(`${nv} señales vivas y ${nb} reconstruidas del pasado; ${M.n_anuladas || 0} anuladas.`,
-    'Hecho: cada señal se midió con cierres oficiales a 1, 5 y 20 sesiones frente al cierre anterior a su emisión. Interpretación: nada se concluye aquí; si el % de acierto no supera claramente la tasa base (lo que se acierta por azar en ese activo y horizonte), la señal no aporta información medible.',
+    'Hecho: cada señal se midió (criterio v2) con cierres oficiales a 1, 5 y 20 sesiones frente al cierre anterior a su emisión; «neutral» = movimiento menor que 0,25 σ del activo a ese horizonte. Interpretación: nada se concluye aquí; si el % de acierto no supera claramente la tasa base (lo que se acierta por azar en ese activo y horizonte), la señal no aporta información medible.',
     `Con menos de ${M.min_n || 20} señales medidas el grupo se marca «muestra insuficiente». Las vivas y las reconstruidas no se mezclan.`, 'Cómo leerlo');
+  h += `<div class="banner amber" style="margin:0 0 14px;border-radius:6px"><b>Criterio v2 (${esc((M.criterio && M.criterio.desde) || '')}).</b> ${esc(M.cambio_criterio || '')}</div>`;
   h += `<div class="filters" style="margin:0 0 6px">${['1', '5', '20'].map(btn).join('')}</div>`;
   h += mcTabla(viv, 'Señales vivas', 'emitidas por el sistema en su momento · el marcador que cuenta');
   h += mcTabla(bf, 'Señales reconstruidas (backfill)', 'pasado reconstruido desde el histórico de contexto y los CSV de memoria · no es lo mismo que acertar en vivo');
@@ -59,8 +60,8 @@ function mcHtml(M) {
       <td data-label="T+1">${cel('1')}</td><td data-label="T+5">${cel('5')}</td><td data-label="T+20">${cel('20')}</td></tr>`;
   }).join('') || '<tr><td colspan="9" style="text-align:left;color:var(--dim)">Sin señales registradas.</td></tr>';
   h += `</tbody></table>${footIn('engine/marcador.py (data/marcador_senales.csv y data/marcador_resultados.csv, solo añadir)', M.generado_utc && M.generado_utc.slice(0, 10), null, 'cierres de Yahoo Finance (precios) y FRED (2Y)')}</div>`;
-  h += `<div class="sect"><h2>Reglas del marcador</h2><span class="more">fijas; no cambian según el resultado</span></div><div class="card"><details class="qa" open><summary>Qué cuenta como señal, qué dirección se espera y cómo se mide</summary><p style="white-space:pre-line">${esc(M.reglas || '')}</p></details></div>`;
-  h += `<div class="note">${esc(M.nota || '')} Una señal sin cierres suficientes queda PENDIENTE y no se estima. Las correcciones no editan filas: se añade una fila ANULADA. Banda de «neutral»: ±${esc(M.banda_neutral ? M.banda_neutral.pct : 0.1)} % (±${esc(M.banda_neutral ? M.banda_neutral.pb : 1)} pb en el 2Y).</div>`;
+  h += `<div class="sect"><h2>Reglas del marcador</h2><span class="more">fijas; no cambian según el resultado</span></div><div class="card"><details class="qa" open><summary>Criterios v2: qué cuenta como señal, qué se espera y cómo se mide</summary><p style="white-space:pre-line">${esc(M.reglas || '')}</p></details></div>`;
+  h += `<div class="note">${esc(M.nota || '')} Una señal sin cierres suficientes queda PENDIENTE y no se estima. Las correcciones no editan filas: se añade una fila ANULADA.</div>`;
   return h;
 }
 
