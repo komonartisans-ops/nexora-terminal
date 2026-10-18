@@ -859,6 +859,12 @@ def etapa_contexto():
     return contexto.construir()
 
 
+# ------------------------------------------------------------------ marcador de aciertos de señales (registro solo-añadir + evaluación a T+1/T+5/T+20)
+def etapa_marcador():
+    import marcador
+    return marcador.etapa(modo=MODO_EFECTIVO)
+
+
 # ------------------------------------------------------------------ alertas (Telegram)
 def etapa_alertas():
     import alertas
@@ -870,15 +876,15 @@ ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_t
           "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "etf": etapa_etf, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen, "tesis": etapa_tesis,
           "regimen": etapa_regimen, "reevaluar": etapa_reevaluar, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias,
           "bancos": etapa_bancos, "tono": etapa_tono,
-          "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "alertas": etapa_alertas, "reacciones": etapa_reacciones, "contexto": etapa_contexto}
+          "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "alertas": etapa_alertas, "reacciones": etapa_reacciones, "marcador": etapa_marcador, "contexto": etapa_contexto}
 ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "etf", "ciclo", "publicados", "reevaluar", "resumen", "tesis", "regimen", "divisas", "cot", "noticias",
-         "bancos", "tono", "skew", "semis", "gamma", "alertas", "reacciones", "contexto"]
+         "bancos", "tono", "skew", "semis", "gamma", "alertas", "reacciones", "marcador", "contexto"]
 # horario: el SKEW (Cboe) se publica tras el cierre, por eso entra aquí para que la alerta salga en la hora siguiente; gamma NO (solo al cierre).
 # cierre (cron 21:30 UTC, tras el cierre de Nueva York): snapshot de opciones, semis/software y SKEW del día.
 # calendario y publicados entran en el horario porque el día de una publicación (IPC, PPI, ventas…) el dato sale a las 12:30-13:30 UTC y la web no puede esperar
 # al build diario; calendario escribe también site/data/agenda.json (sin esto la página Agenda mostraba el «hoy» de ayer).
-MODOS = {"horario": ["precios", "fedwatch", "tipos", "calendario", "publicados", "reevaluar", "resumen", "tesis", "regimen", "etf", "noticias", "skew", "alertas", "contexto"],
-         "cierre": ["precios", "semis", "bancos", "tono", "skew", "gamma", "alertas", "contexto"], "diario": ORDEN, "todo": ORDEN}
+MODOS = {"horario": ["precios", "fedwatch", "tipos", "calendario", "publicados", "reevaluar", "resumen", "tesis", "regimen", "etf", "noticias", "skew", "alertas", "marcador", "contexto"],
+         "cierre": ["precios", "semis", "bancos", "tono", "skew", "gamma", "alertas", "marcador", "contexto"], "diario": ORDEN, "todo": ORDEN}
 
 
 def escalar(modo, estado, ahora=None):
