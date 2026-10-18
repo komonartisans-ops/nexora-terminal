@@ -153,14 +153,14 @@ const FOTO = (() => {
   }
   /* reintenta las fotos pendientes; devuelve cuántas cambió */
   async function completarPendientes(trades) {
-    let n = 0;
+    const cambiadas = [];
     for (const t of trades) {
       if (t.foto && t.foto.estado === 'PENDIENTE') {
         const f = await tomar(t);
-        if (f.estado !== 'PENDIENTE') { t.foto = f; n++; }
+        if (f.estado !== 'PENDIENTE') { cambiadas.push(Object.assign({}, t, { foto: f, mod: new Date().toISOString() })); }
       }
     }
-    return n;
+    return cambiadas;   // copias con la foto completada; quien las llama las guarda con DSYNC.guardarTrade
   }
 
   /* ---------------------------------------------------------------- lectura de la foto para estadísticas */
@@ -207,20 +207,22 @@ function pageOperativa() {
     return h + `<div class="card"><div class="empty" style="height:150px;flex-direction:column;gap:8px;text-align:center;padding:0 16px">PÁGINA PRIVADA · conecta tu repo nexora-diario en <a href="#/diario">Diario de operaciones</a> («Conectar GitHub») para verla.<span style="color:var(--dim);text-transform:none;letter-spacing:0">Sin el token no se muestra nada de tu operativa.</span></div></div>`;
   }
   h += '<div id="op-root"><div class="empty" style="height:160px">LEYENDO TU DIARIO…</div></div>';
-  MOUNT.push(() => {
+  MOUNT.push(async () => {
     const root = document.getElementById('op-root');
     if (!root) return;
-    let st = dLoad();
-    const repaint = () => { if (document.getElementById('op-root') === root) f5.paint(root, () => operativaHtml(st)); };
-    /* fotos que quedaron pendientes por falta de red: se reintentan y, si cambian, se guardan y sincronizan */
-    const completar = async () => {
-      if (await FOTO.completarPendientes(st.trades)) { diario.st = st; lsSet(DK, st); DSYNC.cambio(); repaint(); }
-    };
-    repaint();
-    /* la copia del repo privado se adopta al sincronizar (misma lógica que el Diario) */
-    DSYNC.bind({ get: () => st, set: (s2) => { st = DSYNC.norm(s2); diario.st = st; lsSet(DK, st); repaint(); completar(); } });
+    const vivo = () => document.getElementById('op-root') === root;
+    const repaint = () => { if (vivo()) f5.paint(root, () => operativaHtml(DSYNC.estado())); };
+    await DSYNC.iniciar();
+    const n = DSYNC.mesesConocidos().length;
+    root.innerHTML = `<div class="empty" style="height:160px">LEYENDO TU DIARIO… ${n ? n + (n === 1 ? ' mes' : ' meses') : ''}</div>`;
+    try { await DSYNC.asegurar('todos'); } catch (e) { /* sin red: se usa la copia local */ }
+    diario.st = DSYNC.estado(); repaint();
+    /* la sincronización puede traer cambios de otros dispositivos: se repinta con todos los meses */
+    DSYNC.onCambio(() => { diario.st = DSYNC.estado(); repaint(); });
     DSYNC.abrir();
-    completar();
+    /* fotos pendientes por falta de red: se completan y se guardan (cada una vuelve a su mes) */
+    const ch = await FOTO.completarPendientes(DSYNC.estado().trades);
+    if (ch.length) { ch.forEach((t) => DSYNC.guardarTrade(t)); diario.st = DSYNC.estado(); repaint(); }
   });
   return h;
 }
