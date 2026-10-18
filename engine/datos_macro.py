@@ -45,7 +45,7 @@ SERIES = {
     "UMCSENT": ("Confianza del consumidor (U. Michigan)", "índice", "U. Michigan"),
     "FEDFUNDS": ("Tipo efectivo de fondos federales (mensual)", "%", "Fed"),
 }
-CAB_PUB = ["fecha_captura", "serie", "nombre", "periodo", "valor", "tipo", "valor_previo_mismo_periodo", "unidad", "organismo", "fuente"]
+CAB_PUB = ["fecha_captura", "serie", "nombre", "periodo", "valor", "tipo", "valor_previo_mismo_periodo", "unidad", "organismo", "fuente", "registrado_utc"]
 
 # series que la web muestra: (nombre, serie, transformación, decimales, unidad, descripción, palabras del evento en el calendario, n periodos)
 VISTA = [
@@ -107,11 +107,12 @@ def actualizar(calendario=None):
             if prev is None:
                 filas.append({"fecha_captura": hoy, "serie": sid, "nombre": nom, "periodo": per, "valor": val,
                               "tipo": "HISTÓRICO (carga inicial)" if serie_nueva else "PRIMERA", "valor_previo_mismo_periodo": "",
-                              "unidad": uni, "organismo": org, "fuente": f"FRED {sid}"})
+                              "unidad": uni, "organismo": org, "fuente": f"FRED {sid}", "registrado_utc": ahora})
             elif abs(float(prev) - float(val)) > 1e-9 * max(1, abs(v)):
                 filas.append({"fecha_captura": hoy, "serie": sid, "nombre": nom, "periodo": per, "valor": val, "tipo": "REVISIÓN",
-                              "valor_previo_mismo_periodo": prev, "unidad": uni, "organismo": org, "fuente": f"FRED {sid}"})
+                              "valor_previo_mismo_periodo": prev, "unidad": uni, "organismo": org, "fuente": f"FRED {sid}", "registrado_utc": ahora})
             conocido[(sid, per)] = val
+    csvlog.asegurar_columna("publicaciones_macro.csv", "registrado_utc")   # columna nueva: solo cambia la cabecera; las filas antiguas quedan «solo fecha»
     csvlog.anadir("publicaciones_macro.csv", filas, ("serie", "periodo", "valor", "tipo"))
     todas = csvlog.leer("publicaciones_macro.csv")
     # historia por (serie, periodo): primer valor registrado → último

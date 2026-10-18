@@ -18,6 +18,26 @@ def leer(nombre):
         return list(csv.DictReader(f))
 
 
+def asegurar_columna(nombre, columna):
+    """Añade `columna` al FINAL de la cabecera de un CSV existente. Solo cambia la primera línea: las filas antiguas no se tocan (quedan sin ese valor).
+    Devuelve True si cambió algo."""
+    p = os.path.join(DATA, nombre)
+    if not os.path.exists(p) or os.path.getsize(p) == 0:
+        return False
+    with open(p, "rb") as f:
+        datos = f.read()
+    i = datos.find(b"\n")
+    if i < 0:
+        return False
+    cab = datos[:i].rstrip(b"\r")
+    if columna.encode() in cab.split(b","):
+        return False
+    fin = b"\r\n" if datos[i - 1:i] == b"\r" else b"\n"
+    with open(p, "wb") as f:
+        f.write(cab + b"," + columna.encode() + fin + datos[i + 1:])
+    return True
+
+
 def anadir(nombre, filas, claves):
     """Añade las filas cuya clave (tupla de `claves`) no existe todavía. Devuelve cuántas se añadieron."""
     if not filas:

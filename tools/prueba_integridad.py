@@ -225,5 +225,161 @@ B = I.bloque_contexto(T)
 assert B["DISCREPANCIAS_ABIERTAS"][0]["serie"] == "CPIAUCSL" and "BLS" in B["nota_discrepancias"] and B["resumen"].startswith("Integridad:")
 assert [b for b in I.estado_bloques(T, ahora, 1) if b["etapa"] == "publicados"][0]["discrepancias_abiertas"] == 1
 print("   OK resumen «%s»; la discrepancia abierta llega a contexto.json" % J["resumen"]["texto"])
+# ================================================================ 8) calendario oficial anual (BLS/BEA) como respaldo del «próximo dato»
+import calendario_oficial as CO  # noqa: E402
+
+BLS_HTML = lambda filas: ('<table class="release-list"><thead><tr><th>Reference Month</th><th>Release Date</th><th>Release Time</th></tr></thead><tbody>'
+                          + "".join(f'<tr class="release-list-even-row"><td>{m}</td><td>{f}</td><td>{h}</td></tr>' for m, f, h in filas) + "</tbody></table>")
+BEA_HTML = lambda filas: ('<table id="release-schedule-table"><thead><tr><th id="x">Year 2026</th><th></th><th>Release</th></tr></thead><tbody>'
+                          + "".join(f'<tr class="scheduled-releases-type-press"><td class="scheduled-date no-wrap"><div class="release-date">{d}</div> <small class="text-muted">{h}</small></td>'
+                                    f'<td class="views-field"><div class="icon-letter"><span>N</span></div></td><td class="release-title views-field" headers="y">{t} </td></tr>' for d, h, t in filas) + "</tbody></table>")
+PAG = {"cpi": BLS_HTML([("October 2026", "Nov. 10, 2026", "08:30 AM"), ("November 2026", "Dec. 10, 2026", "08:30 AM")]),
+       "ppi": BLS_HTML([("October 2026", "Nov. 13, 2026", "08:30 AM")]), "empsit": BLS_HTML([("October 2026", "Nov. 06, 2026", "08:30 AM")]),
+       "jolts": BLS_HTML([("October 2026", "Dec. 01, 2026", "10:00 AM")])}
+BEA = BEA_HTML([("October 29", "8:30 AM", "GDP (Advance Estimate), 3rd Quarter 2026"), ("October 29", "8:30 AM", "Personal Income and Outlays, September 2026"),
+                ("November 4", "8:30 AM", "GDP by State and Personal Income by State, 2nd Quarter 2026"), ("November 25", "8:30 AM", "Personal Income and Outlays, October 2026")])
+
+
+def get_ok(url):
+    if "bea.gov" in url:
+        return BEA
+    return PAG[url.rsplit("/", 1)[1].replace(".htm", "")]
+
+
+T = nueva()
+ahora = en("2026-10-18", "12:00:00")
+C = CO.descargar(T, ahora, get_ok)
+assert C["descargado_utc"] == "2026-10-18 12:00 UTC" and C["fuentes"]["BLS cpi"]["url"].startswith("https://www.bls.gov") and C["fuentes"]["BEA schedule"]["url"] == "https://www.bea.gov/news/schedule"
+assert os.path.exists(os.path.join(T, "data/calendario_oficial_anual.json")) and not C["errores"]
+assert CO.proximo(T, "CPIAUCSL", dt.date(2026, 10, 18))["fecha"] == "2026-11-10" and CO.proximo(T, "PPIFIS", dt.date(2026, 10, 18))["fecha"] == "2026-11-13"
+assert CO.proximo(T, "PAYEMS", dt.date(2026, 10, 18))["fecha"] == "2026-11-06" and CO.proximo(T, "GDPC1", dt.date(2026, 10, 18))["periodo"] == "2026-07-01"
+assert CO.proximo(T, "PCEPI", dt.date(2026, 10, 18))["fecha"] == "2026-10-29" and CO.proximo(T, "PCEPI", dt.date(2026, 10, 30))["fecha"] == "2026-11-25"
+assert not [e for e in C["eventos"] if "State" in e["evento"]], "PIB por estados no es el PIB nacional"
+assert CO.proximo(T, "ICSA", dt.date(2026, 10, 18)) is None, "una serie que no es de BLS/BEA no tiene respaldo oficial: SIN DATO"
+print("8) OK calendario oficial: IPC 10-nov, IPP 13-nov, NFP 6-nov, PCE 29-oct, PIB T3 29-oct (con fuente y fecha de descarga)")
+llamadas = []
+
+
+def get_cuenta(u):
+    llamadas.append(u)
+    return get_ok(u)
+
+
+CO.descargar(T, ahora + dt.timedelta(days=3), get_cuenta)
+assert not llamadas, "dentro de la semana no se vuelve a descargar"
+
+
+def get_roto(u):
+    raise OSError("sin red")
+
+
+C2 = CO.descargar(T, ahora + dt.timedelta(days=8), get_roto)
+assert len(C2["eventos"]) == len(C["eventos"]) and C2["descargado_utc"] == "2026-10-18 12:00 UTC"
+print("   OK una descarga por semana; si falla se conserva la copia anterior (no se pierde ni se inventa nada)")
+
+T = nueva()
+CO.descargar(T, ahora, get_ok)
+mk = lambda ps: {"periodos": [{"periodo": p, "valor": 1.0} for p in ps]}
+wj(T, "site/data/publicados.json", {"series": {"IPC EE. UU. (CPI)": mk(["2026-09-01"]), "IPP EE. UU. (PPI)": mk(["2026-09-01"]), "Empleo · nóminas no agrícolas": mk(["2026-09-01"]),
+                                                  "Gasto personal (PCE)": mk(["2026-08-01"]), "PIB EE. UU.": mk(["2026-04-01"]), "Peticiones semanales de paro": mk(["2026-10-10"])}})
+agenda(T, [])
+g = lambda s: [x for x in I.tabla_publicaciones(T, ahora) if x["serie"] == s and x["proximo"]][0]["proximo"]
+assert g("CPIAUCSL")["texto"] == "IPC de octubre · 10-nov" and "BLS" in g("CPIAUCSL")["fuente"] and "2026-10-18" in g("CPIAUCSL")["fuente"], g("CPIAUCSL")
+assert g("PPIFIS")["texto"] == "IPP de octubre · 13-nov" and g("PAYEMS")["texto"] == "Nóminas (NFP) de octubre · 6-nov"
+assert g("PCEPI")["texto"] == "PCE de septiembre · 29-oct" and g("PCEPI")["hora_madrid"] == "13:30" and "BEA" in g("PCEPI")["fuente"]
+assert g("GDPC1")["texto"] == "PIB de T3 2026 · 29-oct"
+assert [x for x in I.tabla_publicaciones(T, ahora) if x["serie"] == "ICSA" and x["proximo"]] == [], "sin calendario FRED ni oficial: SIN DATO"
+print("   próximos con respaldo oficial → " + " | ".join(f"{k}: {g(k)['texto']} [{g(k)['fuente'].split(' (')[0]}]" for k in ("CPIAUCSL", "PPIFIS", "PAYEMS", "PCEPI", "GDPC1")))
+agenda(T, [{"fecha_et": "2026-11-12", "hora_ny": "08:30", "evento": "IPC EE. UU. (CPI)", "importancia": "ALTA"}])
+x = g("CPIAUCSL")
+assert x["texto"].endswith("12-nov") and x["otra_fuente"]["texto"].endswith("10-nov") and "BLS" in x["otra_fuente"]["fuente"]
+print("   OK si FRED dice 12-nov y BLS 10-nov se enseñan los dos (FRED en primer lugar, BLS como «calendario oficial»)")
+
+# ================================================================ 9) hora de registro (registrado_utc) sin reescribir filas antiguas
+import csvlog  # noqa: E402
+
+T = nueva()
+csvlog.DATA = os.path.join(T, "data")
+cab = "fecha_captura,serie,nombre,periodo,valor,tipo,valor_previo_mismo_periodo,unidad,organismo,fuente"
+viejo = cab + "\n2026-10-15,CPIAUCSL,IPC,2026-09-01,336.298,PRIMERA,,índice,BLS,FRED CPIAUCSL\n"
+open(os.path.join(T, "data/publicaciones_macro.csv"), "w", encoding="utf-8", newline="").write(viejo)
+filas_viejas = viejo.split("\n", 1)[1]
+assert csvlog.asegurar_columna("publicaciones_macro.csv", "registrado_utc") is True and csvlog.asegurar_columna("publicaciones_macro.csv", "registrado_utc") is False
+nuevo = open(os.path.join(T, "data/publicaciones_macro.csv"), encoding="utf-8", newline="").read()
+assert nuevo.split("\n", 1)[0] == cab + ",registrado_utc" and nuevo.split("\n", 1)[1] == filas_viejas, "solo cambia la cabecera; las filas antiguas quedan idénticas"
+csvlog.anadir("publicaciones_macro.csv", [{"fecha_captura": "2026-11-10", "serie": "CPIAUCSL", "nombre": "IPC", "periodo": "2026-10-01", "valor": "337.5", "tipo": "PRIMERA", "valor_previo_mismo_periodo": "", "unidad": "índice",
+                                           "organismo": "BLS", "fuente": "FRED CPIAUCSL", "registrado_utc": "2026-11-10 14:07 UTC"}], ("serie", "periodo", "valor", "tipo"))
+fl = I.leer_csv(os.path.join(T, "data/publicaciones_macro.csv"))
+assert (fl[0].get("registrado_utc") or "") == "" and fl[1]["registrado_utc"] == "2026-11-10 14:07 UTC"
+open(os.path.join(T, "data/otra.csv"), "wb").write(b"a,b\r\n1,2\r\n")
+csvlog.asegurar_columna("otra.csv", "c")
+assert open(os.path.join(T, "data/otra.csv"), "rb").read() == b"a,b,c\r\n1,2\r\n"
+print("9) OK columna registrado_utc: solo cambia la cabecera (también con CRLF); filas antiguas intactas («solo fecha»); filas nuevas con fecha y hora")
+T = nueva()
+wj(T, "site/data/publicados.json", {"series": {"IPC EE. UU. (CPI)": mk(["2026-09-01", "2026-10-01"])}})
+wcsv(T, "data/publicaciones_macro.csv", [
+    {"fecha_captura": "2026-10-15", "serie": "CPIAUCSL", "periodo": "2026-09-01", "valor": "336.298", "tipo": "PRIMERA", "registrado_utc": ""},
+    {"fecha_captura": "2026-11-10", "serie": "CPIAUCSL", "periodo": "2026-10-01", "valor": "337.5", "tipo": "PRIMERA", "registrado_utc": "2026-11-10 14:07 UTC"}])
+wcsv(T, "data/publicacion_oficial.csv", [{"serie": "CPIAUCSL", "periodo": "2026-09-01", "publicado": "2026-10-14", "fuente": "ALFRED", "capturado_utc": "x"},
+                                         {"serie": "CPIAUCSL", "periodo": "2026-10-01", "publicado": "2026-11-10", "fuente": "ALFRED", "capturado_utc": "x"}])
+wcsv(T, "data/eventos_macro.csv", [{"fecha": "2026-10-14", "hora_madrid": "14:30", "evento": "IPC EE. UU. (CPI)", "importancia": "ALTA", "fuente": "x", "visto_utc": "x"}])
+CO.descargar(T, en("2026-11-10", "20:00:00"), get_ok)
+tb = {x["periodo"]: x for x in I.tabla_publicaciones(T, en("2026-11-11", "08:00:00")) if x["serie"] == "CPIAUCSL"}
+assert tb["2026-10-01"]["registrado_utc"] == "2026-11-10 14:07 UTC" and tb["2026-10-01"]["retraso_horas"] == 0.6, tb["2026-10-01"]
+assert tb["2026-09-01"]["registrado_utc"] is None and tb["2026-09-01"]["retraso_horas"] is None and tb["2026-09-01"]["retraso_dias"] == 1
+print("   OK retraso en horas cuando hay hora (0,6 h = 14:07 − 13:30 UTC); filas antiguas: solo días (1 d)")
+
+# ================================================================ 10) BEA opcional (PCE y PIB) con BEA_API_KEY
+T = nueva()
+wcsv(T, "data/publicaciones_macro.csv", [
+    {"fecha_captura": "2026-10-30", "serie": "PCEPI", "periodo": "2026-09-01", "valor": "128.5", "tipo": "PRIMERA"},
+    {"fecha_captura": "2026-10-30", "serie": "PCEPILFE", "periodo": "2026-09-01", "valor": "127.0", "tipo": "PRIMERA"},
+    {"fecha_captura": "2026-10-29", "serie": "GDPC1", "periodo": "2026-07-01", "valor": "23500.5", "tipo": "PRIMERA"}])
+
+
+class RedBEA:
+    def __init__(self, tablas, falla=None):
+        self.t, self.f, self.n = tablas, falla, 0
+
+    def bea(self, clave, tabla, freq, anio):
+        self.n += 1
+        if self.f:
+            raise self.f
+        return self.t[tabla]
+
+
+ok_b = {"T20804": [("Personal consumption expenditures (PCE)", (2026, 9), 128.5), ("PCE excluding food and energy", (2026, 9), 127.0), ("Personal consumption expenditures (PCE)", (2026, 8), 128.1)],
+        "T10106": [("Gross domestic product", (2026, 3), 23500.5)]}
+sin = RedBEA(ok_b)
+assert I.cotejar_bea(T, en("2026-10-31", "10:00:00"), sin, clave="") == [] and sin.n == 0, "sin BEA_API_KEY: no se llama a nadie (SIN DATO)"
+os.environ.pop("BEA_API_KEY", None)
+sf = I.construir(T, en("2026-10-31", "10:00:00"))["segunda_fuente"]
+assert "SIN DATO" in sf["BEA"] and sf["bea_activa"] is False
+assert I.cotejar_bea(T, en("2026-10-31", "10:00:00"), RedBEA(ok_b), clave="SECRETO123", forzar=True) == []
+mal_b = {**ok_b, "T10106": [("Gross domestic product", (2026, 3), 23700.0)]}
+nb = I.cotejar_bea(T, en("2026-10-31", "11:00:00"), RedBEA(mal_b), clave="SECRETO123", forzar=True)
+assert [(r["serie"], r["tipo"], r["estado"], r["primaria"]) for r in nb] == [("GDPC1", "VALOR", "ABIERTA", "BEA T10106")] and "Manda BEA" in nb[0]["nota"]
+print("10) OK BEA: sin clave → SIN DATO y no se llama a la API; con clave → compara PCE y PIB (diferencia de 0,85 % → DISCREPANCIA, primaria BEA T10106)")
+real = I.Red()
+orig = I._get
+
+
+def get_url_en_error(url, *a, **k):
+    raise OSError("fallo con " + url)
+
+
+I._get = get_url_en_error
+try:
+    real.bea("SECRETO123", "T10106", "Q", 2026)
+    raise AssertionError("debía fallar")
+except RuntimeError as e:
+    assert "SECRETO123" not in str(e) and "http" not in str(e).lower(), str(e)
+finally:
+    I._get = orig
+I.cotejar_bea(T, en("2026-10-31", "12:00:00"), RedBEA(ok_b, falla=RuntimeError("BEA no respondió (OSError)")), clave="SECRETO123", forzar=True)
+estado_txt = open(os.path.join(T, "data/integridad_estado.json"), encoding="utf-8").read() + open(os.path.join(T, "data/discrepancias.csv"), encoding="utf-8").read()
+assert "SECRETO123" not in estado_txt
+print("    OK la clave no aparece en mensajes de error, estado ni CSV (el error solo dice «BEA no respondió (OSError)»)")
+
 assert "telegram" not in sys.modules or not os.environ.get("TELEGRAM_TOKEN")
 print("\nTODO OK · sin red, sin envíos reales")

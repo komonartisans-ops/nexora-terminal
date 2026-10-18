@@ -35,7 +35,9 @@ MES_CORTO = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct
 
 # serie FRED → serie primaria de BLS (índices en el mismo nivel que FRED)
 BLS = {"CPIAUCSL": "CUSR0000SA0", "CPILFESL": "CUSR0000SA0L1E", "PPIFIS": "WPSFD4"}
-BEA_SIN_DATO = "BEA exige clave de API (UserID): no hay acceso sin clave, SIN DATO (no se inventa)."
+BEA_SIN_DATO = "BEA exige clave de API (UserID): sin el secreto BEA_API_KEY no hay acceso, SIN DATO (no se inventa)."
+BEA_TABLAS = {"PCEPI": ("T20804", "M", ("personal consumption expenditures",)), "PCEPILFE": ("T20804", "M", ("excluding food and energy",)),
+              "GDPC1": ("T10106", "Q", ("gross domestic product",))}     # NIPA: índice de precios PCE (mensual) y PIB real (trimestral)
 SEGUNDA_FUENTE = {"CPIAUCSL": "BLS", "CPILFESL": "BLS", "PPIFIS": "BLS", "PCEPI": "BEA", "PCEPILFE": "BEA", "GDPC1": "BEA"}
 
 
@@ -260,6 +262,24 @@ class Red:
                                 if x["period"].startswith("M") and x["period"] != "M13" and re.fullmatch(r"-?\d+(\.\d+)?", x["value"].strip())}   # BLS marca «-» los meses sin dato
         return out
 
+    def bea(self, clave, tabla, freq, anio):
+        """[(descripción de línea, (año, mes|trimestre), valor)] de una tabla NIPA de la API de BEA. La clave nunca se imprime ni viaja en los mensajes de error."""
+        url = f"https://apps.bea.gov/api/data?UserID={clave}&method=GetData&datasetname=NIPA&TableName={tabla}&Frequency={freq}&Year={anio},{anio - 1}&ResultFormat=JSON"
+        try:
+            j = json.loads(_get(url))
+        except Exception as e:  # noqa: BLE001
+            raise RuntimeError(f"BEA no respondió ({type(e).__name__})") from None
+        datos = (((j.get("BEAAPI") or {}).get("Results") or {}).get("Data")) or []
+        if not datos:
+            raise RuntimeError("BEA devolvió una respuesta sin datos (¿clave inválida o límite de uso?)")
+        out = []
+        for r in datos:
+            m = re.fullmatch(r"(\d{4})([MQ])(\d{1,2})", r.get("TimePeriod", ""))
+            v = (r.get("DataValue") or "").replace(",", "").strip()
+            if m and re.fullmatch(r"-?\d+(\.\d+)?", v) and m.group(2) == freq:
+                out.append((r.get("LineDescription", ""), (int(m.group(1)), int(m.group(3))), float(v)))
+        return out
+
     def alfred_tiene(self, sid, periodo, vintage):
         """¿Existe la observación `periodo` de la serie en ALFRED con vintage_date = `vintage`?"""
         raw = _get(f"https://alfred.stlouisfed.org/graph/alfredgraph.csv?id={sid}&cosd={periodo.isoformat()}&coed={periodo.isoformat()}&vintage_date={vintage.isoformat()}")
@@ -355,6 +375,75 @@ def cotejar_bls(raiz=RAIZ, ahora=None, red=None, forzar=False):
                 filas.append({"id": f"{sid}|{p.isoformat()}|{tipo}|{stamp}|CERRADA", "detectada_utc": stamp, "serie": sid, "periodo": p.isoformat(), "tipo": tipo,
                               "fred_valor": fval, "primaria": "BLS " + bid, "primaria_valor": bval, "dif_pct": dif_txt, "estado": "CERRADA", "nota": "ya coinciden"})
         est["ultimo_cotejo"][sid] = {"periodo": u[0], "utc": ahora.strftime("%Y-%m-%dT%H:%M:%S")}
+    nuevas = anadir_csv(P(raiz, "data", "discrepancias.csv"), filas, CAMPOS_DISC, lambda r: r["id"])
+    _guardar_i(raiz, est)
+    return nuevas
+
+
+def cotejar_bea(raiz=RAIZ, ahora=None, red=None, clave=None, forzar=False):
+    """Segunda fuente OPCIONAL para PCE (precios) y PIB real con la API de BEA. Solo si existe el secreto BEA_API_KEY; sin él no hace nada (SIN DATO)."""
+    clave = clave if clave is not None else os.environ.get("BEA_API_KEY", "")
+    if not clave:
+        return []
+    ahora = ahora or dt.datetime.now(UTC)
+    red = red or Red()
+    est = _est_i(raiz)
+    hoy = ahora.strftime("%Y-%m-%d")
+    if est.get("bea", {}).get("dia") != hoy:
+        est["bea"] = {"dia": hoy, "n": 0}
+    abiertas = [k for k, r in discrepancias(raiz).items() if r["estado"] == "ABIERTA" and k[0] in BEA_TABLAS]
+    toca = forzar or bool(abiertas)
+    for sid in BEA_TABLAS:
+        u = _ultimo_fred(raiz, sid)
+        prev = est.get("ultimo_cotejo", {}).get(sid)
+        if u and (not prev or prev.get("periodo") != u[0] or (ahora - dt.datetime.fromisoformat(prev["utc"]).replace(tzinfo=UTC)).total_seconds() > 24 * 3600):
+            toca = True
+    if not toca or est["bea"]["n"] >= BLS_MAX_DIA:
+        _guardar_i(raiz, est)
+        return []
+    stamp = ahora.strftime("%Y-%m-%d %H:%M UTC")
+    filas, tablas = [], {}
+    est["bea"].pop("ultimo_error", None)
+    for sid, (tabla, freq, claves) in BEA_TABLAS.items():
+        u = _ultimo_fred(raiz, sid)
+        if not u:
+            continue
+        p = dt.date.fromisoformat(u[0])
+        try:
+            if (tabla, freq) not in tablas:
+                est["bea"]["n"] += 1
+                tablas[(tabla, freq)] = red.bea(clave, tabla, freq, p.year)
+        except Exception as e:  # noqa: BLE001
+            est["bea"]["ultimo_error"] = f"{type(e).__name__}: {str(e)[:100]}"        # el mensaje no contiene la clave
+            continue
+        lineas = [(d, k, v) for d, k, v in tablas[(tabla, freq)] if all(c in d.lower() for c in claves) and (sid != "PCEPI" or "excluding" not in d.lower())]
+        serie_b = {}
+        for d, k, v in lineas:
+            serie_b.setdefault(k, v)                                   # la primera línea que coincide por descripción (la más agregada)
+        if not serie_b:
+            continue
+        kp = (p.year, p.month) if freq == "M" else (p.year, (p.month - 1) // 3 + 1)
+        ult_b = max(serie_b)
+        for tipo, hay, fval, bval, nota in (
+            ("PERIODO", kp != ult_b, f"{kp[0]}-{kp[1]:02d}", f"{ult_b[0]}-{ult_b[1]:02d}", "el último periodo de FRED no coincide con el último de BEA"),
+            ("VALOR", None, u[1], serie_b.get(kp), "diferencia entre FRED y BEA para el mismo periodo"),
+        ):
+            if tipo == "VALOR":
+                if bval is None:
+                    continue
+                dif = abs(fval - bval) / bval * 100
+                hay, dif_txt = dif > UMBRAL_DISCREPANCIA_PCT, f"{dif:.4f}"
+            else:
+                dif_txt = ""
+            k_ = (sid, p.isoformat(), tipo)
+            ya = discrepancias(raiz).get(k_)
+            if hay and (not ya or ya["estado"] != "ABIERTA"):
+                filas.append({"id": f"{sid}|{p.isoformat()}|{tipo}|{stamp}|ABIERTA", "detectada_utc": stamp, "serie": sid, "periodo": p.isoformat(), "tipo": tipo, "fred_valor": fval,
+                              "primaria": f"BEA {tabla}", "primaria_valor": bval, "dif_pct": dif_txt, "estado": "ABIERTA", "nota": nota + ". Manda BEA."})
+            elif not hay and ya and ya["estado"] == "ABIERTA":
+                filas.append({"id": f"{sid}|{p.isoformat()}|{tipo}|{stamp}|CERRADA", "detectada_utc": stamp, "serie": sid, "periodo": p.isoformat(), "tipo": tipo, "fred_valor": fval,
+                              "primaria": f"BEA {tabla}", "primaria_valor": bval, "dif_pct": dif_txt, "estado": "CERRADA", "nota": "ya coinciden"})
+        est.setdefault("ultimo_cotejo", {})[sid] = {"periodo": u[0], "utc": ahora.strftime("%Y-%m-%dT%H:%M:%S")}
     nuevas = anadir_csv(P(raiz, "data", "discrepancias.csv"), filas, CAMPOS_DISC, lambda r: r["id"])
     _guardar_i(raiz, est)
     return nuevas
@@ -498,6 +587,48 @@ def estado_bloques(raiz, ahora, abiertas):
 
 
 # ---------------------------------------------------------------- 5) publicaciones, retrasos y próximo dato
+def hora_publicacion(raiz, s, publicado):
+    """Instante (UTC) en que salió el dato el día `publicado`: del calendario conocido (agenda/FRED), del calendario oficial anual o de eventos_macro.csv. None si no se sabe."""
+    for e in eventos(raiz):
+        if e["fecha"] == publicado and coincide(e, s["claves"]):
+            return e["t"]
+    import calendario_oficial as CO
+    for e in (CO.leer(raiz) or {}).get("eventos", []):
+        if s["sid"] in e["series"] and e["fecha"] == publicado and e.get("hora_et"):
+            h, m = map(int, e["hora_et"].split(":"))
+            return dt.datetime.combine(dt.date.fromisoformat(publicado), dt.time(h, m), NY).astimezone(UTC)
+    for r in leer_csv(P(raiz, "data", "eventos_macro.csv")):
+        if r.get("fecha") == publicado and r.get("hora_madrid") and any(c in r.get("evento", "").lower() for c in s["claves"]):
+            h, m = map(int, r["hora_madrid"].split(":"))
+            return dt.datetime.combine(dt.date.fromisoformat(publicado), dt.time(h, m), MAD).astimezone(UTC)
+    return None
+
+
+def proximo_dato(raiz, s, evs, ahora):
+    """Próximo dato de una serie: calendario FRED/agenda y, si no lo trae, el calendario oficial anual de BLS/BEA; si tampoco, None (SIN DATO)."""
+    import calendario_oficial as CO
+    prox = next((e for e in evs if coincide(e, s["claves"])), None)
+    of = CO.proximo(raiz, s["sid"], ahora.date())
+
+    def de_oficial(o):
+        f = dt.date.fromisoformat(o["fecha"])
+        hm = None
+        if o.get("hora_et"):
+            h, m = map(int, o["hora_et"].split(":"))
+            hm = dt.datetime.combine(f, dt.time(h, m), NY).astimezone(MAD).strftime("%H:%M")
+        return {"texto": f"{etiqueta_proximo(s['nombre'], dt.date.fromisoformat(o['periodo']), s['tipo'], s['sid'])} · {f.day}-{MES_CORTO[f.month - 1]}", "fecha": o["fecha"], "hora_madrid": hm,
+                "fuente": f"{o['organismo']} · calendario oficial anual (descargado {str(o.get('descargado_utc') or 'SIN DATO')[:10]})", "url": o["url"]}
+    if prox:
+        pp = periodo_esperado(s["tipo"], s["lag_m"], dt.date.fromisoformat(prox["fecha"]))
+        f = dt.date.fromisoformat(prox["fecha"])
+        out = {"texto": f"{etiqueta_proximo(s['nombre'], pp, s['tipo'], s['sid'])} · {f.day}-{MES_CORTO[f.month - 1]}", "fecha": prox["fecha"], "hora_madrid": prox["t"].astimezone(MAD).strftime("%H:%M"),
+               "fuente": "calendario de FRED / agenda NEXORA"}
+        if of and (of["fecha"] != prox["fecha"] or of["periodo"] != pp.isoformat()):
+            out["otra_fuente"] = de_oficial(of)          # los dos calendarios no coinciden: se enseñan los dos
+        return out
+    return de_oficial(of) if of else None
+
+
 def tabla_publicaciones(raiz, ahora):
     pub = (leer_json(P(raiz, "site", "data", "publicados.json")) or {}).get("series") or {}
     oficial = {(r["serie"], r["periodo"]): r["publicado"] for r in leer_csv(P(raiz, "data", "publicacion_oficial.csv"))}
@@ -505,31 +636,35 @@ def tabla_publicaciones(raiz, ahora):
     for r in leer_csv(P(raiz, "data", "publicaciones_macro.csv")):
         k = (r["serie"], r["periodo"])
         if k not in cap:
-            cap[k] = (r["fecha_captura"], r["tipo"])
+            cap[k] = (r["fecha_captura"], r["tipo"], (r.get("registrado_utc") or "").strip())      # las filas antiguas no tienen hora: solo fecha
     evs = [e for e in eventos(raiz) if e["t"] > ahora]
     disc = {(k[0], k[1]): r for k, r in discrepancias(raiz).items() if r["estado"] == "ABIERTA"}
     filas = []
     for s in series_vigiladas():
         v = pub.get(s["nombre"]) or {}
         pers = (v.get("periodos") or [])[-3:][::-1]
-        prox = next((e for e in evs if coincide(e, s["claves"])), None)
-        proximo = None
-        if prox:
-            pp = periodo_esperado(s["tipo"], s["lag_m"], dt.date.fromisoformat(prox["fecha"]))
-            f = dt.date.fromisoformat(prox["fecha"])
-            proximo = {"texto": f"{etiqueta_proximo(s['nombre'], pp, s['tipo'], s['sid'])} · {f.day}-{MES_CORTO[f.month - 1]}", "fecha": prox["fecha"], "hora_madrid": prox["t"].astimezone(MAD).strftime("%H:%M")}
+        proximo = proximo_dato(raiz, s, evs, ahora)
         for i, per in enumerate(pers):
             p = dt.date.fromisoformat(per["periodo"])
             pu = oficial.get((s["sid"], per["periodo"]))
             c = cap.get((s["sid"], per["periodo"]))
             origen = None if not c else "carga inicial" if c[1].startswith("HIST") else "NEXORA en vivo"
-            retraso = None
+            retraso = horas = None
+            reg_utc = c[2] if c and c[2] else None
             if pu and c and origen == "NEXORA en vivo":
                 retraso = (dt.date.fromisoformat(c[0]) - dt.date.fromisoformat(pu)).days
+                tp = hora_publicacion(raiz, s, pu) if reg_utc else None
+                if tp:
+                    try:
+                        horas = round((dt.datetime.strptime(reg_utc, "%Y-%m-%d %H:%M UTC").replace(tzinfo=UTC) - tp).total_seconds() / 3600, 1)
+                    except ValueError:
+                        horas = None
             d = disc.get((s["sid"], per["periodo"]))
             filas.append({"dato": s["nombre"], "serie": s["sid"], "periodo": per["periodo"], "dato_de": texto_periodo(p, s["tipo"]), "publicado": pu or None,
-                          "publicado_fuente": "FRED/ALFRED" if pu else None, "registrado": c[0] if c else None, "registro_origen": origen, "retraso_dias": retraso,
-                          "valor": per.get("valor"), "proximo": proximo if i == 0 else None, "discrepancia": ({"primaria": d["primaria"], "primaria_valor": d["primaria_valor"], "fred_valor": d["fred_valor"], "dif_pct": d["dif_pct"], "tipo": d["tipo"]} if d else None),
+                          "publicado_fuente": "FRED/ALFRED" if pu else None, "registrado": c[0] if c else None, "registrado_utc": reg_utc,
+                          "registro_origen": origen, "retraso_dias": retraso, "retraso_horas": horas,
+                          "valor": per.get("valor"), "proximo": proximo if i == 0 else None,
+                          "discrepancia": ({"primaria": d["primaria"], "primaria_valor": d["primaria_valor"], "fred_valor": d["fred_valor"], "dif_pct": d["dif_pct"], "tipo": d["tipo"]} if d else None),
                           "segunda_fuente": SEGUNDA_FUENTE.get(s["sid"]) if i == 0 else None})
     return filas
 
@@ -550,8 +685,10 @@ def construir(raiz=RAIZ, ahora=None):
             "retrasos_registro": [x for x in pubs if x["retraso_dias"] is not None],
             "discrepancias_abiertas": [{k: r[k] for k in ("serie", "periodo", "tipo", "fred_valor", "primaria", "primaria_valor", "dif_pct", "detectada_utc", "nota")} for r in abiertas],
             "n_discrepancias_historial": len(leer_csv(P(raiz, "data", "discrepancias.csv"))),
-            "segunda_fuente": {"BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS", "BEA": BEA_SIN_DATO,
-                               "bls_consultas_hoy": est["bls"].get("n", 0), "bls_ultimo_error": est["bls"].get("ultimo_error")},
+            "segunda_fuente": {"BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
+                               "BEA": ("API de BEA activa (secreto BEA_API_KEY): PCE y PIB real con el mismo umbral; manda BEA" if os.environ.get("BEA_API_KEY") else BEA_SIN_DATO),
+                               "bea_activa": bool(os.environ.get("BEA_API_KEY")), "bls_consultas_hoy": est["bls"].get("n", 0), "bls_ultimo_error": est["bls"].get("ultimo_error"),
+                               "bea_ultimo_error": (est.get("bea") or {}).get("ultimo_error")},
             "vigilante": {"avisos": len(vig), "ultimos": sorted(vig.values(), key=lambda x: x.get("avisado_utc", ""), reverse=True)[:5], "regla": f"aviso si a la hora de publicación + {ESPERA_VIGILANTE_H} h el periodo nuevo no está en publicados.json"}}
 
 
@@ -559,7 +696,9 @@ def etapa(raiz=RAIZ, ahora=None, red=None, enviar=None, seco=False):
     """Para build.py: vigilante + segunda fuente + publicaciones oficiales + integridad.json. Cada parte falla por separado."""
     ahora = ahora or dt.datetime.now(UTC)
     errores = {}
-    for nombre, fn in (("vigilante", lambda: vigilar(raiz, ahora, seco, enviar)), ("bls", lambda: cotejar_bls(raiz, ahora, red)), ("alfred", lambda: actualizar_publicaciones(raiz, ahora, red))):
+    import calendario_oficial
+    for nombre, fn in (("calendario_oficial", lambda: calendario_oficial.descargar(raiz, ahora)), ("vigilante", lambda: vigilar(raiz, ahora, seco, enviar)),
+                       ("bls", lambda: cotejar_bls(raiz, ahora, red)), ("bea", lambda: cotejar_bea(raiz, ahora, red)), ("alfred", lambda: actualizar_publicaciones(raiz, ahora, red))):
         try:
             fn()
         except Exception as e:  # noqa: BLE001

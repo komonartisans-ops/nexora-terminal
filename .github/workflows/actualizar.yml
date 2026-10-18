@@ -50,6 +50,7 @@ jobs:
           PYTHONUTF8: "1"
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BEA_API_KEY: ${{ secrets.BEA_API_KEY }}   # opcional: activa la segunda fuente de PIB y PCE; sin el secreto queda SIN DATO
         run: python engine/build.py --modo "${{ steps.modo.outputs.modo }}"
       - name: Aviso previo por Telegram (eventos ALTA fuera de la franja del monitor, si caen en su ventana de 25-35 min)
         continue-on-error: true
