@@ -302,6 +302,14 @@
    "generico": "Calendario: publicaciones previstas con su hora."
   },
   {
+   "id": "integridad",
+   "titulo": "Integridad de datos",
+   "pregunta": "¿Puedo fiarme de que los datos están al día y de que no falta ninguno?",
+   "diez": "Mira el resumen «X/Y al día», las discrepancias abiertas y los retrasos de registro.",
+   "frecuencia": "Cada hora en días laborables.",
+   "generico": "Integridad: estado de cada bloque, datos oficiales que faltan y cotejo con la fuente primaria."
+  },
+  {
    "id": "publicados",
    "titulo": "Datos publicados",
    "pregunta": "¿Qué datos salieron y se han revisado?",
@@ -1384,6 +1392,41 @@
    "Cuánto favorece la macro a cada divisa (suma de factores).",
    "Positivo = fuerte; negativo = débil.",
    "Ayuda a ver qué divisa tiene el viento a favor."
+  ],
+  "estado de cada bloque": [
+   "Un semáforo por bloque de la web según si su última actualización llegó a tiempo.",
+   "Verde = al día; ámbar = retrasado o falló la última; gris = SIN DATO. Los fines de semana no cuentan como retraso.",
+   "Un bloque retrasado puede mostrar un dato viejo."
+  ],
+  "discrepancias abiertas": [
+   "Casos en que FRED y la fuente primaria (BLS) no coinciden.",
+   "Manda la fuente primaria; la discrepancia se cierra sola cuando vuelven a coincidir.",
+   "Evita fiarse de una cifra que alguien ha corregido en origen."
+  ],
+  "cuándo salió cada dato": [
+   "Para cada dato: de qué periodo es, cuándo se publicó, cuándo lo registró NEXORA y cuándo sale el siguiente.",
+   "Cada dato se publica semanas después del mes al que se refiere: el IPC de octubre sale en noviembre.",
+   "Distinguir «dato de» de «publicado el» evita confundir información vieja con noticias de hoy."
+  ],
+  "retrasos de registro": [
+   "La diferencia entre la publicación oficial y el momento en que NEXORA lo registró.",
+   "Cerca de 1 día era lo habitual antes de arreglar el disparo externo; ahora debe bajar.",
+   "Un registro lento hace que las tesis usen datos desfasados."
+  ],
+  "vigilante y segunda fuente": [
+   "Cómo se comprueba cada dato: aviso si falta 2 h después de publicarse y cotejo con BLS.",
+   "Los avisos llegan por Telegram; BEA exige clave y queda SIN DATO.",
+   "Es el seguro de calidad de los datos que alimentan todo lo demás."
+  ],
+  "vigilante de publicaciones": [
+   "Cómo se comprueba cada dato: aviso si falta 2 h después de publicarse y cotejo con BLS.",
+   "Los avisos llegan por Telegram; BEA exige clave y queda SIN DATO.",
+   "Es el seguro de calidad de los datos que alimentan todo lo demás."
+  ],
+  "segunda fuente": [
+   "Cómo se comprueba cada dato: aviso si falta 2 h después de publicarse y cotejo con BLS.",
+   "Los avisos llegan por Telegram; BEA exige clave y queda SIN DATO.",
+   "Es el seguro de calidad de los datos que alimentan todo lo demás."
   ]
  },
  "glosario": [

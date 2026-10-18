@@ -470,3 +470,11 @@ dl.gl { margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4p
 .tag.int-deb.baj, .ck.int-deb.no { background: transparent; box-shadow: inset 0 0 0 1px var(--neg); }
 .tag.int-fue.alc, .ck.int-fue.ok { background: var(--pos); color: #07140d; }
 .tag.int-fue.baj, .ck.int-fue.no { background: var(--neg); color: #fff; }
+
+/* Integridad: resumen en la cabecera */
+.integ { font-family: var(--mono); font-size: 10.5px; padding: 3px 9px; border-radius: 4px; white-space: nowrap; text-decoration: none; border: 1px solid var(--border2); color: var(--muted); }
+.integ.ok { color: var(--pos); border-color: rgba(47,163,107,.45); } .integ.par { color: var(--amber); border-color: rgba(200,162,74,.5); }
+.integ.no { color: #fff; background: var(--neg); border-color: var(--neg); } .integ.sd { color: var(--dim); border-style: dashed; }
+@media (max-width: 760px) { .integ { font-size: 9.5px; padding: 2px 6px; } }
+.t td small { display: block; color: var(--dim); font-size: 10px; margin-top: 1px; white-space: normal; }
+@media (max-width: 760px) { .integ { font-size: 0; padding: 2px 6px; } .integ::after { content: 'Int. ' attr(data-c); font-size: 9.5px; } }

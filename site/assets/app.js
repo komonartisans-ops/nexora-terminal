@@ -62,6 +62,7 @@ const PAGES = [
   { id: 'bancos', g: 'Análisis', t: 'Bancos centrales', d: 'Fed, BCE y BoJ: tipos, reuniones y FedWatch propio', f: 1 },
   { id: 'mapa', g: 'Análisis', t: 'Bancos centrales del mundo', d: 'Mapa de 38 bancos: tipo, último movimiento, 12 meses, inflación, PIB y divisa', f: 7 },
   { id: 'marcador', g: 'Análisis', t: 'Marcador de señales', d: 'Aciertos de las señales del sistema a T+1, T+5 y T+20 frente al azar; vivas y reconstruidas por separado', f: 10 },
+  { id: 'integridad', g: 'Análisis', t: 'Integridad de datos', d: 'Si cada bloque está al día, si falta algún dato oficial y si FRED y BLS coinciden', f: 13 },
   { id: 'agenda', g: 'Análisis', t: 'Agenda', d: 'Hoy y próximos 7 días con hora de Nueva York y Madrid; importancia fija por tipo de dato', f: 9 },
   { id: 'eventos', g: 'Análisis', t: 'Reacción a eventos', d: 'Todos los datos de importancia alta (IPC, PPI, empleo, PCE, PIB, FOMC, ISM): 2Y, 10Y, DXY, oro, NQ y BTC minuto a minuto', f: 8 },
   { id: 'tono', g: 'Análisis', t: 'Tono de bancos centrales', d: 'Tono hawkish/dovish de Fed, BCE y BoJ en z-score propio, con validación frente al azar (bloque secundario)', f: 7 },
@@ -90,7 +91,7 @@ const PLAN = {
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['diario', 'tesis', 'operativa', 'marcador', 'guia', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
+const LIVE = new Set(['diario', 'tesis', 'operativa', 'marcador', 'guia', 'integridad', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
 const D = {};
 const MOUNT = [];
 
@@ -706,7 +707,7 @@ function pageRegimen() {
 /* ---------------- datos publicados */
 function pagePublicados() {
   const P = D.publicados, C = D.calendario;
-  let h = head('Noticias', 'Datos publicados', 'Últimas publicaciones macro con su periodo, su fecha de publicación y sus revisiones (formato original → revisado). El periodo del dato no es la fecha en que se publica: se muestran las dos.',
+  let h = head('Noticias', 'Datos publicados', 'Últimas publicaciones macro con su periodo, su fecha de publicación y sus revisiones (formato original → revisado). El periodo del dato no es la fecha en que se publica: se muestran las dos. Cada dato se publica semanas después del mes al que se refiere: el IPC de octubre sale en noviembre.',
     `Actualizado: ${P && P.generado_utc ? esc(horaAct(P.generado_utc)) : 'SIN DATO'} · registro de revisiones desde el ${P ? esc(fdy(P.registro_desde)) : 'SIN DATO'}`);
   h += fallo('publicados');
   if (!P || !P.series) return h + noData('Datos publicados');
@@ -717,6 +718,7 @@ function pagePublicados() {
   h += essential(`${S.length} series oficiales mostradas (${P.filas_registro} filas en el registro); ${P.n_revisiones} revisión(es) detectada(s) desde el ${esc(fdy(P.registro_desde))}. ${rev.length ? 'Última: ' + esc(rev[0].serie) + ' (' + esc(fdm(rev[0].periodo)) + ') ' + num(rev[0].original, 2) + ' → ' + num(rev[0].revisado, 2) + '.' : 'Todavía ninguna: aparecen cuando un periodo ya guardado cambia de valor.'}`,
     'Hecho: cada cifra es la que publica la fuente oficial; «original» es el primer valor que NEXORA registró y «revisado» el último. Interpretación: si un dato se revisa, la lectura que se hizo del primer valor queda desfasada: compara siempre original → revisado.',
     prox.length ? `Próximas publicaciones de importancia alta: ${prox.map((e) => `${esc(fdh(e.fecha, e.hora_madrid))} ${esc(e.evento)}`).join(' · ')}.` : 'Sin publicaciones de importancia alta en el calendario próximo.');
+  h += (typeof integTablaPublicados === 'function' ? integTablaPublicados(true) : '');
   h += '<div class="sect"><h2>Revisiones detectadas</h2><span class="more">dato original → revisado (nivel de la serie oficial)</span></div>';
   h += rev.length ? '<div class="card pad0 scroll"><table class="t"><thead><tr><th>Dato</th><th>Periodo</th><th>Original</th><th>Revisado</th><th>Cambio</th><th>Detectado</th></tr></thead><tbody>'
     + rev.map((r) => `<tr><td>${esc(r.serie)}</td><td>${esc(r.id === 'ICSA' ? fdy(r.periodo) : fdm(r.periodo))}</td><td>${num(r.original, 2)}</td><td><b>${num(r.revisado, 2)}</b></td><td>${pill(r.revisado - r.original, 2, '', false)}</td><td>${esc(fdy(r.visto))}</td></tr>`).join('') + '</tbody></table>' + footIn('Registro NEXORA data/publicaciones_macro.csv sobre FRED', false, 'https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/publicaciones_macro.csv', 'tipo REVISIÓN') + '</div>'
@@ -766,6 +768,7 @@ function banners() {
     if (fallos.length) h += `<div class="banner amber">Fuente con fallo en la última ejecución: ${fallos.map(([k]) => esc(k)).join(', ')} · se muestra el último dato válido</div>`;
   }
   $('#banners').innerHTML = h;
+  if (typeof integHeader === 'function') integHeader();
 }
 function route() {
   const id = (location.hash.replace(/^#\//, '') || 'resumen').split('?')[0];
@@ -785,7 +788,7 @@ function route() {
 }
 
 async function cargar() {
-  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma', 'bancos', 'tono', 'reacciones', 'agenda', 'salud', 'etf'].map(async (n) => {
+  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma', 'bancos', 'tono', 'reacciones', 'agenda', 'salud', 'etf', 'integridad'].map(async (n) => {
     try { const r = await fetch(`data/${n}.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) D[n] = await r.json(); } catch (e) { /* SIN DATO */ }
   }));
 }

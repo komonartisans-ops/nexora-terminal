@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-18 18:17 UTC",
+ "generado_utc": "2026-10-18 18:20 UTC",
  "resumen": {
   "al_dia": 24,
   "total": 26,
@@ -995,7 +995,7 @@
   "BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
   "BEA": "BEA exige clave de API (UserID): no hay acceso sin clave, SIN DATO (no se inventa).",
   "bls_consultas_hoy": 2,
-  "bls_ultimo_error": "ValueError: could not convert string to float: '-'"
+  "bls_ultimo_error": null
  },
  "vigilante": {
   "avisos": 0,
