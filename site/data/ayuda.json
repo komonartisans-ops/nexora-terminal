@@ -100,9 +100,9 @@
     "texto": "Se actualizan los niveles de opciones, el reparto entre chips y software y el riesgo de cola. Es la foto del día."
    },
    {
-    "hora": "Domingo",
-    "titulo": "Revisión semanal",
-    "texto": "No hay ningún aviso automático ese día. Es un buen momento para mirar el Marcador, repasar Mi diario y leer el COT (la CFTC lo publica el viernes y NEXORA lo actualiza el sábado)."
+    "hora": "Domingo 18:57 (Madrid)",
+    "titulo": "Informe semanal en Claude",
+    "texto": "Cada domingo a las 18:57 (Madrid) se genera un informe semanal automático en Claude; no llega por Telegram. Es un buen momento para leerlo y para revisar el Marcador, Mi diario y el COT (la CFTC lo publica el viernes y NEXORA lo actualiza el sábado)."
    }
   ],
   "errores": [
@@ -352,7 +352,7 @@
   ],
   "tesis por activo": [
    "La tesis resume si el contexto macro ayuda al activo: alcista, bajista, débil o sin tesis.",
-   "Mira la etiqueta y si el «viento de la semana» está a favor o en contra; «sin tesis» no es una opinión, es falta de señal clara.",
+   "Mira la etiqueta y si el «viento de la semana» está a favor o en contra. En las tesis el color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo. «Sin tesis» no es una opinión, es falta de señal clara.",
    "Evita decidir por una sola cifra: junta varios motores en una etiqueta."
   ],
   "motores macro": [
@@ -1627,7 +1627,7 @@
    "claves": [
     "tesis"
    ],
-   "def": "La lectura del contexto para un activo: alcista, bajista, débil o sin tesis. No es una orden.",
+   "def": "La lectura del contexto para un activo: alcista, bajista, débil o sin tesis. No es una orden. El color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo.",
    "analogia": "El viento que sopla: no dice qué debes hacer con la vela."
   },
   {
@@ -1659,5 +1659,6 @@
    "def": "El pago entre quien apuesta al alza y a la baja en futuros de cripto. Muy alto = demasiado apalancamiento. Las stablecoins, monedas ligadas al dólar, son la «pólvora» lista para entrar.",
    "analogia": "El peaje que pagan los más impacientes."
   }
- ]
+ ],
+ "semaforo_nota": "En las tesis el color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo."
 }

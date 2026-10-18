@@ -465,3 +465,4 @@ dl.gl { margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4p
   .flujo .flecha { display: none; } .flujo .paso { flex-basis: 100%; }
 }
 @media (min-width: 761px) { .leyenda { position: sticky; top: 48px; z-index: 45; } }
+.ley-n { color: var(--dim); font-style: italic; }

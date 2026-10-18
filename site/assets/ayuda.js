@@ -84,7 +84,7 @@ function ayInyectar() {
 /* ---------------------------------------------------------------- semáforo: solo cambia la CLASE de etiquetas que ya existen (no su cálculo) */
 const AY_SEM = [                      // el orden importa: lo más específico primero
   ['sd', /^(SIN DATO|SIN TESIS|MUESTRA INSUFICIENTE|PENDIENTE\b(?! DE VALIDAR)|NO PUNTUABLE|SOLO REGISTRO|SIN MEDIDAS|SIN FOTO|SIN HORA|SIN HISTÓRICO|BACKFILL|SIN EVENTO)/],
-  ['par', /^(MIXTO|VIGILAR|PARCIAL|NEUTRAL|ALCISTA DÉBIL|BAJISTA DÉBIL|ELEVADO|CONTRADICCIÓN|PENDIENTE DE VALIDAR|SECUNDARIO)/],
+  ['par', /^(MIXTO|VIGILAR|PARCIAL|NEUTRAL|ELEVADO|CONTRADICCIÓN|PENDIENTE DE VALIDAR|SECUNDARIO)/],
   ['no', /^(DESFAVORABLE|ALERTA|FALLO|EN CONTRA|BAJISTA|TENSIÓN|ESTRÉS|RECESIÓN|RIESGO ALTO|INVERSIÓN|MUY DÉBIL|DÉBIL$)/],
   ['ok', /^(FAVORABLE|CONFIRMADO|SE CONFIRMA|ACIERTO|A FAVOR|ALCISTA|FUERTE|SIN TENSIÓN)/],
 ];
@@ -102,7 +102,7 @@ function ayColorear() {
 function ayLeyenda() {
   const el = document.getElementById('leyenda');
   if (!el || !AY.d) return;
-  el.innerHTML = '<span class="ley-t">Colores</span>' + AY.d.semaforo.map((s) => `<span class="ley"><i class="${esc(s.clase)}"></i><b>${esc(s.nombre)}</b> ${esc(s.texto)}</span>`).join('') + '<a class="ley-g" href="#/guia">Cómo leer NEXORA</a>';
+  el.innerHTML = '<span class="ley-t">Colores</span>' + AY.d.semaforo.map((s) => `<span class="ley"><i class="${esc(s.clase)}"></i><b>${esc(s.nombre)}</b> ${esc(s.texto)}</span>`).join('') + (AY.d.semaforo_nota ? `<span class="ley-n">${esc(AY.d.semaforo_nota)}</span>` : '') + '<a class="ley-g" href="#/guia">Cómo leer NEXORA</a>';
 }
 
 let ayTimer = null;
@@ -163,7 +163,7 @@ function ayGuiaHtml(d, C) {
   let h = '<div class="grid g2">';
   h += `<div class="card"><div class="chead"><span>Qué es NEXORA</span></div><ol class="gl-l">${G.que_es.map((x) => `<li>${esc(x)}</li>`).join('')}</ol></div>`;
   h += `<div class="card gl-no"><div class="chead"><span>Para qué NO sirve</span></div><ul class="gl-l">${G.no_sirve.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div></div>`;
-  h += `<div class="note" style="margin-top:10px">Colores de toda la web: ${d.semaforo.map((s) => `<span class="ley"><i class="${esc(s.clase)}"></i><b>${esc(s.nombre)}</b> = ${esc(s.texto)}</span>`).join(' ')}.</div>`;
+  h += `<div class="note" style="margin-top:10px">Colores de toda la web: ${d.semaforo.map((s) => `<span class="ley"><i class="${esc(s.clase)}"></i><b>${esc(s.nombre)}</b> = ${esc(s.texto)}</span>`).join(' ')}. ${esc(d.semaforo_nota || '')}</div>`;
   h += '<div class="sect"><h2>El flujo en un vistazo</h2><span class="more">pulsa cada paso para ir a esa página</span></div><div class="flujo">';
   h += G.flujo.map((f, i) => `<a class="paso" href="#/${esc(f.pagina)}"><span class="n">${f.paso}</span><b>${esc(f.titulo)}</b><small>${esc(f.texto)}</small></a>${i < G.flujo.length - 1 ? '<span class="flecha" aria-hidden="true">→</span>' : ''}`).join('');
   h += '</div>';
