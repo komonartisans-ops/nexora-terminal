@@ -627,6 +627,22 @@ def _cadena(f):
             f"NQ {s(f['d_nq_pct'], 2, '%')} · BTC {s(f['d_btc_pct'], 2, '%')}")
 
 
+def _dormir(segundos):
+    """Espera en tramos de ≤ 60 s y en cada tramo mira si algún evento ALTA empieza en 25-35 min (aviso previo por Telegram): así el job no se «come» las ventanas
+    de otros eventos mientras espera una fase. Un fallo del aviso nunca interrumpe el monitor."""
+    fin = time.time() + segundos
+    while True:
+        try:
+            import aviso_previo
+            aviso_previo.ejecutar(push=True)
+        except Exception as e:  # noqa: BLE001
+            print("aviso previo: error (el monitor sigue):", type(e).__name__)
+        resto = fin - time.time()
+        if resto <= 0:
+            return
+        time.sleep(min(60, resto))
+
+
 def vivo(max_espera_min=150):
     n0 = ahora()
     hoy = n0.astimezone(NY).date()
@@ -656,7 +672,7 @@ def vivo(max_espera_min=150):
                 break
             if espera > 0:
                 print(f"{ev['id']} espera {espera / 60:.1f} min hasta {fase}", flush=True)
-                time.sleep(espera)
+                _dormir(espera)
             for intento in range(4):  # Yahoo puede tardar en publicar la barra
                 B2, _ = barras("5d")
                 if all(B2[k] or B[k] for k in ("zt", "dxy")):

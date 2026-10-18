@@ -22,6 +22,15 @@ def resolver(f):
         vistos = set(L)
         L += [x for x in mine.splitlines() if x not in vistos]
         out = "\n".join(L) + "\n"
+    elif f.endswith("avisos_previos.json"):      # solo-añadir: unión de las claves de ambos lados (una clave existente no se modifica)
+        try:
+            a, b = json.loads(up), json.loads(mine)
+            for k, v in b.get("avisos", {}).items():
+                a.setdefault("avisos", {}).setdefault(k, v)
+            a["creado_utc"] = a.get("creado_utc") or b.get("creado_utc")
+            out = json.dumps(a, ensure_ascii=False, indent=1)
+        except Exception:  # noqa: BLE001
+            out = mine
     elif f.endswith("estado_reacciones.json"):
         try:
             a, b = json.loads(up), json.loads(mine)
