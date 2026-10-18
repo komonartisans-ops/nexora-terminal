@@ -1,0 +1,593 @@
+{
+ "descargado_utc": "2026-10-18 18:46 UTC",
+ "fuentes": {
+  "BLS cpi": {
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+   "descargado_utc": "2026-10-18 18:46 UTC",
+   "filas": 14
+  },
+  "BLS ppi": {
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm",
+   "descargado_utc": "2026-10-18 18:46 UTC",
+   "filas": 14
+  },
+  "BLS empsit": {
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+   "descargado_utc": "2026-10-18 18:46 UTC",
+   "filas": 14
+  },
+  "BLS jolts": {
+   "url": "https://www.bls.gov/schedule/news_release/jolts.htm",
+   "descargado_utc": "2026-10-18 18:46 UTC",
+   "filas": 1
+  },
+  "BEA schedule": {
+   "url": "https://www.bea.gov/news/schedule",
+   "descargado_utc": "2026-10-18 18:46 UTC",
+   "filas": 5
+  }
+ },
+ "errores": {},
+ "nota": "Calendarios oficiales de BLS y BEA. Respaldo del «próximo dato» cuando FRED no lo trae; sin fecha aquí = SIN DATO (nunca se infiere).",
+ "eventos": [
+  {
+   "organismo": "BEA",
+   "series": [
+    "GDPC1"
+   ],
+   "evento": "PIB EE. UU. · GDP (Advance Estimate)",
+   "periodo": "2026-07-01",
+   "fecha": "2026-10-29",
+   "hora_et": "08:30",
+   "url": "https://www.bea.gov/news/schedule"
+  },
+  {
+   "organismo": "BEA",
+   "series": [
+    "PCEPI",
+    "PCEPILFE"
+   ],
+   "evento": "Renta y gasto personal (PCE)",
+   "periodo": "2026-09-01",
+   "fecha": "2026-10-29",
+   "hora_et": "08:30",
+   "url": "https://www.bea.gov/news/schedule"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2026-10-01",
+   "fecha": "2026-11-06",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2026-10-01",
+   "fecha": "2026-11-10",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2026-10-01",
+   "fecha": "2026-11-13",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BEA",
+   "series": [
+    "GDPC1"
+   ],
+   "evento": "PIB EE. UU. · GDP (Second Estimate) and Corporate Profits",
+   "periodo": "2026-07-01",
+   "fecha": "2026-11-25",
+   "hora_et": "08:30",
+   "url": "https://www.bea.gov/news/schedule"
+  },
+  {
+   "organismo": "BEA",
+   "series": [
+    "PCEPI",
+    "PCEPILFE"
+   ],
+   "evento": "Renta y gasto personal (PCE)",
+   "periodo": "2026-10-01",
+   "fecha": "2026-11-25",
+   "hora_et": "08:30",
+   "url": "https://www.bea.gov/news/schedule"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "JTSJOL"
+   ],
+   "evento": "Vacantes JOLTS",
+   "periodo": "2026-10-01",
+   "fecha": "2026-12-01",
+   "hora_et": "10:00",
+   "url": "https://www.bls.gov/schedule/news_release/jolts.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2026-11-01",
+   "fecha": "2026-12-04",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2026-11-01",
+   "fecha": "2026-12-10",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2026-11-01",
+   "fecha": "2026-12-15",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BEA",
+   "series": [
+    "PCEPI",
+    "PCEPILFE"
+   ],
+   "evento": "Renta y gasto personal (PCE)",
+   "periodo": "2026-11-01",
+   "fecha": "2026-12-23",
+   "hora_et": "08:30",
+   "url": "https://www.bea.gov/news/schedule"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2026-12-01",
+   "fecha": "2027-01-08",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2026-12-01",
+   "fecha": "2027-01-13",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2026-12-01",
+   "fecha": "2027-01-14",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-01-01",
+   "fecha": "2027-02-05",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-01-01",
+   "fecha": "2027-02-11",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-01-01",
+   "fecha": "2027-02-12",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-02-01",
+   "fecha": "2027-03-05",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-02-01",
+   "fecha": "2027-03-10",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-02-01",
+   "fecha": "2027-03-12",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-03-01",
+   "fecha": "2027-04-02",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-03-01",
+   "fecha": "2027-04-13",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-03-01",
+   "fecha": "2027-04-14",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-04-01",
+   "fecha": "2027-05-07",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-04-01",
+   "fecha": "2027-05-12",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-04-01",
+   "fecha": "2027-05-13",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-05-01",
+   "fecha": "2027-06-04",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-05-01",
+   "fecha": "2027-06-10",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-05-01",
+   "fecha": "2027-06-11",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-06-01",
+   "fecha": "2027-07-02",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-06-01",
+   "fecha": "2027-07-14",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-06-01",
+   "fecha": "2027-07-15",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-07-01",
+   "fecha": "2027-08-06",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-07-01",
+   "fecha": "2027-08-10",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-07-01",
+   "fecha": "2027-08-11",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-08-01",
+   "fecha": "2027-09-03",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-08-01",
+   "fecha": "2027-09-10",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-08-01",
+   "fecha": "2027-09-14",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-09-01",
+   "fecha": "2027-10-08",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-09-01",
+   "fecha": "2027-10-14",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-09-01",
+   "fecha": "2027-10-15",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-10-01",
+   "fecha": "2027-11-05",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-10-01",
+   "fecha": "2027-11-10",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-10-01",
+   "fecha": "2027-11-12",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PAYEMS",
+    "UNRATE"
+   ],
+   "evento": "Empleo EE. UU. (NFP, paro, salarios)",
+   "periodo": "2027-11-01",
+   "fecha": "2027-12-03",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/empsit.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "CPIAUCSL",
+    "CPILFESL"
+   ],
+   "evento": "IPC EE. UU. (CPI)",
+   "periodo": "2027-11-01",
+   "fecha": "2027-12-10",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+  },
+  {
+   "organismo": "BLS",
+   "series": [
+    "PPIFIS"
+   ],
+   "evento": "Precios de producción (PPI)",
+   "periodo": "2027-11-01",
+   "fecha": "2027-12-15",
+   "hora_et": "08:30",
+   "url": "https://www.bls.gov/schedule/news_release/ppi.htm"
+  }
+ ]
+}
