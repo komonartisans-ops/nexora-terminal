@@ -54,6 +54,7 @@ const lastOf = (s) => (s && s.length ? s[s.length - 1] : null);
 
 /* ------------------------------------------------------------------ navegación */
 const PAGES = [
+  { id: 'guia', g: 'Guía', t: 'Cómo leer NEXORA', d: 'Qué es, cómo se lee cada página y glosario en palabras sencillas', f: 12 },
   { id: 'resumen', g: 'Mercados', t: 'Resumen', d: 'Una tarjeta por activo con tesis y causa → efecto', f: 1 },
   { id: 'watchlists', g: 'Mercados', t: 'Watchlists', d: 'Listas editables de activos (se guardan en tu navegador)', f: 5 },
   { id: 'regimen', g: 'Análisis', t: 'Régimen macro', d: 'Crecimiento, inflación, empleo, liquidez, crédito y dólar', f: 2 },
@@ -89,19 +90,20 @@ const PLAN = {
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['diario', 'tesis', 'operativa', 'marcador', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
+const LIVE = new Set(['diario', 'tesis', 'operativa', 'marcador', 'guia', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
 const D = {};
 const MOUNT = [];
 
 function pintarMenu() {
   const nav = $('#nav');
-  nav.innerHTML = GROUPS.map((g) => `<div class="nav-item" data-g="${g}">
+  nav.innerHTML = '<a class="nav-btn nav-guia" href="#/guia" data-id="guia">Cómo leer NEXORA</a>' + GROUPS.map((g) => `<div class="nav-item" data-g="${g}">
     <button class="nav-btn">${g} <span class="chev">▾</span></button>
     <div class="menu">${paginasVisibles().filter((p) => p.g === g).map((p) => `<a href="#/${p.id}" data-id="${p.id}"><div class="t">${esc(p.t)}${!LIVE.has(p.id) ? `<span class="fase">F${p.f}</span>` : ''}</div><div class="d">${esc(p.d)}</div></a>`).join('')}</div>
   </div>`).join('');
   $$('.nav-item', nav).forEach((it) => {
     $('.nav-btn', it).addEventListener('click', (e) => { e.stopPropagation(); const o = it.classList.contains('open'); $$('.nav-item').forEach((x) => x.classList.remove('open')); if (!o) it.classList.add('open'); });
   });
+  $$('.nav-guia', nav).forEach((a) => a.addEventListener('click', () => nav.classList.remove('show')));
   $$('.menu a', nav).forEach((a) => a.addEventListener('click', () => { nav.classList.remove('show'); $$('.nav-item').forEach((x) => x.classList.remove('open')); }));
   const cur = $(`.menu a[data-id="${(location.hash.replace(/^#\//, '') || 'resumen').split('?')[0]}"]`, nav);
   if (cur) { cur.classList.add('cur'); const b = $('.nav-btn', cur.closest('.nav-item')); if (b) b.classList.add('active'); }
@@ -769,6 +771,7 @@ function route() {
   const id = (location.hash.replace(/^#\//, '') || 'resumen').split('?')[0];
   const p = PAGES.find((x) => x.id === id) || PAGES[0];
   $$('.nav-btn').forEach((b) => b.classList.remove('active'));
+  const gl = $('.nav-guia'); if (gl) gl.classList.toggle('active', p.id === 'guia');
   $$('.menu a').forEach((a) => a.classList.toggle('cur', a.dataset.id === p.id));
   const it = $(`.nav-item[data-g="${p.g}"] .nav-btn`); if (it) it.classList.add('active');
   MOUNT.length = 0;

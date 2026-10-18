@@ -1,0 +1,1663 @@
+{
+ "version": 1,
+ "nota": "Todos los textos de ayuda de NEXORA en un solo sitio. Cada bloque: [qué es, cómo se lee, por qué importa]. Claves en minúsculas; coincide el título del bloque que empiece por la clave. Solo explican: no cambian ningún dato, umbral ni regla.",
+ "semaforo": [
+  {
+   "clase": "ok",
+   "nombre": "Verde",
+   "texto": "favorable / confirmado"
+  },
+  {
+   "clase": "par",
+   "nombre": "Ámbar",
+   "texto": "mixto / vigilar"
+  },
+  {
+   "clase": "no",
+   "nombre": "Rojo",
+   "texto": "desfavorable / alerta"
+  },
+  {
+   "clase": "sd",
+   "nombre": "Gris",
+   "texto": "SIN DATO o muestra insuficiente"
+  }
+ ],
+ "guia": {
+  "que_es": [
+   "NEXORA es un panel que junta, cada día, los datos oficiales de la economía de EE. UU. y de los bancos centrales y los ordena en un mapa fácil de leer.",
+   "Te dice en qué situación está el mercado (régimen y liquidez), qué dirección apuntan los datos para el oro, los índices y el bitcoin (tesis) y qué conviene vigilar hoy.",
+   "Funciona sin inteligencia artificial: todo sale de reglas fijas y públicas, y cada cifra lleva su fuente y su fecha."
+  ],
+  "no_sirve": [
+   "NO da señales de compra ni de venta y no es una recomendación de inversión.",
+   "NO predice el futuro: describe lo que dicen los datos hoy y mide después cuántas veces acertó.",
+   "NO sustituye tu plan ni tu gestión del riesgo: una tesis es una lectura del contexto, no una orden."
+  ],
+  "flujo": [
+   {
+    "paso": 1,
+    "titulo": "Datos oficiales",
+    "texto": "Fed, Tesoro, BLS, FRED, bancos centrales, CFTC y precios de mercado.",
+    "pagina": "publicados"
+   },
+   {
+    "paso": 2,
+    "titulo": "Régimen y liquidez",
+    "texto": "Con esos datos se dibuja el mapa: ¿crece o se frena la economía? ¿Hay dinero fácil o escaso?",
+    "pagina": "regimen"
+   },
+   {
+    "paso": 3,
+    "titulo": "Tesis por activo",
+    "texto": "Para oro, Nasdaq, S&P y bitcoin: ¿el contexto ayuda, estorba o no dice nada?",
+    "pagina": "resumen"
+   },
+   {
+    "paso": 4,
+    "titulo": "Avisos",
+    "texto": "Telegram: la agenda de las 8:00, el aviso 30 min antes de un dato y las alertas de cambios.",
+    "pagina": "agenda"
+   },
+   {
+    "paso": 5,
+    "titulo": "Reacción al dato",
+    "texto": "Tras cada dato importante se anota cómo se movieron bonos, dólar, oro, Nasdaq y bitcoin.",
+    "pagina": "eventos"
+   },
+   {
+    "paso": 6,
+    "titulo": "Marcador de aciertos",
+    "texto": "Las señales se miden a 1, 5 y 20 sesiones y se comparan con el azar.",
+    "pagina": "marcador"
+   },
+   {
+    "paso": 7,
+    "titulo": "Mi diario",
+    "texto": "Tus operaciones, con una foto de lo que decía el sistema cuando entraste.",
+    "pagina": "diario"
+   }
+  ],
+  "dia": [
+   {
+    "hora": "8:00 (Madrid)",
+    "titulo": "Telegram de agenda",
+    "texto": "Llega un resumen de lo que se publica hoy y de la semana. Sirve para saber a qué hora hay datos importantes y planificar el día. En la web lo ves en Agenda."
+   },
+   {
+    "hora": "30 min antes de un dato importante",
+    "titulo": "Aviso previo",
+    "texto": "Un mensaje con lo que descuenta el mercado, el contexto actual y cómo reaccionó otras veces ante ese tipo de dato. Ideal para llegar al dato sabiendo qué se espera."
+   },
+   {
+    "hora": "Tras el dato",
+    "titulo": "Reacción a eventos",
+    "texto": "NEXORA registra minuto a minuto qué hacen el bono a 2 años, el dólar, el oro, el Nasdaq y el bitcoin. Si el primer movimiento se deshace, llega una alerta de giro."
+   },
+   {
+    "hora": "Al cierre de EE. UU.",
+    "titulo": "Gamma, semis y SKEW",
+    "texto": "Se actualizan los niveles de opciones, el reparto entre chips y software y el riesgo de cola. Es la foto del día."
+   },
+   {
+    "hora": "Domingo",
+    "titulo": "Revisión semanal",
+    "texto": "No hay ningún aviso automático ese día. Es un buen momento para mirar el Marcador, repasar Mi diario y leer el COT (la CFTC lo publica el viernes y NEXORA lo actualiza el sábado)."
+   }
+  ],
+  "errores": [
+   {
+    "titulo": "Confundir una tesis con una orden",
+    "texto": "«Alcista débil» significa que el contexto ayuda un poco, no que debas comprar. La tesis dice qué viento sopla; tú decides si navegas."
+   },
+   {
+    "titulo": "Sacar conclusiones con n menor que 20",
+    "texto": "Con menos de 20 casos, un buen porcentaje de aciertos puede ser pura suerte. Por eso el Marcador y Mi operativa avisan con «muestra insuficiente»."
+   },
+   {
+    "titulo": "Fiarse de un solo indicador",
+    "texto": "Un dato aislado engaña. Busca si varios indicadores apuntan a lo mismo; cuando se contradicen, la web lo señala en «Contradicciones»."
+   },
+   {
+    "titulo": "Ignorar la fecha del dato",
+    "texto": "Un dato mensual de agosto no dice nada de hoy. Mira siempre el periodo del dato y cuándo se publicó (son dos fechas distintas)."
+   },
+   {
+    "titulo": "Leer «SIN DATO» como «todo va bien»",
+    "texto": "SIN DATO significa que la fuente falló o no existe. NEXORA nunca inventa un número: si falta, lo dice."
+   },
+   {
+    "titulo": "Mirar el aviso previo como predicción",
+    "texto": "Lo que descuenta el mercado no es lo que va a pasar. Es el punto de partida: lo que mueve el precio es la sorpresa frente a eso."
+   }
+  ]
+ },
+ "paginas": [
+  {
+   "id": "resumen",
+   "titulo": "Resumen",
+   "pregunta": "¿Cómo está hoy el oro, el Nasdaq, el S&P y el bitcoin y qué dice el contexto?",
+   "diez": "Mira la etiqueta de cada activo (alcista, bajista o sin tesis) y lee la frase «qué lo ha movido»: es la causa en una línea.",
+   "frecuencia": "Cada hora en días laborables.",
+   "generico": "Resumen: una tarjeta por activo con su tesis y la causa del movimiento."
+  },
+  {
+   "id": "watchlists",
+   "titulo": "Watchlists",
+   "pregunta": "¿Cómo van los activos que yo sigo?",
+   "diez": "Crea tu lista, añade activos y mira precio y cambio. Todo se guarda solo en tu navegador.",
+   "frecuencia": "Al instante en tu navegador; los precios del catálogo, cada hora.",
+   "generico": "Watchlists: tus listas de activos, guardadas en tu navegador."
+  },
+  {
+   "id": "regimen",
+   "titulo": "Régimen macro",
+   "pregunta": "¿En qué momento de la economía estamos: crece, se frena, sube o baja la inflación?",
+   "diez": "Lee el cuadrante y los semáforos de cada dimensión; si hay contradicciones, vienen listadas debajo.",
+   "frecuencia": "Se recalcula cada hora; los datos mensuales solo cambian cuando se publican.",
+   "generico": "Régimen macro: el mapa de la situación económica y financiera."
+  },
+  {
+   "id": "ciclo",
+   "titulo": "Ciclo y crédito EE. UU.",
+   "pregunta": "¿Hay señales de que la economía de EE. UU. se acerca a una recesión?",
+   "diez": "Cuenta cuántas señales están encendidas y mira si los diferenciales de crédito suben.",
+   "frecuencia": "Una vez al día (05:30 UTC).",
+   "generico": "Ciclo y crédito: las señales adelantadas de recesión y el estrés en el crédito."
+  },
+  {
+   "id": "bancos",
+   "titulo": "Bancos centrales",
+   "pregunta": "¿Qué tipos de interés espera el mercado para la Fed en las próximas reuniones?",
+   "diez": "Mira la próxima reunión: ¿qué porcentaje apuesta a subida, mantener o bajada? Compara con el día anterior.",
+   "frecuencia": "Cada hora en días laborables.",
+   "generico": "Bancos centrales: tipos oficiales y probabilidades de cada reunión (FedWatch)."
+  },
+  {
+   "id": "mapa",
+   "titulo": "Bancos centrales del mundo",
+   "pregunta": "¿Los bancos centrales del mundo están subiendo o bajando tipos?",
+   "diez": "Mira el contador de 12 meses: cuántos suben, cuántos bajan y cuántos no cambian.",
+   "frecuencia": "Una vez al día (cierre de EE. UU., 21:30 UTC).",
+   "generico": "Bancos centrales del mundo: 38 bancos, su tipo y su último movimiento."
+  },
+  {
+   "id": "agenda",
+   "titulo": "Agenda",
+   "pregunta": "¿Qué se publica hoy y esta semana, y a qué hora?",
+   "diez": "Busca los eventos con importancia ALTA: son los que mueven el mercado. La hora va en Madrid y en Nueva York.",
+   "frecuencia": "Cada hora; el Telegram de agenda sale a las 8:00 (Madrid) en días laborables.",
+   "generico": "Agenda: eventos del día y de la semana con su importancia."
+  },
+  {
+   "id": "eventos",
+   "titulo": "Reacción a eventos",
+   "pregunta": "¿Cómo reaccionó el mercado a los últimos datos importantes?",
+   "diez": "Mira la última secuencia: cuánto se movió el bono a 2 años y si el movimiento se mantuvo o se deshizo.",
+   "frecuencia": "Cada 5 minutos en la franja 11-21 UTC cuando hay un dato; cierre y día siguiente al terminar.",
+   "generico": "Reacción a eventos: qué hicieron bonos, dólar, oro, Nasdaq y bitcoin tras cada dato."
+  },
+  {
+   "id": "tono",
+   "titulo": "Tono de bancos centrales",
+   "pregunta": "¿El lenguaje de la Fed, el BCE y el BoJ es más duro o más suave que de costumbre?",
+   "diez": "Mira el z-score: positivo = más duro de lo normal, negativo = más suave. Fíjate en el estado «secundario».",
+   "frecuencia": "Una vez al día.",
+   "generico": "Tono de bancos centrales: lectura de sus comunicados con un diccionario fijo."
+  },
+  {
+   "id": "liquidez",
+   "titulo": "Liquidez",
+   "pregunta": "¿Hay mucho o poco dinero circulando en el sistema financiero?",
+   "diez": "Lee la etiqueta (sin giro, señales iniciales, giro en curso) y cuántas condiciones del checklist se cumplen.",
+   "frecuencia": "Una vez al día (05:30 UTC).",
+   "generico": "Liquidez: balance de la Fed, TGA, reservas y condiciones financieras."
+  },
+  {
+   "id": "divisas",
+   "titulo": "Sesgo de divisas",
+   "pregunta": "¿Qué divisas están fuertes o débiles según la macro?",
+   "diez": "Busca las celdas verdes y rojas de la matriz y el total por divisa.",
+   "frecuencia": "Una vez al día.",
+   "generico": "Sesgo de divisas: ocho divisas puntuadas por factores macro."
+  },
+  {
+   "id": "posicionamiento",
+   "titulo": "Posicionamiento (COT)",
+   "pregunta": "¿Cómo están colocados los grandes fondos en futuros?",
+   "diez": "Mira el estado (largo o corto, elevado o extremo) y el percentil a 3 años.",
+   "frecuencia": "Semanal: la CFTC publica el viernes y NEXORA lo actualiza el sábado.",
+   "generico": "Posicionamiento: lo que tienen los fondos en futuros según la CFTC."
+  },
+  {
+   "id": "skew",
+   "titulo": "Riesgo de cola (SKEW)",
+   "pregunta": "¿Se está pagando mucho por protegerse de una caída fuerte de la bolsa?",
+   "diez": "Mira la zona relativa y cuántas confirmaciones hay encendidas; recuerda que casi siempre es falsa alarma.",
+   "frecuencia": "Cada hora; el dato nuevo sale tras el cierre de EE. UU.",
+   "generico": "Riesgo de cola: el SKEW de Cboe y su estudio histórico."
+  },
+  {
+   "id": "gamma",
+   "titulo": "Gamma de índices",
+   "pregunta": "¿Las opciones van a frenar o a acelerar los movimientos del S&P y del Nasdaq?",
+   "diez": "Mira si la gamma es positiva (frena) o negativa (acelera) y dónde están el Gamma Flip y los muros.",
+   "frecuencia": "Una vez al día, al cierre de EE. UU. (21:30 UTC).",
+   "generico": "Gamma de índices: niveles de opciones que influyen en el movimiento."
+  },
+  {
+   "id": "semis",
+   "titulo": "Semis vs Software",
+   "pregunta": "¿El dinero está yendo a chips o a software dentro de la tecnología?",
+   "diez": "Lee el escenario de hoy y la tendencia del ratio semis/software.",
+   "frecuencia": "Una vez al día, al cierre de EE. UU.",
+   "generico": "Semis vs Software: el reparto del dinero dentro del Nasdaq."
+  },
+  {
+   "id": "oro",
+   "titulo": "Oro, reservas y flujos",
+   "pregunta": "¿Qué empuja al oro: el dólar, los tipos reales o los flujos de los fondos?",
+   "diez": "Mira el tipo real a 10 años (si baja, ayuda al oro) y el dólar (si baja, ayuda).",
+   "frecuencia": "Precios cada hora; señales completas una vez al día.",
+   "generico": "Oro: sus motores y su relación con tipos reales y dólar."
+  },
+  {
+   "id": "indices",
+   "titulo": "Índices USA",
+   "pregunta": "¿Cómo de sana está la bolsa de EE. UU. por dentro?",
+   "diez": "Mira la amplitud (cuántas acciones suben), el VIX y el MOVE: si todo está tranquilo o hay tensión.",
+   "frecuencia": "Precios cada hora; señales completas una vez al día.",
+   "generico": "Índices USA: amplitud, beneficios y volatilidad."
+  },
+  {
+   "id": "cripto",
+   "titulo": "Cripto",
+   "pregunta": "¿Qué mueve al bitcoin: la liquidez, los ETF o el apalancamiento?",
+   "diez": "Mira los flujos de los ETF, el funding y si la liquidez macro acompaña.",
+   "frecuencia": "Precios cada hora; señales completas una vez al día.",
+   "generico": "Cripto: bitcoin, ETF, stablecoins y funding."
+  },
+  {
+   "id": "marcador",
+   "titulo": "Marcador de señales",
+   "pregunta": "¿Cuántas veces ha acertado el sistema, comparado con el azar?",
+   "diez": "Mira el % de acierto frente a la tasa base y la etiqueta de fiabilidad. Con n < 20, no concluyas.",
+   "frecuencia": "Registra cada hora y mide los resultados al cierre y en el diario.",
+   "generico": "Marcador: acierto de cada tipo de señal a 1, 5 y 20 sesiones."
+  },
+  {
+   "id": "noticias",
+   "titulo": "Noticias de bancos centrales",
+   "pregunta": "¿Qué han publicado hoy los bancos centrales?",
+   "diez": "Lee el titular, la fecha y el orador; el enlace lleva al texto oficial.",
+   "frecuencia": "Cada hora.",
+   "generico": "Noticias: titulares oficiales de la Fed, el BCE y el BoJ (solo titular y enlace)."
+  },
+  {
+   "id": "calendario",
+   "titulo": "Calendario económico",
+   "pregunta": "¿Qué datos se publican las próximas semanas?",
+   "diez": "Mira fecha, hora de Madrid e importancia; los de importancia ALTA son los que más mueven.",
+   "frecuencia": "Cada hora.",
+   "generico": "Calendario: publicaciones previstas con su hora."
+  },
+  {
+   "id": "publicados",
+   "titulo": "Datos publicados",
+   "pregunta": "¿Qué datos salieron y se han revisado?",
+   "diez": "Compara el valor nuevo con el anterior y mira si hay revisión (original → revisado).",
+   "frecuencia": "Cada hora (el dato aparece cuando se publica).",
+   "generico": "Datos publicados: últimas cifras y sus revisiones."
+  },
+  {
+   "id": "tesis",
+   "titulo": "Registro de tesis",
+   "pregunta": "¿Qué dijo la tesis cada día y qué pasó después?",
+   "diez": "Mira el acierto por activo y horizonte y la matriz diaria de tesis.",
+   "frecuencia": "Cada hora se guarda el día; el resultado se rellena cuando hay sesiones suficientes.",
+   "generico": "Registro de tesis: histórico de tesis y su resultado."
+  },
+  {
+   "id": "diario",
+   "titulo": "Diario de operaciones",
+   "pregunta": "¿Cómo me va y qué decía el sistema cuando entré?",
+   "diez": "Anota hora, activo, lado y resultado. La foto del sistema se adjunta sola.",
+   "frecuencia": "Al instante, en tu navegador (y en tu repo privado si lo conectas).",
+   "generico": "Diario: tus operaciones con la foto del sistema."
+  },
+  {
+   "id": "operativa",
+   "titulo": "Mi operativa",
+   "pregunta": "¿Gano más cuando voy a favor de la tesis o cuando voy en contra?",
+   "diez": "Compara los grupos y fíjate en la fiabilidad: con n < 20 no cuenta. Solo se ve con el Diario conectado.",
+   "frecuencia": "Al abrirla, con todos tus meses.",
+   "generico": "Mi operativa: tus resultados agrupados por tesis, régimen y eventos."
+  }
+ ],
+ "bloques": {
+  "activos": [
+   "Una tarjeta por activo con su último precio y su cambio.",
+   "Mira el cambio del día y de la semana; el color indica la dirección, no si es bueno o malo para ti.",
+   "Es el punto de partida: ves cada activo sin tener que ir a otra página."
+  ],
+  "contradicciones": [
+   "Casos en los que dos lecturas del sistema se oponen.",
+   "Si aparece una, no te fíes de un solo indicador: lee las dos.",
+   "Una contradicción suele avisar de que el mercado está dividido."
+  ],
+  "panel de mercado": [
+   "Los grandes indicadores del día: tipos, dólar, volatilidad y crédito.",
+   "Compara el valor con su cambio reciente.",
+   "Resume el entorno en un vistazo antes de bajar al detalle."
+  ],
+  "tesis por activo": [
+   "La tesis resume si el contexto macro ayuda al activo: alcista, bajista, débil o sin tesis.",
+   "Mira la etiqueta y si el «viento de la semana» está a favor o en contra; «sin tesis» no es una opinión, es falta de señal clara.",
+   "Evita decidir por una sola cifra: junta varios motores en una etiqueta."
+  ],
+  "motores macro": [
+   "Los datos que más empujan a los activos (tipo real, dólar, volatilidad…).",
+   "Una flecha arriba o abajo indica cómo se mueve cada uno.",
+   "Explican por qué cambia la tesis."
+  ],
+  "próximos eventos": [
+   "Los siguientes datos o decisiones importantes.",
+   "Mira la fecha y la hora de Madrid.",
+   "Son los momentos en que el mercado puede moverse más."
+  ],
+  "alertas telegram": [
+   "Las últimas alertas que el sistema envió a Telegram.",
+   "Cada alerta dice qué cambió, qué significa y qué vigilar.",
+   "Así sabes qué te avisó el sistema aunque no mirases el móvil."
+  ],
+  "en palabras sencillas": [
+   "Una explicación corta, sin jerga, de lo que pasa hoy.",
+   "Léela primero si eres nuevo.",
+   "Te da el sentido general antes de entrar en las cifras."
+  ],
+  "bono a 2 años frente al tipo real": [
+   "Compara lo que rinde el bono a 2 años con el tipo real a 10 años.",
+   "Si las dos líneas suben, el dinero se encarece.",
+   "Dinero más caro suele pesar sobre bolsa y oro."
+  ],
+  "principal": [
+   "Tu lista principal de activos.",
+   "Añade y quita activos con los botones.",
+   "Te ahorra buscar lo que sigues cada día."
+  ],
+  "macro y tipos": [
+   "Una lista con indicadores macro y tipos.",
+   "Mira precio y cambio.",
+   "Son los datos que más condicionan al resto."
+  ],
+  "mapa de régimen": [
+   "Un panel con las dimensiones de la economía: crecimiento, inflación, empleo, liquidez, crédito y más.",
+   "Cada fila tiene un semáforo y la evidencia que lo sustenta.",
+   "Sirve para ver de un vistazo qué parte de la economía está bien y cuál mal."
+  ],
+  "los tres monitores": [
+   "Tres lecturas independientes (oro, índices y liquidez cripto) que se comparan.",
+   "Si coinciden, la señal es más sólida.",
+   "Evita fiarse de un solo punto de vista."
+  ],
+  "motor común": [
+   "El factor que más mueve a varios activos a la vez.",
+   "Si hay uno dominante, explica gran parte de lo que pasa.",
+   "Ayuda a entender por qué todo se mueve junto."
+  ],
+  "patrones cross-asset": [
+   "Patrones repetidos entre activos distintos en el último mes.",
+   "Mira si encajan con el régimen.",
+   "Una combinación rara puede avisar de cambios."
+  ],
+  "preguntas clave": [
+   "Respuestas cortas a las dudas más comunes del régimen.",
+   "Léelas como guía rápida.",
+   "Ordenan la lectura sin entrar en cada cifra."
+  ],
+  "las señales": [
+   "Las señales adelantadas de recesión y si están encendidas o apagadas.",
+   "Cuantas más encendidas, más riesgo.",
+   "La recesión se detecta mejor mirando muchas señales a la vez."
+  ],
+  "diferenciales de crédito": [
+   "Lo que pagan de más las empresas por pedir prestado frente al Tesoro.",
+   "Si suben, el crédito se tensa.",
+   "El crédito suele avisar antes que la bolsa."
+  ],
+  "gráficos": [
+   "Los gráficos principales de la página.",
+   "Pasa el cursor para ver el valor de cada día.",
+   "Ver la evolución evita juzgar por un solo punto."
+  ],
+  "reglas y fuentes": [
+   "Las reglas exactas y las fuentes de cada señal.",
+   "Léelas para saber cómo se calcula cada cosa.",
+   "La transparencia permite comprobar que nada está inventado."
+  ],
+  "grado de inversión y bbb": [
+   "El sobrecoste de las empresas más sólidas (IG) y del escalón más bajo (BBB).",
+   "Una subida indica que hasta las buenas pagan más.",
+   "Es un termómetro del miedo del crédito."
+  ],
+  "high yield y ccc": [
+   "El sobrecoste de las empresas más arriesgadas.",
+   "Si sube mucho, hay estrés.",
+   "Las empresas frágiles son las primeras en sufrir."
+  ],
+  "probabilidad de recesión": [
+   "La probabilidad de recesión que sugiere la curva de tipos (modelo de la Fed de Nueva York).",
+   "Cuanto mayor el porcentaje, más riesgo a 12 meses.",
+   "Es un aviso, no una fecha."
+  ],
+  "prima de bono en exceso": [
+   "La parte del crédito que no explica el riesgo normal de impago (EBP).",
+   "Si sube, los inversores tienen más miedo del habitual.",
+   "Anticipa recesiones mejor que algunos datos."
+  ],
+  "curva de tipos 10y": [
+   "La diferencia entre el tipo a 10 años y el de 3 meses.",
+   "Negativa (invertida) suele preceder a recesiones.",
+   "Es uno de los avisos de recesión más vigilados."
+  ],
+  "condiciones financieras": [
+   "El índice NFCI mide si el dinero está más fácil o más difícil que lo normal.",
+   "Positivo = más difícil; negativo = más fácil.",
+   "Condiciones duras frenan la economía."
+  ],
+  "tipos oficiales y calendario": [
+   "Los tipos de la Fed, el BCE y el BoJ con su próxima reunión.",
+   "Mira la cuenta atrás.",
+   "Las reuniones son los grandes días del mercado."
+  ],
+  "fedwatch": [
+   "Las probabilidades que descuenta el mercado para cada reunión de la Fed.",
+   "Cada barra es la probabilidad de subida, mantener o bajada.",
+   "Si cambian mucho, el mercado reevalúa a la Fed."
+  ],
+  "tipos oficiales · histórico": [
+   "La evolución de los tipos oficiales.",
+   "Mira la tendencia.",
+   "Da perspectiva a las decisiones actuales."
+  ],
+  "qué espera el mercado": [
+   "Lo que espera el mercado reunión a reunión.",
+   "Barras más altas = más probabilidad.",
+   "Es lo que los precios ya reflejan."
+  ],
+  "tipo esperado tras cada reunión": [
+   "El tipo que el mercado espera después de cada reunión.",
+   "Compáralo con el tipo actual.",
+   "Una curva ascendente indica subidas esperadas."
+  ],
+  "probabilidad de subida": [
+   "La probabilidad de subida de la próxima reunión a lo largo del tiempo.",
+   "Mira si sube o baja.",
+   "Un salto grande cambia el viento para todo."
+  ],
+  "contador global": [
+   "Cuántos bancos centrales suben, bajan o no cambian tipos en 12 meses.",
+   "Más bajadas = relajación global.",
+   "Los bancos suelen moverse en bloque."
+  ],
+  "mapa": [
+   "Un mapa del mundo con el color de cada banco central.",
+   "Pasa el cursor o pulsa un país.",
+   "Ves de un vistazo dónde se endurece o relaja la política."
+  ],
+  "próximas reuniones": [
+   "Las próximas reuniones de los bancos centrales.",
+   "Mira fecha y banco.",
+   "Son los momentos de decisión."
+  ],
+  "los 38 bancos centrales": [
+   "La tabla con los 38 bancos: tipo, último movimiento y datos clave.",
+   "Ordena por la columna que quieras.",
+   "Permite comparar países."
+  ],
+  "histórico de los 8 grandes": [
+   "Los tipos de los ocho bancos centrales principales desde 2010.",
+   "Mira cuándo giraron.",
+   "Muestra el ciclo global de tipos."
+  ],
+  "señales vivas": [
+   "Señales emitidas por el sistema en su momento.",
+   "Mira el % de acierto frente al azar.",
+   "Es el marcador que cuenta; lo reconstruido no se mezcla."
+  ],
+  "señales reconstruidas": [
+   "Señales del pasado reconstruidas a partir de datos guardados.",
+   "Úsalas como contexto, no como prueba.",
+   "No es lo mismo acertar en vivo que reconstruir el pasado."
+  ],
+  "últimas señales": [
+   "La lista de las señales más recientes con su resultado.",
+   "Mira si cada horizonte se cumplió.",
+   "Ves el detalle detrás de las cifras."
+  ],
+  "reglas del marcador": [
+   "Cómo se define cada señal y cómo se mide.",
+   "Léelas antes de interpretar.",
+   "Fijar las reglas antes evita ajustar los resultados después."
+  ],
+  "hoy": [
+   "Lo que se publica hoy.",
+   "Fíjate en importancia y hora.",
+   "Evita sorpresas."
+  ],
+  "próximos 7 días": [
+   "Lo que se publica en los próximos días.",
+   "Marca los de importancia ALTA.",
+   "Te deja preparar la semana."
+  ],
+  "importancia por tipo de evento": [
+   "La importancia fija que NEXORA asigna a cada tipo de dato.",
+   "ALTA mueve el mercado, MEDIA y BAJA menos.",
+   "Se fija antes del dato y no cambia con el resultado."
+  ],
+  "salud de los workflows": [
+   "El estado de las tareas automáticas que actualizan la web.",
+   "Verde = ejecutó lo esperado.",
+   "Si algo falla, los datos podrían estar viejos."
+  ],
+  "último evento": [
+   "La secuencia de movimientos tras el último dato.",
+   "Mira T-5, T+5, T+60: minutos antes y después.",
+   "Muestra si el primer movimiento se mantiene o se deshace."
+  ],
+  "histórico · qué clasificación": [
+   "Cuántas veces cada primera lectura terminó imponiéndose.",
+   "Compara T+5 con el cierre.",
+   "Dice si fiarte del primer movimiento."
+  ],
+  "regla de giro v3": [
+   "La regla que detecta cuando el movimiento inicial se deshace.",
+   "SE CONFIRMA = sigue; INVERSIÓN = se gira.",
+   "Está congelada para no ajustarla a los datos."
+  ],
+  "reglas de clasificación": [
+   "Cómo se clasifica la reacción.",
+   "Cada clase tiene su condición.",
+   "Se publican para poder comprobarlas."
+  ],
+  "último comunicado": [
+   "La última comunicación de política monetaria y su tono.",
+   "Positivo = más duro de lo habitual.",
+   "El tono puede adelantar movimientos."
+  ],
+  "z-score del tono": [
+   "El tono medido frente a su media de dos años.",
+   "Cuanto más lejos del 0, más inusual.",
+   "Un cambio brusco es más informativo."
+  ],
+  "validación": [
+   "Si el cambio de tono acierta más que el azar.",
+   "Si p es alto, no es distinguible del azar.",
+   "Por eso el bloque es «secundario»."
+  ],
+  "discursos por orador": [
+   "El tono de cada orador.",
+   "Compara oradores.",
+   "Algunos suelen ser más duros."
+  ],
+  "discursos recientes": [
+   "La lista de discursos recientes.",
+   "Abre el enlace oficial.",
+   "Los discursos pueden mover los mercados."
+  ],
+  "diccionario publicado": [
+   "Las palabras que usa NEXORA para medir el tono.",
+   "Se pueden revisar.",
+   "Sin caja negra: todo es comprobable."
+  ],
+  "balance y liquidez": [
+   "La liquidez neta de la Fed: balance menos TGA y reservas de otros.",
+   "Si sube, entra dinero al sistema.",
+   "Más dinero suele ayudar a oro, bolsa y cripto."
+  ],
+  "tipos a un día y repos": [
+   "Los tipos a un día (SOFR) y los repos inversos.",
+   "Fíjate en la diferencia SOFR − EFFR.",
+   "Muestra si hay tensión en la financiación."
+  ],
+  "checklist de liquidez": [
+   "Ocho condiciones para detectar el giro de la liquidez.",
+   "Cuantas más cumplidas, más claro el giro.",
+   "Reduce el riesgo de fiarte de un solo dato."
+  ],
+  "indicadores": [
+   "Los indicadores de liquidez uno por uno.",
+   "Mira su cambio reciente.",
+   "Cada uno explica una pieza del puzle."
+  ],
+  "contexto global": [
+   "La liquidez de los grandes bancos centrales y su balance.",
+   "Mira si se expande o contrae.",
+   "La liquidez global condiciona a todos los activos."
+  ],
+  "matriz de factores": [
+   "La tabla de las divisas con cada factor (tipos, inflación, crecimiento…).",
+   "Verde = ayuda a la divisa; rojo = pesa.",
+   "Suma de factores = sesgo total."
+  ],
+  "reglas de cada factor": [
+   "Cómo se puntúa cada factor.",
+   "Todo está documentado.",
+   "Puedes comprobar cada celda."
+  ],
+  "posicionamiento por mercado": [
+   "Cuánto tienen largo o corto los fondos en cada mercado.",
+   "Mira el percentil a 3 años: 90+ = muy largo, 10− = muy corto.",
+   "Posiciones extremas pueden revertir."
+  ],
+  "neto histórico": [
+   "La evolución del neto de los fondos.",
+   "Mira si llega a extremos.",
+   "Da perspectiva histórica."
+  ],
+  "lectura actual": [
+   "La lectura de hoy del SKEW y sus confirmaciones.",
+   "Mira la zona y cuántas confirmaciones hay.",
+   "Un SKEW alto no es una predicción."
+  ],
+  "skew y s&p 500": [
+   "El SKEW junto al S&P 500.",
+   "Mira si el SKEW sube mientras la bolsa sube.",
+   "Es cobertura sin miedo generalizado."
+  ],
+  "estudio histórico propio": [
+   "Qué pasó tras cada episodio de SKEW alto.",
+   "Mira cuántas veces fue falsa alarma.",
+   "Evita sobrerreaccionar."
+  ],
+  "zona relativa frente a zona fija": [
+   "Compara dos formas de definir «SKEW alto».",
+   "La relativa se adapta a los últimos años.",
+   "El umbral fijo se queda desfasado."
+  ],
+  "episodios": [
+   "Los periodos de SKEW alto.",
+   "Mira cuánto duraron.",
+   "Dan contexto histórico."
+  ],
+  "el umbral de 140": [
+   "Por qué el umbral de 140 pierde significado.",
+   "El nivel normal del SKEW ha subido.",
+   "Por eso NEXORA usa una zona relativa."
+  ],
+  "s&p 500 → futuro es": [
+   "Los niveles de opciones del S&P 500 traducidos al futuro ES.",
+   "Mira Call Wall, Put Wall y Gamma Flip.",
+   "El precio suele chocar con esos niveles."
+  ],
+  "nasdaq-100 → futuro nq": [
+   "Los niveles de opciones del Nasdaq-100 traducidos al futuro NQ.",
+   "Mira Call Wall, Put Wall y Gamma Flip.",
+   "Ayudan a entender frenos y aceleraciones."
+  ],
+  "cómo reaccionó el futuro": [
+   "Cómo se movió el futuro cerca de cada nivel.",
+   "Mira si los niveles actuaron de freno.",
+   "Pone a prueba la utilidad de esos niveles."
+  ],
+  "método": [
+   "Cómo se calculan estos niveles.",
+   "Lee los supuestos.",
+   "Es un criterio propio, no un dato oficial."
+  ],
+  "gex por nivel": [
+   "La exposición gamma de cada nivel de precio.",
+   "Barras altas = niveles importantes.",
+   "Sirve para localizar muros."
+  ],
+  "gex neto según el precio": [
+   "La gamma neta total según dónde esté el precio.",
+   "El cruce por cero es el Gamma Flip.",
+   "Por encima o debajo cambia el comportamiento."
+  ],
+  "estado": [
+   "El estado actual de la página.",
+   "Léelo primero.",
+   "Resume el contexto."
+  ],
+  "ratio smh/igv": [
+   "El cociente entre el ETF de chips y el de software.",
+   "Sube = lideran los chips.",
+   "Muestra rotaciones dentro de tecnología."
+  ],
+  "impacto relativo": [
+   "Cuánto del movimiento del Nasdaq, S&P y Dow se explica por chips y software.",
+   "Mira R² alto = explicación buena.",
+   "Dice qué mueve a cada índice."
+  ],
+  "grandes del nasdaq": [
+   "Las empresas más grandes del Nasdaq.",
+   "Mira su peso y cambio.",
+   "Pocas empresas explican gran parte del índice."
+  ],
+  "reglas": [
+   "Las reglas de esta página.",
+   "Léelas.",
+   "La transparencia permite comprobar."
+  ],
+  "peso en el nasdaq-100": [
+   "Qué parte del Nasdaq-100 pesa cada grupo.",
+   "Un peso alto concentra riesgo.",
+   "Dice cuánto depende el índice de pocas empresas."
+  ],
+  "oro y sus motores": [
+   "El oro y los datos que más lo mueven.",
+   "Mira qué motores están a favor y en contra.",
+   "El oro no paga interés: lo mueven dólar y tipos reales."
+  ],
+  "panel de señales": [
+   "Una tabla de señales con su dirección y estado.",
+   "Lee la columna «Lectura».",
+   "Reúne varias pistas en un sitio."
+  ],
+  "relaciones entre datos": [
+   "Comparaciones entre datos que suelen ir juntos.",
+   "Mira si se cumplen.",
+   "Si no se cumplen, hay algo raro."
+  ],
+  "pasos de la guía": [
+   "Los pasos de la guía de oro.",
+   "Comprueba cada uno.",
+   "Ordena la lectura."
+  ],
+  "las diez preguntas": [
+   "Diez preguntas típicas y su respuesta con datos actuales.",
+   "Léelas como guía.",
+   "Te ayudan a no olvidar nada."
+  ],
+  "oro y sus medias": [
+   "El oro frente a sus medias de 50 y 200 sesiones.",
+   "Por encima = tendencia alcista.",
+   "Las medias suavizan el ruido."
+  ],
+  "oro frente al tipo real": [
+   "El oro frente al tipo real a 10 años.",
+   "Suelen ir en sentido contrario.",
+   "Es la relación más estudiada del oro."
+  ],
+  "oro frente al dólar": [
+   "El oro frente al índice del dólar.",
+   "Suelen ir en sentido contrario.",
+   "Un dólar fuerte encarece el oro para el resto."
+  ],
+  "etf gld": [
+   "Las toneladas que guarda el ETF GLD.",
+   "Subida = entra dinero.",
+   "Muestra demanda de inversores."
+  ],
+  "rendimientos del tesoro": [
+   "Lo que rinden los bonos a 2 y 10 años y el tipo real.",
+   "Mira la dirección.",
+   "Dinero caro presiona a oro y bolsa."
+  ],
+  "rendimiento del oro por plazo": [
+   "Lo que ha subido o bajado el oro en distintos plazos.",
+   "Compara plazos.",
+   "Da perspectiva."
+  ],
+  "curva del tesoro": [
+   "La curva de rendimientos del Tesoro a distintos plazos.",
+   "Invertida = corto cobra más que largo.",
+   "Es un aviso clásico de recesión."
+  ],
+  "los cuatro índices": [
+   "Los cuatro grandes índices de EE. UU.",
+   "Compara cuál lidera.",
+   "Si solo sube uno, hay menos amplitud."
+  ],
+  "nasdaq 100 frente al tipo real": [
+   "El Nasdaq frente al tipo real a 10 años.",
+   "Tipos reales al alza suelen pesar.",
+   "La tecnología es sensible a los tipos."
+  ],
+  "vix y vix a 3 meses": [
+   "El VIX mide el miedo a corto plazo; el de 3 meses, a más largo.",
+   "VIX/VIX3M por encima de 1 = estrés.",
+   "Es el termómetro del miedo."
+  ],
+  "move": [
+   "El MOVE es el VIX de los bonos del Tesoro.",
+   "Alto = bonos nerviosos.",
+   "La volatilidad de bonos suele contagiar a la bolsa."
+  ],
+  "consumo discrecional": [
+   "El cociente entre consumo discrecional y básico (XLY/XLP).",
+   "Sube = apetito por riesgo.",
+   "Los consumidores confiados gastan en lo no esencial."
+  ],
+  "quién lidera": [
+   "Si lideran las pequeñas o las grandes empresas.",
+   "Russell por encima = más apetito por riesgo.",
+   "Un mercado sano se mueve en amplitud."
+  ],
+  "fuerza relativa": [
+   "Cuánto más sube o baja un grupo frente a otro.",
+   "Mira el signo.",
+   "Muestra rotaciones."
+  ],
+  "mercado cripto": [
+   "El bitcoin y sus indicadores.",
+   "Mira liquidez y flujos.",
+   "Cripto es sensible a la liquidez."
+  ],
+  "criptomonedas principales": [
+   "Las criptomonedas principales con su cambio.",
+   "Compara.",
+   "Si solo sube bitcoin, el apetito es limitado."
+  ],
+  "indicadores de liquidez que mueven": [
+   "Los datos de liquidez que más afectan al bitcoin.",
+   "Mira si acompañan.",
+   "Sin liquidez, los rallies son menos fiables."
+  ],
+  "bitcoin y su media": [
+   "El bitcoin frente a su media de 50 sesiones.",
+   "Por encima = tendencia alcista.",
+   "La media suaviza el ruido."
+  ],
+  "eth/btc": [
+   "El ether medido en bitcoin.",
+   "Sube = más apetito por riesgo.",
+   "Mide la tolerancia al riesgo dentro de cripto."
+  ],
+  "stablecoins": [
+   "La cantidad de monedas estables en circulación.",
+   "Subida = entra dinero a cripto.",
+   "Es la «pólvora» disponible."
+  ],
+  "flujos diarios de los etf": [
+   "Cuánto dinero entra o sale cada día de los ETF.",
+   "Verde = entra; rojo = sale.",
+   "Es demanda institucional."
+  ],
+  "funding y volatilidad": [
+   "El funding y la volatilidad implícita en cripto.",
+   "Funding alto = exceso de apalancamiento.",
+   "Mucho apalancamiento facilita caídas bruscas."
+  ],
+  "titulares": [
+   "Los titulares oficiales de los bancos centrales.",
+   "Pulsa el enlace para leer el original.",
+   "Solo titular y enlace: sin resúmenes automáticos."
+  ],
+  "estado de las fuentes": [
+   "Si las fuentes funcionan.",
+   "Rojo = falló.",
+   "Evita fiarte de datos viejos."
+  ],
+  "últimos datos de referencia": [
+   "Los últimos datos que han salido.",
+   "Compara con el anterior.",
+   "Son la base del mapa."
+  ],
+  "revisiones detectadas": [
+   "Datos cuyo valor cambió después de publicarse.",
+   "Mira el original → revisado.",
+   "Una revisión puede cambiar la lectura."
+  ],
+  "series": [
+   "Cada serie con su valor, periodo y fecha de publicación.",
+   "Distingue periodo y publicación.",
+   "El periodo del dato no es la fecha en que salió."
+  ],
+  "operaciones del mes": [
+   "La lista de tus operaciones del mes.",
+   "Pulsa ✎ para editar.",
+   "Revisa con calma."
+  ],
+  "curva de p&l": [
+   "La suma de tus resultados a lo largo del tiempo.",
+   "Mira la pendiente.",
+   "Una curva suave vale más que un pico."
+  ],
+  "p&l diario del mes": [
+   "El resultado de cada día.",
+   "Verde = ganador; rojo = perdedor.",
+   "Mira la dispersión."
+  ],
+  "calendario ·": [
+   "El calendario mensual con tu P&L.",
+   "Pulsa un día para ver y añadir.",
+   "Los patrones se ven mejor en calendario."
+  ],
+  "acierto por activo": [
+   "Cuántas tesis acertaron por activo y horizonte.",
+   "Compara con el azar.",
+   "Con n bajo, no concluyas."
+  ],
+  "matriz de tesis": [
+   "La tesis de cada activo cada día.",
+   "Mira los cambios.",
+   "Muestra la evolución del contexto."
+  ],
+  "histórico": [
+   "El histórico de lo guardado.",
+   "Busca patrones.",
+   "Sirve para evaluar."
+  ],
+  "frente a la tesis nexora": [
+   "Tus resultados según fueras a favor o en contra de la tesis del activo.",
+   "Compara los grupos; con n < 20 no cuentan.",
+   "Te dice si seguir la tesis te ha ayudado."
+  ],
+  "por régimen macro": [
+   "Tus resultados según el régimen de ese momento.",
+   "Mira la fiabilidad.",
+   "Quizá operas mejor en ciertos entornos."
+  ],
+  "con y sin evento cercano": [
+   "Tus resultados con y sin un dato importante cerca.",
+   "Compara.",
+   "Los datos añaden ruido."
+  ],
+  "por activo": [
+   "Tus resultados por activo.",
+   "Compara.",
+   "Quizá dominas más unos que otros."
+  ],
+  "oro": [
+   "El metal refugio: no paga interés, así que lo mueven el dólar, los tipos reales y los flujos de los fondos.",
+   "Mira su cambio y la etiqueta de tesis; si el dólar y el tipo real bajan, suele ayudarle.",
+   "Es el activo que mejor refleja el miedo y el coste del dinero."
+  ],
+  "oro (futuros comex)": [
+   "El metal refugio: no paga interés, así que lo mueven el dólar, los tipos reales y los flujos de los fondos.",
+   "Mira su cambio y la etiqueta de tesis; si el dólar y el tipo real bajan, suele ayudarle.",
+   "Es el activo que mejor refleja el miedo y el coste del dinero."
+  ],
+  "bitcoin": [
+   "La criptomoneda más grande; reacciona a la liquidez, a los ETF y al apalancamiento.",
+   "Mira cambio, flujos de ETF y si la liquidez macro acompaña.",
+   "Sin liquidez que lo respalde, sus subidas son menos fiables."
+  ],
+  "nasdaq 100": [
+   "El índice de las 100 grandes tecnológicas y de crecimiento de EE. UU.",
+   "Mira su cambio y su relación con el tipo real a 10 años.",
+   "Es muy sensible a los tipos: cuando suben, suele pesar."
+  ],
+  "nasdaq-100": [
+   "El índice de las 100 grandes tecnológicas y de crecimiento de EE. UU.",
+   "Mira su cambio y su relación con el tipo real a 10 años.",
+   "Es muy sensible a los tipos: cuando suben, suele pesar."
+  ],
+  "s&p 500": [
+   "El índice de las 500 mayores empresas de EE. UU.; el termómetro de la bolsa.",
+   "Mira su cambio, la amplitud y el VIX.",
+   "Resume el ánimo general de los inversores."
+  ],
+  "us30": [
+   "El Dow Jones: 30 grandes empresas industriales y de consumo.",
+   "Mira su cambio frente al Nasdaq.",
+   "Si lidera el Dow, el mercado es más defensivo."
+  ],
+  "russell 2000": [
+   "El índice de las pequeñas empresas de EE. UU.",
+   "Mira si sube más que el Nasdaq.",
+   "Las pequeñas dependen más del crédito y de la economía local."
+  ],
+  "ethereum": [
+   "Otro dato del mercado cripto.",
+   "Mira su cambio y compáralo con bitcoin.",
+   "Ayuda a ver si el apetito se extiende a más monedas."
+  ],
+  "solana": [
+   "Otro dato del mercado cripto.",
+   "Mira su cambio y compáralo con bitcoin.",
+   "Ayuda a ver si el apetito se extiende a más monedas."
+  ],
+  "mercado total": [
+   "Otro dato del mercado cripto.",
+   "Mira su cambio y compáralo con bitcoin.",
+   "Ayuda a ver si el apetito se extiende a más monedas."
+  ],
+  "eth / btc": [
+   "El ether medido en bitcoin.",
+   "Si sube, hay más apetito por riesgo dentro de cripto.",
+   "Mide la tolerancia al riesgo del sector."
+  ],
+  "dólar (dxy)": [
+   "El índice del dólar frente a las grandes divisas.",
+   "Si sube, suele pesar sobre oro, bolsa y cripto.",
+   "Un dólar fuerte endurece las condiciones financieras del mundo."
+  ],
+  "dólar": [
+   "El índice del dólar frente a las grandes divisas.",
+   "Si sube, suele pesar sobre oro, bolsa y cripto.",
+   "Un dólar fuerte endurece las condiciones financieras del mundo."
+  ],
+  "petróleo brent": [
+   "El precio de referencia del petróleo en Europa.",
+   "Si sube mucho, empuja la inflación.",
+   "La inflación condiciona a la Fed y a todos los activos."
+  ],
+  "inflación esperada": [
+   "La inflación que el mercado espera en 10 años (diferencia entre bono nominal y real).",
+   "Si sube, el tipo real baja.",
+   "Importa para el oro y los bonos."
+  ],
+  "euro": [
+   "El neto de los fondos en ese futuro de divisa.",
+   "Percentil alto = muy largo; bajo = muy corto.",
+   "Posiciones extremas pueden revertir."
+  ],
+  "yen japonés": [
+   "El neto de los fondos en ese futuro de divisa.",
+   "Percentil alto = muy largo; bajo = muy corto.",
+   "Posiciones extremas pueden revertir."
+  ],
+  "crecimiento": [
+   "Si la actividad económica acelera o frena.",
+   "Semáforo: verde = mejora, ámbar = estable, rojo = se debilita.",
+   "Sin crecimiento, bajan los beneficios."
+  ],
+  "inflación": [
+   "Si los precios suben más o menos deprisa.",
+   "Mira si desacelera o acelera.",
+   "Condiciona lo que hará la Fed."
+  ],
+  "empleo": [
+   "La salud del mercado laboral.",
+   "Mira nóminas, paro y peticiones.",
+   "Con empleo fuerte, la Fed puede mantener los tipos altos."
+  ],
+  "crédito": [
+   "Cuánto y a qué precio prestan los bancos y el mercado.",
+   "Si se endurece, hay menos dinero para la economía.",
+   "El crédito suele avisar antes que la bolsa."
+  ],
+  "política monetaria": [
+   "La postura de los bancos centrales: endurecen, relajan o esperan.",
+   "Mira lo que descuenta FedWatch.",
+   "Los tipos mueven a todos los activos."
+  ],
+  "fiscal": [
+   "Si el déficit del gobierno aumenta o se reduce.",
+   "Expansiva = inyecta dinero; restrictiva = lo retira.",
+   "Cambia la liquidez y el crecimiento."
+  ],
+  "cross-asset": [
+   "Si varios activos (bonos, dólar, oro, bolsa) se mueven de forma coherente.",
+   "Un patrón claro refuerza el régimen.",
+   "Sin patrón dominante, el mercado está dividido."
+  ],
+  "bancos endurecen": [
+   "Si los bancos piden más requisitos para prestar.",
+   "Encendido = crédito más difícil.",
+   "Un crédito más difícil frena la economía."
+  ],
+  "empleo temporal": [
+   "Un indicador adelantado de recesión.",
+   "Encendido cuando supera su umbral.",
+   "Varias señales encendidas a la vez aumentan el riesgo."
+  ],
+  "permisos de construcción": [
+   "Un indicador adelantado de recesión.",
+   "Encendido cuando supera su umbral.",
+   "Varias señales encendidas a la vez aumentan el riesgo."
+  ],
+  "peticiones de subsidio": [
+   "Un indicador adelantado de recesión.",
+   "Encendido cuando supera su umbral.",
+   "Varias señales encendidas a la vez aumentan el riesgo."
+  ],
+  "prima de riesgo de bonos corporativos": [
+   "El EBP: el sobrecoste del crédito no explicado por el riesgo normal.",
+   "Encendido si supera 0,5.",
+   "Anticipa tensión financiera."
+  ],
+  "regla de sahm": [
+   "Una regla que detecta el inicio de una recesión por el aumento del paro.",
+   "Encendida si el paro sube 0,5 puntos sobre su mínimo.",
+   "Ha acertado en todas las recesiones modernas."
+  ],
+  "suben tipos": [
+   "Cuántos bancos centrales hicieron ese movimiento en 12 meses.",
+   "Compara los tres contadores.",
+   "Si predominan las bajadas, la política global se relaja."
+  ],
+  "bajan tipos": [
+   "Cuántos bancos centrales hicieron ese movimiento en 12 meses.",
+   "Compara los tres contadores.",
+   "Si predominan las bajadas, la política global se relaja."
+  ],
+  "sin cambios": [
+   "Cuántos bancos centrales hicieron ese movimiento en 12 meses.",
+   "Compara los tres contadores.",
+   "Si predominan las bajadas, la política global se relaja."
+  ],
+  "liquidez global": [
+   "La suma de los balances de los grandes bancos centrales.",
+   "Si crece, entra dinero al mundo.",
+   "Más liquidez global suele ayudar a todos los activos de riesgo."
+  ],
+  "fed": [
+   "El tono de los comunicados de ese banco central frente a su media.",
+   "Positivo = más duro; negativo = más suave; «secundario» = no mejora al azar.",
+   "Un cambio de tono puede adelantar movimientos."
+  ],
+  "bce": [
+   "El tono de los comunicados de ese banco central frente a su media.",
+   "Positivo = más duro; negativo = más suave; «secundario» = no mejora al azar.",
+   "Un cambio de tono puede adelantar movimientos."
+  ],
+  "boj": [
+   "El tono de los comunicados de ese banco central frente a su media.",
+   "Positivo = más duro; negativo = más suave; «secundario» = no mejora al azar.",
+   "Un cambio de tono puede adelantar movimientos."
+  ],
+  "balance de la reserva federal": [
+   "El tamaño del balance de ese banco central.",
+   "Si crece, inyecta dinero; si baja, lo retira.",
+   "Es la base de la liquidez del sistema."
+  ],
+  "balance del bce": [
+   "El tamaño del balance de ese banco central.",
+   "Si crece, inyecta dinero; si baja, lo retira.",
+   "Es la base de la liquidez del sistema."
+  ],
+  "balance del banco de japón": [
+   "El tamaño del balance de ese banco central.",
+   "Si crece, inyecta dinero; si baja, lo retira.",
+   "Es la base de la liquidez del sistema."
+  ],
+  "repos inversos totales": [
+   "El total de repos inversos de la Fed (incluye la cuenta extranjera).",
+   "Distínguelos del ON RRP.",
+   "Muestra dónde está aparcado el dinero."
+  ],
+  "contexto del cálculo": [
+   "La suma de los factores de cada divisa y los datos usados.",
+   "Más puntos = más fuerte.",
+   "Resume el sesgo macro de cada moneda."
+  ],
+  "sesgo macro total": [
+   "La suma de los factores de cada divisa y los datos usados.",
+   "Más puntos = más fuerte.",
+   "Resume el sesgo macro de cada moneda."
+  ],
+  "crédito de riesgo": [
+   "Una de las confirmaciones del SKEW: si el crédito de riesgo se tensa.",
+   "Encendida = confirma el aviso.",
+   "Más confirmaciones, más peso."
+  ],
+  "dinero en fondos monetarios": [
+   "El dinero aparcado en fondos monetarios.",
+   "Si sube, los inversores se refugian.",
+   "Mide la cautela del mercado."
+  ],
+  "regla de la alerta": [
+   "Cuándo salta la alerta de Telegram del SKEW.",
+   "Se exige zona relativa alta y al menos 2 confirmaciones.",
+   "Evita avisos por cualquier subida."
+  ],
+  "sesiones en zona alta": [
+   "Cuántas sesiones por año estuvo el SKEW en zona alta.",
+   "Mira si es cada vez más frecuente.",
+   "Si siempre está alto, el umbral fijo pierde sentido."
+  ],
+  "¿cuántas fueron falsas alarmas": [
+   "Cuántas veces el SKEW alto no fue seguido de una caída fuerte.",
+   "Un porcentaje alto = casi siempre falsa alarma.",
+   "Evita sobrerreaccionar."
+  ],
+  "zona relativa ·": [
+   "Si el SKEW está alto frente a las últimas 500 sesiones.",
+   "ALTO = percentil 90 o más.",
+   "Se adapta al nivel reciente del mercado."
+  ],
+  "precio del futuro es": [
+   "El precio actual del futuro correspondiente.",
+   "Compáralo con los muros y el Gamma Flip.",
+   "Los niveles se miden contra este precio."
+  ],
+  "precio del futuro nq": [
+   "El precio actual del futuro correspondiente.",
+   "Compáralo con los muros y el Gamma Flip.",
+   "Los niveles se miden contra este precio."
+  ],
+  "escenario de 5 sesiones": [
+   "El escenario que describe el reparto entre chips y software.",
+   "Lee la etiqueta y la explicación.",
+   "Resume qué está pasando dentro de tecnología."
+  ],
+  "escenario de hoy": [
+   "El escenario que describe el reparto entre chips y software.",
+   "Lee la etiqueta y la explicación.",
+   "Resume qué está pasando dentro de tecnología."
+  ],
+  "ratio smh": [
+   "El cociente entre chips (SMH) y software (IGV) y su tendencia.",
+   "Sube = lideran los chips.",
+   "Dice dónde va el dinero dentro de tecnología."
+  ],
+  "tendencia del ratio": [
+   "El cociente entre chips (SMH) y software (IGV) y su tendencia.",
+   "Sube = lideran los chips.",
+   "Dice dónde va el dinero dentro de tecnología."
+  ],
+  "amplitud de la sesión anterior": [
+   "Cuántas acciones del índice suben frente a las que bajan.",
+   "Más subidas que bajadas = amplitud sana.",
+   "Un índice que sube con poca amplitud es frágil."
+  ],
+  "contexto adicional": [
+   "Datos extra para situar el mercado.",
+   "Léelos como apoyo.",
+   "Ayudan a interpretar el resto."
+  ],
+  "niveles de referencia": [
+   "Datos extra para situar el mercado.",
+   "Léelos como apoyo.",
+   "Ayudan a interpretar el resto."
+  ],
+  "derivados de bitcoin": [
+   "Datos de los futuros y opciones de bitcoin (interés abierto, funding).",
+   "Un interés abierto muy alto indica apalancamiento.",
+   "Mucho apalancamiento facilita caídas bruscas."
+  ],
+  "interés abierto": [
+   "Datos de los futuros y opciones de bitcoin (interés abierto, funding).",
+   "Un interés abierto muy alto indica apalancamiento.",
+   "Mucho apalancamiento facilita caídas bruscas."
+  ],
+  "empleo · nóminas": [
+   "Un dato del mercado laboral de EE. UU.",
+   "Compara con el anterior y mira revisiones.",
+   "El empleo condiciona a la Fed."
+  ],
+  "tasa de paro": [
+   "Un dato del mercado laboral de EE. UU.",
+   "Compara con el anterior y mira revisiones.",
+   "El empleo condiciona a la Fed."
+  ],
+  "peticiones semanales": [
+   "Un dato del mercado laboral de EE. UU.",
+   "Compara con el anterior y mira revisiones.",
+   "El empleo condiciona a la Fed."
+  ],
+  "ofertas de empleo": [
+   "Un dato del mercado laboral de EE. UU.",
+   "Compara con el anterior y mira revisiones.",
+   "El empleo condiciona a la Fed."
+  ],
+  "ipc ee. uu.": [
+   "Un dato de precios o inflación de EE. UU.",
+   "Compara con el anterior; el subyacente excluye energía y alimentos.",
+   "La inflación decide la política de la Fed."
+  ],
+  "ipc subyacente": [
+   "Un dato de precios o inflación de EE. UU.",
+   "Compara con el anterior; el subyacente excluye energía y alimentos.",
+   "La inflación decide la política de la Fed."
+  ],
+  "ipp ee. uu.": [
+   "Un dato de precios o inflación de EE. UU.",
+   "Compara con el anterior; el subyacente excluye energía y alimentos.",
+   "La inflación decide la política de la Fed."
+  ],
+  "gasto personal": [
+   "Un dato de precios o inflación de EE. UU.",
+   "Compara con el anterior; el subyacente excluye energía y alimentos.",
+   "La inflación decide la política de la Fed."
+  ],
+  "pce subyacente": [
+   "Un dato de precios o inflación de EE. UU.",
+   "Compara con el anterior; el subyacente excluye energía y alimentos.",
+   "La inflación decide la política de la Fed."
+  ],
+  "pib ee. uu.": [
+   "Un dato de actividad económica de EE. UU.",
+   "Compara con el anterior.",
+   "Marca si la economía crece o se frena."
+  ],
+  "producción industrial": [
+   "Un dato de actividad económica de EE. UU.",
+   "Compara con el anterior.",
+   "Marca si la economía crece o se frena."
+  ],
+  "ventas minoristas": [
+   "Un dato de actividad económica de EE. UU.",
+   "Compara con el anterior.",
+   "Marca si la economía crece o se frena."
+  ],
+  "acumulado": [
+   "Una estadística de tu diario.",
+   "Mira las cifras junto con el tamaño de ganadoras y perdedoras.",
+   "El win rate solo sirve junto al factor de beneficio."
+  ],
+  "factor de beneficio": [
+   "Una estadística de tu diario.",
+   "Mira las cifras junto con el tamaño de ganadoras y perdedoras.",
+   "El win rate solo sirve junto al factor de beneficio."
+  ],
+  "p&l del mes": [
+   "Una estadística de tu diario.",
+   "Mira las cifras junto con el tamaño de ganadoras y perdedoras.",
+   "El win rate solo sirve junto al factor de beneficio."
+  ],
+  "win rate": [
+   "Una estadística de tu diario.",
+   "Mira las cifras junto con el tamaño de ganadoras y perdedoras.",
+   "El win rate solo sirve junto al factor de beneficio."
+  ],
+  "lun ": [
+   "El día seleccionado de tu diario con sus operaciones y su nota.",
+   "Añade operaciones con su hora de entrada.",
+   "La hora permite adjuntar la foto del sistema."
+  ],
+  "mar ": [
+   "El día seleccionado de tu diario con sus operaciones y su nota.",
+   "Añade operaciones con su hora de entrada.",
+   "La hora permite adjuntar la foto del sistema."
+  ],
+  "mié ": [
+   "El día seleccionado de tu diario con sus operaciones y su nota.",
+   "Añade operaciones con su hora de entrada.",
+   "La hora permite adjuntar la foto del sistema."
+  ],
+  "jue ": [
+   "El día seleccionado de tu diario con sus operaciones y su nota.",
+   "Añade operaciones con su hora de entrada.",
+   "La hora permite adjuntar la foto del sistema."
+  ],
+  "vie ": [
+   "El día seleccionado de tu diario con sus operaciones y su nota.",
+   "Añade operaciones con su hora de entrada.",
+   "La hora permite adjuntar la foto del sistema."
+  ],
+  "sáb ": [
+   "El día seleccionado de tu diario con sus operaciones y su nota.",
+   "Añade operaciones con su hora de entrada.",
+   "La hora permite adjuntar la foto del sistema."
+  ],
+  "dom ": [
+   "El día seleccionado de tu diario con sus operaciones y su nota.",
+   "Añade operaciones con su hora de entrada.",
+   "La hora permite adjuntar la foto del sistema."
+  ],
+  "sesgo de divisas": [
+   "Cuánto favorece la macro a cada divisa (suma de factores).",
+   "Positivo = fuerte; negativo = débil.",
+   "Ayuda a ver qué divisa tiene el viento a favor."
+  ]
+ },
+ "glosario": [
+  {
+   "termino": "Régimen macro",
+   "claves": [
+    "régimen"
+   ],
+   "def": "La situación de la economía: si crece o se frena y si la inflación sube o baja.",
+   "analogia": "Es como la estación del año: no dice qué tiempo hará mañana, pero sí qué ropa conviene."
+  },
+  {
+   "termino": "Liquidez",
+   "claves": [
+    "liquidez",
+    "liquidez neta",
+    "reservas"
+   ],
+   "def": "La cantidad de dinero fácil de usar en el sistema financiero (balance de la Fed menos TGA y repos inversos, y reservas bancarias).",
+   "analogia": "Como el agua en un río: con más caudal, los barcos flotan mejor."
+  },
+  {
+   "termino": "FedWatch",
+   "claves": [
+    "fedwatch"
+   ],
+   "def": "La probabilidad de cada decisión de la Fed que descuentan los futuros.",
+   "analogia": "Como las apuestas antes de un partido: reflejan lo que el mercado espera, no el resultado."
+  },
+  {
+   "termino": "2Y (bono a 2 años)",
+   "claves": [
+    "2y",
+    "2 años",
+    "bono a 2"
+   ],
+   "def": "Lo que rinde el bono del Tesoro a 2 años; refleja lo que se espera de la Fed.",
+   "analogia": "Como un termómetro que anticipa la fiebre de los tipos."
+  },
+  {
+   "termino": "Tipo real a 10 años",
+   "claves": [
+    "tipo real",
+    "10y real",
+    "tips"
+   ],
+   "def": "El rendimiento a 10 años descontada la inflación esperada.",
+   "analogia": "Lo que ganas de verdad después de que la inflación se coma una parte."
+  },
+  {
+   "termino": "Curva de tipos",
+   "claves": [
+    "curva"
+   ],
+   "def": "Cuánto rinden los bonos a distintos plazos. Invertida = el corto rinde más que el largo.",
+   "analogia": "Como una cola: si los de atrás pagan más que los de delante, algo raro pasa."
+  },
+  {
+   "termino": "Gamma",
+   "claves": [
+    "gamma"
+   ],
+   "def": "Mide cuánto tienen que comprar o vender los intermediarios de opciones cuando el precio se mueve. Positiva frena; negativa acelera.",
+   "analogia": "Positiva: amortiguador. Negativa: pedal del acelerador."
+  },
+  {
+   "termino": "Call Wall, Put Wall y Gamma Flip",
+   "claves": [
+    "call wall",
+    "put wall",
+    "gamma flip"
+   ],
+   "def": "Niveles donde se acumulan opciones; el Flip es donde la gamma cambia de signo.",
+   "analogia": "Muros y puertas en un pasillo por donde pasa el precio."
+  },
+  {
+   "termino": "SKEW",
+   "claves": [
+    "skew"
+   ],
+   "def": "Lo caro que está protegerse con opciones de una caída fuerte de la bolsa.",
+   "analogia": "El precio del seguro del coche: sube cuando se espera mal tiempo, aunque no llegue."
+  },
+  {
+   "termino": "VIX",
+   "claves": [
+    "vix"
+   ],
+   "def": "El «índice del miedo» de la bolsa de EE. UU. a 30 días.",
+   "analogia": "El barómetro de la tormenta: sube cuando se espera mal tiempo."
+  },
+  {
+   "termino": "MOVE",
+   "claves": [
+    "move"
+   ],
+   "def": "El VIX de los bonos del Tesoro.",
+   "analogia": "El nerviosismo del mercado de bonos."
+  },
+  {
+   "termino": "SOFR",
+   "claves": [
+    "sofr"
+   ],
+   "def": "El tipo al que los bancos se prestan dinero a un día con bonos como garantía.",
+   "analogia": "El precio de una noche de alquiler entre bancos."
+  },
+  {
+   "termino": "ON RRP",
+   "claves": [
+    "rrp",
+    "repo inverso"
+   ],
+   "def": "Donde fondos aparcan dinero un día en la Fed. Si se vacía, ya no es colchón.",
+   "analogia": "Una caja fuerte de paso: cuando está vacía, ya no hay dinero ocioso."
+  },
+  {
+   "termino": "TGA",
+   "claves": [
+    "tga"
+   ],
+   "def": "La cuenta corriente del Tesoro en la Fed. Cuando sube, retira liquidez del sistema.",
+   "analogia": "Dinero que sale del bolsillo del mercado y entra en la caja del gobierno."
+  },
+  {
+   "termino": "Diferenciales de crédito",
+   "claves": [
+    "diferencial",
+    "high yield",
+    "hy",
+    "ig",
+    "bbb",
+    "ccc"
+   ],
+   "def": "Lo que pagan de más las empresas frente al Tesoro. IG: sólidas; HY y CCC: arriesgadas.",
+   "analogia": "La «prima de riesgo» que cobra el banco a quien tiene peor historial."
+  },
+  {
+   "termino": "NFCI",
+   "claves": [
+    "nfci",
+    "condiciones financieras"
+   ],
+   "def": "Índice de la Fed de Chicago sobre lo fácil o difícil que es financiarse.",
+   "analogia": "Un termómetro de lo abierto que está el grifo del crédito."
+  },
+  {
+   "termino": "Probabilidad de recesión (probit)",
+   "claves": [
+    "probit",
+    "recesión"
+   ],
+   "def": "Estimación de la Fed de Nueva York de recesión a 12 meses a partir de la curva.",
+   "analogia": "El pronóstico del tiempo: probabilidad, no certeza."
+  },
+  {
+   "termino": "COT",
+   "claves": [
+    "cot",
+    "cftc",
+    "posicionamiento"
+   ],
+   "def": "Informe semanal de la CFTC: cuánto tienen largo o corto los fondos en futuros.",
+   "analogia": "Mirar hacia dónde están sentados los espectadores de un estadio."
+  },
+  {
+   "termino": "Percentil",
+   "claves": [
+    "percentil"
+   ],
+   "def": "Dónde cae un valor frente a su historia: 90 = más alto que el 90 % de los casos.",
+   "analogia": "Tu altura comparada con la de todos tus compañeros de clase."
+  },
+  {
+   "termino": "Z-score",
+   "claves": [
+    "z-score",
+    "z score"
+   ],
+   "def": "Cuántas desviaciones típicas se aleja un valor de su media.",
+   "analogia": "Una nota ajustada a la media de la clase."
+  },
+  {
+   "termino": "σ (desviación típica)",
+   "claves": [
+    "σ",
+    "desviación",
+    "volatilidad"
+   ],
+   "def": "Lo que suele moverse un activo en un periodo. Se usa para medir si un movimiento es grande.",
+   "analogia": "El «ruido de fondo» normal de una calle: solo un ruido mayor llama la atención."
+  },
+  {
+   "termino": "Contaminación",
+   "claves": [
+    "contaminada",
+    "contaminación"
+   ],
+   "def": "Cuando otro dato importante sale entre medias, no se puede atribuir todo el movimiento al primero.",
+   "analogia": "Como si entraran dos goles seguidos: no sabes cuál cambió el partido."
+  },
+  {
+   "termino": "T+5, T+60…",
+   "claves": [
+    "t+5",
+    "t+60",
+    "t+1",
+    "t+20"
+   ],
+   "def": "Minutos (en eventos) o sesiones (en el marcador) después del dato o la señal.",
+   "analogia": "Mirar el reloj tras la salida: «a los 5 minutos, a la hora…»."
+  },
+  {
+   "termino": "Tasa base",
+   "claves": [
+    "tasa base",
+    "azar"
+   ],
+   "def": "Cuántas veces habría acertado alguien al azar con la misma regla.",
+   "analogia": "Si lanzas una moneda, el 50 % de aciertos no es mérito."
+  },
+  {
+   "termino": "Muestra insuficiente",
+   "claves": [
+    "muestra insuficiente",
+    "n < 20"
+   ],
+   "def": "Menos de 20 casos: el resultado puede ser suerte. No se concluye nada.",
+   "analogia": "Valorar un restaurante por dos visitas."
+  },
+  {
+   "termino": "SIN DATO",
+   "claves": [
+    "sin dato"
+   ],
+   "def": "La fuente falló o no existe. NEXORA nunca inventa un número.",
+   "analogia": "Un hueco en blanco, mejor que una respuesta inventada."
+  },
+  {
+   "termino": "Tesis",
+   "claves": [
+    "tesis"
+   ],
+   "def": "La lectura del contexto para un activo: alcista, bajista, débil o sin tesis. No es una orden.",
+   "analogia": "El viento que sopla: no dice qué debes hacer con la vela."
+  },
+  {
+   "termino": "Backfill",
+   "claves": [
+    "backfill",
+    "reconstruid"
+   ],
+   "def": "Señales del pasado reconstruidas con datos guardados. No cuentan como aciertos en vivo.",
+   "analogia": "Ver la repetición de un partido: útil, pero no es jugarlo."
+  },
+  {
+   "termino": "Hawkish / dovish",
+   "claves": [
+    "hawkish",
+    "dovish",
+    "duro",
+    "tono"
+   ],
+   "def": "Hawkish: mensaje duro (más tipos). Dovish: suave (menos tipos).",
+   "analogia": "Halcón: vigila y ataca. Paloma: calma."
+  },
+  {
+   "termino": "Funding",
+   "claves": [
+    "funding",
+    "stablecoin"
+   ],
+   "def": "El pago entre quien apuesta al alza y a la baja en futuros de cripto. Muy alto = demasiado apalancamiento. Las stablecoins, monedas ligadas al dólar, son la «pólvora» lista para entrar.",
+   "analogia": "El peaje que pagan los más impacientes."
+  }
+ ]
+}
