@@ -44,6 +44,13 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python engine/aviso_previo.py --push
+      - name: Vigilante de publicaciones (aviso si un dato oficial no está registrado 2 h después de publicarse)
+        continue-on-error: true
+        env:
+          PYTHONUTF8: "1"
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python engine/integridad.py vigilar --push
       - name: Registrar reacción
         env:
           PYTHONUTF8: "1"
