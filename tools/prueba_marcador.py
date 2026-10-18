@@ -55,7 +55,7 @@ y2 = [[d, round(4.0 + 0.02 * i, 4)] for i, d in enumerate(SES)]
 HOY = dt.datetime(2026, 10, 12, 22, 0, tzinfo=dt.timezone.utc)   # lunes 12-oct, tras el cierre de EE. UU.
 ult = SES[-1]
 print("última sesión simulada:", ult, "· hoy simulado:", HOY.strftime("%Y-%m-%d %H:%M UTC"))
-w("site/data/precios.json", {"activos": {"spx": {"serie": spx}, "ndx": {"serie": ndx}, "oro": {"serie": oro}, "btc": {"serie": btc}}})
+w("site/data/precios.json", {"activos": {"spx": {"serie": spx}, "ndx": {"serie": ndx}, "oro": {"serie": oro}, "btc": {"serie": btc}, "vix": {"serie": [[d, 15.0] for d, _ in spx]}}})
 w("site/data/tipos.json", {"t2y": {"serie": y2}})
 
 # ---- contexto histórico: cambios de tesis, de régimen y de liquidez
@@ -105,8 +105,15 @@ assert M.backfill(T) == [] and len(M.leer_csv(os.path.join(T, "data/marcador_sen
 print("   OK: idempotente (segunda pasada = 0 señales nuevas), SKEW con 1 confirmación y alertas ajenas excluidas")
 
 # ================================================================ 2) EVALUACIÓN con retornos conocidos
+V1 = os.path.join(T, "data/marcador_resultados.csv")
+V1_TXT = "id,horizonte,resultado,ret,mae,unidad,fecha_ref,valor_ref,fecha_fin,valor_fin,base_pct,evaluado_utc" + chr(10) + "viejo-v1,1,ACIERTO,0.5,0.0,%,2026-01-01,1,2026-01-02,1,50,2026-01-03 00:00 UTC" + chr(10)
+open(V1, "w", encoding="utf-8", newline="").write(V1_TXT)
+v1_antes = open(V1, "rb").read()
 M.evaluar(T, HOY)
-Rz = M.leer_csv(os.path.join(T, "data/marcador_resultados.csv"))
+assert open(V1, "rb").read() == v1_antes, "los resultados v1 deben quedar intactos"
+Rz = M.leer_csv(os.path.join(T, "data/marcador_resultados_v2.csv"))
+assert Rz and all(r["version_criterio"] == "2" for r in Rz)
+print("   OK: v1 congelado (bytes idénticos) y %d filas nuevas con version_criterio=2" % len(Rz))
 by = {(r["id"], r["horizonte"]): r for r in Rz}
 sp = next(s for s in tes if s["activo"] == "ES" and s["direccion"] == "ALCISTA" and "SIN TESIS → ALCISTA" in s["valor"])
 r1, r5, r20 = by[(sp["id"], "1")], by[(sp["id"], "5")], by[(sp["id"], "20")]
@@ -123,12 +130,39 @@ print("   ORO −1 %%/sesión con tesis ALCISTA: T+5 %.2f %% → FALLO, retorno 
 # BAJISTA sobre SPX que sube: FALLO; sobre ORO que baja: ACIERTO
 ob = next(s for s in tes if s["activo"] == "ORO" and s["direccion"] == "BAJISTA")
 assert by[(ob["id"], "5")]["resultado"] == "ACIERTO"
-# NEUTRAL: NDX +0,05 % por sesión (sin señales en el tiempo del salto → se comprueba con medir)
-m = M.medir([(d, v) for d, v in ndx], "ndx", "2026-09-30 10:00", 1, 1)
-print("   NDX +0,05 %/sesión: medir() →", m["resultado"], m["ret"])
-assert m["resultado"] == "NEUTRAL" or SES.index(m["fecha_ref"]) < 150
-m2 = M.medir([(d, v) for d, v in ndx], "ndx", SES[170] + " 10:00", 1, 1)
-assert m2["resultado"] == "NEUTRAL" and 0 < m2["ret"] < 0.1, m2
+# NEUTRAL relativo a σ: serie que alterna +1 %/−1 % (σ diaria ≈ 1 %, σ_5 ≈ 2,24 %; umbral neutral 0,25 σ_h)
+def serie_alt(n=300, extra=None):
+    v, out = 100.0, []
+    for i, d in enumerate(dias("2025-01-01", n)):
+        v *= 1.01 if i % 2 == 0 else 1 / 1.01
+        out.append([d, v])
+    return out
+alt = serie_alt()
+i0 = 200
+sg1 = M.sigma_h(alt, "spx", i0, 1)
+assert 0.9 < sg1 < 1.1, sg1
+sg5 = M.sigma_h(alt, "spx", i0, 5)
+assert abs(sg5 / sg1 - 5 ** 0.5) < 1e-9, "σ_h = σ × √h"
+print("   σ diaria %.3f %%, σ_5 = σ×√5 = %.3f %% (umbral neutral T+5 = %.3f %%)" % (sg1, sg5, 0.25 * sg5))
+def con_mov(base, i, mov_pct):      # fuerza que el cierre i+1 sea ref × (1 + mov), sin tocar el pasado
+    s2 = [list(x) for x in base]
+    s2[i + 1][1] = s2[i][1] * (1 + mov_pct / 100)
+    return s2
+for mov, esp in ((0.2, "NEUTRAL"), (-0.2, "NEUTRAL"), (0.4, "ACIERTO"), (-0.4, "FALLO")):
+    sa = con_mov(alt, i0, mov)
+    m = M.medir(sa, "spx", sa[i0 + 1][0] + " 10:00", 1, 1)     # ref = cierre i0, T+1 = cierre i0+1
+    assert m["resultado"] == esp, (mov, m)
+    print("   retorno %+.1f %% con umbral ±%.3f %% → %s" % (mov, m["umbral_neutral"], m["resultado"]))
+# en el criterio v1 (±0,1 %) +0,2 % habría sido ACIERTO: el cambio importa
+# σ insuficiente → PENDIENTE
+assert M.medir(alt[:40], "spx", alt[30][0] + " 10:00", 1, 1) is None
+print("   OK: con menos de 60 cambios diarios previos no hay σ → PENDIENTE")
+# 2Y en pb: σ de cambios en pb
+y_alt = [[d, round(4 + 0.05 * (1 if i % 2 else -1) + 0.0 * i, 4)] for i, d in enumerate(dias("2025-01-01", 300))]
+sgy = M.sigma_h(y_alt, "us2y", 200, 1)
+assert 9.5 < sgy < 10.5, sgy       # cambios diarios de ±10 pb
+print("   2Y alternando ±5 pb → σ diaria %.2f pb (unidad pb)" % sgy)
+
 # 2Y en pb: la alerta Fed ALCISTA (más subidas) con el 2Y subiendo 2 pb/sesión → ACIERTO en pb
 fa = next(s for s in por["fed"] if s["direccion"] == "ALCISTA")
 fr = by[(fa["id"], "5")]
@@ -136,6 +170,47 @@ assert fr["unidad"] == "pb" and abs(float(fr["ret"]) - 10.0) < 0.01 and fr["resu
 fb = next(s for s in por["fed"] if s["direccion"] == "BAJISTA")
 assert by[(fb["id"], "1")]["resultado"] == "FALLO"          # esperaba que el 2Y bajase y sube
 print("   Fed: 2Y +2 pb/sesión → alerta de subidas T+5 = +%.1f pb ACIERTO; alerta de recortes T+1 FALLO (unidad pb)" % float(fr["ret"]))
+
+# ---- SKEW (criterio v2): acierto = caída máxima intrahorizonte ≥ 1 σ_h o VIX ≥ +20 %; NO por dirección del cierre
+def vix_plano(base, v=15.0):
+    return [[d, v] for d, _ in base]
+def skew_caso(spx_s, vix_s, i, h):
+    return M.medir_skew([tuple(x) for x in spx_s], [tuple(x) for x in vix_s], spx_s[i + 1][0] + " 10:00", h)
+alt = serie_alt(); vx = vix_plano(alt)
+# (c) nada ocurre: FALLO, base 0 (la serie nunca cae 2,2 % en 5 sesiones ni el VIX se mueve)
+c = skew_caso(alt, vx, 200, 5)
+assert c["resultado"] == "FALLO" and c["comp_caida"] == 0 and c["comp_vix"] == 0 and c["base_pct"] == 0.0, c
+# (a) caída ≥ 1 σ_5 (2,24 %): caída de 4 % a los 3 días
+sa = [list(x) for x in alt]
+sa[203][1] = sa[200][1] * 0.96
+a_ = skew_caso(sa, vx, 200, 5)
+assert a_["resultado"] == "ACIERTO" and a_["comp_caida"] == 1 and a_["comp_vix"] == 0 and a_["caida_max_pct"] <= -4.0 + 1e-6, a_
+# (b) el VIX sube +25 % (máximo del horizonte) con el S&P tranquilo
+vb = [list(x) for x in vx]
+vb[202][1] = 15.0 * 1.25
+b_ = skew_caso(alt, vb, 200, 5)
+assert b_["resultado"] == "ACIERTO" and b_["comp_caida"] == 0 and b_["comp_vix"] == 1 and abs(b_["vix_max_pct"] - 25.0) < 0.01, b_
+# VIX +19 % no basta
+vc = [list(x) for x in vx]; vc[202][1] = 15.0 * 1.19
+assert skew_caso(alt, vc, 200, 5)["resultado"] == "FALLO"
+# un S&P que SUBE (la dirección alcista ya no cuenta como fallo/acierto por sí misma): serie +1 %/sesión y VIX plano → FALLO aunque el cierre no baje
+ssp = [list(x) for x in spx]
+assert M.medir_skew([tuple(x) for x in ssp], [tuple(x) for x in vix_plano(ssp)], ssp[170][0] + " 10:00", 5)["resultado"] == "FALLO"
+# tasa base = frecuencia del mismo evento en cualquier día (sin mirar el futuro): se mete una caída en el pasado y la base deja de ser 0
+sp = [list(x) for x in alt]
+for k in range(60, 200, 20):        # caídas del 4 % repartidas en el pasado
+    sp[k + 3][1] = sp[k][1] * 0.96
+for k in range(60, 200, 20):        # y el resto de la serie se recompone para no arrastrar el salto
+    pass
+bp = skew_caso(sp, vx, 200, 5)
+assert bp["base_pct"] is not None and bp["base_pct"] > 0, bp
+print("(SKEW v2) sin evento → FALLO (base %.1f %%) · caída 4 %% ≥ 1σ_5 → ACIERTO (caída máx %.2f %%, VIX no) · VIX +25 %% → ACIERTO (VIX máx %.1f %%, caída no) · VIX +19 %% → FALLO · S&P subiendo → FALLO" % (c["base_pct"], a_["caida_max_pct"], b_["vix_max_pct"]))
+print("   componentes guardados: caída=%s, VIX=%s; bases propias: caída %s %%, VIX %s %%; tasa base combinada con caídas pasadas = %s %%" % (a_["comp_caida"], a_["comp_vix"], a_["base_caida_pct"], a_["base_vix_pct"], bp["base_pct"]))
+# la señal SKEW del backfill simulado entra en evaluar() con criterio v2 y guarda los dos componentes
+sk = next(s for s in por["skew"])
+rk = by[(sk["id"], "5")]
+assert rk["version_criterio"] == "2" and rk["comp_caida"] in ("0", "1") and rk["comp_vix"] in ("0", "1") and rk["resultado"] == "FALLO", rk
+print("   evaluar(): SKEW del backfill con S&P subiendo y VIX plano → FALLO, comp_caida=%s comp_vix=%s, sigma_h=%s" % (rk["comp_caida"], rk["comp_vix"], rk["sigma_h"]))
 
 # ---- cierres oficiales: la barra del día en curso no cuenta antes de las 21:30 UTC ni para cripto
 bar_hoy = [(d, v) for d, v in spx] + [("2026-10-12", 999.0)]
@@ -155,9 +230,9 @@ assert btc[M.indice_ref([(d, v) for d, v in btc], "btc", "2026-09-10 23:00")][0]
 print("   OK: referencia = último cierre completo anterior (US tras 21:30 UTC cuenta el del día; cripto nunca el del día)")
 
 # ---- idempotencia y solo-añadir de resultados
-antes = open(os.path.join(T, "data/marcador_resultados.csv"), "rb").read()
+antes = open(os.path.join(T, "data/marcador_resultados_v2.csv"), "rb").read()
 assert M.evaluar(T, HOY) == []
-assert open(os.path.join(T, "data/marcador_resultados.csv"), "rb").read() == antes
+assert open(os.path.join(T, "data/marcador_resultados_v2.csv"), "rb").read() == antes
 print("   OK: re-evaluar no reescribe nada (%d resultados guardados)" % len(Rz))
 
 # ================================================================ 3) ANULACIÓN (corrección sin editar)

@@ -4,25 +4,33 @@
 Qué hace
   1. REGISTRA cada señal que emite el sistema en data/marcador_senales.csv (id, fecha_utc, tipo, activo, direccion, valor, umbral, fuente, run_id,
      origen, estado, anula_id, nota). Las correcciones nunca editan: se añade una fila ANULADA que apunta a la señal (anular()).
-  2. EVALÚA cada señal con dirección a T+1, T+5 y T+20 sesiones con cierres oficiales y lo guarda en data/marcador_resultados.csv (también solo-añadir,
-     solo cuando el horizonte ya se puede medir: nunca se estima; sin dato suficiente = PENDIENTE y no se escribe).
+  2. EVALÚA cada señal con dirección a T+1, T+5 y T+20 sesiones con cierres oficiales y lo guarda, solo-añadir, en data/marcador_resultados_v2.csv
+     (criterio v2, columna version_criterio=2). data/marcador_resultados.csv (criterio v1: neutral ±0,1 % fijo y SKEW por dirección del cierre) queda CONGELADO y
+     no se vuelve a escribir ni a mostrar. Sin dato suficiente = PENDIENTE y no se escribe nunca una estimación.
   3. BACKFILL: reconstruye las señales pasadas desde data/historico_contexto/ y los CSV de memoria (origen = backfill, separadas de las vivas).
   4. Escribe site/data/marcador.json (página #/marcador y bloque «marcador» de contexto.json).
 
 NO cambia ningún umbral ni criterio existente: las alertas, tesis, régimen, liquidez y reglas v3 del monitor de reacción se leen tal como salen.
 
-Señales y su dirección esperada (reglas FIJAS de este módulo, documentadas también en la página):
+Señales y su dirección esperada (reglas FIJAS de este módulo, impresas también en la página):
   tesis      cambia la etiqueta de tesis de Oro, NQ, ES o BTC. ALCISTA* = el activo sube; BAJISTA* = baja; SIN TESIS = no puntuable.
   fed        alerta Fed emitida (cambio del resultado más probable o tipo esperado a diciembre ≥ 10 pb). Activo US2Y (rendimiento del bono a 2 años, FRED):
              más subidas descontadas = el 2Y sube; más recortes = baja. La dirección se lee del texto de la alerta; si no se puede, no puntuable.
-  skew       alerta SKEW en zona alta relativa con ≥ 2 confirmaciones. Activo ES (S&P 500): esperada una caída (la prima de cobertura es contra caídas).
   regimen    cambia el cuadrante del régimen macro. Activo NQ: FAVORABLE = sube, DESFAVORABLE = baja (campo «riesgo» del propio régimen); MIXTO = no puntuable.
   liquidez   cambia la etiqueta del monitor de liquidez. Activo BTC: «SEÑALES INICIALES DE GIRO» / «GIRO DE LIQUIDEZ EN CURSO» = sube; «SIN GIRO» = no puntuable.
+  skew       alerta SKEW en zona alta relativa con ≥ 2 confirmaciones. NO se puntúa por la dirección del cierre. ACIERTO si dentro del horizonte (T+1, T+5, T+20):
+             (a) el S&P 500 tiene una caída máxima intrahorizonte ≥ 1 σ_h (peor cierre frente al cierre de referencia; σ_h = desviación típica de los
+             retornos diarios de las últimas 250 sesiones × √h) O (b) el VIX sube ≥ 20 % (máximo de los cierres del horizonte frente al de referencia).
+             Si no ocurre ninguno de los dos, FALLO. Se guardan los dos componentes. Tasa base = frecuencia de ese mismo evento en cualquier ventana de h sesiones
+             de las 250 anteriores a la señal (con σ_h y umbral del VIX fijos en la referencia).
   reaccion   clasificación del monitor de reacción a eventos (T+5 y CIERRE): SOLO REGISTRO, no se puntúa (reglas v3 congeladas).
-Medición: referencia = último cierre COMPLETO anterior a la señal (si la señal sale a partir de las 21:30 UTC y el activo no es cripto, cuenta el cierre de ese día);
-T+n = cierre n sesiones después. Retorno en la dirección esperada: ACIERTO si > +0,1 % (+1 pb en el 2Y), FALLO si < −0,1 % (−1 pb), si no NEUTRAL.
+Medición (criterio v2): referencia = último cierre COMPLETO anterior a la señal (si sale desde las 21:30 UTC y el activo no es cripto, cuenta el cierre de ese día);
+T+n = cierre n sesiones después. Retorno en la dirección esperada. NEUTRAL si |retorno| < 0,25 × σ_h del activo (σ de los cambios diarios de las 250 sesiones
+anteriores a la señal × √h; en pb para el 2Y). ACIERTO si el retorno ≥ +0,25 σ_h y FALLO si ≤ −0,25 σ_h. Con menos de 60 cambios diarios previos: PENDIENTE.
 Retorno máximo adverso = el peor retorno (en la dirección esperada) de los cierres entre la referencia y T+n (≤ 0). Tasa base = % de ventanas de n sesiones
-anteriores a la señal (hasta 250) en las que el activo habría «acertado» en esa dirección: lo que se acierta por azar.
+anteriores a la señal (hasta 250) en las que el activo habría «acertado» en esa dirección con el mismo umbral: lo que se acierta por azar.
+Cambio de criterio (18-oct-2026): v1 usaba neutral ±0,1 % fijo y puntuaba el SKEW por la dirección del cierre. Los resultados v1 se conservan sin tocar en
+data/marcador_resultados.csv; los resultados v2 se recalcularon para TODAS las señales (también las de backfill) como filas nuevas con version_criterio = 2.
 """
 from __future__ import annotations
 
@@ -40,9 +48,15 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(HERE)
 
 CAMPOS = ["id", "fecha_utc", "tipo", "activo", "direccion", "valor", "umbral", "fuente", "run_id", "origen", "estado", "anula_id", "nota"]
-CAMPOS_RES = ["id", "horizonte", "resultado", "ret", "mae", "unidad", "fecha_ref", "valor_ref", "fecha_fin", "valor_fin", "base_pct", "evaluado_utc"]
+CAMPOS_RES = ["id", "version_criterio", "horizonte", "resultado", "ret", "mae", "unidad", "fecha_ref", "valor_ref", "fecha_fin", "valor_fin", "base_pct", "sigma_h", "umbral_neutral",
+              "comp_caida", "comp_vix", "caida_max_pct", "vix_max_pct", "base_caida_pct", "base_vix_pct", "evaluado_utc"]
+VERSION_CRITERIO = "2"
+ARCHIVO_RES = "marcador_resultados_v2.csv"      # v1 (marcador_resultados.csv) queda congelado
+K_NEUTRAL = 0.25                          # neutral: |retorno| < 0,25 × σ_h
+K_CAIDA = 1.0                             # SKEW: caída máxima ≥ 1 × σ_h
+VIX_SUBE_PCT = 20.0                       # SKEW: o el VIX sube ≥ 20 %
+MIN_CAMBIOS_SIGMA = 60
 HORIZONTES = (1, 5, 20)
-BANDA_PCT, BANDA_PB = 0.1, 1.0            # banda de NEUTRAL (fija)
 CIERRE_UTC = "21:30"                      # a partir de esta hora UTC el cierre de ese día de EE. UU. ya es oficial
 MIN_N = 20
 VENTANA_BASE = 250
@@ -311,7 +325,7 @@ def cargar_series(raiz):
     sd = P(raiz, "site", "data")
     out = {}
     pr = ((leer_json(P(sd, "precios.json")) or {}).get("activos")) or {}
-    for k in ("oro", "ndx", "spx", "btc"):
+    for k in ("oro", "ndx", "spx", "btc", "vix"):
         s = (pr.get(k) or {}).get("serie") or []
         out[k] = [(d, float(v)) for d, v in s if v is not None]
     t = ((leer_json(P(sd, "tipos.json")) or {}).get("t2y") or {}).get("serie") or []
@@ -352,55 +366,116 @@ def indice_ref(serie, clave, ts):
     return idx
 
 
-def tasa_base(serie, clave, idx, n, dir_):
-    """% de ventanas de n sesiones TERMINADAS en la referencia (sin mirar el futuro) en las que se habría acertado. None si hay pocas ventanas."""
-    banda = BANDA_PB if clave == "us2y" else BANDA_PCT
+def cambios_diarios(serie, clave, hasta, n=VENTANA_BASE):
+    """Cambios diarios (en % o en pb) de las n sesiones que terminan en `hasta` (incluida). Solo mira el pasado."""
+    ini = max(1, hasta - n + 1)
+    return [_mov(clave, serie[i - 1][1], serie[i][1]) for i in range(ini, hasta + 1)]
+
+
+def sigma_h(serie, clave, idx, h):
+    """σ de los cambios diarios de las 250 sesiones hasta la referencia × √h. None si hay menos de 60 cambios (no se estima)."""
+    c = cambios_diarios(serie, clave, idx)
+    if len(c) < MIN_CAMBIOS_SIGMA:
+        return None
+    m = sum(c) / len(c)
+    sd = (sum((x - m) ** 2 for x in c) / (len(c) - 1)) ** 0.5
+    return sd * h ** 0.5
+
+
+def tasa_base(serie, clave, idx, n, dir_, umbral):
+    """% de ventanas de n sesiones TERMINADAS en la referencia (sin mirar el futuro) cuyo retorno en la dirección esperada supera el umbral. None si hay pocas."""
     ini = max(0, idx - VENTANA_BASE)
     ok = tot = 0
     for i in range(ini, idx - n + 1):
-        m = _mov(clave, serie[i][1], serie[i + n][1]) * dir_
         tot += 1
-        ok += m > banda
+        ok += _mov(clave, serie[i][1], serie[i + n][1]) * dir_ >= umbral
     return round(ok / tot * 100, 1) if tot >= MIN_VENTANAS_BASE else None
 
 
 def medir(serie, clave, ts, dir_, n):
-    """Resultado de una señal a n sesiones; None = PENDIENTE (sin referencia o aún sin cierre n sesiones después)."""
+    """Resultado v2 de una señal direccional a n sesiones; None = PENDIENTE (sin referencia, sin σ o aún sin el cierre n sesiones después)."""
     idx = indice_ref(serie, clave, ts)
     if idx is None or idx + n >= len(serie):
         return None
+    sg = sigma_h(serie, clave, idx, n)
+    if sg is None:
+        return None
+    umbral = K_NEUTRAL * sg
     ref = serie[idx]
-    banda = BANDA_PB if clave == "us2y" else BANDA_PCT
     ruta = [_mov(clave, ref[1], serie[idx + k][1]) * dir_ for k in range(1, n + 1)]
     ret = ruta[-1]
-    res = "ACIERTO" if ret > banda else "FALLO" if ret < -banda else "NEUTRAL"
+    res = "ACIERTO" if ret >= umbral and ret > 0 else "FALLO" if ret <= -umbral and ret < 0 else "NEUTRAL"
     return {"resultado": res, "ret": round(ret, 3), "mae": round(min(0.0, min(ruta)), 3), "unidad": _unidad(clave), "fecha_ref": ref[0], "valor_ref": ref[1],
-            "fecha_fin": serie[idx + n][0], "valor_fin": serie[idx + n][1], "base_pct": tasa_base(serie, clave, idx, n, dir_)}
+            "fecha_fin": serie[idx + n][0], "valor_fin": serie[idx + n][1], "base_pct": tasa_base(serie, clave, idx, n, dir_, umbral), "sigma_h": round(sg, 4),
+            "umbral_neutral": round(umbral, 4)}
+
+
+def _evento_skew(spx, vix_por_fecha, i, n, sg):
+    """(caída máxima %, subida máxima del VIX %, hay caída ≥ 1σ_h, hay VIX ≥ +20 %) en la ventana de n sesiones que empieza en i. None si falta el VIX de algún día."""
+    ref = spx[i][1]
+    caida = min((spx[i + k][1] / ref - 1) * 100 for k in range(1, n + 1))
+    v0 = vix_por_fecha.get(spx[i][0])
+    vs = [vix_por_fecha.get(spx[i + k][0]) for k in range(1, n + 1)]
+    if v0 is None or any(v is None for v in vs):
+        return caida, None, caida <= -K_CAIDA * sg, None
+    vmax = max((v / v0 - 1) * 100 for v in vs)
+    return caida, vmax, caida <= -K_CAIDA * sg, vmax >= VIX_SUBE_PCT
+
+
+def medir_skew(spx, vix, ts, n):
+    """SKEW (criterio v2): ACIERTO si el S&P cae ≥ 1σ_h dentro del horizonte o el VIX sube ≥ 20 %; si no, FALLO. Guarda los dos componentes y la tasa base."""
+    idx = indice_ref(spx, "spx", ts)
+    if idx is None or idx + n >= len(spx):
+        return None
+    sg = sigma_h(spx, "spx", idx, n)
+    if sg is None:
+        return None
+    vp = dict(vix)
+    caida, vmax, c_caida, c_vix = _evento_skew(spx, vp, idx, n, sg)
+    if c_vix is None:        # sin VIX en la ventana no se puede evaluar el componente (b): PENDIENTE, nunca se supone
+        return None
+    ini, tot, ok, okc, okv = max(0, idx - VENTANA_BASE), 0, 0, 0, 0
+    for i in range(ini, idx - n + 1):
+        c, v, a, b = _evento_skew(spx, vp, i, n, sg)
+        if b is None:
+            continue
+        tot += 1
+        ok += a or b
+        okc += a
+        okv += b
+    base = lambda x: round(x / tot * 100, 1) if tot >= MIN_VENTANAS_BASE else None  # noqa: E731
+    ref = spx[idx]
+    return {"resultado": "ACIERTO" if (c_caida or c_vix) else "FALLO", "ret": round((spx[idx + n][1] / ref[1] - 1) * 100, 3), "mae": round(min(0.0, caida), 3), "unidad": "%",
+            "fecha_ref": ref[0], "valor_ref": ref[1], "fecha_fin": spx[idx + n][0], "valor_fin": spx[idx + n][1], "base_pct": base(ok), "sigma_h": round(sg, 4), "umbral_neutral": "",
+            "comp_caida": int(c_caida), "comp_vix": int(c_vix), "caida_max_pct": round(caida, 3), "vix_max_pct": round(vmax, 2), "base_caida_pct": base(okc), "base_vix_pct": base(okv)}
 
 
 def evaluar(raiz=RAIZ, ahora=None):
-    """Mide las señales y añade a marcador_resultados.csv los horizontes ya resueltos. Devuelve cuántos resultados nuevos."""
+    """Mide las señales (criterio v2) y añade a marcador_resultados_v2.csv los horizontes ya resueltos. Devuelve las filas nuevas."""
     ahora = ahora or dt.datetime.now(dt.timezone.utc)
     stamp = ahora.strftime("%Y-%m-%d %H:%M UTC")
     series = {k: completas(v, k, ahora) for k, v in cargar_series(raiz).items()}
     filas = leer_csv(P(raiz, "data", "marcador_senales.csv"))
     anuladas = {r["anula_id"] for r in filas if r.get("estado") == "ANULADA"}
-    hechos = {(r["id"], r["horizonte"]) for r in leer_csv(P(raiz, "data", "marcador_resultados.csv"))}
+    hechos = {(r["id"], r["horizonte"]) for r in leer_csv(P(raiz, "data", ARCHIVO_RES)) if r.get("version_criterio") == VERSION_CRITERIO}
     nuevos = []
     for s in filas:
-        if s.get("estado") == "ANULADA" or s["id"] in anuladas or s["tipo"] not in TIPOS_PUNTUABLES or s["direccion"] not in ("ALCISTA", "BAJISTA"):
+        if s.get("estado") == "ANULADA" or s["id"] in anuladas or s["tipo"] not in TIPOS_PUNTUABLES:
             continue
-        clave = SERIE_DE.get(s["activo"])
+        es_skew = s["tipo"] == "skew"
+        if not es_skew and s["direccion"] not in ("ALCISTA", "BAJISTA"):
+            continue
+        clave = "spx" if es_skew else SERIE_DE.get(s["activo"])
         if not clave or not series.get(clave):
             continue
         d = 1 if s["direccion"] == "ALCISTA" else -1
         for n in HORIZONTES:
             if (s["id"], str(n)) in hechos:
                 continue
-            m = medir(series[clave], clave, s["fecha_utc"], d, n)
+            m = medir_skew(series["spx"], series.get("vix") or [], s["fecha_utc"], n) if es_skew else medir(series[clave], clave, s["fecha_utc"], d, n)
             if m:
-                nuevos.append({"id": s["id"], "horizonte": n, "evaluado_utc": stamp, **m})
-    return anadir(P(raiz, "data", "marcador_resultados.csv"), nuevos, CAMPOS_RES, lambda r: (r["id"], str(r["horizonte"])))
+                nuevos.append({"id": s["id"], "version_criterio": VERSION_CRITERIO, "horizonte": n, "evaluado_utc": stamp, **m})
+    return anadir(P(raiz, "data", ARCHIVO_RES), nuevos, CAMPOS_RES, lambda r: (r["id"], str(r["horizonte"]), r["version_criterio"]))
 
 
 # ---------------------------------------------------------------- resumen para la web y contexto.json
@@ -417,15 +492,16 @@ def resumen(raiz=RAIZ, ahora=None):
     anuladas = {r["anula_id"] for r in filas if r.get("estado") == "ANULADA"}
     activas = [r for r in filas if r.get("estado") != "ANULADA" and r["id"] not in anuladas]
     res = {}
-    for r in leer_csv(P(raiz, "data", "marcador_resultados.csv")):
-        res.setdefault(r["id"], {})[int(r["horizonte"])] = r
+    for r in leer_csv(P(raiz, "data", ARCHIVO_RES)):
+        if r.get("version_criterio") == VERSION_CRITERIO:    # solo criterio v2; v1 queda congelado en su archivo
+            res.setdefault(r["id"], {})[int(r["horizonte"])] = r
     series_ok = bool(cargar_series(raiz).get("spx"))
     por = {}
     detalle = []
     for s in activas:
         o, t = s["origen"], s["tipo"]
-        puntuable = t in TIPOS_PUNTUABLES and s["direccion"] in ("ALCISTA", "BAJISTA")
-        d = por.setdefault(o, {}).setdefault(t, {"n_senales": 0, "no_puntuables": 0, "horizontes": {str(h): {"n": 0, "aciertos": 0, "fallos": 0, "neutrales": 0, "pendientes": 0, "_ret": [], "_mae": [], "_base": []} for h in HORIZONTES}})
+        puntuable = t in TIPOS_PUNTUABLES and (t == "skew" or s["direccion"] in ("ALCISTA", "BAJISTA"))
+        d = por.setdefault(o, {}).setdefault(t, {"n_senales": 0, "no_puntuables": 0, "horizontes": {str(h): {"n": 0, "aciertos": 0, "fallos": 0, "neutrales": 0, "pendientes": 0, "comp_caida": 0, "comp_vix": 0, "_ret": [], "_mae": [], "_base": []} for h in HORIZONTES}})
         d["n_senales"] += 1
         hs = {}
         if not puntuable:
@@ -443,11 +519,15 @@ def resumen(raiz=RAIZ, ahora=None):
             b["aciertos"] += x["resultado"] == "ACIERTO"
             b["fallos"] += x["resultado"] == "FALLO"
             b["neutrales"] += x["resultado"] == "NEUTRAL"
+            if t == "skew":
+                b["comp_caida"] += x.get("comp_caida") == "1"
+                b["comp_vix"] += x.get("comp_vix") == "1"
             b["_ret"].append(_num(x["ret"]))
             b["_mae"].append(_num(x["mae"]))
             if _num(x["base_pct"]) is not None:
                 b["_base"].append(_num(x["base_pct"]))
-            hs[str(h)] = {"estado": x["resultado"], "ret": _num(x["ret"]), "mae": _num(x["mae"]), "unidad": x["unidad"], "base_pct": _num(x["base_pct"]), "fecha_fin": x["fecha_fin"]}
+            hs[str(h)] = {"estado": x["resultado"], "ret": _num(x["ret"]), "mae": _num(x["mae"]), "unidad": x["unidad"], "base_pct": _num(x["base_pct"]), "fecha_fin": x["fecha_fin"], "sigma_h": _num(x.get("sigma_h")),
+                          **({"comp_caida": x.get("comp_caida") == "1", "comp_vix": x.get("comp_vix") == "1", "caida_max_pct": _num(x.get("caida_max_pct")), "vix_max_pct": _num(x.get("vix_max_pct"))} if t == "skew" else {})}
         detalle.append({"id": s["id"], "fecha_utc": s["fecha_utc"], "tipo": t, "activo": s["activo"], "direccion": s["direccion"], "valor": s["valor"], "origen": o,
                         "run_id": s["run_id"], "nota": s["nota"], "horizontes": hs if puntuable else "SOLO REGISTRO" if t == "reaccion" else "NO PUNTUABLE"})
     for o, tipos in por.items():
@@ -463,10 +543,12 @@ def resumen(raiz=RAIZ, ahora=None):
                 b["diferencia_pp"] = round(b["acierto_pct"] - b["base_media_pct"], 1) if n and base else None
                 b["muestra_insuficiente"] = n < MIN_N
     detalle.sort(key=lambda x: x["fecha_utc"], reverse=True)
-    return {"version": 1, "generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "ok": True, "min_n": MIN_N, "horizontes": list(HORIZONTES),
-            "banda_neutral": {"pct": BANDA_PCT, "pb": BANDA_PB}, "series_disponibles": series_ok,
+    return {"version": 2, "version_criterio": 2, "generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "ok": True, "min_n": MIN_N, "horizontes": list(HORIZONTES),
+            "criterio": {"version": 2, "neutral": f"|retorno| < {K_NEUTRAL} × σ_h (σ de 250 sesiones × √h; en pb para el 2Y)", "skew": f"caída máxima intrahorizonte ≥ {K_CAIDA:g} σ_h o VIX ≥ +{VIX_SUBE_PCT:g} %", "desde": "2026-10-18"},
+            "cambio_criterio": "Criterio v2 (18-oct-2026): el neutral pasa de ±0,1 % fijo a |retorno| < 0,25 × σ_h del activo (σ de 250 sesiones × √h; σ en pb para el 2Y), y el SKEW deja de puntuarse por la dirección del cierre: acierto si el S&P tiene una caída máxima intrahorizonte ≥ 1 σ_h o el VIX sube ≥ 20 %. Todos los resultados, también los de backfill, se recalcularon como filas nuevas con version_criterio = 2; los de v1 se conservan sin tocar en data/marcador_resultados.csv y no se muestran aquí.",
+            "series_disponibles": series_ok,
             "resumen": por, "n_senales": len(activas), "n_anuladas": len(anuladas), "senales": detalle[:400],
-            "reglas": __doc__.split("Señales y su dirección esperada")[1].strip(),
+            "reglas": "Señales y su dirección esperada" + __doc__.split("Señales y su dirección esperada")[1].strip(),
             "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas."}
 
 
@@ -491,13 +573,13 @@ def bloque_contexto(raiz=RAIZ):
     for o, tipos in (M.get("resumen") or {}).items():
         for t, d in tipos.items():
             comp.setdefault(o, {})[t] = {"senales": d["n_senales"], "no_puntuables": d["no_puntuables"],
-                                         **{f"T+{h}": {k: b[k] for k in ("n", "acierto_pct", "base_media_pct", "diferencia_pp", "ret_medio", "peor_mae", "muestra_insuficiente", "pendientes")}
+                                         **{f"T+{h}": {k: b[k] for k in ("n", "acierto_pct", "base_media_pct", "diferencia_pp", "ret_medio", "peor_mae", "muestra_insuficiente", "pendientes", "comp_caida", "comp_vix")}
                                             for h, b in d["horizontes"].items()}}
-    return {"actualizado_utc": M.get("generado_utc"), "n_senales": M.get("n_senales"), "n_anuladas": M.get("n_anuladas"), "por_origen_y_tipo": comp,
+    return {"version_criterio": 2, "criterio": M.get("criterio"), "cambio_criterio": M.get("cambio_criterio"), "actualizado_utc": M.get("generado_utc"), "n_senales": M.get("n_senales"), "n_anuladas": M.get("n_anuladas"), "por_origen_y_tipo": comp,
             "lectura": ["Cita siempre n y la tasa base; con muestra_insuficiente = true no se concluye nada.",
                         "origen 'backfill' = señales reconstruidas del pasado; 'vivo' = emitidas por el sistema en su momento: no se mezclan.",
                         "Las señales se solapan: no son independientes. Hecho = resultado medido; lo demás es interpretación."],
-            "fuente": "marcador.py (data/marcador_senales.csv, data/marcador_resultados.csv); cierres de Yahoo Finance y FRED"}
+            "fuente": "marcador.py (data/marcador_senales.csv, data/marcador_resultados_v2.csv, criterio v2); cierres de Yahoo Finance y FRED"}
 
 
 if __name__ == "__main__":

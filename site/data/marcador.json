@@ -1,6 +1,7 @@
 {
- "version": 1,
- "generado_utc": "2026-10-18 13:30 UTC",
+ "version": 2,
+ "version_criterio": 2,
+ "generado_utc": "2026-10-18 13:56 UTC",
  "ok": true,
  "min_n": 20,
  "horizontes": [
@@ -8,10 +9,13 @@
   5,
   20
  ],
- "banda_neutral": {
-  "pct": 0.1,
-  "pb": 1.0
+ "criterio": {
+  "version": 2,
+  "neutral": "|retorno| < 0.25 × σ_h (σ de 250 sesiones × √h; en pb para el 2Y)",
+  "skew": "caída máxima intrahorizonte ≥ 1 σ_h o VIX ≥ +20 %",
+  "desde": "2026-10-18"
  },
+ "cambio_criterio": "Criterio v2 (18-oct-2026): el neutral pasa de ±0,1 % fijo a |retorno| < 0,25 × σ_h del activo (σ de 250 sesiones × √h; σ en pb para el 2Y), y el SKEW deja de puntuarse por la dirección del cierre: acierto si el S&P tiene una caída máxima intrahorizonte ≥ 1 σ_h o el VIX sube ≥ 20 %. Todos los resultados, también los de backfill, se recalcularon como filas nuevas con version_criterio = 2; los de v1 se conservan sin tocar en data/marcador_resultados.csv y no se muestran aquí.",
  "series_disponibles": true,
  "resumen": {
   "backfill": {
@@ -21,30 +25,34 @@
     "horizontes": {
      "1": {
       "n": 11,
-      "aciertos": 7,
-      "fallos": 4,
-      "neutrales": 0,
+      "aciertos": 5,
+      "fallos": 3,
+      "neutrales": 3,
       "pendientes": 1,
-      "acierto_pct": 63.6,
+      "comp_caida": 0,
+      "comp_vix": 0,
+      "acierto_pct": 45.5,
       "ret_medio": -0.115,
       "peor_ret": -2.499,
       "peor_mae": -2.499,
-      "base_media_pct": 48.5,
-      "diferencia_pp": 15.1,
+      "base_media_pct": 39.0,
+      "diferencia_pp": 6.5,
       "muestra_insuficiente": true
      },
      "5": {
       "n": 5,
-      "aciertos": 3,
-      "fallos": 2,
-      "neutrales": 0,
+      "aciertos": 1,
+      "fallos": 1,
+      "neutrales": 3,
       "pendientes": 7,
-      "acierto_pct": 60.0,
+      "comp_caida": 0,
+      "comp_vix": 0,
+      "acierto_pct": 20.0,
       "ret_medio": 0.08,
       "peor_ret": -2.572,
       "peor_mae": -2.572,
-      "base_media_pct": 51.2,
-      "diferencia_pp": 8.8,
+      "base_media_pct": 40.6,
+      "diferencia_pp": -20.6,
       "muestra_insuficiente": true
      },
      "20": {
@@ -53,6 +61,8 @@
       "fallos": 0,
       "neutrales": 0,
       "pendientes": 12,
+      "comp_caida": 0,
+      "comp_vix": 0,
       "acierto_pct": null,
       "ret_medio": null,
       "peor_ret": null,
@@ -70,15 +80,17 @@
      "1": {
       "n": 2,
       "aciertos": 1,
-      "fallos": 1,
-      "neutrales": 0,
+      "fallos": 0,
+      "neutrales": 1,
       "pendientes": 0,
+      "comp_caida": 0,
+      "comp_vix": 0,
       "acierto_pct": 50.0,
       "ret_medio": 0.282,
       "peor_ret": -0.146,
       "peor_mae": -0.146,
-      "base_media_pct": 46.0,
-      "diferencia_pp": 4.0,
+      "base_media_pct": 36.8,
+      "diferencia_pp": 13.2,
       "muestra_insuficiente": true
      },
      "5": {
@@ -87,6 +99,8 @@
       "fallos": 0,
       "neutrales": 0,
       "pendientes": 2,
+      "comp_caida": 0,
+      "comp_vix": 0,
       "acierto_pct": null,
       "ret_medio": null,
       "peor_ret": null,
@@ -101,6 +115,8 @@
       "fallos": 0,
       "neutrales": 0,
       "pendientes": 2,
+      "comp_caida": 0,
+      "comp_vix": 0,
       "acierto_pct": null,
       "ret_medio": null,
       "peor_ret": null,
@@ -121,12 +137,14 @@
       "fallos": 0,
       "neutrales": 0,
       "pendientes": 0,
+      "comp_caida": 0,
+      "comp_vix": 0,
       "acierto_pct": 100.0,
       "ret_medio": 3.0,
       "peor_ret": 3.0,
       "peor_mae": 0.0,
-      "base_media_pct": 42.0,
-      "diferencia_pp": 58.0,
+      "base_media_pct": 39.6,
+      "diferencia_pp": 60.4,
       "muestra_insuficiente": true
      },
      "5": {
@@ -135,6 +153,8 @@
       "fallos": 0,
       "neutrales": 0,
       "pendientes": 1,
+      "comp_caida": 0,
+      "comp_vix": 0,
       "acierto_pct": null,
       "ret_medio": null,
       "peor_ret": null,
@@ -149,6 +169,8 @@
       "fallos": 0,
       "neutrales": 0,
       "pendientes": 1,
+      "comp_caida": 0,
+      "comp_vix": 0,
       "acierto_pct": null,
       "ret_medio": null,
       "peor_ret": null,
@@ -169,6 +191,8 @@
       "fallos": 0,
       "neutrales": 0,
       "pendientes": 0,
+      "comp_caida": 0,
+      "comp_vix": 0,
       "acierto_pct": null,
       "ret_medio": null,
       "peor_ret": null,
@@ -183,6 +207,8 @@
       "fallos": 0,
       "neutrales": 0,
       "pendientes": 0,
+      "comp_caida": 0,
+      "comp_vix": 0,
       "acierto_pct": null,
       "ret_medio": null,
       "peor_ret": null,
@@ -197,6 +223,8 @@
       "fallos": 0,
       "neutrales": 0,
       "pendientes": 0,
+      "comp_caida": 0,
+      "comp_vix": 0,
       "acierto_pct": null,
       "ret_medio": null,
       "peor_ret": null,
@@ -258,12 +286,13 @@
    "nota": "",
    "horizontes": {
     "1": {
-     "estado": "ACIERTO",
+     "estado": "NEUTRAL",
      "ret": 0.146,
      "mae": 0.0,
      "unidad": "%",
-     "base_pct": 46.8,
-     "fecha_fin": "2026-10-17"
+     "base_pct": 35.6,
+     "fecha_fin": "2026-10-17",
+     "sigma_h": 2.0769
     },
     "5": {
      "estado": "PENDIENTE"
@@ -285,12 +314,13 @@
    "nota": "",
    "horizontes": {
     "1": {
-     "estado": "FALLO",
+     "estado": "NEUTRAL",
      "ret": -0.146,
      "mae": -0.146,
      "unidad": "%",
-     "base_pct": 46.0,
-     "fecha_fin": "2026-10-17"
+     "base_pct": 36.8,
+     "fecha_fin": "2026-10-17",
+     "sigma_h": 2.0769
     },
     "5": {
      "estado": "PENDIENTE"
@@ -316,8 +346,9 @@
      "ret": -1.093,
      "mae": -1.093,
      "unidad": "%",
-     "base_pct": 48.6,
-     "fecha_fin": "2026-10-16"
+     "base_pct": 43.0,
+     "fecha_fin": "2026-10-16",
+     "sigma_h": 0.8015
     },
     "5": {
      "estado": "PENDIENTE"
@@ -351,12 +382,13 @@
    "nota": "",
    "horizontes": {
     "1": {
-     "estado": "ACIERTO",
+     "estado": "NEUTRAL",
      "ret": 0.264,
      "mae": 0.0,
      "unidad": "%",
-     "base_pct": 50.0,
-     "fecha_fin": "2026-10-16"
+     "base_pct": 36.7,
+     "fecha_fin": "2026-10-16",
+     "sigma_h": 1.796
     },
     "5": {
      "estado": "PENDIENTE"
@@ -382,8 +414,9 @@
      "ret": -2.499,
      "mae": -2.499,
      "unidad": "%",
-     "base_pct": 49.8,
-     "fecha_fin": "2026-10-16"
+     "base_pct": 43.0,
+     "fecha_fin": "2026-10-16",
+     "sigma_h": 1.2404
     },
     "5": {
      "estado": "PENDIENTE"
@@ -409,8 +442,9 @@
      "ret": 0.78,
      "mae": 0.0,
      "unidad": "%",
-     "base_pct": 46.4,
-     "fecha_fin": "2026-10-16"
+     "base_pct": 35.2,
+     "fecha_fin": "2026-10-16",
+     "sigma_h": 2.0779
     },
     "5": {
      "estado": "PENDIENTE"
@@ -508,8 +542,9 @@
      "ret": 0.71,
      "mae": 0.0,
      "unidad": "%",
-     "base_pct": 46.0,
-     "fecha_fin": "2026-10-15"
+     "base_pct": 36.8,
+     "fecha_fin": "2026-10-15",
+     "sigma_h": 2.081
     },
     "5": {
      "estado": "PENDIENTE"
@@ -547,8 +582,9 @@
      "ret": 3.0,
      "mae": 0.0,
      "unidad": "pb",
-     "base_pct": 42.0,
-     "fecha_fin": "2026-10-14"
+     "base_pct": 39.6,
+     "fecha_fin": "2026-10-14",
+     "sigma_h": 4.6863
     },
     "5": {
      "estado": "PENDIENTE"
@@ -586,8 +622,9 @@
      "ret": -2.024,
      "mae": -2.024,
      "unidad": "%",
-     "base_pct": 50.2,
-     "fecha_fin": "2026-10-14"
+     "base_pct": 43.3,
+     "fecha_fin": "2026-10-14",
+     "sigma_h": 1.2381
     },
     "5": {
      "estado": "PENDIENTE"
@@ -645,20 +682,22 @@
    "nota": "",
    "horizontes": {
     "1": {
-     "estado": "FALLO",
+     "estado": "NEUTRAL",
      "ret": -0.443,
      "mae": -0.443,
      "unidad": "%",
-     "base_pct": 47.2,
-     "fecha_fin": "2026-10-10"
+     "base_pct": 34.4,
+     "fecha_fin": "2026-10-10",
+     "sigma_h": 2.4175
     },
     "5": {
-     "estado": "ACIERTO",
+     "estado": "NEUTRAL",
      "ret": 1.192,
      "mae": -1.373,
      "unidad": "%",
-     "base_pct": 48.8,
-     "fecha_fin": "2026-10-14"
+     "base_pct": 33.3,
+     "fecha_fin": "2026-10-14",
+     "sigma_h": 5.4056
     },
     "20": {
      "estado": "PENDIENTE"
@@ -681,16 +720,18 @@
      "ret": 0.512,
      "mae": 0.0,
      "unidad": "%",
-     "base_pct": 50.4,
-     "fecha_fin": "2026-10-09"
+     "base_pct": 43.4,
+     "fecha_fin": "2026-10-09",
+     "sigma_h": 1.2441
     },
     "5": {
      "estado": "FALLO",
      "ret": -2.572,
      "mae": -2.572,
      "unidad": "%",
-     "base_pct": 53.3,
-     "fecha_fin": "2026-10-15"
+     "base_pct": 45.4,
+     "fecha_fin": "2026-10-15",
+     "sigma_h": 2.7818
     },
     "20": {
      "estado": "PENDIENTE"
@@ -713,16 +754,18 @@
      "ret": 0.595,
      "mae": 0.0,
      "unidad": "%",
-     "base_pct": 48.8,
-     "fecha_fin": "2026-10-09"
+     "base_pct": 43.0,
+     "fecha_fin": "2026-10-09",
+     "sigma_h": 0.8052
     },
     "5": {
-     "estado": "FALLO",
+     "estado": "NEUTRAL",
      "ret": -0.274,
      "mae": -0.598,
      "unidad": "%",
-     "base_pct": 53.8,
-     "fecha_fin": "2026-10-15"
+     "base_pct": 45.0,
+     "fecha_fin": "2026-10-15",
+     "sigma_h": 1.8006
     },
     "20": {
      "estado": "PENDIENTE"
@@ -745,16 +788,18 @@
      "ret": 1.427,
      "mae": 0.0,
      "unidad": "%",
-     "base_pct": 50.2,
-     "fecha_fin": "2026-10-09"
+     "base_pct": 36.6,
+     "fecha_fin": "2026-10-09",
+     "sigma_h": 1.8058
     },
     "5": {
-     "estado": "ACIERTO",
+     "estado": "NEUTRAL",
      "ret": 0.315,
      "mae": -1.181,
      "unidad": "%",
-     "base_pct": 51.5,
-     "fecha_fin": "2026-10-15"
+     "base_pct": 43.1,
+     "fecha_fin": "2026-10-15",
+     "sigma_h": 4.0379
     },
     "20": {
      "estado": "PENDIENTE"
@@ -777,16 +822,18 @@
      "ret": 1.065,
      "mae": 0.0,
      "unidad": "%",
-     "base_pct": 45.2,
-     "fecha_fin": "2026-10-09"
+     "base_pct": 34.4,
+     "fecha_fin": "2026-10-09",
+     "sigma_h": 2.4204
     },
     "5": {
      "estado": "ACIERTO",
      "ret": 1.737,
      "mae": 0.0,
      "unidad": "%",
-     "base_pct": 48.4,
-     "fecha_fin": "2026-10-13"
+     "base_pct": 36.2,
+     "fecha_fin": "2026-10-13",
+     "sigma_h": 5.4123
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1106,6 +1153,6 @@
    "horizontes": "SOLO REGISTRO"
   }
  ],
- "reglas": "(reglas FIJAS de este módulo, documentadas también en la página):\n  tesis      cambia la etiqueta de tesis de Oro, NQ, ES o BTC. ALCISTA* = el activo sube; BAJISTA* = baja; SIN TESIS = no puntuable.\n  fed        alerta Fed emitida (cambio del resultado más probable o tipo esperado a diciembre ≥ 10 pb). Activo US2Y (rendimiento del bono a 2 años, FRED):\n             más subidas descontadas = el 2Y sube; más recortes = baja. La dirección se lee del texto de la alerta; si no se puede, no puntuable.\n  skew       alerta SKEW en zona alta relativa con ≥ 2 confirmaciones. Activo ES (S&P 500): esperada una caída (la prima de cobertura es contra caídas).\n  regimen    cambia el cuadrante del régimen macro. Activo NQ: FAVORABLE = sube, DESFAVORABLE = baja (campo «riesgo» del propio régimen); MIXTO = no puntuable.\n  liquidez   cambia la etiqueta del monitor de liquidez. Activo BTC: «SEÑALES INICIALES DE GIRO» / «GIRO DE LIQUIDEZ EN CURSO» = sube; «SIN GIRO» = no puntuable.\n  reaccion   clasificación del monitor de reacción a eventos (T+5 y CIERRE): SOLO REGISTRO, no se puntúa (reglas v3 congeladas).\nMedición: referencia = último cierre COMPLETO anterior a la señal (si la señal sale a partir de las 21:30 UTC y el activo no es cripto, cuenta el cierre de ese día);\nT+n = cierre n sesiones después. Retorno en la dirección esperada: ACIERTO si > +0,1 % (+1 pb en el 2Y), FALLO si < −0,1 % (−1 pb), si no NEUTRAL.\nRetorno máximo adverso = el peor retorno (en la dirección esperada) de los cierres entre la referencia y T+n (≤ 0). Tasa base = % de ventanas de n sesiones\nanteriores a la señal (hasta 250) en las que el activo habría «acertado» en esa dirección: lo que se acierta por azar.",
+ "reglas": "Señales y su dirección esperada(reglas FIJAS de este módulo, impresas también en la página):\n  tesis      cambia la etiqueta de tesis de Oro, NQ, ES o BTC. ALCISTA* = el activo sube; BAJISTA* = baja; SIN TESIS = no puntuable.\n  fed        alerta Fed emitida (cambio del resultado más probable o tipo esperado a diciembre ≥ 10 pb). Activo US2Y (rendimiento del bono a 2 años, FRED):\n             más subidas descontadas = el 2Y sube; más recortes = baja. La dirección se lee del texto de la alerta; si no se puede, no puntuable.\n  regimen    cambia el cuadrante del régimen macro. Activo NQ: FAVORABLE = sube, DESFAVORABLE = baja (campo «riesgo» del propio régimen); MIXTO = no puntuable.\n  liquidez   cambia la etiqueta del monitor de liquidez. Activo BTC: «SEÑALES INICIALES DE GIRO» / «GIRO DE LIQUIDEZ EN CURSO» = sube; «SIN GIRO» = no puntuable.\n  skew       alerta SKEW en zona alta relativa con ≥ 2 confirmaciones. NO se puntúa por la dirección del cierre. ACIERTO si dentro del horizonte (T+1, T+5, T+20):\n             (a) el S&P 500 tiene una caída máxima intrahorizonte ≥ 1 σ_h (peor cierre frente al cierre de referencia; σ_h = desviación típica de los\n             retornos diarios de las últimas 250 sesiones × √h) O (b) el VIX sube ≥ 20 % (máximo de los cierres del horizonte frente al de referencia).\n             Si no ocurre ninguno de los dos, FALLO. Se guardan los dos componentes. Tasa base = frecuencia de ese mismo evento en cualquier ventana de h sesiones\n             de las 250 anteriores a la señal (con σ_h y umbral del VIX fijos en la referencia).\n  reaccion   clasificación del monitor de reacción a eventos (T+5 y CIERRE): SOLO REGISTRO, no se puntúa (reglas v3 congeladas).\nMedición (criterio v2): referencia = último cierre COMPLETO anterior a la señal (si sale desde las 21:30 UTC y el activo no es cripto, cuenta el cierre de ese día);\nT+n = cierre n sesiones después. Retorno en la dirección esperada. NEUTRAL si |retorno| < 0,25 × σ_h del activo (σ de los cambios diarios de las 250 sesiones\nanteriores a la señal × √h; en pb para el 2Y). ACIERTO si el retorno ≥ +0,25 σ_h y FALLO si ≤ −0,25 σ_h. Con menos de 60 cambios diarios previos: PENDIENTE.\nRetorno máximo adverso = el peor retorno (en la dirección esperada) de los cierres entre la referencia y T+n (≤ 0). Tasa base = % de ventanas de n sesiones\nanteriores a la señal (hasta 250) en las que el activo habría «acertado» en esa dirección con el mismo umbral: lo que se acierta por azar.\nCambio de criterio (18-oct-2026): v1 usaba neutral ±0,1 % fijo y puntuaba el SKEW por la dirección del cierre. Los resultados v1 se conservan sin tocar en\ndata/marcador_resultados.csv; los resultados v2 se recalcularon para TODAS las señales (también las de backfill) como filas nuevas con version_criterio = 2.",
  "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas."
 }
