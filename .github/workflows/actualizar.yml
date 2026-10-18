@@ -51,6 +51,13 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python engine/build.py --modo "${{ steps.modo.outputs.modo }}"
+      - name: Aviso previo por Telegram (eventos ALTA fuera de la franja del monitor, si caen en su ventana de 25-35 min)
+        continue-on-error: true
+        env:
+          PYTHONUTF8: "1"
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python engine/aviso_previo.py --push
       - name: Catch-up del monitor de reacciones (red de seguridad porque los crones de GitHub no están garantizados)
         continue-on-error: true
         env:

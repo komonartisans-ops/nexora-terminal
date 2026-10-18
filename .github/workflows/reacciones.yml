@@ -37,6 +37,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Aviso previo por Telegram (evento ALTA que empieza en 25-35 min; el monitor repite la comprobación mientras espera)
+        continue-on-error: true
+        env:
+          PYTHONUTF8: "1"
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python engine/aviso_previo.py --push
       - name: Registrar reacción
         env:
           PYTHONUTF8: "1"
