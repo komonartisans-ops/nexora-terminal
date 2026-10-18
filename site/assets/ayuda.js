@@ -94,6 +94,7 @@ function ayColorear() {
     el.dataset.sem = '1';
     const t = (el.textContent || '').trim().toUpperCase();
     const r = AY_SEM.find(([, re]) => re.test(t));
+    if (/^(ALCISTA|BAJISTA)/.test(t)) el.classList.add(/DÉBIL/.test(t) ? 'int-deb' : 'int-fue');   // intensidad: el color sigue siendo la dirección
     if (!r) return;
     if (el.classList.contains('ck')) { el.classList.remove('ok', 'no', 'par', 'sd'); el.classList.add(r[0]); }
     else if (!(r[0] === 'sd' && el.classList.contains('sd'))) { el.classList.remove('alc', 'baj', 'deb', 'sin', 'sd'); el.classList.add(AY_TAG[r[0]]); }
@@ -102,7 +103,7 @@ function ayColorear() {
 function ayLeyenda() {
   const el = document.getElementById('leyenda');
   if (!el || !AY.d) return;
-  el.innerHTML = '<span class="ley-t">Colores</span>' + AY.d.semaforo.map((s) => `<span class="ley"><i class="${esc(s.clase)}"></i><b>${esc(s.nombre)}</b> ${esc(s.texto)}</span>`).join('') + (AY.d.semaforo_nota ? `<span class="ley-n">${esc(AY.d.semaforo_nota)}</span>` : '') + '<a class="ley-g" href="#/guia">Cómo leer NEXORA</a>';
+  el.innerHTML = '<span class="ley-t">Colores</span>' + AY.d.semaforo.map((s) => `<span class="ley"><i class="${esc(s.clase)}"></i><b>${esc(s.nombre)}</b> ${esc(s.texto)}</span>`).join('') + (AY.d.semaforo_nota ? `<span class="ley-n">${esc(AY.d.semaforo_nota)} ${esc(AY.d.semaforo_intensidad || '')}</span>` : '') + '<a class="ley-g" href="#/guia">Cómo leer NEXORA</a>';
 }
 
 let ayTimer = null;
@@ -163,7 +164,7 @@ function ayGuiaHtml(d, C) {
   let h = '<div class="grid g2">';
   h += `<div class="card"><div class="chead"><span>Qué es NEXORA</span></div><ol class="gl-l">${G.que_es.map((x) => `<li>${esc(x)}</li>`).join('')}</ol></div>`;
   h += `<div class="card gl-no"><div class="chead"><span>Para qué NO sirve</span></div><ul class="gl-l">${G.no_sirve.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div></div>`;
-  h += `<div class="note" style="margin-top:10px">Colores de toda la web: ${d.semaforo.map((s) => `<span class="ley"><i class="${esc(s.clase)}"></i><b>${esc(s.nombre)}</b> = ${esc(s.texto)}</span>`).join(' ')}. ${esc(d.semaforo_nota || '')}</div>`;
+  h += `<div class="note" style="margin-top:10px">Colores de toda la web: ${d.semaforo.map((s) => `<span class="ley"><i class="${esc(s.clase)}"></i><b>${esc(s.nombre)}</b> = ${esc(s.texto)}</span>`).join(' ')}. ${esc(d.semaforo_nota || '')} ${esc(d.semaforo_intensidad || '')}</div>`;
   h += '<div class="sect"><h2>El flujo en un vistazo</h2><span class="more">pulsa cada paso para ir a esa página</span></div><div class="flujo">';
   h += G.flujo.map((f, i) => `<a class="paso" href="#/${esc(f.pagina)}"><span class="n">${f.paso}</span><b>${esc(f.titulo)}</b><small>${esc(f.texto)}</small></a>${i < G.flujo.length - 1 ? '<span class="flecha" aria-hidden="true">→</span>' : ''}`).join('');
   h += '</div>';

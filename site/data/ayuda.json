@@ -352,7 +352,7 @@
   ],
   "tesis por activo": [
    "La tesis resume si el contexto macro ayuda al activo: alcista, bajista, débil o sin tesis.",
-   "Mira la etiqueta y si el «viento de la semana» está a favor o en contra. En las tesis el color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo. «Sin tesis» no es una opinión, es falta de señal clara.",
+   "Mira la etiqueta y si el «viento de la semana» está a favor o en contra. En las tesis el color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo. «Sin tesis» no es una opinión, es falta de señal clara. Intensidad de la tesis: fuerte = etiqueta rellena; débil = el mismo color solo con borde.",
    "Evita decidir por una sola cifra: junta varios motores en una etiqueta."
   ],
   "motores macro": [
@@ -1627,7 +1627,7 @@
    "claves": [
     "tesis"
    ],
-   "def": "La lectura del contexto para un activo: alcista, bajista, débil o sin tesis. No es una orden. El color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo.",
+   "def": "La lectura del contexto para un activo: alcista, bajista, débil o sin tesis. No es una orden. El color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo. Fuerte = etiqueta rellena; débil = mismo color solo con borde.",
    "analogia": "El viento que sopla: no dice qué debes hacer con la vela."
   },
   {
@@ -1660,5 +1660,6 @@
    "analogia": "El peaje que pagan los más impacientes."
   }
  ],
- "semaforo_nota": "En las tesis el color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo."
+ "semaforo_nota": "En las tesis el color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo.",
+ "semaforo_intensidad": "Intensidad de la tesis: fuerte = etiqueta rellena; débil = el mismo color solo con borde."
 }

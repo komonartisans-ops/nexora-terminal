@@ -466,3 +466,7 @@ dl.gl { margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4p
 }
 @media (min-width: 761px) { .leyenda { position: sticky; top: 48px; z-index: 45; } }
 .ley-n { color: var(--dim); font-style: italic; }
+.tag.int-deb.alc, .ck.int-deb.ok { background: transparent; box-shadow: inset 0 0 0 1px var(--pos); }
+.tag.int-deb.baj, .ck.int-deb.no { background: transparent; box-shadow: inset 0 0 0 1px var(--neg); }
+.tag.int-fue.alc, .ck.int-fue.ok { background: var(--pos); color: #07140d; }
+.tag.int-fue.baj, .ck.int-fue.no { background: var(--neg); color: #fff; }
