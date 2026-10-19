@@ -1,17 +1,17 @@
 {
  "periodo": "hoy",
  "corte": "Datos entre el 2026-10-16 y el 2026-10-19 (cada fuente publica a su hora)",
- "movido": "El miedo (VIX) sube 21 %; financiarse le cuesta más a las empresas de riesgo (+8 pb). En conjunto: el dinero se encarece.",
+ "movido": "El miedo (VIX) sube 21 %; el tipo real a 10 años sube 6 pb; financiarse le cuesta más a las empresas de riesgo (+8 pb). En conjunto: el dinero se encarece.",
  "significa": [
   {
    "activo": "Oro",
-   "viento": "A FAVOR",
-   "texto": "A favor: sube el miedo."
+   "viento": "EN CONTRA",
+   "texto": "En contra: sube el tipo real (lo que más les pesa) (pesa más que: sube el miedo)."
   },
   {
    "activo": "Nasdaq 100",
    "viento": "EN CONTRA",
-   "texto": "En contra: sube el miedo. Su movimiento lo explica la macro."
+   "texto": "En contra: sube el tipo real (lo que más les pesa). Su movimiento lo explica la macro."
   },
   {
    "activo": "S&P 500",
@@ -39,10 +39,11 @@
   "mié 21 oct · Resultados Meta Platforms (META): BPA estimado $6.54 · después del cierre",
   "mié 21 oct · Resultados Tesla (TSLA): BPA estimado $0.22 · después del cierre"
  ],
- "tesis": "Viento macro A FAVOR del oro: sube el miedo. Lo que puede girarlo: después del cierre.",
+ "tesis": "Viento macro EN CONTRA del oro: sube el tipo real (lo que más les pesa), y eso pesa más que el apoyo (sube el miedo). Lo que puede girarlo: después del cierre.",
  "sencillo": "El VIX mide cuánto pagan los inversores por protegerse. Si sube, hay miedo y se vende riesgo; si baja, vuelve la calma.",
  "motores_significativos": [
   "vix",
+  "real",
   "hy"
  ],
  "errores": {
@@ -55,6 +56,12 @@
     "sube": true,
     "peso": -2.68,
     "razon": "sube el miedo"
+   },
+   {
+    "motor": "real",
+    "sube": true,
+    "peso": -3.0,
+    "razon": "sube el tipo real (lo que más les pesa)"
    },
    {
     "motor": "hy",
@@ -71,6 +78,12 @@
     "razon": "sube el miedo"
    },
    {
+    "motor": "real",
+    "sube": true,
+    "peso": -1.5,
+    "razon": "sube el tipo real (lo que más les pesa)"
+   },
+   {
     "motor": "hy",
     "sube": true,
     "peso": -1.5,
@@ -83,6 +96,12 @@
     "sube": true,
     "peso": 1.34,
     "razon": "sube el miedo"
+   },
+   {
+    "motor": "real",
+    "sube": true,
+    "peso": -3.0,
+    "razon": "sube el tipo real (lo que más les pesa)"
    }
   ],
   "Bitcoin": [
@@ -91,6 +110,12 @@
     "sube": true,
     "peso": -2.68,
     "razon": "sube el miedo"
+   },
+   {
+    "motor": "real",
+    "sube": true,
+    "peso": -1.5,
+    "razon": "sube el tipo real (lo que más les pesa)"
    },
    {
     "motor": "hy",
@@ -107,6 +132,12 @@
     "razon": "sube el miedo"
    },
    {
+    "motor": "real",
+    "sube": true,
+    "peso": -1.5,
+    "razon": "sube el tipo real (lo que más les pesa)"
+   },
+   {
     "motor": "hy",
     "sube": true,
     "peso": -1.25,
@@ -121,6 +152,12 @@
     "razon": "sube el miedo"
    },
    {
+    "motor": "real",
+    "sube": true,
+    "peso": -2.25,
+    "razon": "sube el tipo real (lo que más les pesa)"
+   },
+   {
     "motor": "hy",
     "sube": true,
     "peso": -2.0,
@@ -130,14 +167,14 @@
  },
  "motores": {
   "t2y": {
-   "valor": 4.74,
-   "delta": -2.999999999999936,
-   "fecha": "2026-10-16"
+   "valor": 4.77,
+   "delta": 2.999999999999936,
+   "fecha": "2026-10-19"
   },
   "real": {
-   "valor": 2.74,
-   "delta": -3.999999999999959,
-   "fecha": "2026-10-16"
+   "valor": 2.8,
+   "delta": 5.999999999999961,
+   "fecha": "2026-10-19"
   },
   "dxy": {
    "valor": 101.82634859363216,
@@ -174,9 +211,9 @@
    "valor": 7659.44
   },
   "Oro": {
-   "delta": -0.47594895790475933,
+   "delta": -0.4879075331199356,
    "fecha": "2026-10-19",
-   "valor": 4161.2001953125
+   "valor": 4160.7001953125
   },
   "Bitcoin": {
    "delta": 0.7724918009378579,
@@ -199,7 +236,7 @@
   "Oro": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: sube el miedo.",
+   "hoy": "En contra: sube el tipo real (lo que más les pesa) (pesa más que: sube el miedo).",
    "semana": "A favor: baja el tipo real (lo que más les ayuda).",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -231,13 +268,19 @@
      "sube": true,
      "peso": 1.34,
      "razon": "sube el miedo"
+    },
+    {
+     "motor": "real",
+     "sube": true,
+     "peso": -3.0,
+     "razon": "sube el tipo real (lo que más les pesa)"
     }
    ]
   },
   "Nasdaq 100": {
    "etiqueta": "BAJISTA DÉBIL",
    "tesis": "BAJISTA DÉBIL: solo lo empuja la macro de la semana (en contra); lo otro está neutral. Lo que la rompería: que ganen peso ADV/DECLINE (amplitud) y VIX TERM STRUCTURE (hoy ya empujan en sentido contrario).",
-   "hoy": "En contra: sube el miedo. Su movimiento lo explica la macro.",
+   "hoy": "En contra: sube el tipo real (lo que más les pesa). Su movimiento lo explica la macro.",
    "semana": "En contra: sube el miedo (pesa más que: baja el tipo real (lo que más les ayuda)). Su movimiento lo explica la macro.",
    "viento_semana": "EN CONTRA",
    "propio": {
@@ -275,6 +318,12 @@
      "sube": true,
      "peso": -2.68,
      "razon": "sube el miedo"
+    },
+    {
+     "motor": "real",
+     "sube": true,
+     "peso": -3.0,
+     "razon": "sube el tipo real (lo que más les pesa)"
     },
     {
      "motor": "hy",
@@ -325,6 +374,12 @@
      "sube": true,
      "peso": -2.68,
      "razon": "sube el miedo"
+    },
+    {
+     "motor": "real",
+     "sube": true,
+     "peso": -1.5,
+     "razon": "sube el tipo real (lo que más les pesa)"
     },
     {
      "motor": "hy",
@@ -382,6 +437,12 @@
      "razon": "sube el miedo"
     },
     {
+     "motor": "real",
+     "sube": true,
+     "peso": -1.5,
+     "razon": "sube el tipo real (lo que más les pesa)"
+    },
+    {
      "motor": "hy",
      "sube": true,
      "peso": -1.0,
@@ -430,6 +491,12 @@
      "sube": true,
      "peso": -2.68,
      "razon": "sube el miedo"
+    },
+    {
+     "motor": "real",
+     "sube": true,
+     "peso": -1.5,
+     "razon": "sube el tipo real (lo que más les pesa)"
     },
     {
      "motor": "hy",
@@ -482,6 +549,12 @@
      "razon": "sube el miedo"
     },
     {
+     "motor": "real",
+     "sube": true,
+     "peso": -2.25,
+     "razon": "sube el tipo real (lo que más les pesa)"
+    },
+    {
      "motor": "hy",
      "sube": true,
      "peso": -2.0,
@@ -509,6 +582,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro; empujan en contra: Nasdaq 100, S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000. Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-19 19:29 UTC",
- "duracion_s": 115.4
+ "generado_utc": "2026-10-19 20:07 UTC",
+ "duracion_s": 104.2
 }
