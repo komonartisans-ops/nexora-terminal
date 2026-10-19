@@ -258,6 +258,32 @@ function revisionHtml(G) {
   });
   return h;
 }
+/* línea de niveles para TradingView: el MISMO formato que el Telegram de las 15:00 (engine/gamma_intradia.py · linea_niveles) */
+function lineaNivelesGamma(G) {
+  return ['ES', 'NQ'].map((k) => {
+    const x = ((G || {}).indices || {})[k];
+    if (!x || !x.flip || x.flip.fut == null) return `${k} flip=na;cw=na;pw=na;em=na;maxg=na`;
+    const v = (o) => (o && o.fut != null ? Number(o.fut).toFixed(1) : 'na');
+    return `${k} flip=${v(x.flip)};cw=${v(x.call_wall)};pw=${v(x.put_wall)};em=${x.em && x.em.puntos != null ? Number(x.em.puntos).toFixed(1) : 'na'};maxg=${v(x.max_gamma)}`;
+  }).join(' | ');
+}
+function plataformasHtml(G) {
+  const I = (G && G.indices) || {}, v = (o) => (o && o.fut != null ? nf(o.fut, 1) : 'SIN DATO');
+  let h = '<div class="sect"><h2>Niveles para tus plataformas</h2><span class="more">precios de futuro · NinjaTrader 8 y TradingView</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Índice</th><th>Gamma Flip</th><th>Call Wall</th><th>Put Wall</th><th>Max Gamma</th><th>EM (1 día)</th><th>Sesión de los niveles</th></tr></thead><tbody>';
+  h += ['ES', 'NQ'].map((k) => { const x = I[k]; if (!x) return `<tr><td data-label="Índice" style="text-align:left"><b>${k}</b></td><td colspan="6"><span class="sd-val">SIN DATO</span></td></tr>`; const em = x.em || {};
+    return `<tr><td data-label="Índice" style="text-align:left"><b>${k}</b></td><td data-label="Gamma Flip">${v(x.flip)}</td><td data-label="Call Wall">${v(x.call_wall)}</td><td data-label="Put Wall">${v(x.put_wall)}</td><td data-label="Max Gamma">${v(x.max_gamma)}</td><td data-label="EM (1 día)">${em.puntos != null ? nf(em.puntos, 1) + ' pts <small>(' + esc(em.vol_simbolo) + ' ' + nf(em.vol, 1) + ')</small>' : 'SIN DATO'}</td><td data-label="Sesión de los niveles">${esc(dmy(x.sesion))}</td></tr>`; }).join('');
+  h += `</tbody></table><div class="note" style="padding:8px 16px 4px">Línea para el indicador de TradingView (la misma que llega por Telegram a las 15:00, hora de Madrid):</div><div style="padding:0 16px 8px"><code id="gLinea" style="display:block;white-space:normal;word-break:break-all;padding:8px;border:1px solid var(--line);border-radius:6px">${esc(lineaNivelesGamma(G))}</code>
+    <button class="fbtn" id="gCopiar" style="margin-top:6px" type="button">Copiar línea</button> <span class="note" id="gCopiado"></span></div>
+    <div class="note" style="padding:0 16px 12px"><b>Avisos intradía de ES y NQ</b> (Telegram, sesión regular, velas de 5 min): cambio de régimen (2 cierres al otro lado del flip), techo en gamma positiva (≤ 0,25 × EM del Call Wall), pérdida del Put Wall en gamma negativa (2 cierres por debajo) y EM agotado (rango del día ≥ 100 % del EM). Máx. 6 al día, sin repetir el mismo en 60 min. Son hechos de precio frente a niveles, <b>contexto y no entradas</b>; su medición (MFE/MAE a 15, 30 y 60 min) está en <a href="#/marcador">Marcador</a>. Los indicadores y su instalación paso a paso: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/tree/main/plataformas" target="_blank" rel="noopener">carpeta /plataformas</a>. EM = precio × VIX (ES) o VXN (NQ) / 100 / √252 con la volatilidad del cierre de la sesión de los niveles.</div></div>`;
+  MOUNT.push(() => {
+    const b = document.getElementById('gCopiar');
+    if (b) b.addEventListener('click', async () => {
+      const t = document.getElementById('gLinea').textContent, o = document.getElementById('gCopiado');
+      try { await navigator.clipboard.writeText(t); o.textContent = 'Copiada.'; } catch (e) { const r = document.createRange(); r.selectNodeContents(document.getElementById('gLinea')); const s = window.getSelection(); s.removeAllRanges(); s.addRange(r); o.textContent = 'Seleccionada: pulsa Ctrl+C.'; }
+    });
+  });
+  return h;
+}
 function pageGamma() {
   const G = D.gamma;
   let h = head('Análisis', 'Gamma de índices', 'Dónde están las coberturas de opciones que obligan a los creadores de mercado a comprar o vender: Call Wall, Put Wall y Gamma Flip de SPX+SPY (ES) y NDX+QQQ (NQ), convertidos a precio del futuro con la base del día.',
@@ -272,6 +298,7 @@ function pageGamma() {
   if (G.descartados_intradia && Object.keys(G.descartados_intradia).length) h += `<div class="banner amber" style="margin:0 0 12px;border-radius:6px">Se conserva el último cierre válido: la última descarga fue intradía y no se usa.</div>`;
   ['ES', 'NQ'].forEach((k) => { if (I[k]) h += gammaBloque(k, I[k], G.generado_utc); else h += `<div class="sect"><h2>${k}</h2></div>${noData('Gamma ' + k)}`; });
   h += revisionHtml(G);
+  h += plataformasHtml(G);
   const v = (es && es.validacion_gamma) || {};
   const vn = (nq && nq.validacion_gamma) || {};
   h += `<div class="sect"><h2>Método · CRITERIO NEXORA</h2><span class="more">método propio, documentado; no es un dato oficial de ningún proveedor</span></div><div class="card"><div class="note" style="margin-top:0;white-space:pre-line">${esc(G.metodo)}</div>

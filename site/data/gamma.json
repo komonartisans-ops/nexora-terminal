@@ -1400,7 +1400,22 @@
     "fuente": "Yahoo Finance",
     "errores": []
    },
-   "resumen_texto": "Call Wall 7.844 ES (7.800 SPX), Put Wall 7.694 (7.650), Gamma Flip 7.804 (7.760); gamma negativa (-58,7 mm$ por 1 %)"
+   "resumen_texto": "Call Wall 7.844 ES (7.800 SPX), Put Wall 7.694 (7.650), Gamma Flip 7.804 (7.760); gamma negativa (-58,7 mm$ por 1 %)",
+   "max_gamma": {
+    "idx": 7700,
+    "musd": 11687.6,
+    "fut": 7743.6
+   },
+   "em": {
+    "puntos": 97.0,
+    "pct": 1.259,
+    "vol": 19.99,
+    "vol_simbolo": "VIX",
+    "vol_fecha": "2026-10-16",
+    "ref": 7703.0,
+    "formula": "precio × VIX / 100 / √252",
+    "fuente": "Yahoo Finance (^VIX)"
+   }
   },
   "NQ": {
    "clave": "NQ",
@@ -2591,7 +2606,22 @@
     "fuente": "Yahoo Finance",
     "errores": []
    },
-   "resumen_texto": "Call Wall 29.892 NQ (29.700 NDX), Put Wall 28.592 (28.400), Gamma Flip 29.920 (29.728); gamma negativa (-6,0 mm$ por 1 %)"
+   "resumen_texto": "Call Wall 29.892 NQ (29.700 NDX), Put Wall 28.592 (28.400), Gamma Flip 29.920 (29.728); gamma negativa (-6,0 mm$ por 1 %)",
+   "max_gamma": {
+    "idx": 29200,
+    "musd": 2256.1,
+    "fut": 29392.0
+   },
+   "em": {
+    "puntos": 502.1,
+    "pct": 1.709,
+    "vol": 27.13,
+    "vol_simbolo": "VXN",
+    "vol_fecha": "2026-10-16",
+    "ref": 29379.5,
+    "formula": "precio × VXN / 100 / √252",
+    "fuente": "Yahoo Finance (^VXN)"
+   }
   }
  },
  "errores": {},

@@ -126,6 +126,11 @@ function bloqueContradicciones() {
 
 /* ================================================================== DIARIO DE OPERACIONES */
 const diario = { mes: null, dia: null, st: null, edit: null };
+/* setup de la operación y casillas de confirmación (se guardan con la operación; «Mi operativa» agrupa por setup × régimen gamma) */
+const SETUPS = ['Barrido+vuelta', 'Ruptura+continuación', 'Otro'];
+const CONFIRMACIONES = [['absorcion', 'Absorción'], ['iceberg', 'Iceberg'], ['div_delta', 'Divergencia delta'], ['stacked', 'Stacked imbalances'], ['barrido_lit', 'Barrido LIT'], ['fvg', 'FVG'], ['vah_val_poc', 'VAH/VAL/POC']];
+const CONF_NOMBRE = Object.fromEntries(CONFIRMACIONES);
+const setupChip = (t) => (t.setup || (t.conf && t.conf.length) ? `<span class="ck sd" title="${esc((t.conf || []).map((k) => CONF_NOMBRE[k] || k).join(', ') || 'sin confirmaciones')}">${esc(t.setup || 'sin setup')}${t.conf && t.conf.length ? ' · ' + t.conf.length + ' conf.' : ''}</span>` : '');
 const decNum = (v) => { const x = parseFloat(String(v ?? '').replace(/\s/g, '').replace(',', '.')); return Number.isFinite(x) ? x : null; };
 /* saneado de una operación leída de un JSON importado: conserva los campos nuevos (hora, precios, foto del sistema, mod) */
 function tradeNorm(t) {
@@ -133,6 +138,8 @@ function tradeNorm(t) {
   ['hora', 'hora_salida'].forEach((k) => { if (/^\d{1,2}:\d{2}$/.test(String(t[k] || ''))) o[k] = String(t[k]); });
   ['precio_entrada', 'precio_salida'].forEach((k) => { if (t[k] != null && Number.isFinite(+t[k])) o[k] = +t[k]; });
   if (t.foto && typeof t.foto === 'object' && !Array.isArray(t.foto)) o.foto = t.foto;
+  if (SETUPS.includes(t.setup)) o.setup = t.setup;
+  if (Array.isArray(t.conf)) { const c = [...new Set(t.conf.filter((k) => CONF_NOMBRE[k]))]; if (c.length) o.conf = c; }
   if (t.mod) o.mod = String(t.mod).slice(0, 40);
   return o;
 }
@@ -234,10 +241,12 @@ function diarioHtml() {
         <label>Precio de salida<input name="precio_salida" inputmode="decimal" value="${ed && ed.precio_salida != null ? esc(String(ed.precio_salida).replace('.', ',')) : ''}" placeholder="opcional"></label>
         <label>Hora de salida (Madrid)<input type="time" name="hora_salida" value="${esc(ed && ed.hora_salida ? ed.hora_salida.padStart(5, '0') : '')}"></label>
         <label>Resultado (P&amp;L en $)<input name="pnl" inputmode="decimal" placeholder="p. ej. 125,50 o -80" value="${ed ? esc(String(ed.pnl).replace('.', ',')) : ''}" required></label>
+        <label>Setup<select name="setup"><option value="">Sin setup</option>${SETUPS.map((s) => `<option${ed && ed.setup === s ? ' selected' : ''}>${esc(s)}</option>`).join('')}</select></label>
+        <div class="full conf" role="group" aria-label="Confirmaciones" style="display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center"><span class="note" style="margin:0">Confirmaciones:</span>${CONFIRMACIONES.map(([k, n]) => `<label style="display:inline-flex;gap:5px;align-items:center;flex-direction:row;text-transform:none;letter-spacing:0"><input type="checkbox" name="conf" value="${k}"${ed && (ed.conf || []).includes(k) ? ' checked' : ''}> ${esc(n)}</label>`).join('')}</div>
         <label class="full">Motivo / nota<input name="nota" maxlength="240" placeholder="Qué tesis había y qué pasó" value="${ed ? esc(ed.nota || '') : ''}"></label>
         <button class="fbtn on full" type="submit">${ed ? 'Guardar cambios' : 'Añadir operación'}</button>${ed ? '<button class="fbtn full" type="button" data-a="cancelar-edicion">Cancelar edición</button>' : ''}
         <div class="note full" style="margin:0">Al guardar se adjunta la foto del sistema NEXORA (tesis, régimen, liquidez, ciclo, FedWatch, gamma, SKEW, eventos) del último contexto publicado antes de tu hora de entrada. Se guarda solo en tu diario.</div></form>
-      ${delDia.length ? '<div class="jlist">' + delDia.map((t) => `<div class="jop${ed && ed.id === t.id ? ' editando' : ''}"><span class="tag ${t.pnl > 0 ? 'alc' : t.pnl < 0 ? 'baj' : 'sin'}">${esc(t.lado)}</span><span class="nm">${t.hora ? `<span class="mono" style="color:var(--dim)">${esc(t.hora.padStart(5, '0'))}</span> ` : ''}${esc(t.activo)} ${fotoChip(t)}</span><span class="mono ${f5.cls(t.pnl)}">${f5.usd(t.pnl)}</span><button class="x" data-edit="${esc(t.id)}" aria-label="Editar operación" title="Editar">✎</button><button class="x" data-del="${esc(t.id)}" aria-label="Borrar operación">×</button>${t.nota ? `<span class="nt">${esc(t.nota)}</span>` : ''}<div class="nt">${fotoHtml(t)}</div></div>`).join('') + '</div>' : '<div class="note">Sin operaciones este día.</div>'}
+      ${delDia.length ? '<div class="jlist">' + delDia.map((t) => `<div class="jop${ed && ed.id === t.id ? ' editando' : ''}"><span class="tag ${t.pnl > 0 ? 'alc' : t.pnl < 0 ? 'baj' : 'sin'}">${esc(t.lado)}</span><span class="nm">${t.hora ? `<span class="mono" style="color:var(--dim)">${esc(t.hora.padStart(5, '0'))}</span> ` : ''}${esc(t.activo)} ${fotoChip(t)} ${setupChip(t)}</span><span class="mono ${f5.cls(t.pnl)}">${f5.usd(t.pnl)}</span><button class="x" data-edit="${esc(t.id)}" aria-label="Editar operación" title="Editar">✎</button><button class="x" data-del="${esc(t.id)}" aria-label="Borrar operación">×</button>${t.nota ? `<span class="nt">${esc(t.nota)}</span>` : ''}<div class="nt">${fotoHtml(t)}</div></div>`).join('') + '</div>' : '<div class="note">Sin operaciones este día.</div>'}
       <label class="full" style="display:block;margin-top:10px"><span class="note">Nota del día</span><textarea id="jnota" rows="3" maxlength="600" placeholder="Estado de ánimo, errores, lo que repetirías…">${esc(S.notas[act] || '')}</textarea></label>
       <button class="fbtn" data-a="nota" style="margin-top:6px">Guardar nota</button></div></div></div>`;
   h += '<div class="grid g2" style="margin-top:12px"><div class="card chartcard"><h3>Curva de P&amp;L acumulado</h3><div class="sub">Suma de los resultados de los meses cargados, por fecha (usa «Cargar todos los meses» para la curva completa)</div>';
@@ -265,7 +274,8 @@ async function guardarOperacion(form, repaint) {
   if (ms > Date.now() + 5 * 6e4) { alert('La hora de entrada está en el futuro.'); return; }
   const num2 = (k) => { const v = decNum(f.get(k)); return v == null ? undefined : v; };
   const campos = { fecha, hora, activo: String(f.get('activo')), lado: String(f.get('lado')) === 'Corto' ? 'Corto' : 'Largo', pnl: Math.round(pnl * 100) / 100, nota: String(f.get('nota') || '').trim(),
-    precio_entrada: num2('precio_entrada'), precio_salida: num2('precio_salida'), hora_salida: String(f.get('hora_salida') || '') || undefined };
+    precio_entrada: num2('precio_entrada'), precio_salida: num2('precio_salida'), hora_salida: String(f.get('hora_salida') || '') || undefined,
+    setup: SETUPS.includes(String(f.get('setup'))) ? String(f.get('setup')) : undefined, conf: f.getAll('conf').filter((k) => CONF_NOMBRE[k]).length ? f.getAll('conf').filter((k) => CONF_NOMBRE[k]) : undefined };
   const id = form.dataset.editando || '';
   const previa = id ? DSYNC.estado().trades.find((t) => t.id === id) : null;
   const cambiaFoto = !previa || previa.fecha !== fecha || previa.hora !== hora || previa.activo !== campos.activo || !previa.foto || previa.foto.estado !== 'OK';
@@ -326,8 +336,8 @@ function pageDiario() {
       else if (k === 'exp-json') { await cargar('todos'); const s = DSYNC.estado(); f5.descarga(`nexora-diario-${hoyISO()}.json`, JSON.stringify({ trades: s.trades, notas: s.notas, notasMod: s.notasMod, borrados: s.borrados }, null, 1), 'application/json'); }
       else if (k === 'exp-csv') {
         await cargar('todos');
-        const cab = ['fecha', 'hora', 'hora_salida', 'activo', 'lado', 'precio_entrada', 'precio_salida', 'pnl', 'nota', 'foto_estado', 'foto_contexto_utc', 'alineacion_tesis', 'tesis', 'regimen', 'liquidez', 'ciclo', 'evento_alta_2h'];
-        const fila = (t) => { const f = t.foto || {}; return Object.assign({}, t, { foto_estado: f.estado || 'SIN FOTO', foto_contexto_utc: f.contexto_utc || '', alineacion_tesis: FOTO.alineacion(t) || '', tesis: f.tesis ? f.tesis.etiqueta : '', regimen: f.regimen ? f.regimen.cuadrante : '', liquidez: f.liquidez ? f.liquidez.lectura : '', ciclo: f.ciclo ? f.ciclo.fase : '', evento_alta_2h: f.evento_alta_2h ? (f.evento_alta_2h.si ? f.evento_alta_2h.eventos.map((e) => e.evento).join(' | ') : 'no') : '' }); };
+        const cab = ['fecha', 'hora', 'hora_salida', 'activo', 'lado', 'precio_entrada', 'precio_salida', 'pnl', 'nota', 'setup', 'confirmaciones', 'regimen_gamma', 'foto_estado', 'foto_contexto_utc', 'alineacion_tesis', 'tesis', 'regimen', 'liquidez', 'ciclo', 'evento_alta_2h'];
+        const fila = (t) => { const f = t.foto || {}; return Object.assign({}, t, { confirmaciones: (t.conf || []).map((k) => CONF_NOMBRE[k] || k).join(' | '), regimen_gamma: f.gamma ? f.gamma.signo : '', foto_estado: f.estado || 'SIN FOTO', foto_contexto_utc: f.contexto_utc || '', alineacion_tesis: FOTO.alineacion(t) || '', tesis: f.tesis ? f.tesis.etiqueta : '', regimen: f.regimen ? f.regimen.cuadrante : '', liquidez: f.liquidez ? f.liquidez.lectura : '', ciclo: f.ciclo ? f.ciclo.fase : '', evento_alta_2h: f.evento_alta_2h ? (f.evento_alta_2h.si ? f.evento_alta_2h.eventos.map((e) => e.evento).join(' | ') : 'no') : '' }); };
         f5.descarga(`nexora-diario-${hoyISO()}.csv`, [cab.join(','), ...DSYNC.estado().trades.slice().sort((a, b) => (a.fecha + (a.hora || '')).localeCompare(b.fecha + (b.hora || ''))).map((t) => { const r = fila(t); return cab.map((c) => f5.csvCelda(r[c])).join(','); })].join('\n'), 'text/csv');
       } else if (k === 'imp') $('#jimp', root).click();
     });

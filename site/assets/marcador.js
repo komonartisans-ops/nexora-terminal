@@ -3,7 +3,22 @@
    data/marcador_resultados.csv). La página solo muestra: no calcula ni concluye nada. Todo texto dinámico pasa por esc(). */
 'use strict';
 
-const MC = { h: '5', datos: null };
+const MC = { h: '5', datos: null, gi: null };
+
+/* marcador «gamma intradía»: MFE/MAE a 15, 30 y 60 min de los avisos enviados (solo descriptivo; reglas congeladas hasta n ≥ 20 por regla) */
+function mcGammaIntradia(G) {
+  let h = '<div class="sect"><h2>Gamma intradía</h2><span class="more">avisos de ES y NQ con velas de 5 min · MFE y MAE a 15, 30 y 60 min</span></div>';
+  if (!G || !G.por_regla) return h + `<div class="card"><div class="empty" style="height:90px">SIN DATO · data/gamma_intradia.json</div></div>`;
+  const rs = Object.values(G.por_regla), hz = G.horizontes_min || [15, 30, 60], em = (v) => (v == null ? '—' : num(v, 2) + '×');
+  h += `<div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Regla</th><th>Avisos</th>${hz.map((x) => `<th>${x} min · n</th><th>${x} min · MFE / MAE (mediana)</th>`).join('')}<th>Estado</th></tr></thead><tbody>`
+    + rs.map((r) => `<tr class="${r.fiable ? '' : 'poca'}"><td data-label="Regla" style="text-align:left"><b>${esc(r.nombre)}</b></td><td data-label="Avisos" class="mono">${esc(String(r.n_senales))}</td>`
+      + hz.map((x) => { const d = r.horizontes[String(x)] || {}; return `<td data-label="${x} min · n" class="mono">${esc(String(d.n || 0))}</td><td data-label="${x} min · MFE / MAE">${d.mfe_mediana_pts == null ? '—' : `${num(d.mfe_mediana_pts, 1)} / ${num(d.mae_mediana_pts, 1)} pts <small>(${em(d.mfe_mediana_em)} / ${em(d.mae_mediana_em)} EM)</small>`}</td>`; }).join('')
+      + `<td data-label="Estado"><span class="ck ${r.fiable ? 'ok' : 'par'}">${r.fiable ? 'EVALUABLE' : 'CONGELADA · n < ' + esc(String(G.min_n))}</span></td></tr>`).join('')
+    + `</tbody></table><div class="note" style="padding:8px 16px 12px">${esc(G.metodo || '')} ${G.n_senales ? '' : 'Todavía no hay ningún aviso enviado: el registro empieza con el primero.'}</div>`
+    + (G.ultimas && G.ultimas.length ? `<div class="note" style="padding:0 16px 12px"><b>Últimos avisos:</b> ${G.ultimas.slice(0, 5).map((u) => `${esc(fdy(u.fecha_et))} ${esc(u.indice)} · ${esc((G.por_regla[u.regla] || {}).nombre || u.regla)} (${esc(String(u.precio_ref))}, gamma ${esc(u.regimen)})`).join(' · ')}</div>` : '')
+    + footIn('engine/gamma_intradia.py (data/gamma_intradia_senales.csv y data/gamma_intradia_resultados.csv, solo añadir)', G.generado_utc && G.generado_utc.slice(0, 10), null, 'velas de 5 min de Yahoo Finance') + '</div>';
+  return h;
+}
 const MC_TIPOS = [['tesis', 'Tesis por activo (cambios)'], ['fed', 'Alertas Fed'], ['skew', 'SKEW alto con ≥ 2 confirmaciones'], ['regimen', 'Régimen (cambios)'],
   ['liquidez', 'Liquidez (cambios de etiqueta)'], ['consumo', 'Tesis de consumo (cambios)'], ['petroleo', 'Tesis de petróleo (cambios)'], ['reaccion', 'Reacción a eventos (solo registro)']];
 const mcPct = (v) => (v == null ? '—' : num(v, 1) + ' %');
@@ -60,6 +75,7 @@ function mcHtml(M) {
       <td data-label="T+1">${cel('1')}</td><td data-label="T+5">${cel('5')}</td><td data-label="T+20">${cel('20')}</td></tr>`;
   }).join('') || '<tr><td colspan="9" style="text-align:left;color:var(--dim)">Sin señales registradas.</td></tr>';
   h += `</tbody></table>${footIn('engine/marcador.py (data/marcador_senales.csv y data/marcador_resultados.csv, solo añadir)', M.generado_utc && M.generado_utc.slice(0, 10), null, 'cierres de Yahoo Finance (precios) y FRED (2Y)')}</div>`;
+  h += mcGammaIntradia(MC.gi);
   h += `<div class="sect"><h2>Reglas del marcador</h2><span class="more">fijas; no cambian según el resultado</span></div><div class="card"><details class="qa" open><summary>Criterios v2: qué cuenta como señal, qué se espera y cómo se mide</summary><p style="white-space:pre-line">${esc(M.reglas || '')}</p></details></div>`;
   h += `<div class="note">${esc(M.nota || '')} Una señal sin cierres suficientes queda PENDIENTE y no se estima. Las correcciones no editan filas: se añade una fila ANULADA.</div>`;
   return h;
@@ -76,6 +92,7 @@ function pageMarcador() {
       if (!r.ok) throw new Error(r.status);
       MC.datos = await r.json();
     } catch (e) { root.innerHTML = noData('Marcador de señales (data/marcador.json)'); return; }
+    try { const g = await fetch('data/gamma_intradia.json?v=' + Date.now(), { cache: 'no-store' }); MC.gi = g.ok ? await g.json() : null; } catch (e) { MC.gi = null; }
     const pintar = () => { if (document.getElementById('mc-root') === root) root.innerHTML = mcHtml(MC.datos); };
     pintar();
     root.addEventListener('click', (e) => { const b = e.target.closest('[data-h]'); if (b) { MC.h = b.dataset.h; pintar(); } });

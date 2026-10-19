@@ -244,6 +244,14 @@ function operativaHtml(S) {
   h += tablaGrupos('Por régimen macro', 'cuadrante crecimiento/inflación de la foto (régimen NEXORA)', orden(regs, (t) => (t.foto.regimen && t.foto.regimen.cuadrante) || 'SIN DATO'), 'opReg');
   const evt = (t) => (t.foto.evento_alta_2h ? (t.foto.evento_alta_2h.si ? 'CON EVENTO ALTA ±2 h' : 'SIN EVENTO ALTA ±2 h') : 'SIN DATO DE AGENDA');
   h += tablaGrupos('Con y sin evento cercano', 'dato de importancia alta a ±2 h de tu entrada (Agenda NEXORA)', orden(['CON EVENTO ALTA ±2 h', 'SIN EVENTO ALTA ±2 h', 'SIN DATO DE AGENDA'].filter((k) => k !== 'SIN DATO DE AGENDA' || conFoto.some((t) => evt(t) === k)), evt), 'opEvt');
+  /* setup × régimen gamma: el régimen es el de la foto (solo ES y NQ llevan gamma); sin foto o en otro activo = SIN RÉGIMEN GAMMA */
+  const gam = (t) => (t.foto && t.foto.estado === 'OK' && t.foto.gamma && t.foto.gamma.signo ? 'gamma ' + String(t.foto.gamma.signo).toLowerCase() : 'sin régimen gamma');
+  const sup = (t) => t.setup || 'Sin setup';
+  const combos = [];
+  [...SETUPS, 'Sin setup'].forEach((s) => ['gamma positiva', 'gamma negativa', 'sin régimen gamma'].forEach((g) => { const trs = T.filter((t) => sup(t) === s && gam(t) === g); if (trs.length) combos.push([`${s} · ${g}`, trs]); }));
+  h += tablaGrupos('Por setup × régimen gamma', 'setup anotado en el Diario frente al régimen gamma de ES/NQ en la foto del sistema al entrar; con n < ' + MIN_N + ' no concluyas', combos, 'opSetup');
+  const conf = CONFIRMACIONES.map(([k, n]) => [n, T.filter((t) => (t.conf || []).includes(k))]).filter(([, trs]) => trs.length);
+  if (conf.length) h += tablaGrupos('Por confirmación', 'operaciones con esa casilla marcada (una operación puede tener varias)', conf, 'opConf');
   const acts = [...new Set(T.map((t) => t.activo))].sort();
   h += tablaGrupos('Por activo', 'todas las operaciones, con o sin foto', acts.map((a) => [a, T.filter((t) => t.activo === a)]), 'opAct');
   h += `<div class="note">Regla de «a favor / en contra»: se toma la etiqueta de tesis del activo en la foto (ALCISTA o BAJISTA, débil o no) y se compara con tu lado (Largo = alcista). Los activos sin tesis NEXORA (EUR/USD, USD/JPY, Otro) y las etiquetas SIN TESIS cuentan como «sin tesis». La foto es la del último contexto publicado antes de tu hora de entrada (hora de Madrid); el desfase aparece en cada operación del Diario. Win rate y P&amp;L son los que anotaste, sin ajustar por tamaño de posición.</div>`;

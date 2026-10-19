@@ -1,0 +1,172 @@
+{
+ "version": 1,
+ "ok": true,
+ "generado_utc": "2026-10-19 14:52 UTC",
+ "min_n": 20,
+ "horizontes_min": [
+  15,
+  30,
+  60
+ ],
+ "n_senales": 0,
+ "por_regla": {
+  "cambio_regimen": {
+   "regla": "cambio_regimen",
+   "nombre": "Cambio de régimen de gamma",
+   "n_senales": 0,
+   "horizontes": {
+    "15": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    },
+    "30": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    },
+    "60": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    }
+   },
+   "fiable": false,
+   "estado": "CONGELADA"
+  },
+  "techo_gamma_positiva": {
+   "regla": "techo_gamma_positiva",
+   "nombre": "Techo en gamma positiva (Call Wall cerca)",
+   "n_senales": 0,
+   "horizontes": {
+    "15": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    },
+    "30": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    },
+    "60": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    }
+   },
+   "fiable": false,
+   "estado": "CONGELADA"
+  },
+  "perdida_put_wall": {
+   "regla": "perdida_put_wall",
+   "nombre": "Pérdida del Put Wall en gamma negativa",
+   "n_senales": 0,
+   "horizontes": {
+    "15": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    },
+    "30": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    },
+    "60": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    }
+   },
+   "fiable": false,
+   "estado": "CONGELADA"
+  },
+  "em_agotado": {
+   "regla": "em_agotado",
+   "nombre": "Movimiento esperado (EM) agotado",
+   "n_senales": 0,
+   "horizontes": {
+    "15": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    },
+    "30": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    },
+    "60": {
+     "n": 0,
+     "n_con_direccion": 0,
+     "mfe_mediana_pts": null,
+     "mae_mediana_pts": null,
+     "mfe_mediana_em": null,
+     "mae_mediana_em": null,
+     "mfe_mayor_que_mae_pct": null
+    }
+   },
+   "fiable": false,
+   "estado": "CONGELADA"
+  }
+ },
+ "reglas": [
+  "1. CAMBIO DE RÉGIMEN: 2 cierres de 5 min consecutivos al otro lado del Gamma Flip respecto al lado vigente (el del último cierre antes de las 09:30 ET). Por encima del flip = gamma",
+  "positiva; por debajo = negativa. Tras el aviso, el nuevo lado pasa a ser el vigente.",
+  "2. TECHO EN GAMMA POSITIVA: con régimen vigente positivo, el cierre de 5 min queda por debajo del Call Wall a una distancia ≤ 0,25 × EM (aviso al ENTRAR en esa zona).",
+  "3. PÉRDIDA DEL PUT WALL EN GAMMA NEGATIVA: con régimen vigente negativo, 2 cierres de 5 min consecutivos por debajo del Put Wall tras haber estado por encima (cruce desde arriba;",
+  "se rearma con un cierre por encima).",
+  "4. EM AGOTADO: el rango del día (máximo − mínimo desde las 09:30 ET, sesión regular) ≥ 100 % del EM. Una vez por día e índice.",
+  "Solo en sesión regular (09:30-16:00 ET), de lunes a viernes. Máx. 6 avisos al día; el mismo tipo en el mismo índice no se repite en 60 min; un disparo con más de 20 min de antigüedad",
+  "no se envía. Cada aviso lleva: hecho, régimen, invalidación, retraso de los datos y si hay un dato de importancia ALTA a ±15 min."
+ ],
+ "metodo": "MFE = máxima excursión a favor y MAE = máxima excursión en contra de la dirección hipotética de la regla, frente al cierre de la vela de disparo, con barras de 5 min de Yahoo Finance. Solo se miden los avisos enviados en vivo. No hay acierto/fallo: con n < 20 por regla no se concluye nada y las reglas no se tocan.",
+ "ultimas": [],
+ "fuente": "gamma_intradia.py (data/gamma_intradia_senales.csv, data/gamma_intradia_resultados.csv)",
+ "duracion_s": 0.1
+}

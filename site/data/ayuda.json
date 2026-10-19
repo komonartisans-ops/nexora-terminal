@@ -1619,6 +1619,16 @@
    "Las reglas exactas que usa el motor para votar y decidir la tesis.",
    "Están impresas tal cual: no hay nada oculto ni IA.",
    "Si quieres cambiarlas, hay que cambiar el código y se verá en el historial."
+  ],
+  "niveles para tus plataformas": [
+   "Los niveles de gamma de hoy en precio de futuro (ES y NQ), listos para llevarlos a NinjaTrader 8 o a TradingView, y la línea de texto que NEXORA manda por Telegram a las 15:00.",
+   "Gamma Flip, Call Wall, Put Wall y Max Gamma salen de la cadena de opciones del cierre anterior; el EM es el movimiento esperado de un día según el VIX (ES) o el VXN (NQ).",
+   "Son niveles de referencia, no señales: contexto, no entradas."
+  ],
+  "gamma intradía": [
+   "Los avisos de Telegram de ES y NQ durante la sesión (velas de 5 min) y cuánto se movió el precio después de cada uno: MFE = máximo a favor, MAE = máximo en contra, a 15, 30 y 60 minutos.",
+   "Mientras una regla tenga menos de 20 avisos medidos está «congelada»: no se concluye nada ni se cambian sus umbrales.",
+   "Mide hechos de precio frente a niveles; no es una recomendación de compra o venta."
   ]
  },
  "glosario": [
