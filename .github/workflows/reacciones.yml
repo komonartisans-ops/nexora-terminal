@@ -28,13 +28,13 @@ concurrency:
 
 jobs:
   reaccion:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       cambios: ${{ steps.push.outputs.cambios }}
     timeout-minutes: 240
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Aviso previo por Telegram (evento ALTA que empieza en 25-35 min; el monitor repite la comprobación mientras espera)
@@ -77,12 +77,12 @@ jobs:
   deploy:
     needs: reaccion
     if: ${{ always() && needs.reaccion.outputs.cambios == 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: github-pages
       url: ${{ steps.dep.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
       - uses: actions/configure-pages@v5
