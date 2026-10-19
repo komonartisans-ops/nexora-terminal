@@ -86,16 +86,35 @@ assert C.capa_capacidad(cap_mal)["estado"] == "NO RESPALDA" and C.capa_capacidad
 assert C.capa_capacidad({"DSPIC96": fila("DSPIC96", tendencia_3m=0.6), "PSAVERT": fila("PSAVERT", valor=3.0, media_12m=4.5)})["estado"] == "MIXTA", "las series sin dato votan 0"
 print("4) OK capa real (alza/baja/mixto/SIN DATO) y capacidad (+4 respalda, −4 no respalda, series ausentes votan 0)")
 
-# ---------------------------------------------------------------- 5) concentración: XLY/XLP sube y RSPD/RSPS no → aviso
-cap_up = {"pendiente_3m_pct": 6.0}
-assert C.concentracion(cap_up, {"pendiente_3m_pct": -1.0}, None)["aviso"] == "el ratio lo mueven 2 empresas, no el consumo amplio"
-assert C.concentracion(cap_up, {"pendiente_3m_pct": 0.0}, None)["aviso"] is not None
-assert C.concentracion(cap_up, {"pendiente_3m_pct": 4.0}, None)["aviso"] is None and C.concentracion({"pendiente_3m_pct": -2.0}, {"pendiente_3m_pct": -1.0}, None)["aviso"] is None
-assert C.concentracion(cap_up, {"pendiente_3m_pct": 1.0}, None)["diferencia_3m_pp"] == 5.0
+# ---------------------------------------------------------------- 5) concentración SIMÉTRICA: separación > 2 pp en 3 meses en cualquier sentido
+c = lambda a, b: C.concentracion({"pendiente_3m_pct": a}, {"pendiente_3m_pct": b}, None)  # noqa: E731
+arriba, abajo = c(6.0, -1.0), c(-2.0, 1.0)
+assert arriba["aviso"].startswith("el ratio lo mueven AMZN+TSLA, no el consumo amplio: empujan XLY/XLP al alza") and arriba["sentido"] == "AL ALZA" and arriba["diferencia_3m_pp"] == 7.0
+assert abajo["aviso"].startswith("el ratio lo mueven AMZN+TSLA, no el consumo amplio: empujan XLY/XLP a la baja") and abajo["sentido"] == "A LA BAJA" and "-3,00 pp" in abajo["aviso"]
+assert c(3.0, 1.0)["aviso"] is None, "exactamente 2 pp no supera el umbral"
+assert c(3.01, 1.0)["aviso"] is not None and c(-1.0, 1.01)["aviso"] is not None and c(4.0, 3.0)["aviso"] is None
+hoy_ = C.concentracion({"pendiente_3m_pct": -4.97}, {"pendiente_3m_pct": -2.39}, None)
+assert hoy_["diferencia_3m_pp"] == -2.58 and hoy_["aviso"] is not None and hoy_["sentido"] == "A LA BAJA", "con los datos de hoy (−2,58 pp) debe saltar"
 w = C.peso_amzn_tsla({"fecha": "15-Oct-2026", "principales": [{"ticker": "AMZN", "peso": 22.97}, {"ticker": "TSLA", "peso": 17.34}, {"ticker": "HD", "peso": 5.2}], "fuente": "SSGA"})
 assert w == {"fecha": "15-Oct-2026", "amzn": 22.97, "tsla": 17.34, "suma": 40.31, "fuente": "SSGA"}
 assert C.peso_amzn_tsla({"principales": [{"ticker": "HD", "peso": 5.2}]}) is None
-print("5) OK concentración: «el ratio lo mueven 2 empresas, no el consumo amplio» solo si XLY/XLP sube y RSPD/RSPS no; peso AMZN+TSLA = 40,31 % con su fecha")
+print("5) OK concentración simétrica: >2 pp al alza o a la baja avisa e indica el sentido; 2,00 pp exactos no; hoy (−2,58 pp) salta «a la baja»; peso AMZN+TSLA = 40,31 % con su fecha")
+
+# ---------------------------------------------------------------- 5b) contexto de ánimo: percentil de UMCSENT desde 1978 (no puntúa)
+hist = [(dt.date(1960 + i // 12, i % 12 + 1, 1), 50 + (i % 60)) for i in range(0, 12 * 66)]            # 1960-2025: valores 50..109
+ult = lambda v: hist[:-1] + [(hist[-1][0], v)]  # noqa: E731
+bajo = C.animo(ult(51), "ALZA")
+assert bajo["estado"] == "OK" and bajo["zona_baja"] is True and bajo["nota"] == "la gente dice que está mal pero sigue gastando" and bajo["puntua"] is False
+assert bajo["desde"] == "1978-01" and bajo["n"] == len([1 for d, v in hist if d.isoformat() >= "1978-01-01"]) and bajo["percentil"] <= 20
+assert C.animo(ult(51), "BAJA")["nota"] is None and C.animo(ult(51), "MIXTO")["nota"] is None, "sin capa real al alza no hay nota"
+alto = C.animo(ult(105), "ALZA")
+assert alto["zona_baja"] is False and alto["nota"] is None and alto["percentil"] > 20
+# percentil exacto: 200 valores 1..200 desde 1978, último = 10 → 10/200 = 5 %
+lin = [(dt.date(1978 + i // 12, i % 12 + 1, 1), float(i + 1)) for i in range(200)]
+lin[-1] = (lin[-1][0], 10.0)
+assert C.animo(lin, "ALZA")["percentil"] == round(sum(1 for _, v in lin if v <= 10.0) / 200 * 100, 1)
+assert C.animo(hist[-50:], "ALZA")["estado"] == "SIN DATO" and C.animo([], "ALZA")["estado"] == "SIN DATO"
+print("5b) OK ánimo: UMCSENT en el percentil %.1f (≤ 20) con capa real AL ALZA → nota «la gente dice que está mal pero sigue gastando»; sin capa real al alza o fuera del 20 %% → sin nota; poca historia → SIN DATO; no puntúa" % bajo["percentil"])
 
 # ---------------------------------------------------------------- 6) construir() con fuentes simuladas: cada fuente falla por separado
 def y_ok(t):
@@ -113,7 +132,7 @@ def f_ok(sid, desde):
 ssga_ok = lambda tk: {"fecha": "15-Oct-2026", "principales": [{"ticker": "AMZN", "peso": 22.97}, {"ticker": "TSLA", "peso": 17.34}], "fuente": "SSGA XLY"}  # noqa: E731
 J = C.construir({"yahoo": y_ok, "fred": f_ok, "ssga": ssga_ok}, dt.datetime(2026, 10, 18, tzinfo=dt.timezone.utc))
 assert J["capas"]["mercado"]["estado"] == "BAJA" and J["capas"]["real"]["estado"] == "ALZA" and J["tesis"]["resultado"] == "DIVERGENCIA MERCADO DEFENSIVO", J["tesis"]
-assert J["mercado"]["aviso"] == "el ratio lo mueven 2 empresas, no el consumo amplio" and J["mercado"]["pesos"]["suma"] == 40.31 and not J["errores"] and len(J["reglas"]) >= 5
+assert J["mercado"]["aviso"].startswith("el ratio lo mueven AMZN+TSLA, no el consumo amplio: empujan XLY/XLP al alza") and J["animo"]["estado"] in ("OK", "SIN DATO") and J["animo"]["puntua"] is False and J["mercado"]["pesos"]["suma"] == 40.31 and not J["errores"] and len(J["reglas"]) >= 5
 print("6) OK construir() simulado: mercado BAJA + real ALZA → %s (%s); %d reglas impresas" % (J["tesis"]["resultado"], J["tesis"]["intensidad"], len(J["reglas"])))
 # RSPD sin datos → SIN DATO (no se estima) y el resto sigue
 def y_sin_rspd(t):

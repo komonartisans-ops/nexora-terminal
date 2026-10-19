@@ -39,7 +39,9 @@ SERIES = {
     "TOTALSL": ("Crédito al consumo (total)", "%", "yoy", "M", "capacidad"), "UMCSENT": ("Confianza del consumidor (U. Michigan)", "índice", "nivel", "M", "contexto"),
     "DRCCLACBS": ("Morosidad de tarjetas de crédito (trimestral)", "%", "nivel", "Q", "capacidad"),
 }
-UMBRAL_CONCENTRACION = 0.0     # el aviso salta si XLY/XLP sube (pendiente > 0) y RSPD/RSPS no (pendiente ≤ 0): no hay umbral numérico
+UMBRAL_CONCENTRACION_PP = 2.0  # aviso simétrico: XLY/XLP y RSPD/RSPS se separan más de 2 pp en 3 meses, en cualquier sentido
+PERCENTIL_BAJO = 20.0          # contexto de ánimo: UMCSENT en el 20 % más bajo de su historia desde 1978
+ANIMO_DESDE = "1978-01-01"
 SESIONES_3M = 63
 
 TEXTOS = {
@@ -214,13 +216,30 @@ def tesis(mercado, real, capacidad):
 
 
 def concentracion(cap, igual, pesos):
-    """Si XLY/XLP sube y RSPD/RSPS no, el movimiento lo hacen pocas empresas. Devuelve diferencia a 3 meses, aviso y el peso de AMZN+TSLA con su fecha."""
-    out = {"pesos": pesos, "diferencia_3m_pp": None, "aviso": None}
+    """Aviso SIMÉTRICO: si XLY/XLP y RSPD/RSPS se separan más de 2 pp en 3 meses (en cualquier sentido), el ratio ponderado lo mueven AMZN+TSLA y no el consumo amplio.
+    Indica hacia dónde empujan (al alza si XLY/XLP va por encima de RSPD/RSPS, a la baja si va por debajo). No puntúa en la tesis."""
+    out = {"pesos": pesos, "diferencia_3m_pp": None, "aviso": None, "sentido": None, "umbral_pp": UMBRAL_CONCENTRACION_PP}
     if cap and igual:
-        out["diferencia_3m_pp"] = round(cap["pendiente_3m_pct"] - igual["pendiente_3m_pct"], 2)
-        if cap["pendiente_3m_pct"] > 0 and igual["pendiente_3m_pct"] <= 0:
-            out["aviso"] = "el ratio lo mueven 2 empresas, no el consumo amplio"
+        d = round(cap["pendiente_3m_pct"] - igual["pendiente_3m_pct"], 2)
+        out["diferencia_3m_pp"] = d
+        if abs(d) > UMBRAL_CONCENTRACION_PP:
+            out["sentido"] = "AL ALZA" if d > 0 else "A LA BAJA"
+            out["aviso"] = ("el ratio lo mueven AMZN+TSLA, no el consumo amplio: empujan XLY/XLP " + ("al alza" if d > 0 else "a la baja")
+                            + f" ({str(f'{d:+.2f}').replace('.', ',')} pp frente a RSPD/RSPS en 3 meses)")
     return out
+
+
+def animo(serie, real_estado):
+    """Contexto de ánimo (NO puntúa): percentil histórico de UMCSENT desde 1978. Si está en el 20 % más bajo mientras la capa real está al alza → nota."""
+    base = {"serie": "UMCSENT", "nombre": "Confianza del consumidor (U. Michigan)", "puntua": False, "desde": ANIMO_DESDE[:7], "umbral_percentil": PERCENTIL_BAJO}
+    vals = [(d, v) for d, v in (serie or []) if d.isoformat() >= ANIMO_DESDE]
+    if len(vals) < 100:
+        return {**base, "estado": "SIN DATO", "nota": None}
+    d, v = vals[-1]
+    pct = round(sum(1 for _, x in vals if x <= v) / len(vals) * 100, 1)
+    zona_baja = pct <= PERCENTIL_BAJO
+    return {**base, "estado": "OK", "periodo": d.isoformat(), "valor": round(v, 1), "percentil": pct, "n": len(vals), "minimo": round(min(x for _, x in vals), 1), "maximo": round(max(x for _, x in vals), 1),
+            "zona_baja": zona_baja, "nota": "la gente dice que está mal pero sigue gastando" if zona_baja and real_estado == "ALZA" else None}
 
 
 def peso_amzn_tsla(w):
@@ -263,6 +282,11 @@ def construir(fuentes=None, ahora=None):
         except Exception as e:  # noqa: BLE001
             err[sid] = f"{type(e).__name__}: {str(e)[:100]}"
             fm[sid] = metrica_fred(sid, [])
+    try:
+        am = F["fred"]("UMCSENT", ANIMO_DESDE)
+    except Exception as e:  # noqa: BLE001
+        am = []
+        err["UMCSENT_historia"] = f"{type(e).__name__}: {str(e)[:100]}"
     em, er, ec = estado_mercado(met.get("igual")), capa_real(fm), capa_capacidad(fm)
     t = tesis(em, er["estado"], ec["estado"])
     fechas = [x["fecha"] for x in met.values() if x] + [x["periodo"] for x in fm.values() if x.get("periodo")]
@@ -271,9 +295,17 @@ def construir(fuentes=None, ahora=None):
             "graficos": graf, "real": [fm[s] for s in SERIES],
             "capas": {"mercado": {"estado": em, "detalle": (f"RSPD/RSPS {met['igual']['dist_sma200_pct']:+.2f} % frente a su media de 200 y {met['igual']['pendiente_3m_pct']:+.2f} % en 3 meses" if met.get("igual") else "SIN DATO")},
                       "real": er, "capacidad": ec},
-            "tesis": t, "reglas": [x.strip() for x in __doc__.split("TESIS DE CONSUMO (reglas FIJAS, impresas también en la página; no usan umbrales de otros módulos):")[1].strip().split("\n  ") if x.strip()],
+            "animo": animo(am, er["estado"]), "tesis": t, "reglas_contexto": REGLAS_CONTEXTO, "reglas": [x.strip() for x in __doc__.split("TESIS DE CONSUMO (reglas FIJAS, impresas también en la página; no usan umbrales de otros módulos):")[1].strip().split("\n  ") if x.strip()],
             "errores": err,
             "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, UMCSENT, DRCCLACBS)"}
+
+
+REGLAS_CONTEXTO = [
+    f"Aviso de concentración (no puntúa): si XLY/XLP y RSPD/RSPS se separan más de {UMBRAL_CONCENTRACION_PP:g} pp en 3 meses, en cualquier sentido, el ratio lo mueven AMZN+TSLA y no el consumo amplio; "
+    "se indica hacia dónde empujan (XLY/XLP por encima de RSPD/RSPS = al alza; por debajo = a la baja).",
+    f"Contexto de ánimo (no puntúa): percentil de la confianza U. Michigan (UMCSENT) frente a su historia desde 1978; si está en el {PERCENTIL_BAJO:g} % más bajo mientras la capa real está al alza, "
+    "nota «la gente dice que está mal pero sigue gastando».",
+]
 
 
 def etapa():
@@ -290,11 +322,14 @@ def bloque_contexto(raiz=RAIZ):
     return {"actualizado_utc": J["generado_utc"], "fecha": J.get("fecha_datos"),
             "tesis": {k: J["tesis"].get(k) for k in ("resultado", "intensidad", "porque", "confirmaria", "invalidaria", "direccion_marcador")},
             "capas": {k: v["estado"] for k, v in J["capas"].items()},
-            "mercado": {"RSPD_RSPS": m.get("igual"), "XLY_XLP": m.get("cap"), "diferencia_3m_pp": m.get("diferencia_3m_pp"), "aviso": m.get("aviso"), "peso_AMZN_TSLA_en_XLY": m.get("pesos")},
+            "mercado": {"RSPD_RSPS": m.get("igual"), "XLY_XLP": m.get("cap"), "diferencia_3m_pp": m.get("diferencia_3m_pp"), "aviso": m.get("aviso"), "sentido_concentracion": m.get("sentido"),
+                        "peso_AMZN_TSLA_en_XLY": m.get("pesos")},
+            "animo_no_puntua": J.get("animo"),
             "real": [{k: x.get(k) for k in ("serie", "nombre", "periodo", "valor", "unidad", "tendencia_3m", "tendencia_unidad")} for x in J["real"] if not x.get("sin_dato")],
             "sin_dato": [x["serie"] for x in J["real"] if x.get("sin_dato")] + list(J.get("errores", {}).keys()),
             "lectura": ["Reglas fijas e impresas en #/consumo. La tesis es contexto, no una orden de compra o venta.",
-                        "Si aparece un aviso de concentración, XLY/XLP está movido por pocas empresas (AMZN+TSLA) y no por el consumo amplio.",
+                        "Si aparece un aviso de concentración (XLY/XLP y RSPD/RSPS separados más de 2 pp en 3 meses), el ratio lo mueven AMZN+TSLA y no el consumo amplio; indica el sentido.",
+                        "El contexto de ánimo (percentil de UMCSENT desde 1978) no puntúa en la tesis.",
                         "Cita siempre las fechas: los datos reales de consumo son mensuales y se publican semanas después del mes."],
             "fuente": J.get("fuentes")}
 
