@@ -296,6 +296,15 @@ def construir(dias=21, pasado=7, con_resultados=True):
                                 "fecha CONFIRMADA" if x["confirmada"] else "fecha ESTIMADA por algoritmo (Zacks); puede cambiar"))
         except Exception as ex:  # noqa: BLE001
             err["resultados"] = f"{type(ex).__name__}: {ex}"
+    try:                                                  # petróleo: informe semanal de inventarios de la EIA (MEDIA); las reuniones de la OPEP+ (ALTA) no tienen fuente oficial accesible → SIN DATO
+        import petroleo
+        for x in petroleo.eventos_agenda(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), HOY, max(dias, 14)):
+            d = dt.date.fromisoformat(x["fecha"])
+            if desde <= d <= hasta:
+                E.append(ev(d, x["hora_ny"], x["evento"], "MEDIA", x["afecta"], x["que_mirar"], x["fuente"], x["url"]))
+        err["opep"] = petroleo.OPEP_SIN_DATO                  # SIN DATO: no hay fuente oficial accesible para las reuniones de la OPEP+
+    except Exception as ex:  # noqa: BLE001
+        err["petroleo"] = f"{type(ex).__name__}: {str(ex)[:100]}"
     prox = {}
     for nm, fn, idx in (("Fed (FOMC)", fomc, 0), ("BCE", bce, 0), ("Banco de Japón", boj, 0)):
         r, e = safe(fn)

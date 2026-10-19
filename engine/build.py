@@ -104,6 +104,8 @@ ACTIVOS = [
     ("rut", "Russell 2000", "^RUT", "Russell 2000 (Yahoo Finance)"),
     ("vix", "VIX", "^VIX", "Cboe VIX (Yahoo Finance)"),
     ("dxy", "Índice dólar (DXY)", "DX-Y.NYB", "ICE DXY (Yahoo Finance)"),
+    ("wti", "Petróleo WTI", "CL=F", "Futuros WTI NYMEX, primer vencimiento (Yahoo Finance CL=F; serie empalmada)"),
+    ("brent", "Petróleo Brent", "BZ=F", "Futuros Brent ICE, primer vencimiento (Yahoo Finance BZ=F; serie empalmada)"),
     # volatilidad implícita de los bonos del Tesoro (ICE BofA MOVE). Sin respaldo gratuito (ni FRED ni Cboe lo publican): si Yahoo falla = SIN DATO
     ("move", "MOVE (volatilidad de bonos)", "^MOVE", "ICE BofA MOVE (Yahoo Finance ^MOVE)"),
 ]
@@ -112,7 +114,7 @@ ACTIVOS = [
 UA_WEB = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
           "Accept": "application/json"}
 # Respaldo si Yahoo devuelve 429 desde las IP compartidas de Actions: serie FRED (con retraso, la fecha del dato se muestra siempre)
-RESPALDO_FRED = {"^GSPC": "SP500", "^NDX": "NASDAQ100", "^DJI": "DJIA", "^VIX": "VIXCLS"}
+RESPALDO_FRED = {"^GSPC": "SP500", "^NDX": "NASDAQ100", "^DJI": "DJIA", "^VIX": "VIXCLS", "CL=F": "DCOILWTICO", "BZ=F": "DCOILBRENTEU"}
 
 
 def _get_web(url, tries=3):
@@ -865,6 +867,12 @@ def etapa_consumo():
     return consumo.etapa()
 
 
+# ------------------------------------------------------------------ petróleo (#/petroleo): WTI/Brent, curva, inventarios EIA, COT, tesis con reglas fijas
+def etapa_petroleo():
+    import petroleo
+    return petroleo.etapa()
+
+
 # ------------------------------------------------------------------ marcador de aciertos de señales (registro solo-añadir + evaluación a T+1/T+5/T+20)
 def etapa_marcador():
     import marcador
@@ -888,15 +896,15 @@ ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_t
           "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "etf": etapa_etf, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen, "tesis": etapa_tesis,
           "regimen": etapa_regimen, "reevaluar": etapa_reevaluar, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias,
           "bancos": etapa_bancos, "tono": etapa_tono,
-          "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "alertas": etapa_alertas, "reacciones": etapa_reacciones, "consumo": etapa_consumo, "marcador": etapa_marcador, "integridad": etapa_integridad, "contexto": etapa_contexto}
+          "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "alertas": etapa_alertas, "reacciones": etapa_reacciones, "consumo": etapa_consumo, "petroleo": etapa_petroleo, "marcador": etapa_marcador, "integridad": etapa_integridad, "contexto": etapa_contexto}
 ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "etf", "ciclo", "publicados", "reevaluar", "resumen", "tesis", "regimen", "divisas", "cot", "noticias",
-         "bancos", "tono", "skew", "semis", "gamma", "consumo", "alertas", "reacciones", "marcador", "integridad", "contexto"]
+         "bancos", "tono", "skew", "semis", "gamma", "consumo", "petroleo", "alertas", "reacciones", "marcador", "integridad", "contexto"]
 # horario: el SKEW (Cboe) se publica tras el cierre, por eso entra aquí para que la alerta salga en la hora siguiente; gamma NO (solo al cierre).
 # cierre (cron 21:30 UTC, tras el cierre de Nueva York): snapshot de opciones, semis/software y SKEW del día.
 # calendario y publicados entran en el horario porque el día de una publicación (IPC, PPI, ventas…) el dato sale a las 12:30-13:30 UTC y la web no puede esperar
 # al build diario; calendario escribe también site/data/agenda.json (sin esto la página Agenda mostraba el «hoy» de ayer).
 MODOS = {"horario": ["precios", "fedwatch", "tipos", "calendario", "publicados", "reevaluar", "resumen", "tesis", "regimen", "etf", "noticias", "skew", "alertas", "marcador", "integridad", "contexto"],
-         "cierre": ["precios", "semis", "bancos", "tono", "skew", "gamma", "consumo", "alertas", "marcador", "integridad", "contexto"], "diario": ORDEN, "todo": ORDEN}
+         "cierre": ["precios", "semis", "bancos", "tono", "skew", "gamma", "consumo", "petroleo", "alertas", "marcador", "integridad", "contexto"], "diario": ORDEN, "todo": ORDEN}
 
 
 def escalar(modo, estado, ahora=None):

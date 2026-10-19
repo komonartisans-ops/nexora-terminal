@@ -45,7 +45,9 @@ def tabla_importancia():
           {"tipo": "ISM_SERV", "evento": "ISM servicios", "organismo": "ISM", "importancia": "MEDIA", "hora_ny_tipica": "10:00", "fuente": "ismworld.org"},
           {"tipo": "SUBASTA", "evento": "Subastas del Tesoro a 2, 10 y 30 años (resto de plazos: BAJA)", "organismo": "Tesoro", "importancia": "MEDIA", "hora_ny_tipica": "13:00", "fuente": "TreasuryDirect"},
           {"tipo": "BCE", "evento": "Decisión de política monetaria del BCE", "organismo": "BCE", "importancia": "MEDIA", "hora_ny_tipica": "", "fuente": "ecb.europa.eu"},
-          {"tipo": "BOJ", "evento": "Decisión de política monetaria del Banco de Japón", "organismo": "BoJ", "importancia": "MEDIA", "hora_ny_tipica": "", "fuente": "boj.or.jp"}]
+          {"tipo": "BOJ", "evento": "Decisión de política monetaria del Banco de Japón", "organismo": "BoJ", "importancia": "MEDIA", "hora_ny_tipica": "", "fuente": "boj.or.jp"},
+          {"tipo": "EIA", "evento": "Inventarios de petróleo (EIA, Weekly Petroleum Status Report)", "organismo": "EIA", "importancia": "MEDIA", "hora_ny_tipica": "10:30", "fuente": "eia.gov (calendario oficial; festivos en la tabla de excepciones)"},
+          {"tipo": "OPEP", "evento": "Reuniones de la OPEP+ (ALTA si hay calendario oficial accesible; hoy SIN DATO: opec.org bloquea el acceso automático)", "organismo": "OPEP", "importancia": "ALTA", "hora_ny_tipica": "", "fuente": "opec.org"}]
     orden = {"ALTA": 0, "MEDIA": 1, "BAJA": 2}
     return sorted(T, key=lambda x: (orden[x["importancia"]], x["tipo"]))
 

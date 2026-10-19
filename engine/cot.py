@@ -20,6 +20,7 @@ CONTRATOS = [
     ("gbp", "Libra esterlina", "Divisas", "096742"), ("chf", "Franco suizo", "Divisas", "092741"), ("cad", "Dólar canadiense", "Divisas", "090741"),
     ("aud", "Dólar australiano", "Divisas", "232741"), ("nzd", "Dólar neozelandés", "Divisas", "112741"),
     ("oro", "Oro (COMEX)", "Materias primas", "088691"),
+    ("wti", "Petróleo WTI (NYMEX)", "Materias primas", "067651"),
     ("spx", "S&P 500 (consolidado)", "Índices", "13874+"), ("ndx", "Nasdaq-100 (consolidado)", "Índices", "20974+"),
     ("dji", "Dow Jones (consolidado)", "Índices", "12460+"), ("rut", "Russell 2000 (E-mini)", "Índices", "239742"),
     ("ust2", "Bono EE. UU. 2 años", "Bonos", "042601"), ("ust10", "Bono EE. UU. 10 años", "Bonos", "043602"), ("ust30", "Bono EE. UU. 30 años", "Bonos", "020601"),
@@ -84,7 +85,7 @@ def medir():
         err["tff"] = f"{type(e).__name__}: {e}"
         lev = {}
     try:
-        dis = _netos(_consulta(DISAG, "m_money_positions_long_all,m_money_positions_short_all", ["088691"], desde), "m_money_positions_long_all", "m_money_positions_short_all")
+        dis = _netos(_consulta(DISAG, "m_money_positions_long_all,m_money_positions_short_all", ["088691", "067651"], desde), "m_money_positions_long_all", "m_money_positions_short_all")
     except Exception as e:  # noqa: BLE001
         err["disaggregated"] = f"{type(e).__name__}: {e}"
     if not leg and not tff:
@@ -93,11 +94,11 @@ def medir():
     out = []
     for k, nombre, grupo, cod in CONTRATOS:
         nc = _resumen(leg.get(cod))
-        if k == "oro":  # el oro no está en TFF: los gestores son «dinero gestionado» del informe Disaggregated
+        if k in ("oro", "wti"):  # el oro y el petróleo no están en TFF: los gestores son «dinero gestionado» del informe Disaggregated
             gs, gnom = _resumen(dis.get(cod)), "Dinero gestionado (Disaggregated)"
         else:
             gs, gnom = _resumen(tff.get(cod)), "Gestores de activos (TFF)"
-        fa = _resumen(lev.get(cod)) if k != "oro" else None
+        fa = _resumen(lev.get(cod)) if k not in ("oro", "wti") else None
         out.append({"clave": k, "nombre": nombre, "grupo": grupo, "codigo": cod, "sin_dato": not (nc or gs),
                     "no_comerciales": nc and {**nc, "estado": _estado(nc["percentil_3a"])},
                     "gestores": gs and {**gs, "estado": _estado(gs["percentil_3a"]), "informe": gnom},

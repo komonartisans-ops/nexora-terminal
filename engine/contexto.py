@@ -394,6 +394,14 @@ def _contradicciones(C, D, T, R, S):
             "fuente": "Reglas NEXORA sobre ciclo.py, matriz de divisas y COT de la CFTC"}
 
 
+def _petroleo():
+    try:
+        import petroleo
+        return petroleo.bloque_contexto()
+    except Exception as e:  # noqa: BLE001
+        return _sd("petroleo.py (" + type(e).__name__ + ")")
+
+
 def _consumo():
     try:
         import consumo
@@ -464,6 +472,7 @@ def construir():
         "marcador": _marcador(),
         "integridad": _integridad(),
         "consumo": _consumo(),
+        "petroleo": _petroleo(),
         "alertas_recientes": [{"fecha_utc": a.get("fecha_utc"), "titulo": a.get("titulo"), "enviada": a.get("enviada"), "l1": a.get("l1")}
                               for a in ((J["alertas"] or {}).get("recientes") or [])[-5:]],
     }

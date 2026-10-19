@@ -200,6 +200,10 @@ def pendientes_vigilante(raiz, ahora):
             reg = {x["periodo"] for x in ((pub.get(s["nombre"]) or {}).get("periodos") or [])}
             if p.isoformat() not in reg:
                 out.append((s, ev, p))
+    import petroleo                                    # petróleo: informe semanal de la EIA (su fuente es el propio informe, no publicados.json)
+    for semana, t in petroleo.pendientes_eia(raiz, ahora):
+        out.append(({"nombre": "Inventarios de petróleo EIA", "sid": "WPSR", "tipo": "semana", "eia": True, "claves": []},
+                    {"t": t, "fecha": t.date().isoformat(), "evento": "Inventarios semanales de petróleo (EIA)"}, semana))
     import michigan                                    # U. Michigan (preliminar y final): su fuente es la propia Universidad, no publicados.json
     for tipo, per, t, fecha, fuente in michigan.pendientes(raiz, ahora):
         out.append(({"nombre": f"Confianza U. Michigan ({tipo})", "sid": "UMCSENT", "tipo": "mes", "michigan": tipo, "claves": []},
@@ -210,6 +214,9 @@ def pendientes_vigilante(raiz, ahora):
 def mensaje_vigilante(s, ev, p):
     from telegram import esc
     hm = ev["t"].astimezone(MAD).strftime("%H:%M")
+    if s.get("eia"):
+        return (f"<b>DATO NO REGISTRADO:</b> {esc(s['nombre'])} de la semana al {p.day:02d}-{p.month:02d}-{p.year}, publicado a las {hm} (Madrid)\n"
+                f"Han pasado más de {ESPERA_VIGILANTE_H} h y NEXORA no lo tiene en data/eia_inventarios.csv (fuente: ir.eia.gov/wpsr/table1.csv). Hecho de integridad, no una señal de mercado.")
     if s.get("michigan"):
         return (f"<b>DATO NO REGISTRADO:</b> {esc(s['nombre'])} de {esc(texto_periodo(p, 'mes'))}, publicado a las {hm} (Madrid)\n"
                 f"Han pasado más de {ESPERA_VIGILANTE_H} h y NEXORA no lo tiene en data/michigan.csv (fuente: sca.isr.umich.edu; FRED UMCSENT es solo respaldo y llega con 1-2 meses de retraso). "
@@ -276,6 +283,17 @@ def refrescar_michigan(raiz=RAIZ, ahora=None, red=None, forzar=False):
     est["michigan"] = {"ultimo_utc": ahora.strftime("%Y-%m-%dT%H:%M:%S"), "ultimo_error": "; ".join(f"{k}: {v}" for k, v in L["errores"].items()) or None}
     _guardar_i(raiz, est)
     return L
+
+
+def refrescar_eia(raiz=RAIZ, ahora=None, red=None, forzar=False):
+    """Lee la tabla semanal de la EIA y el calendario oficial (máx. 1 vez cada 20 h salvo informe pendiente). red=None: red real; una Red simulada sin .eia no toca la red."""
+    import petroleo
+    fetch = None
+    if red is not None:
+        fetch = getattr(red, "eia", None)
+        if fetch is None:
+            return None
+    return petroleo.refrescar_eia(raiz, ahora or dt.datetime.now(UTC), fetch, forzar)
 
 
 # ---------------------------------------------------------------- red (inyectable en pruebas)
@@ -535,7 +553,7 @@ BLOQUES = [
     ("noticias", "Noticias de bancos centrales", "noticias", "horario"), ("skew", "Riesgo de cola (SKEW)", "skew", "horario"), ("alertas", "Alertas", "resumen", "horario"),
     ("reevaluar", "Reevaluación de tesis", "tesis", "horario"), ("marcador", "Marcador de señales", "marcador", "horario"), ("integridad", "Integridad de datos", "integridad", "horario"),
     ("reacciones", "Reacción a eventos", "eventos", "horario"),
-    ("consumo", "Consumo (¿está consumiendo la gente?)", "consumo", "diario"), ("ciclo", "Ciclo y crédito", "ciclo", "diario"), ("liquidez", "Liquidez", "liquidez", "diario"), ("monitores", "Monitores de oro, índices y cripto", "oro", "diario"),
+    ("consumo", "Consumo (¿está consumiendo la gente?)", "consumo", "diario"), ("petroleo", "Petróleo (WTI, curva, inventarios EIA, COT)", "petroleo", "diario"), ("ciclo", "Ciclo y crédito", "ciclo", "diario"), ("liquidez", "Liquidez", "liquidez", "diario"), ("monitores", "Monitores de oro, índices y cripto", "oro", "diario"),
     ("series", "Series de los gráficos", "oro", "diario"), ("divisas", "Sesgo de divisas", "divisas", "diario"), ("cot", "Posicionamiento (COT)", "posicionamiento", "diario"),
     ("semis", "Semis vs software", "semis", "diario"), ("bancos", "Bancos centrales del mundo", "mapa", "diario"), ("tono", "Tono de bancos centrales", "tono", "diario"),
     ("gamma", "Gamma de índices", "gamma", "diario"),
@@ -584,7 +602,7 @@ def _fecha_dato(raiz, etapa):
              "semis": g("semis_vs_software", "fecha"), "bancos": g("bancos_centrales_mundo", "fecha"), "tono": g("tono_bancos_centrales", "fecha"), "cot": g("posicionamiento_cot", "fecha_informe"),
              "divisas": g("sesgo_divisas", "riesgo", "fecha"), "resumen": g("tesis", "actualizado_utc"), "alertas": (g("alertas_recientes") or [{}])[-1].get("fecha_utc") if g("alertas_recientes") else None,
              "reacciones": g("reaccion_a_eventos", "ultimo_evento", "fecha"), "monitores": g("mercado", "actualizado_utc"), "series": g("mercado", "actualizado_utc"),
-             "marcador": g("marcador", "actualizado_utc"), "tesis": g("tesis", "actualizado_utc"), "reevaluar": g("tesis", "actualizado_utc"), "integridad": None, "consumo": g("consumo", "fecha")}
+             "marcador": g("marcador", "actualizado_utc"), "tesis": g("tesis", "actualizado_utc"), "reevaluar": g("tesis", "actualizado_utc"), "integridad": None, "consumo": g("consumo", "fecha"), "petroleo": g("petroleo", "fecha")}
         v = m.get(etapa)
         if etapa == "publicados":
             fs = [r["fecha_captura"] for r in leer_csv(P(raiz, "data", "publicaciones_macro.csv"))]
@@ -727,6 +745,29 @@ def bloque_michigan(raiz, ahora):
     return B
 
 
+UMBRAL_EIA_DIAS = 10
+
+
+def bloque_eia(raiz, ahora):
+    """Informe semanal de inventarios de la EIA: última semana registrada, cuándo salió, antigüedad (ámbar si pasan más de 10 días desde su publicación) y próximo informe."""
+    import petroleo
+    exc = petroleo.excepciones_eia(raiz)
+    reg = petroleo.registro_eia(raiz)
+    hoy = ahora.date()
+    prox = petroleo.proxima_publicacion(exc, hoy)
+    est = (_est_i(raiz).get("eia") or {})
+    B = {"fuente": "EIA · Weekly Petroleum Status Report (ir.eia.gov/wpsr/table1.csv)", "umbral_dias": UMBRAL_EIA_DIAS, "estado": "SIN DATO", "ultima_descarga_utc": (est.get("ultimo_utc") or "").replace("T", " ")[:16] or None,
+         "error": est.get("ultimo_error"), "proximo": None if not prox else {"semana": prox[0].isoformat(), "fecha": prox[1].isoformat(), "hora_et": prox[2]}}
+    if reg:
+        sem = max(r["semana"] for r in reg)
+        pub, hm = petroleo.publicacion_eia(dt.date.fromisoformat(sem), exc)
+        capt = min(r["capturado_utc"] for r in reg if r["semana"] == sem)
+        edad = (hoy - pub).days
+        B.update({"estado": "OK", "semana": sem, "publicado": pub.isoformat(), "hora_et": hm, "visto_utc": capt, "antiguedad_dias": edad, "ambar": edad > UMBRAL_EIA_DIAS,
+                  "productos": {r["producto"]: float(r["valor_kb"]) for r in reg if r["semana"] == sem}})
+    return B
+
+
 def construir(raiz=RAIZ, ahora=None):
     ahora = ahora or dt.datetime.now(UTC)
     disc = discrepancias(raiz)
@@ -739,7 +780,7 @@ def construir(raiz=RAIZ, ahora=None):
     return {"version": 1, "ok": True, "generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"),
             "resumen": {"al_dia": al_dia, "total": len(bloques), "retrasados": sum(b["color"] == "ambar" for b in bloques), "sin_dato": sum(b["color"] == "gris" for b in bloques),
                         "texto": f"Integridad: {al_dia}/{len(bloques)} al día"},
-            "bloques": bloques, "publicaciones": pubs, "michigan": bloque_michigan(raiz, ahora),
+            "bloques": bloques, "publicaciones": pubs, "michigan": bloque_michigan(raiz, ahora), "eia": bloque_eia(raiz, ahora),
             "retrasos_registro": [x for x in pubs if x["retraso_dias"] is not None],
             "discrepancias_abiertas": [{k: r[k] for k in ("serie", "periodo", "tipo", "fred_valor", "primaria", "primaria_valor", "dif_pct", "detectada_utc", "nota")} for r in abiertas],
             "n_discrepancias_historial": len(leer_csv(P(raiz, "data", "discrepancias.csv"))),
@@ -757,7 +798,7 @@ def etapa(raiz=RAIZ, ahora=None, red=None, enviar=None, seco=False):
     ahora = ahora or dt.datetime.now(UTC)
     errores = {}
     import calendario_oficial
-    for nombre, fn in (("calendario_oficial", lambda: calendario_oficial.descargar(raiz, ahora)), ("michigan", lambda: refrescar_michigan(raiz, ahora, red)),
+    for nombre, fn in (("calendario_oficial", lambda: calendario_oficial.descargar(raiz, ahora)), ("michigan", lambda: refrescar_michigan(raiz, ahora, red)), ("eia", lambda: refrescar_eia(raiz, ahora, red)),
                        ("vigilante", lambda: vigilar(raiz, ahora, seco, enviar)),
                        ("bls", lambda: cotejar_bls(raiz, ahora, red)), ("bea", lambda: cotejar_bea(raiz, ahora, red)), ("alfred", lambda: actualizar_publicaciones(raiz, ahora, red))):
         try:
@@ -789,6 +830,10 @@ if __name__ == "__main__":
             refrescar_michigan()                           # pasada de «reacciones»: mira antes la web de Michigan si hay un lanzamiento por registrar
         except Exception as e:  # noqa: BLE001
             print("michigan:", type(e).__name__, str(e)[:100])
+        try:
+            refrescar_eia()                                # y la tabla semanal de la EIA
+        except Exception as e:  # noqa: BLE001
+            print("eia:", type(e).__name__, str(e)[:100])
         print("pasada:", [(k, e) for k, e, _ in vigilar(seco="--seco" in sys.argv, push="--push" in sys.argv)] or "nada que avisar")
         sys.exit(0)
     if cmd == "backfill-publicacion":

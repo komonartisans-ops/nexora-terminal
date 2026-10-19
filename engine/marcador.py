@@ -25,6 +25,8 @@ Señales y su dirección esperada (reglas FIJAS de este módulo, impresas tambi�
              de las 250 anteriores a la señal (con σ_h y umbral del VIX fijos en la referencia).
   consumo    cambia la tesis de consumo (#/consumo). Activo RSPD/RSPS (ratio de peso igual): CONSUMO FUERTE y DIVERGENCIA MERCADO DEFENSIVO = sube; SE ENFRÍA, CONSUMO DÉBIL y
              DIVERGENCIA MERCADO ADELANTADO = baja; SIN TESIS = no puntuable. Se mide a T+1, T+5 y T+20 igual que el resto (el horizonte que importa es T+20).
+  petroleo   cambia la tesis de petróleo (#/petroleo). Activo WTI (precio al contado de Cushing, FRED DCOILWTICO: sin los saltos de vencimiento de los futuros empalmados): ALCISTA = sube;
+             BAJISTA = baja; SIN TESIS = no puntuable. Se mide a T+1, T+5 y T+20 igual que el resto (el horizonte que importa es T+20).
   reaccion   clasificación del monitor de reacción a eventos (T+5 y CIERRE): SOLO REGISTRO, no se puntúa (reglas v3 congeladas).
 Medición (criterio v2): referencia = último cierre COMPLETO anterior a la señal (si sale desde las 21:30 UTC y el activo no es cripto, cuenta el cierre de ese día);
 T+n = cierre n sesiones después. Retorno en la dirección esperada. NEUTRAL si |retorno| < 0,25 × σ_h del activo (σ de los cambios diarios de las 250 sesiones
@@ -64,9 +66,9 @@ MIN_N = 20
 VENTANA_BASE = 250
 MIN_VENTANAS_BASE = 60
 CRIPTO = {"btc"}
-TIPOS_PUNTUABLES = ("tesis", "fed", "skew", "regimen", "liquidez", "consumo")
+TIPOS_PUNTUABLES = ("tesis", "fed", "skew", "regimen", "liquidez", "consumo", "petroleo")
 ACT = {"Oro": ("ORO", "oro"), "Nasdaq 100": ("NQ", "ndx"), "S&P 500": ("ES", "spx"), "Bitcoin": ("BTC", "btc")}
-SERIE_DE = {"ORO": "oro", "NQ": "ndx", "ES": "spx", "BTC": "btc", "US2Y": "us2y", "RSPD/RSPS": "rsd"}
+SERIE_DE = {"ORO": "oro", "NQ": "ndx", "ES": "spx", "BTC": "btc", "US2Y": "us2y", "RSPD/RSPS": "rsd", "WTI": "wti"}
 LIQ_ALCISTA = ("GIRO DE LIQUIDEZ EN CURSO", "SEÑALES INICIALES DE GIRO")
 DIR_CONSUMO = {"CONSUMO FUERTE": "ALCISTA", "DIVERGENCIA MERCADO DEFENSIVO": "ALCISTA", "SE ENFRÍA": "BAJISTA", "CONSUMO DÉBIL": "BAJISTA", "DIVERGENCIA MERCADO ADELANTADO": "BAJISTA"}
 PASOS = {"bajada": -1, "mantener": 0, "subida": 1}
@@ -141,6 +143,9 @@ def senal_de_cambio(serie, ts, prev, valor, extra, run_id, origen, nota=""):
     if serie == "consumo":
         d = DIR_CONSUMO.get(valor, "NINGUNA")
         return senal("consumo", "RSPD/RSPS", d, ts, f"{prev} → {valor}", "cambio de la tesis de consumo", "consumo.py (consumo.json)", run_id, origen, nota)
+    if serie == "petroleo":
+        d = dir_tesis(valor)
+        return senal("petroleo", "WTI", d, ts, f"{prev} → {valor}", "cambio de la tesis de petróleo", "petroleo.py (petroleo.json)", run_id, origen, nota)
     if serie == "liquidez":
         d = "ALCISTA" if valor in LIQ_ALCISTA else "NINGUNA"
         return senal("liquidez", "BTC", d, ts, f"{prev} → {valor}", "cambio de la etiqueta de liquidez", "liquidez_cripto.py (liquidez.json)", run_id, origen, nota)
@@ -231,6 +236,9 @@ def obs_de_contexto(ctx, ts):
     K = (ctx.get("consumo") or {}).get("tesis") or {}
     if K.get("resultado"):
         obs.append((ts, "consumo", K["resultado"], None, ""))
+    K = (ctx.get("petroleo") or {}).get("tesis") or {}
+    if K.get("resultado"):
+        obs.append((ts, "petroleo", K["resultado"], None, ""))
     return obs
 
 
@@ -250,6 +258,9 @@ def obs_vivas(raiz, ts):
     K = (leer_json(P(sd, "consumo.json")) or {}).get("tesis") or {}
     if K.get("resultado"):
         obs.append((ts, "consumo", K["resultado"], None, ""))
+    K = (leer_json(P(sd, "petroleo.json")) or {}).get("tesis") or {}
+    if K.get("resultado"):
+        obs.append((ts, "petroleo", K["resultado"], None, ""))
     return obs
 
 
@@ -342,6 +353,8 @@ def cargar_series(raiz):
         out[k] = [(d, float(v)) for d, v in s if v is not None]
     rsd = ((((leer_json(P(sd, "consumo.json")) or {}).get("graficos") or {}).get("igual") or {}).get("ratio")) or []     # ratio RSPD/RSPS (peso igual) de #/consumo
     out["rsd"] = [(d, float(v)) for d, v in rsd if v is not None]
+    wsp = (((leer_json(P(sd, "petroleo.json")) or {}).get("precios") or {}).get("wti_spot_serie")) or []     # WTI al contado (FRED DCOILWTICO) de #/petroleo
+    out["wti"] = [(d, float(v)) for d, v in wsp if v is not None]
     t = ((leer_json(P(sd, "tipos.json")) or {}).get("t2y") or {}).get("serie") or []
     out["us2y"] = [(d, float(v)) for d, v in t if v is not None]
     return out
