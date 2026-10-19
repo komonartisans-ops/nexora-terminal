@@ -3,13 +3,13 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4181.1,
-   "fecha": "2026-10-16",
-   "cambio_1d_pct": 0.26,
-   "cambio_5d_pct": -0.83,
-   "cambio_21d_pct": -4.97,
-   "cambio_63d_pct": 4.11,
-   "sma50": 4374.41,
+   "valor": 4197.2,
+   "fecha": "2026-10-19",
+   "cambio_1d_pct": 0.39,
+   "cambio_5d_pct": 0.16,
+   "cambio_21d_pct": -5.15,
+   "cambio_63d_pct": 2.96,
+   "sma50": 4370.36,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
@@ -1011,25 +1011,25 @@
     [
      "2026-10-16",
      4181.1001
+    ],
+    [
+     "2026-10-19",
+     4197.2002
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 82066.53,
-   "fecha": "2026-10-18",
-   "cambio_1d_pct": 0.84,
-   "cambio_5d_pct": -1.24,
-   "cambio_21d_pct": -2.83,
-   "cambio_63d_pct": 30.64,
-   "sma50": 81399.31,
+   "valor": 82601.32,
+   "fecha": "2026-10-19",
+   "cambio_1d_pct": 1.5,
+   "cambio_5d_pct": -0.59,
+   "cambio_21d_pct": -2.2,
+   "cambio_63d_pct": 31.49,
+   "sma50": 81410.01,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-18",
-     107198.2656
-    ],
     [
      "2025-10-19",
      108666.7109
@@ -2487,8 +2487,8 @@
      81382.1484
     ],
     [
-     "2026-10-18",
-     82066.5312
+     "2026-10-19",
+     82601.3203
     ]
    ]
   },
@@ -7597,13 +7597,13 @@
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.84,
-   "fecha": "2026-10-16",
-   "cambio_1d_pct": -0.16,
-   "cambio_5d_pct": -0.36,
-   "cambio_21d_pct": 1.62,
-   "cambio_63d_pct": 0.84,
-   "sma50": 100.35,
+   "valor": 101.82,
+   "fecha": "2026-10-19",
+   "cambio_1d_pct": -0.02,
+   "cambio_5d_pct": -0.74,
+   "cambio_21d_pct": 1.6,
+   "cambio_63d_pct": 0.64,
+   "sma50": 100.39,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
     [
@@ -8605,6 +8605,10 @@
     [
      "2026-10-16",
      101.84
+    ],
+    [
+     "2026-10-19",
+     101.824
     ]
    ]
   },
@@ -9621,6 +9625,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-18 09:45 UTC",
+ "generado_utc": "2026-10-19 05:30 UTC",
  "duracion_s": 7.9
 }

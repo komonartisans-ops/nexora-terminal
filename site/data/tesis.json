@@ -1,6 +1,126 @@
 {
  "filas": [
   {
+   "fecha": "2026-10-19",
+   "activo": "US30 · Dow Jones",
+   "tesis": "BAJISTA DÉBIL",
+   "puntuacion": "-1",
+   "motores": "viento semana: EN CONTRA; motor propio: MIXTO",
+   "precio_referencia": 52002.41,
+   "capturado_utc": "2026-10-19 05:30 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "PENDIENTE"
+    },
+    "5": {
+     "estado": "PENDIENTE"
+    },
+    "20": {
+     "estado": "PENDIENTE"
+    }
+   }
+  },
+  {
+   "fecha": "2026-10-19",
+   "activo": "S&P 500",
+   "tesis": "BAJISTA DÉBIL",
+   "puntuacion": "-1",
+   "motores": "viento semana: EN CONTRA; motor propio: MIXTO",
+   "precio_referencia": 7659.44,
+   "capturado_utc": "2026-10-19 05:30 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "PENDIENTE"
+    },
+    "5": {
+     "estado": "PENDIENTE"
+    },
+    "20": {
+     "estado": "PENDIENTE"
+    }
+   }
+  },
+  {
+   "fecha": "2026-10-19",
+   "activo": "Russell 2000",
+   "tesis": "BAJISTA DÉBIL",
+   "puntuacion": "-1",
+   "motores": "viento semana: SIN VIENTO CLARO; motor propio: DESFAVORABLE",
+   "precio_referencia": 2721.37,
+   "capturado_utc": "2026-10-19 05:30 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "PENDIENTE"
+    },
+    "5": {
+     "estado": "PENDIENTE"
+    },
+    "20": {
+     "estado": "PENDIENTE"
+    }
+   }
+  },
+  {
+   "fecha": "2026-10-19",
+   "activo": "Oro",
+   "tesis": "ALCISTA DÉBIL",
+   "puntuacion": "1",
+   "motores": "viento semana: A FAVOR; motor propio: MIXTO",
+   "precio_referencia": 4197.2,
+   "capturado_utc": "2026-10-19 05:30 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "PENDIENTE"
+    },
+    "5": {
+     "estado": "PENDIENTE"
+    },
+    "20": {
+     "estado": "PENDIENTE"
+    }
+   }
+  },
+  {
+   "fecha": "2026-10-19",
+   "activo": "Nasdaq 100",
+   "tesis": "SIN TESIS",
+   "puntuacion": "0",
+   "motores": "viento semana: SIN VIENTO CLARO; motor propio: MIXTO",
+   "precio_referencia": 29187.55,
+   "capturado_utc": "2026-10-19 05:30 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "NO EVALUADA"
+    },
+    "5": {
+     "estado": "NO EVALUADA"
+    },
+    "20": {
+     "estado": "NO EVALUADA"
+    }
+   }
+  },
+  {
+   "fecha": "2026-10-19",
+   "activo": "Bitcoin",
+   "tesis": "BAJISTA DÉBIL",
+   "puntuacion": "-1",
+   "motores": "viento semana: EN CONTRA; motor propio: SEÑALES INICIALES DE GIRO",
+   "precio_referencia": 82601.32,
+   "capturado_utc": "2026-10-19 05:30 UTC",
+   "horizontes": {
+    "1": {
+     "estado": "PENDIENTE"
+    },
+    "5": {
+     "estado": "PENDIENTE"
+    },
+    "20": {
+     "estado": "PENDIENTE"
+    }
+   }
+  },
+  {
    "fecha": "2026-10-18",
    "activo": "US30 · Dow Jones",
    "tesis": "BAJISTA DÉBIL",
@@ -231,9 +351,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 0.61,
-     "fecha": "2026-10-18",
-     "precio": 82066.5312
+     "ret_pct": 1.27,
+     "fecha": "2026-10-19",
+     "precio": 82601.3203
     },
     "5": {
      "estado": "PENDIENTE"
@@ -313,7 +433,10 @@
    "capturado_utc": "2026-10-16 07:07 UTC",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret_pct": -0.03,
+     "fecha": "2026-10-19",
+     "precio": 4197.2002
     },
     "5": {
      "estado": "PENDIENTE"
@@ -747,9 +870,9 @@
     },
     "5": {
      "estado": "ACIERTO",
-     "ret_pct": -1.32,
-     "fecha": "2026-10-18",
-     "precio": 82066.5312
+     "ret_pct": -0.68,
+     "fecha": "2026-10-19",
+     "precio": 82601.3203
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1297,7 +1420,7 @@
    }
   }
  ],
- "n_filas": 60,
+ "n_filas": 66,
  "resumen": {
   "Bitcoin": {
    "1": {
@@ -1322,7 +1445,7 @@
   "Oro": {
    "1": {
     "aciertos": 0,
-    "evaluadas": 1
+    "evaluadas": 2
    },
    "5": {
     "aciertos": 0,
@@ -1368,6 +1491,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-18 09:45 UTC",
+ "generado_utc": "2026-10-19 05:30 UTC",
  "duracion_s": 0.0
 }

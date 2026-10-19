@@ -1,7 +1,7 @@
 {
- "generado": "2026-10-18 11:47 Madrid",
- "desde": "2026-09-08",
- "hasta": "2026-11-08",
+ "generado": "2026-10-19 07:32 Madrid",
+ "desde": "2026-09-09",
+ "hasta": "2026-11-09",
  "eventos": [
   {
    "fecha": "2026-09-10",
@@ -1344,19 +1344,36 @@
    "nota": ""
   }
  ],
- "fed_vigilar": [],
+ "fed_vigilar": [
+  {
+   "fecha": "2026-11-18",
+   "fecha_madrid": "2026-11-18",
+   "dia": "mié",
+   "hora_ny": "14:00",
+   "hora_madrid": "20:00",
+   "evento": "FOMC Minutes",
+   "importancia": "MEDIA",
+   "afecta": "oro · índices · cripto (vía expectativas de tipos)",
+   "que_mirar": "Mensaje de un miembro con voto sobre tipos o inflación.",
+   "fuente": "Federal Reserve (calendario oficial)",
+   "url": "https://www.federalreserve.gov/newsevents/calendar.htm",
+   "nota": "",
+   "tipo": "FOMC",
+   "presidente": false
+  }
+ ],
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
-   "dias": 10
+   "dias": 9
   },
   "BCE": {
    "fecha": "2026-10-29",
-   "dias": 11
+   "dias": 10
   },
   "Banco de Japón": {
    "fecha": "2026-10-30",
-   "dias": 12
+   "dias": 11
   }
  },
  "errores": {
@@ -1445,6 +1462,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-18 09:45 UTC",
- "duracion_s": 34.1
+ "generado_utc": "2026-10-19 05:30 UTC",
+ "duracion_s": 42.0
 }

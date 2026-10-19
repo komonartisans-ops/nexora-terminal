@@ -1,8 +1,8 @@
 {
  "ok": true,
- "generado_utc": "2026-10-18 09:45 UTC",
+ "generado_utc": "2026-10-19 05:30 UTC",
  "metricas": {
-  "generado_utc": "2026-10-18 09:48 UTC",
+  "generado_utc": "2026-10-19 05:33 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer los índices (S&P 500 · Nasdaq 100 · US30 · Russell 2000)",
   "indices": {
    "S&P 500": {
@@ -179,25 +179,25 @@
    "SPY": {
     "precio": 763.25,
     "cambio_pct": -1.11,
-    "hora": "Oct 15, 2026",
+    "hora": "Oct 16, 2026",
     "estado_mercado": "Closed"
    },
    "QQQ": {
     "precio": 709.8,
     "cambio_pct": -2.5,
-    "hora": "Oct 15, 2026",
+    "hora": "Oct 16, 2026",
     "estado_mercado": "Closed"
    },
    "DIA": {
     "precio": 519.1,
     "cambio_pct": -0.4,
-    "hora": "Oct 15, 2026",
+    "hora": "Oct 16, 2026",
     "estado_mercado": "Closed"
    },
    "IWM": {
     "precio": 270.44,
     "cambio_pct": -1.69,
-    "hora": "Oct 15, 2026",
+    "hora": "Oct 16, 2026",
     "estado_mercado": "Closed"
    },
    "NDX": {
@@ -708,10 +708,10 @@
     "dato": "FedWatch",
     "que_mirar": "Recortes/subidas descontados",
     "dir": "→",
-    "valor": "2026-10-28: subida 16 % · mantener 84 % · bajada 0 %",
+    "valor": "2026-10-28: subida 14 % · mantener 86 % · bajada 0 %",
     "estado": "NEUTRAL",
-    "lectura": "1 sesión -12 pts de subida; tipo esperado a 3 reuniones +0 pb en 5 sesiones · Sin cambio",
-    "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-16",
+    "lectura": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -2 pb en 5 sesiones · Sin cambio",
+    "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-19",
     "puntua": true
    },
    {
@@ -1261,7 +1261,7 @@
    {
     "n": 3,
     "pregunta": "¿FedWatch está relajándose o endureciéndose?",
-    "respuesta": "1 sesión -12 pts de subida; tipo esperado a 3 reuniones +0 pb en 5 sesiones · Sin cambio Proxy letras: +2 pb en 5 sesiones."
+    "respuesta": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -2 pb en 5 sesiones · Sin cambio Proxy letras: +2 pb en 5 sesiones."
    },
    {
     "n": 4,
@@ -3268,6 +3268,6 @@
   },
   "reacciones": null
  },
- "evaluado_utc": "2026-10-18 09:45 UTC",
- "fedwatch_fecha_precios": "2026-10-16"
+ "evaluado_utc": "2026-10-19 05:30 UTC",
+ "fedwatch_fecha_precios": "2026-10-19"
 }

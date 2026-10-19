@@ -1,7 +1,7 @@
 {
  "periodo": "hoy",
- "corte": "Datos entre el 2026-10-15 y el 2026-10-17 (cada fuente publica a su hora)",
- "movido": "El miedo (VIX) sube 21 %; el dólar se debilita 0,39 %; la probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 28 % a 16 %. En conjunto: el dinero se abarata.",
+ "corte": "Datos entre el 2026-10-15 y el 2026-10-19 (cada fuente publica a su hora)",
+ "movido": "El miedo (VIX) sube 21 %; el dólar se debilita 0,39 %. En conjunto: el dinero se abarata.",
  "significa": [
   {
    "activo": "Oro",
@@ -10,32 +10,32 @@
   },
   {
    "activo": "Nasdaq 100",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: fuerzas opuestas: la Fed se ve menos dura, pero sube el miedo. Se mueve por motivos propios, no por la macro."
+   "viento": "EN CONTRA",
+   "texto": "En contra: sube el miedo (pesa más que: el dólar se debilita). Su movimiento lo explica la macro."
   },
   {
    "activo": "S&P 500",
    "viento": "EN CONTRA",
-   "texto": "En contra: sube el miedo (pesa más que: la Fed se ve menos dura). Su movimiento lo explica la macro."
+   "texto": "En contra: sube el miedo (pesa más que: el dólar se debilita). Su movimiento lo explica la macro."
   },
   {
    "activo": "Bitcoin",
-   "viento": "A FAVOR",
-   "texto": "A favor: el dólar se debilita (pesa más que: sube el miedo)."
+   "viento": "SIN VIENTO CLARO",
+   "texto": "Sin viento claro: fuerzas opuestas: el dólar se debilita, pero sube el miedo."
   },
   {
    "activo": "US30 · Dow Jones",
    "viento": "EN CONTRA",
-   "texto": "En contra: sube el miedo (pesa más que: la Fed se ve menos dura)."
+   "texto": "En contra: sube el miedo (pesa más que: el dólar se debilita)."
   },
   {
    "activo": "Russell 2000",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: fuerzas opuestas: la Fed se ve menos dura, pero sube el miedo. Se mueve por motivos propios, no por la macro."
+   "viento": "EN CONTRA",
+   "texto": "En contra: sube el miedo. Su movimiento lo explica la macro."
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 16 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 14 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 21 oct · Resultados Meta Platforms (META): BPA estimado $6.67 · después del cierre",
   "mié 21 oct · Resultados Tesla (TSLA): BPA estimado $0.21 · después del cierre"
  ],
@@ -43,8 +43,7 @@
  "sencillo": "El VIX mide cuánto pagan los inversores por protegerse. Si sube, hay miedo y se vende riesgo; si baja, vuelve la calma.",
  "motores_significativos": [
   "vix",
-  "dxy",
-  "fed"
+  "dxy"
  ],
  "errores": {
   "lbma": "HTTPError: HTTP Error 403: Forbidden"
@@ -62,12 +61,6 @@
     "sube": false,
     "peso": 0.65,
     "razon": "el dólar se debilita"
-   },
-   {
-    "motor": "fed",
-    "sube": false,
-    "peso": 1.8,
-    "razon": "la Fed se ve menos dura"
    }
   ],
   "S&P 500": [
@@ -82,12 +75,6 @@
     "sube": false,
     "peso": 0.65,
     "razon": "el dólar se debilita"
-   },
-   {
-    "motor": "fed",
-    "sube": false,
-    "peso": 1.2,
-    "razon": "la Fed se ve menos dura"
    }
   ],
   "Oro": [
@@ -102,12 +89,6 @@
     "sube": false,
     "peso": 2.61,
     "razon": "el dólar se debilita"
-   },
-   {
-    "motor": "fed",
-    "sube": false,
-    "peso": 1.2,
-    "razon": "la Fed se ve menos dura"
    }
   ],
   "Bitcoin": [
@@ -122,12 +103,6 @@
     "sube": false,
     "peso": 1.96,
     "razon": "el dólar se debilita"
-   },
-   {
-    "motor": "fed",
-    "sube": false,
-    "peso": 1.8,
-    "razon": "la Fed se ve menos dura"
    }
   ],
   "US30 · Dow Jones": [
@@ -142,12 +117,6 @@
     "sube": false,
     "peso": 0.65,
     "razon": "el dólar se debilita"
-   },
-   {
-    "motor": "fed",
-    "sube": false,
-    "peso": 0.9,
-    "razon": "la Fed se ve menos dura"
    }
   ],
   "Russell 2000": [
@@ -156,12 +125,6 @@
     "sube": true,
     "peso": -2.68,
     "razon": "sube el miedo"
-   },
-   {
-    "motor": "fed",
-    "sube": false,
-    "peso": 2.4,
-    "razon": "la Fed se ve menos dura"
    }
   ]
  },
@@ -192,11 +155,11 @@
    "fecha": "2026-10-15"
   },
   "fed": {
-   "valor": 16.0,
-   "antes": 28.0,
+   "valor": 14.0,
+   "antes": 16.0,
    "reunion": "2026-10-28",
-   "delta": -12.0,
-   "fecha": "2026-10-16"
+   "delta": -2.0,
+   "fecha": "2026-10-19"
   }
  },
  "activos": {
@@ -211,14 +174,14 @@
    "valor": 7659.44
   },
   "Oro": {
-   "delta": 0.2637826369247698,
-   "fecha": "2026-10-16",
-   "valor": 4181.10009765625
+   "delta": 0.3563632057530075,
+   "fecha": "2026-10-19",
+   "valor": 4196.0
   },
   "Bitcoin": {
-   "delta": -0.14948458921000274,
-   "fecha": "2026-10-17",
-   "valor": 81378.21
+   "delta": 0.7724918009378579,
+   "fecha": "2026-10-18",
+   "valor": 82006.85
   },
   "US30 · Dow Jones": {
    "delta": -0.33730691095864573,
@@ -253,7 +216,8 @@
      "DXY",
      "10Y REAL / TIPS (PRIORIDAD ALTA)",
      "US 10Y",
-     "TGA"
+     "TGA",
+     "ETF GOLD FLOWS"
     ],
     "contra_n": [
      "NFCI"
@@ -273,19 +237,13 @@
      "sube": false,
      "peso": 2.61,
      "razon": "el dólar se debilita"
-    },
-    {
-     "motor": "fed",
-     "sube": false,
-     "peso": 1.2,
-     "razon": "la Fed se ve menos dura"
     }
    ]
   },
   "Nasdaq 100": {
    "etiqueta": "SIN TESIS",
    "tesis": "SIN TESIS: ni la macro ni su motor propio (MIXTO) marcan dirección.",
-   "hoy": "Sin viento claro: fuerzas opuestas: la Fed se ve menos dura, pero sube el miedo. Se mueve por motivos propios, no por la macro.",
+   "hoy": "En contra: sube el miedo (pesa más que: el dólar se debilita). Su movimiento lo explica la macro.",
    "semana": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero sube el miedo. Se mueve por motivos propios, no por la macro.",
    "viento_semana": "SIN VIENTO CLARO",
    "propio": {
@@ -329,19 +287,13 @@
      "sube": false,
      "peso": 0.65,
      "razon": "el dólar se debilita"
-    },
-    {
-     "motor": "fed",
-     "sube": false,
-     "peso": 1.8,
-     "razon": "la Fed se ve menos dura"
     }
    ]
   },
   "S&P 500": {
    "etiqueta": "BAJISTA DÉBIL",
    "tesis": "BAJISTA DÉBIL: solo lo empuja la macro de la semana (en contra); lo otro está neutral. Lo que la rompería: que ganen peso ADV/DECLINE (amplitud) y VIX TERM STRUCTURE (hoy ya empujan en sentido contrario).",
-   "hoy": "En contra: sube el miedo (pesa más que: la Fed se ve menos dura). Su movimiento lo explica la macro.",
+   "hoy": "En contra: sube el miedo (pesa más que: el dólar se debilita). Su movimiento lo explica la macro.",
    "semana": "En contra: sube el miedo (pesa más que: baja el tipo real (lo que más les ayuda)). Su movimiento lo explica la macro.",
    "viento_semana": "EN CONTRA",
    "propio": {
@@ -385,19 +337,13 @@
      "sube": false,
      "peso": 0.65,
      "razon": "el dólar se debilita"
-    },
-    {
-     "motor": "fed",
-     "sube": false,
-     "peso": 1.2,
-     "razon": "la Fed se ve menos dura"
     }
    ]
   },
   "Bitcoin": {
    "etiqueta": "BAJISTA DÉBIL",
    "tesis": "BAJISTA DÉBIL: solo lo empuja la macro de la semana (en contra); lo otro está neutral. Lo que la rompería: que ganen peso TGA — cuenta del Tesoro y Treasury 10Y (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: el dólar se debilita (pesa más que: sube el miedo).",
+   "hoy": "Sin viento claro: fuerzas opuestas: el dólar se debilita, pero sube el miedo.",
    "semana": "En contra: sube el miedo (pesa más que: baja el tipo real (lo que más les ayuda)).",
    "viento_semana": "EN CONTRA",
    "propio": {
@@ -446,19 +392,13 @@
      "sube": false,
      "peso": 1.96,
      "razon": "el dólar se debilita"
-    },
-    {
-     "motor": "fed",
-     "sube": false,
-     "peso": 1.8,
-     "razon": "la Fed se ve menos dura"
     }
    ]
   },
   "US30 · Dow Jones": {
    "etiqueta": "BAJISTA DÉBIL",
    "tesis": "BAJISTA DÉBIL: solo lo empuja la macro de la semana (en contra); lo otro está neutral. Lo que la rompería: que ganen peso ADV/DECLINE (amplitud) y VIX TERM STRUCTURE (hoy ya empujan en sentido contrario).",
-   "hoy": "En contra: sube el miedo (pesa más que: la Fed se ve menos dura).",
+   "hoy": "En contra: sube el miedo (pesa más que: el dólar se debilita).",
    "semana": "En contra: sube el miedo (pesa más que: baja el tipo real (lo que más les ayuda)).",
    "viento_semana": "EN CONTRA",
    "propio": {
@@ -502,19 +442,13 @@
      "sube": false,
      "peso": 0.65,
      "razon": "el dólar se debilita"
-    },
-    {
-     "motor": "fed",
-     "sube": false,
-     "peso": 0.9,
-     "razon": "la Fed se ve menos dura"
     }
    ]
   },
   "Russell 2000": {
    "etiqueta": "BAJISTA DÉBIL",
    "tesis": "BAJISTA DÉBIL: solo lo empuja su motor propio (DESFAVORABLE); lo otro está neutral. Lo que la rompería: que ganen peso ADV/DECLINE (amplitud) y VIX TERM STRUCTURE (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: fuerzas opuestas: la Fed se ve menos dura, pero sube el miedo. Se mueve por motivos propios, no por la macro.",
+   "hoy": "En contra: sube el miedo. Su movimiento lo explica la macro.",
    "semana": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero sube el miedo. Se mueve por motivos propios, no por la macro.",
    "viento_semana": "SIN VIENTO CLARO",
    "propio": {
@@ -552,35 +486,29 @@
      "sube": true,
      "peso": -2.68,
      "razon": "sube el miedo"
-    },
-    {
-     "motor": "fed",
-     "sube": false,
-     "peso": 2.4,
-     "razon": "la Fed se ve menos dura"
     }
    ]
   }
  },
  "motores_propios": {
   "oro_xau": {
-   "calculado_utc": "2026-10-18 09:45 UTC",
+   "calculado_utc": "2026-10-19 05:30 UTC",
    "ok": true,
    "disponible": true
   },
   "indices": {
-   "calculado_utc": "2026-10-18 09:45 UTC",
+   "calculado_utc": "2026-10-19 05:30 UTC",
    "ok": true,
    "disponible": true
   },
   "liquidez_cripto": {
-   "calculado_utc": "2026-10-18 09:45 UTC",
+   "calculado_utc": "2026-10-19 05:30 UTC",
    "ok": true,
    "disponible": true
   }
  },
  "sencillo_activos": "Empujan a favor: Oro; empujan en contra: S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000; sin ventaja clara: Nasdaq 100 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-18 09:45 UTC",
- "duracion_s": 102.9
+ "generado_utc": "2026-10-19 05:30 UTC",
+ "duracion_s": 100.7
 }

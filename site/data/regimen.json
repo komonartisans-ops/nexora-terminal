@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-16): reunión del 2026-10-28 subida 16 % / mantener 84 % / bajada 0 % (-12 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +36 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-19): reunión del 2026-10-28 subida 14 % / mantener 86 % / bajada 0 % (-2 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +35 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.74 % vs tipo efectivo 3.88 % → +86 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +58 pb (+2 pb en 5 sesiones)"
@@ -133,9 +133,9 @@
      "S&P 500: semana -1.9 · mes +0.1 %",
      "Nasdaq 100: semana -2.6 · mes +1.7 %",
      "Russell 2000: semana -3.0 · mes -4.9 %",
-     "Oro (COMEX GC=F, respaldo): semana -0.8 · mes -5.5 %",
-     "Bitcoin: semana -1.8 · mes +6.6 %",
-     "Ether: semana -4.2 · mes -1.9 %",
+     "Oro (COMEX GC=F, respaldo): semana +0.1 · mes -4.3 %",
+     "Bitcoin: semana -2.0 · mes +1.4 %",
+     "Ether: semana -5.0 · mes -7.8 %",
      "10Y nominal: semana -13.0 · mes +15.0 pb",
      "10Y real: semana -13.0 · mes +13.0 pb",
      "DXY: semana -0.5 · mes +1.2 %",
@@ -162,14 +162,14 @@
     "lectura": "SEÑALES INICIALES DE GIRO",
     "sentido": "FAVORABLE",
     "precio": "BTC CONFIRMA",
-    "detalle": "checklist 5/8 · BTC 30 días +6.6 %"
+    "detalle": "checklist 5/8 · BTC 30 días +1.4 %"
    },
    {
     "monitor": "Oro (XAU/USD)",
     "lectura": "MIXTO",
     "sentido": "NEUTRAL",
     "precio": "CONFIRMA DEBILIDAD",
-    "detalle": "oro 20 sesiones -5.5 %"
+    "detalle": "oro 20 sesiones -4.3 %"
    },
    {
     "monitor": "Índices USA",
@@ -231,18 +231,18 @@
     "unidad": "%"
    },
    "Oro (COMEX GC=F, respaldo)": {
-    "semana": -0.83,
-    "mes": -5.51,
+    "semana": 0.15,
+    "mes": -4.26,
     "unidad": "%"
    },
    "Bitcoin": {
-    "semana": -1.8484805357082523,
-    "mes": 6.5874957464916895,
+    "semana": -1.997459556116632,
+    "mes": 1.3994552583838082,
     "unidad": "%"
    },
    "Ether": {
-    "semana": -4.1607757622231345,
-    "mes": -1.8712378958387954,
+    "semana": -4.999960540126724,
+    "mes": -7.805571086109042,
     "unidad": "%"
    },
    "10Y nominal": {
@@ -298,9 +298,9 @@
    },
    {
     "patron": "EXPANSIÓN DE LIQUIDEZ",
-    "cumple": 2,
+    "cumple": 1,
     "de": 5,
-    "pct": 40
+    "pct": 20
    },
    {
     "patron": "DESINFLACIÓN FAVORABLE (goldilocks)",
@@ -313,7 +313,6 @@
    "ESTRÉS DE CRÉDITO"
   ],
   "contradicciones": [
-   "Bitcoin sube +6.6 % en 30 días sin soporte de liquidez y con el tipo real al alza: el motor es propio de cripto (flujos, posicionamiento), no macro. Históricamente estos movimientos son menos fiables (ver monitor cripto).",
    "Divergencia bolsa-crédito: el high yield se amplía mientras el S&P sigue cerca de máximos. Históricamente el crédito suele adelantarse, aunque no siempre."
   ],
   "preguntas": [
@@ -339,7 +338,7 @@
    },
    {
     "pregunta": "¿Qué hacen los bancos centrales?",
-    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 16 %, mantener 84 %, bajada 0 % (ayer subida 28 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
+    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 14 %, mantener 86 %, bajada 0 % (ayer subida 16 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
    },
    {
     "pregunta": "¿Qué dice el consumo (mercado frente a datos reales)?",
@@ -355,7 +354,7 @@
    },
    {
     "pregunta": "¿Qué contradicciones hay?",
-    "respuesta": "2 (ver sección de contradicciones)"
+    "respuesta": "1 (ver sección de contradicciones)"
    },
    {
     "pregunta": "¿Qué datos pueden cambiarlo?",
@@ -1050,6 +1049,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-18 09:45 UTC",
- "duracion_s": 7.3
+ "generado_utc": "2026-10-19 05:30 UTC",
+ "duracion_s": 8.5
 }

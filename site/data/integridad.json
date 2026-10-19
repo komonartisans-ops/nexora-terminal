@@ -1,13 +1,13 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-18 18:49 UTC",
+ "generado_utc": "2026-10-19 05:30 UTC",
  "resumen": {
-  "al_dia": 24,
+  "al_dia": 25,
   "total": 26,
   "retrasados": 0,
-  "sin_dato": 2,
-  "texto": "Integridad: 24/26 al día"
+  "sin_dato": 1,
+  "texto": "Integridad: 25/26 al día"
  },
  "bloques": [
   {
@@ -18,7 +18,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -30,7 +30,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -42,7 +42,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-15",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -54,7 +54,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -66,7 +66,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -78,7 +78,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -90,7 +90,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -102,7 +102,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -114,7 +114,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -126,7 +126,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": null,
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -138,7 +138,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -150,7 +150,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -162,7 +162,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -171,10 +171,10 @@
    "bloque": "Marcador de señales",
    "pagina": "marcador",
    "frecuencia": "cada hora (laborables)",
-   "color": "gris",
-   "motivo": "SIN DATO: este bloque no tiene ninguna ejecución válida registrada",
+   "color": "verde",
+   "motivo": "al día",
    "ultimo_dato": null,
-   "registrado_utc": null,
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -198,7 +198,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-15",
-   "registrado_utc": "2026-10-18 09:45 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
    "proximo_utc": "2026-10-19 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -210,8 +210,8 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
-   "proximo_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
+   "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
   {
@@ -222,8 +222,8 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-14",
-   "registrado_utc": "2026-10-18 09:45 UTC",
-   "proximo_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
+   "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
   {
@@ -234,8 +234,8 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
-   "proximo_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
+   "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
   {
@@ -246,8 +246,8 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
-   "proximo_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
+   "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
   {
@@ -258,8 +258,8 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-18 09:45 UTC",
-   "proximo_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
+   "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
   {
@@ -270,8 +270,8 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-13",
-   "registrado_utc": "2026-10-18 09:45 UTC",
-   "proximo_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
+   "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
   {
@@ -282,8 +282,8 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-18 09:45 UTC",
-   "proximo_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
+   "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
   {
@@ -294,8 +294,8 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
-   "proximo_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
+   "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
   {
@@ -306,8 +306,8 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-18",
-   "registrado_utc": "2026-10-18 09:45 UTC",
-   "proximo_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
+   "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
   {
@@ -318,8 +318,8 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-18 09:45 UTC",
-   "proximo_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 05:30 UTC",
+   "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   }
  ],
@@ -1130,7 +1130,7 @@
   "BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
   "BEA": "BEA exige clave de API (UserID): sin el secreto BEA_API_KEY no hay acceso, SIN DATO (no se inventa).",
   "bea_activa": false,
-  "bls_consultas_hoy": 2,
+  "bls_consultas_hoy": 0,
   "bls_ultimo_error": null,
   "bea_ultimo_error": null
  },
@@ -1139,5 +1139,6 @@
   "ultimos": [],
   "regla": "aviso si a la hora de publicación + 2 h el periodo nuevo no está en publicados.json"
  },
- "errores": {}
+ "errores": {},
+ "duracion_s": 0.1
 }
