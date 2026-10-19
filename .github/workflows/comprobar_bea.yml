@@ -1,0 +1,25 @@
+name: comprobar_bea
+
+# Comprobación MANUAL de la segunda fuente de BEA (PCE y PIB real). Solo lectura: sin Telegram, sin escribir datos, sin commit, sin desplegar.
+# Imprime las líneas de las tablas NIPA T20804 y T10106 que usa el código, los 3 últimos valores y la diferencia con FRED (PCEPI, PCEPILFE, GDPC1).
+# La clave BEA_API_KEY solo se lee del secreto del repositorio; el script no la imprime ni imprime la respuesta cruda de BEA.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Consultar BEA y comparar con FRED
+        env:
+          PYTHONUTF8: "1"
+          BEA_API_KEY: ${{ secrets.BEA_API_KEY }}
+        run: python engine/comprobar_bea.py
