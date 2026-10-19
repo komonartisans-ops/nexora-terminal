@@ -5,7 +5,7 @@
 
 const MC = { h: '5', datos: null };
 const MC_TIPOS = [['tesis', 'Tesis por activo (cambios)'], ['fed', 'Alertas Fed'], ['skew', 'SKEW alto con ≥ 2 confirmaciones'], ['regimen', 'Régimen (cambios)'],
-  ['liquidez', 'Liquidez (cambios de etiqueta)'], ['consumo', 'Tesis de consumo (cambios)'], ['reaccion', 'Reacción a eventos (solo registro)']];
+  ['liquidez', 'Liquidez (cambios de etiqueta)'], ['consumo', 'Tesis de consumo (cambios)'], ['petroleo', 'Tesis de petróleo (cambios)'], ['reaccion', 'Reacción a eventos (solo registro)']];
 const mcPct = (v) => (v == null ? '—' : num(v, 1) + ' %');
 const mcRet = (v, u) => (v == null ? '—' : `${v > 0 ? '+' : ''}${num(v, u === 'pb' ? 1 : 2)} ${u === 'pb' ? 'pb' : '%'}`);
 const mcCls = (v) => (v == null ? '' : v > 0 ? 'up' : v < 0 ? 'down' : 'flat');

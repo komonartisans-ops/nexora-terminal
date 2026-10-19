@@ -63,6 +63,7 @@ const PAGES = [
   { id: 'mapa', g: 'Análisis', t: 'Bancos centrales del mundo', d: 'Mapa de 38 bancos: tipo, último movimiento, 12 meses, inflación, PIB y divisa', f: 7 },
   { id: 'marcador', g: 'Análisis', t: 'Marcador de señales', d: 'Aciertos de las señales del sistema a T+1, T+5 y T+20 frente al azar; vivas y reconstruidas por separado', f: 10 },
   { id: 'consumo', g: 'Análisis', t: 'Consumo', d: '¿Está consumiendo la gente? Ratios de consumo, datos reales y tesis con reglas fijas', f: 14 },
+  { id: 'petroleo', g: 'Análisis', t: 'Petróleo', d: 'WTI y Brent: curva (escasez o sobra), inventarios EIA, COT, gasolina y tesis con reglas fijas', f: 15 },
   { id: 'integridad', g: 'Análisis', t: 'Integridad de datos', d: 'Si cada bloque está al día, si falta algún dato oficial y si FRED y BLS coinciden', f: 13 },
   { id: 'agenda', g: 'Análisis', t: 'Agenda', d: 'Hoy y próximos 7 días con hora de Nueva York y Madrid; importancia fija por tipo de dato', f: 9 },
   { id: 'eventos', g: 'Análisis', t: 'Reacción a eventos', d: 'Todos los datos de importancia alta (IPC, PPI, empleo, PCE, PIB, FOMC, ISM): 2Y, 10Y, DXY, oro, NQ y BTC minuto a minuto', f: 8 },
@@ -92,7 +93,7 @@ const PLAN = {
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['diario', 'tesis', 'operativa', 'marcador', 'guia', 'integridad', 'consumo', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
+const LIVE = new Set(['diario', 'tesis', 'operativa', 'marcador', 'guia', 'integridad', 'consumo', 'petroleo', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
 const D = {};
 const MOUNT = [];
 
@@ -290,6 +291,7 @@ function pageResumen() {
       ${foot(a.fuente, a.fecha)}</div>`;
   }).join('') + '</div>';
 
+  h += typeof cardPetroleoResumen === 'function' ? cardPetroleoResumen() : '';
   h += typeof bloqueContradicciones === 'function' ? bloqueContradicciones() : '';
 
   h += '<div class="sect"><h2>Panel de mercado</h2><span class="more">▲▼ frente al cierre anterior · vs media de 50 sesiones</span></div><div class="card pad0 scroll"><table class="t"><thead><tr><th>Activo</th><th>Último</th><th>1d</th><th>1 sem</th><th>1 mes</th><th>3 meses</th><th>vs SMA50</th><th>Dato</th><th style="text-align:left">Fuente</th></tr></thead><tbody>';
@@ -789,7 +791,7 @@ function route() {
 }
 
 async function cargar() {
-  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma', 'bancos', 'tono', 'reacciones', 'agenda', 'salud', 'etf', 'integridad'].map(async (n) => {
+  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma', 'bancos', 'tono', 'reacciones', 'agenda', 'salud', 'etf', 'integridad', 'petroleo'].map(async (n) => {
     try { const r = await fetch(`data/${n}.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) D[n] = await r.json(); } catch (e) { /* SIN DATO */ }
   }));
 }
