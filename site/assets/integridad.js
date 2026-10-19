@@ -63,10 +63,32 @@ function pageIntegridad() {
   h += rr.length ? `<table class="t"><thead><tr><th style="text-align:left">Dato</th><th>Dato de</th><th>Publicado</th><th>Registrado</th><th>Retraso</th></tr></thead><tbody>${rr.map((x) => `<tr><td style="text-align:left"><b>${esc(x.dato)}</b></td><td>${esc(x.dato_de)}</td><td>${esc(fdy(x.publicado))}</td><td>${esc(x.registrado_utc ? horaAct(x.registrado_utc) : fdy(x.registrado) + ' (solo fecha)')}</td><td class="${x.retraso_dias > 1 ? 'down' : ''}">${x.retraso_horas != null ? num(x.retraso_horas, 1) + ' h' : x.retraso_dias + (x.retraso_dias === 1 ? ' día' : ' días') + ' (solo fecha)'}</td></tr>`).join('')}</tbody></table>`
     : '<div class="empty" style="height:90px;border:0">SIN DATOS REGISTRADOS EN VIVO TODAVÍA</div>';
   h += `<div class="note" style="padding:0 16px 12px">Histórico anterior al arreglo del disparo externo (cron-job.org): el registro se hacía a la primera ejecución del día siguiente, por eso sale ≈ 1 día. Las filas anteriores a esta versión solo guardan la fecha de registro (retraso en días); las nuevas guardan también la hora (retraso en horas). Los datos de «carga inicial» no cuentan: se bajaron de golpe al empezar y no miden el retraso. Desde la ampliación de la franja de reacciones y el vigilante, este número debe bajar.</div></div>`;
+  h += integMichigan(I.michigan);
   const V = I.vigilante || {}, S = I.segunda_fuente || {};
   h += '<div class="sect"><h2>Vigilante y segunda fuente</h2><span class="more">cómo se comprueba cada dato</span></div><div class="grid g2"><div class="card"><div class="chead"><span>Vigilante de publicaciones</span></div>'
     + `<p class="note" style="margin:6px 0">Regla: ${esc(V.regla || '')}. Un aviso por dato.</p><p class="note" style="margin:0">${V.avisos ? V.avisos + ' aviso(s) enviado(s) hasta ahora.' : 'Ningún aviso enviado todavía: no ha faltado ningún dato.'}</p></div>`
     + `<div class="card"><div class="chead"><span>Segunda fuente</span></div><p class="note" style="margin:6px 0"><b>BLS</b> (IPC, IPC subyacente, IPP): ${esc(S.BLS || '')}.</p><p class="note" style="margin:0"><b>BEA</b> (PIB, PCE): ${esc(S.BEA || '')}</p>${S.bls_ultimo_error ? `<p class="note" style="margin:4px 0 0">Último error de BLS: ${esc(S.bls_ultimo_error)}</p>` : ''}${S.bea_ultimo_error ? `<p class="note" style="margin:4px 0 0">Último error de BEA: ${esc(S.bea_ultimo_error)}</p>` : ''}</div></div>`;
+  return h;
+}
+
+/* ánimo del consumidor (U. Michigan): último dato, preliminar/final, antigüedad (ámbar > 45 días), contraste con FRED y próximo lanzamiento */
+function integMichigan(B) {
+  let h = '<div class="sect"><h2>Ánimo del consumidor (U. Michigan)</h2><span class="more">fuente primaria: la Universidad · FRED de respaldo</span></div>';
+  if (!B || B.estado !== 'OK' || !B.ultimo) return h + `<div class="card"><p class="note" style="margin:0">SIN DATO: no hay ninguna lectura de la Universidad de Michigan ni de FRED registrada.</p></div>`;
+  const u = B.ultimo, uf = B.ultimo_final, fr = B.fred, tipo = u.tipo === 'preliminar' ? 'PRELIMINAR' : 'FINAL';
+  const pub = (x) => (x && x.publicado ? esc(fdy(x.publicado)) : 'SIN DATO');
+  const edad = `${B.antiguedad_dias} día${B.antiguedad_dias === 1 ? '' : 's'}`;
+  h += `<div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Dato</th><th>Valor</th><th>Tipo</th><th>Publicado el</th><th>Visto por NEXORA</th><th>Antigüedad</th></tr></thead><tbody>`
+    + `<tr><td data-label="Dato" style="text-align:left"><b>${esc(u.texto)}</b> <small>Universidad de Michigan</small></td><td data-label="Valor">${esc(num(u.valor, 1))}</td><td data-label="Tipo"><span class="ck ${u.tipo === 'preliminar' ? 'sd' : 'ok'}">${tipo}</span></td><td data-label="Publicado el">${pub(u)}</td><td data-label="Visto por NEXORA">${u.visto_utc ? esc(horaAct(u.visto_utc)) : 'SIN DATO'}</td><td data-label="Antigüedad"><span class="ck ${B.ambar ? 'par' : 'ok'}">${edad}${B.ambar ? ' · ámbar' : ''}</span></td></tr>`
+    + (uf && uf.periodo !== u.periodo ? `<tr><td data-label="Dato" style="text-align:left"><b>${esc(uf.texto)}</b> <small>último final</small></td><td data-label="Valor">${esc(num(uf.valor, 1))}</td><td data-label="Tipo"><span class="ck ok">FINAL</span></td><td data-label="Publicado el">${pub(uf)}</td><td data-label="Visto por NEXORA">${uf.visto_utc ? esc(horaAct(uf.visto_utc)) : 'SIN DATO'}</td><td data-label="Antigüedad">—</td></tr>` : '')
+    + (fr ? `<tr><td data-label="Dato" style="text-align:left"><b>${esc(fr.texto)}</b> <small>FRED UMCSENT (respaldo)</small></td><td data-label="Valor">${esc(num(fr.valor, 1))}</td><td data-label="Tipo"><span class="ck ok">FINAL</span></td><td data-label="Publicado el">SIN DATO</td><td data-label="Visto por NEXORA">—</td><td data-label="Antigüedad"><span class="ck ${fr.antiguedad_dias > B.umbral_antiguedad_dias ? 'par' : 'ok'}">${esc(String(fr.antiguedad_dias))} días${fr.antiguedad_dias > B.umbral_antiguedad_dias ? ' · ámbar' : ''}</span></td></tr>` : '')
+    + '</tbody></table>'
+    + `<div class="note" style="padding:8px 16px 12px">Antigüedad = días desde el cierre del mes al que se refiere el dato (0 mientras el mes no ha terminado); ámbar si pasa de ${esc(String(B.umbral_antiguedad_dias))} días. `
+    + `${fr && fr.meses_de_retraso > 0 ? `FRED va ${esc(String(fr.meses_de_retraso))} mes${fr.meses_de_retraso > 1 ? 'es' : ''} por detrás (publica este índice con retraso por licencia). ` : ''}`
+    + `${fr && fr.coincide === true ? 'FRED coincide con la Universidad en el último mes que tienen en común. ' : fr && fr.coincide === false ? '<b>FRED no coincide con la Universidad: manda la Universidad.</b> ' : ''}`
+    + `${B.proximo ? `Próximo lanzamiento anunciado: ${esc(B.proximo.texto)} el ${esc(fdy(B.proximo.fecha))}${B.proximo.hora_et ? ' a las ' + esc(B.proximo.hora_et) + ' ET' : ''} (${esc(B.proximo.fuente || '')}). ` : 'Próximo lanzamiento: SIN DATO (la Universidad lo anuncia en su portada tras cada publicación). '}`
+    + `El vigilante avisa si un lanzamiento (preliminar o final) no está registrado 2 h después. La web de la Universidad no indica la fecha de un dato ya publicado: solo se muestra si NEXORA la anotó antes. ${B.ultima_descarga_utc ? 'Última descarga: ' + esc(horaAct(B.ultima_descarga_utc + ' UTC')) + '.' : ''}</div>`
+    + footIn('Universidad de Michigan (sca.isr.umich.edu) · FRED UMCSENT', false, 'https://www.sca.isr.umich.edu/tables.html', 'antigüedad en ámbar si > 45 días') + '</div>';
   return h;
 }
 

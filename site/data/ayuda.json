@@ -1512,9 +1512,10 @@
    "Muestra si los hogares gastan, ganan, ahorran y pueden pagar."
   ],
   "contexto de ánimo": [
-   "La confianza del consumidor (U. Michigan) comparada con toda su historia desde 1978, como percentil.",
-   "Un percentil bajo = la gente está más pesimista que casi siempre; si además los datos reales suben, sale la nota «la gente dice que está mal pero sigue gastando».",
-   "El ánimo y el gasto no siempre van juntos; por eso solo es contexto y no puntúa en la tesis."
+   "La confianza del consumidor (Universidad de Michigan) comparada con toda su historia desde 1978, como percentil, con el dato más reciente.",
+   "El dato de la Universidad sale primero como PRELIMINAR (mitad de mes) y dos semanas después como FINAL. FRED lo publica con 1-2 meses de retraso, por eso solo se usa de respaldo y para contrastar.",
+   "Un percentil bajo = la gente está más pesimista que casi siempre; si además los datos reales suben, sale la nota «la gente dice que está mal pero sigue gastando». Solo es contexto: no puntúa en la tesis.",
+   "La antigüedad cuenta los días desde el cierre del mes al que se refiere el dato; en ámbar si pasa de 45."
   ]
  },
  "glosario": [

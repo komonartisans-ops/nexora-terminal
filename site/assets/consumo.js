@@ -38,12 +38,7 @@ function consumoHtml(M) {
     Diferencia entre ambos ratios en 3 meses: ${mk.diferencia_3m_pp == null ? '<span class="sd-val">SIN DATO</span>' : `${csPct(mk.diferencia_3m_pp)} (XLY/XLP ${csPct(cap && cap.pendiente_3m_pct)} · RSPD/RSPS ${csPct(ig && ig.pendiente_3m_pct)})`}.
     Si los dos ratios se separan más de ${esc(num(mk.umbral_pp == null ? 2 : mk.umbral_pp, 0))} pp en 3 meses, en cualquier sentido, el ratio lo mueven AMZN+TSLA, no el consumo amplio.</div>`;
   const A = M.animo;
-  h += `<div class="sect"><h2>Contexto de ánimo</h2><span class="more">no puntúa en la tesis</span></div><div class="card">${A && A.estado === 'OK'
-    ? `<div style="display:flex;gap:28px;flex-wrap:wrap;align-items:baseline"><div><div class="lab">Confianza U. Michigan (UMCSENT)</div><div class="big">${esc(num(A.valor, 1))}<small>${esc(fdm(A.periodo))}</small></div></div>
-       <div><div class="lab">Percentil desde ${esc(A.desde.slice(0, 4))}</div><div class="big ${A.zona_baja ? 'down' : ''}">${esc(num(A.percentil, 1))}<small>de 100 · ${esc(String(A.n))} meses</small></div></div>
-       <div style="flex:1;min-width:220px"><p class="note" style="margin:0">Rango histórico: ${esc(num(A.minimo, 1))} (mínimo) a ${esc(num(A.maximo, 1))} (máximo). ${A.zona_baja ? 'Está en el ' + esc(num(A.umbral_percentil, 0)) + ' % más bajo de su historia.' : 'No está en el ' + esc(num(A.umbral_percentil, 0)) + ' % más bajo.'}</p>
-       ${A.nota ? `<p class="note" style="margin:6px 0 0;color:var(--amber)"><b>${esc(A.nota.charAt(0).toUpperCase() + A.nota.slice(1))}:</b> la confianza está en mínimos pero la capa real de consumo sube.</p>` : ''}</div></div>`
-    : '<div class="empty" style="height:80px">SIN DATO · historia de UMCSENT desde 1978</div>'}${foot('FRED UMCSENT (U. Michigan) desde 1978', A && A.periodo, null, 'solo contexto: no entra en la tesis')}</div>`;
+  h += `<div class="sect"><h2>Contexto de ánimo</h2><span class="more">no puntúa en la tesis</span></div><div class="card">${cnsAnimo(M.animo)}</div>`;
   const I = D.integridad || {}, pubs = I.publicaciones || [];
   h += '<div class="sect"><h2>Datos reales de consumo y renta</h2><span class="more">FRED · % interanual y tendencia a 3 meses · fecha del dato y de publicación</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Dato</th><th>Dato de</th><th>Valor</th><th>Tendencia 3 meses</th><th>Publicado el</th><th>Registrado por NEXORA</th></tr></thead><tbody>';
   h += (M.real || []).map((x) => {
@@ -74,6 +69,26 @@ function pageConsumo() {
     f5.paint(root, () => consumoHtml(M));
   });
   return h;
+}
+
+/* tarjeta «Contexto de ánimo»: fuente primaria = Universidad de Michigan (preliminar o final, con su fecha); FRED = respaldo y segunda fuente. Solo muestra lo que trae consumo.json. */
+function cnsAnimo(A) {
+  const d = A && A.dato, u = d && d.ultimo;
+  if (!A || A.estado !== 'OK' || !u) return `<div class="empty" style="height:80px">SIN DATO · confianza del consumidor (U. Michigan) desde 1978</div>${foot('Universidad de Michigan (sca.isr.umich.edu) · FRED UMCSENT de respaldo', false, 'https://www.sca.isr.umich.edu/tables.html', 'solo contexto: no entra en la tesis')}`;
+  const tipo = u.tipo === 'preliminar' ? 'PRELIMINAR' : 'FINAL', uf = d.ultimo_final, fr = d.fred;
+  const pub = (x) => (x && x.publicado ? `publicado el ${esc(fdy(x.publicado))}` : `fecha de publicación SIN DATO (la web de Michigan no la indica${x && x.visto_utc ? '; NEXORA lo vio el ' + esc(fdy(x.visto_utc.slice(0, 10))) : ''})`);
+  const edad = d.antiguedad_dias == null ? 'SIN DATO' : `${d.antiguedad_dias} día${d.antiguedad_dias === 1 ? '' : 's'}`;
+  let h = `<div style="display:flex;gap:28px;flex-wrap:wrap;align-items:baseline"><div><div class="lab">Confianza U. Michigan</div><div class="big">${esc(num(A.valor, 1))}<small>${esc(fdm(A.periodo))} · ${tipo}</small></div></div>
+    <div><div class="lab">Percentil desde ${esc(A.desde.slice(0, 4))}</div><div class="big ${A.zona_baja ? 'down' : ''}">${esc(num(A.percentil, 1))}<small>de 100 · ${esc(String(A.n))} meses</small></div></div>
+    <div style="flex:1;min-width:220px"><p class="note" style="margin:0">Rango histórico: ${esc(num(A.minimo, 1))} (mínimo) a ${esc(num(A.maximo, 1))} (máximo). ${A.zona_baja ? 'Está en el ' + esc(num(A.umbral_percentil, 0)) + ' % más bajo de su historia.' : 'No está en el ' + esc(num(A.umbral_percentil, 0)) + ' % más bajo.'} El percentil usa el dato más reciente (${tipo.toLowerCase()}).</p>
+    ${A.nota ? `<p class="note" style="margin:6px 0 0;color:var(--amber)"><b>${esc(A.nota.charAt(0).toUpperCase() + A.nota.slice(1))}:</b> la confianza está en mínimos pero la capa real de consumo sube.</p>` : ''}</div></div>`;
+  h += `<div class="note" style="margin:10px 0 0"><span class="ck ${d.ambar ? 'par' : 'ok'}">Antigüedad ${edad}${d.ambar ? ' · más de ' + esc(String(d.umbral_antiguedad_dias)) + ' días' : ''}</span> desde el cierre del mes de referencia (ámbar si pasa de ${esc(String(d.umbral_antiguedad_dias))} días).</div>`;
+  h += `<ul class="note" style="margin:8px 0 0;padding-left:18px"><li><b>${esc(u.texto)} · ${tipo}</b>: ${esc(num(u.valor, 1))} · ${pub(u)}.</li>`
+    + (uf && uf.periodo !== u.periodo ? `<li><b>Último final</b>: ${esc(uf.texto)} · ${esc(num(uf.valor, 1))} · ${pub(uf)}.</li>` : '')
+    + (fr ? `<li><b>FRED (respaldo y segunda fuente)</b>: ${esc(fr.texto)} · ${esc(num(fr.valor, 1))}${fr.meses_de_retraso > 0 ? ` — va ${esc(String(fr.meses_de_retraso))} mes${fr.meses_de_retraso > 1 ? 'es' : ''} por detrás de la Universidad (FRED publica este índice con retraso por licencia)` : ''}${fr.coincide === true ? '; coincide con la Universidad en ese mes' : fr.coincide === false ? '; <b>NO coincide</b> con la Universidad (manda la Universidad)' : ''}.</li>` : '<li><b>FRED</b>: SIN DATO.</li>')
+    + '</ul>';
+  if (d.origen === 'fred') h += `<div class="banner amber" style="margin:10px 0 0;border-radius:6px"><b>La Universidad de Michigan no respondió:</b> se muestra el dato de FRED (respaldo), que va con retraso.${(d.errores && Object.keys(d.errores).length) ? ' ' + esc(Object.values(d.errores).join(' · ')) : ''}</div>`;
+  return h + foot('Universidad de Michigan (sca.isr.umich.edu) · FRED UMCSENT de respaldo', false, 'https://www.sca.isr.umich.edu/tables.html', `dato de ${esc(u.texto)} (${tipo.toLowerCase()}) · solo contexto: no entra en la tesis`);
 }
 
 Object.assign(window.EXTRA_PAGES, { consumo: pageConsumo });
