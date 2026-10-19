@@ -863,6 +863,490 @@
     }
    ],
    "fecha_publicacion_calendario": "2026-09-29"
+  },
+  "Ventas minoristas reales": {
+   "serie": "RRSFS",
+   "modo": "yoy",
+   "unidad": "%",
+   "descripcion": "Ventas minoristas reales, % interanual",
+   "decimales": 2,
+   "fuente": "FRED RRSFS",
+   "url": "https://fred.stlouisfed.org/series/RRSFS",
+   "periodos": [
+    {
+     "periodo": "2026-04-01",
+     "valor": 0.3,
+     "nivel_original": 217782.0,
+     "nivel_actual": 217782.0,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 2.43,
+     "nivel_original": 219000.0,
+     "nivel_actual": 219000.0,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 2.38,
+     "nivel_original": 220375.0,
+     "nivel_actual": 220375.0,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 1.19,
+     "nivel_original": 219317.0,
+     "nivel_actual": 219317.0,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 2.13,
+     "nivel_original": 221267.0,
+     "nivel_actual": 221267.0,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-09-01",
+     "valor": 2.48,
+     "nivel_original": 221536.0,
+     "nivel_actual": 221536.0,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-10-15"
+  },
+  "Consumo real (PCE real)": {
+   "serie": "PCEC96",
+   "modo": "yoy",
+   "unidad": "%",
+   "descripcion": "Consumo real, % interanual",
+   "decimales": 2,
+   "fuente": "FRED PCEC96",
+   "url": "https://fred.stlouisfed.org/series/PCEC96",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 1.91,
+     "nivel_original": 16674.3,
+     "nivel_actual": 16674.3,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 2.17,
+     "nivel_original": 16727.4,
+     "nivel_actual": 16727.4,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 2.66,
+     "nivel_original": 16784.6,
+     "nivel_actual": 16784.6,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 2.69,
+     "nivel_original": 16854.0,
+     "nivel_actual": 16854.0,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 2.25,
+     "nivel_original": 16862.5,
+     "nivel_actual": 16862.5,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 2.57,
+     "nivel_original": 16955.3,
+     "nivel_actual": 16955.3,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-30"
+  },
+  "Renta disponible real": {
+   "serie": "DSPIC96",
+   "modo": "yoy",
+   "unidad": "%",
+   "descripcion": "Renta personal disponible real, % interanual",
+   "decimales": 2,
+   "fuente": "FRED DSPIC96",
+   "url": "https://fred.stlouisfed.org/series/DSPIC96",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 1.26,
+     "nivel_original": 18301.6,
+     "nivel_actual": 18301.6,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 0.23,
+     "nivel_original": 18231.9,
+     "nivel_actual": 18231.9,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 1.22,
+     "nivel_original": 18292.8,
+     "nivel_actual": 18292.8,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 1.49,
+     "nivel_original": 18358.4,
+     "nivel_actual": 18358.4,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 1.49,
+     "nivel_original": 18415.4,
+     "nivel_actual": 18415.4,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 1.3,
+     "nivel_original": 18410.5,
+     "nivel_actual": 18410.5,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-30"
+  },
+  "Tasa de ahorro personal": {
+   "serie": "PSAVERT",
+   "modo": "nivel",
+   "unidad": "%",
+   "descripcion": "Tasa de ahorro personal, %",
+   "decimales": 1,
+   "fuente": "FRED PSAVERT",
+   "url": "https://fred.stlouisfed.org/series/PSAVERT",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 5.1,
+     "nivel_original": 5.1,
+     "nivel_actual": 5.1,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 4.4,
+     "nivel_original": 4.4,
+     "nivel_actual": 4.4,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 4.4,
+     "nivel_original": 4.4,
+     "nivel_actual": 4.4,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 4.4,
+     "nivel_original": 4.4,
+     "nivel_actual": 4.4,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 4.6,
+     "nivel_original": 4.6,
+     "nivel_actual": 4.6,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 4.1,
+     "nivel_original": 4.1,
+     "nivel_actual": 4.1,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    }
+   ],
+   "fecha_publicacion_calendario": "2026-09-30"
+  },
+  "Crédito al consumo": {
+   "serie": "TOTALSL",
+   "modo": "yoy",
+   "unidad": "%",
+   "descripcion": "Crédito al consumo total, % interanual",
+   "decimales": 2,
+   "fuente": "FRED TOTALSL",
+   "url": "https://fred.stlouisfed.org/series/TOTALSL",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 2.18,
+     "nivel_original": 5131428.77,
+     "nivel_actual": 5131428.77,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 2.27,
+     "nivel_original": 5152527.91,
+     "nivel_actual": 5152527.91,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 2.12,
+     "nivel_original": 5155421.48,
+     "nivel_actual": 5155421.48,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 2.52,
+     "nivel_original": 5170757.74,
+     "nivel_actual": 5170757.74,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 2.62,
+     "nivel_original": 5188497.83,
+     "nivel_actual": 5188497.83,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 2.73,
+     "nivel_original": 5196778.44,
+     "nivel_actual": 5196778.44,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    }
+   ],
+   "fecha_publicacion_calendario": null
+  },
+  "Confianza U. Michigan": {
+   "serie": "UMCSENT",
+   "modo": "nivel",
+   "unidad": "índice",
+   "descripcion": "Confianza del consumidor, índice",
+   "decimales": 1,
+   "fuente": "FRED UMCSENT",
+   "url": "https://fred.stlouisfed.org/series/UMCSENT",
+   "periodos": [
+    {
+     "periodo": "2026-03-01",
+     "valor": 53.3,
+     "nivel_original": 53.3,
+     "nivel_actual": 53.3,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 49.8,
+     "nivel_original": 49.8,
+     "nivel_actual": 49.8,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-05-01",
+     "valor": 44.8,
+     "nivel_original": 44.8,
+     "nivel_actual": 44.8,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-06-01",
+     "valor": 49.5,
+     "nivel_original": 49.5,
+     "nivel_actual": 49.5,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-07-01",
+     "valor": 55.2,
+     "nivel_original": 55.2,
+     "nivel_actual": 55.2,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-08-01",
+     "valor": 51.7,
+     "nivel_original": 51.7,
+     "nivel_actual": 51.7,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-08",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    }
+   ],
+   "fecha_publicacion_calendario": null
+  },
+  "Morosidad de tarjetas (trimestral)": {
+   "serie": "DRCCLACBS",
+   "modo": "nivel",
+   "unidad": "%",
+   "descripcion": "Morosidad de tarjetas de crédito, % (trimestral)",
+   "decimales": 2,
+   "fuente": "FRED DRCCLACBS",
+   "url": "https://fred.stlouisfed.org/series/DRCCLACBS",
+   "periodos": [
+    {
+     "periodo": "2025-07-01",
+     "valor": 2.99,
+     "nivel_original": 2.99,
+     "nivel_actual": 2.99,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2025-10-01",
+     "valor": 2.95,
+     "nivel_original": 2.95,
+     "nivel_actual": 2.95,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-01-01",
+     "valor": 2.91,
+     "nivel_original": 2.91,
+     "nivel_actual": 2.91,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-04-01",
+     "valor": 2.85,
+     "nivel_original": 2.85,
+     "nivel_actual": 2.85,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-19",
+     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    }
+   ],
+   "fecha_publicacion_calendario": null
   }
  },
  "revisiones": [
@@ -985,13 +1469,13 @@
   }
  ],
  "n_revisiones": 13,
- "filas_registro": 724,
+ "filas_registro": 832,
  "registro_desde": "2026-10-08",
- "nuevas_filas": 0,
+ "nuevas_filas": 108,
  "nuevos": 0,
  "errores": {},
  "nota": "El registro de revisiones empieza el día de la primera ejecución: antes de esa fecha no hay vintages guardados y no se inventan.",
  "ok": true,
- "generado_utc": "2026-10-19 08:07 UTC",
- "duracion_s": 5.2
+ "generado_utc": "2026-10-19 09:07 UTC",
+ "duracion_s": 6.3
 }
