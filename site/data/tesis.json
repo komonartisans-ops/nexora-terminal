@@ -351,9 +351,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 1.27,
+     "ret_pct": 1.38,
      "fecha": "2026-10-19",
-     "precio": 82601.3203
+     "precio": 82690.6797
     },
     "5": {
      "estado": "PENDIENTE"
@@ -433,10 +433,10 @@
    "capturado_utc": "2026-10-16 07:07 UTC",
    "horizontes": {
     "1": {
-     "estado": "FALLO",
-     "ret_pct": -0.03,
+     "estado": "ACIERTO",
+     "ret_pct": 0.17,
      "fecha": "2026-10-19",
-     "precio": 4197.2002
+     "precio": 4205.7002
     },
     "5": {
      "estado": "PENDIENTE"
@@ -870,9 +870,9 @@
     },
     "5": {
      "estado": "ACIERTO",
-     "ret_pct": -0.68,
+     "ret_pct": -0.57,
      "fecha": "2026-10-19",
-     "precio": 82601.3203
+     "precio": 82690.6797
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1444,7 +1444,7 @@
   },
   "Oro": {
    "1": {
-    "aciertos": 0,
+    "aciertos": 1,
     "evaluadas": 2
    },
    "5": {
@@ -1491,6 +1491,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-19 05:30 UTC",
+ "generado_utc": "2026-10-19 06:07 UTC",
  "duracion_s": 0.0
 }
