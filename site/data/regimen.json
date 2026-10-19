@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-19): reunión del 2026-10-28 subida 18 % / mantener 82 % / bajada 0 % (+2 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +38 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-19): reunión del 2026-10-28 subida 16 % / mantener 84 % / bajada 0 % (+0 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +37 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.74 % vs tipo efectivo 3.88 % → +86 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +58 pb (+2 pb en 5 sesiones)"
@@ -338,7 +338,7 @@
    },
    {
     "pregunta": "¿Qué hacen los bancos centrales?",
-    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 18 %, mantener 82 %, bajada 0 % (ayer subida 16 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
+    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 16 %, mantener 84 %, bajada 0 % (ayer subida 16 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
    },
    {
     "pregunta": "¿Qué dice el consumo (mercado frente a datos reales)?",
@@ -1049,6 +1049,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-19 17:07 UTC",
- "duracion_s": 31.1
+ "generado_utc": "2026-10-19 18:07 UTC",
+ "duracion_s": 24.2
 }
