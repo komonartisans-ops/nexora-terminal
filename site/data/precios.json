@@ -1021,13 +1021,13 @@
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 81974.46,
+   "valor": 82017.52,
    "fecha": "2026-10-19",
-   "cambio_1d_pct": -0.05,
-   "cambio_5d_pct": 0.51,
-   "cambio_21d_pct": -1.83,
-   "cambio_63d_pct": 27.08,
-   "sma50": 81484.47,
+   "cambio_1d_pct": -0.0,
+   "cambio_5d_pct": 0.56,
+   "cambio_21d_pct": -1.78,
+   "cambio_63d_pct": 27.15,
+   "sma50": 81485.33,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2492,7 +2492,7 @@
     ],
     [
      "2026-10-19",
-     81974.4609
+     82017.5234
     ]
    ]
   },
@@ -7597,12 +7597,12 @@
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.99,
+   "valor": 101.97,
    "fecha": "2026-10-19",
-   "cambio_1d_pct": 0.14,
-   "cambio_5d_pct": -0.58,
-   "cambio_21d_pct": 1.76,
-   "cambio_63d_pct": 0.8,
+   "cambio_1d_pct": 0.12,
+   "cambio_5d_pct": -0.6,
+   "cambio_21d_pct": 1.74,
+   "cambio_63d_pct": 0.78,
    "sma50": 100.39,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
@@ -8608,7 +8608,7 @@
     ],
     [
      "2026-10-19",
-     101.986
+     101.966
     ]
    ]
   },
@@ -11661,6 +11661,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-19 21:30 UTC",
- "duracion_s": 9.7
+ "generado_utc": "2026-10-19 22:07 UTC",
+ "duracion_s": 10.8
 }

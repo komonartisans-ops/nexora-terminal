@@ -73,12 +73,23 @@
    "l4": "El VIX mide cuánto pagan los inversores por protegerse. Si sube, hay miedo y se vende riesgo; si baja, vuelve la calma.",
    "enviada": true,
    "error": null
+  },
+  {
+   "fecha_utc": "2026-10-19 22:13 UTC",
+   "clave": "skew_rel_2026-10-16",
+   "titulo": "Riesgo de cola (SKEW relativo)",
+   "l1": "El SKEW de Cboe cierra en 168,6 el vie 16 oct: percentil 96 de las últimas 500 sesiones (zona alta relativa, ≥ p90 = 161,2); el episodio empezó el vie 16 oct. VIX 20,0 · VIX/VIX3M 1,02; confirmaciones encendidas 2 de 2 (Cboe, ciclo.py, FRED/OFR).",
+   "l2": "Se paga una prima inusual, incluso para el nivel reciente del SKEW, por cubrirse de una caída fuerte del S&P 500; no indica fecha ni magnitud (interpretación). Histórico propio con este criterio: tras 108 entradas, el S&P 500 cayó ≥ 5 % en 25 (23 %) frente a una tasa base del 32 % en cualquier sesión.",
+   "l3": "mié 21 oct (hora de Madrid) · Resultados Meta Platforms (META)",
+   "l4": "Los inversores pagan más de lo habitual en los últimos dos años por seguros contra una caída fuerte de la bolsa. No dice cuándo ni si ocurrirá: en el histórico, la mayoría de las veces no hubo una caída de ese tamaño.",
+   "enviada": true,
+   "error": null
   }
  ],
- "candidatas": [],
- "no_evaluables": {
-  "skew": "RETENIDA: zona relativa alta pero solo 1 de 2 confirmaciones encendidas (mínimo 2)"
- },
+ "candidatas": [
+  "skew_rel_2026-10-16"
+ ],
+ "no_evaluables": {},
  "telegram_configurado": true,
  "umbrales": {
   "fed_pts": 15,
@@ -105,10 +116,11 @@
   "fed_confirmaciones": 2
  },
  "enviadas_hoy": [
+  "skew_rel_2026-10-16",
   "vix"
  ],
- "ultima_evaluacion_utc": "2026-10-19 21:32 UTC",
+ "ultima_evaluacion_utc": "2026-10-19 22:13 UTC",
  "ok": true,
- "generado_utc": "2026-10-19 21:30 UTC",
- "duracion_s": 0.0
+ "generado_utc": "2026-10-19 22:07 UTC",
+ "duracion_s": 0.5
 }

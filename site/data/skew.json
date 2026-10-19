@@ -2068,16 +2068,16 @@
   "percentil_1a": 82
  },
  "vix3m": {
-  "valor": 20.5,
-  "fecha": "2026-10-16"
+  "valor": 19.6,
+  "fecha": "2026-10-19"
  },
  "confirmaciones": [
   {
    "clave": "vix",
    "nombre": "VIX y estructura de plazos",
-   "encendida": false,
-   "estado": "CALMA",
-   "valor": "VIX 20.0 · VIX/VIX3M 0.97",
+   "encendida": true,
+   "estado": "ESTRÉS",
+   "valor": "VIX 20.0 · VIX/VIX3M 1.02",
    "regla": "Encendida si VIX ≥ 20 o VIX/VIX3M ≥ 1 (curva invertida).",
    "fecha": "2026-10-16",
    "fuente": "Cboe (VIX y VIX3M)",
@@ -2118,7 +2118,7 @@
    "encendida_original": false
   }
  ],
- "confirmaciones_encendidas": 1,
+ "confirmaciones_encendidas": 2,
  "confirmaciones_validas": 2,
  "fondos_monetarios": {
   "minoristas": {
@@ -29772,16 +29772,16 @@
  "alerta": {
   "regla": "La alerta de Telegram salta solo si se cumplen LAS DOS condiciones: (1) zona relativa ALTA (percentil ≥ 90 de las últimas 500 sesiones, una alerta por episodio) y (2) al menos 2 de las 3 confirmaciones encendidas (VIX y curva de plazos, crédito de riesgo, fondos monetarios); una confirmación solo cuenta si su dato tiene 14 días o menos, si no se muestra CADUCADA y no suma. Con zona alta y menos confirmaciones no se envía nada.",
   "zona_relativa_alta": true,
-  "confirmaciones_encendidas": 1,
+  "confirmaciones_encendidas": 2,
   "confirmaciones_validas": 2,
   "minimo": 2,
   "cumple_zona": true,
-  "cumple_confirmaciones": false,
-  "estado": "RETENIDA (falta confirmación)"
+  "cumple_confirmaciones": true,
+  "estado": "SALTARÍA"
  },
  "esencial": {
   "cambio": "El SKEW de Cboe cerró en 168,6 el 16/10/2026 (percentil 100 de su historia desde 1990; 100 del último año), en zona alta (≥ 140); frente a las últimas 500 sesiones está en el percentil 96 (zona relativa alto; el umbral alto relativo está en 161,2); entró en zona alta el 17/08/2026 y lleva 44 sesiones seguidas. Sesión previa: 160,4.",
-  "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 2. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
+  "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 2 de 2. El VIX y/o su curva muestran estrés: la cobertura de cola no es un hecho aislado. Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
   "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
  },
  "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)",
@@ -29789,6 +29789,6 @@
  "errores": {},
  "metodo": "CRITERIO NEXORA. Zonas fijas: normal < 135, elevado ≥ 135, alto ≥ 140. Zonas relativas: percentil de las últimas 500 sesiones, alto ≥ p90, elevado ≥ p75. Alerta de Telegram: zona relativa alta Y al menos 2 de 3 confirmaciones encendidas. Episodio = primer cierre en zona alta tras 10 sesiones sin estarlo. Falsa alarma = el S&P 500 no cae ≥ 5 % desde el cierre de entrada en las siguientes 60 sesiones. Los umbrales son convenciones fijas, no optimizadas.",
  "ok": true,
- "generado_utc": "2026-10-19 21:30 UTC",
- "duracion_s": 1.4
+ "generado_utc": "2026-10-19 22:07 UTC",
+ "duracion_s": 2.4
 }

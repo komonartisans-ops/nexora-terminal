@@ -1,7 +1,7 @@
 {
- "generado": "2026-10-19 23:09 Madrid",
- "desde": "2026-09-09",
- "hasta": "2026-11-09",
+ "generado": "2026-10-20 00:10 Madrid",
+ "desde": "2026-09-10",
+ "hasta": "2026-11-10",
  "eventos": [
   {
    "fecha": "2026-09-10",
@@ -1384,6 +1384,30 @@
    "fuente": "FRED Release Calendar · H.8 Assets and Liabilities of Commercial Banks in the United States",
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=22&y=2026",
    "nota": ""
+  },
+  {
+   "fecha": "2026-11-10",
+   "fecha_madrid": "2026-11-10",
+   "dia": "mar",
+   "hora_ny": "08:30",
+   "hora_madrid": "14:30",
+   "evento": "IPC EE. UU. (CPI)",
+   "importancia": "ALTA",
+   "afecta": "cripto · oro · índices",
+   "que_mirar": "Subyacente m/m y servicios: inflación ↑ retrasa recortes (2Y ↑, real ↑).",
+   "fuente": "FRED Release Calendar · Consumer Price Index",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=10&y=2026",
+   "nota": "",
+   "publicado": {
+    "periodo": "2026-09-01",
+    "valor": 3.72,
+    "anterior": 3.35,
+    "anterior_periodo": "2026-08-01",
+    "descripcion": "IPC general, % interanual",
+    "fuente": "FRED CPIAUCSL",
+    "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
+    "fecha_publicacion": "2026-10-14"
+   }
   }
  ],
  "fed_vigilar": [
@@ -1407,15 +1431,15 @@
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
-   "dias": 9
+   "dias": 8
   },
   "BCE": {
    "fecha": "2026-10-29",
-   "dias": 10
+   "dias": 9
   },
   "Banco de Japón": {
    "fecha": "2026-10-30",
-   "dias": 11
+   "dias": 10
   }
  },
  "errores": {
@@ -1505,6 +1529,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-19 21:07 UTC",
- "duracion_s": 40.1
+ "generado_utc": "2026-10-19 22:07 UTC",
+ "duracion_s": 70.6
 }
