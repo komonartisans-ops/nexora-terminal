@@ -1,7 +1,7 @@
 {
  "version": 2,
  "version_criterio": 2,
- "generado_utc": "2026-10-19 21:07 UTC",
+ "generado_utc": "2026-10-19 21:30 UTC",
  "ok": true,
  "min_n": 20,
  "horizontes": [
@@ -24,19 +24,19 @@
     "no_puntuables": 7,
     "horizontes": {
      "1": {
-      "n": 11,
+      "n": 12,
       "aciertos": 5,
-      "fallos": 3,
+      "fallos": 4,
       "neutrales": 3,
-      "pendientes": 1,
+      "pendientes": 0,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": 45.5,
-      "ret_medio": -0.115,
+      "acierto_pct": 41.7,
+      "ret_medio": -0.14,
       "peor_ret": -2.499,
       "peor_mae": -2.499,
-      "base_media_pct": 39.0,
-      "diferencia_pp": 6.5,
+      "base_media_pct": 38.6,
+      "diferencia_pp": 3.1,
       "muestra_insuficiente": true
      },
      "5": {
@@ -242,19 +242,19 @@
     "no_puntuables": 0,
     "horizontes": {
      "1": {
-      "n": 0,
+      "n": 1,
       "aciertos": 0,
-      "fallos": 0,
+      "fallos": 1,
       "neutrales": 0,
-      "pendientes": 1,
+      "pendientes": 0,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": null,
-      "ret_medio": null,
-      "peor_ret": null,
-      "peor_mae": null,
-      "base_media_pct": null,
-      "diferencia_pp": null,
+      "acierto_pct": 0.0,
+      "ret_medio": -1.171,
+      "peor_ret": -1.171,
+      "peor_mae": -1.171,
+      "base_media_pct": 33.7,
+      "diferencia_pp": -33.7,
       "muestra_insuficiente": true
      },
      "5": {
@@ -308,7 +308,13 @@
    "nota": "",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret": -1.171,
+     "mae": -1.171,
+     "unidad": "%",
+     "base_pct": 33.7,
+     "fecha_fin": "2026-10-19",
+     "sigma_h": 1.2487
     },
     "5": {
      "estado": "PENDIENTE"
@@ -342,7 +348,13 @@
    "nota": "",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret": -0.409,
+     "mae": -0.409,
+     "unidad": "%",
+     "base_pct": 34.9,
+     "fecha_fin": "2026-10-19",
+     "sigma_h": 0.8023
     },
     "5": {
      "estado": "PENDIENTE"
@@ -1235,8 +1247,8 @@
  "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas.",
  "ultima_ejecucion": {
   "senales_nuevas": 0,
-  "resultados_nuevos": 0,
-  "evaluo": false
+  "resultados_nuevos": 2,
+  "evaluo": true
  },
  "duracion_s": 0.0
 }

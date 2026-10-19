@@ -1,13 +1,13 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-19 21:07 UTC",
+ "generado_utc": "2026-10-19 21:30 UTC",
  "resumen": {
-  "al_dia": 25,
+  "al_dia": 27,
   "total": 28,
   "retrasados": 1,
-  "sin_dato": 2,
-  "texto": "Integridad: 25/28 al día"
+  "sin_dato": 0,
+  "texto": "Integridad: 27/28 al día"
  },
  "bloques": [
   {
@@ -18,7 +18,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 21:07 UTC",
+   "registrado_utc": "2026-10-19 21:30 UTC",
    "proximo_utc": "2026-10-19 22:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -138,7 +138,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-19 21:07 UTC",
+   "registrado_utc": "2026-10-19 21:30 UTC",
    "proximo_utc": "2026-10-19 22:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -150,7 +150,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 21:07 UTC",
+   "registrado_utc": "2026-10-19 21:30 UTC",
    "proximo_utc": "2026-10-19 22:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -174,7 +174,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 21:07 UTC",
+   "registrado_utc": "2026-10-19 21:30 UTC",
    "proximo_utc": "2026-10-19 22:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -186,7 +186,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": null,
-   "registrado_utc": "2026-10-19 20:07 UTC",
+   "registrado_utc": "2026-10-19 21:07 UTC",
    "proximo_utc": "2026-10-19 22:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -207,10 +207,10 @@
    "bloque": "Consumo (¿está consumiendo la gente?)",
    "pagina": "consumo",
    "frecuencia": "una vez al día",
-   "color": "gris",
-   "motivo": "SIN DATO: este bloque no tiene ninguna ejecución válida registrada",
+   "color": "verde",
+   "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": null,
+   "registrado_utc": "2026-10-19 21:30 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -219,10 +219,10 @@
    "bloque": "Petróleo (WTI, curva, inventarios EIA, COT)",
    "pagina": "petroleo",
    "frecuencia": "una vez al día",
-   "color": "gris",
-   "motivo": "SIN DATO: este bloque no tiene ninguna ejecución válida registrada",
+   "color": "verde",
+   "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": null,
+   "registrado_utc": "2026-10-19 21:30 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -306,7 +306,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 21:30 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -318,7 +318,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 21:30 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -330,7 +330,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 21:30 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -342,7 +342,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-19 05:30 UTC",
+   "registrado_utc": "2026-10-19 21:30 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   }
@@ -1612,7 +1612,7 @@
   "BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
   "BEA": "API de BEA activa (secreto BEA_API_KEY): PCE y PIB real con el mismo umbral; manda BEA",
   "bea_activa": true,
-  "bls_consultas_hoy": 6,
+  "bls_consultas_hoy": 7,
   "bls_ultimo_error": null,
   "bea_ultimo_error": null
  },
@@ -1622,5 +1622,5 @@
   "regla": "aviso si a la hora de publicación + 2 h el periodo nuevo no está en publicados.json"
  },
  "errores": {},
- "duracion_s": 361.8
+ "duracion_s": 361.4
 }
