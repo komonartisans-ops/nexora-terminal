@@ -1,0 +1,144 @@
+//@version=6
+// NEXORA · Niveles gamma + sesiones (TradingView). Indicador de CONTEXTO, no de entradas.
+// Pega en el campo de texto la línea que NEXORA envía por Telegram a las 15:00 (Madrid), p. ej.:
+//   ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6 | NQ flip=29920.4;cw=29892.0;pw=28592.0;em=502.1;maxg=29392.0
+// Dibuja Gamma Flip, Call Wall, Put Wall, Max Gamma y la banda EM del instrumento del gráfico (ES/MES o NQ/MNQ), más PDH/PDL y los máximos/mínimos de Asia y Londres.
+// Los niveles son precios de FUTURO. Si el valor es «na», ese nivel no se dibuja.
+indicator("NEXORA · Niveles gamma + sesiones", shorttitle = "NEXORA GEX", overlay = true, max_lines_count = 60, max_labels_count = 60)
+
+// ---------------------------------------------------------------- entradas
+grpN = "Niveles gamma (línea de Telegram)"
+linea = input.string("", "Línea de niveles", group = grpN, tooltip = "Pega aquí la línea que envía NEXORA a las 15:00 (Madrid): ES flip=…;cw=…;pw=…;em=…;maxg=… | NQ flip=…;cw=…;pw=…;em=…;maxg=…")
+verMaxG = input.bool(true, "Mostrar Max Gamma", group = grpN)
+verEM = input.bool(true, "Mostrar banda EM (alrededor del cierre anterior)", group = grpN)
+verEtq = input.bool(true, "Mostrar etiquetas de precio", group = grpN)
+colFlip = input.color(color.new(#E0B040, 0), "Gamma Flip", group = grpN)
+colCW = input.color(color.new(#E05A4F, 0), "Call Wall", group = grpN)
+colPW = input.color(color.new(#35B26F, 0), "Put Wall", group = grpN)
+colMG = input.color(color.new(#3A8FE0, 0), "Max Gamma", group = grpN)
+colEM = input.color(color.new(#6FA8DC, 85), "Banda EM", group = grpN)
+
+grpS = "Sesiones y día anterior"
+verPD = input.bool(true, "PDH / PDL (máximo y mínimo del día anterior)", group = grpS)
+verAsia = input.bool(true, "Máx./mín. de Asia", group = grpS)
+verLon = input.bool(true, "Máx./mín. de Londres", group = grpS)
+tz = input.string("America/New_York", "Zona horaria de las sesiones", group = grpS, tooltip = "Las horas de abajo se leen en esta zona. Por defecto, hora de Nueva York (ET).")
+sesAsia = input.session("2000-0200", "Sesión de Asia", group = grpS)
+sesLon = input.session("0200-0500", "Sesión de Londres", group = grpS)
+
+// ---------------------------------------------------------------- lectura de la línea (función pura sobre texto)
+// valor de «clave» dentro de un segmento «ES flip=…;cw=…»; na si falta o vale «na»
+f_valor(string seg, string clave) =>
+    float r = na
+    pares = str.split(seg, ";")
+    for p in pares
+        t = str.trim(p)
+        palabras = str.split(t, " ")
+        ultimo = array.get(palabras, array.size(palabras) - 1)      // «ES flip=7804.0» → «flip=7804.0»
+        kv = str.split(ultimo, "=")
+        if array.size(kv) == 2 and str.trim(array.get(kv, 0)) == clave
+            r := str.tonumber(str.trim(array.get(kv, 1)))
+    r
+
+// segmento del índice que corresponde al instrumento del gráfico (MES → ES, MNQ → NQ)
+f_segmento(string texto, string indice) =>
+    string res = ""
+    segs = str.split(texto, "|")
+    for s in segs
+        t = str.trim(s)
+        palabras = str.split(t, " ")
+        if array.size(palabras) > 0 and str.upper(array.get(palabras, 0)) == indice
+            res := t
+    res
+
+raiz = str.upper(syminfo.root)
+indice = raiz == "ES" or raiz == "MES" ? "ES" : raiz == "NQ" or raiz == "MNQ" ? "NQ" : ""
+seg = indice == "" ? "" : f_segmento(linea, indice)
+hayLinea = str.length(str.trim(linea)) > 0
+valido = seg != ""
+
+flip = valido ? f_valor(seg, "flip") : na
+cw = valido ? f_valor(seg, "cw") : na
+pw = valido ? f_valor(seg, "pw") : na
+em = valido ? f_valor(seg, "em") : na
+maxg = valido ? f_valor(seg, "maxg") : na
+
+// ---------------------------------------------------------------- referencias diarias y sesiones
+pdh = request.security(syminfo.tickerid, "D", high[1], lookahead = barmerge.lookahead_on)
+pdl = request.security(syminfo.tickerid, "D", low[1], lookahead = barmerge.lookahead_on)
+cierreAnt = request.security(syminfo.tickerid, "D", close[1], lookahead = barmerge.lookahead_on)
+
+f_sesion(string ses) =>
+    enSes = not na(time(timeframe.period, ses, tz))
+    nueva = enSes and not enSes[1]
+    var float mx = na
+    var float mn = na
+    if nueva
+        mx := high
+        mn := low
+    else if enSes
+        mx := math.max(mx, high)
+        mn := math.min(mn, low)
+    [mx, mn, enSes]
+
+[asiaH, asiaL, enAsia] = f_sesion(sesAsia)
+[lonH, lonL, enLon] = f_sesion(sesLon)
+
+plot(verPD ? pdh : na, "PDH", color = color.new(color.silver, 0), linewidth = 1, style = plot.style_linebr)
+plot(verPD ? pdl : na, "PDL", color = color.new(color.silver, 0), linewidth = 1, style = plot.style_linebr)
+plot(verAsia ? asiaH : na, "Asia máx.", color = color.new(color.orange, 20), linewidth = 1, style = plot.style_linebr)
+plot(verAsia ? asiaL : na, "Asia mín.", color = color.new(color.orange, 20), linewidth = 1, style = plot.style_linebr)
+plot(verLon ? lonH : na, "Londres máx.", color = color.new(color.aqua, 20), linewidth = 1, style = plot.style_linebr)
+plot(verLon ? lonL : na, "Londres mín.", color = color.new(color.aqua, 20), linewidth = 1, style = plot.style_linebr)
+
+// ---------------------------------------------------------------- niveles gamma: líneas horizontales hasta la última barra
+var line lFlip = na
+var line lCW = na
+var line lPW = na
+var line lMG = na
+var line lUp = na
+var line lDn = na
+var linefill banda = na
+var label eFlip = na
+var label eCW = na
+var label ePW = na
+var label eMG = na
+
+f_linea(line l, float y, color c, int ancho, string estilo) =>
+    line.delete(l)
+    na(y) ? na : line.new(bar_index - 1, y, bar_index, y, extend = extend.both, color = c, width = ancho, style = estilo)
+
+f_etq(label e, float y, string txt, color c) =>
+    label.delete(e)
+    verEtq and not na(y) ? label.new(bar_index, y, txt + " " + str.tostring(y, "#.##"), style = label.style_label_left, color = color.new(c, 80), textcolor = c, size = size.small) : na
+
+if barstate.islast
+    lFlip := f_linea(lFlip, flip, colFlip, 2, line.style_solid)
+    lCW := f_linea(lCW, cw, colCW, 2, line.style_solid)
+    lPW := f_linea(lPW, pw, colPW, 2, line.style_solid)
+    lMG := f_linea(lMG, verMaxG ? maxg : na, colMG, 1, line.style_dashed)
+    eFlip := f_etq(eFlip, flip, "Gamma Flip", colFlip)
+    eCW := f_etq(eCW, cw, "Call Wall", colCW)
+    ePW := f_etq(ePW, pw, "Put Wall", colPW)
+    eMG := f_etq(eMG, verMaxG ? maxg : na, "Max Gamma", colMG)
+    linefill.delete(banda)
+    line.delete(lUp)
+    line.delete(lDn)
+    if verEM and not na(em) and not na(cierreAnt)
+        lUp := line.new(bar_index - 1, cierreAnt + em, bar_index, cierreAnt + em, extend = extend.both, color = color.new(colEM, 40), width = 1, style = line.style_dotted)
+        lDn := line.new(bar_index - 1, cierreAnt - em, bar_index, cierreAnt - em, extend = extend.both, color = color.new(colEM, 40), width = 1, style = line.style_dotted)
+        banda := linefill.new(lUp, lDn, colEM)
+    else
+        lUp := na
+        lDn := na
+        banda := na
+
+// ---------------------------------------------------------------- tabla de estado (régimen y errores)
+var table tbl = table.new(position.top_right, 1, 3, border_width = 1)
+if barstate.islast
+    string r1 = indice == "" ? "NEXORA: instrumento no admitido (solo ES, MES, NQ, MNQ)" : not hayLinea ? "NEXORA: pega la línea de niveles de Telegram" : not valido ? "NEXORA: la línea no trae niveles de " + indice : "NEXORA GEX · " + indice
+    string r2 = na(flip) ? "" : close > flip ? "Gamma POSITIVA (precio sobre el flip)" : close < flip ? "Gamma NEGATIVA (precio bajo el flip)" : "Precio en el flip"
+    color cf = na(flip) ? color.gray : close > flip ? color.new(#35B26F, 0) : color.new(#E05A4F, 0)
+    table.cell(tbl, 0, 0, r1, text_color = color.white, bgcolor = color.new(color.black, 30), text_size = size.small)
+    table.cell(tbl, 0, 1, r2, text_color = cf, bgcolor = color.new(color.black, 30), text_size = size.small)
+    table.cell(tbl, 0, 2, "Contexto de mercado, no una entrada", text_color = color.gray, bgcolor = color.new(color.black, 30), text_size = size.tiny)

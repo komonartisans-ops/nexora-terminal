@@ -1,0 +1,41 @@
+# NEXORA · Niveles de gamma en tus plataformas
+
+Dos indicadores **de contexto** (no de entradas): dibujan en tu gráfico los niveles que NEXORA calcula cada día con la cadena de opciones de Cboe (15 min de retraso) del cierre anterior, ya convertidos a **precio de futuro** (ES y NQ).
+
+| Nivel | Qué es |
+|---|---|
+| **Gamma Flip** | Precio al que el GEX neto cambia de signo. Por encima = gamma positiva; por debajo = gamma negativa (hipótesis del método). |
+| **Call Wall** | Tramo por encima del precio con mayor gamma de calls. |
+| **Put Wall** | Tramo por debajo del precio con mayor gamma de puts. |
+| **Max Gamma** | Tramo con mayor gamma absoluta (calls + \|puts\|). |
+| **EM** | Movimiento esperado de un día: `precio × VIX (ES) o VXN (NQ) / 100 / √252`, con la volatilidad del cierre de la sesión de los niveles. Se dibuja como banda alrededor del cierre anterior. |
+
+> Son **niveles de referencia, no señales**. El método es propio (CRITERIO NEXORA, documentado en la página «Gamma de índices» de la web) y se apoya en una hipótesis no observable: que los creadores de mercado están largos de calls y cortos de puts de los clientes. Nada de esto es una recomendación de compra o venta.
+
+## Elige tu plataforma
+
+| Plataforma | Cómo recibe los niveles | Carpeta | Instalación |
+|---|---|---|---|
+| **NinjaTrader 8** | Lee solo `https://komonartisans-ops.github.io/nexora-terminal/data/gamma.json` cada 15 minutos | [`ninjatrader/`](ninjatrader/) | [`INSTALACION.md`](ninjatrader/INSTALACION.md) |
+| **TradingView** | Tú pegas la línea que NEXORA te envía por Telegram a las 15:00 (Madrid) | [`tradingview/`](tradingview/) | [`INSTALACION.md`](tradingview/INSTALACION.md) |
+
+## La línea de Telegram (TradingView)
+
+Cada día laborable a las **15:00 de Madrid** llega un mensaje con una línea como esta (precios de futuro, punto decimal, `na` si falta un nivel):
+
+```
+ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6 | NQ flip=29920.4;cw=29892.0;pw=28592.0;em=502.1;maxg=29392.0
+```
+
+El mensaje indica también la sesión de la cadena de Cboe de la que salen los niveles, la fuente y, si los niveles tienen más de 4 días, un aviso de antigüedad.
+
+## De dónde salen los datos y con qué retraso
+
+- **Opciones:** Cboe (`cdn-api.cboe.com`), cadena con 15 minutos de retraso, tomada al cierre de Nueva York. El interés abierto es el de la víspera (la OCC lo actualiza cada mañana).
+- **Conversión a futuro:** nivel del futuro = nivel del índice + base (futuro − índice en el mismo minuto, velas de 5 min de Yahoo Finance).
+- **Cuándo se actualizan:** una vez por día, en la ejecución de cierre (21:30 UTC). Hasta entonces, los niveles son los del cierre anterior. Si el futuro cambia de contrato (vencimiento trimestral), la base del día ya lo recoge; en la ventana de roll conviene mirar la fecha de la sesión.
+- **Comprobación:** en la web, `#/gamma` muestra los mismos niveles con su fecha y el método completo.
+
+## Avisos de Telegram durante la sesión (no hace falta instalar nada)
+
+Además, NEXORA avisa por Telegram durante la sesión regular (09:30–16:00 ET) de cuatro hechos de precio sobre estos niveles, con velas de 5 min: cambio de régimen (2 cierres al otro lado del flip), techo en gamma positiva (≤ 0,25 × EM del Call Wall), pérdida del Put Wall en gamma negativa (2 cierres por debajo) y EM agotado (rango del día ≥ 100 % del EM). Máximo 6 al día, sin repetir el mismo en 60 min. Cada aviso trae el hecho, el régimen, la invalidación, el retraso de los datos y si hay un dato de importancia alta a ±15 min. Su historial y su medición (MFE/MAE a 15, 30 y 60 min) están en `#/marcador` → «Gamma intradía».
