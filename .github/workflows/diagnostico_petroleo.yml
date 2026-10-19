@@ -1,0 +1,21 @@
+name: diagnostico_petroleo
+
+# Diagnóstico MANUAL de solo lectura: comprueba qué fuentes de petróleo (Baker Hughes, OPEP, EIA) responden desde los runners. Sin Telegram, sin escribir datos, sin commit.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: python tools/diagnostico_fuentes_petroleo.py
+        env:
+          PYTHONUTF8: "1"
