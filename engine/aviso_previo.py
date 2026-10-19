@@ -221,8 +221,10 @@ def mensaje(ev, minutos, todos, raiz=RAIZ):
     if ev.get("hora_tipica"):
         hora = (f"Hora típica, no confirmada ({ev['hora_tipica']} → {h_ny.strftime('%H:%M')} ET; la empresa no ha publicado la hora): {h_mad.strftime('%H:%M')} Madrid · "
                 f"{h_ny.strftime('%H:%M')} ET ({DIAS[h_ny.weekday()]} {h_ny.strftime('%d-%m-%Y')}), en {minutos:.0f} min. Fuente del momento: {ev.get('fuente_hora')}.")
-    L = [f"<b>Aviso previo · {esc(ev['evento'])}</b>", hora,
-         contaminacion(ev, todos)]
+    L = [f"<b>Aviso previo · {esc(ev['evento'])}</b>", hora]
+    if str(ev.get("nota") or "").startswith("manual"):
+        L.append(f"Evento MANUAL ({ev['nota']}): no viene del calendario oficial; comprueba la fuente en la Agenda.")
+    L.append(contaminacion(ev, todos))
     L += linea_mercado(ev, raiz)
     L += linea_contexto(raiz)
     L.append(historial(ev, raiz))

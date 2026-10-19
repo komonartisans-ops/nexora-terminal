@@ -46,6 +46,7 @@ def tabla_importancia():
           {"tipo": "SUBASTA", "evento": "Subastas del Tesoro a 2, 10 y 30 años (resto de plazos: BAJA)", "organismo": "Tesoro", "importancia": "MEDIA", "hora_ny_tipica": "13:00", "fuente": "TreasuryDirect"},
           {"tipo": "BCE", "evento": "Decisión de política monetaria del BCE", "organismo": "BCE", "importancia": "MEDIA", "hora_ny_tipica": "", "fuente": "ecb.europa.eu"},
           {"tipo": "BOJ", "evento": "Decisión de política monetaria del Banco de Japón", "organismo": "BoJ", "importancia": "MEDIA", "hora_ny_tipica": "", "fuente": "boj.or.jp"},
+          {"tipo": "MANUAL", "evento": "Eventos añadidos a mano (data/eventos_manuales.csv): la importancia (ALTA, MEDIA o BAJA) la fija quien los añade, con fuente obligatoria; esta fila muestra MEDIA solo como referencia", "organismo": "manual", "importancia": "MEDIA", "hora_ny_tipica": "", "fuente": "data/eventos_manuales.csv"},
           {"tipo": "EIA", "evento": "Inventarios de petróleo (EIA, Weekly Petroleum Status Report)", "organismo": "EIA", "importancia": "MEDIA", "hora_ny_tipica": "10:30", "fuente": "eia.gov (calendario oficial; festivos en la tabla de excepciones)"},
           {"tipo": "OPEP", "evento": "Reuniones de la OPEP+ (ALTA si hay calendario oficial accesible; hoy SIN DATO: opec.org bloquea el acceso automático)", "organismo": "OPEP", "importancia": "ALTA", "hora_ny_tipica": "", "fuente": "opec.org"}]
     orden = {"ALTA": 0, "MEDIA": 1, "BAJA": 2}
@@ -133,7 +134,8 @@ def bloque(cal, hoy=None, dias=7):
     E.sort(key=lambda e: (fm(e), e.get("hora_madrid") or "99", 0 if e["importancia"] == "ALTA" else 1))
     dia = lambda e: ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"][dt.date.fromisoformat(fm(e)).weekday()]  # el día de la semana es el de Madrid, como la fecha mostrada
     f = lambda e: {"fecha": fm(e), "fecha_et": e["fecha"], "dia": dia(e), "hora_ny": e.get("hora_ny") or None, "hora_madrid": e.get("hora_madrid") or None,
-                   "evento": e["evento"], "importancia": e["importancia"], "nota": e.get("nota") or None}
+                   "evento": e["evento"], "importancia": e["importancia"], "nota": e.get("nota") or None,
+                   **({"origen": "manual", "url": e.get("url"), "fuente": e.get("fuente")} if e.get("origen") == "manual" else {})}
     return {"hoy": [f(e) for e in E if fm(e) == hoy.isoformat()], "proximos_7_dias": [f(e) for e in E if fm(e) > hoy.isoformat()],
             "regla_horas": "Fed: horas del calendario oficial en ET (también en actos en el extranjero); FRED: hora central → ET; todo se convierte a Madrid y el día es el de Madrid.",
             "hasta": lim.isoformat(), "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",

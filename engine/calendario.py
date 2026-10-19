@@ -305,6 +305,14 @@ def construir(dias=21, pasado=7, con_resultados=True):
         err["opep"] = petroleo.OPEP_SIN_DATO                  # SIN DATO: no hay fuente oficial accesible para las reuniones de la OPEP+
     except Exception as ex:  # noqa: BLE001
         err["petroleo"] = f"{type(ex).__name__}: {str(ex)[:100]}"
+    try:                                                  # eventos MANUALES (data/eventos_manuales.csv): se tratan como los oficiales y van marcados «manual»
+        import eventos_manuales
+        man, errm = eventos_manuales.para_calendario(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), desde, hasta, ev)
+        E += man
+        if errm:
+            err["eventos_manuales"] = " | ".join(errm)[:600]
+    except Exception as ex:  # noqa: BLE001
+        err["eventos_manuales"] = f"{type(ex).__name__}: {str(ex)[:100]}"
     prox = {}
     for nm, fn, idx in (("Fed (FOMC)", fomc, 0), ("BCE", bce, 0), ("Banco de Japón", boj, 0)):
         r, e = safe(fn)

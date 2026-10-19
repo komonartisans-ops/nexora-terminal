@@ -129,6 +129,19 @@ def eventos(desde, hasta):
     return agenda.eventos_altos(desde, hasta)
 
 
+def _con_manuales(evs, raiz=None):
+    """Los eventos ALTA añadidos a mano (con hora) cuentan como contaminantes de las fases de un evento oficial igual que los oficiales; no se miden como evento propio."""
+    try:
+        import eventos_manuales
+        f = [e["fecha"] for e in evs] or [ahora().astimezone(NY).date()]
+        extra = eventos_manuales.altos_para_reaccion(raiz or os.path.dirname(os.path.dirname(os.path.abspath(__file__))), min(f) - dt.timedelta(days=1), max(f) + dt.timedelta(days=2))
+        ids = {e["id"] for e in evs}
+        return list(evs) + [m for m in extra if m["id"] not in ids]
+    except Exception as e:  # noqa: BLE001
+        print("eventos manuales (contaminación):", type(e).__name__, str(e)[:80])
+        return list(evs)
+
+
 def fases_de(ev):
     """Fases aplicables: si el dato sale después del cierre (16:00 ET) no existe «CIERRE» de ese día."""
     cierre = dt.datetime.combine(ev["fecha"], dt.time(16, 0), NY).astimezone(UTC)
@@ -449,7 +462,7 @@ def reconstruir(gracia_h=RETRASO_RECONSTRUIR_H):
         # los eventos de hoy en curso los registra el job en vivo
         if gracia_h and objetivo(ev, 120) + dt.timedelta(minutes=60) > ahora() and t_evento(ev) - dt.timedelta(hours=3) <= ahora():
             continue
-        r = medir_evento(ev, B, cal, existentes + nuevas, hasta=ahora() - dt.timedelta(hours=gracia_h), ya=ya, altos=evs)
+        r = medir_evento(ev, B, cal, existentes + nuevas, hasta=ahora() - dt.timedelta(hours=gracia_h), ya=ya, altos=_con_manuales(evs))
         nuevas += r
     nuevas += completar_real10(evs, existentes + nuevas)
     n = guardar(nuevas)
@@ -689,7 +702,7 @@ def vivo(max_espera_min=150):
                     break
                 time.sleep(60)
             filas = leer_log()
-            r = medir_evento(ev, B, cal, filas, ya=ya, origen_base="vivo-tardío", altos=evs)
+            r = medir_evento(ev, B, cal, filas, ya=ya, origen_base="vivo-tardío", altos=_con_manuales(evs))
             guardar(r)
             escribir_json(construir_json())
         # giro (regla v2): T+60, T+120, cierre y T+1 frente a T+5. Las filas reconstruidas son historia: no se avisa
