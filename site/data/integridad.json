@@ -1585,8 +1585,20 @@
    "segunda_fuente": null
   }
  ],
- "discrepancias_abiertas": [],
- "n_discrepancias_historial": 0,
+ "discrepancias_abiertas": [
+  {
+   "serie": "BRENT",
+   "periodo": "2026-10-14",
+   "tipo": "VALOR",
+   "fred_valor": "126.55",
+   "primaria": "Yahoo BZ=F (futuro)",
+   "primaria_valor": "106.06",
+   "dif_pct": "16.1900",
+   "detectada_utc": "2026-10-19 15:07 UTC",
+   "nota": "el mismo día (2026-10-14) el futuro BZ=F (106.06) y el Brent fechado de FRED (126.55) difieren -16.2 % (> 10 %): puede ser físico frente a futuro (escasez física) o un dato mal leído. Revisar; no se corrige ninguno"
+  }
+ ],
+ "n_discrepancias_historial": 1,
  "discrepancias_calendario": [
   {
    "dato": "Ofertas de empleo (JOLTS)",

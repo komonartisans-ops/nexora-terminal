@@ -35,18 +35,20 @@ function ptTesisCard(T) {
 }
 
 function ptCurva(C) {
-  let h = '<div class="sect"><h2>Curva de futuros del WTI</h2><span class="more">1.er frente a 2.º vencimiento · contratos reales del mes</span></div>';
+  let h = '<div class="sect"><h2>Curva de futuros del WTI</h2><span class="more">1.er–2.º vencimiento (2.º–3.º si al 1.º le quedan < 5 días hábiles) · contratos reales del mes</span></div>';
   if (!C) return h + `<div class="card"><div class="empty" style="height:100px">SIN DATO · contratos mensuales de WTI</div></div>`;
   const [c, t] = ptEstadoCurva[C.estado] || ['sd', 'SIN DATO'], hp = C.historico_propio || {};
-  h += `<div class="grid g2"><div class="card"><div class="chead"><span>Hoy</span></div><div style="display:flex;gap:24px;flex-wrap:wrap;align-items:baseline;margin-top:8px"><div><div class="lab">1.er vencimiento (${esc(C.m1)})</div><div class="big">${num(C.precio_m1, 2)}<small>$</small></div></div>
-    <div><div class="lab">2.º vencimiento (${esc(C.m2)})</div><div class="big">${num(C.precio_m2, 2)}<small>$</small></div></div><div><div class="lab">Diferencial</div><div class="big ${C.diferencial > 0 ? 'up' : C.diferencial < 0 ? 'down' : ''}">${C.diferencial > 0 ? '+' : ''}${num(C.diferencial, 2)}<small>$ · ${ptPct(C.diferencial_pct)}</small></div></div></div>
-    <p style="margin:10px 0 4px"><span class="ck ${c}">${esc(t)}</span></p>
-    <p class="note" style="margin:4px 0">Backwardation (1.º por encima del 2.º, ≥ +0,5 %) = el mercado paga por tener petróleo ya: ESCASEZ. Contango (1.º por debajo, ≤ −0,5 %) = SOBRA. En medio, PLANA. El 1.er contrato vence el ${esc(fdy(C.vence_m1))} (${esc(String(C.dias_a_vencimiento_m1))} día${C.dias_a_vencimiento_m1 === 1 ? '' : 's'}).</p>
-    ${C.aviso ? `<div class="banner amber" style="margin:6px 0;border-radius:6px"><b>Ojo:</b> ${esc(C.aviso)}.</div>` : ''}
+  const o23 = C.par_usado === '2-3', O1 = o23 ? '2.º' : '1.er', O2 = o23 ? '3.º' : '2.º', pv = C.primer_vencimiento || {}, i12 = C.info_1_2;
+  h += `<div class="grid g2"><div class="card"><div class="chead"><span>Hoy</span></div><div style="display:flex;gap:24px;flex-wrap:wrap;align-items:baseline;margin-top:8px"><div><div class="lab">${O1} vencimiento (${esc(C.m1)})</div><div class="big">${num(C.precio_m1, 2)}<small>$</small></div></div>
+    <div><div class="lab">${O2} vencimiento (${esc(C.m2)})</div><div class="big">${num(C.precio_m2, 2)}<small>$</small></div></div><div><div class="lab">Diferencial</div><div class="big ${C.diferencial > 0 ? 'up' : C.diferencial < 0 ? 'down' : ''}">${C.diferencial > 0 ? '+' : ''}${num(C.diferencial, 2)}<small>$ · ${ptPct(C.diferencial_pct)}</small></div></div></div>
+    <p style="margin:10px 0 4px"><span class="ck ${c}">${esc(t)}</span> <span class="ck sd">par usado: ${o23 ? '2.º–3.º' : '1.º–2.º'}</span></p>
+    ${C.motivo_par ? `<div class="banner amber" style="margin:6px 0;border-radius:6px"><b>${o23 ? 'Par 2.º–3.º:' : 'Ojo:'}</b> ${esc(C.motivo_par)}.${i12 ? ` Para tu referencia, el 1.º–2.º daría ${i12.diferencial > 0 ? '+' : ''}${num(i12.diferencial, 2)} $ (${ptPct(i12.diferencial_pct)}, ${esc(i12.estado)}); no se usa en la tesis.` : ''}</div>` : ''}
+    <p class="note" style="margin:4px 0">Backwardation (el contrato más cercano del par por encima del siguiente, ≥ +0,5 %) = el mercado paga por tener petróleo ya: ESCASEZ. Contango (por debajo, ≤ −0,5 %) = SOBRA. En medio, PLANA. Regla: si al 1.er contrato (${esc(pv.ticker || '')}, vence el ${esc(fdy(pv.vence))}) le quedan menos de 5 días hábiles de CME, se usa el 2.º–3.º; hoy le quedan ${esc(String(pv.dias_habiles))}.</p>
+    ${C.aviso && !o23 ? `<div class="banner amber" style="margin:6px 0;border-radius:6px"><b>Ojo:</b> ${esc(C.aviso)}.</div>` : ''}
     <p class="note" style="margin:4px 0">Este mismo par de contratos, en los ${esc(String(C.dias_par))} días en que cotizaron los dos: hoy está en el percentil ${esc(String(C.percentil_par))} (rango ${ptPct(C.min_pct)} a ${ptPct(C.max_pct)}). No es el 1.º–2.º de cada día pasado: los contratos vencidos ya no están en Yahoo y la EIA dejó de publicar sus series de futuros en abril de 2024.</p>
-    <p class="note" style="margin:4px 0">Histórico propio del 1.º–2.º de cada día: ${hp.dias ? `${esc(String(hp.dias))} día${hp.dias === 1 ? '' : 's'} acumulados desde ${esc(fdy(hp.desde))}${hp.percentil == null ? ' (percentil disponible a partir de 30 días)' : ' · percentil ' + esc(String(hp.percentil))}` : 'SIN DATO'}.</p>
+    <p class="note" style="margin:4px 0">Histórico propio (data/historico_curva_wti.csv, columna «par»; pares registrados: ${esc((hp.pares_registrados || []).join(', ') || '—')}): ${hp.dias ? `${esc(String(hp.dias))} día${hp.dias === 1 ? '' : 's'} del par ${esc(hp.par || '')} desde ${esc(fdy(hp.desde))}${hp.percentil == null ? ' (percentil disponible a partir de 30 días)' : ' · percentil ' + esc(String(hp.percentil))}` : 'SIN DATO'}.</p>
     ${foot('Yahoo Finance (contratos CL<mes><año>.NYM)', C.fecha, null, 'tickers verificados: ' + esc(C.m1) + ', ' + esc(C.m2))}</div>`;
-  h += (C.historico_par && C.historico_par.length) ? `<div class="card chartcard"><h3>Diferencial del par ${esc(C.m1)} − ${esc(C.m2)} (% del 2.º)</h3><div class="sub">Positivo = backwardation (escasez); negativo = contango (sobra)</div>${lw('cPtCurva', [{ name: 'Diferencial %', color: COL.amber, data: C.historico_par, prec: 2, area: true }], { init: 365 })}</div></div>`
+  h += (C.historico_par && C.historico_par.length) ? `<div class="card chartcard"><h3>Diferencial del par ${esc(C.m1)} − ${esc(C.m2)} (% del ${O2})</h3><div class="sub">Positivo = backwardation (escasez); negativo = contango (sobra)</div>${lw('cPtCurva', [{ name: 'Diferencial %', color: COL.amber, data: C.historico_par, prec: 2, area: true }], { init: 365 })}</div></div>`
     : '<div class="card"><div class="empty" style="height:200px">SIN DATO · histórico del par</div></div></div>';
   return h;
 }
@@ -69,9 +71,20 @@ function ptCot(C) {
   let h = '<div class="sect"><h2>Posicionamiento (COT) del WTI</h2><span class="more">CFTC · dinero gestionado · publica el viernes con datos del martes</span></div>';
   if (!C || C.estado !== 'OK') return h + `<div class="card"><div class="empty" style="height:100px">SIN DATO · ${esc((C && C.motivo) || 'CFTC')}</div></div>`;
   return h + `<div class="grid g2"><div class="card"><div style="display:flex;gap:24px;flex-wrap:wrap;align-items:baseline"><div><div class="lab">Neto (largos − cortos)</div><div class="big">${num(C.neto, 0)}<small>contratos</small></div></div><div><div class="lab">Cambio semanal</div><div class="big ${C.cambio_semana >= 0 ? 'up' : 'down'}">${C.cambio_semana > 0 ? '+' : ''}${num(C.cambio_semana, 0)}</div></div>
-    <div><div class="lab">Percentil a 3 años</div><div class="big">${esc(String(C.percentil_3a))}<small>de 100 · ${esc(C.zona || '')}</small></div></div></div>
-    <p style="margin:8px 0 2px">${ptChip(C.voto)}</p><p class="note" style="margin:4px 0">Largos ${num(C.largos, 0)} · cortos ${num(C.cortos, 0)} · rango a 3 años ${num(C.min_3a, 0)} a ${num(C.max_3a, 0)}. Regla: percentil ≥ 66 vota +1; ≤ 34 vota −1.</p>${foot(C.fuente, C.fecha, 'https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm')}</div>
-    <div class="card chartcard"><h3>Neto del dinero gestionado</h3><div class="sub">Últimas 104 semanas</div>${lw('cPtCot', [{ name: 'Neto', color: COL.blue, data: C.serie, prec: 0, area: true }], { init: 730 })}</div></div>`;
+    <div><div class="lab">Posición</div><div class="big" style="font-size:20px">${esc(C.etiqueta || '')}</div></div></div>
+    <p style="margin:8px 0 2px">${ptChip(C.voto)}</p><p class="note" style="margin:4px 0">Largos ${num(C.largos, 0)} · cortos ${num(C.cortos, 0)} · rango a 3 años ${num(C.min_3a, 0)} a ${num(C.max_3a, 0)}. Regla: percentil ≥ 66 vota +1; ≤ 34 vota −1. «Largo/corto» es el signo del neto; «bajo/alto» es el percentil a 3 años frente a su historia.</p>${foot(C.fuente, C.fecha, 'https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm')}</div>
+    <div class="card chartcard"><h3>Neto del dinero gestionado</h3><div class="sub">Últimas 104 semanas</div>${lw('cPtCot', [{ name: 'Neto', color: COL.blue, data: C.serie, prec: 0, area: true }], { init: 730 })}</div></div>${ptCriteriosCot(C)}`;
+}
+
+/* cómo trata NEXORA el COT en cada módulo y qué voto/tesis saldría hoy con cada criterio (informativo: la tesis usa el de petróleo) */
+function ptCriteriosCot(C) {
+  const K = C.criterios || [];
+  if (!K.length) return '';
+  const voto = (v) => (v == null ? '<span class="ck sd">no aplica</span>' : ptChip(v));
+  return `<div class="card pad0 scroll" style="margin-top:12px"><div class="chead" style="padding:12px 16px 0"><span>Criterios de COT en NEXORA</span></div><table class="t stack"><thead><tr><th style="text-align:left">Dónde</th><th style="text-align:left">Regla</th><th>Voto de hoy</th><th>Tesis con ese criterio</th></tr></thead><tbody>`
+    + K.map((x) => { const t = x.tesis_con_este_criterio; return `<tr><td data-label="Dónde" style="text-align:left"><b>${esc(x.criterio)}</b><small>${esc(x.donde)}${x.vota ? ' · el que usa la tesis' : ''}</small></td><td data-label="Regla" style="text-align:left;white-space:normal;min-width:260px">${esc(x.regla)}<small>${esc(x.dato)}</small></td><td data-label="Voto de hoy">${voto(x.voto_hoy)}</td>`
+      + `<td data-label="Tesis con ese criterio">${t ? `${esc(t.resultado)}${t.intensidad ? ' ' + esc(t.intensidad) : ''} (suma ${t.puntos > 0 ? '+' : ''}${esc(String(t.puntos))}) ${t.cambia ? '<span class="ck par">CAMBIARÍA</span>' : '<span class="ck ok">igual</span>'}` : '—'}</td></tr>`; }).join('')
+    + '</tbody></table><div class="note" style="padding:8px 16px 12px">NEXORA no tiene un voto de COT común a oro, índices y petróleo: cada módulo lo trata distinto (y la página Posicionamiento llama «largo» o «corto» por el percentil, no por el signo del neto). Aquí se muestran las diferencias; el voto de la tesis de petróleo sigue siendo el de la primera fila.</div></div>';
 }
 
 function ptGasolina(G) {
@@ -102,6 +115,15 @@ function petroleoHtml(M) {
   h += '<div class="sect"><h2>Precio del petróleo</h2><span class="more">WTI y Brent · futuros del primer vencimiento · fecha del dato</span></div><div class="grid g2">' + ptKpi('WTI (CL=F)', P.wti) + ptKpi('Brent (BZ=F)', P.brent) + '</div>';
   if (P.wti && P.wti.aviso_empalme) h += `<div class="banner amber" style="margin:12px 0 0;border-radius:6px"><b>Cambio de contrato:</b> ${esc(P.wti.aviso_empalme)}.</div>`;
   const seg = P.segunda_fuente || {};
+  const BC = P.brent_comparacion;
+  if (BC) {
+    const m = BC.mismo_dia;
+    h += `<div class="card" style="margin-top:12px"><div class="chead"><span>Brent: futuro (Yahoo) frente a Brent fechado (FRED), mismo día</span></div><table class="t stack"><thead><tr><th style="text-align:left">Fuente</th><th>Última lectura</th><th>Fecha</th>${m ? '<th>Mismo día (' + esc(fdy(m.fecha)) + ')</th>' : ''}</tr></thead><tbody>`
+      + `<tr><td data-label="Fuente" style="text-align:left"><b>Yahoo BZ=F</b><small>futuro del primer vencimiento</small></td><td data-label="Última lectura">${num(BC.yahoo.valor, 2)} $</td><td data-label="Fecha">${esc(fdy(BC.yahoo.fecha))}</td>${m ? `<td data-label="Mismo día">${num(m.yahoo, 2)} $</td>` : ''}</tr>`
+      + `<tr><td data-label="Fuente" style="text-align:left"><b>FRED DCOILBRENTEU</b><small>Brent fechado (físico), con retraso de ${esc(String(BC.retraso_fred_dias))} días</small></td><td data-label="Última lectura">${num(BC.fred.valor, 2)} $</td><td data-label="Fecha">${esc(fdy(BC.fred.fecha))}</td>${m ? `<td data-label="Mismo día">${num(m.fred, 2)} $</td>` : ''}</tr>`
+      + `</tbody></table><div class="note" style="padding:8px 16px 12px">${m ? `Diferencia del mismo día (${esc(fdy(m.fecha))}): <b>${m.dif_usd > 0 ? '+' : ''}${num(m.dif_usd, 2)} $ (${ptPct(m.dif_pct, 1)})</b> frente a un umbral del ${esc(num(BC.umbral_pct, 0))} %. ` : 'Sin fecha común entre las dos fuentes (SIN DATO). '}`
+      + `${BC.discrepancia ? '<b>Supera el umbral: está marcada como discrepancia para revisar en <a href="#/integridad">Integridad de datos</a>.</b> Puede ser físico frente a futuro (escasez física) o un dato mal leído; no se corrige ninguno.' : 'Por debajo del umbral.'}</div></div>`;
+  }
   h += `<div class="note" style="margin:10px 0 0">Segunda fuente (FRED, precios al contado de la EIA con retraso): ${['wti', 'brent'].filter((k) => seg[k]).map((k) => `${k === 'wti' ? 'WTI' : 'Brent'} el ${esc(fdy(seg[k].fecha))}: Yahoo ${num(seg[k].yahoo, 2)} $ frente a FRED ${num(seg[k].fred, 2)} $ (${ptPct(seg[k].dif_pct, 1)})`).join(' · ') || 'SIN DATO'}. ${esc((P.segunda_fuente_nota && P.segunda_fuente_nota.brent) || '')} ${esc((P.segunda_fuente_nota && P.segunda_fuente_nota.wti) || '')}${P.spread_brent_wti != null ? ` Diferencial Brent − WTI (futuros): ${num(P.spread_brent_wti, 2)} $.` : ''}</div>`;
   h += '<div class="sect"><h2>Tesis de petróleo</h2><span class="more">reglas fijas · sin IA</span></div>' + ptTesisCard(T);
   h += '<div class="sect"><h2>Petróleo a 2 años</h2><span class="more">con medias de 50 y 200 sesiones</span></div><div class="grid g2">' + ptGrafico('cPtWti', (M.graficos || {}).wti, 'WTI', 'Futuro del primer vencimiento (serie empalmada: hay saltos al cambiar de contrato)') + ptGrafico('cPtBrent', (M.graficos || {}).brent, 'Brent', 'Futuro del primer vencimiento (serie empalmada)') + '</div>';

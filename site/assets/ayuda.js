@@ -172,6 +172,8 @@ function ayGuiaHtml(d, C) {
   h += '</div>';
   h += '<div class="sect"><h2>Un día con NEXORA</h2><span class="more">qué mirar y cuándo</span></div><div class="card"><div class="dia">';
   h += G.dia.map((x) => `<div class="mom"><div class="hh">${esc(x.hora)}</div><div><b>${esc(x.titulo)}</b><p>${esc(x.texto)}</p></div></div>`).join('') + '</div></div>';
+  const EM = G.eventos_manuales;
+  if (EM) h += `<div class="sect"><h2>${esc(EM.titulo)}</h2><span class="more">eventos «manual» en la agenda</span></div><div class="card"><p class="note" style="margin-top:0">${esc(EM.intro)}</p><ol class="gl-l">${EM.pasos.map((x) => `<li>${esc(x)}</li>`).join('')}</ol><p class="note">Cabecera del archivo: <code>${esc(EM.plantilla)}</code></p></div>`;
   h += '<div class="sect"><h2>Una tarjeta por página</h2><span class="more">qué responde, cómo leerla y un ejemplo de hoy</span></div><div class="grid g3 gl-pag">';
   h += d.paginas.map((p) => {
     const ej = AY_EJ_PERSONAL[p.id] || ayEjemplo(p.id, C) || 'SIN DATO en este momento (se rellena cuando el contexto está disponible).';

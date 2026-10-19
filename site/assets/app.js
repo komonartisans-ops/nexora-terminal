@@ -521,7 +521,7 @@ function evHtml(e) {
   chips += `<span class="chip">Consenso (manual) <input data-k="${esc(key)}" value="${esc(lsGet(key, ''))}" placeholder="—" style="width:54px;background:none;border:0;border-bottom:1px solid var(--border2);color:var(--amber);font:inherit;text-align:center"></span>`;
   return `<div class="ev ${pasado ? 'past' : ''}"><div class="tm">${esc(e.hora_madrid || '—')}<small>${e.hora_ny ? 'NY ' + esc(e.hora_ny) : 'sin hora'}</small></div>
     <div class="imp ${esc(e.importancia)}" title="Importancia ${esc(e.importancia)}"><i></i><i></i><i></i></div>
-    <div><div class="nm">${esc(e.evento)}</div><div class="qm">${esc(e.que_mirar)}</div><div class="meta"><a class="src" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.fuente)}</a>${e.nota ? ' · ' + esc(e.nota) : ''}</div></div>
+    <div><div class="nm">${esc(e.evento)}${e.origen === 'manual' ? ' <span class="ck sd" title="Añadido a mano en data/eventos_manuales.csv">manual</span>' : ''}</div><div class="qm">${esc(e.que_mirar)}</div><div class="meta"><a class="src" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.fuente)}</a>${e.nota ? ' · ' + esc(e.nota) : ''}</div></div>
     <div class="chips">${chips}</div></div>`;
 }
 function drawCalendario() {

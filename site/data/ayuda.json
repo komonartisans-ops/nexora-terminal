@@ -130,7 +130,21 @@
     "titulo": "Mirar el aviso previo como predicción",
     "texto": "Lo que descuenta el mercado no es lo que va a pasar. Es el punto de partida: lo que mueve el precio es la sorpresa frente a eso."
    }
-  ]
+  ],
+  "eventos_manuales": {
+   "titulo": "Añadir un evento a la agenda desde GitHub",
+   "intro": "Si falta un dato o un acto en la agenda (una reunión de la OPEP+, un discurso, la decisión de un banco central…), puedes añadirlo tú. Queda marcado «manual» y la agenda, el aviso previo de Telegram y la contaminación de las fases lo tratan igual que un evento oficial.",
+   "pasos": [
+    "Abre https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/eventos_manuales.csv (necesitas permiso de escritura en el repositorio).",
+    "Pulsa el lápiz («Edit this file»), ve al final del texto y añade UNA línea nueva con este formato: fecha,hora_et,evento,importancia,url,añadido_por",
+    "Ejemplo: 2026-11-05,10:00,Reunión ministerial OPEP+,ALTA,https://www.opec.org/,tu-nombre",
+    "fecha = AAAA-MM-DD · hora_et = HH:MM en hora de Nueva York (déjala vacía si no se sabe: sin hora no hay aviso previo) · importancia = ALTA, MEDIA o BAJA · url = https:// de la fuente que lo confirma (obligatoria) · añadido_por = tu nombre.",
+    "Si el texto del evento lleva comas, ponlo entre comillas dobles: \"Discurso, presidente de la Fed\".",
+    "Pulsa «Commit changes». En la siguiente actualización (como mucho una hora) aparece en la Agenda con la etiqueta «manual». Si una fila es inválida no se usa y el motivo sale como error en el Calendario.",
+    "Para quitar un evento, borra su línea (o corrígela) de la misma forma."
+   ],
+   "plantilla": "fecha,hora_et,evento,importancia,url,añadido_por"
+  }
  },
  "paginas": [
   {
@@ -1629,6 +1643,16 @@
    "Los avisos de Telegram de ES y NQ durante la sesión (velas de 5 min) y cuánto se movió el precio después de cada uno: MFE = máximo a favor, MAE = máximo en contra, a 15, 30 y 60 minutos.",
    "Mientras una regla tenga menos de 20 avisos medidos está «congelada»: no se concluye nada ni se cambian sus umbrales.",
    "Mide hechos de precio frente a niveles; no es una recomendación de compra o venta."
+  ],
+  "criterios de cot en nexora": [
+   "Cómo trata NEXORA el posicionamiento (COT) en cada módulo: oro mira el cambio semanal del neto, índices mira extremos del percentil a 52 semanas y la página Posicionamiento etiqueta por zonas del percentil.",
+   "La última columna dice qué tesis de petróleo saldría hoy con cada criterio; «cambiaría» marca los que darían otro resultado.",
+   "No hay un voto común: aquí se enseñan las diferencias, y el voto de la tesis solo cambia si tú lo decides."
+  ],
+  "brent: futuro (yahoo) frente a brent fechado (fred), mismo día": [
+   "Compara el futuro Brent (Yahoo) con el Brent fechado que publica FRED, pero del mismo día: FRED llega con unos días de retraso.",
+   "Si la diferencia del mismo día supera el 10 %, queda marcada en Integridad de datos como discrepancia para revisar.",
+   "Con escasez de petróleo físico, el fechado puede ir muy por encima del futuro sin que haya ningún error."
   ]
  },
  "glosario": [
