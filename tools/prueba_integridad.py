@@ -293,6 +293,18 @@ print("   próximos con respaldo oficial → " + " | ".join(f"{k}: {g(k)['texto'
 agenda(T, [{"fecha_et": "2026-11-12", "hora_ny": "08:30", "evento": "IPC EE. UU. (CPI)", "importancia": "ALTA"}])
 x = g("CPIAUCSL")
 assert x["texto"].endswith("12-nov") and x["otra_fuente"]["texto"].endswith("10-nov") and "BLS" in x["otra_fuente"]["fuente"]
+assert "fechas distintas" in x["discrepancia_calendario"], x
+# JOLTS: FRED dice septiembre (3-nov) y BLS solo lista octubre (1-dic) → discrepancia de calendario por periodo
+CO_J = CO.leer(T)
+CO_J["eventos"].append({"organismo": "BLS", "series": ["JTSJOL"], "evento": "Vacantes JOLTS", "periodo": "2026-10-01", "fecha": "2026-12-01", "hora_et": "10:00", "url": "https://www.bls.gov/schedule/news_release/jolts.htm"})
+json.dump(CO_J, open(os.path.join(T, "data/calendario_oficial_anual.json"), "w", encoding="utf-8"), ensure_ascii=False)
+wj(T, "site/data/publicados.json", {"series": {"Ofertas de empleo (JOLTS)": mk(["2026-08-01"])}})
+agenda(T, [{"fecha_et": "2026-11-03", "hora_ny": "10:00", "evento": "Vacantes JOLTS", "importancia": "MEDIA"}])
+xj = [x for x in I.tabla_publicaciones(T, ahora) if x["serie"] == "JTSJOL" and x["proximo"]][0]["proximo"]
+assert xj["texto"] == "JOLTS de septiembre · 3-nov" and xj["otra_fuente"]["texto"] == "JOLTS de octubre · 1-dic" and "no lista el periodo «septiembre 2026»" in xj["discrepancia_calendario"], xj
+JJ = I.construir(T, ahora)
+assert JJ["discrepancias_calendario"][0]["dato"] == "Ofertas de empleo (JOLTS)"
+print("   OK JOLTS: FRED «septiembre · 3-nov» y BLS «octubre · 1-dic» → se dejan las dos y se marca DISCREPANCIA DE CALENDARIO (el oficial no lista septiembre)")
 print("   OK si FRED dice 12-nov y BLS 10-nov se enseñan los dos (FRED en primer lugar, BLS como «calendario oficial»)")
 
 # ================================================================ 9) hora de registro (registrado_utc) sin reescribir filas antiguas

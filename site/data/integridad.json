@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-19 08:07 UTC",
+ "generado_utc": "2026-10-19 08:17 UTC",
  "resumen": {
   "al_dia": 26,
   "total": 26,
@@ -186,7 +186,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": null,
-   "registrado_utc": "2026-10-19 07:07 UTC",
+   "registrado_utc": "2026-10-19 08:07 UTC",
    "proximo_utc": "2026-10-19 09:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -957,7 +957,8 @@
      "hora_madrid": "16:00",
      "fuente": "BLS · calendario oficial anual (descargado 2026-10-18)",
      "url": "https://www.bls.gov/schedule/news_release/jolts.htm"
-    }
+    },
+    "discrepancia_calendario": "el calendario oficial no lista el periodo «septiembre 2026»: su siguiente fila es «octubre 2026» (2026-12-01)"
    },
    "discrepancia": null,
    "segunda_fuente": null
@@ -1126,6 +1127,15 @@
  ],
  "discrepancias_abiertas": [],
  "n_discrepancias_historial": 0,
+ "discrepancias_calendario": [
+  {
+   "dato": "Ofertas de empleo (JOLTS)",
+   "fred": "JOLTS de septiembre · 3-nov",
+   "oficial": "JOLTS de octubre · 1-dic",
+   "oficial_fuente": "BLS · calendario oficial anual (descargado 2026-10-18)",
+   "motivo": "el calendario oficial no lista el periodo «septiembre 2026»: su siguiente fila es «octubre 2026» (2026-12-01)"
+  }
+ ],
  "segunda_fuente": {
   "BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
   "BEA": "BEA exige clave de API (UserID): sin el secreto BEA_API_KEY no hay acceso, SIN DATO (no se inventa).",
@@ -1139,6 +1149,5 @@
   "ultimos": [],
   "regla": "aviso si a la hora de publicación + 2 h el periodo nuevo no está en publicados.json"
  },
- "errores": {},
- "duracion_s": 0.1
+ "errores": {}
 }

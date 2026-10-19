@@ -624,7 +624,9 @@ def proximo_dato(raiz, s, evs, ahora):
         out = {"texto": f"{etiqueta_proximo(s['nombre'], pp, s['tipo'], s['sid'])} · {f.day}-{MES_CORTO[f.month - 1]}", "fecha": prox["fecha"], "hora_madrid": prox["t"].astimezone(MAD).strftime("%H:%M"),
                "fuente": "calendario de FRED / agenda NEXORA"}
         if of and (of["fecha"] != prox["fecha"] or of["periodo"] != pp.isoformat()):
-            out["otra_fuente"] = de_oficial(of)          # los dos calendarios no coinciden: se enseñan los dos
+            out["otra_fuente"] = de_oficial(of)          # los dos calendarios no coinciden: se dejan los dos y se marca
+            out["discrepancia_calendario"] = (f"el calendario oficial no lista el periodo «{texto_periodo(pp, s['tipo'])}»: su siguiente fila es «{texto_periodo(dt.date.fromisoformat(of['periodo']), s['tipo'])}» ({of['fecha']})"
+                                              if of["periodo"] != pp.isoformat() else f"fechas distintas para el mismo periodo: FRED {prox['fecha']} frente a {of['organismo']} {of['fecha']}")
         return out
     return de_oficial(of) if of else None
 
@@ -685,6 +687,8 @@ def construir(raiz=RAIZ, ahora=None):
             "retrasos_registro": [x for x in pubs if x["retraso_dias"] is not None],
             "discrepancias_abiertas": [{k: r[k] for k in ("serie", "periodo", "tipo", "fred_valor", "primaria", "primaria_valor", "dif_pct", "detectada_utc", "nota")} for r in abiertas],
             "n_discrepancias_historial": len(leer_csv(P(raiz, "data", "discrepancias.csv"))),
+            "discrepancias_calendario": [{"dato": x["dato"], "fred": x["proximo"]["texto"], "oficial": x["proximo"]["otra_fuente"]["texto"], "oficial_fuente": x["proximo"]["otra_fuente"]["fuente"],
+                                          "motivo": x["proximo"]["discrepancia_calendario"]} for x in pubs if x.get("proximo") and x["proximo"].get("discrepancia_calendario")],
             "segunda_fuente": {"BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
                                "BEA": ("API de BEA activa (secreto BEA_API_KEY): PCE y PIB real con el mismo umbral; manda BEA" if os.environ.get("BEA_API_KEY") else BEA_SIN_DATO),
                                "bea_activa": bool(os.environ.get("BEA_API_KEY")), "bls_consultas_hoy": est["bls"].get("n", 0), "bls_ultimo_error": est["bls"].get("ultimo_error"),
@@ -716,6 +720,7 @@ def bloque_contexto(raiz=RAIZ):
     return {"actualizado_utc": J.get("generado_utc"), "resumen": J["resumen"]["texto"], "retrasados": [b["bloque"] + " · " + b["motivo"] for b in J["bloques"] if b["color"] == "ambar"],
             "sin_dato": [b["bloque"] for b in J["bloques"] if b["color"] == "gris"],
             "DISCREPANCIAS_ABIERTAS": J["discrepancias_abiertas"] or "ninguna",
+            "discrepancias_de_calendario": J.get("discrepancias_calendario") or "ninguna",
             "nota_discrepancias": "Si hay una DISCREPANCIA abierta, manda la fuente primaria (BLS); cita ambas cifras y no uses la de FRED sin avisar.",
             "segunda_fuente": J["segunda_fuente"], "fuente": "integridad.py (data/discrepancias.csv, data/publicacion_oficial.csv, data/vigilante_estado.json)"}
 
