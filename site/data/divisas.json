@@ -36,9 +36,9 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 19.99,
+     "valor": 18.53,
      "puntos": 0,
-     "fecha": "2026-10-16",
+     "fecha": "2026-10-19",
      "fuente": null
     }
    },
@@ -84,16 +84,16 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 19.99,
+     "valor": 18.53,
      "puntos": 0,
-     "fecha": "2026-10-16",
+     "fecha": "2026-10-19",
      "fuente": null
     }
    },
    "total": 5,
    "n_factores": 6,
    "sesgo": "FUERTE",
-   "fx_3m_pct": 0.83,
+   "fx_3m_pct": 0.9,
    "inflacion": 3.6
   },
   {
@@ -132,9 +132,9 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 19.99,
+     "valor": 18.53,
      "puntos": 0,
-     "fecha": "2026-10-16",
+     "fecha": "2026-10-19",
      "fuente": null
     }
    },
@@ -180,9 +180,9 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 19.99,
+     "valor": 18.53,
      "puntos": 0,
-     "fecha": "2026-10-16",
+     "fecha": "2026-10-19",
      "fuente": null
     }
    },
@@ -210,9 +210,9 @@
      "fuente": null
     },
     "bono": {
-     "valor": -1.71,
+     "valor": -1.656,
      "puntos": -1,
-     "fecha": "2026-10-15",
+     "fecha": "2026-10-16",
      "fuente": "BCE · curva AAA de la zona euro (10Y)"
     },
     "crec": {
@@ -228,9 +228,9 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 19.99,
+     "valor": 18.53,
      "puntos": 0,
-     "fecha": "2026-10-16",
+     "fecha": "2026-10-19",
      "fuente": null
     }
    },
@@ -276,9 +276,9 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 19.99,
+     "valor": 18.53,
      "puntos": 0,
-     "fecha": "2026-10-16",
+     "fecha": "2026-10-19",
      "fuente": null
     }
    },
@@ -324,9 +324,9 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 19.99,
+     "valor": 18.53,
      "puntos": 0,
-     "fecha": "2026-10-16",
+     "fecha": "2026-10-19",
      "fuente": null
     }
    },
@@ -372,9 +372,9 @@
      "fuente": null
     },
     "riesgo": {
-     "valor": 19.99,
+     "valor": 18.53,
      "puntos": 0,
-     "fecha": "2026-10-16",
+     "fecha": "2026-10-19",
      "fuente": null
     }
    },
@@ -412,8 +412,8 @@
   }
  ],
  "riesgo": {
-  "vix": 19.99,
-  "fecha": "2026-10-16",
+  "vix": 18.53,
+  "fecha": "2026-10-19",
   "regimen": "NEUTRAL"
  },
  "boj": {
@@ -426,7 +426,7 @@
  },
  "anio_weo": "2026",
  "esencial": {
-  "cambio": "Sesgo macro más fuerte: AUD (+5); más débil: JPY (-3). Riesgo neutral (VIX 20.0).",
+  "cambio": "Sesgo macro más fuerte: AUD (+5); más débil: JPY (-3). Riesgo neutral (VIX 18.5).",
   "significa": "Hecho: la suma de seis factores objetivos coloca a esa divisa arriba y a la otra abajo. Interpretación: la combinación de tipos, crecimiento y giro de política respalda a la primera frente a la segunda; no dice que vaya a subir ni a bajar.",
   "vigilar": "Próximas reuniones de bancos centrales (calendario), la sorpresa de inflación y el VIX: un VIX por encima de 22 o por debajo de 16 cambia el factor de riesgo de golpe."
  },
@@ -455,6 +455,6 @@
   }
  ],
  "ok": true,
- "generado_utc": "2026-10-19 05:30 UTC",
- "duracion_s": 9.4
+ "generado_utc": "2026-10-19 11:00 UTC",
+ "duracion_s": 8.9
 }

@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-19 09:16 UTC",
+ "generado_utc": "2026-10-19 11:00 UTC",
  "fecha_datos": "2026-10-16",
  "mercado": {
   "cap": {
@@ -23,10 +23,10 @@
    "sobre_sma200": false
   },
   "pesos": {
-   "fecha": "15-Oct-2026",
-   "amzn": 22.97,
-   "tsla": 17.34,
-   "suma": 40.31,
+   "fecha": "16-Oct-2026",
+   "amzn": 22.73,
+   "tsla": 17.11,
+   "suma": 39.84,
    "fuente": "State Street SSGA, posiciones diarias de XLY"
   },
   "diferencia_3m_pp": -2.58,
@@ -12287,5 +12287,6 @@
   "Dirección esperada para el marcador (RSPD/RSPS a T+20): CONSUMO FUERTE y DIVERGENCIA MERCADO DEFENSIVO = sube; SE ENFRÍA, CONSUMO DÉBIL y DIVERGENCIA MERCADO ADELANTADO = baja."
  ],
  "errores": {},
- "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, DRCCLACBS; UMCSENT como respaldo) · Universidad de Michigan (sca.isr.umich.edu, ánimo del consumidor)"
+ "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, DRCCLACBS; UMCSENT como respaldo) · Universidad de Michigan (sca.isr.umich.edu, ánimo del consumidor)",
+ "duracion_s": 4.3
 }

@@ -1,8 +1,8 @@
 {
  "ok": true,
- "generado_utc": "2026-10-19 05:30 UTC",
+ "generado_utc": "2026-10-19 11:00 UTC",
  "metricas": {
-  "generado_utc": "2026-10-19 05:33 UTC",
+  "generado_utc": "2026-10-19 11:03 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer los índices (S&P 500 · Nasdaq 100 · US30 · Russell 2000)",
   "indices": {
    "S&P 500": {
@@ -177,34 +177,34 @@
   },
   "tiempo_real": {
    "SPY": {
-    "precio": 763.25,
-    "cambio_pct": -1.11,
-    "hora": "Oct 16, 2026",
-    "estado_mercado": "Closed"
+    "precio": 767.2525,
+    "cambio_pct": 0.52,
+    "hora": "Oct 19, 2026 7:04 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "QQQ": {
-    "precio": 709.8,
-    "cambio_pct": -2.5,
-    "hora": "Oct 16, 2026",
-    "estado_mercado": "Closed"
+    "precio": 718.0,
+    "cambio_pct": 1.16,
+    "hora": "Oct 19, 2026 7:04 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "DIA": {
-    "precio": 519.1,
-    "cambio_pct": -0.4,
-    "hora": "Oct 16, 2026",
-    "estado_mercado": "Closed"
+    "precio": 518.689,
+    "cambio_pct": -0.08,
+    "hora": "Oct 19, 2026 7:04 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "IWM": {
-    "precio": 270.44,
-    "cambio_pct": -1.69,
-    "hora": "Oct 16, 2026",
-    "estado_mercado": "Closed"
+    "precio": 271.88,
+    "cambio_pct": 0.53,
+    "hora": "Oct 19, 2026 7:04 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "NDX": {
     "precio": 29187.55,
     "cambio_pct": -2.5,
     "hora": "Oct 16, 2026",
-    "estado_mercado": "Closed"
+    "estado_mercado": "Pre-Market"
    }
   },
   "t2Y": {
@@ -440,20 +440,20 @@
   "amplitud": {
    "sesion": {
     "todas": {
-     "n": 7001,
-     "suben": 4486,
-     "bajan": 2077,
-     "pct_suben": 64.1,
-     "ad_neto": 2409,
-     "volumen_alcista_pct": 56.6
+     "n": 6963,
+     "suben": 2145,
+     "bajan": 4388,
+     "pct_suben": 30.8,
+     "ad_neto": -2243,
+     "volumen_alcista_pct": 28.8
     },
     "grandes_10B": {
-     "n": 965,
-     "suben": 718,
-     "bajan": 242,
-     "pct_suben": 74.4,
-     "ad_neto": 476,
-     "volumen_alcista_pct": 54.1
+     "n": 957,
+     "suben": 443,
+     "bajan": 508,
+     "pct_suben": 46.3,
+     "ad_neto": -65,
+     "volumen_alcista_pct": 28.9
     }
    },
    "rsp_vs_spy_20d_pp": 0.64,
@@ -521,39 +521,39 @@
    },
    "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "concentracion": {
-    "fecha_pesos": "15-Oct-2026",
+    "fecha_pesos": "16-Oct-2026",
     "pesos": [
      {
       "ticker": "AMZN",
       "nombre": "Amazon.Com Inc",
-      "peso": 22.97
+      "peso": 22.73
      },
      {
       "ticker": "TSLA",
       "nombre": "Tesla Inc",
-      "peso": 17.34
+      "peso": 17.11
      },
      {
       "ticker": "HD",
       "nombre": "Home Depot Inc",
-      "peso": 5.22
+      "peso": 5.28
      },
      {
       "ticker": "TJX",
       "nombre": "Tjx Companies Inc",
-      "peso": 4.27
+      "peso": 4.39
      },
      {
       "ticker": "MCD",
       "nombre": "Mcdonald S Corp",
-      "peso": 4.26
+      "peso": 4.3
      }
     ],
-    "amzn_tsla_peso": 40.31,
+    "amzn_tsla_peso": 39.84,
     "fuente": "State Street SSGA, posiciones diarias de XLY",
     "amzn_13s_pct": 0.0,
     "tsla_13s_pct": -4.02,
-    "contribucion_pp": -0.7,
+    "contribucion_pp": -0.69,
     "xly_sin_amzn_tsla_13s_pct": -1.98,
     "ratio_sin_amzn_tsla_13s_pct": -5.07,
     "lectura": "MOVIMIENTO AMPLIO (no depende solo de Amazon/Tesla)",
@@ -710,7 +710,7 @@
     "dir": "→",
     "valor": "2026-10-28: subida 14 % · mantener 86 % · bajada 0 %",
     "estado": "NEUTRAL",
-    "lectura": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -1 pb en 5 sesiones · Sin cambio",
+    "lectura": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -2 pb en 5 sesiones · Sin cambio",
     "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-19",
     "puntua": true
    },
@@ -806,10 +806,10 @@
     "id": "amplitud",
     "dato": "ADV/DECLINE (amplitud)",
     "que_mirar": "Amplitud del mercado",
-    "dir": "↑",
-    "valor": "grandes compañías: 718 suben / 242 bajan (74.4% al alza; volumen alcista 54.1%) · igual peso vs S&P +0.64 pp en 20 sesiones",
-    "estado": "FAVORABLE",
-    "lectura": "Fortaleza interna",
+    "dir": "→",
+    "valor": "grandes compañías: 443 suben / 508 bajan (46.3% al alza; volumen alcista 28.9%) · igual peso vs S&P +0.64 pp en 20 sesiones",
+    "estado": "NEUTRAL",
+    "lectura": "Amplitud neutra",
     "fuente": "Nasdaq Data: screener de todas las acciones USA (sesión anterior) y ETF de igual peso (RSP, QQEW) frente a los ponderados por capitalización",
     "puntua": false
    },
@@ -869,7 +869,7 @@
     }
    ],
    "liquidez": "NEUTRAL",
-   "breadth": "CONFIRMA"
+   "breadth": "NEUTRA"
   },
   "chuleta_60s": "SIN CONFLUENCIA COMPLETA",
   "por_indice": [
@@ -886,7 +886,7 @@
     "factores": [
      {
       "factor": "amplitud",
-      "estado": "FAVORABLE"
+      "estado": "NEUTRAL"
      },
      {
       "factor": "beneficios",
@@ -894,7 +894,7 @@
      }
     ],
     "entorno": "MIXTO",
-    "puntos": 1,
+    "puntos": 0,
     "estructura": "LATERAL · 2/5 máximos y 2/5 mínimos crecientes"
    },
    {
@@ -1009,8 +1009,8 @@
    {
     "par": "ADV/DECLINE ↔ S&P",
     "busca": "Índice ↑ + breadth ↑",
-    "estado": "DIVERGENCIA POSITIVA (el índice cae pero la amplitud aguanta)",
-    "detalle": "grandes compañías: 718 suben / 242 bajan (74.4% al alza; volumen alcista 54.1%) · igual peso vs S&P +0.64 pp en 20 sesiones",
+    "estado": "NEUTRAL",
+    "detalle": "grandes compañías: 443 suben / 508 bajan (46.3% al alza; volumen alcista 28.9%) · igual peso vs S&P +0.64 pp en 20 sesiones",
     "lectura": "Movimiento más amplio y sano internamente"
    },
    {
@@ -1261,7 +1261,7 @@
    {
     "n": 3,
     "pregunta": "¿FedWatch está relajándose o endureciéndose?",
-    "respuesta": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -1 pb en 5 sesiones · Sin cambio Proxy letras: +2 pb en 5 sesiones."
+    "respuesta": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -2 pb en 5 sesiones · Sin cambio Proxy letras: +2 pb en 5 sesiones."
    },
    {
     "n": 4,
@@ -1286,7 +1286,7 @@
    {
     "n": 8,
     "pregunta": "¿Hay amplitud o solo unas pocas mega caps?",
-    "respuesta": "Fortaleza interna · grandes compañías: 718 suben / 242 bajan (74.4% al alza; volumen alcista 54.1%) · igual peso vs S&P +0.64 pp en 20 sesiones"
+    "respuesta": "Amplitud neutra · grandes compañías: 443 suben / 508 bajan (46.3% al alza; volumen alcista 28.9%) · igual peso vs S&P +0.64 pp en 20 sesiones"
    },
    {
     "n": 9,
@@ -3261,13 +3261,13 @@
    "lectura": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "historico": "Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %).",
    "aviso": "Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
-   "concentracion": "Amazon + Tesla pesan el 40,3 % de XLY (15-Oct-2026); en 13 semanas Amazon +0,0 %, Tesla -4,0 %. Sin ellas, el ratio habría variado -5,1 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla.",
-   "tesis": "XLY/XLP 1,2835 (2026-10-16) · -7,0 % frente a su media de 200 sesiones · 13 semanas -5,0 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 40,3 % de XLY (15-Oct-2026); en 13 semanas Amazon +0,0 %, Tesla -4,0 %. Sin ellas, el ratio habría variado -5,1 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
+   "concentracion": "Amazon + Tesla pesan el 39,8 % de XLY (16-Oct-2026); en 13 semanas Amazon +0,0 %, Tesla -4,0 %. Sin ellas, el ratio habría variado -5,1 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla.",
+   "tesis": "XLY/XLP 1,2835 (2026-10-16) · -7,0 % frente a su media de 200 sesiones · 13 semanas -5,0 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 39,8 % de XLY (16-Oct-2026); en 13 semanas Amazon +0,0 %, Tesla -4,0 %. Sin ellas, el ratio habría variado -5,1 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
    "estado_mercado": "DEFENSIVO",
    "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
   },
   "reacciones": null
  },
- "evaluado_utc": "2026-10-19 10:07 UTC",
+ "evaluado_utc": "2026-10-19 11:00 UTC",
  "fedwatch_fecha_precios": "2026-10-19"
 }
