@@ -64,6 +64,7 @@ function pageIntegridad() {
     : '<div class="empty" style="height:90px;border:0">SIN DATOS REGISTRADOS EN VIVO TODAVÍA</div>';
   h += `<div class="note" style="padding:0 16px 12px">Histórico anterior al arreglo del disparo externo (cron-job.org): el registro se hacía a la primera ejecución del día siguiente, por eso sale ≈ 1 día. Las filas anteriores a esta versión solo guardan la fecha de registro (retraso en días); las nuevas guardan también la hora (retraso en horas). Los datos de «carga inicial» no cuentan: se bajaron de golpe al empezar y no miden el retraso. Desde la ampliación de la franja de reacciones y el vigilante, este número debe bajar.</div></div>`;
   h += integMichigan(I.michigan);
+  h += integEia(I.eia);
   const V = I.vigilante || {}, S = I.segunda_fuente || {};
   h += '<div class="sect"><h2>Vigilante y segunda fuente</h2><span class="more">cómo se comprueba cada dato</span></div><div class="grid g2"><div class="card"><div class="chead"><span>Vigilante de publicaciones</span></div>'
     + `<p class="note" style="margin:6px 0">Regla: ${esc(V.regla || '')}. Un aviso por dato.</p><p class="note" style="margin:0">${V.avisos ? V.avisos + ' aviso(s) enviado(s) hasta ahora.' : 'Ningún aviso enviado todavía: no ha faltado ningún dato.'}</p></div>`
@@ -89,6 +90,20 @@ function integMichigan(B) {
     + `${B.proximo ? `Próximo lanzamiento anunciado: ${esc(B.proximo.texto)} el ${esc(fdy(B.proximo.fecha))}${B.proximo.hora_et ? ' a las ' + esc(B.proximo.hora_et) + ' ET' : ''} (${esc(B.proximo.fuente || '')}). ` : 'Próximo lanzamiento: SIN DATO (la Universidad lo anuncia en su portada tras cada publicación). '}`
     + `El vigilante avisa si un lanzamiento (preliminar o final) no está registrado 2 h después. La web de la Universidad no indica la fecha de un dato ya publicado: solo se muestra si NEXORA la anotó antes. ${B.ultima_descarga_utc ? 'Última descarga: ' + esc(horaAct(B.ultima_descarga_utc + ' UTC')) + '.' : ''}</div>`
     + footIn('Universidad de Michigan (sca.isr.umich.edu) · FRED UMCSENT', false, 'https://www.sca.isr.umich.edu/tables.html', 'antigüedad en ámbar si > 45 días') + '</div>';
+  return h;
+}
+
+/* inventarios de petróleo de la EIA: última semana registrada, cuándo salió, antigüedad (ámbar > 10 días) y próximo informe */
+function integEia(B) {
+  if (!B) return '';
+  let h = '<div class="sect"><h2>Inventarios de petróleo (EIA)</h2><span class="more">informe semanal · miércoles 10:30 ET salvo festivos</span></div>';
+  if (B.estado !== 'OK') return h + `<div class="card"><p class="note" style="margin:0">SIN DATO: NEXORA aún no ha registrado ningún informe de la EIA.${B.error ? ' Último error: ' + esc(B.error) : ''}</p></div>`;
+  const P = B.productos || {}, mb = (k) => (P[k] == null ? 'SIN DATO' : num(P[k] / 1000, 1) + ' Mb');
+  h += `<div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Semana al</th><th>Publicado el</th><th>Visto por NEXORA</th><th>Antigüedad</th><th>Crudo</th><th>Gasolina</th><th>Destilados</th></tr></thead><tbody>`
+    + `<tr><td data-label="Semana al" style="text-align:left"><b>${esc(fdy(B.semana))}</b></td><td data-label="Publicado el">${esc(fdy(B.publicado))} ${esc(B.hora_et || '')} ET</td><td data-label="Visto por NEXORA">${B.visto_utc ? esc(horaAct(B.visto_utc)) : 'SIN DATO'}</td>`
+    + `<td data-label="Antigüedad"><span class="ck ${B.ambar ? 'par' : 'ok'}">${esc(String(B.antiguedad_dias))} día${B.antiguedad_dias === 1 ? '' : 's'}${B.ambar ? ' · ámbar' : ''}</span></td><td data-label="Crudo">${mb('crudo')}</td><td data-label="Gasolina">${mb('gasolina')}</td><td data-label="Destilados">${mb('destilados')}</td></tr></tbody></table>`
+    + `<div class="note" style="padding:8px 16px 12px">Antigüedad = días desde que la EIA publicó el informe de esa semana; ámbar si pasan más de ${esc(String(B.umbral_dias))} días sin un informe nuevo. ${B.proximo ? `Próximo informe: ${esc(fdy(B.proximo.fecha))} a las ${esc(B.proximo.hora_et)} ET (semana al ${esc(fdy(B.proximo.semana))}), calendario oficial de la EIA. ` : ''}El vigilante avisa si el informe no está registrado 2 h después. ${B.ultima_descarga_utc ? 'Última descarga: ' + esc(horaAct(B.ultima_descarga_utc + ' UTC')) + '.' : ''}</div>`
+    + footIn('EIA · Weekly Petroleum Status Report (ir.eia.gov/wpsr/table1.csv)', false, 'https://www.eia.gov/petroleum/supply/weekly/schedule.php', 'antigüedad en ámbar si > 10 días') + '</div>';
   return h;
 }
 
