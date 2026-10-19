@@ -218,7 +218,8 @@ def _calcular(clave, cfg):
             "regimen": "POSITIVA" if pos else "NEGATIVA",
             "call_wall": {"idx": cw, "musd": round(callg[cw] / 1e6, 1)} if cw is not None else None,
             "put_wall": {"idx": pw, "musd": round(putg[pw] / 1e6, 1)} if pw is not None else None,
-            "flip": {"idx": round(flip, 1)} if flip is not None else None, "otros_cruces_idx": [round(c, 1) for c in cruces if c != flip],
+            "flip": {"idx": round(flip, 1)} if flip is not None else None,
+            "max_gamma": max_gamma_de(perfil), "otros_cruces_idx": [round(c, 1) for c in cruces if c != flip],
             "top_calls": tops(callg), "top_puts": tops(putg), "perfil": perfil,
             "curva": [[round(s, 1), round(g / 1e6, 1)] for s, g in curva],
             "vencimientos": venc, "n_vencimientos": len(venc), "n_grupos": len(regs), "cadenas": stats,
@@ -227,9 +228,54 @@ def _calcular(clave, cfg):
             "sesion_dt": sesion}
 
 
+VOL_DE = {"ES": ("^VIX", "VIX"), "NQ": ("^VXN", "VXN")}
+
+
+def max_gamma_de(perfil):
+    """Max Gamma = tramo con mayor exposición de gamma ABSOLUTA (calls + |puts|, en M$ por 1 %) dentro del perfil (±8 % del precio). Es un nivel de referencia, no un pronóstico."""
+    if not perfil:
+        return None
+    b = max(perfil, key=lambda p: p["call"] - p["put"])
+    return {"idx": b["k"], "musd": round(b["call"] - b["put"], 1)}
+
+
+def calcular_em(clave, M, vol=None):
+    """EM (movimiento esperado de UN día) = precio de referencia × volatilidad implícita a 30 días / 100 / √252: VIX para ES, VXN para NQ (cierre anterior). Es una aproximación
+    estándar y gratuita, no el straddle del día. `vol` = (valor, fecha) inyectable; si no, se descarga de Yahoo. Sin dato → None."""
+    sym, nom = VOL_DE[clave]
+    ref = M.get("spot_fut") or M.get("spot_idx")
+    try:
+        if vol is None:
+            barras, _ = precios.diario(sym, "1mo")
+            barras = [b for b in barras if b["fecha"].isoformat() <= str(M.get("sesion") or "9999-12-31")]       # la volatilidad del cierre de la sesión de los niveles, no la de hoy
+            vol = (barras[-1]["c"], barras[-1]["fecha"].isoformat())
+        v, f = float(vol[0]), str(vol[1])
+        if not ref or not (3 <= v <= 150):
+            raise ValueError("volatilidad o precio fuera de rango")
+        pts = ref * v / 100 / math.sqrt(252)
+        return {"puntos": round(pts, 1), "pct": round(v / math.sqrt(252), 3), "vol": round(v, 2), "vol_simbolo": nom, "vol_fecha": f, "ref": round(ref, 2),
+                "formula": f"precio × {nom} / 100 / √252", "fuente": "Yahoo Finance (" + sym + ")"}
+    except Exception as e:  # noqa: BLE001
+        return {"puntos": None, "error": f"{type(e).__name__}: {str(e)[:80]}", "vol_simbolo": nom, "fuente": "Yahoo Finance (" + sym + ")"}
+
+
+def enriquecer(M, vol_por_indice=None):
+    """Añade max_gamma y em a un gamma.json ya generado (sin recalcular la cadena de opciones): max_gamma sale del perfil guardado y em del VIX/VXN. Idempotente."""
+    for k, x in (M.get("indices") or {}).items():
+        if not x.get("max_gamma") and x.get("perfil"):
+            mg = max_gamma_de(x["perfil"])
+            b = (x.get("base") or {}).get("base")
+            if mg:
+                mg["fut"] = round(mg["idx"] + b, 1) if b is not None else None
+            x["max_gamma"] = mg
+        if not (x.get("em") or {}).get("puntos"):
+            x["em"] = calcular_em(k, x, (vol_por_indice or {}).get(k))
+    return M
+
+
 def _a_futuro(M, base):
     b = base.get("base")
-    for k in ("call_wall", "put_wall", "flip"):
+    for k in ("call_wall", "put_wall", "flip", "max_gamma"):
         x = M.get(k)
         if x:
             x["fut"] = round(x["idx"] + b, 1) if b is not None else None
@@ -325,6 +371,7 @@ def medir():
             base = _base_futuro(cfg["yahoo_fut"], cfg["yahoo_idx"], M.pop("sesion_dt"))
             precios.pausa()
             _a_futuro(M, base)
+            M["em"] = calcular_em(clave, M)
             M["resumen_texto"] = _texto(M)
             out[clave] = M
         except Exception as e:  # noqa: BLE001

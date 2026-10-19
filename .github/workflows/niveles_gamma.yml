@@ -1,0 +1,39 @@
+name: niveles_gamma
+
+# Telegram de lunes a viernes a las 15:00 Madrid con la línea de niveles gamma para TradingView («ES flip=…;cw=…;pw=…;em=…;maxg=… | NQ …»). Dos crones (verano UTC+2 / invierno UTC+1);
+# el script envía una sola vez por día (estado en data/estado_niveles_gamma.json) y solo si ya son las 15:00 en Madrid.
+on:
+  schedule:
+    - cron: "0 13 * * 1-5"
+    - cron: "0 14 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      forzar:
+        description: "Enviar aunque ya se haya enviado hoy (true | false)"
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: niveles_gamma
+  cancel-in-progress: false
+
+jobs:
+  niveles:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Enviar la línea de niveles
+        env:
+          PYTHONUTF8: "1"
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ "${{ github.event.inputs.forzar }}" = "true" ]; then python engine/gamma_intradia.py --niveles --forzar; else python engine/gamma_intradia.py --niveles; fi
+      - name: Guardar estado (un envío por día)
+        run: python engine/push_seguro.py "niveles gamma $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]"

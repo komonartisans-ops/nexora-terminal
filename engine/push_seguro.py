@@ -31,7 +31,7 @@ def resolver(f):
             out = json.dumps(a, ensure_ascii=False, indent=1)
         except Exception:  # noqa: BLE001
             out = mine
-    elif f.endswith("avisos_previos.json"):      # solo-añadir: unión de las claves de ambos lados (una clave existente no se modifica)
+    elif f.endswith("avisos_previos.json") or f.endswith("estado_gamma_intradia.json"):      # solo-añadir: unión de las claves de ambos lados (una clave existente no se modifica)
         try:
             a, b = json.loads(up), json.loads(mine)
             for k, v in b.get("avisos", {}).items():

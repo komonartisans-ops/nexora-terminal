@@ -637,6 +637,11 @@ def _dormir(segundos):
             aviso_previo.ejecutar(push=True)
         except Exception as e:  # noqa: BLE001
             print("aviso previo: error (el monitor sigue):", type(e).__name__)
+        try:
+            import gamma_intradia
+            gamma_intradia.pasada_si_toca()                  # velas de 5 min: como mucho una pasada cada ~4,5 min; un fallo no interrumpe el monitor
+        except Exception as e:  # noqa: BLE001
+            print("gamma intradía: error (el monitor sigue):", type(e).__name__)
         resto = fin - time.time()
         if resto <= 0:
             return
@@ -706,7 +711,17 @@ def main():
     ap.add_argument("--gracia", type=float, default=RETRASO_RECONSTRUIR_H, help="horas de margen al job en vivo (0 = reconstruir todo lo vencido)")
     a = ap.parse_args()
     if a.vivo:
-        return vivo()
+        try:
+            import gamma_intradia
+            gamma_intradia.pasada_si_toca(minimo_s=0)        # una pasada al empezar, aunque no haya ningún evento que vigilar
+        except Exception as e:  # noqa: BLE001
+            print("gamma intradía: error (el monitor sigue):", type(e).__name__)
+        rc = vivo()
+        try:
+            gamma_intradia.ventana()                         # y, si queda sesión regular, vigila ~13 min más (el siguiente cron arranca a los 15)
+        except Exception as e:  # noqa: BLE001
+            print("gamma intradía: error (el monitor sigue):", type(e).__name__)
+        return rc
     n, err, cal = reconstruir(a.gracia)
     J = construir_json()
     J["errores"], J["calibracion"], J["filas_nuevas"] = err, {k: (round(v, 3) if isinstance(v, float) else v) for k, v in cal.items()}, n
