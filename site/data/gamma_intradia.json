@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-19 14:52 UTC",
+ "generado_utc": "2026-10-19 15:07 UTC",
  "min_n": 20,
  "horizontes_min": [
   15,
@@ -168,5 +168,5 @@
  "metodo": "MFE = máxima excursión a favor y MAE = máxima excursión en contra de la dirección hipotética de la regla, frente al cierre de la vela de disparo, con barras de 5 min de Yahoo Finance. Solo se miden los avisos enviados en vivo. No hay acierto/fallo: con n < 20 por regla no se concluye nada y las reglas no se tocan.",
  "ultimas": [],
  "fuente": "gamma_intradia.py (data/gamma_intradia_senales.csv, data/gamma_intradia_resultados.csv)",
- "duracion_s": 0.1
+ "duracion_s": 0.0
 }
