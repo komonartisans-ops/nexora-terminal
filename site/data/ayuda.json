@@ -1453,7 +1453,7 @@
   ],
   "gráficos: ¿consumo amplio": [
    "Dos ratios de consumo discrecional frente a básico: uno ponderado por tamaño (XLY/XLP) y otro con el mismo peso para cada empresa (RSPD/RSPS).",
-   "Si sube el primero y no el segundo, lo mueven pocas empresas grandes.",
+   "Si los dos ratios se separan más de 2 pp en 3 meses, el ratio ponderado lo mueven AMZN+TSLA, no el consumo amplio; el aviso indica hacia dónde empujan.",
    "El peso igual muestra mejor el consumo amplio que el ponderado por capitalización."
   ],
   "consumo discrecional / básico (xly/xlp, ponderado": [
@@ -1510,6 +1510,11 @@
    "Una serie de FRED sobre consumo, renta o crédito de los hogares.",
    "Mira el valor, su tendencia a 3 meses y la fecha del dato.",
    "Muestra si los hogares gastan, ganan, ahorran y pueden pagar."
+  ],
+  "contexto de ánimo": [
+   "La confianza del consumidor (U. Michigan) comparada con toda su historia desde 1978, como percentil.",
+   "Un percentil bajo = la gente está más pesimista que casi siempre; si además los datos reales suben, sale la nota «la gente dice que está mal pero sigue gastando».",
+   "El ánimo y el gasto no siempre van juntos; por eso solo es contexto y no puntúa en la tesis."
   ]
  },
  "glosario": [
