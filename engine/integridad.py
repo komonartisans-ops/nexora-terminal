@@ -36,8 +36,10 @@ MES_CORTO = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct
 # serie FRED → serie primaria de BLS (índices en el mismo nivel que FRED)
 BLS = {"CPIAUCSL": "CUSR0000SA0", "CPILFESL": "CUSR0000SA0L1E", "PPIFIS": "WPSFD4"}
 BEA_SIN_DATO = "BEA exige clave de API (UserID): sin el secreto BEA_API_KEY no hay acceso, SIN DATO (no se inventa)."
-BEA_TABLAS = {"PCEPI": ("T20804", "M", ("personal consumption expenditures",)), "PCEPILFE": ("T20804", "M", ("excluding food and energy",)),
-              "GDPC1": ("T10106", "Q", ("gross domestic product",))}     # NIPA: índice de precios PCE (mensual) y PIB real (trimestral)
+# NIPA: índice de precios PCE (mensual, T20804) y PIB real (trimestral, T10106). Línea = descripción EXACTA (verificada con la API real: T20804 línea 1, línea 25 y T10106 línea 1).
+# Divisor: BEA da el nivel en dólares × 10^UNIT_MULT (T10106: millones); FRED GDPC1 está en miles de millones de dólares → se divide por 1e9. Los índices (UNIT_MULT=0) no cambian.
+BEA_TABLAS = {"PCEPI": ("T20804", "M", "personal consumption expenditures (pce)", 1.0), "PCEPILFE": ("T20804", "M", "pce excluding food and energy", 1.0),
+              "GDPC1": ("T10106", "Q", "gross domestic product", 1e9)}
 SEGUNDA_FUENTE = {"CPIAUCSL": "BLS", "CPILFESL": "BLS", "PPIFIS": "BLS", "PCEPI": "BEA", "PCEPILFE": "BEA", "GDPC1": "BEA"}
 
 
@@ -277,7 +279,8 @@ class Red:
             m = re.fullmatch(r"(\d{4})([MQ])(\d{1,2})", r.get("TimePeriod", ""))
             v = (r.get("DataValue") or "").replace(",", "").strip()
             if m and re.fullmatch(r"-?\d+(\.\d+)?", v) and m.group(2) == freq:
-                out.append((r.get("LineDescription", ""), (int(m.group(1)), int(m.group(3))), float(v)))
+                mult = int(r.get("UNIT_MULT") or 0)
+                out.append((r.get("LineDescription", ""), (int(m.group(1)), int(m.group(3))), float(v) * 10 ** mult))     # nivel en unidades (dólares) o índice
         return out
 
     def alfred_tiene(self, sid, periodo, vintage):
@@ -404,7 +407,7 @@ def cotejar_bea(raiz=RAIZ, ahora=None, red=None, clave=None, forzar=False):
     stamp = ahora.strftime("%Y-%m-%d %H:%M UTC")
     filas, tablas = [], {}
     est["bea"].pop("ultimo_error", None)
-    for sid, (tabla, freq, claves) in BEA_TABLAS.items():
+    for sid, (tabla, freq, linea, div) in BEA_TABLAS.items():
         u = _ultimo_fred(raiz, sid)
         if not u:
             continue
@@ -416,10 +419,10 @@ def cotejar_bea(raiz=RAIZ, ahora=None, red=None, clave=None, forzar=False):
         except Exception as e:  # noqa: BLE001
             est["bea"]["ultimo_error"] = f"{type(e).__name__}: {str(e)[:100]}"        # el mensaje no contiene la clave
             continue
-        lineas = [(d, k, v) for d, k, v in tablas[(tabla, freq)] if all(c in d.lower() for c in claves) and (sid != "PCEPI" or "excluding" not in d.lower())]
         serie_b = {}
-        for d, k, v in lineas:
-            serie_b.setdefault(k, v)                                   # la primera línea que coincide por descripción (la más agregada)
+        for d, k, v in tablas[(tabla, freq)]:
+            if d.strip().lower() == linea:                             # descripción exacta de la línea
+                serie_b.setdefault(k, v / div)
         if not serie_b:
             continue
         kp = (p.year, p.month) if freq == "M" else (p.year, (p.month - 1) // 3 + 1)

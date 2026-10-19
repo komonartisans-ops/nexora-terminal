@@ -48,7 +48,7 @@ def main():
         sys.exit("BEA_API_KEY no está definida en el entorno: nada que comprobar (SIN DATO).")
     print("Clave BEA presente (no se imprime). Sin Telegram, sin escritura de datos.\n")
     tablas = {}
-    for sid, (tabla, freq, claves) in I.BEA_TABLAS.items():
+    for sid, (tabla, freq, linea, div) in I.BEA_TABLAS.items():
         if (tabla, freq) not in tablas:
             tablas[(tabla, freq)] = consulta(tabla, freq, "2026,2025")
     resumen = []
@@ -60,20 +60,17 @@ def main():
         for n, (d, cu, um) in sorted(lineas.items())[:8]:
             print(f"   línea {n:>2}: {d}   [unidad: {cu}, UNIT_MULT={um}]")
     print()
-    for sid, (tabla, freq, claves) in I.BEA_TABLAS.items():
+    for sid, (tabla, freq, linea, div) in I.BEA_TABLAS.items():
         datos = tablas[(tabla, freq)]
-        cand = {}
-        for r in datos:
-            d = r.get("LineDescription", "")
-            if all(c in d.lower() for c in claves) and (sid != "PCEPI" or "excluding" not in d.lower()):
-                cand.setdefault(int(r["LineNumber"]), d)
+        cand = {int(r["LineNumber"]): r.get("LineDescription", "") for r in datos if r.get("LineDescription", "").strip().lower() == linea}
         if not cand:
-            print(f"== {sid}: NINGUNA línea de {tabla} coincide con {claves}: las líneas del código NO son correctas")
+            print(f"== {sid}: NINGUNA línea de {tabla} se llama «{linea}»: las líneas del código NO son correctas")
             resumen.append((sid, None))
             continue
-        ln = min(cand)                                     # la primera línea que coincide (la más agregada)
-        print(f"== {sid} ← {tabla} línea {ln}: «{cand[ln]}»" + (f" (otras que también coinciden: {sorted(set(cand) - {ln})})" if len(cand) > 1 else ""))
-        filas = sorted(((r["TimePeriod"], num(r["DataValue"])) for r in datos if int(r["LineNumber"]) == ln and num(r["DataValue"]) is not None))[-3:]
+        ln = min(cand)
+        um = next(int(r.get("UNIT_MULT") or 0) for r in datos if int(r["LineNumber"]) == ln)
+        print(f"== {sid} ← {tabla} línea {ln}: «{cand[ln]}» · UNIT_MULT={um} → se divide por {div:g} para comparar con FRED")
+        filas = sorted(((r["TimePeriod"], num(r["DataValue"]) * 10 ** um / div) for r in datos if int(r["LineNumber"]) == ln and num(r["DataValue"]) is not None))[-3:]
         f = {}
         for fecha, v in fred(sid, "2024-01-01"):
             f[(fecha.year, fecha.month if freq == "M" else (fecha.month - 1) // 3 + 1)] = v

@@ -361,14 +361,14 @@ class RedBEA:
 
 
 ok_b = {"T20804": [("Personal consumption expenditures (PCE)", (2026, 9), 128.5), ("PCE excluding food and energy", (2026, 9), 127.0), ("Personal consumption expenditures (PCE)", (2026, 8), 128.1)],
-        "T10106": [("Gross domestic product", (2026, 3), 23500.5)]}
+        "T10106": [("Gross domestic product", (2026, 3), 23500.5e9)]}
 sin = RedBEA(ok_b)
 assert I.cotejar_bea(T, en("2026-10-31", "10:00:00"), sin, clave="") == [] and sin.n == 0, "sin BEA_API_KEY: no se llama a nadie (SIN DATO)"
 os.environ.pop("BEA_API_KEY", None)
 sf = I.construir(T, en("2026-10-31", "10:00:00"))["segunda_fuente"]
 assert "SIN DATO" in sf["BEA"] and sf["bea_activa"] is False
 assert I.cotejar_bea(T, en("2026-10-31", "10:00:00"), RedBEA(ok_b), clave="SECRETO123", forzar=True) == []
-mal_b = {**ok_b, "T10106": [("Gross domestic product", (2026, 3), 23700.0)]}
+mal_b = {**ok_b, "T10106": [("Gross domestic product", (2026, 3), 23700.0e9)]}
 nb = I.cotejar_bea(T, en("2026-10-31", "11:00:00"), RedBEA(mal_b), clave="SECRETO123", forzar=True)
 assert [(r["serie"], r["tipo"], r["estado"], r["primaria"]) for r in nb] == [("GDPC1", "VALOR", "ABIERTA", "BEA T10106")] and "Manda BEA" in nb[0]["nota"]
 print("10) OK BEA: sin clave → SIN DATO y no se llama a la API; con clave → compara PCE y PIB (diferencia de 0,85 % → DISCREPANCIA, primaria BEA T10106)")
