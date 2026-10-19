@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-19 15:09 UTC",
+ "generado_utc": "2026-10-19 16:09 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -170,6 +170,14 @@
    "fuente": "FRED Release Calendar (rid 192)"
   },
   {
+   "tipo": "MANUAL",
+   "evento": "Eventos añadidos a mano (data/eventos_manuales.csv): la importancia (ALTA, MEDIA o BAJA) la fija quien los añade, con fuente obligatoria; esta fila muestra MEDIA solo como referencia",
+   "organismo": "manual",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "",
+   "fuente": "data/eventos_manuales.csv"
+  },
+  {
    "tipo": "PARO",
    "evento": "Peticiones de paro semanales",
    "organismo": "DOL",
@@ -330,7 +338,7 @@
   "hasta": "2026-10-26",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-19 15:09 UTC"
+  "generado_utc": "2026-10-19 16:09 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }
