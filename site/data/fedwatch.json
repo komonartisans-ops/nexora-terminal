@@ -1,6 +1,6 @@
 {
  "fecha_precios": "2026-10-19",
- "generado_utc": "2026-10-19 16:07 UTC",
+ "generado_utc": "2026-10-19 17:07 UTC",
  "rango_objetivo": [
   3.75,
   4.0
@@ -73,19 +73,19 @@
   },
   {
    "reunion": "2027-01-27",
-   "tipo_esperado": 4.265,
-   "cambio_reunion_pb": 11.5,
-   "cambio_acumulado_pb": 38.5,
+   "tipo_esperado": 4.26,
+   "cambio_reunion_pb": 11.0,
+   "cambio_acumulado_pb": 38.0,
    "metodo": "quedan 4 días del mes (< 10): ZQ del mes siguiente (ZQG27), sin reunión en ese mes",
    "contrato": "ZQG27",
    "dias_restantes_mes": 4,
    "prob_reunion": {
-    "subida": 45.8,
-    "mantiene": 54.2,
+    "subida": 43.8,
+    "mantiene": 56.2,
     "bajada": 0,
     "detalle_pb": {
-     "0": 54.2,
-     "25": 45.8
+     "0": 56.2,
+     "25": 43.8
     }
    },
    "prob_acumulada": {
@@ -93,21 +93,21 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "25": 46.0,
-     "50": 54.0
+     "25": 48.0,
+     "50": 52.0
     }
    },
-   "subida_1d_pts": 10.0,
+   "subida_1d_pts": 8.0,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 3.0,
-   "subida_5d_pts": 2.3,
-   "tipo_5d_pb": 1.5
+   "tipo_1d_pb": 2.5,
+   "subida_5d_pts": 0.3,
+   "tipo_5d_pb": 1.0
   },
   {
    "reunion": "2027-03-17",
-   "tipo_esperado": 4.4311,
+   "tipo_esperado": 4.4261,
    "cambio_reunion_pb": 16.6,
-   "cambio_acumulado_pb": 55.1,
+   "cambio_acumulado_pb": 54.6,
    "metodo": "quedan 14 días del mes (≥ 10): ZQ del mes de la reunión (ZQH27)",
    "contrato": "ZQH27",
    "dias_restantes_mes": 14,
@@ -125,31 +125,31 @@
     "igual": 0.0,
     "mas_bajo_que_hoy": 0,
     "detalle_pb": {
-     "50": 79.6,
-     "75": 20.4
+     "50": 81.6,
+     "75": 18.4
     }
    },
    "subida_1d_pts": 0.0,
    "bajada_1d_pts": 0,
-   "tipo_1d_pb": 3.0,
+   "tipo_1d_pb": 2.5,
    "subida_5d_pts": -4.5,
-   "tipo_5d_pb": 0.4
+   "tipo_5d_pb": -0.1
   },
   {
    "reunion": "2027-04-28",
    "tipo_esperado": 4.52,
-   "cambio_reunion_pb": 8.9,
+   "cambio_reunion_pb": 9.4,
    "cambio_acumulado_pb": 64.0,
    "metodo": "quedan 2 días del mes (< 10): ZQ del mes siguiente (ZQK27), sin reunión en ese mes",
    "contrato": "ZQK27",
    "dias_restantes_mes": 2,
    "prob_reunion": {
-    "subida": 35.6,
-    "mantiene": 64.4,
+    "subida": 37.6,
+    "mantiene": 62.4,
     "bajada": 0,
     "detalle_pb": {
-     "0": 64.4,
-     "25": 35.6
+     "0": 62.4,
+     "25": 37.6
     }
    },
    "prob_acumulada": {
@@ -161,10 +161,10 @@
      "75": 56.0
     }
    },
-   "subida_1d_pts": 2.0,
+   "subida_1d_pts": 4.0,
    "bajada_1d_pts": 0,
    "tipo_1d_pb": 3.5,
-   "subida_5d_pts": -5.5,
+   "subida_5d_pts": -3.5,
    "tipo_5d_pb": -1.0
   },
   {
@@ -201,8 +201,8 @@
   }
  ],
  "lectura": "SIN CAMBIO RELEVANTE",
- "tipo_esperado_3_reuniones_1d_pb": 3.0,
- "tipo_esperado_3_reuniones_5d_pb": 1.5,
+ "tipo_esperado_3_reuniones_1d_pb": 2.5,
+ "tipo_esperado_3_reuniones_5d_pb": 1.0,
  "resumen": "Reunión del 2026-10-28: subida 18 %, mantener 82 %, bajada 0 % (ayer subida 16 %)",
  "historial": [
   {
@@ -1104,22 +1104,22 @@
    "reunion": "2027-01-27",
    "contrato": "ZQG27",
    "dias_restantes_mes": 4,
-   "tipo_esperado": 4.265,
-   "prob_subida": 45.8,
-   "prob_mantiene": 54.2,
+   "tipo_esperado": 4.26,
+   "prob_subida": 43.8,
+   "prob_mantiene": 56.2,
    "prob_bajada": 0,
-   "cambio_acumulado_pb": 38.5
+   "cambio_acumulado_pb": 38.0
   },
   {
    "fecha_precios": "2026-10-19",
    "reunion": "2027-03-17",
    "contrato": "ZQH27",
    "dias_restantes_mes": 14,
-   "tipo_esperado": 4.4311,
+   "tipo_esperado": 4.4261,
    "prob_subida": 66.4,
    "prob_mantiene": 33.6,
    "prob_bajada": 0,
-   "cambio_acumulado_pb": 55.1
+   "cambio_acumulado_pb": 54.6
   },
   {
    "fecha_precios": "2026-10-19",
@@ -1127,8 +1127,8 @@
    "contrato": "ZQK27",
    "dias_restantes_mes": 2,
    "tipo_esperado": 4.52,
-   "prob_subida": 35.6,
-   "prob_mantiene": 64.4,
+   "prob_subida": 37.6,
+   "prob_mantiene": 62.4,
    "prob_bajada": 0,
    "cambio_acumulado_pb": 64.0
   },
@@ -14486,5 +14486,5 @@
   }
  },
  "ok": true,
- "duracion_s": 24.5
+ "duracion_s": 9.8
 }
