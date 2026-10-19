@@ -11,6 +11,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "engine"))
 import consumo as C  # noqa: E402
 import marcador as M  # noqa: E402
+C.michigan_real = lambda raiz, ahora: {"serie": [], "errores": {}}   # ninguna prueba toca la web de Michigan (la cubre prueba_michigan.py)
 
 # ---------------------------------------------------------------- 1) matriz de la tesis (9 combinaciones) e intensidad
 esperado = {("ALZA", "ALZA"): ("CONSUMO FUERTE", "FUERTE"), ("ALZA", "MIXTO"): ("CONSUMO FUERTE", "DÉBIL"), ("MIXTO", "ALZA"): ("CONSUMO FUERTE", "DÉBIL"),

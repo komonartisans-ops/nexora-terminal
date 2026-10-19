@@ -2,7 +2,8 @@
 """NEXORA · «¿Está consumiendo la gente?» (#/consumo). Sin IA, gratis, SIN DATO si falta algo. Solo lee fuentes públicas y escribe site/data/consumo.json.
 
 Fuentes: Yahoo Finance (cierres diarios de XLY, XLP, RSPD y RSPS), State Street SSGA (posiciones oficiales de XLY, con fecha) y FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL,
-UMCSENT y, trimestral, DRCCLACBS). Nada se estima: una fuente que falla deja su parte en SIN DATO.
+UMCSENT como respaldo y, trimestral, DRCCLACBS). El ánimo del consumidor (U. Michigan) usa como fuente PRIMARIA las tablas de la Universidad (sca.isr.umich.edu, ver michigan.py),
+porque FRED publica UMCSENT con 1-2 meses de retraso por licencia. Nada se estima: una fuente que falla deja su parte en SIN DATO.
 
 TESIS DE CONSUMO (reglas FIJAS, impresas también en la página; no usan umbrales de otros módulos):
   Capa de MERCADO (ratio de PESO IGUAL RSPD/RSPS): AL ALZA si está sobre su media de 200 sesiones y su pendiente a 3 meses (63 sesiones) es positiva; A LA BAJA si está bajo su
@@ -229,16 +230,17 @@ def concentracion(cap, igual, pesos):
     return out
 
 
-def animo(serie, real_estado):
-    """Contexto de ánimo (NO puntúa): percentil histórico de UMCSENT desde 1978. Si está en el 20 % más bajo mientras la capa real está al alza → nota."""
-    base = {"serie": "UMCSENT", "nombre": "Confianza del consumidor (U. Michigan)", "puntua": False, "desde": ANIMO_DESDE[:7], "umbral_percentil": PERCENTIL_BAJO}
-    vals = [(d, v) for d, v in (serie or []) if d.isoformat() >= ANIMO_DESDE]
+def animo(serie, real_estado, dato=None):
+    """Contexto de ánimo (NO puntúa): percentil histórico de la confianza U. Michigan desde 1978, con el dato MÁS RECIENTE (preliminar incluido). Si está en el 20 % más bajo mientras la capa
+    real está al alza → nota. serie = [(fecha, valor)] o [(fecha, valor, tipo)]; dato = estado de michigan.estado() (fuente, tipo, fechas, antigüedad, contraste con FRED)."""
+    base = {"serie": "UMCSENT", "nombre": "Confianza del consumidor (U. Michigan)", "puntua": False, "desde": ANIMO_DESDE[:7], "umbral_percentil": PERCENTIL_BAJO, "dato": dato}
+    vals = [(x[0], x[1]) for x in (serie or []) if x[0].isoformat() >= ANIMO_DESDE]
     if len(vals) < 100:
         return {**base, "estado": "SIN DATO", "nota": None}
     d, v = vals[-1]
     pct = round(sum(1 for _, x in vals if x <= v) / len(vals) * 100, 1)
     zona_baja = pct <= PERCENTIL_BAJO
-    return {**base, "estado": "OK", "periodo": d.isoformat(), "valor": round(v, 1), "percentil": pct, "n": len(vals), "minimo": round(min(x for _, x in vals), 1), "maximo": round(max(x for _, x in vals), 1),
+    return {**base, "estado": "OK", "periodo": d.isoformat(), "tipo": (serie[-1][2] if len(serie[-1]) > 2 else "final"), "valor": round(v, 1), "percentil": pct, "n": len(vals), "minimo": round(min(x for _, x in vals), 1), "maximo": round(max(x for _, x in vals), 1),
             "zona_baja": zona_baja, "nota": "la gente dice que está mal pero sigue gastando" if zona_baja and real_estado == "ALZA" else None}
 
 
@@ -249,10 +251,16 @@ def peso_amzn_tsla(w):
     return {"fecha": w.get("fecha"), "amzn": pos["AMZN"], "tsla": pos["TSLA"], "suma": round(pos["AMZN"] + pos["TSLA"], 2), "fuente": w.get("fuente", "State Street SSGA, posiciones diarias de XLY")}
 
 
-def construir(fuentes=None, ahora=None):
-    """fuentes = {'yahoo': fn, 'fred': fn, 'ssga': fn} (por defecto, las reales). Cada fuente falla por separado."""
-    F = {"yahoo": yahoo, "fred": fred, "ssga": ssga, **(fuentes or {})}
+def michigan_real(raiz, ahora):
+    import michigan
+    return michigan.actualizar(raiz, ahora)
+
+
+def construir(fuentes=None, ahora=None, raiz=None):
+    """fuentes = {'yahoo': fn, 'fred': fn, 'ssga': fn, 'michigan': fn} (por defecto, las reales). Cada fuente falla por separado."""
+    raiz = raiz or RAIZ
     ahora = ahora or dt.datetime.now(dt.timezone.utc)
+    F = {"yahoo": yahoo, "fred": fred, "ssga": ssga, "michigan": lambda: michigan_real(raiz, ahora), **(fuentes or {})}
     err, precios, graf, met = {}, {}, {}, {}
     for t in {x for a, b, _ in PARES.values() for x in (a, b)}:
         try:
@@ -282,11 +290,26 @@ def construir(fuentes=None, ahora=None):
         except Exception as e:  # noqa: BLE001
             err[sid] = f"{type(e).__name__}: {str(e)[:100]}"
             fm[sid] = metrica_fred(sid, [])
+    import michigan
+    mi, fr = {"serie": [], "errores": {}}, []
     try:
-        am = F["fred"]("UMCSENT", ANIMO_DESDE)
+        mi = F["michigan"]()
+        for k, v in (mi.get("errores") or {}).items():
+            err["michigan_" + k] = v
     except Exception as e:  # noqa: BLE001
-        am = []
+        err["michigan"] = f"{type(e).__name__}: {str(e)[:100]}"
+    try:
+        fr = F["fred"]("UMCSENT", ANIMO_DESDE)                       # respaldo y segunda fuente
+    except Exception as e:  # noqa: BLE001
         err["UMCSENT_historia"] = f"{type(e).__name__}: {str(e)[:100]}"
+    # la Universidad manda; FRED solo sustituye si la Universidad no dio ninguna serie (se avisa en el dato)
+    am = mi["serie"] or [(d, v, "final") for d, v in fr]
+    dato = michigan.estado(raiz, mi["serie"], fr, ahora, {k: v for k, v in err.items() if k.startswith("michigan") or k.startswith("UMCSENT")})
+    try:
+        if mi["serie"] and fr:
+            michigan.cotejar_fred(raiz, mi["serie"], fr, ahora)
+    except Exception as e:  # noqa: BLE001
+        err["michigan_cotejo"] = f"{type(e).__name__}: {str(e)[:100]}"
     em, er, ec = estado_mercado(met.get("igual")), capa_real(fm), capa_capacidad(fm)
     t = tesis(em, er["estado"], ec["estado"])
     fechas = [x["fecha"] for x in met.values() if x] + [x["periodo"] for x in fm.values() if x.get("periodo")]
@@ -295,15 +318,15 @@ def construir(fuentes=None, ahora=None):
             "graficos": graf, "real": [fm[s] for s in SERIES],
             "capas": {"mercado": {"estado": em, "detalle": (f"RSPD/RSPS {met['igual']['dist_sma200_pct']:+.2f} % frente a su media de 200 y {met['igual']['pendiente_3m_pct']:+.2f} % en 3 meses" if met.get("igual") else "SIN DATO")},
                       "real": er, "capacidad": ec},
-            "animo": animo(am, er["estado"]), "tesis": t, "reglas_contexto": REGLAS_CONTEXTO, "reglas": [x.strip() for x in __doc__.split("TESIS DE CONSUMO (reglas FIJAS, impresas también en la página; no usan umbrales de otros módulos):")[1].strip().split("\n  ") if x.strip()],
+            "animo": animo(am, er["estado"], dato), "tesis": t, "reglas_contexto": REGLAS_CONTEXTO, "reglas": [x.strip() for x in __doc__.split("TESIS DE CONSUMO (reglas FIJAS, impresas también en la página; no usan umbrales de otros módulos):")[1].strip().split("\n  ") if x.strip()],
             "errores": err,
-            "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, UMCSENT, DRCCLACBS)"}
+            "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, DRCCLACBS; UMCSENT como respaldo) · Universidad de Michigan (sca.isr.umich.edu, ánimo del consumidor)"}
 
 
 REGLAS_CONTEXTO = [
     f"Aviso de concentración (no puntúa): si XLY/XLP y RSPD/RSPS se separan más de {UMBRAL_CONCENTRACION_PP:g} pp en 3 meses, en cualquier sentido, el ratio lo mueven AMZN+TSLA y no el consumo amplio; "
     "se indica hacia dónde empujan (XLY/XLP por encima de RSPD/RSPS = al alza; por debajo = a la baja).",
-    f"Contexto de ánimo (no puntúa): percentil de la confianza U. Michigan (UMCSENT) frente a su historia desde 1978; si está en el {PERCENTIL_BAJO:g} % más bajo mientras la capa real está al alza, "
+    f"Contexto de ánimo (no puntúa): percentil de la confianza U. Michigan (tablas de la Universidad; FRED UMCSENT de respaldo) frente a su historia desde 1978, con el dato más reciente (preliminar o final); si está en el {PERCENTIL_BAJO:g} % más bajo mientras la capa real está al alza, "
     "nota «la gente dice que está mal pero sigue gastando».",
 ]
 

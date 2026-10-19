@@ -1149,5 +1149,46 @@
   "ultimos": [],
   "regla": "aviso si a la hora de publicación + 2 h el periodo nuevo no está en publicados.json"
  },
- "errores": {}
+ "errores": {},
+ "michigan": {
+  "fuente_primaria": "Universidad de Michigan (sca.isr.umich.edu)",
+  "umbral_antiguedad_dias": 45,
+  "errores": {},
+  "origen": "michigan",
+  "ultimo": {
+   "periodo": "2026-10-01",
+   "texto": "octubre 2026",
+   "tipo": "preliminar",
+   "valor": 46.3,
+   "publicado": null,
+   "visto_utc": "2026-10-19 09:12 UTC"
+  },
+  "ultimo_final": {
+   "periodo": "2026-09-01",
+   "texto": "septiembre 2026",
+   "valor": 48.1,
+   "publicado": "2026-09-25",
+   "visto_utc": "2026-10-19 09:12 UTC"
+  },
+  "antiguedad_dias": 0,
+  "ambar": false,
+  "estado": "OK",
+  "fred": {
+   "periodo": "2026-08-01",
+   "texto": "agosto 2026",
+   "valor": 51.7,
+   "antiguedad_dias": 49,
+   "meses_de_retraso": 2,
+   "coincide": true,
+   "michigan_mismo_periodo": 51.7
+  },
+  "ultima_descarga_utc": "2026-10-19 09:16",
+  "proximo": {
+   "fecha": "2026-10-23",
+   "tipo": "final",
+   "texto": "final de octubre 2026",
+   "hora_et": "10:00",
+   "fuente": "sca.isr.umich.edu (Next data release)"
+  }
+ }
 }

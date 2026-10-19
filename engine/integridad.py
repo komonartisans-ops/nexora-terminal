@@ -200,12 +200,20 @@ def pendientes_vigilante(raiz, ahora):
             reg = {x["periodo"] for x in ((pub.get(s["nombre"]) or {}).get("periodos") or [])}
             if p.isoformat() not in reg:
                 out.append((s, ev, p))
+    import michigan                                    # U. Michigan (preliminar y final): su fuente es la propia Universidad, no publicados.json
+    for tipo, per, t, fecha, fuente in michigan.pendientes(raiz, ahora):
+        out.append(({"nombre": f"Confianza U. Michigan ({tipo})", "sid": "UMCSENT", "tipo": "mes", "michigan": tipo, "claves": []},
+                    {"t": t, "fecha": fecha, "evento": f"Confianza del consumidor U. Michigan, {tipo}", "fuente": fuente}, per))
     return out
 
 
 def mensaje_vigilante(s, ev, p):
     from telegram import esc
     hm = ev["t"].astimezone(MAD).strftime("%H:%M")
+    if s.get("michigan"):
+        return (f"<b>DATO NO REGISTRADO:</b> {esc(s['nombre'])} de {esc(texto_periodo(p, 'mes'))}, publicado a las {hm} (Madrid)\n"
+                f"Han pasado más de {ESPERA_VIGILANTE_H} h y NEXORA no lo tiene en data/michigan.csv (fuente: sca.isr.umich.edu; FRED UMCSENT es solo respaldo y llega con 1-2 meses de retraso). "
+                "Hecho de integridad, no una señal de mercado.")
     return (f"<b>DATO NO REGISTRADO:</b> {esc(s['nombre'])} de {esc(texto_periodo(p, s['tipo']))}, publicado a las {hm} (Madrid)\n"
             f"Han pasado más de {ESPERA_VIGILANTE_H} h y NEXORA no lo tiene en publicados.json (FRED {esc(s['sid'])}). Hecho de integridad, no una señal de mercado.")
 
@@ -243,6 +251,31 @@ def vigilar(raiz=RAIZ, ahora=None, seco=False, enviar=None, push=False):
             import subprocess
             subprocess.run([sys.executable, os.path.join(HERE, "push_seguro.py"), "vigilante " + ahora.strftime("%Y-%m-%d %H:%M") + " UTC [skip ci]"], check=False, timeout=180)
     return out
+
+
+def refrescar_michigan(raiz=RAIZ, ahora=None, red=None, forzar=False):
+    """Descarga las tablas de Michigan (anota lecturas nuevas y fechas anunciadas). Máx. 1 vez cada 20 h, salvo que haya un lanzamiento anunciado y sin registrar (entonces cada pasada).
+    red=None: red real. red con atributo .michigan(url) → texto: lo usa (pruebas). Una Red simulada sin .michigan no toca la red."""
+    import michigan
+    ahora = ahora or dt.datetime.now(UTC)
+    fetch = None
+    if red is not None:
+        fetch = getattr(red, "michigan", None)
+        if fetch is None:
+            return None
+    est = _est_i(raiz)
+    prev = (est.get("michigan") or {}).get("ultimo_utc")
+    try:
+        hace_h = (ahora - dt.datetime.fromisoformat(prev).replace(tzinfo=UTC)).total_seconds() / 3600 if prev else None
+    except ValueError:
+        hace_h = None
+    if not (forzar or hace_h is None or hace_h >= 20 or michigan.hay_pendiente(raiz, ahora)):
+        return None
+    L = michigan.actualizar(raiz, ahora, fetch)
+    est = _est_i(raiz)
+    est["michigan"] = {"ultimo_utc": ahora.strftime("%Y-%m-%dT%H:%M:%S"), "ultimo_error": "; ".join(f"{k}: {v}" for k, v in L["errores"].items()) or None}
+    _guardar_i(raiz, est)
+    return L
 
 
 # ---------------------------------------------------------------- red (inyectable en pruebas)
@@ -674,6 +707,26 @@ def tabla_publicaciones(raiz, ahora):
     return filas
 
 
+def bloque_michigan(raiz, ahora):
+    """Ánimo del consumidor: último dato de la Universidad de Michigan (preliminar/final), su antigüedad (ámbar si > 45 días), contraste con FRED y próximo lanzamiento anunciado."""
+    import michigan
+    por = {}
+    for r in michigan.registro(raiz):
+        k = r["periodo"]
+        if k not in por or r["tipo"] == "final":
+            por[k] = (dt.date.fromisoformat(k), float(r["valor"]), r["tipo"])
+    serie = [por[k] for k in sorted(por)]
+    u = _ultimo_fred(raiz, "UMCSENT")
+    fred = [(dt.date.fromisoformat(u[0]), u[1])] if u else []
+    est = (_est_i(raiz).get("michigan") or {})
+    B = michigan.estado(raiz, serie, fred, ahora, {"descarga": est["ultimo_error"]} if est.get("ultimo_error") else {})
+    B["ultima_descarga_utc"] = (est.get("ultimo_utc") or "").replace("T", " ")[:16] or None
+    prox = next((e for e in michigan.calendario(raiz) if e["fecha"] >= ahora.date().isoformat()), None)
+    B["proximo"] = None if not prox else {"fecha": prox["fecha"], "tipo": prox["tipo"], "texto": f"{prox['tipo']} de {michigan.texto_periodo(dt.date.fromisoformat(prox['periodo']))}",
+                                          "hora_et": prox.get("hora_et"), "fuente": prox.get("fuente")}
+    return B
+
+
 def construir(raiz=RAIZ, ahora=None):
     ahora = ahora or dt.datetime.now(UTC)
     disc = discrepancias(raiz)
@@ -686,7 +739,7 @@ def construir(raiz=RAIZ, ahora=None):
     return {"version": 1, "ok": True, "generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"),
             "resumen": {"al_dia": al_dia, "total": len(bloques), "retrasados": sum(b["color"] == "ambar" for b in bloques), "sin_dato": sum(b["color"] == "gris" for b in bloques),
                         "texto": f"Integridad: {al_dia}/{len(bloques)} al día"},
-            "bloques": bloques, "publicaciones": pubs,
+            "bloques": bloques, "publicaciones": pubs, "michigan": bloque_michigan(raiz, ahora),
             "retrasos_registro": [x for x in pubs if x["retraso_dias"] is not None],
             "discrepancias_abiertas": [{k: r[k] for k in ("serie", "periodo", "tipo", "fred_valor", "primaria", "primaria_valor", "dif_pct", "detectada_utc", "nota")} for r in abiertas],
             "n_discrepancias_historial": len(leer_csv(P(raiz, "data", "discrepancias.csv"))),
@@ -704,7 +757,8 @@ def etapa(raiz=RAIZ, ahora=None, red=None, enviar=None, seco=False):
     ahora = ahora or dt.datetime.now(UTC)
     errores = {}
     import calendario_oficial
-    for nombre, fn in (("calendario_oficial", lambda: calendario_oficial.descargar(raiz, ahora)), ("vigilante", lambda: vigilar(raiz, ahora, seco, enviar)),
+    for nombre, fn in (("calendario_oficial", lambda: calendario_oficial.descargar(raiz, ahora)), ("michigan", lambda: refrescar_michigan(raiz, ahora, red)),
+                       ("vigilante", lambda: vigilar(raiz, ahora, seco, enviar)),
                        ("bls", lambda: cotejar_bls(raiz, ahora, red)), ("bea", lambda: cotejar_bea(raiz, ahora, red)), ("alfred", lambda: actualizar_publicaciones(raiz, ahora, red))):
         try:
             fn()
@@ -731,6 +785,10 @@ def bloque_contexto(raiz=RAIZ):
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "evaluar"
     if cmd == "vigilar":
+        try:
+            refrescar_michigan()                           # pasada de «reacciones»: mira antes la web de Michigan si hay un lanzamiento por registrar
+        except Exception as e:  # noqa: BLE001
+            print("michigan:", type(e).__name__, str(e)[:100])
         print("pasada:", [(k, e) for k, e, _ in vigilar(seco="--seco" in sys.argv, push="--push" in sys.argv)] or "nada que avisar")
         sys.exit(0)
     if cmd == "backfill-publicacion":

@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-19 09:00 UTC",
+ "generado_utc": "2026-10-19 09:16 UTC",
  "fecha_datos": "2026-10-16",
  "mercado": {
   "cap": {
@@ -12217,11 +12217,45 @@
   "puntua": false,
   "desde": "1978-01",
   "umbral_percentil": 20.0,
+  "dato": {
+   "fuente_primaria": "Universidad de Michigan (sca.isr.umich.edu)",
+   "umbral_antiguedad_dias": 45,
+   "errores": {},
+   "origen": "michigan",
+   "ultimo": {
+    "periodo": "2026-10-01",
+    "texto": "octubre 2026",
+    "tipo": "preliminar",
+    "valor": 46.3,
+    "publicado": null,
+    "visto_utc": "2026-10-19 09:12 UTC"
+   },
+   "ultimo_final": {
+    "periodo": "2026-09-01",
+    "texto": "septiembre 2026",
+    "valor": 48.1,
+    "publicado": "2026-09-25",
+    "visto_utc": "2026-10-19 09:12 UTC"
+   },
+   "antiguedad_dias": 0,
+   "ambar": false,
+   "estado": "OK",
+   "fred": {
+    "periodo": "2026-08-01",
+    "texto": "agosto 2026",
+    "valor": 51.7,
+    "antiguedad_dias": 49,
+    "meses_de_retraso": 2,
+    "coincide": true,
+    "michigan_mismo_periodo": 51.7
+   }
+  },
   "estado": "OK",
-  "periodo": "2026-08-01",
-  "valor": 51.7,
-  "percentil": 1.4,
-  "n": 584,
+  "periodo": "2026-10-01",
+  "tipo": "preliminar",
+  "valor": 46.3,
+  "percentil": 0.3,
+  "n": 586,
   "minimo": 44.8,
   "maximo": 112.0,
   "zona_baja": true,
@@ -12238,7 +12272,7 @@
  },
  "reglas_contexto": [
   "Aviso de concentración (no puntúa): si XLY/XLP y RSPD/RSPS se separan más de 2 pp en 3 meses, en cualquier sentido, el ratio lo mueven AMZN+TSLA y no el consumo amplio; se indica hacia dónde empujan (XLY/XLP por encima de RSPD/RSPS = al alza; por debajo = a la baja).",
-  "Contexto de ánimo (no puntúa): percentil de la confianza U. Michigan (UMCSENT) frente a su historia desde 1978; si está en el 20 % más bajo mientras la capa real está al alza, nota «la gente dice que está mal pero sigue gastando»."
+  "Contexto de ánimo (no puntúa): percentil de la confianza U. Michigan (tablas de la Universidad; FRED UMCSENT de respaldo) frente a su historia desde 1978, con el dato más reciente (preliminar o final); si está en el 20 % más bajo mientras la capa real está al alza, nota «la gente dice que está mal pero sigue gastando»."
  ],
  "reglas": [
   "Capa de MERCADO (ratio de PESO IGUAL RSPD/RSPS): AL ALZA si está sobre su media de 200 sesiones y su pendiente a 3 meses (63 sesiones) es positiva; A LA BAJA si está bajo su",
@@ -12253,5 +12287,5 @@
   "Dirección esperada para el marcador (RSPD/RSPS a T+20): CONSUMO FUERTE y DIVERGENCIA MERCADO DEFENSIVO = sube; SE ENFRÍA, CONSUMO DÉBIL y DIVERGENCIA MERCADO ADELANTADO = baja."
  ],
  "errores": {},
- "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, UMCSENT, DRCCLACBS)"
+ "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, DRCCLACBS; UMCSENT como respaldo) · Universidad de Michigan (sca.isr.umich.edu, ánimo del consumidor)"
 }
