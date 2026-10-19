@@ -230,7 +230,10 @@
    "capturado_utc": "2026-10-18 09:45 UTC",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret_pct": 0.89,
+     "fecha": "2026-10-19",
+     "precio": 82795.7188
     },
     "5": {
      "estado": "PENDIENTE"
@@ -351,9 +354,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 1.38,
-     "fecha": "2026-10-19",
-     "precio": 82690.6797
+     "ret_pct": 0.55,
+     "fecha": "2026-10-18",
+     "precio": 82017.6016
     },
     "5": {
      "estado": "PENDIENTE"
@@ -434,9 +437,9 @@
    "horizontes": {
     "1": {
      "estado": "ACIERTO",
-     "ret_pct": 0.17,
+     "ret_pct": 0.09,
      "fecha": "2026-10-19",
-     "precio": 4205.7002
+     "precio": 4202.2002
     },
     "5": {
      "estado": "PENDIENTE"
@@ -740,7 +743,10 @@
      "precio": 82141.4609
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "ACIERTO",
+     "ret_pct": -0.58,
+     "fecha": "2026-10-19",
+     "precio": 82795.7188
     },
     "20": {
      "estado": "PENDIENTE"
@@ -870,9 +876,9 @@
     },
     "5": {
      "estado": "ACIERTO",
-     "ret_pct": -0.57,
-     "fecha": "2026-10-19",
-     "precio": 82690.6797
+     "ret_pct": -1.38,
+     "fecha": "2026-10-18",
+     "precio": 82017.6016
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1425,11 +1431,11 @@
   "Bitcoin": {
    "1": {
     "aciertos": 4,
-    "evaluadas": 7
+    "evaluadas": 8
    },
    "5": {
-    "aciertos": 3,
-    "evaluadas": 4
+    "aciertos": 4,
+    "evaluadas": 5
    }
   },
   "Nasdaq 100": {
@@ -1491,6 +1497,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-19 06:07 UTC",
+ "generado_utc": "2026-10-19 07:07 UTC",
  "duracion_s": 0.0
 }
