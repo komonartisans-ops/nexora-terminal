@@ -143,6 +143,7 @@ function ayEjemplo(id, C) {
       oro: () => `Tesis del oro: ${tes.Oro}. El oro cotiza a ${num(m.oro.valor, 0)} $ (${m.oro.fecha}).`,
       indices: () => `VIX en ${num(m.vix.valor, 1)} y MOVE en ${num(m.move.valor, 0)} (${m.vix.fecha}).`,
       cripto: () => `ETF de bitcoin el ${C.etf_flujos_btc_eth.btc.ultimo_dia}: ${num(C.etf_flujos_btc_eth.btc.total_musd, 1)} M$ netos (positivo = entra dinero).`,
+      consumo: () => `Tesis de consumo: ${C.consumo.tesis.resultado}${C.consumo.tesis.intensidad ? ' (intensidad ' + C.consumo.tesis.intensidad + ')' : ''}; mercado ${C.consumo.capas.mercado.toLowerCase()}, datos reales ${C.consumo.capas.real.toLowerCase()}.`,
       marcador: () => `El marcador tiene ${C.marcador.n_senales} señales registradas; mira siempre n y la tasa base antes de fiarte.`,
       noticias: () => `Última actualización correcta de las noticias: ${C.frescura.noticias.ultimo_ok_utc}.`,
       calendario: () => { const e = C.calendario.proximos_14_dias[0]; return `Próximo dato: ${e.evento} el ${fdy(e.fecha)} (${e.hora_madrid || 'hora sin confirmar'} Madrid), importancia ${e.importancia}.`; },

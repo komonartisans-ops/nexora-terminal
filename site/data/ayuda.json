@@ -278,6 +278,14 @@
    "generico": "Cripto: bitcoin, ETF, stablecoins y funding."
   },
   {
+   "id": "consumo",
+   "titulo": "Consumo",
+   "pregunta": "¿Está consumiendo la gente de verdad o solo lo dice el mercado?",
+   "diez": "Mira la etiqueta de la tesis, las tres capas (mercado, datos reales, capacidad) y si el aviso de concentración dice que lo mueven solo dos empresas.",
+   "frecuencia": "Una vez al día (tras el cierre de EE. UU.); los datos reales cambian cuando se publican, semanas después de cada mes.",
+   "generico": "Consumo: ratios de consumo discrecional frente a básico, datos reales de consumo y renta, y una tesis con reglas fijas."
+  },
+  {
    "id": "marcador",
    "titulo": "Marcador de señales",
    "pregunta": "¿Cuántas veces ha acertado el sistema, comparado con el azar?",
@@ -1427,6 +1435,81 @@
    "Cómo se comprueba cada dato: aviso si falta 2 h después de publicarse y cotejo con BLS.",
    "Los avisos llegan por Telegram; BEA exige clave y queda SIN DATO.",
    "Es el seguro de calidad de los datos que alimentan todo lo demás."
+  ],
+  "tesis de consumo": [
+   "Una lectura con reglas fijas que compara lo que hace el mercado de consumo con lo que dicen los datos reales.",
+   "Mira la etiqueta (consumo fuerte, se enfría, débil o divergencia) y su intensidad; abajo están qué la confirmaría y qué la invalidaría.",
+   "Cuando mercado y datos discrepan, suele ser porque uno de los dos va por delante del otro."
+  ],
+  "resultado de hoy": [
+   "Una lectura con reglas fijas que compara lo que hace el mercado de consumo con lo que dicen los datos reales.",
+   "Mira la etiqueta (consumo fuerte, se enfría, débil o divergencia) y su intensidad; abajo están qué la confirmaría y qué la invalidaría.",
+   "Cuando mercado y datos discrepan, suele ser porque uno de los dos va por delante del otro."
+  ],
+  "las tres capas": [
+   "Mercado (ratio de peso igual), real (ventas y consumo reales) y capacidad (renta, ahorro, crédito y morosidad).",
+   "Cada capa da un estado; el resultado sale de comparar mercado y real, y la capacidad ajusta la intensidad.",
+   "Separa lo que el mercado descuenta de lo que realmente se gasta y de si la gente puede seguir gastando."
+  ],
+  "gráficos: ¿consumo amplio": [
+   "Dos ratios de consumo discrecional frente a básico: uno ponderado por tamaño (XLY/XLP) y otro con el mismo peso para cada empresa (RSPD/RSPS).",
+   "Si sube el primero y no el segundo, lo mueven pocas empresas grandes.",
+   "El peso igual muestra mejor el consumo amplio que el ponderado por capitalización."
+  ],
+  "consumo discrecional / básico (xly/xlp, ponderado": [
+   "El ratio entre el ETF de consumo discrecional (XLY) y el de consumo básico (XLP), ponderado por capitalización.",
+   "Sube cuando el mercado apuesta por el consumo cíclico; en XLY, Amazon y Tesla pesan más del 40 %.",
+   "Es el ratio que más se cita, pero lo puede mover un puñado de empresas."
+  ],
+  "consumo discrecional / básico en peso igual": [
+   "El mismo ratio, pero con el mismo peso para cada empresa (RSPD/RSPS).",
+   "Por encima de su media de 200 sesiones y subiendo = el mercado apuesta por el consumo amplio.",
+   "Es la capa de mercado de la tesis de consumo."
+  ],
+  "datos reales de consumo y renta": [
+   "Series mensuales de FRED sobre ventas, consumo, renta, ahorro, crédito y confianza, y la morosidad trimestral.",
+   "Mira el valor interanual y la tendencia a 3 meses, y cuándo se publicó cada dato.",
+   "Los datos reales salen semanas después del mes al que se refieren: son la prueba de lo que el mercado descuenta."
+  ],
+  "reglas de la tesis": [
+   "Las reglas exactas que convierten los datos en una etiqueta.",
+   "Están fijadas de antemano y se imprimen tal como las usa el motor.",
+   "Reglas fijas permiten comprobar la tesis después en el Marcador."
+  ],
+  "ventas minoristas reales": [
+   "Una serie de FRED sobre consumo, renta o crédito de los hogares.",
+   "Mira el valor, su tendencia a 3 meses y la fecha del dato.",
+   "Muestra si los hogares gastan, ganan, ahorran y pueden pagar."
+  ],
+  "consumo real": [
+   "Una serie de FRED sobre consumo, renta o crédito de los hogares.",
+   "Mira el valor, su tendencia a 3 meses y la fecha del dato.",
+   "Muestra si los hogares gastan, ganan, ahorran y pueden pagar."
+  ],
+  "renta personal disponible real": [
+   "Una serie de FRED sobre consumo, renta o crédito de los hogares.",
+   "Mira el valor, su tendencia a 3 meses y la fecha del dato.",
+   "Muestra si los hogares gastan, ganan, ahorran y pueden pagar."
+  ],
+  "tasa de ahorro": [
+   "Una serie de FRED sobre consumo, renta o crédito de los hogares.",
+   "Mira el valor, su tendencia a 3 meses y la fecha del dato.",
+   "Muestra si los hogares gastan, ganan, ahorran y pueden pagar."
+  ],
+  "crédito al consumo": [
+   "Una serie de FRED sobre consumo, renta o crédito de los hogares.",
+   "Mira el valor, su tendencia a 3 meses y la fecha del dato.",
+   "Muestra si los hogares gastan, ganan, ahorran y pueden pagar."
+  ],
+  "confianza del consumidor": [
+   "Una serie de FRED sobre consumo, renta o crédito de los hogares.",
+   "Mira el valor, su tendencia a 3 meses y la fecha del dato.",
+   "Muestra si los hogares gastan, ganan, ahorran y pueden pagar."
+  ],
+  "morosidad de tarjetas": [
+   "Una serie de FRED sobre consumo, renta o crédito de los hogares.",
+   "Mira el valor, su tendencia a 3 meses y la fecha del dato.",
+   "Muestra si los hogares gastan, ganan, ahorran y pueden pagar."
   ]
  },
  "glosario": [
@@ -1701,6 +1784,50 @@
    ],
    "def": "El pago entre quien apuesta al alza y a la baja en futuros de cripto. Muy alto = demasiado apalancamiento. Las stablecoins, monedas ligadas al dólar, son la «pólvora» lista para entrar.",
    "analogia": "El peaje que pagan los más impacientes."
+  },
+  {
+   "termino": "XLY",
+   "claves": [
+    "xly"
+   ],
+   "def": "El ETF del consumo discrecional del S&P 500 (coches, ocio, compras no esenciales). Amazon y Tesla pesan más del 40 %.",
+   "analogia": "El carrito de la compra de los caprichos."
+  },
+  {
+   "termino": "XLP",
+   "claves": [
+    "xlp"
+   ],
+   "def": "El ETF del consumo básico (alimentos, limpieza, farmacia): lo que se compra aunque haya crisis.",
+   "analogia": "El carrito de lo imprescindible."
+  },
+  {
+   "termino": "Peso igual",
+   "claves": [
+    "peso igual",
+    "rspd",
+    "rsps"
+   ],
+   "def": "Un índice donde todas las empresas pesan lo mismo, en vez de pesar más las más grandes (RSPD y RSPS).",
+   "analogia": "Una votación donde cada persona tiene un voto, en vez de votar más el que más acciones tiene."
+  },
+  {
+   "termino": "PCE real",
+   "claves": [
+    "pce real",
+    "consumo real"
+   ],
+   "def": "Lo que gastan los hogares una vez quitada la inflación.",
+   "analogia": "Cuánto llevas realmente en la bolsa de la compra, no cuánto pagas por ella."
+  },
+  {
+   "termino": "Tasa de ahorro",
+   "claves": [
+    "tasa de ahorro",
+    "psavert"
+   ],
+   "def": "El porcentaje de la renta que los hogares no gastan.",
+   "analogia": "La parte de la paga que se queda en la hucha."
   }
  ],
  "semaforo_nota": "En las tesis el color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo.",
