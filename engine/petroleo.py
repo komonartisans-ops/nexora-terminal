@@ -16,9 +16,12 @@ Fuentes (todas públicas y verificadas):
 TESIS DE PETRÓLEO (reglas FIJAS, impresas también en la página; no usan umbrales de otros módulos). Cuatro factores, cada uno vota +1 / 0 / −1:
   PRECIO:       WTI (CL=F) sobre su media de 200 sesiones = +1; bajo ella = −1.
   CURVA:        diferencial 1.er–2.º vencimiento en % del 2.º: ≥ +0,5 % (backwardation, ESCASEZ) = +1; ≤ −0,5 % (contango, SOBRA) = −1; entre medias = PLANA = 0.
+                Si al 1.er contrato le quedan menos de 5 días hábiles (lun-vie, festivos de CME no modelados) para vencer, se usa el diferencial 2.º–3.º con los mismos umbrales
+                (la página dice qué par se ha usado y data/historico_curva_wti.csv lo registra en la columna «par»).
   INVENTARIOS:  crudo, gasolina y destilados frente a su media de 5 años de la misma semana: por debajo en más de un 2 % vota +1; por encima en más de un 2 % vota −1; si no, 0.
                 La suma de los tres da el voto: ≥ +2 = +1; ≤ −2 = −1; si no, 0.
-  COT:          percentil a 3 años del neto del dinero gestionado en WTI: ≥ 66 = +1; ≤ 34 = −1; si no, 0.
+  COT:          percentil a 3 años del neto del dinero gestionado en WTI: ≥ 66 = +1; ≤ 34 = −1; si no, 0. (Ese criterio es propio de petróleo: NEXORA no tiene un voto de COT común a oro,
+                índices y divisas; la página enseña las diferencias y qué voto saldría con cada una.)
   RESULTADO: suma de los cuatro votos (necesita dato en PRECIO y en al menos otros dos factores; si no, SIN TESIS por falta de dato). ≥ +2 ALCISTA; ≤ −2 BAJISTA; si no, SIN TESIS.
   INTENSIDAD: FUERTE si la suma es ±3 o más y ningún factor vota en contra; si no, DÉBIL.
   Dirección para el marcador (WTI a T+20): ALCISTA = sube; BAJISTA = baja; SIN TESIS = no puntuable.
@@ -45,6 +48,8 @@ sys.path.insert(0, HERE)
 UTC = dt.timezone.utc
 
 UMBRAL_CURVA_PCT = 0.5
+DIAS_HABILES_MIN_M1 = 5            # con menos días hábiles hasta el vencimiento del 1.er contrato se usa el par 2.º–3.º
+UMBRAL_BRENT_PCT = 10.0            # diferencia (Yahoo BZ=F frente a FRED DCOILBRENTEU, MISMO día) a partir de la cual se abre una discrepancia en #/integridad
 UMBRAL_INV_PCT = 2.0
 COT_ALTO, COT_BAJO = 66, 34
 MIN_DATOS = 3                       # factores con dato necesarios (PRECIO incluido)
@@ -207,42 +212,93 @@ def estado_curva(pct):
     return "ESCASEZ" if pct >= UMBRAL_CURVA_PCT else "SOBRA" if pct <= -UMBRAL_CURVA_PCT else "PLANA"
 
 
+def dias_habiles(desde, hasta):
+    """Días hábiles (lun-vie) en (desde, hasta]: los que quedan hasta el vencimiento incluido el propio día. Los festivos de CME no se modelan."""
+    n, d = 0, desde
+    while d < hasta:
+        d += dt.timedelta(days=1)
+        if d.weekday() < 5:
+            n += 1
+    return n
+
+
+def _diferencial(series_ct, c1, c2):
+    """[(fecha, dif, dif%)] del par (c1, c2) en los días en que ambos cotizaron; [] si falta alguno."""
+    if c1[2] not in series_ct or c2[2] not in series_ct:
+        return []
+    a, b = dict(series_ct[c1[2]]), dict(series_ct[c2[2]])
+    return [(d, a[d] - b[d], (a[d] - b[d]) / b[d] * 100, a[d], b[d]) for d in sorted(set(a) & set(b)) if b[d]]
+
+
 def curva(series_ct, hoy):
-    """series_ct = {ticker: [(fecha, cierre)]} de los contratos VIVOS (Yahoo ya no sirve los vencidos). Estado de hoy: diferencial 1.er–2.º vencimiento y su % del 2.º.
-    «histórico del par»: el mismo par de contratos (el 1.º y 2.º de hoy) en los días en que ambos cotizaron; NO es el 1.º–2.º de cada día pasado (los contratos vencidos no están
-    disponibles: la EIA dejó de publicar sus series de futuros en abril de 2024). El histórico propio del 1.º–2.º de cada día se va acumulando en data/historico_curva_wti.csv."""
-    todos = contratos(hoy)
-    m1, m2 = primero_segundo(todos, hoy)
-    if not m1 or m1[2] not in series_ct or m2[2] not in series_ct:
+    """series_ct = {ticker: [(fecha, cierre)]} de los contratos VIVOS (Yahoo ya no sirve los vencidos). Estado de hoy: diferencial 1.er–2.º vencimiento y su % del 2.º; si al 1.er contrato
+    le quedan menos de DIAS_HABILES_MIN_M1 días hábiles se usa el 2.º–3.º (y se dice). «histórico del par»: el mismo par en los días en que ambos cotizaron; NO es el de cada día pasado
+    (los contratos vencidos no están disponibles: la EIA dejó de publicar sus series de futuros en abril de 2024). El histórico propio se acumula en data/historico_curva_wti.csv (columna par)."""
+    vivos = [c for c in contratos(hoy) if c[3] >= hoy]
+    if len(vivos) < 2:
         return None
-    a, b = dict(series_ct[m1[2]]), dict(series_ct[m2[2]])
-    comunes = sorted(set(a) & set(b))
-    if not comunes:
+    m1, m2, m3 = vivos[0], vivos[1], (vivos[2] if len(vivos) > 2 else None)
+    dh = dias_habiles(hoy, m1[3])
+    p12 = _diferencial(series_ct, m1, m2)
+    p23 = _diferencial(series_ct, m2, m3) if m3 else []
+    usar23 = dh < DIAS_HABILES_MIN_M1 and bool(p23)
+    c1, c2, par, par_txt = (m2, m3, p23, "2-3") if usar23 else (m1, m2, p12, "1-2")
+    if not par:
         return None
-    par = [(d, a[d] - b[d], (a[d] - b[d]) / b[d] * 100) for d in comunes if b[d]]
-    d, dif, pct = par[-1]
+    d, dif, pct, pa, pb = par[-1]
     pcts = [x[2] for x in par]
-    dias = (m1[3] - d).days
-    return {"fecha": d.isoformat(), "m1": m1[2], "m2": m2[2], "precio_m1": round(a[d], 2), "precio_m2": round(b[d], 2), "diferencial": round(dif, 2), "diferencial_pct": round(pct, 2),
-            "estado": estado_curva(pct), "vence_m1": m1[3].isoformat(), "dias_a_vencimiento_m1": dias,
-            "aviso": ("el primer contrato vence en 3 días o menos: el diferencial puede distorsionarse por el vencimiento" if dias <= 3 else None),
+    motivo = None
+    if usar23:
+        motivo = (f"al 1.er contrato ({nombre_contrato(m1[2])}) le quedan {dh} día{'s' if dh != 1 else ''} hábil{'es' if dh != 1 else ''} (< {DIAS_HABILES_MIN_M1}) para vencer el {m1[3].isoformat()}: "
+                  f"se usa el 2.º–3.º ({nombre_contrato(m2[2])} / {nombre_contrato(m3[2])}) para evitar la distorsión del vencimiento")
+    elif dh < DIAS_HABILES_MIN_M1:
+        motivo = (f"al 1.er contrato le quedan {dh} día(s) hábil(es) pero no hay datos del 3.º: se usa el 1.º–2.º, que puede estar distorsionado por el vencimiento")
+    info12 = None
+    if p12 and usar23:
+        e = p12[-1]
+        info12 = {"m1": m1[2], "m2": m2[2], "diferencial": round(e[1], 2), "diferencial_pct": round(e[2], 2), "estado": estado_curva(e[2]), "fecha": e[0].isoformat()}
+    return {"fecha": d.isoformat(), "par_usado": par_txt, "m1": c1[2], "m2": c2[2], "precio_m1": round(pa, 2), "precio_m2": round(pb, 2), "diferencial": round(dif, 2), "diferencial_pct": round(pct, 2),
+            "estado": estado_curva(pct), "vence_m1": c1[3].isoformat(), "dias_a_vencimiento_m1": (c1[3] - d).days, "primer_vencimiento": {"ticker": m1[2], "vence": m1[3].isoformat(), "dias_habiles": dh},
+            "motivo_par": motivo, "info_1_2": info12, "aviso": (motivo if not usar23 and motivo else None),
             "percentil_par": round(sum(1 for p in pcts if p <= pct) / len(pcts) * 100), "dias_par": len(pcts), "min_pct": round(min(pcts), 2), "max_pct": round(max(pcts), 2),
             "historico_par": [[x[0].isoformat(), round(x[2], 3)] for x in par[-260:]]}
 
 
+CAMPOS_CURVA = ["fecha", "m1", "m2", "precio_m1", "precio_m2", "diferencial", "diferencial_pct", "capturado_utc", "par"]
+
+
+def _asegurar_columna(ruta, columna):
+    """Añade `columna` al FINAL de la cabecera de un CSV existente; solo cambia la primera línea (las filas antiguas quedan sin ese valor)."""
+    if not os.path.exists(ruta) or os.path.getsize(ruta) == 0:
+        return False
+    datos = open(ruta, "rb").read()
+    i = datos.find(b"\n")
+    cab = datos[:i].rstrip(b"\r")
+    if i < 0 or columna.encode() in cab.split(b","):
+        return False
+    fin = b"\r\n" if datos[i - 1:i] == b"\r" else b"\n"
+    open(ruta, "wb").write(cab + b"," + columna.encode() + fin + datos[i + 1:])
+    return True
+
+
 def historico_propio(raiz, cur, ahora):
-    """Memoria propia (solo-añadir): una fila por día con el 1.er–2.º vencimiento de ese día. Devuelve {dias, desde, percentil} de hoy dentro de lo acumulado."""
+    """Memoria propia (solo-añadir): una fila por día y par con el diferencial usado ese día (columna «par»: 1-2 o 2-3; las filas anteriores a esa columna son 1-2).
+    Devuelve {dias, desde, percentil, par} de hoy dentro de lo acumulado PARA ESE PAR."""
     import integridad as I
+    ruta = P(raiz, "data", "historico_curva_wti.csv")
+    _asegurar_columna(ruta, "par")
     if cur:
-        I.anadir_csv(P(raiz, "data", "historico_curva_wti.csv"), [{"fecha": cur["fecha"], "m1": cur["m1"], "m2": cur["m2"], "precio_m1": cur["precio_m1"], "precio_m2": cur["precio_m2"],
-                                                                   "diferencial": cur["diferencial"], "diferencial_pct": cur["diferencial_pct"], "capturado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC")}],
-                     ["fecha", "m1", "m2", "precio_m1", "precio_m2", "diferencial", "diferencial_pct", "capturado_utc"], lambda r: r["fecha"])
-    filas = _csv(P(raiz, "data", "historico_curva_wti.csv"))
+        I.anadir_csv(ruta, [{"fecha": cur["fecha"], "m1": cur["m1"], "m2": cur["m2"], "precio_m1": cur["precio_m1"], "precio_m2": cur["precio_m2"], "diferencial": cur["diferencial"],
+                             "diferencial_pct": cur["diferencial_pct"], "capturado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "par": cur["par_usado"]}],
+                     CAMPOS_CURVA, lambda r: (r["fecha"], r.get("par") or "1-2"))
+    par = (cur or {}).get("par_usado") or "1-2"
+    filas = [r for r in _csv(ruta) if (r.get("par") or "1-2") == par]
+    todas = _csv(ruta)
     if not filas:
-        return {"dias": 0, "desde": None, "percentil": None, "serie": []}
+        return {"dias": 0, "desde": None, "percentil": None, "serie": [], "par": par, "pares_registrados": sorted({(r.get("par") or "1-2") for r in todas})}
     v = [float(r["diferencial_pct"]) for r in filas]
-    return {"dias": len(v), "desde": filas[0]["fecha"], "percentil": (round(sum(1 for x in v if x <= v[-1]) / len(v) * 100) if len(v) >= 30 else None),
-            "serie": [[r["fecha"], float(r["diferencial_pct"])] for r in filas[-260:]]}
+    return {"dias": len(v), "desde": filas[0]["fecha"], "percentil": (round(sum(1 for x in v if x <= v[-1]) / len(v) * 100) if len(v) >= 30 else None), "par": par,
+            "pares_registrados": sorted({(r.get("par") or "1-2") for r in todas}), "serie": [[r["fecha"], float(r["diferencial_pct"])] for r in filas[-260:]]}
 
 
 # ---------------------------------------------------------------- inventarios EIA
@@ -498,6 +554,34 @@ def relaciones(wti, t5yie, dxy, xle):
 
 
 # ---------------------------------------------------------------- COT del WTI (motor de cot.py)
+def etiqueta_cot(neto, pct):
+    """Lado de la posición (por el SIGNO del neto) y nivel frente a su historia (percentil a 3 años, con los mismos cortes del voto: ≤ 34 bajo, ≥ 66 alto). Un neto positivo nunca se llama «corto»:
+    «largo bajo, percentil 14» = los fondos están largos, pero mucho menos que de costumbre."""
+    lado = "largo" if neto > 0 else "corto" if neto < 0 else "plano"
+    nivel = "bajo" if pct <= COT_BAJO else "alto" if pct >= COT_ALTO else "medio"
+    return f"{lado} {nivel}, percentil {pct}" if lado != "plano" else f"plano, percentil {pct}"
+
+
+def criterios_cot(g, serie):
+    """Cómo trata NEXORA el COT en cada módulo y qué voto saldría HOY con cada criterio (solo informativo: el voto de la tesis no cambia). No existe un criterio de voto común."""
+    p = g["percentil_3a"]
+    valores = [x[1] for x in serie] if serie else []
+    p52 = round(sum(1 for v in valores[-52:] if v <= g["neto"]) / len(valores[-52:]) * 100) if len(valores) >= 20 else None
+    cs = g["cambio_semana"]
+    return [
+        {"clave": "petroleo", "criterio": "Petróleo (este módulo, Fase 15)", "donde": "petroleo.py", "regla": f"percentil a 3 años del neto del dinero gestionado: ≥ {COT_ALTO} = +1; ≤ {COT_BAJO} = −1; si no, 0",
+         "vota": True, "voto_hoy": 1 if p >= COT_ALTO else -1 if p <= COT_BAJO else 0, "dato": f"percentil 3 años {p}"},
+        {"clave": "cot_py", "criterio": "Página Posicionamiento (COT)", "donde": "cot.py · _estado", "regla": "zonas del percentil a 3 años: ≥ 90 extremo largo, ≥ 70 largo elevado, ≤ 30 corto elevado, ≤ 10 extremo corto. Solo etiqueta, SIN voto; "
+         "y se llama «largo/corto» por el percentil, no por el signo del neto (por eso un neto positivo con percentil bajo aparece como «CORTO ELEVADO»)", "vota": False,
+         "voto_hoy": 1 if p >= 70 else -1 if p <= 30 else 0, "dato": f"percentil 3 años {p} → «{g.get('estado')}»"},
+        {"clave": "oro", "criterio": "Oro (monitor)", "donde": "oro_xau.py · COT GOLD", "regla": "dirección = signo del cambio semanal del neto de managed money (↑/↓); el percentil de 52 semanas se muestra pero no entra; no puntúa",
+         "vota": False, "voto_hoy": 1 if cs > 0 else -1 if cs < 0 else 0, "dato": f"cambio semanal {cs:+,}"},
+        {"clave": "indices", "criterio": "Índices (monitor)", "donde": "indices.py · COT", "regla": "percentil de 52 semanas de los fondos apalancados: ≤ 10 «muy cortos», ≥ 90 «muy largos»; fuera de esos extremos «sin extremos»; no puntúa",
+         "vota": False, "voto_hoy": 1 if (p52 is not None and p52 >= 90) else -1 if (p52 is not None and p52 <= 10) else (0 if p52 is not None else None), "dato": f"percentil 52 semanas {p52}" if p52 is not None else "SIN DATO"},
+        {"clave": "contexto", "criterio": "Apetito/aversión al riesgo", "donde": "contexto.py · _senal_cot", "regla": "media del percentil 3 años de AUD, NZD, CAD, SPX, NDX y RUT menos la de JPY y CHF: ≥ +15 apetito, ≤ −15 aversión; no aplica al petróleo",
+         "vota": False, "voto_hoy": None, "dato": "no aplica"},
+    ]
+
 def cot_wti(J):
     if not J:
         return {"estado": "SIN DATO", "motivo": "cot.json no disponible"}
@@ -506,9 +590,10 @@ def cot_wti(J):
     if not g:
         return {"estado": "SIN DATO", "motivo": "el contrato WTI no está en la última lectura de la CFTC"}
     voto = 1 if g["percentil_3a"] >= COT_ALTO else -1 if g["percentil_3a"] <= COT_BAJO else 0
+    serie = g.get("serie", [])[-104:]
     return {"estado": "OK", "fecha": g["fecha"], "informe": g.get("informe") or "No comerciales (Legacy)", "neto": g["neto"], "largos": g["largos"], "cortos": g["cortos"], "cambio_semana": g["cambio_semana"],
-            "percentil_3a": g["percentil_3a"], "min_3a": g["min_3a"], "max_3a": g["max_3a"], "zona": g.get("estado"), "voto": voto,
-            "serie": g.get("serie", [])[-104:], "fuente": "CFTC · Disaggregated, WTI-PHYSICAL NYMEX (código 067651)"}
+            "percentil_3a": g["percentil_3a"], "min_3a": g["min_3a"], "max_3a": g["max_3a"], "etiqueta": etiqueta_cot(g["neto"], g["percentil_3a"]), "zona_cot_py": g.get("estado"), "voto": voto,
+            "criterios": criterios_cot(g, serie), "serie": serie, "fuente": "CFTC · Disaggregated, WTI-PHYSICAL NYMEX (código 067651)"}
 
 
 # ---------------------------------------------------------------- tesis
@@ -543,8 +628,9 @@ def _n(x, d=1):
 def _condiciones(res, precio, curva_, inv, cot, v):
     sp = f"su media de 200 sesiones ({_n(precio['sma200'], 2)} $)" if precio else "su media de 200 sesiones"
     cr = inv.get("crudo") or {}
+    par_t = "2.º–3.º" if (curva_ or {}).get("par_usado") == "2-3" else "1.º–2.º"
     if res == "ALCISTA":
-        c = [f"el WTI se mantiene por encima de {sp}", "el diferencial 1.º–2.º sigue en backwardation (≥ +0,5 %)", "el próximo informe de la EIA muestra otra caída de inventarios de crudo"]
+        c = [f"el WTI se mantiene por encima de {sp}", f"el diferencial {par_t} sigue en backwardation (≥ +0,5 %)", "el próximo informe de la EIA muestra otra caída de inventarios de crudo"]
         i = [f"un cierre del WTI por debajo de {sp}", "la curva pasa a contango (≤ −0,5 %)", "los inventarios de crudo suben por encima de su media de 5 años + 2 %" + (f" (hoy {_n(cr['vs_media_5a_pct'], 1)} %)" if cr.get("vs_media_5a_pct") is not None else ""),
              f"el neto del dinero gestionado cae al percentil {COT_BAJO} o menos"]
     elif res == "BAJISTA":
@@ -559,11 +645,61 @@ def _condiciones(res, precio, curva_, inv, cot, v):
     return c, i
 
 
+def tesis_por_criterio(pw, cur, inv, cot, T):
+    """Qué tesis saldría con el voto de COT de cada criterio de NEXORA (solo informativo: la tesis usa el de petróleo). Rellena cot['criterios'][i]['tesis_con_este_criterio']."""
+    for c in cot.get("criterios") or []:
+        if c.get("voto_hoy") is None:
+            continue
+        T2 = tesis(pw, cur, inv, {"estado": "OK", "voto": c["voto_hoy"]})
+        c["tesis_con_este_criterio"] = {"resultado": T2["resultado"], "intensidad": T2["intensidad"], "puntos": T2["puntos"], "cambia": (T2["resultado"], T2["intensidad"]) != (T["resultado"], T["intensidad"])}
+
+
+def comparar_brent(yahoo, fred_, umbral=UMBRAL_BRENT_PCT):
+    """Yahoo BZ=F (futuro) frente a FRED DCOILBRENTEU (Brent fechado) del MISMO día: FRED va retrasado, así que se compara en la última fecha que tienen en común y se muestra la fecha
+    de la última lectura de cada uno. Discrepancia si la diferencia de ese día supera el umbral (10 %)."""
+    if not yahoo or not fred_:
+        return None
+    dy, df = dict(yahoo), dict(fred_)
+    comunes = sorted(set(dy) & set(df))
+    out = {"yahoo": {"valor": round(yahoo[-1][1], 2), "fecha": yahoo[-1][0].isoformat()}, "fred": {"valor": round(fred_[-1][1], 2), "fecha": fred_[-1][0].isoformat()},
+           "retraso_fred_dias": (yahoo[-1][0] - fred_[-1][0]).days, "umbral_pct": umbral, "mismo_dia": None, "discrepancia": False}
+    if comunes:
+        d = comunes[-1]
+        dif = round((dy[d] / df[d] - 1) * 100, 6)                  # redondeo: el umbral exacto (10 %) no depende del error de coma flotante
+        out["mismo_dia"] = {"fecha": d.isoformat(), "yahoo": round(dy[d], 2), "fred": round(df[d], 2), "dif_pct": round(dif, 2), "dif_usd": round(dy[d] - df[d], 2)}
+        out["discrepancia"] = abs(dif) > umbral
+    return out
+
+
+def registrar_discrepancia_brent(raiz, comp, ahora):
+    """Abre (o cierra) una discrepancia BRENT en data/discrepancias.csv (la que muestra #/integridad). Solo-añadir: una comparación nueva cierra la anterior con una fila CERRADA."""
+    import integridad as I
+    if not comp or not comp.get("mismo_dia"):
+        return []
+    m = comp["mismo_dia"]
+    stamp = ahora.strftime("%Y-%m-%d %H:%M UTC")
+    filas = []
+    previo = {k: r for k, r in I.discrepancias(raiz).items() if k[0] == "BRENT"}
+    base = {"detectada_utc": stamp, "serie": "BRENT", "tipo": "VALOR", "fred_valor": m["fred"], "primaria": "Yahoo BZ=F (futuro)", "primaria_valor": m["yahoo"], "dif_pct": f"{abs(m['dif_pct']):.4f}"}
+    for (serie, per, tipo), r in previo.items():
+        if r["estado"] == "ABIERTA" and per != m["fecha"]:
+            filas.append({**base, "id": f"BRENT|{per}|VALOR|{stamp}|CERRADA", "periodo": per, "estado": "CERRADA", "nota": f"sustituida por la comparación del {m['fecha']}"})
+    ya = previo.get(("BRENT", m["fecha"], "VALOR"))
+    if comp["discrepancia"] and (not ya or ya["estado"] != "ABIERTA"):
+        filas.append({**base, "id": f"BRENT|{m['fecha']}|VALOR|{stamp}|ABIERTA", "periodo": m["fecha"], "estado": "ABIERTA",
+                      "nota": (f"el mismo día ({m['fecha']}) el futuro BZ=F ({m['yahoo']}) y el Brent fechado de FRED ({m['fred']}) difieren {m['dif_pct']:+.1f} % (> {comp['umbral_pct']:g} %): puede ser físico frente a futuro "
+                               "(escasez física) o un dato mal leído. Revisar; no se corrige ninguno")})
+    elif not comp["discrepancia"] and ya and ya["estado"] == "ABIERTA":
+        filas.append({**base, "id": f"BRENT|{m['fecha']}|VALOR|{stamp}|CERRADA", "periodo": m["fecha"], "estado": "CERRADA", "nota": "ya coinciden (diferencia por debajo del umbral)"})
+    return I.anadir_csv(P(raiz, "data", "discrepancias.csv"), filas, I.CAMPOS_DISC, lambda r: r["id"])
+
+
 def causa_efecto(precio, curva_, inv, T):
     """Líneas deterministas «causa → efecto» para la tarjeta de #/resumen. Solo cifras de hoy; sin consejo."""
     out = []
     if curva_:
-        out.append(("Curva " + curva_["estado"].lower(), f"el 1.er vencimiento ({nombre_contrato(curva_['m1'])}) cotiza {_n(curva_['diferencial'], 2)} $ ({_n(curva_['diferencial_pct'], 2)} %) frente al 2.º ({nombre_contrato(curva_['m2'])}): " + (
+        o1, o2 = ("2.º", "3.º") if curva_.get("par_usado") == "2-3" else ("1.er", "2.º")
+        out.append(("Curva " + curva_["estado"].lower(), f"el {o1} vencimiento ({nombre_contrato(curva_['m1'])}) cotiza {_n(curva_['diferencial'], 2)} $ ({_n(curva_['diferencial_pct'], 2)} %) frente al {o2} ({nombre_contrato(curva_['m2'])}): " + (
             "el mercado paga por tener petróleo ya (escasez a corto plazo)" if curva_["estado"] == "ESCASEZ" else "el mercado paga por tener petróleo más tarde (sobra a corto plazo)" if curva_["estado"] == "SOBRA" else "sin prima clara entre vencimientos")))
     cr = inv.get("crudo")
     if cr and cr.get("vs_media_5a_pct") is not None:
@@ -663,11 +799,18 @@ def construir(fuentes=None, ahora=None, raiz=None):
     gas = _intentar(err, "fred_GASREGW", lambda: F["fred"]("GASREGW", (hoy - dt.timedelta(days=900)).isoformat()), [])
     rel = relaciones(wti, t5, dxy, xle) if wti else {"wti_cambio_3m_pct": None, "filas": []}
     T = tesis(pw, cur, inv, cot)
+    tesis_por_criterio(pw, cur, inv, cot, T)
+    brent_cmp = comparar_brent(brent if brent is not f_brent else None, f_brent)
+    if brent_cmp:
+        try:
+            registrar_discrepancia_brent(raiz, brent_cmp, ahora)
+        except Exception as e:  # noqa: BLE001
+            err["brent_discrepancia"] = f"{type(e).__name__}: {str(e)[:80]}"
     exc = excepciones_eia(raiz)
     sem, fecha_pub, hm_pub = proxima_publicacion(exc, hoy) or (None, None, None)
     ult_eia = (inv.get("crudo") or {}).get("semana")
     return {"version": 1, "ok": True, "generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "fecha_datos": pw["fecha"] if pw else None,
-            "precios": {"wti": pw and {**pw, "fuente": fuente_wti, "contrato_cl_f": tk_clf, "aviso_empalme": aviso_roll}, "wti_spot_serie": [[d.isoformat(), v] for d, v in f_wti[-560:]], "brent": pb and {**pb, "fuente": fuente_brent}, "segunda_fuente": seg, "segunda_fuente_nota": seg_nota,
+            "precios": {"wti": pw and {**pw, "fuente": fuente_wti, "contrato_cl_f": tk_clf, "aviso_empalme": aviso_roll}, "wti_spot_serie": [[d.isoformat(), v] for d, v in f_wti[-560:]], "brent": pb and {**pb, "fuente": fuente_brent}, "segunda_fuente": seg, "segunda_fuente_nota": seg_nota, "brent_comparacion": brent_cmp,
                         "spread_brent_wti": (round(pb["valor"] - pw["valor"], 2) if pw and pb else None)},
             "graficos": {"wti": grafico(wti) if wti and len(wti) >= 200 else None, "brent": grafico(brent) if brent and len(brent) >= 200 else None},
             "curva": cur, "inventarios": {**inv, "origen": origen_eia, "con_clave_api": bool(clave_api), "ultima_semana": ult_eia,
