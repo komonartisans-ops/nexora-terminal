@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-19 15:17 Madrid",
+ "generado": "2026-10-19 16:09 Madrid",
  "desde": "2026-09-09",
  "hasta": "2026-11-09",
  "eventos": [
@@ -839,6 +839,20 @@
    "fecha": "2026-10-21",
    "fecha_madrid": "2026-10-21",
    "dia": "mié",
+   "hora_ny": "10:30",
+   "hora_madrid": "16:30",
+   "evento": "Inventarios de petróleo EIA (semana al 16-10)",
+   "importancia": "MEDIA",
+   "afecta": "petróleo · índices",
+   "que_mirar": "Cambio semanal de crudo, gasolina y destilados frente a la media de 5 años.",
+   "fuente": "EIA · Weekly Petroleum Status Report (calendario oficial)",
+   "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-21",
+   "fecha_madrid": "2026-10-21",
+   "dia": "mié",
    "hora_ny": "",
    "hora_madrid": "",
    "evento": "Resultados Meta Platforms (META)",
@@ -983,6 +997,20 @@
    "que_mirar": "Liquidez a medio plazo.",
    "fuente": "FRED Release Calendar · H.6 Money Stock Measures",
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=21&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-10-28",
+   "fecha_madrid": "2026-10-28",
+   "dia": "mié",
+   "hora_ny": "10:30",
+   "hora_madrid": "15:30",
+   "evento": "Inventarios de petróleo EIA (semana al 23-10)",
+   "importancia": "MEDIA",
+   "afecta": "petróleo · índices",
+   "que_mirar": "Cambio semanal de crudo, gasolina y destilados frente a la media de 5 años.",
+   "fuente": "EIA · Weekly Petroleum Status Report (calendario oficial)",
+   "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
    "nota": ""
   },
   {
@@ -1268,6 +1296,20 @@
    "nota": ""
   },
   {
+   "fecha": "2026-11-04",
+   "fecha_madrid": "2026-11-04",
+   "dia": "mié",
+   "hora_ny": "10:30",
+   "hora_madrid": "16:30",
+   "evento": "Inventarios de petróleo EIA (semana al 30-10)",
+   "importancia": "MEDIA",
+   "afecta": "petróleo · índices",
+   "que_mirar": "Cambio semanal de crudo, gasolina y destilados frente a la media de 5 años.",
+   "fuente": "EIA · Weekly Petroleum Status Report (calendario oficial)",
+   "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
+   "nota": ""
+  },
+  {
    "fecha": "2026-11-05",
    "fecha_madrid": "2026-11-05",
    "dia": "jue",
@@ -1377,7 +1419,8 @@
   }
  },
  "errores": {
-  "subastas": "KeyError: 'auctionDate'"
+  "subastas": "KeyError: 'auctionDate'",
+  "opep": "calendario oficial de la OPEP no accesible: opec.org/…/calendar.htm responde 403 a las consultas automáticas (comprobado en local y desde GitHub Actions el 2026-10-19). La portada solo trae noticias con la fecha de publicación, no las fechas de las próximas reuniones: no se infiere ninguna. Sin reuniones OPEP+ en la agenda (SIN DATO)."
  },
  "nota": "Horas oficiales convertidas a Nueva York y Madrid con cambio de horario incluido. Las fechas de FRED las publican los organismos y pueden cambiar (p. ej., cierre del Gobierno).",
  "ultimos_publicados": {
@@ -1462,6 +1505,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-19 13:14 UTC",
- "duracion_s": 40.2
+ "generado_utc": "2026-10-19 14:07 UTC",
+ "duracion_s": 42.1
 }

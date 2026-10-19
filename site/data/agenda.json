@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-19 13:17 UTC",
+ "generado_utc": "2026-10-19 14:09 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -58,6 +58,14 @@
    "fuente": "FRED Release Calendar (rid 50)"
   },
   {
+   "tipo": "OPEP",
+   "evento": "Reuniones de la OPEP+ (ALTA si hay calendario oficial accesible; hoy SIN DATO: opec.org bloquea el acceso automático)",
+   "organismo": "OPEP",
+   "importancia": "ALTA",
+   "hora_ny_tipica": "",
+   "fuente": "opec.org"
+  },
+  {
    "tipo": "PCE",
    "evento": "Renta y gasto personal (PCE)",
    "organismo": "BEA",
@@ -112,6 +120,14 @@
    "importancia": "MEDIA",
    "hora_ny_tipica": "",
    "fuente": "federalreserve.gov/json/calendar.json"
+  },
+  {
+   "tipo": "EIA",
+   "evento": "Inventarios de petróleo (EIA, Weekly Petroleum Status Report)",
+   "organismo": "EIA",
+   "importancia": "MEDIA",
+   "hora_ny_tipica": "10:30",
+   "fuente": "eia.gov (calendario oficial; festivos en la tabla de excepciones)"
   },
   {
    "tipo": "FILADELFIA",
@@ -253,6 +269,16 @@
     "fecha": "2026-10-21",
     "fecha_et": "2026-10-21",
     "dia": "mié",
+    "hora_ny": "10:30",
+    "hora_madrid": "16:30",
+    "evento": "Inventarios de petróleo EIA (semana al 16-10)",
+    "importancia": "MEDIA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-21",
+    "fecha_et": "2026-10-21",
+    "dia": "mié",
     "hora_ny": null,
     "hora_madrid": null,
     "evento": "Resultados Meta Platforms (META)",
@@ -304,7 +330,7 @@
   "hasta": "2026-10-26",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-19 13:17 UTC"
+  "generado_utc": "2026-10-19 14:09 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }
