@@ -44,7 +44,13 @@ SERIES = {
     "PERMIT": ("Permisos de construcción", "miles (anualizado)", "Census"),
     "UMCSENT": ("Confianza del consumidor (U. Michigan)", "índice", "U. Michigan"),
     "FEDFUNDS": ("Tipo efectivo de fondos federales (mensual)", "%", "Fed"),
+    "RRSFS": ("Ventas minoristas reales", "M US$ 2017", "Census/BEA"),
+    "DSPIC96": ("Renta personal disponible real", "miles de M US$ 2017", "BEA"),
+    "PSAVERT": ("Tasa de ahorro personal", "%", "BEA"),
+    "TOTALSL": ("Crédito al consumo (total)", "M US$", "Fed"),
+    "DRCCLACBS": ("Morosidad de tarjetas de crédito (trimestral)", "%", "Fed"),
 }
+TRIMESTRALES = {"GDPC1", "DRCCLACBS"}      # series con periodo trimestral
 CAB_PUB = ["fecha_captura", "serie", "nombre", "periodo", "valor", "tipo", "valor_previo_mismo_periodo", "unidad", "organismo", "fuente", "registrado_utc"]
 
 # series que la web muestra: (nombre, serie, transformación, decimales, unidad, descripción, palabras del evento en el calendario, n periodos)
@@ -61,6 +67,14 @@ VISTA = [
     ("PCE subyacente", "PCEPILFE", "yoy", 2, "%", "Deflactor PCE subyacente, % interanual", ["pce", "gasto personal"], 6),
     ("Producción industrial", "INDPRO", "mom", 2, "%", "Producción industrial, % mensual", ["producción industrial"], 6),
     ("Ofertas de empleo (JOLTS)", "JTSJOL", "nivel", 0, "mil", "Ofertas de empleo, miles", ["jolts"], 6),
+    # consumo (#/consumo). UMCSENT, TOTALSL y DRCCLACBS sin evento propio en el calendario → el vigilante no las vigila (FRED las actualiza con retraso propio)
+    ("Ventas minoristas reales", "RRSFS", "yoy", 2, "%", "Ventas minoristas reales, % interanual", ["ventas minoristas"], 6),
+    ("Consumo real (PCE real)", "PCEC96", "yoy", 2, "%", "Consumo real, % interanual", ["pce", "gasto personal"], 6),
+    ("Renta disponible real", "DSPIC96", "yoy", 2, "%", "Renta personal disponible real, % interanual", ["pce", "gasto personal"], 6),
+    ("Tasa de ahorro personal", "PSAVERT", "nivel", 1, "%", "Tasa de ahorro personal, %", ["pce", "gasto personal"], 6),
+    ("Crédito al consumo", "TOTALSL", "yoy", 2, "%", "Crédito al consumo total, % interanual", [], 6),
+    ("Confianza U. Michigan", "UMCSENT", "nivel", 1, "índice", "Confianza del consumidor, índice", [], 6),
+    ("Morosidad de tarjetas (trimestral)", "DRCCLACBS", "nivel", 2, "%", "Morosidad de tarjetas de crédito, % (trimestral)", [], 4),
 ]
 
 
@@ -135,7 +149,7 @@ def actualizar(calendario=None):
         # fecha de publicación del ÚLTIMO periodo (solo si el evento ya ha salido y corresponde a ese periodo; si no, None)
         pub = None
         if per:
-            tipo = "semana" if sid == "ICSA" else "trimestre" if modo == "qoq_anual" else "mes"
+            tipo = "semana" if sid == "ICSA" else "trimestre" if (modo == "qoq_anual" or sid in TRIMESTRALES) else "mes"
             pub = MS.fecha_publicacion((calendario or {}).get("eventos", []), claves, per[-1]["periodo"], tipo, 50 if sid == "JTSJOL" else None)
         out[nombre] = {"serie": sid, "modo": modo, "unidad": unidad, "descripcion": desc, "decimales": dec, "fuente": f"FRED {sid}",
                        "url": f"https://fred.stlouisfed.org/series/{sid}", "periodos": per, "fecha_publicacion_calendario": pub}

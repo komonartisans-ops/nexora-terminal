@@ -23,6 +23,8 @@ Señales y su dirección esperada (reglas FIJAS de este módulo, impresas tambi�
              retornos diarios de las últimas 250 sesiones × √h) O (b) el VIX sube ≥ 20 % (máximo de los cierres del horizonte frente al de referencia).
              Si no ocurre ninguno de los dos, FALLO. Se guardan los dos componentes. Tasa base = frecuencia de ese mismo evento en cualquier ventana de h sesiones
              de las 250 anteriores a la señal (con σ_h y umbral del VIX fijos en la referencia).
+  consumo    cambia la tesis de consumo (#/consumo). Activo RSPD/RSPS (ratio de peso igual): CONSUMO FUERTE y DIVERGENCIA MERCADO DEFENSIVO = sube; SE ENFRÍA, CONSUMO DÉBIL y
+             DIVERGENCIA MERCADO ADELANTADO = baja; SIN TESIS = no puntuable. Se mide a T+1, T+5 y T+20 igual que el resto (el horizonte que importa es T+20).
   reaccion   clasificación del monitor de reacción a eventos (T+5 y CIERRE): SOLO REGISTRO, no se puntúa (reglas v3 congeladas).
 Medición (criterio v2): referencia = último cierre COMPLETO anterior a la señal (si sale desde las 21:30 UTC y el activo no es cripto, cuenta el cierre de ese día);
 T+n = cierre n sesiones después. Retorno en la dirección esperada. NEUTRAL si |retorno| < 0,25 × σ_h del activo (σ de los cambios diarios de las 250 sesiones
@@ -62,10 +64,11 @@ MIN_N = 20
 VENTANA_BASE = 250
 MIN_VENTANAS_BASE = 60
 CRIPTO = {"btc"}
-TIPOS_PUNTUABLES = ("tesis", "fed", "skew", "regimen", "liquidez")
+TIPOS_PUNTUABLES = ("tesis", "fed", "skew", "regimen", "liquidez", "consumo")
 ACT = {"Oro": ("ORO", "oro"), "Nasdaq 100": ("NQ", "ndx"), "S&P 500": ("ES", "spx"), "Bitcoin": ("BTC", "btc")}
-SERIE_DE = {"ORO": "oro", "NQ": "ndx", "ES": "spx", "BTC": "btc", "US2Y": "us2y"}
+SERIE_DE = {"ORO": "oro", "NQ": "ndx", "ES": "spx", "BTC": "btc", "US2Y": "us2y", "RSPD/RSPS": "rsd"}
 LIQ_ALCISTA = ("GIRO DE LIQUIDEZ EN CURSO", "SEÑALES INICIALES DE GIRO")
+DIR_CONSUMO = {"CONSUMO FUERTE": "ALCISTA", "DIVERGENCIA MERCADO DEFENSIVO": "ALCISTA", "SE ENFRÍA": "BAJISTA", "CONSUMO DÉBIL": "BAJISTA", "DIVERGENCIA MERCADO ADELANTADO": "BAJISTA"}
 PASOS = {"bajada": -1, "mantener": 0, "subida": 1}
 
 
@@ -135,6 +138,9 @@ def senal_de_cambio(serie, ts, prev, valor, extra, run_id, origen, nota=""):
         riesgo = (extra or {}).get("riesgo")
         d = "ALCISTA" if riesgo == "FAVORABLE" else "BAJISTA" if riesgo == "DESFAVORABLE" else "NINGUNA"
         return senal("regimen", "NQ", d, ts, f"{prev} → {valor} (riesgo {riesgo or 'SIN DATO'})", "cambio del cuadrante de régimen", "regimen.py (regimen.json)", run_id, origen, nota)
+    if serie == "consumo":
+        d = DIR_CONSUMO.get(valor, "NINGUNA")
+        return senal("consumo", "RSPD/RSPS", d, ts, f"{prev} → {valor}", "cambio de la tesis de consumo", "consumo.py (consumo.json)", run_id, origen, nota)
     if serie == "liquidez":
         d = "ALCISTA" if valor in LIQ_ALCISTA else "NINGUNA"
         return senal("liquidez", "BTC", d, ts, f"{prev} → {valor}", "cambio de la etiqueta de liquidez", "liquidez_cripto.py (liquidez.json)", run_id, origen, nota)
@@ -222,6 +228,9 @@ def obs_de_contexto(ctx, ts):
     L = ctx.get("liquidez") or {}
     if L.get("lectura"):
         obs.append((ts, "liquidez", L["lectura"], None, ""))
+    K = (ctx.get("consumo") or {}).get("tesis") or {}
+    if K.get("resultado"):
+        obs.append((ts, "consumo", K["resultado"], None, ""))
     return obs
 
 
@@ -238,6 +247,9 @@ def obs_vivas(raiz, ts):
     L = ((leer_json(P(sd, "liquidez.json")) or {}).get("evaluacion")) or {}
     if L.get("lectura"):
         obs.append((ts, "liquidez", L["lectura"], None, ""))
+    K = (leer_json(P(sd, "consumo.json")) or {}).get("tesis") or {}
+    if K.get("resultado"):
+        obs.append((ts, "consumo", K["resultado"], None, ""))
     return obs
 
 
@@ -328,6 +340,8 @@ def cargar_series(raiz):
     for k in ("oro", "ndx", "spx", "btc", "vix"):
         s = (pr.get(k) or {}).get("serie") or []
         out[k] = [(d, float(v)) for d, v in s if v is not None]
+    rsd = ((((leer_json(P(sd, "consumo.json")) or {}).get("graficos") or {}).get("igual") or {}).get("ratio")) or []     # ratio RSPD/RSPS (peso igual) de #/consumo
+    out["rsd"] = [(d, float(v)) for d, v in rsd if v is not None]
     t = ((leer_json(P(sd, "tipos.json")) or {}).get("t2y") or {}).get("serie") or []
     out["us2y"] = [(d, float(v)) for d, v in t if v is not None]
     return out

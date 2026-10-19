@@ -88,7 +88,7 @@ def series_vigiladas():
     import datos_macro as DM
     out = []
     for nombre, sid, modo, dec, unidad, desc, claves, n in DM.VISTA:
-        tipo = "semana" if sid == "ICSA" else "trimestre" if modo == "qoq_anual" else "mes"
+        tipo = "semana" if sid == "ICSA" else "trimestre" if (modo == "qoq_anual" or sid in DM.TRIMESTRALES) else "mes"
         out.append({"nombre": nombre, "sid": sid, "modo": modo, "claves": claves, "tipo": tipo, "lag_m": 2 if sid == "JTSJOL" else 1, "unidad": unidad})
     return out
 
@@ -502,7 +502,7 @@ BLOQUES = [
     ("noticias", "Noticias de bancos centrales", "noticias", "horario"), ("skew", "Riesgo de cola (SKEW)", "skew", "horario"), ("alertas", "Alertas", "resumen", "horario"),
     ("reevaluar", "Reevaluación de tesis", "tesis", "horario"), ("marcador", "Marcador de señales", "marcador", "horario"), ("integridad", "Integridad de datos", "integridad", "horario"),
     ("reacciones", "Reacción a eventos", "eventos", "horario"),
-    ("ciclo", "Ciclo y crédito", "ciclo", "diario"), ("liquidez", "Liquidez", "liquidez", "diario"), ("monitores", "Monitores de oro, índices y cripto", "oro", "diario"),
+    ("consumo", "Consumo (¿está consumiendo la gente?)", "consumo", "diario"), ("ciclo", "Ciclo y crédito", "ciclo", "diario"), ("liquidez", "Liquidez", "liquidez", "diario"), ("monitores", "Monitores de oro, índices y cripto", "oro", "diario"),
     ("series", "Series de los gráficos", "oro", "diario"), ("divisas", "Sesgo de divisas", "divisas", "diario"), ("cot", "Posicionamiento (COT)", "posicionamiento", "diario"),
     ("semis", "Semis vs software", "semis", "diario"), ("bancos", "Bancos centrales del mundo", "mapa", "diario"), ("tono", "Tono de bancos centrales", "tono", "diario"),
     ("gamma", "Gamma de índices", "gamma", "diario"),
@@ -551,7 +551,7 @@ def _fecha_dato(raiz, etapa):
              "semis": g("semis_vs_software", "fecha"), "bancos": g("bancos_centrales_mundo", "fecha"), "tono": g("tono_bancos_centrales", "fecha"), "cot": g("posicionamiento_cot", "fecha_informe"),
              "divisas": g("sesgo_divisas", "riesgo", "fecha"), "resumen": g("tesis", "actualizado_utc"), "alertas": (g("alertas_recientes") or [{}])[-1].get("fecha_utc") if g("alertas_recientes") else None,
              "reacciones": g("reaccion_a_eventos", "ultimo_evento", "fecha"), "monitores": g("mercado", "actualizado_utc"), "series": g("mercado", "actualizado_utc"),
-             "marcador": g("marcador", "actualizado_utc"), "tesis": g("tesis", "actualizado_utc"), "reevaluar": g("tesis", "actualizado_utc"), "integridad": None}
+             "marcador": g("marcador", "actualizado_utc"), "tesis": g("tesis", "actualizado_utc"), "reevaluar": g("tesis", "actualizado_utc"), "integridad": None, "consumo": g("consumo", "fecha")}
         v = m.get(etapa)
         if etapa == "publicados":
             fs = [r["fecha_captura"] for r in leer_csv(P(raiz, "data", "publicaciones_macro.csv"))]
