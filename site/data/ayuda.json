@@ -348,6 +348,14 @@
    "diez": "Compara los grupos y fíjate en la fiabilidad: con n < 20 no cuenta. Solo se ve con el Diario conectado.",
    "frecuencia": "Al abrirla, con todos tus meses.",
    "generico": "Mi operativa: tus resultados agrupados por tesis, régimen y eventos."
+  },
+  {
+   "id": "petroleo",
+   "titulo": "Petróleo",
+   "pregunta": "¿Está el petróleo escaso o sobrado, y qué dicen los datos?",
+   "diez": "Mira la etiqueta de la tesis, si la curva está en escasez o sobra y cómo van los inventarios frente a su media de 5 años.",
+   "frecuencia": "Los precios, cada hora; la tesis, una vez al día tras el cierre de EE. UU.; los inventarios, cada miércoles a las 10:30 de Nueva York; el COT, cada viernes.",
+   "generico": "Petróleo: precio de WTI y Brent, curva de futuros, inventarios de la EIA, posicionamiento de la CFTC, gasolina y una tesis con reglas fijas."
   }
  ],
  "bloques": {
@@ -1516,6 +1524,101 @@
    "El dato de la Universidad sale primero como PRELIMINAR (mitad de mes) y dos semanas después como FINAL. FRED lo publica con 1-2 meses de retraso, por eso solo se usa de respaldo y para contrastar.",
    "Un percentil bajo = la gente está más pesimista que casi siempre; si además los datos reales suben, sale la nota «la gente dice que está mal pero sigue gastando». Solo es contexto: no puntúa en la tesis.",
    "La antigüedad cuenta los días desde el cierre del mes al que se refiere el dato; en ámbar si pasa de 45."
+  ],
+  "petróleo": [
+   "El petróleo como un activo más: precio del WTI y del Brent, la forma de la curva de futuros, los inventarios, el posicionamiento y una tesis con reglas fijas.",
+   "Mira primero la etiqueta (ALCISTA, BAJISTA o SIN TESIS), su intensidad y la línea «causa → efecto»; el detalle está en la página Petróleo.",
+   "El petróleo mueve la inflación esperada, el consumo (gasolina) y las empresas de energía."
+  ],
+  "petróleo a 2 años": [
+   "El precio de los últimos dos años con sus medias de 50 y 200 sesiones.",
+   "Sobre la media de 200 = tendencia de fondo al alza; debajo = a la baja. Las caídas o saltos bruscos de un solo día pueden ser un cambio de contrato, no del mercado.",
+   "La media de 200 sesiones es una de las cuatro reglas de la tesis."
+  ],
+  "precio del petróleo": [
+   "WTI (EE. UU.) y Brent (referencia mundial): el precio del futuro con vencimiento más cercano, con su fecha.",
+   "Debajo se compara con FRED, que publica precios al contado con retraso. El Brent «fechado» (físico) puede ir muy por encima del futuro cuando falta petróleo de verdad.",
+   "Una diferencia grande entre futuro y físico es en sí misma una señal de tensión, no un error de datos."
+  ],
+  "wti (cl=f)": [
+   "Futuro del crudo WTI (West Texas Intermediate) en NYMEX, primer vencimiento, en dólares por barril.",
+   "La flecha es el cambio frente al cierre anterior; la media de 200 sesiones marca la tendencia de fondo.",
+   "Es la referencia del petróleo en EE. UU."
+  ],
+  "brent (bz=f)": [
+   "Futuro del crudo Brent (mar del Norte), referencia mundial, en dólares por barril.",
+   "Suele cotizar por encima del WTI; el diferencial Brent − WTI se muestra debajo.",
+   "Es la referencia con la que se compra la mayor parte del petróleo del mundo."
+  ],
+  "tesis de petróleo": [
+   "Una lectura con reglas fijas que combina cuatro factores: precio frente a su media de 200, curva de futuros, inventarios frente a su media de 5 años y posicionamiento de los fondos.",
+   "Cada factor vota a favor (+1), neutro (0) o en contra (−1); la suma decide ALCISTA, BAJISTA o SIN TESIS, y la intensidad dice si hay acuerdo claro.",
+   "No es una recomendación de compra o venta: es el hecho de que los datos apuntan hacia un lado o no."
+  ],
+  "resultado de petróleo hoy": [
+   "La etiqueta de hoy, su intensidad y las condiciones que la confirmarían o la invalidarían, con las cifras de hoy.",
+   "Fuerte = suma de ±3 o más y ningún factor en contra; débil = el resto.",
+   "Lo que invalida una tesis te dice cuándo dejar de fiarte de ella."
+  ],
+  "los cuatro factores": [
+   "Los cuatro votos que suman la tesis: precio, curva, inventarios y posicionamiento (COT).",
+   "Verde = a favor del precio, ámbar = neutro, rojo = en contra.",
+   "Si faltan datos de un factor, vota «sin dato» y no se estima."
+  ],
+  "curva de futuros del wti": [
+   "Compara el precio del contrato más cercano (1.er vencimiento) con el siguiente (2.º) usando los contratos reales de cada mes.",
+   "Si el cercano es más caro (backwardation) hay escasez a corto plazo; si es más barato (contango) hay petróleo de sobra. Cerca del vencimiento el dato puede distorsionarse.",
+   "La forma de la curva suele avisar de la oferta y la demanda antes que el precio."
+  ],
+  "diferencial del par": [
+   "La diferencia entre dos contratos concretos de WTI, en % del segundo, a lo largo del tiempo.",
+   "Positivo = backwardation (escasez); negativo = contango (sobra).",
+   "Solo cubre ese par de contratos: los vencidos ya no se pueden descargar."
+  ],
+  "inventarios semanales de la eia": [
+   "Cuántos barriles hay almacenados en EE. UU. de crudo, gasolina y destilados, según el informe semanal de la EIA (miércoles 10:30 ET).",
+   "Se compara con la semana anterior y con la media de la misma semana de los 5 años anteriores: por debajo de lo habitual = menos colchón de oferta.",
+   "Los inventarios son uno de los datos que más mueve el petróleo a corto plazo."
+  ],
+  "inventarios comerciales de crudo": [
+   "El nivel semanal de crudo almacenado (sin la reserva estratégica) de los últimos dos años.",
+   "Una línea que baja = se está sacando más de lo que entra.",
+   "Compáralo con la media de 5 años de la tabla de arriba."
+  ],
+  "posicionamiento (cot) del wti": [
+   "Cuántos contratos de WTI tienen comprados menos vendidos los fondos que gestionan dinero (informe de la CFTC, viernes con datos del martes).",
+   "El percentil a 3 años dice si esa posición es alta o baja frente a su historia reciente.",
+   "Una posición muy cargada hacia un lado indica qué apuesta ya está hecha."
+  ],
+  "neto del dinero gestionado": [
+   "Largos menos cortos de los fondos en WTI, últimas 104 semanas.",
+   "Sube cuando los fondos compran y baja cuando venden.",
+   "Es el dato del factor COT de la tesis."
+  ],
+  "plataformas de petróleo (baker hughes)": [
+   "El número de plataformas de perforación de petróleo activas en EE. UU., que publica Baker Hughes cada semana.",
+   "Más plataformas = más producción futura. Hoy aparece SIN DATO porque la web de Baker Hughes no responde a consultas automáticas.",
+   "No se estima nunca un dato que falta."
+  ],
+  "gasolina en ee. uu. y consumo": [
+   "El precio medio de la gasolina regular en EE. UU. (FRED, semanal) y su efecto sobre el consumo.",
+   "Una gasolina más cara deja menos renta para otros gastos. Mira la tesis de consumo y las ventas reales para ver si se nota.",
+   "Es el canal más directo por el que el petróleo llega al bolsillo del hogar."
+  ],
+  "gasolina regular": [
+   "El precio medio semanal de la gasolina regular en EE. UU., en dólares por galón.",
+   "Se muestra el cambio en 4 semanas y el interanual.",
+   "Se publica con unos días de retraso."
+  ],
+  "relaciones del petróleo": [
+   "Cómo se mueve el petróleo frente a la inflación esperada a 5 años (breakeven), el dólar (DXY) y las petroleras (ETF XLE).",
+   "La correlación va de −1 a +1 sobre las últimas 60 sesiones; cerca de 0 = sin relación clara.",
+   "Se muestran pero NO puntúan en la tesis."
+  ],
+  "reglas fijas de petróleo": [
+   "Las reglas exactas que usa el motor para votar y decidir la tesis.",
+   "Están impresas tal cual: no hay nada oculto ni IA.",
+   "Si quieres cambiarlas, hay que cambiar el código y se verá en el historial."
   ]
  },
  "glosario": [
@@ -1834,6 +1937,55 @@
    ],
    "def": "El porcentaje de la renta que los hogares no gastan.",
    "analogia": "La parte de la paga que se queda en la hucha."
+  },
+  {
+   "termino": "WTI",
+   "claves": [
+    "wti"
+   ],
+   "def": "West Texas Intermediate: el crudo de referencia de EE. UU., que cotiza en NYMEX en dólares por barril.",
+   "analogia": "Es el precio de la gasolina «al por mayor» de EE. UU.: el que mira todo el mundo antes de repostar."
+  },
+  {
+   "termino": "Brent",
+   "claves": [
+    "brent"
+   ],
+   "def": "El crudo de referencia del mar del Norte, con el que se fija el precio de gran parte del petróleo del mundo.",
+   "analogia": "Si el WTI es la referencia de casa, el Brent es la del mundo entero."
+  },
+  {
+   "termino": "Contango",
+   "claves": [
+    "contango"
+   ],
+   "def": "Cuando el petróleo para entregar más adelante es más caro que el de ahora: el mercado tiene de sobra a corto plazo.",
+   "analogia": "Es como un almacén lleno: nadie paga extra por llevarse la mercancía hoy."
+  },
+  {
+   "termino": "Backwardation",
+   "claves": [
+    "backwardation"
+   ],
+   "def": "Cuando el petróleo de ahora es más caro que el de más adelante: hay escasez a corto plazo y se paga por tenerlo ya.",
+   "analogia": "Es como un producto agotado en la tienda: quien lo necesita hoy paga más."
+  },
+  {
+   "termino": "EIA",
+   "claves": [
+    "eia"
+   ],
+   "def": "La Administración de Información Energética de EE. UU.: publica cada miércoles los inventarios de petróleo, gasolina y destilados.",
+   "analogia": "Es el que cuenta cada semana cuánto hay en el almacén del país."
+  },
+  {
+   "termino": "OPEP+",
+   "claves": [
+    "opep",
+    "opep+"
+   ],
+   "def": "La OPEP y sus aliados (como Rusia): el grupo que decide cuánto petróleo bombear y, con ello, mueve el precio.",
+   "analogia": "Es como un grupo de grifos grandes que acuerdan abrir más o menos a la vez."
   }
  ],
  "semaforo_nota": "En las tesis el color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo.",
