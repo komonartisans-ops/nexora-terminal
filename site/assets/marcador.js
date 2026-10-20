@@ -3,7 +3,7 @@
    data/marcador_resultados.csv). La página solo muestra: no calcula ni concluye nada. Todo texto dinámico pasa por esc(). */
 'use strict';
 
-const MC = { h: '5', datos: null, gi: null };
+const MC = { h: '5', datos: null, gi: null, go: null };
 
 /* marcador «gamma intradía»: MFE/MAE a 15, 30 y 60 min de los avisos enviados (solo descriptivo; reglas congeladas hasta n ≥ 20 por regla) */
 function mcGammaIntradia(G) {
@@ -17,6 +17,18 @@ function mcGammaIntradia(G) {
     + `</tbody></table><div class="note" style="padding:8px 16px 12px">${esc(G.metodo || '')} ${G.n_senales ? '' : 'Todavía no hay ningún aviso enviado: el registro empieza con el primero.'}</div>`
     + (G.ultimas && G.ultimas.length ? `<div class="note" style="padding:0 16px 12px"><b>Últimos avisos:</b> ${G.ultimas.slice(0, 5).map((u) => `${esc(fdy(u.fecha_et))} ${esc(u.indice)} · ${esc((G.por_regla[u.regla] || {}).nombre || u.regla)} (${esc(String(u.precio_ref))}, gamma ${esc(u.regimen)})`).join(' · ')}</div>` : '')
     + footIn('engine/gamma_intradia.py (data/gamma_intradia_senales.csv y data/gamma_intradia_resultados.csv, solo añadir)', G.generado_utc && G.generado_utc.slice(0, 10), null, 'velas de 5 min de Yahoo Finance') + '</div>';
+  return h;
+}
+/* marcador «gamma oro»: ¿reaccionó el oro (medido en GLD) a ±0,25×EM del nivel en la sesión siguiente? Descriptivo; congelado hasta n ≥ 20 */
+function mcGammaOro(O) {
+  let h = '<div class="sect"><h2>Gamma oro</h2><span class="more">niveles de GLD (referencia) · ¿tocó el oro la zona nivel ± 0,25×EM en la sesión siguiente?</span></div>';
+  const M = O && O.marcador;
+  if (!M) return h + `<div class="card"><div class="empty" style="height:90px">SIN DATO · data/gamma_oro.json</div></div>`;
+  h += `<div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Nivel</th><th>Sesiones evaluadas</th><th>Zona tocada</th><th>Rechazado</th><th>Atravesado</th><th>Cerró dentro</th></tr></thead><tbody>`
+    + Object.values(M.por_nivel).map((v) => `<tr class="${M.estado === 'EVALUABLE' ? '' : 'poca'}"><td data-label="Nivel" style="text-align:left"><b>${esc(v.nivel)}</b></td><td data-label="Sesiones evaluadas" class="mono">${esc(String(v.evaluadas))}</td><td data-label="Zona tocada" class="mono">${esc(String(v.tocadas))}</td><td data-label="Rechazado" class="mono">${esc(String(v.rechazadas))}</td><td data-label="Atravesado" class="mono">${esc(String(v.atravesadas))}</td><td data-label="Cerró dentro" class="mono">${esc(String(v.dentro))}</td></tr>`).join('')
+    + `</tbody></table><div class="note" style="padding:8px 16px 4px"><span class="ck ${M.estado === 'EVALUABLE' ? 'ok' : 'par'}">${M.estado === 'EVALUABLE' ? 'EVALUABLE' : 'CONGELADA · n < ' + esc(String(M.min_n))}</span> ${esc(String(M.sesiones_guardadas))} ${M.sesiones_guardadas === 1 ? 'sesión guardada' : 'sesiones guardadas'} (el histórico empieza con este módulo). ${esc(M.criterio || '')}</div>`
+    + (M.ultimas && M.ultimas.length ? `<div class="note" style="padding:0 16px 12px"><b>Últimas:</b> ${M.ultimas.slice(0, 6).map((u) => `${esc(fdy(u.fecha_sesion))} ${esc(u.nivel)} ${esc(String(u.nivel_gld))} → ${esc(u.resultado)}`).join(' · ')}</div>` : '')
+    + footIn('engine/gamma_oro.py (data/historico_gamma_oro.csv y data/gamma_oro_resultados.csv, solo añadir)', O.generado_utc && O.generado_utc.slice(0, 10), null, 'GLD (referencia) · Cboe y Yahoo Finance') + '</div>';
   return h;
 }
 const MC_TIPOS = [['tesis', 'Tesis por activo (cambios)'], ['fed', 'Alertas Fed'], ['skew', 'SKEW alto con ≥ 2 confirmaciones'], ['regimen', 'Régimen (cambios)'],
@@ -77,6 +89,7 @@ function mcHtml(M) {
   }).join('') || '<tr><td colspan="10" style="text-align:left;color:var(--dim)">Sin señales registradas.</td></tr>';
   h += `</tbody></table>${footIn('engine/marcador.py (data/marcador_senales.csv y data/marcador_resultados.csv, solo añadir)', M.generado_utc && M.generado_utc.slice(0, 10), null, 'cierres de Yahoo Finance (precios) y FRED (2Y)')}</div>`;
   h += mcGammaIntradia(MC.gi);
+  h += mcGammaOro(MC.go);
   h += `<div class="sect"><h2>Reglas del marcador</h2><span class="more">fijas; no cambian según el resultado</span></div><div class="card"><details class="qa" open><summary>Criterios v2: qué cuenta como señal, qué se espera y cómo se mide</summary><p style="white-space:pre-line">${esc(M.reglas || '')}</p></details></div>`;
   h += `<div class="note">${esc(M.nota || '')} Una señal sin cierres suficientes queda PENDIENTE y no se estima. Las correcciones no editan filas: se añade una fila ANULADA.</div>`;
   return h;
@@ -94,6 +107,7 @@ function pageMarcador() {
       MC.datos = await r.json();
     } catch (e) { root.innerHTML = noData('Marcador de señales (data/marcador.json)'); return; }
     try { const g = await fetch('data/gamma_intradia.json?v=' + Date.now(), { cache: 'no-store' }); MC.gi = g.ok ? await g.json() : null; } catch (e) { MC.gi = null; }
+    try { const g = await fetch('data/gamma_oro.json?v=' + Date.now(), { cache: 'no-store' }); MC.go = g.ok ? await g.json() : null; } catch (e) { MC.go = null; }
     const pintar = () => { if (document.getElementById('mc-root') === root) root.innerHTML = mcHtml(MC.datos); };
     pintar();
     root.addEventListener('click', (e) => { const b = e.target.closest('[data-h]'); if (b) { MC.h = b.dataset.h; pintar(); } });

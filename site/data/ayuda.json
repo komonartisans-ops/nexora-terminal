@@ -1668,6 +1668,16 @@
    "Las fechas en que empezó cada divergencia (solo cuenta una nueva si hace 10 sesiones o más que no había ninguna) y su fuerza ese día.",
    "«Parcial» significa que faltaba el dato de una confirmación, normalmente el crédito antes de 2023.",
    "Cada una se mide en el marcador a T+20 y T+60."
+  ],
+  "gamma del oro": [
+   "Los mismos niveles de gamma que en los índices (Gamma Flip, Call Wall, Put Wall, Max Gamma y EM) pero para el oro. No hay una cadena de opciones gratuita del oro al contado, así que se usa la del ETF GLD y se pasa a precio XAU/USD con el ratio XAU/GLD de la fecha indicada.",
+   "Por eso siempre se llama «GLD, referencia»: es una aproximación de unos pocos dólares, no el posicionamiento real de las opciones sobre el oro.",
+   "La línea ORO se pega en el indicador «NEXORA Oro» de TradingView; es contexto, no una entrada."
+  ],
+  "gamma oro": [
+   "Mide, sesión a sesión, si el oro tocó la zona «nivel ± 0,25 × EM» en la sesión siguiente a la de los niveles, y cómo cerró: rechazado (cierra fuera de la zona del mismo lado por el que llegó), atravesado (del lado contrario) o dentro de la zona.",
+   "Se mide sobre GLD, que es donde están los niveles. Con menos de 20 sesiones evaluadas está «congelada»: no se concluye nada ni se cambian los umbrales.",
+   "Son hechos de precio frente a niveles; no es una recomendación de compra o venta."
   ]
  },
  "glosario": [

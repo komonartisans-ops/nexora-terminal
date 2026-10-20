@@ -284,6 +284,27 @@ function plataformasHtml(G) {
   });
   return h;
 }
+/* gamma del oro: niveles de GLD (referencia) en precio XAU/USD + la línea ORO para el indicador «NEXORA Oro» de TradingView */
+function oroGammaHtml(GO) {
+  let h = '<div class="sect"><h2>Gamma del oro (GLD, referencia)</h2><span class="more">cadena de opciones de GLD pasada a precio XAU/USD · TradingView</span></div>';
+  if (!GO || !GO.niveles) return h + `<div class="card"><div class="empty" style="height:90px">SIN DATO · data/gamma_oro.json</div></div>`;
+  const r = GO.ratio, em = GO.em || {}, f = (x, d) => (x == null ? 'SIN DATO' : nf(x, d));
+  h += `<div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Nivel (GLD, referencia)</th><th>GLD ($)</th><th>XAU/USD</th><th>Gamma (M$ por 1 %)</th></tr></thead><tbody>`
+    + GO.niveles.map((x) => `<tr><td data-label="Nivel" style="text-align:left"><b>${esc(x.nombre)}</b></td><td data-label="GLD ($)">${f(x.gld, 1)}</td><td data-label="XAU/USD">${f(x.xau, 1)}</td><td data-label="Gamma">${x.musd == null ? '—' : nf(x.musd, 1)}</td></tr>`).join('')
+    + `<tr><td data-label="Nivel" style="text-align:left"><b>EM (1 día)</b></td><td data-label="GLD ($)">${f(em.puntos, 1)} <small>(${esc(em.vol_simbolo || 'GVZ')} ${f(em.vol, 1)})</small></td><td data-label="XAU/USD">${f(GO.em_xau, 1)}</td><td data-label="Gamma">—</td></tr></tbody></table>`
+    + `<div class="note" style="padding:8px 16px 4px">Sesión de la cadena: ${esc(dmy(GO.sesion))} · gamma ${esc(String(GO.regimen || '').toLowerCase())} (${f(GO.gex_neto_musd, 0)} M$ por 1 %). ${r ? `Ratio XAU/GLD <b>${nf(r.valor, 4)}</b> del ${esc(dmy(r.fecha))}${r.exacto ? '' : ' (APROXIMADO: no es el de la sesión)'} · XAU ${nf(r.xau, 1)} ($, ${esc(r.xau_hora_utc)} UTC) / GLD ${nf(r.gld_cierre, 2)} ($).` : '<b>SIN ratio XAU/GLD:</b> los niveles quedan solo en GLD.'}</div>`
+    + `<div class="note" style="padding:0 16px 4px">Línea ORO para el indicador «NEXORA Oro» de TradingView (la misma que llega por Telegram a las 15:00, hora de Madrid; aquí con el evento de la última actualización):</div><div style="padding:0 16px 8px"><code id="gLineaOro" style="display:block;white-space:normal;word-break:break-all;padding:8px;border:1px solid var(--line);border-radius:6px">${esc(GO.linea || 'SIN DATO')}</code>
+    <button class="fbtn" id="gCopiarOro" style="margin-top:6px" type="button">Copiar línea</button> <span class="note" id="gCopiadoOro"></span></div>`
+    + `<div class="note" style="padding:0 16px 12px">No existe una cadena de opciones gratuita del oro al contado: estos niveles son los del ETF <b>GLD</b> multiplicados por el ratio XAU/GLD, una <b>referencia</b> y no niveles de opciones sobre XAU/USD (el ratio deriva despacio y varía unas décimas según la hora, así que cada nivel es una aproximación de unos pocos dólares). Su medición (¿reaccionó el oro a ±0,25×EM del nivel en la sesión siguiente?) está en <a href="#/marcador">Marcador</a>. ${esc(GO.fuente || '')}.</div></div>`;
+  MOUNT.push(() => {
+    const b = document.getElementById('gCopiarOro');
+    if (b) b.addEventListener('click', async () => {
+      const t = document.getElementById('gLineaOro').textContent, o = document.getElementById('gCopiadoOro');
+      try { await navigator.clipboard.writeText(t); o.textContent = 'Copiada.'; } catch (e) { const rg = document.createRange(); rg.selectNodeContents(document.getElementById('gLineaOro')); const s = window.getSelection(); s.removeAllRanges(); s.addRange(rg); o.textContent = 'Seleccionada: pulsa Ctrl+C.'; }
+    });
+  });
+  return h;
+}
 function pageGamma() {
   const G = D.gamma;
   let h = head('Análisis', 'Gamma de índices', 'Dónde están las coberturas de opciones que obligan a los creadores de mercado a comprar o vender: Call Wall, Put Wall y Gamma Flip de SPX+SPY (ES) y NDX+QQQ (NQ), convertidos a precio del futuro con la base del día.',
@@ -299,6 +320,7 @@ function pageGamma() {
   ['ES', 'NQ'].forEach((k) => { if (I[k]) h += gammaBloque(k, I[k], G.generado_utc); else h += `<div class="sect"><h2>${k}</h2></div>${noData('Gamma ' + k)}`; });
   h += revisionHtml(G);
   h += plataformasHtml(G);
+  h += oroGammaHtml(D.gamma_oro);
   const v = (es && es.validacion_gamma) || {};
   const vn = (nq && nq.validacion_gamma) || {};
   h += `<div class="sect"><h2>Método · CRITERIO NEXORA</h2><span class="more">método propio, documentado; no es un dato oficial de ningún proveedor</span></div><div class="card"><div class="note" style="margin-top:0;white-space:pre-line">${esc(G.metodo)}</div>
