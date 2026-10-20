@@ -2,6 +2,16 @@
  "items": [
   {
    "banco": "BCE",
+   "tipo": "Entrevista",
+   "titulo": "Interview with Die Presse",
+   "orador": "Frank Elderson",
+   "fecha_utc": "2026-10-20 07:00",
+   "fecha": "2026-10-20",
+   "enlace": "https://www.ecb.europa.eu/press/inter/date/2026/html/ecb.in261020~97e2e4bc38.en.html",
+   "fuente": "bce"
+  },
+  {
+   "banco": "BCE",
    "tipo": "Discurso",
    "titulo": "From climate and nature risks to economic resilience and competitiveness",
    "orador": "Frank Elderson",
@@ -711,16 +721,6 @@
    "fuente": "fed_speech"
   },
   {
-   "banco": "BCE",
-   "tipo": "Discurso",
-   "titulo": "Where AI risks meet",
-   "orador": "Christine Lagarde",
-   "fecha_utc": "2026-10-01 13:30",
-   "fecha": "2026-10-01",
-   "enlace": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261001~cf3c630379.en.html",
-   "fuente": "bce"
-  },
-  {
    "banco": "BoE",
    "tipo": "Noticia",
    "titulo": "Minutes of the Meeting of the Court of Directors held on 16 July 2026",
@@ -1083,26 +1083,6 @@
   {
    "banco": "BoE",
    "tipo": "Noticia",
-   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "Asset Purchase Facility: Gilt Sales – Market Notice 17 September 2026",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
    "titulo": "Exchange of letters between the Governor and the Chancellor regarding CPI Inflation - September 2026",
    "orador": null,
    "fecha_utc": "2026-09-17 11:00",
@@ -1118,6 +1098,26 @@
    "fecha_utc": "2026-09-17 11:00",
    "fecha": "2026-09-17",
    "enlace": "https://www.bankofengland.co.uk/letter/2026/exchange-of-letters-between-the-governor-and-the-chancellor-regarding-qt-and-the-apf",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Asset Purchase Facility: Gilt Sales – Market Notice 17 September 2026",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
    "fuente": "boe"
   },
   {
@@ -1324,7 +1324,7 @@
    "n": 15,
    "url": "https://www.ecb.europa.eu/rss/press.html",
    "pagina": "https://www.ecb.europa.eu/press/html/index.en.html",
-   "ultimo": "2026-10-19 06:00"
+   "ultimo": "2026-10-20 07:00"
   },
   "boj": {
    "banco": "BoJ",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-20 06:07 UTC",
- "duracion_s": 6.4
+ "generado_utc": "2026-10-20 07:07 UTC",
+ "duracion_s": 11.1
 }

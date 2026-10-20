@@ -5,7 +5,9 @@
   "indices.json": "ok"
  },
  "fedwatch_fecha_precios": "2026-10-20",
- "ok": true,
+ "ok": false,
  "generado_utc": "2026-10-20 06:07 UTC",
- "duracion_s": 0.0
+ "duracion_s": 0.0,
+ "error": "KeyError: 'mm_etiqueta'",
+ "ultimo_dato_valido_utc": "2026-10-20 06:07 UTC"
 }
