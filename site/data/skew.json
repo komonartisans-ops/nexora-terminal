@@ -1465,19 +1465,19 @@
   },
   "tasa_base": {
    "5": {
-    "n": 8762,
+    "n": 8763,
     "media": 0.2,
     "mediana": 0.33,
-    "pct_positivos": 58.0
+    "pct_positivos": 57.9
    },
    "20": {
-    "n": 8747,
+    "n": 8748,
     "media": 0.77,
     "mediana": 1.23,
-    "pct_positivos": 63.9
+    "pct_positivos": 63.8
    },
    "60": {
-    "n": 8707,
+    "n": 8708,
     "media": 2.3,
     "mediana": 3.05,
     "pct_positivos": 70.3
@@ -1494,7 +1494,7 @@
   "umbral_skew": 140.0,
   "criterio": "percentil ≥ 90 de las últimas 500 sesiones (zona relativa)",
   "muestra_desde": "1991-12-20",
-  "sesiones_base": 8767,
+  "sesiones_base": 8768,
   "sesgo_del_estudio": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción."
  },
  "estudio_fijo_misma_muestra": {
@@ -2002,19 +2002,19 @@
   },
   "tasa_base": {
    "5": {
-    "n": 8762,
+    "n": 8763,
     "media": 0.2,
     "mediana": 0.33,
-    "pct_positivos": 58.0
+    "pct_positivos": 57.9
    },
    "20": {
-    "n": 8747,
+    "n": 8748,
     "media": 0.77,
     "mediana": 1.23,
-    "pct_positivos": 63.9
+    "pct_positivos": 63.8
    },
    "60": {
-    "n": 8707,
+    "n": 8708,
     "media": 2.3,
     "mediana": 3.05,
     "pct_positivos": 70.3
@@ -2031,7 +2031,7 @@
   "umbral_skew": 140.0,
   "criterio": "SKEW ≥ 140 (zona fija), misma muestra que la zona relativa",
   "muestra_desde": "1991-12-20",
-  "sesiones_base": 8767,
+  "sesiones_base": 8768,
   "sesgo_del_estudio": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción."
  },
  "avisos_3_anos": {
@@ -3530,19 +3530,19 @@
   },
   "tasa_base": {
    "5": {
-    "n": 9261,
+    "n": 9262,
     "media": 0.19,
     "mediana": 0.33,
     "pct_positivos": 57.7
    },
    "20": {
-    "n": 9246,
+    "n": 9247,
     "media": 0.77,
     "mediana": 1.21,
     "pct_positivos": 63.7
    },
    "60": {
-    "n": 9206,
+    "n": 9207,
     "media": 2.32,
     "mediana": 3.05,
     "pct_positivos": 70.5
@@ -3559,15 +3559,15 @@
   "umbral_skew": 140.0,
   "criterio": "SKEW ≥ 140 (zona fija)",
   "muestra_desde": "1990-01-02",
-  "sesiones_base": 9266,
+  "sesiones_base": 9267,
   "sesgo_del_estudio": "Rentabilidad del índice de precios (sin dividendos). Los episodios son pocos y no independientes del todo (crisis largas); una media no es una regla. Correlación con caídas ≠ causalidad ni predicción.",
   "episodio_actual": {
    "entrada": "2026-08-17",
    "sesiones": 45,
    "spx_entrada": 7745.06,
-   "spx_ultimo": 7690.73,
-   "ret_desde_entrada_pct": -0.7,
-   "fecha_ultimo": "2026-10-19"
+   "spx_ultimo": 7712.57,
+   "ret_desde_entrada_pct": -0.42,
+   "fecha_ultimo": "2026-10-20"
   }
  },
  "distribucion_anual": [
@@ -19366,10 +19366,6 @@
   ],
   "spx": [
    [
-    "2021-08-16",
-    4479.71
-   ],
-   [
     "2021-08-17",
     4448.08
    ],
@@ -24564,6 +24560,10 @@
    [
     "2026-10-19",
     7690.73
+   ],
+   [
+    "2026-10-20",
+    7712.57
    ]
   ],
   "vix": [
@@ -29789,6 +29789,6 @@
  "errores": {},
  "metodo": "CRITERIO NEXORA. Zonas fijas: normal < 135, elevado ≥ 135, alto ≥ 140. Zonas relativas: percentil de las últimas 500 sesiones, alto ≥ p90, elevado ≥ p75. Alerta de Telegram: zona relativa alta Y al menos 2 de 3 confirmaciones encendidas. Episodio = primer cierre en zona alta tras 10 sesiones sin estarlo. Falsa alarma = el S&P 500 no cae ≥ 5 % desde el cierre de entrada en las siguientes 60 sesiones. Los umbrales son convenciones fijas, no optimizadas.",
  "ok": true,
- "generado_utc": "2026-10-20 22:07 UTC",
- "duracion_s": 2.0
+ "generado_utc": "2026-10-20 23:46 UTC",
+ "duracion_s": 1.2
 }
