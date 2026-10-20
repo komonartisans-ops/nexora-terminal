@@ -1,60 +1,8 @@
 {
- "generado": "2026-10-20 23:09 Madrid",
- "desde": "2026-09-10",
- "hasta": "2026-11-10",
+ "generado": "2026-10-21 00:09 Madrid",
+ "desde": "2026-09-11",
+ "hasta": "2026-11-11",
  "eventos": [
-  {
-   "fecha": "2026-09-10",
-   "fecha_madrid": "2026-09-10",
-   "dia": "jue",
-   "hora_ny": "08:30",
-   "hora_madrid": "14:30",
-   "evento": "Precios de producción (PPI)",
-   "importancia": "ALTA",
-   "afecta": "oro · índices",
-   "que_mirar": "Presión de costes que puede llegar al IPC.",
-   "fuente": "FRED Release Calendar · Producer Price Index",
-   "url": "https://fred.stlouisfed.org/releases/calendar?rid=46&y=2026",
-   "nota": ""
-  },
-  {
-   "fecha": "2026-09-10",
-   "fecha_madrid": "2026-09-10",
-   "dia": "jue",
-   "hora_ny": "08:30",
-   "hora_madrid": "14:30",
-   "evento": "Peticiones de paro semanales",
-   "importancia": "MEDIA",
-   "afecta": "índices · oro",
-   "que_mirar": "Media de 4 semanas ↑ = empleo se enfría.",
-   "fuente": "FRED Release Calendar · Unemployment Insurance Weekly Claims Report",
-   "url": "https://fred.stlouisfed.org/releases/calendar?rid=180&y=2026",
-   "nota": "",
-   "publicado": {
-    "periodo": "2026-10-10",
-    "valor": 199000.0,
-    "anterior": 198000.0,
-    "anterior_periodo": "2026-10-03",
-    "descripcion": "Peticiones iniciales, personas",
-    "fuente": "FRED ICSA",
-    "url": "https://fred.stlouisfed.org/series/ICSA",
-    "fecha_publicacion": "2026-10-15"
-   }
-  },
-  {
-   "fecha": "2026-09-10",
-   "fecha_madrid": "2026-09-10",
-   "dia": "jue",
-   "hora_ny": "16:30",
-   "hora_madrid": "22:30",
-   "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
-   "importancia": "MEDIA",
-   "afecta": "cripto · oro · índices",
-   "que_mirar": "Liquidez: reservas ↑ / TGA ↓ = acompaña.",
-   "fuente": "FRED Release Calendar · H.4.1 Factors Affecting Reserve Balances",
-   "url": "https://fred.stlouisfed.org/releases/calendar?rid=20&y=2026",
-   "nota": ""
-  },
   {
    "fecha": "2026-09-11",
    "fecha_madrid": "2026-09-11",
@@ -1417,15 +1365,15 @@
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
-   "dias": 8
+   "dias": 7
   },
   "BCE": {
    "fecha": "2026-10-29",
-   "dias": 9
+   "dias": 8
   },
   "Banco de Japón": {
    "fecha": "2026-10-30",
-   "dias": 10
+   "dias": 9
   }
  },
  "errores": {
@@ -1515,6 +1463,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-20 21:07 UTC",
- "duracion_s": 38.6
+ "generado_utc": "2026-10-20 22:07 UTC",
+ "duracion_s": 41.5
 }

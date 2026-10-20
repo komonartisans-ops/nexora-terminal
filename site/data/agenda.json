@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-20 21:09 UTC",
+ "generado_utc": "2026-10-20 22:09 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -253,18 +253,6 @@
  "agenda": {
   "hoy": [
    {
-    "fecha": "2026-10-20",
-    "fecha_et": "2026-10-20",
-    "dia": "mar",
-    "hora_ny": "08:30",
-    "hora_madrid": "14:30",
-    "evento": "Vivienda iniciada y permisos (Census)",
-    "importancia": "MEDIA",
-    "nota": null
-   }
-  ],
-  "proximos_7_dias": [
-   {
     "fecha": "2026-10-21",
     "fecha_et": "2026-10-21",
     "dia": "mié",
@@ -293,7 +281,9 @@
     "evento": "Resultados Tesla (TSLA)",
     "importancia": "ALTA",
     "nota": "fecha CONFIRMADA"
-   },
+   }
+  ],
+  "proximos_7_dias": [
    {
     "fecha": "2026-10-22",
     "fecha_et": "2026-10-22",
@@ -353,13 +343,53 @@
     "evento": "Ventas de vivienda nueva (Census)",
     "importancia": "MEDIA",
     "nota": null
+   },
+   {
+    "fecha": "2026-10-28",
+    "fecha_et": "2026-10-28",
+    "dia": "mié",
+    "hora_ny": "10:30",
+    "hora_madrid": "15:30",
+    "evento": "Inventarios de petróleo EIA (semana al 23-10)",
+    "importancia": "MEDIA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-28",
+    "fecha_et": "2026-10-28",
+    "dia": "mié",
+    "hora_ny": "14:00",
+    "hora_madrid": "19:00",
+    "evento": "Decisión FOMC (Fed)",
+    "importancia": "ALTA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-28",
+    "fecha_et": "2026-10-28",
+    "dia": "mié",
+    "hora_ny": null,
+    "hora_madrid": null,
+    "evento": "Resultados Microsoft (MSFT)",
+    "importancia": "ALTA",
+    "nota": "fecha CONFIRMADA"
+   },
+   {
+    "fecha": "2026-10-28",
+    "fecha_et": "2026-10-28",
+    "dia": "mié",
+    "hora_ny": null,
+    "hora_madrid": null,
+    "evento": "Resultados Alphabet (GOOGL)",
+    "importancia": "ALTA",
+    "nota": "fecha CONFIRMADA"
    }
   ],
   "regla_horas": "Fed: horas del calendario oficial en ET (también en actos en el extranjero); FRED: hora central → ET; todo se convierte a Madrid y el día es el de Madrid.",
-  "hasta": "2026-10-27",
+  "hasta": "2026-10-28",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-20 21:09 UTC"
+  "generado_utc": "2026-10-20 22:09 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }
