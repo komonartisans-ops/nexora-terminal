@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-19 23:32 UTC",
+ "generado_utc": "2026-10-20 00:33 UTC",
  "resumen": {
   "al_dia": 27,
   "total": 28,
@@ -18,7 +18,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 23:32 UTC",
+   "registrado_utc": "2026-10-20 00:33 UTC",
    "proximo_utc": "2026-10-20 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -138,7 +138,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-19 23:32 UTC",
+   "registrado_utc": "2026-10-20 00:33 UTC",
    "proximo_utc": "2026-10-20 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -150,7 +150,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 23:32 UTC",
+   "registrado_utc": "2026-10-20 00:33 UTC",
    "proximo_utc": "2026-10-20 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -174,7 +174,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 23:32 UTC",
+   "registrado_utc": "2026-10-20 00:33 UTC",
    "proximo_utc": "2026-10-20 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -186,7 +186,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": null,
-   "registrado_utc": "2026-10-19 22:07 UTC",
+   "registrado_utc": "2026-10-19 23:32 UTC",
    "proximo_utc": "2026-10-20 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -210,7 +210,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 21:30 UTC",
+   "registrado_utc": "2026-10-20 00:33 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -222,7 +222,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 21:30 UTC",
+   "registrado_utc": "2026-10-20 00:33 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -306,7 +306,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 21:30 UTC",
+   "registrado_utc": "2026-10-20 00:33 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -318,7 +318,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 21:30 UTC",
+   "registrado_utc": "2026-10-20 00:33 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -330,7 +330,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 21:30 UTC",
+   "registrado_utc": "2026-10-20 00:33 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -342,7 +342,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-19 21:30 UTC",
+   "registrado_utc": "2026-10-20 00:33 UTC",
    "proximo_utc": "2026-10-20 05:30 UTC",
    "discrepancias_abiertas": 0
   }
@@ -1419,7 +1419,7 @@
    "periodo": "2026-08-01",
    "texto": "agosto 2026",
    "valor": 51.7,
-   "antiguedad_dias": 49,
+   "antiguedad_dias": 50,
    "meses_de_retraso": 2,
    "coincide": true,
    "michigan_mismo_periodo": 51.7
@@ -1448,7 +1448,7 @@
   "publicado": "2026-10-15",
   "hora_et": "12:00",
   "visto_utc": "2026-10-19 13:48 UTC",
-  "antiguedad_dias": 4,
+  "antiguedad_dias": 5,
   "ambar": false,
   "productos": {
    "crudo": 415577.0,
@@ -1608,7 +1608,7 @@
   "BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
   "BEA": "API de BEA activa (secreto BEA_API_KEY): PCE y PIB real con el mismo umbral; manda BEA",
   "bea_activa": true,
-  "bls_consultas_hoy": 8,
+  "bls_consultas_hoy": 1,
   "bls_ultimo_error": null,
   "bea_ultimo_error": null
  },
@@ -1618,5 +1618,5 @@
   "regla": "aviso si a la hora de publicación + 2 h el periodo nuevo no está en publicados.json"
  },
  "errores": {},
- "duracion_s": 361.9
+ "duracion_s": 361.5
 }

@@ -1,22 +1,22 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-19 21:30 UTC",
- "fecha_datos": "2026-10-19",
+ "generado_utc": "2026-10-20 00:33 UTC",
+ "fecha_datos": "2026-10-20",
  "precios": {
   "wti": {
-   "valor": 98.24,
-   "fecha": "2026-10-19",
-   "sma50": 91.38,
+   "valor": 98.44,
+   "fecha": "2026-10-20",
+   "sma50": 91.39,
    "sma200": 84.4,
-   "dist_sma200_pct": 16.4,
-   "cambio_1d_pct": -0.79,
-   "cambio_5d_pct": 5.79,
-   "cambio_21d_pct": -2.05,
-   "cambio_63d_pct": 15.7,
+   "dist_sma200_pct": 16.64,
+   "cambio_1d_pct": -0.57,
+   "cambio_5d_pct": 6.03,
+   "cambio_21d_pct": -1.85,
+   "cambio_63d_pct": 15.93,
    "fuente": "Yahoo Finance (CL=F, futuro continuo del primer vencimiento)",
    "contrato_cl_f": "CLZ26.NYM",
-   "aviso_empalme": "CL=F apunta hoy a CLZ26.NYM; el cambio de 1 día se mide sobre ese contrato (-0,79 %) y no sobre la serie empalmada (-3,13 %), que mezcla dos contratos"
+   "aviso_empalme": "CL=F apunta hoy a CLZ26.NYM; el cambio de 1 día se mide sobre ese contrato (-0,57 %) y no sobre la serie empalmada (-2,93 %), que mezcla dos contratos"
   },
   "wti_spot_serie": [
    [
@@ -2189,15 +2189,15 @@
    ]
   ],
   "brent": {
-   "valor": 109.21,
-   "fecha": "2026-10-19",
+   "valor": 109.38,
+   "fecha": "2026-10-20",
    "sma50": 98.93,
    "sma200": 90.15,
-   "dist_sma200_pct": 21.14,
-   "cambio_1d_pct": -0.59,
-   "cambio_5d_pct": 2.4,
-   "cambio_21d_pct": 5.14,
-   "cambio_63d_pct": 20.0,
+   "dist_sma200_pct": 21.33,
+   "cambio_1d_pct": -0.44,
+   "cambio_5d_pct": 2.56,
+   "cambio_21d_pct": 5.3,
+   "cambio_63d_pct": 20.18,
    "fuente": "Yahoo Finance (BZ=F, futuro)"
   },
   "segunda_fuente": {
@@ -2220,14 +2220,14 @@
   },
   "brent_comparacion": {
    "yahoo": {
-    "valor": 109.21,
-    "fecha": "2026-10-19"
+    "valor": 109.38,
+    "fecha": "2026-10-20"
    },
    "fred": {
     "valor": 126.55,
     "fecha": "2026-10-14"
    },
-   "retraso_fred_dias": 5,
+   "retraso_fred_dias": 6,
    "umbral_pct": 10.0,
    "mismo_dia": {
     "fecha": "2026-10-14",
@@ -2238,7 +2238,7 @@
    },
    "discrepancia": true
   },
-  "spread_brent_wti": 10.97
+  "spread_brent_wti": 10.94
  },
  "graficos": {
   "wti": {
@@ -4248,8 +4248,8 @@
      101.41
     ],
     [
-     "2026-10-19",
-     98.24
+     "2026-10-20",
+     98.44
     ]
    ],
    "sma50": [
@@ -6062,8 +6062,8 @@
      90.983
     ],
     [
-     "2026-10-19",
-     91.384
+     "2026-10-20",
+     91.388
     ]
    ],
    "sma200": [
@@ -7276,8 +7276,8 @@
      84.191
     ],
     [
-     "2026-10-19",
-     84.395
+     "2026-10-20",
+     84.396
     ]
    ]
   },
@@ -9288,8 +9288,8 @@
      109.86
     ],
     [
-     "2026-10-19",
-     109.21
+     "2026-10-20",
+     109.38
     ]
    ],
    "sma50": [
@@ -11102,8 +11102,8 @@
      98.415
     ],
     [
-     "2026-10-19",
-     98.928
+     "2026-10-20",
+     98.932
     ]
    ],
    "sma200": [
@@ -12316,40 +12316,40 @@
      89.909
     ],
     [
-     "2026-10-19",
+     "2026-10-20",
      90.151
     ]
    ]
   }
  },
  "curva": {
-  "fecha": "2026-10-19",
+  "fecha": "2026-10-20",
   "par_usado": "2-3",
   "m1": "CLZ26.NYM",
   "m2": "CLF27.NYM",
-  "precio_m1": 98.24,
-  "precio_m2": 96.45,
-  "diferencial": 1.79,
-  "diferencial_pct": 1.86,
+  "precio_m1": 98.46,
+  "precio_m2": 96.61,
+  "diferencial": 1.85,
+  "diferencial_pct": 1.91,
   "estado": "ESCASEZ",
   "vence_m1": "2026-11-20",
-  "dias_a_vencimiento_m1": 32,
+  "dias_a_vencimiento_m1": 31,
   "primer_vencimiento": {
    "ticker": "CLX26.NYM",
    "vence": "2026-10-20",
-   "dias_habiles": 1
+   "dias_habiles": 0
   },
-  "motivo_par": "al 1.er contrato (nov-2026) le quedan 1 día hábil (< 5) para vencer el 2026-10-20: se usa el 2.º–3.º (dic-2026 / ene-2027) para evitar la distorsión del vencimiento",
+  "motivo_par": "al 1.er contrato (nov-2026) le quedan 0 días hábiles (< 5) para vencer el 2026-10-20: se usa el 2.º–3.º (dic-2026 / ene-2027) para evitar la distorsión del vencimiento",
   "info_1_2": {
    "m1": "CLX26.NYM",
    "m2": "CLZ26.NYM",
-   "diferencial": 4.91,
-   "diferencial_pct": 5.0,
+   "diferencial": 4.86,
+   "diferencial_pct": 4.94,
    "estado": "ESCASEZ",
-   "fecha": "2026-10-19"
+   "fecha": "2026-10-20"
   },
   "aviso": null,
-  "percentil_par": 88,
+  "percentil_par": 90,
   "dias_par": 501,
   "min_pct": -0.17,
   "max_pct": 4.93,
@@ -13391,12 +13391,12 @@
     1.622
    ],
    [
-    "2026-10-19",
-    1.856
+    "2026-10-20",
+    1.915
    ]
   ],
   "historico_propio": {
-   "dias": 1,
+   "dias": 2,
    "desde": "2026-10-19",
    "percentil": null,
    "par": "2-3",
@@ -13408,6 +13408,10 @@
     [
      "2026-10-19",
      1.73
+    ],
+    [
+     "2026-10-20",
+     1.91
     ]
    ]
   }
@@ -15969,11 +15973,11 @@
   "consumo": {
    "tesis": "DIVERGENCIA MERCADO DEFENSIVO",
    "intensidad": "FUERTE",
-   "fecha": "2026-10-19"
+   "fecha": "2026-10-16"
   }
  },
  "relaciones": {
-  "wti_cambio_3m_pct": 15.7,
+  "wti_cambio_3m_pct": 15.93,
   "filas": [
    {
     "clave": "t5yie",
@@ -15982,15 +15986,15 @@
     "fecha": "2026-10-19",
     "cambio_3m": 10.0,
     "unidad_cambio": "pb",
-    "correlacion_60d": 0.65,
+    "correlacion_60d": 0.62,
     "lectura": "se mueven juntos"
    },
    {
     "clave": "dxy",
     "nombre": "Dólar (DXY)",
-    "valor": 101.99,
-    "fecha": "2026-10-19",
-    "cambio_3m": 0.8,
+    "valor": 101.94,
+    "fecha": "2026-10-20",
+    "cambio_3m": 0.75,
     "unidad_cambio": "%",
     "correlacion_60d": -0.09,
     "lectura": "sin relación clara en 60 sesiones"
@@ -15998,11 +16002,11 @@
    {
     "clave": "xle",
     "nombre": "Energía EE. UU. (ETF XLE)",
-    "valor": 67.8,
-    "fecha": "2026-10-19",
-    "cambio_3m": 15.9,
+    "valor": 68.24,
+    "fecha": "2026-10-16",
+    "cambio_3m": 17.78,
     "unidad_cambio": "%",
-    "correlacion_60d": 0.64,
+    "correlacion_60d": 0.63,
     "lectura": "se mueven juntos"
    }
   ]
@@ -16034,7 +16038,7 @@
   "causa_efecto": [
    [
     "Curva escasez",
-    "el 2.º vencimiento (dic-2026) cotiza 1,79 $ (1,86 %) frente al 3.º (ene-2027): el mercado paga por tener petróleo ya (escasez a corto plazo)"
+    "el 2.º vencimiento (dic-2026) cotiza 1,85 $ (1,91 %) frente al 3.º (ene-2027): el mercado paga por tener petróleo ya (escasez a corto plazo)"
    ],
    [
     "Inventarios de crudo",
@@ -16042,7 +16046,7 @@
    ],
    [
     "Precio frente a su media de 200",
-    "WTI 98,24 $, 16,4 % frente a 84,40 $: tendencia de fondo al alza"
+    "WTI 98,44 $, 16,6 % frente a 84,40 $: tendencia de fondo al alza"
    ]
   ]
  },
@@ -16061,5 +16065,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (CL=F, BZ=F, contratos CL<mes><año>.NYM, XLE, DXY) · FRED (DCOILWTICO, DCOILBRENTEU, GASREGW, T5YIE) · EIA (Weekly Petroleum Status Report) · CFTC (WTI-PHYSICAL)",
- "duracion_s": 38.0
+ "duracion_s": 43.2
 }

@@ -1,25 +1,25 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-19 21:30 UTC",
- "fecha_datos": "2026-10-19",
+ "generado_utc": "2026-10-20 00:33 UTC",
+ "fecha_datos": "2026-10-16",
  "mercado": {
   "cap": {
    "nombre": "XLY/XLP · consumo discrecional / básico (ponderado por capitalización)",
-   "fecha": "2026-10-19",
-   "ratio": 1.31246,
-   "sma200": 1.37956,
-   "dist_sma200_pct": -4.86,
-   "pendiente_3m_pct": -3.96,
+   "fecha": "2026-10-16",
+   "ratio": 1.2835,
+   "sma200": 1.38068,
+   "dist_sma200_pct": -7.04,
+   "pendiente_3m_pct": -4.97,
    "sobre_sma200": false
   },
   "igual": {
    "nombre": "RSPD/RSPS · consumo discrecional / básico en peso igual",
-   "fecha": "2026-10-19",
-   "ratio": 1.75272,
-   "sma200": 1.83333,
-   "dist_sma200_pct": -4.4,
-   "pendiente_3m_pct": -2.67,
+   "fecha": "2026-10-16",
+   "ratio": 1.74386,
+   "sma200": 1.83439,
+   "dist_sma200_pct": -4.93,
+   "pendiente_3m_pct": -2.39,
    "sobre_sma200": false
   },
   "pesos": {
@@ -29,15 +29,27 @@
    "suma": 39.84,
    "fuente": "State Street SSGA, posiciones diarias de XLY"
   },
-  "diferencia_3m_pp": -1.29,
-  "aviso": null,
-  "sentido": null,
+  "diferencia_3m_pp": -2.58,
+  "aviso": "el ratio lo mueven AMZN+TSLA, no el consumo amplio: empujan XLY/XLP a la baja (-2,58 pp frente a RSPD/RSPS en 3 meses)",
+  "sentido": "A LA BAJA",
   "umbral_pp": 2.0
  },
  "graficos": {
   "cap": {
    "nombre": "XLY/XLP · consumo discrecional / básico (ponderado por capitalización)",
    "ratio": [
+    [
+     "2024-10-16",
+     1.20654
+    ],
+    [
+     "2024-10-17",
+     1.21088
+    ],
+    [
+     "2024-10-18",
+     1.21297
+    ],
     [
      "2024-10-21",
      1.21373
@@ -2033,13 +2045,21 @@
     [
      "2026-10-16",
      1.2835
-    ],
-    [
-     "2026-10-19",
-     1.31246
     ]
    ],
    "sma50": [
+    [
+     "2024-10-16",
+     1.15859
+    ],
+    [
+     "2024-10-17",
+     1.16109
+    ],
+    [
+     "2024-10-18",
+     1.16337
+    ],
     [
      "2024-10-21",
      1.16561
@@ -4035,13 +4055,21 @@
     [
      "2026-10-16",
      1.3541
-    ],
-    [
-     "2026-10-19",
-     1.35219
     ]
    ],
    "sma200": [
+    [
+     "2024-10-16",
+     1.17951
+    ],
+    [
+     "2024-10-17",
+     1.17948
+    ],
+    [
+     "2024-10-18",
+     1.17954
+    ],
     [
      "2024-10-21",
      1.17964
@@ -6037,16 +6065,24 @@
     [
      "2026-10-16",
      1.38068
-    ],
-    [
-     "2026-10-19",
-     1.37956
     ]
    ]
   },
   "igual": {
    "nombre": "RSPD/RSPS · consumo discrecional / básico en peso igual",
    "ratio": [
+    [
+     "2024-10-16",
+     1.64618
+    ],
+    [
+     "2024-10-17",
+     1.64788
+    ],
+    [
+     "2024-10-18",
+     1.65258
+    ],
     [
      "2024-10-21",
      1.65327
@@ -8042,13 +8078,21 @@
     [
      "2026-10-16",
      1.74386
-    ],
-    [
-     "2026-10-19",
-     1.75272
     ]
    ],
    "sma50": [
+    [
+     "2024-10-16",
+     1.55218
+    ],
+    [
+     "2024-10-17",
+     1.55625
+    ],
+    [
+     "2024-10-18",
+     1.55987
+    ],
     [
      "2024-10-21",
      1.56346
@@ -10044,13 +10088,21 @@
     [
      "2026-10-16",
      1.80058
-    ],
-    [
-     "2026-10-19",
-     1.79792
     ]
    ],
    "sma200": [
+    [
+     "2024-10-16",
+     1.53101
+    ],
+    [
+     "2024-10-17",
+     1.53183
+    ],
+    [
+     "2024-10-18",
+     1.53278
+    ],
     [
      "2024-10-21",
      1.53371
@@ -12046,10 +12098,6 @@
     [
      "2026-10-16",
      1.83439
-    ],
-    [
-     "2026-10-19",
-     1.83333
     ]
    ]
   }
@@ -12151,7 +12199,7 @@
  "capas": {
   "mercado": {
    "estado": "BAJA",
-   "detalle": "RSPD/RSPS -4.40 % frente a su media de 200 y -2.67 % en 3 meses"
+   "detalle": "RSPD/RSPS -4.93 % frente a su media de 200 y -2.39 % en 3 meses"
   },
   "real": {
    "estado": "ALZA",
@@ -12196,7 +12244,7 @@
     "periodo": "2026-08-01",
     "texto": "agosto 2026",
     "valor": 51.7,
-    "antiguedad_dias": 49,
+    "antiguedad_dias": 50,
     "meses_de_retraso": 2,
     "coincide": true,
     "michigan_mismo_periodo": 51.7
@@ -12240,5 +12288,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, DRCCLACBS; UMCSENT como respaldo) · Universidad de Michigan (sca.isr.umich.edu, ánimo del consumidor)",
- "duracion_s": 12.5
+ "duracion_s": 11.4
 }
