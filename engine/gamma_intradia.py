@@ -550,7 +550,7 @@ def linea_niveles(J):
     return " | ".join(seg)
 
 
-def mensaje_niveles(J, ahora):
+def mensaje_niveles(J, ahora, oro=None):
     e = html.escape
     ses = {c: (niveles(J, c) or {}).get("sesion") for c in INDICES}
     fecha = max([s for s in ses.values() if s] or [""])
@@ -563,7 +563,8 @@ def mensaje_niveles(J, ahora):
     txt = (f"<b>NEXORA · Niveles gamma para TradingView</b> · {ahora.astimezone(MAD).strftime('%H:%M')} Madrid\n<code>{e(linea_niveles(J))}</code>\n"
            f"Precios de FUTURO (ES/NQ). Sesión de la cadena de Cboe: {fecha[8:10] + '-' + fecha[5:7] if fecha else 'SIN DATO'} (15 min de retraso; niveles = Gamma Flip, Call Wall, Put Wall, Max Gamma). "
            f"EM = precio × VIX (ES) o VXN (NQ) / 100 / √252 del cierre de esa sesión. Fuente: NEXORA (CRITERIO NEXORA, método propio), Cboe y Yahoo Finance.{antiguo}\n"
-           "Pega la línea en el indicador NEXORA de TradingView. Contexto de mercado, no una entrada.")
+           + (f"\n{oro}\n" if oro else "")
+           + "Pega la línea en el indicador NEXORA de TradingView (la de ORO, en NEXORA Oro). Contexto de mercado, no una entrada.")
     assert not PALABRAS_PROHIBIDAS.search(txt)
     return txt
 
@@ -587,7 +588,12 @@ def niveles_15h(raiz=RAIZ, ahora=None, forzar=False, enviar_fn=None, J=None):
     if not J:
         print("gamma.json no disponible")
         return 1
-    txt = mensaje_niveles(J, ahora)
+    try:
+        import gamma_oro
+        oro = gamma_oro.mensaje_oro(raiz, ahora)
+    except Exception as e:  # noqa: BLE001  — el oro no debe impedir los niveles de ES/NQ
+        oro = f"ORO: SIN DATO ({type(e).__name__})."
+    txt = mensaje_niveles(J, ahora, oro)
     print(txt)
     import telegram
     if enviar_fn is None and not telegram.configurado():

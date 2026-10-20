@@ -161,12 +161,12 @@ def _calcular(clave, cfg):
     for s in cfg["cadenas"]:
         cad[s], ts_arch[s] = _cargar(s)
     idx_d = cad[cfg["cadenas"][0]]
-    etf_d = cad[cfg["cadenas"][1]]
+    etf_d = cad[cfg["cadenas"][1]] if len(cfg["cadenas"]) > 1 else None      # una sola cadena (p. ej. GLD, Fase 17): sin ETF que escalar
     sesion, cierre, t_idx = _sesion_y_cierre(idx_d)
     S0 = float(idx_d["current_price"])
-    ratio_etf = S0 / float(etf_d["current_price"])
+    ratio_etf = S0 / float(etf_d["current_price"]) if etf_d else 1.0
     regs, stats, muestra = [], {}, []
-    for s, ratio in ((cfg["cadenas"][0], 1.0), (cfg["cadenas"][1], ratio_etf)):
+    for s, ratio in zip(cfg["cadenas"], (1.0, ratio_etf)):
         r, st, m = _procesar(cad[s], sesion)
         regs += [(K, T, iv, oic, oip, ratio, exp, s) for K, T, iv, oic, oip, exp in r]
         stats[s] = {**st, "opciones": len(r), "spot": float(cad[s]["current_price"]), "ultima_operacion": cad[s].get("last_trade_time")}
@@ -228,7 +228,7 @@ def _calcular(clave, cfg):
             "sesion_dt": sesion}
 
 
-VOL_DE = {"ES": ("^VIX", "VIX"), "NQ": ("^VXN", "VXN")}
+VOL_DE = {"ES": ("^VIX", "VIX"), "NQ": ("^VXN", "VXN"), "GLD": ("^GVZ", "GVZ")}
 
 
 def max_gamma_de(perfil):
