@@ -1351,6 +1351,24 @@
  },
  "revisiones": [
   {
+   "serie": "Viviendas iniciadas",
+   "id": "HOUST",
+   "periodo": "2026-07-01",
+   "original": 1309.0,
+   "revisado": 1369.0,
+   "visto": "2026-10-20",
+   "unidad": "miles (anualizado)"
+  },
+  {
+   "serie": "Viviendas iniciadas",
+   "id": "HOUST",
+   "periodo": "2026-08-01",
+   "original": 1275.0,
+   "revisado": 1288.0,
+   "visto": "2026-10-20",
+   "unidad": "miles (anualizado)"
+  },
+  {
    "serie": "Peticiones iniciales de subsidio (semanal)",
    "id": "ICSA",
    "periodo": "2026-10-03",
@@ -1468,14 +1486,14 @@
    "unidad": "índice"
   }
  ],
- "n_revisiones": 13,
- "filas_registro": 832,
+ "n_revisiones": 15,
+ "filas_registro": 836,
  "registro_desde": "2026-10-08",
- "nuevas_filas": 0,
- "nuevos": 0,
+ "nuevas_filas": 4,
+ "nuevos": 2,
  "errores": {},
  "nota": "El registro de revisiones empieza el día de la primera ejecución: antes de esa fecha no hay vintages guardados y no se inventan.",
  "ok": true,
- "generado_utc": "2026-10-20 12:07 UTC",
- "duracion_s": 2.8
+ "generado_utc": "2026-10-20 13:07 UTC",
+ "duracion_s": 3.0
 }
