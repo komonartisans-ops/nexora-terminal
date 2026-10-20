@@ -1,7 +1,7 @@
 {
  "version": 2,
  "version_criterio": 2,
- "generado_utc": "2026-10-20 21:07 UTC",
+ "generado_utc": "2026-10-20 21:30 UTC",
  "ok": true,
  "min_n": 20,
  "horizontes": [
@@ -68,19 +68,19 @@
       "muestra_insuficiente": true
      },
      "5": {
-      "n": 5,
+      "n": 6,
       "aciertos": 1,
-      "fallos": 1,
+      "fallos": 2,
       "neutrales": 3,
-      "pendientes": 7,
+      "pendientes": 6,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": 20.0,
-      "ret_medio": 0.08,
-      "peor_ret": -2.572,
-      "peor_mae": -2.572,
-      "base_media_pct": 40.6,
-      "diferencia_pp": -20.6,
+      "acierto_pct": 16.7,
+      "ret_medio": -0.522,
+      "peor_ret": -3.53,
+      "peor_mae": -4.521,
+      "base_media_pct": 41.2,
+      "diferencia_pp": -24.5,
       "muestra_insuficiente": true
      },
      "20": {
@@ -176,19 +176,19 @@
       "muestra_insuficiente": true
      },
      "5": {
-      "n": 0,
+      "n": 1,
       "aciertos": 0,
       "fallos": 0,
-      "neutrales": 0,
-      "pendientes": 1,
+      "neutrales": 1,
+      "pendientes": 0,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": null,
-      "ret_medio": null,
-      "peor_ret": null,
-      "peor_mae": null,
-      "base_media_pct": null,
-      "diferencia_pp": null,
+      "acierto_pct": 0.0,
+      "ret_medio": 0.0,
+      "peor_ret": 0.0,
+      "peor_mae": -5.0,
+      "base_media_pct": 48.0,
+      "diferencia_pp": -48.0,
       "muestra_insuficiente": true
      },
      "20": {
@@ -400,19 +400,19 @@
     "no_puntuables": 0,
     "horizontes": {
      "1": {
-      "n": 0,
+      "n": 1,
       "aciertos": 0,
-      "fallos": 0,
+      "fallos": 1,
       "neutrales": 0,
-      "pendientes": 1,
+      "pendientes": 0,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": null,
-      "ret_medio": null,
-      "peor_ret": null,
-      "peor_mae": null,
-      "base_media_pct": null,
-      "diferencia_pp": null,
+      "acierto_pct": 0.0,
+      "ret_medio": 0.284,
+      "peor_ret": 0.284,
+      "peor_mae": 0.0,
+      "base_media_pct": 12.9,
+      "diferencia_pp": -12.9,
       "muestra_insuficiente": true
      },
      "5": {
@@ -480,7 +480,17 @@
    "criterio": null,
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret": 0.284,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 12.9,
+     "fecha_fin": "2026-10-20",
+     "sigma_h": 0.8026,
+     "comp_caida": false,
+     "comp_vix": false,
+     "caida_max_pct": 0.284,
+     "vix_max_pct": -6.13
     },
     "5": {
      "estado": "PENDIENTE"
@@ -896,7 +906,13 @@
      "sigma_h": 4.6863
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "NEUTRAL",
+     "ret": 0.0,
+     "mae": -5.0,
+     "unidad": "pb",
+     "base_pct": 48.0,
+     "fecha_fin": "2026-10-20",
+     "sigma_h": 10.479
     },
     "20": {
      "estado": "PENDIENTE"
@@ -938,7 +954,13 @@
      "sigma_h": 1.2381
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret": -3.53,
+     "mae": -4.521,
+     "unidad": "%",
+     "base_pct": 44.4,
+     "fecha_fin": "2026-10-20",
+     "sigma_h": 2.7742
     },
     "20": {
      "estado": "PENDIENTE"
@@ -6098,8 +6120,8 @@
  "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas.",
  "ultima_ejecucion": {
   "senales_nuevas": 0,
-  "resultados_nuevos": 0,
-  "evaluo": false
+  "resultados_nuevos": 3,
+  "evaluo": true
  },
- "duracion_s": 0.0
+ "duracion_s": 0.1
 }
