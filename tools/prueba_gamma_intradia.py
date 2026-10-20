@@ -236,14 +236,15 @@ print("10) OK velas: la en curso y las parciales se descartan; sesión regular 0
 
 # ---------------------------------------------------------------- 11) gamma.py: Max Gamma y EM (VIX/VXN)
 perfil = [{"k": 7650, "call": 1609.4, "put": -7666.6, "net": -6057.2}, {"k": 7700, "call": 3824.3, "put": -7863.3, "net": -4039.0}, {"k": 7800, "call": 5615.2, "put": -100.0, "net": 5515.2}]
-assert GM.max_gamma_de(perfil) == {"idx": 7700, "musd": 11687.6} and GM.max_gamma_de([]) is None
+assert GM.max_gamma_de(perfil) == {"idx": 7700, "musd": 11687.6, "neto_musd": -4039.0, "tipo": "acelera"} and GM.max_gamma_de([]) is None, "Max Gamma con signo: gamma neta negativa → acelera"
+assert GM.max_gamma_de([{"k": 100, "call": 900.0, "put": -100.0, "net": 800.0}])["tipo"] == "pin", "gamma neta positiva → pin"
 em = GM.calcular_em("ES", {"spot_fut": 7703.0, "sesion": "2026-10-16"}, (19.99, "2026-10-16"))
 assert em["puntos"] == round(7703.0 * 19.99 / 100 / math.sqrt(252), 1) and em["vol_simbolo"] == "VIX" and em["vol_fecha"] == "2026-10-16" and "√252" in em["formula"]
 assert GM.calcular_em("NQ", {"spot_fut": 29379.5}, (27.13, "2026-10-16"))["vol_simbolo"] == "VXN"
 assert GM.calcular_em("ES", {"spot_fut": 7700.0}, (500.0, "x"))["puntos"] is None, "volatilidad fuera de rango → SIN DATO"
 M = {"indices": {"ES": {"perfil": perfil, "base": {"base": 43.56}, "spot_fut": 7703.0}}}
 GM.enriquecer(M, {"ES": (19.99, "2026-10-16")})
-assert M["indices"]["ES"]["max_gamma"] == {"idx": 7700, "musd": 11687.6, "fut": 7743.6} and M["indices"]["ES"]["em"]["puntos"] == em["puntos"]
+assert M["indices"]["ES"]["max_gamma"] == {"idx": 7700, "musd": 11687.6, "neto_musd": -4039.0, "tipo": "acelera", "fut": 7743.6} and M["indices"]["ES"]["em"]["puntos"] == em["puntos"]
 n = G.niveles({"indices": {"ES": {"flip": {"fut": 7804.0}, "call_wall": {"fut": 7843.6}, "put_wall": {"fut": 7693.6}, "max_gamma": {"fut": 7743.6}, "em": {"puntos": 97.0}, "spot_fut": 7703.0, "sesion": "2026-10-16"}}}, "ES")
 assert (n["flip"], n["cw"], n["pw"], n["maxg"], n["em"]) == (7804.0, 7843.6, 7693.6, 7743.6, 97.0) and G.niveles({"indices": {"ES": {"flip": None}}}, "ES") is None and G.niveles(None, "ES") is None
 print("11) OK gamma.py: Max Gamma = tramo de mayor gamma absoluta; EM = precio × VIX (ES) o VXN (NQ) / 100 / √252 con la volatilidad del cierre de la sesión; fuera de rango → SIN DATO; gamma.json de la sesión anterior se enriquece sin recalcular")

@@ -228,7 +228,7 @@ def _calcular(clave, cfg):
             "sesion_dt": sesion}
 
 
-VOL_DE = {"ES": ("^VIX", "VIX"), "NQ": ("^VXN", "VXN"), "GLD": ("^GVZ", "GVZ")}
+VOL_DE = {"ES": ("^VIX", "VIX"), "NQ": ("^VXN", "VXN"), "GLD": ("^GVZ", "GVZ"), "DIA": ("^VXD", "VXD")}
 
 
 def max_gamma_de(perfil):
@@ -236,7 +236,11 @@ def max_gamma_de(perfil):
     if not perfil:
         return None
     b = max(perfil, key=lambda p: p["call"] - p["put"])
-    return {"idx": b["k"], "musd": round(b["call"] - b["put"], 1)}
+    neto = b.get("net")
+    if neto is None:
+        neto = round(b["call"] + b["put"], 1)
+    # con signo: «pin» solo si la gamma NETA del tramo es positiva (las coberturas frenan el precio contra el nivel); si es negativa, «acelera»
+    return {"idx": b["k"], "musd": round(b["call"] - b["put"], 1), "neto_musd": neto, "tipo": "pin" if neto > 0 else "acelera"}
 
 
 def calcular_em(clave, M, vol=None):
@@ -262,7 +266,7 @@ def calcular_em(clave, M, vol=None):
 def enriquecer(M, vol_por_indice=None):
     """Añade max_gamma y em a un gamma.json ya generado (sin recalcular la cadena de opciones): max_gamma sale del perfil guardado y em del VIX/VXN. Idempotente."""
     for k, x in (M.get("indices") or {}).items():
-        if not x.get("max_gamma") and x.get("perfil"):
+        if (not x.get("max_gamma") or "tipo" not in x["max_gamma"]) and x.get("perfil"):
             mg = max_gamma_de(x["perfil"])
             b = (x.get("base") or {}).get("base")
             if mg:
@@ -310,7 +314,49 @@ def _roll(d):
     return t - dt.timedelta(days=8) <= d <= t
 
 
-def revisar(clave, historico, ohlc):
+def escalar(M, k, spot_cash=None):
+    """Pasa una cadena calculada en unidades de ETF (DIA, GLD…) a las del contado (DJI, XAU) multiplicando por k = contado / ETF. Guarda el valor original en «etf»."""
+    for clave in ("call_wall", "put_wall", "flip", "max_gamma"):
+        x = M.get(clave)
+        if x:
+            x["etf"] = x["idx"]
+            x["idx"] = round(x["idx"] * k, 1)
+    for t in ("top_calls", "top_puts"):
+        for x in M[t]:
+            x["etf"] = x["idx"]
+            x["idx"] = round(x["idx"] * k, 1)
+    for p in M["perfil"]:
+        p["k_etf"] = p["k"]
+        p["k"] = round(p["k"] * k, 1)
+    M["curva"] = [[round(s * k, 1), g] for s, g in M["curva"]]
+    M["otros_cruces_idx"] = [round(c * k, 1) for c in M["otros_cruces_idx"]]
+    M["spot_etf"] = M["spot_idx"]
+    M["spot_idx"] = round(spot_cash if spot_cash is not None else M["spot_idx"] * k, 2)
+    M["ratio_contado"] = round(k, 5)
+    return M
+
+
+def cambios(prev, x, campo="fut"):
+    """Qué ha cambiado frente a la sesión guardada anterior. prev = {fecha, call_wall, put_wall, flip, regimen} en la misma unidad que x[nivel][campo]. None si no hay sesión anterior."""
+    if not prev:
+        return None
+    out = {"sesion_anterior": prev.get("fecha"), "niveles": {}}
+    for k in ("call_wall", "put_wall", "flip"):
+        a, b = _f(prev.get(k)), (x.get(k) or {}).get(campo)
+        out["niveles"][k] = {"antes": a, "ahora": b, "dif": round(b - a, 1) if (a is not None and b is not None) else None}
+    out["regimen"] = {"antes": prev.get("regimen") or None, "ahora": x.get("regimen"), "cambio": bool(prev.get("regimen")) and prev.get("regimen") != x.get("regimen")}
+    return out
+
+
+def prev_de_historico(historico, clave, sesion, sufijo="fut"):
+    filas = sorted((r for r in historico if r.get("indice") == clave and r["fecha_sesion"] < sesion), key=lambda r: r["fecha_sesion"], reverse=True)
+    if not filas:
+        return None
+    r = filas[0]
+    return {"fecha": r["fecha_sesion"], "call_wall": r.get(f"call_wall_{sufijo}"), "put_wall": r.get(f"put_wall_{sufijo}"), "flip": r.get(f"flip_{sufijo}"), "regimen": r.get("regimen")}
+
+
+def revisar(clave, historico, ohlc, roll=True):
     """Compara cada sesión guardada con la barra del futuro de la SESIÓN SIGUIENTE. ohlc: [{fecha,o,h,l,c}] del futuro."""
     filas = sorted((r for r in historico if r.get("indice") == clave), key=lambda r: r["fecha_sesion"], reverse=True)
     by = sorted(ohlc, key=lambda b: b["fecha"])
@@ -321,7 +367,7 @@ def revisar(clave, historico, ohlc):
         e = {"fecha_sesion": r["fecha_sesion"], "spot_fut": _f(r.get("spot_fut")), "niveles": {}}
         if sig is None:
             e["estado"] = "PENDIENTE"
-        elif _roll(d) or _roll(sig["fecha"]):
+        elif roll and (_roll(d) or _roll(sig["fecha"])):
             e["estado"] = "ROLL"
             e["nota"] = "Ventana de vencimiento trimestral del futuro: la sesión siguiente cotiza otro contrato; no se evalúa."
         else:

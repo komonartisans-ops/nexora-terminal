@@ -828,6 +828,9 @@ def etapa_gamma():
             err[clave] = f"{type(e).__name__}: {str(e)[:100]}"
             rev[clave] = {"sesiones": [], "resumen": {}, "sin_dato": True}
     M["revision"] = rev
+    for k, x in M["indices"].items():       # «qué ha cambiado» frente a la sesión guardada anterior, y Max Gamma con signo (pin / acelera) también en gamma.json antiguos
+        x["anterior"] = gamma.cambios(gamma.prev_de_historico(hist, k, x["sesion"]), x)
+    gamma.enriquecer(M)
     M["errores_revision"] = err
     M["sesiones_guardadas"] = len({r["fecha_sesion"] for r in hist})
     return M
@@ -879,6 +882,13 @@ def etapa_petroleo():
     return petroleo.etapa()
 
 
+# ------------------------------------------------------------------ gamma de US30 (DIA, referencia → DJI y futuro YM)
+def etapa_gamma_us30():
+    import gamma_us30
+    cierre = "cierre" in MODO_EFECTIVO
+    return gamma_us30.etapa(escribir_cierre=cierre, hoy=NOW.strftime("%Y-%m-%d"), stamp=STAMP, previo=leer("gamma_us30.json"))
+
+
 # ------------------------------------------------------------------ gamma del oro (GLD, referencia → XAU/USD)
 def etapa_gamma_oro():
     import gamma_oro
@@ -915,15 +925,15 @@ ETAPAS = {"precios": etapa_precios, "fedwatch": etapa_fedwatch, "tipos": etapa_t
           "liquidez": etapa_liquidez, "monitores": etapa_monitores, "series": etapa_series, "etf": etapa_etf, "ciclo": etapa_ciclo, "publicados": etapa_publicados, "resumen": etapa_resumen, "tesis": etapa_tesis,
           "regimen": etapa_regimen, "reevaluar": etapa_reevaluar, "divisas": etapa_divisas, "cot": etapa_cot, "noticias": etapa_noticias,
           "bancos": etapa_bancos, "tono": etapa_tono,
-          "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "gamma_oro": etapa_gamma_oro, "alertas": etapa_alertas, "reacciones": etapa_reacciones, "consumo": etapa_consumo, "consumo_ratio": etapa_consumo_ratio, "petroleo": etapa_petroleo, "gamma_intradia": etapa_gamma_intradia, "marcador": etapa_marcador, "integridad": etapa_integridad, "contexto": etapa_contexto}
+          "skew": etapa_skew, "semis": etapa_semis, "gamma": etapa_gamma, "gamma_oro": etapa_gamma_oro, "gamma_us30": etapa_gamma_us30, "alertas": etapa_alertas, "reacciones": etapa_reacciones, "consumo": etapa_consumo, "consumo_ratio": etapa_consumo_ratio, "petroleo": etapa_petroleo, "gamma_intradia": etapa_gamma_intradia, "marcador": etapa_marcador, "integridad": etapa_integridad, "contexto": etapa_contexto}
 ORDEN = ["precios", "fedwatch", "tipos", "calendario", "liquidez", "monitores", "series", "etf", "ciclo", "publicados", "reevaluar", "resumen", "tesis", "regimen", "divisas", "cot", "noticias",
-         "bancos", "tono", "skew", "semis", "gamma", "gamma_oro", "consumo", "consumo_ratio", "petroleo", "alertas", "reacciones", "gamma_intradia", "marcador", "integridad", "contexto"]
+         "bancos", "tono", "skew", "semis", "gamma", "gamma_oro", "gamma_us30", "consumo", "consumo_ratio", "petroleo", "alertas", "reacciones", "gamma_intradia", "marcador", "integridad", "contexto"]
 # horario: el SKEW (Cboe) se publica tras el cierre, por eso entra aquí para que la alerta salga en la hora siguiente; gamma NO (solo al cierre).
 # cierre (cron 21:30 UTC, tras el cierre de Nueva York): snapshot de opciones, semis/software y SKEW del día.
 # calendario y publicados entran en el horario porque el día de una publicación (IPC, PPI, ventas…) el dato sale a las 12:30-13:30 UTC y la web no puede esperar
 # al build diario; calendario escribe también site/data/agenda.json (sin esto la página Agenda mostraba el «hoy» de ayer).
 MODOS = {"horario": ["precios", "fedwatch", "tipos", "calendario", "publicados", "reevaluar", "resumen", "tesis", "regimen", "etf", "noticias", "skew", "alertas", "gamma_intradia", "marcador", "integridad", "contexto"],
-         "cierre": ["precios", "semis", "bancos", "tono", "skew", "gamma", "gamma_oro", "consumo", "consumo_ratio", "petroleo", "alertas", "gamma_intradia", "marcador", "integridad", "contexto"], "diario": ORDEN, "todo": ORDEN}
+         "cierre": ["precios", "semis", "bancos", "tono", "skew", "gamma", "gamma_oro", "gamma_us30", "consumo", "consumo_ratio", "petroleo", "alertas", "gamma_intradia", "marcador", "integridad", "contexto"], "diario": ORDEN, "todo": ORDEN}
 
 
 def escalar(modo, estado, ahora=None):

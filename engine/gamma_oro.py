@@ -44,6 +44,7 @@ MIN_N = 20
 DIAS_RATIO_MAX = 5
 NIVELES = (("flip", "Gamma Flip", "flip"), ("call_wall", "Call Wall", "cw"), ("put_wall", "Put Wall", "pw"), ("max_gamma", "Max Gamma", "maxg"))
 CAMPOS_RATIO = ["fecha", "gld_cierre", "xau_spot", "ratio", "xau_hora_utc", "fuente_xau", "medido_utc"]
+CAMPOS_BASE = ["fecha", "xau_spot", "gc_precio", "base", "gc_barra_utc", "fuente", "medido_utc"]
 CAMPOS_HIST = ["fecha_sesion", "gld_spot", "flip_gld", "call_wall_gld", "put_wall_gld", "max_gamma_gld", "em_gld", "ratio", "ratio_fecha", "flip_xau", "call_wall_xau", "put_wall_xau", "max_gamma_xau",
                "em_xau", "gex_neto_musd", "regimen", "ultima_operacion_et", "medido_utc"]
 CAMPOS_RES = ["id", "fecha_sesion", "nivel", "nivel_gld", "em_gld", "zona_lo", "zona_hi", "fecha_t1", "o", "h", "l", "c", "tocado", "resultado", "evaluado_utc"]
@@ -69,6 +70,48 @@ def gld_cierre(sesion):
         if b["fecha"] == sesion:
             return float(b["c"])
     raise RuntimeError(f"sin cierre de GLD de {sesion}")
+
+
+def gc_en(hora_utc):
+    """(precio, 'AAAA-MM-DD HH:MM' UTC) de la barra de 5 min de GC=F (futuro del oro de COMEX) más cercana, sin pasarse, a `hora_utc` ('AAAA-MM-DD HH:MM')."""
+    objetivo = dt.datetime.strptime(hora_utc, "%Y-%m-%d %H:%M").replace(tzinfo=UTC).timestamp()
+    r = precios._yahoo("GC=F", "5d", "5m")
+    c = r["indicators"]["quote"][0]["close"]
+    cand = [(t, v) for t, v in zip(r["timestamp"], c) if v is not None and t <= objetivo]
+    if not cand or objetivo - cand[-1][0] > 1800:
+        raise RuntimeError("sin barra de GC=F cerca de esa hora")
+    t, v = cand[-1]
+    return float(v), dt.datetime.fromtimestamp(t, UTC).strftime("%Y-%m-%d %H:%M")
+
+
+def anotar_base(raiz, sesion, fila_ratio, fuentes_=None, medido_utc=""):
+    """Base del día del futuro GC = GC − XAU en el mismo momento que el ratio (solo añadir). None si falta algún dato."""
+    f = fuentes_ or {}
+    try:
+        gc, barra = (f.get("gc") or gc_en)(fila_ratio["xau_hora_utc"])
+    except Exception as e:  # noqa: BLE001
+        print("base GC sin anotar:", type(e).__name__, str(e)[:100])
+        return None
+    fila = {"fecha": sesion, "xau_spot": fila_ratio["xau_spot"], "gc_precio": round(gc, 2), "base": round(gc - float(fila_ratio["xau_spot"]), 2), "gc_barra_utc": barra,
+            "fuente": "GC=F (Yahoo, barra de 5 min) − XAU/USD al contado", "medido_utc": medido_utc}
+    GI._anadir_csv(P(raiz, "data", "xau_gc_base.csv"), [fila], CAMPOS_BASE, lambda r: r["fecha"])
+    return fila
+
+
+def base_para(raiz, sesion):
+    """Base GC − XAU de la sesión (o la última de hasta 5 días antes, avisándolo). None si no hay."""
+    filas = sorted((r for r in GI._leer_csv(P(raiz, "data", "xau_gc_base.csv")) if r.get("base")), key=lambda r: r["fecha"])
+    filas = [r for r in filas if r["fecha"] <= sesion]
+    if not filas:
+        return None
+    r = filas[-1]
+    dias = (dt.date.fromisoformat(sesion) - dt.date.fromisoformat(r["fecha"])).days
+    if dias > DIAS_RATIO_MAX:
+        return None
+    b = float(r["base"])
+    return {"base": b, "fut": float(r["gc_precio"]), "idx": float(r["xau_spot"]), "momento_et": None, "aproximada": r["fecha"] != sesion,
+            "metodo": ("GC=F − XAU/USD al contado en el mismo momento (barra de 5 min de Yahoo, " + r["gc_barra_utc"] + " UTC)") + ("" if r["fecha"] == sesion else f" · APROXIMADA: base del {r['fecha']}"),
+            "fuente": "Yahoo Finance (GC=F) y gold-api.com (XAU/USD)", "errores": []}
 
 
 def leer_ratios(raiz=RAIZ):
@@ -199,15 +242,35 @@ def _guardar_historico(raiz, M, medido_utc):
     g = lambda c: "" if por[c]["gld"] is None else por[c]["gld"]  # noqa: E731
     x_ = lambda c: "" if por[c]["xau"] is None else por[c]["xau"]  # noqa: E731
     r = M.get("ratio") or {}
-    fila = {"fecha_sesion": M["sesion"], "gld_spot": M["spot_idx"], "flip_gld": g("flip"), "call_wall_gld": g("cw"), "put_wall_gld": g("pw"), "max_gamma_gld": g("maxg"),
-            "em_gld": (M["em"] or {}).get("puntos") or "", "ratio": r.get("valor", ""), "ratio_fecha": r.get("fecha", ""),
+    fila = {"fecha_sesion": M["sesion"], "gld_spot": M.get("spot_gld", M["spot_idx"]), "flip_gld": g("flip"), "call_wall_gld": g("cw"), "put_wall_gld": g("pw"), "max_gamma_gld": g("maxg"),
+            "em_gld": (M.get("em_gld") or {}).get("puntos") or "", "ratio": r.get("valor", ""), "ratio_fecha": r.get("fecha", ""),
             "flip_xau": x_("flip"), "call_wall_xau": x_("cw"), "put_wall_xau": x_("pw"), "max_gamma_xau": x_("maxg"), "em_xau": M.get("em_xau") or "",
             "gex_neto_musd": M["gex_neto_musd"], "regimen": M["regimen"], "ultima_operacion_et": M["ultima_operacion_et"], "medido_utc": medido_utc}
     return len(GI._anadir_csv(P(raiz, "data", "historico_gamma_oro.csv"), [fila], CAMPOS_HIST, lambda r: r["fecha_sesion"]))
 
 
+def _a_contado(M, r, base):
+    """Pasa M (unidades de GLD) a la forma de una entrada de gamma.json: idx = XAU/USD al contado, fut = futuro GC con la base del día. Sin ratio se queda en GLD (SIN DATO en XAU)."""
+    M["spot_gld"], M["em_gld"] = M["spot_idx"], M["em"]
+    M["nombre"] = "Oro (GLD, referencia) → XAU/USD y futuro GC"
+    M["etiqueta"] = ETIQUETA
+    if not r:
+        M.update({"clave": "GC", "contado": "GLD", "futuro": None, "indice": "GLD", "unidad": "GLD", "spot_fut": None, "base": {"base": None, "metodo": "SIN DATO: sin ratio XAU/GLD, los niveles quedan en GLD", "fuente": "—"}})
+        return M
+    k = r["valor"]
+    gamma.escalar(M, k, spot_cash=r["xau"])
+    em = M["em_gld"]
+    M["em"] = ({**em, "puntos": round(em["puntos"] * k, 1), "ref": round(r["xau"], 2), "unidad": "XAU/USD", "formula": "GLD × GVZ / 100 / √252 × ratio XAU/GLD"} if em.get("puntos") else em)
+    if base:
+        gamma._a_futuro(M, base)
+    else:
+        gamma._a_futuro(M, {"base": None, "metodo": "SIN DATO: no hay base GC − XAU de esa sesión", "fuente": "—"})
+    M.update({"clave": "GC", "contado": "XAU", "futuro": "GC", "indice": "XAU", "unidad": "XAU"})
+    return M
+
+
 def etapa(escribir_cierre=False, hoy=None, stamp="", raiz=RAIZ, previo=None, fuentes_=None, ahora=None):
-    """site/data/gamma_oro.json. `escribir_cierre` (solo la ejecución de cierre): anota el ratio y el histórico de la sesión del día. Con snapshot intradía conserva el último cierre válido."""
+    """site/data/gamma_oro.json. `escribir_cierre` (solo la ejecución de cierre): anota el ratio, la base GC y el histórico de la sesión del día. Con snapshot intradía conserva el último cierre válido."""
     f = fuentes_ or {}
     M = f["calcular"]() if f.get("calcular") else calcular(f.get("vol"))
     if not M["cierre_confirmado"] and previo and previo.get("cierre_confirmado"):
@@ -215,18 +278,43 @@ def etapa(escribir_cierre=False, hoy=None, stamp="", raiz=RAIZ, previo=None, fue
         return previo
     escribe = bool(escribir_cierre and M["cierre_confirmado"] and M["sesion"] == (hoy or dt.datetime.now(UTC).strftime("%Y-%m-%d")))
     if escribe:
-        anotar_ratio(raiz, M["sesion"], f, stamp)
-    convertir(M, ratio_para(raiz, M["sesion"]))
+        fr = anotar_ratio(raiz, M["sesion"], f, stamp)
+        if fr:
+            anotar_base(raiz, M["sesion"], fr, f, stamp)
+    r = ratio_para(raiz, M["sesion"])
+    convertir(M, r)
+    M["spot_gld"] = M["spot_idx"]
+    M["em_gld"] = M["em"]
     M["historico_escrito"] = False
     if escribe:
         _guardar_historico(raiz, M, stamp)
         M["historico_escrito"] = True
+    barras = f.get("barras")
+    if barras is None:
+        try:
+            barras, _ = precios.diario("GLD", "3mo")
+        except Exception as e:  # noqa: BLE001
+            M["error_evaluar"] = f"{type(e).__name__}: {str(e)[:100]}"
     try:
-        evaluar(raiz, f.get("barras"), ahora)
+        if barras is not None:
+            evaluar(raiz, barras, ahora)
     except Exception as e:  # noqa: BLE001
         M["error_evaluar"] = f"{type(e).__name__}: {str(e)[:100]}"
     M["marcador"] = resumen_marcador(raiz)
-    M["perfil"] = [{k: p[k] for k in ("k", "call", "put", "net")} for p in M["perfil"]]
+    hist = GI._leer_csv(P(raiz, "data", "historico_gamma_oro.csv"))
+    filas = [{"fecha_sesion": h["fecha_sesion"], "indice": "ORO", "spot_fut": h["gld_spot"], "call_wall_fut": h["call_wall_gld"], "put_wall_fut": h["put_wall_gld"], "flip_fut": h["flip_gld"],
+              "regimen": h["regimen"]} for h in hist]
+    try:
+        M["revision"] = gamma.revisar("ORO", filas, barras, roll=False) if barras is not None else {"sesiones": [], "resumen": {}, "sin_dato": True}
+    except Exception as e:  # noqa: BLE001
+        M["revision"] = {"sesiones": [], "resumen": {}, "sin_dato": True}
+        M["error_revision"] = f"{type(e).__name__}: {str(e)[:100]}"
+    M["revision_unidad"] = "GLD ($): los niveles se miden sobre el ETF, donde están"
+    prev = gamma.prev_de_historico([{**h, "indice": "ORO"} for h in hist], "ORO", M["sesion"], "xau")
+    _a_contado(M, r, base_para(raiz, M["sesion"]) if r else None)
+    M["anterior"] = gamma.cambios(prev, M, "idx") if r else None
+    M["sesiones_guardadas"] = len(hist)
+    M["perfil"] = [{k: p[k] for k in ("k", "call", "put", "net", "fut") if k in p} for p in M["perfil"]]
     M["curva"] = M["curva"][::2]
     M["resumen_texto"] = texto(M)
     try:
