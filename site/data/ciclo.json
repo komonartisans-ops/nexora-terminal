@@ -1,55 +1,55 @@
 {
- "fecha": "2026-10-19",
+ "fecha": "2026-10-20",
  "fase": "EXPANSIÓN · RIESGO BAJO",
  "senales_adelantadas_encendidas": 0,
  "senales_adelantadas_total": 8,
- "prob_recesion_curva_nyfed": 14.5,
- "curva_10y3m": 0.83,
+ "prob_recesion_curva_nyfed": 13.8,
+ "curva_10y3m": 0.88,
  "prob_recesion_ebp_fed": 9.1,
  "prob_ebp_mes": "2026-09",
  "credito": {
   "ig": {
    "nombre": "Grado de inversión (IG)",
-   "fecha": "2026-10-15",
-   "pb": 84,
+   "fecha": "2026-10-16",
+   "pb": 85,
    "5d_pb": 2,
-   "1m_pb": 4,
+   "1m_pb": 7,
    "3m_pb": 6,
-   "percentil_1a": 90,
+   "percentil_1a": 92,
    "min_1a_pb": 73
   },
   "bbb": {
    "nombre": "BBB (el escalón más bajo del grado de inversión)",
-   "fecha": "2026-10-15",
-   "pb": 105,
-   "5d_pb": 3,
-   "1m_pb": 7,
+   "fecha": "2026-10-16",
+   "pb": 106,
+   "5d_pb": 4,
+   "1m_pb": 10,
    "3m_pb": 9,
-   "percentil_1a": 87,
+   "percentil_1a": 90,
    "min_1a_pb": 92
   },
   "hy": {
    "nombre": "High yield (HY)",
-   "fecha": "2026-10-15",
-   "pb": 323,
-   "5d_pb": 8,
-   "1m_pb": 47,
-   "3m_pb": 52,
-   "percentil_1a": 97,
+   "fecha": "2026-10-16",
+   "pb": 331,
+   "5d_pb": 20,
+   "1m_pb": 61,
+   "3m_pb": 58,
+   "percentil_1a": 99,
    "min_1a_pb": 260
   },
   "ccc": {
    "nombre": "CCC (las empresas más frágiles)",
-   "fecha": "2026-10-15",
-   "pb": 1278,
-   "5d_pb": 26,
-   "1m_pb": 193,
-   "3m_pb": 308,
+   "fecha": "2026-10-16",
+   "pb": 1297,
+   "5d_pb": 44,
+   "1m_pb": 221,
+   "3m_pb": 322,
    "percentil_1a": 100,
    "min_1a_pb": 822
   }
  },
- "estado_credito": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +193 pb en 1 mes",
+ "estado_credito": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +221 pb en 1 mes",
  "senales": [
   {
    "id": "curva",
@@ -1463,6 +1463,10 @@
     [
      "2026-10-15",
      84.0
+    ],
+    [
+     "2026-10-16",
+     85.0
     ]
    ],
    "bbb": [
@@ -2609,6 +2613,10 @@
     [
      "2026-10-15",
      105.0
+    ],
+    [
+     "2026-10-16",
+     106.0
     ]
    ],
    "hy": [
@@ -3755,6 +3763,10 @@
     [
      "2026-10-15",
      323.0
+    ],
+    [
+     "2026-10-16",
+     331.0
     ]
    ],
    "ccc": [
@@ -4901,6 +4913,10 @@
     [
      "2026-10-15",
      1278.0
+    ],
+    [
+     "2026-10-16",
+     1297.0
     ]
    ]
   },
@@ -9080,6 +9096,10 @@
    [
     "2026-10-16",
     0.83
+   ],
+   [
+    "2026-10-19",
+    0.88
    ]
   ],
   "nfci": [
@@ -11669,6 +11689,6 @@
  },
  "tono": "pos",
  "ok": true,
- "generado_utc": "2026-10-19 11:00 UTC",
- "duracion_s": 3.3
+ "generado_utc": "2026-10-20 05:30 UTC",
+ "duracion_s": 4.8
 }

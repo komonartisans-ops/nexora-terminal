@@ -1,22 +1,22 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-20 00:33 UTC",
+ "generado_utc": "2026-10-20 05:30 UTC",
  "fecha_datos": "2026-10-20",
  "precios": {
   "wti": {
-   "valor": 98.44,
+   "valor": 98.89,
    "fecha": "2026-10-20",
-   "sma50": 91.39,
-   "sma200": 84.4,
-   "dist_sma200_pct": 16.64,
-   "cambio_1d_pct": -0.57,
-   "cambio_5d_pct": 6.03,
-   "cambio_21d_pct": -1.85,
-   "cambio_63d_pct": 15.93,
+   "sma50": 91.83,
+   "sma200": 84.63,
+   "dist_sma200_pct": 16.85,
+   "cambio_1d_pct": 0.37,
+   "cambio_5d_pct": 6.15,
+   "cambio_21d_pct": 3.25,
+   "cambio_63d_pct": 13.89,
    "fuente": "Yahoo Finance (CL=F, futuro continuo del primer vencimiento)",
    "contrato_cl_f": "CLZ26.NYM",
-   "aviso_empalme": "CL=F apunta hoy a CLZ26.NYM; el cambio de 1 día se mide sobre ese contrato (-0,57 %) y no sobre la serie empalmada (-2,93 %), que mezcla dos contratos"
+   "aviso_empalme": "CL=F apunta hoy a CLZ26.NYM; el cambio de 1 día se mide sobre ese contrato (0,37 %) y no sobre la serie empalmada (-4,60 %), que mezcla dos contratos"
   },
   "wti_spot_serie": [
    [
@@ -2189,15 +2189,15 @@
    ]
   ],
   "brent": {
-   "valor": 109.38,
+   "valor": 110.02,
    "fecha": "2026-10-20",
-   "sma50": 98.93,
-   "sma200": 90.15,
-   "dist_sma200_pct": 21.33,
-   "cambio_1d_pct": -0.44,
-   "cambio_5d_pct": 2.56,
-   "cambio_21d_pct": 5.3,
-   "cambio_63d_pct": 20.18,
+   "sma50": 99.38,
+   "sma200": 90.4,
+   "dist_sma200_pct": 21.71,
+   "cambio_1d_pct": 0.43,
+   "cambio_5d_pct": 4.1,
+   "cambio_21d_pct": 9.65,
+   "cambio_63d_pct": 16.96,
    "fuente": "Yahoo Finance (BZ=F, futuro)"
   },
   "segunda_fuente": {
@@ -2220,7 +2220,7 @@
   },
   "brent_comparacion": {
    "yahoo": {
-    "valor": 109.38,
+    "valor": 110.02,
     "fecha": "2026-10-20"
    },
    "fred": {
@@ -2238,7 +2238,7 @@
    },
    "discrepancia": true
   },
-  "spread_brent_wti": 10.94
+  "spread_brent_wti": 11.13
  },
  "graficos": {
   "wti": {
@@ -4248,8 +4248,12 @@
      101.41
     ],
     [
+     "2026-10-19",
+     103.66
+    ],
+    [
      "2026-10-20",
-     98.44
+     98.89
     ]
    ],
    "sma50": [
@@ -6062,8 +6066,12 @@
      90.983
     ],
     [
+     "2026-10-19",
+     91.492
+    ],
+    [
      "2026-10-20",
-     91.388
+     91.827
     ]
    ],
    "sma200": [
@@ -7276,8 +7284,12 @@
      84.191
     ],
     [
+     "2026-10-19",
+     84.422
+    ],
+    [
      "2026-10-20",
-     84.396
+     84.63
     ]
    ]
   },
@@ -9288,8 +9300,12 @@
      109.86
     ],
     [
+     "2026-10-19",
+     109.55
+    ],
+    [
      "2026-10-20",
-     109.38
+     110.02
     ]
    ],
    "sma50": [
@@ -11102,8 +11118,12 @@
      98.415
     ],
     [
+     "2026-10-19",
+     98.935
+    ],
+    [
      "2026-10-20",
-     98.932
+     99.381
     ]
    ],
    "sma200": [
@@ -12316,8 +12336,12 @@
      89.909
     ],
     [
+     "2026-10-19",
+     90.152
+    ],
+    [
      "2026-10-20",
-     90.151
+     90.399
     ]
    ]
   }
@@ -12327,10 +12351,10 @@
   "par_usado": "2-3",
   "m1": "CLZ26.NYM",
   "m2": "CLF27.NYM",
-  "precio_m1": 98.46,
-  "precio_m2": 96.61,
-  "diferencial": 1.85,
-  "diferencial_pct": 1.91,
+  "precio_m1": 98.9,
+  "precio_m2": 97.01,
+  "diferencial": 1.89,
+  "diferencial_pct": 1.95,
   "estado": "ESCASEZ",
   "vence_m1": "2026-11-20",
   "dias_a_vencimiento_m1": 31,
@@ -12343,21 +12367,17 @@
   "info_1_2": {
    "m1": "CLX26.NYM",
    "m2": "CLZ26.NYM",
-   "diferencial": 4.86,
-   "diferencial_pct": 4.94,
+   "diferencial": 5.09,
+   "diferencial_pct": 5.15,
    "estado": "ESCASEZ",
    "fecha": "2026-10-20"
   },
   "aviso": null,
   "percentil_par": 90,
-  "dias_par": 501,
+  "dias_par": 502,
   "min_pct": -0.17,
   "max_pct": 4.93,
   "historico_par": [
-   [
-    "2025-10-07",
-    0.016
-   ],
    [
     "2025-10-08",
     0.065
@@ -13391,8 +13411,12 @@
     1.622
    ],
    [
+    "2026-10-19",
+    1.934
+   ],
+   [
     "2026-10-20",
-    1.915
+    1.948
    ]
   ],
   "historico_propio": {
@@ -15050,7 +15074,7 @@
   "cambio_semana": -13024,
   "percentil_3a": 14,
   "min_3a": -38154,
-  "max_3a": 254544,
+  "max_3a": 253879,
   "etiqueta": "largo bajo, percentil 14",
   "zona_cot_py": "CORTO ELEVADO",
   "voto": -1,
@@ -15973,11 +15997,11 @@
   "consumo": {
    "tesis": "DIVERGENCIA MERCADO DEFENSIVO",
    "intensidad": "FUERTE",
-   "fecha": "2026-10-16"
+   "fecha": "2026-10-19"
   }
  },
  "relaciones": {
-  "wti_cambio_3m_pct": 15.93,
+  "wti_cambio_3m_pct": 13.89,
   "filas": [
    {
     "clave": "t5yie",
@@ -15986,25 +16010,25 @@
     "fecha": "2026-10-19",
     "cambio_3m": 10.0,
     "unidad_cambio": "pb",
-    "correlacion_60d": 0.62,
+    "correlacion_60d": 0.66,
     "lectura": "se mueven juntos"
    },
    {
     "clave": "dxy",
     "nombre": "Dólar (DXY)",
-    "valor": 101.94,
+    "valor": 101.77,
     "fecha": "2026-10-20",
-    "cambio_3m": 0.75,
+    "cambio_3m": 0.62,
     "unidad_cambio": "%",
-    "correlacion_60d": -0.09,
+    "correlacion_60d": -0.06,
     "lectura": "sin relación clara en 60 sesiones"
    },
    {
     "clave": "xle",
     "nombre": "Energía EE. UU. (ETF XLE)",
-    "valor": 68.24,
-    "fecha": "2026-10-16",
-    "cambio_3m": 17.78,
+    "valor": 67.8,
+    "fecha": "2026-10-19",
+    "cambio_3m": 15.9,
     "unidad_cambio": "%",
     "correlacion_60d": 0.63,
     "lectura": "se mueven juntos"
@@ -16025,12 +16049,12 @@
   "puntos": 2,
   "motivo": null,
   "confirmaria": [
-   "el WTI se mantiene por encima de su media de 200 sesiones (84,40 $)",
+   "el WTI se mantiene por encima de su media de 200 sesiones (84,63 $)",
    "el diferencial 2.º–3.º sigue en backwardation (≥ +0,5 %)",
    "el próximo informe de la EIA muestra otra caída de inventarios de crudo"
   ],
   "invalidaria": [
-   "un cierre del WTI por debajo de su media de 200 sesiones (84,40 $)",
+   "un cierre del WTI por debajo de su media de 200 sesiones (84,63 $)",
    "la curva pasa a contango (≤ −0,5 %)",
    "los inventarios de crudo suben por encima de su media de 5 años + 2 % (hoy -2,7 %)",
    "el neto del dinero gestionado cae al percentil 34 o menos"
@@ -16038,7 +16062,7 @@
   "causa_efecto": [
    [
     "Curva escasez",
-    "el 2.º vencimiento (dic-2026) cotiza 1,85 $ (1,91 %) frente al 3.º (ene-2027): el mercado paga por tener petróleo ya (escasez a corto plazo)"
+    "el 2.º vencimiento (dic-2026) cotiza 1,89 $ (1,95 %) frente al 3.º (ene-2027): el mercado paga por tener petróleo ya (escasez a corto plazo)"
    ],
    [
     "Inventarios de crudo",
@@ -16046,7 +16070,7 @@
    ],
    [
     "Precio frente a su media de 200",
-    "WTI 98,44 $, 16,6 % frente a 84,40 $: tendencia de fondo al alza"
+    "WTI 98,89 $, 16,9 % frente a 84,63 $: tendencia de fondo al alza"
    ]
   ]
  },
@@ -16065,5 +16089,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (CL=F, BZ=F, contratos CL<mes><año>.NYM, XLE, DXY) · FRED (DCOILWTICO, DCOILBRENTEU, GASREGW, T5YIE) · EIA (Weekly Petroleum Status Report) · CFTC (WTI-PHYSICAL)",
- "duracion_s": 43.2
+ "duracion_s": 41.2
 }

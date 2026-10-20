@@ -55,3 +55,4 @@ reaccion-evento-202610152000-42c4b38653,2026-10-15 20:00,reaccion,EVENTO,NINGUNA
 reaccion-evento-202610160335-38423258e4,2026-10-16 03:35,reaccion,EVENTO,NINGUNA,DISCURSO-2026-10-15 T+5: SIN REACCIÓN,reglas v3.0 (congeladas),reaccion.py (reacciones_eventos.csv),backfill,backfill,ACTIVA,,solo registro: no se puntúa
 tesis-nq-202610191411-e41d6fbabc,2026-10-19 14:11,tesis,NQ,BAJISTA,SIN TESIS → BAJISTA DÉBIL,cambio de la etiqueta de tesis,por_activo.py (resumen.json),39266055621,vivo,ACTIVA,,
 skew-es-202610192213-b3b72722a3,2026-10-19 22:13,skew,ES,BAJISTA,SKEW alto relativo; confirmaciones 2 de 2,zona alta relativa (p ≥ 90) y ≥ 2 confirmaciones,alertas.py (historico_alertas.csv),39332643459,vivo,ACTIVA,,
+tesis-nq-202610200542-5ac38f0038,2026-10-20 05:42,tesis,NQ,NINGUNA,BAJISTA DÉBIL → SIN TESIS,cambio de la etiqueta de tesis,por_activo.py (resumen.json),39375277592,vivo,ACTIVA,,
