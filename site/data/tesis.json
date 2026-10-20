@@ -131,9 +131,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 0.96,
+     "ret_pct": 0.82,
      "fecha": "2026-10-20",
-     "precio": 52501.5195
+     "precio": 52430.7383
     },
     "5": {
      "estado": "PENDIENTE"
@@ -154,9 +154,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 0.81,
+     "ret_pct": 0.68,
      "fecha": "2026-10-20",
-     "precio": 7721.1602
+     "precio": 7711.3701
     },
     "5": {
      "estado": "PENDIENTE"
@@ -177,9 +177,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 1.89,
+     "ret_pct": 1.85,
      "fecha": "2026-10-20",
-     "precio": 2772.7173
+     "precio": 2771.689
     },
     "5": {
      "estado": "PENDIENTE"
@@ -200,9 +200,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -1.23,
+     "ret_pct": -1.37,
      "fecha": "2026-10-20",
-     "precio": 4145.3999
+     "precio": 4139.8999
     },
     "5": {
      "estado": "PENDIENTE"
@@ -243,9 +243,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 0.06,
+     "ret_pct": 0.21,
      "fecha": "2026-10-20",
-     "precio": 82651.8984
+     "precio": 82775.3828
     },
     "5": {
      "estado": "PENDIENTE"
@@ -266,9 +266,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 0.96,
+     "ret_pct": 0.82,
      "fecha": "2026-10-20",
-     "precio": 52501.5195
+     "precio": 52430.7383
     },
     "5": {
      "estado": "PENDIENTE"
@@ -289,9 +289,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 0.81,
+     "ret_pct": 0.68,
      "fecha": "2026-10-20",
-     "precio": 7721.1602
+     "precio": 7711.3701
     },
     "5": {
      "estado": "PENDIENTE"
@@ -312,9 +312,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 1.89,
+     "ret_pct": 1.85,
      "fecha": "2026-10-20",
-     "precio": 2772.7173
+     "precio": 2771.689
     },
     "5": {
      "estado": "PENDIENTE"
@@ -335,9 +335,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -0.85,
+     "ret_pct": -0.99,
      "fecha": "2026-10-20",
-     "precio": 4145.3999
+     "precio": 4139.8999
     },
     "5": {
      "estado": "PENDIENTE"
@@ -401,9 +401,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 0.96,
+     "ret_pct": 0.82,
      "fecha": "2026-10-20",
-     "precio": 52501.5195
+     "precio": 52430.7383
     },
     "5": {
      "estado": "PENDIENTE"
@@ -424,9 +424,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 0.81,
+     "ret_pct": 0.68,
      "fecha": "2026-10-20",
-     "precio": 7721.1602
+     "precio": 7711.3701
     },
     "5": {
      "estado": "PENDIENTE"
@@ -447,9 +447,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 1.89,
+     "ret_pct": 1.85,
      "fecha": "2026-10-20",
-     "precio": 2772.7173
+     "precio": 2771.689
     },
     "5": {
      "estado": "PENDIENTE"
@@ -470,9 +470,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -0.85,
+     "ret_pct": -0.99,
      "fecha": "2026-10-20",
-     "precio": 4145.3999
+     "precio": 4139.8999
     },
     "5": {
      "estado": "PENDIENTE"
@@ -938,9 +938,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": 1.26,
+     "ret_pct": 1.12,
      "fecha": "2026-10-20",
-     "precio": 52501.5195
+     "precio": 52430.7383
     },
     "20": {
      "estado": "PENDIENTE"
@@ -984,9 +984,9 @@
     },
     "5": {
      "estado": "ACIERTO",
-     "ret_pct": -0.78,
+     "ret_pct": -0.82,
      "fecha": "2026-10-20",
-     "precio": 2772.7173
+     "precio": 2771.689
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1683,6 +1683,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-20 16:48 UTC",
+ "generado_utc": "2026-10-20 17:09 UTC",
  "duracion_s": 0.0
 }
