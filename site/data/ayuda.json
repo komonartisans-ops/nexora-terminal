@@ -295,7 +295,7 @@
    "id": "consumo",
    "titulo": "Consumo",
    "pregunta": "¿Está consumiendo la gente de verdad o solo lo dice el mercado?",
-   "diez": "Mira la etiqueta de la tesis, las tres capas (mercado, datos reales, capacidad) y si el aviso de concentración dice que lo mueven solo dos empresas.",
+   "diez": "Mira la etiqueta de la tesis, las tres capas (mercado, datos reales, capacidad) y si el aviso de concentración dice que lo mueven solo dos empresas. Debajo hay tres lecturas del ratio: filtro SMA 200 (con cruces válidos), rotación frente a SPY y divergencia con SPY.",
    "frecuencia": "Una vez al día (tras el cierre de EE. UU.); los datos reales cambian cuando se publican, semanas después de cada mes.",
    "generico": "Consumo: ratios de consumo discrecional frente a básico, datos reales de consumo y renta, y una tesis con reglas fijas."
   },
@@ -1648,6 +1648,26 @@
    "Compara el futuro Brent (Yahoo) con el Brent al contado del mismo día. FRED y la EIA publican la misma serie al contado, así que cuentan como una sola fuente.",
    "Si la diferencia del mismo día supera el 10 %, queda marcada en Integridad de datos hasta que el futuro y el contado coincidan.",
    "Con escasez de petróleo físico el contado puede ir muy por encima del futuro sin que haya ningún error."
+  ],
+  "filtro sma 200 del ratio": [
+   "Compara el ratio de consumo (XLY/XLP y RSPD/RSPS) con su media de 200 sesiones (o 200 semanas) para ver si está por encima o por debajo de su tendencia de fondo.",
+   "Un cruce solo vale tras 5 cierres seguidos al otro lado; así se filtran los cruces de un día. Si hay 4 o más cruces válidos en un año, el filtro se marca poco fiable (mercado lateral).",
+   "Describe el estado del ratio; no es una señal de compra o venta y no puntúa en la tesis de consumo."
+  ],
+  "rotación frente a spy": [
+   "Cuánto más o menos ha subido cada sector (consumo discrecional, básico, tecnología, energía, servicios públicos, salud, financieras, industriales) que el S&P 500, a 1 y 3 meses, en puntos porcentuales.",
+   "Positivo = ha ido mejor que SPY; negativo = peor. Está ordenada por el rendimiento relativo a 3 meses.",
+   "Solo describe qué ha pasado: no recomienda ninguna acción ni sector."
+  ],
+  "divergencia: spy frente al consumo amplio": [
+   "Se da cuando el S&P 500 está en máximos de 63 sesiones pero el consumo amplio (RSPD/RSPS) está más de un 3 % por debajo de su propio máximo: el índice sube y el consumo no acompaña.",
+   "Se confirma con dos señales: la amplitud del mercado cae en el último mes y los diferenciales de crédito se ensanchan. Las dos = fuerte, una = media, ninguna = débil.",
+   "Es un hecho de mercado, no una predicción: el marcador mide qué hizo SPY después, frente al azar."
+  ],
+  "últimas divergencias": [
+   "Las fechas en que empezó cada divergencia (solo cuenta una nueva si hace 10 sesiones o más que no había ninguna) y su fuerza ese día.",
+   "«Parcial» significa que faltaba el dato de una confirmación, normalmente el crédito antes de 2023.",
+   "Cada una se mide en el marcador a T+20 y T+60."
   ]
  },
  "glosario": [
@@ -2015,6 +2035,33 @@
    ],
    "def": "La OPEP y sus aliados (como Rusia): el grupo que decide cuánto petróleo bombear y, con ello, mueve el precio.",
    "analogia": "Es como un grupo de grifos grandes que acuerdan abrir más o menos a la vez."
+  },
+  {
+   "termino": "SMA 200 (media de 200)",
+   "claves": [
+    "sma 200",
+    "sma200",
+    "media de 200"
+   ],
+   "def": "La media simple de los últimos 200 cierres: una línea que resume la tendencia de fondo de un precio o de un ratio.",
+   "analogia": "Es como la temperatura media del último año: no dice qué hará mañana, pero sí en qué estación estás."
+  },
+  {
+   "termino": "Divergencia",
+   "claves": [
+    "divergencia"
+   ],
+   "def": "Cuando dos cosas que suelen ir juntas se separan: aquí, el S&P 500 en máximos mientras el consumo amplio se queda atrás.",
+   "analogia": "Es como un coche que acelera mientras el cuentarrevoluciones baja: algo no cuadra y conviene mirar por qué."
+  },
+  {
+   "termino": "Rotación",
+   "claves": [
+    "rotación",
+    "rotacion"
+   ],
+   "def": "El movimiento del dinero de unos sectores a otros: unos suben más que el mercado y otros menos.",
+   "analogia": "Es como el público de un estadio moviéndose de una grada a otra."
   }
  ],
  "semaforo_nota": "En las tesis el color indica dirección (verde = alcista, rojo = bajista), no si es bueno o malo.",

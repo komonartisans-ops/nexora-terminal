@@ -13,7 +13,57 @@ function csGrafico(id, G, titulo, sub, pie) {
     { name: 'Ratio', color: COL.amber, data: G.ratio, prec: 3, area: true }, { name: 'Media 50', color: COL.blue, data: G.sma50, w: 1, prec: 3 }, { name: 'Media 200', color: COL.violet, data: G.sma200, w: 1, prec: 3 }], { init: 730 })}${foot(pie, G.ratio[G.ratio.length - 1][0])}</div>`;
 }
 
-function consumoHtml(M) {
+const CS_SECTOR = { XLY: 'Consumo discrecional', XLP: 'Consumo básico', XLK: 'Tecnología', XLE: 'Energía', XLU: 'Servicios públicos', XLV: 'Salud', XLF: 'Financieras', XLI: 'Industriales' };
+const csPp = (v, d = 2) => (v == null ? '—' : `${v > 0 ? '+' : ''}${num(v, d)} pp`);
+
+/* los tres usos del ratio: filtro SMA 200, rotación frente a SPY y divergencia (consumo_ratio.json; solo describe, sin recomendaciones) */
+function cnsRatio(RR) {
+  let h = '';
+  if (!RR || !RR.filtro_sma200) return `<div class="sect"><h2>Filtro SMA 200 del ratio</h2></div><div class="card"><div class="empty" style="height:80px">SIN DATO · consumo_ratio.json</div></div>`;
+  const F = RR.filtro_sma200;
+  h += `<div class="sect"><h2>Filtro SMA 200 del ratio</h2><span class="more">cruce válido solo tras ${esc(String(F.cierres_para_cruce))} cierres seguidos al otro lado</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Ratio</th><th>Marco</th><th>Estado</th><th>Lado vigente</th><th>Cruce en curso</th><th>Último cruce válido</th><th>Cruces válidos en 12 meses</th></tr></thead><tbody>`;
+  h += Object.values(F.ratios).map((r) => ['diario', 'semanal'].map((tf) => {
+    const x = r[tf];
+    if (!x || x.estado === 'SIN DATO') return `<tr><td data-label="Ratio" style="text-align:left"><b>${esc(r.nombre)}</b></td><td data-label="Marco">${tf}</td><td colspan="5"><span class="sd-val">SIN DATO</span> <small>${esc((x && x.motivo) || '')}</small></td></tr>`;
+    const sobre = x.lado_actual > 0, vig = x.vigente > 0;
+    return `<tr><td data-label="Ratio" style="text-align:left"><b>${esc(r.nombre)}</b></td><td data-label="Marco">${tf}</td><td data-label="Estado"><span class="ck ${sobre ? 'ok' : 'no'}">${esc(x.estado)}</span> <small>${csPct(x.dist_pct, 2)} · ${esc(fdy(x.fecha))}</small></td>`
+      + `<td data-label="Lado vigente"><span class="ck ${vig ? 'ok' : 'no'}">${esc(x.vigente_texto)}</span></td><td data-label="Cruce en curso">${x.pendiente ? `<span class="ck par">${esc(String(x.pendiente))} de ${esc(String(F.cierres_para_cruce))} cierres</span>` : '—'}</td>`
+      + `<td data-label="Último cruce válido">${x.ultimo_cruce ? `${esc(fdy(x.ultimo_cruce.fecha))} <small>${esc(x.ultimo_cruce.sentido.toLowerCase())}</small>` : 'ninguno en la historia'}</td>`
+      + `<td data-label="Cruces válidos en 12 meses"><span class="ck ${x.poco_fiable ? 'par' : 'sd'}">${esc(String(x.cruces_12m))}</span>${x.nota ? ` <small style="color:var(--amber)"><b>${esc(x.nota)}</b></small>` : ''}</td></tr>`;
+  }).join('')).join('');
+  h += `</tbody></table><div class="note" style="padding:8px 16px 12px">Estado = cierre del ratio frente a su media de 200 (sesiones en diario; cierres semanales en semanal, con la semana en curso solo si ya cerró el viernes). El lado vigente solo cambia tras ${esc(String(F.cierres_para_cruce))} cierres consecutivos al otro lado; un cierre de vuelta reinicia la cuenta. Con ${esc(String(F.umbral_cruces_12m))} o más cruces válidos en 12 meses el filtro se marca poco fiable (mercado lateral). No puntúa en la tesis de consumo.</div>${footIn('Yahoo Finance (XLY, XLP, RSPD, RSPS)', RR.fecha_datos, null, 'SMA 200 propia')}</div>`;
+
+  const Ro = RR.rotacion || {};
+  h += '<div class="sect"><h2>Rotación frente a SPY</h2><span class="more">rendimiento relativo a 1 y 3 meses · ordenada por 3 meses · solo describe</span></div>';
+  if (Ro.estado !== 'OK') h += '<div class="card"><div class="empty" style="height:80px">SIN DATO · series de los sectores</div></div>';
+  else {
+    h += `<div class="card pad0 scroll"><table class="t stack"><thead><tr><th>Puesto 3 m</th><th style="text-align:left">Sector (ETF)</th><th>Rend. 3 m</th><th>Relativo a SPY 3 m</th><th>Rend. 1 m</th><th>Relativo a SPY 1 m</th><th>Puesto 1 m</th></tr></thead><tbody>`
+      + `<tr><td data-label="Puesto 3 m">—</td><td data-label="Sector (ETF)" style="text-align:left"><b>SPY</b><small>referencia</small></td><td data-label="Rend. 3 m">${csPct(Ro.spy.ret_3m)}</td><td data-label="Relativo a SPY 3 m">—</td><td data-label="Rend. 1 m">${csPct(Ro.spy.ret_1m)}</td><td data-label="Relativo a SPY 1 m">—</td><td data-label="Puesto 1 m">—</td></tr>`
+      + (Ro.filas || []).map((f) => `<tr><td data-label="Puesto 3 m" class="mono">${f.puesto_3m == null ? '—' : esc(String(f.puesto_3m))}</td><td data-label="Sector (ETF)" style="text-align:left"><b>${esc(f.etf)}</b><small>${esc(CS_SECTOR[f.etf] || '')}</small></td><td data-label="Rend. 3 m">${csPct(f.ret_3m)}</td>`
+        + `<td data-label="Relativo a SPY 3 m" class="${f.rel_3m > 0 ? 'up' : f.rel_3m < 0 ? 'down' : ''}">${csPp(f.rel_3m)}</td><td data-label="Rend. 1 m">${csPct(f.ret_1m)}</td><td data-label="Relativo a SPY 1 m" class="${f.rel_1m > 0 ? 'up' : f.rel_1m < 0 ? 'down' : ''}">${csPp(f.rel_1m)}</td><td data-label="Puesto 1 m" class="mono">${f.puesto_1m == null ? '—' : esc(String(f.puesto_1m))}</td></tr>`).join('')
+      + `</tbody></table><div class="note" style="padding:8px 16px 12px">${esc(Ro.nota)}</div>${footIn('Yahoo Finance (ETF sectoriales SPDR y SPY)', Ro.spy.fecha, null, '21 y 63 sesiones')}</div>`;
+  }
+
+  const Dv = RR.divergencia || {}, e = Dv.hoy;
+  h += '<div class="sect"><h2>Divergencia: SPY frente al consumo amplio</h2><span class="more">SPY en máximo de 63 sesiones y RSPD/RSPS más de un 3 % por debajo del suyo</span></div>';
+  if (!e) h += '<div class="card"><div class="empty" style="height:80px">SIN DATO · SPY, RSPD o RSPS</div></div>';
+  else {
+    const si = (b) => (b == null ? '<span class="ck sd">SIN DATO</span>' : b ? '<span class="ck ok">SÍ</span>' : '<span class="ck sd">no</span>');
+    const col = e.fuerza === 'FUERTE' ? 'no' : e.fuerza === 'MEDIA' ? 'par' : 'sd';
+    h += `<div class="grid g2"><div class="card"><div class="chead"><span>Hoy · ${esc(fdy(e.fecha))}</span></div><div style="margin:10px 0 6px">${e.activa ? `<span class="ck ${col}" style="font-size:13px;padding:5px 12px">DIVERGENCIA ${esc(e.fuerza)}${e.parcial ? ' (parcial)' : ''}</span>` : '<span class="ck sd" style="font-size:13px;padding:5px 12px">SIN DIVERGENCIA</span>'}</div>`
+      + `<table class="t stack"><thead><tr><th style="text-align:left">Condición</th><th>Valor</th><th>¿Se cumple?</th></tr></thead><tbody>`
+      + `<tr><td data-label="Condición" style="text-align:left">SPY marca máximo de cierre de 63 sesiones</td><td data-label="Valor">—</td><td data-label="¿Se cumple?">${si(e.spy_max_63)}</td></tr>`
+      + `<tr><td data-label="Condición" style="text-align:left">RSPD/RSPS más de un ${esc(num(Dv.umbral_pct, 0))} % por debajo de su máximo de 63 sesiones</td><td data-label="Valor">${csPct(e.ratio_vs_max63_pct)}</td><td data-label="¿Se cumple?">${si(e.ratio_vs_max63_pct < -Dv.umbral_pct)}</td></tr>`
+      + `<tr><td data-label="Condición" style="text-align:left"><b>Confirmación 1:</b> amplitud a la baja en 1 mes (RSP frente a SPY, 20 sesiones, ≤ ${esc(num(-Dv.amplitud.umbral_pp, 0))} pp)</td><td data-label="Valor">${csPp(e.amplitud_pp)}</td><td data-label="¿Se cumple?">${si(e.amplitud_a_la_baja)}</td></tr>`
+      + `<tr><td data-label="Condición" style="text-align:left"><b>Confirmación 2:</b> diferenciales de crédito ampliándose (umbrales de ciclo.py)</td><td data-label="Valor">${e.credito_detalle && e.credito_detalle.length ? esc(e.credito_detalle.join(', ')) : '—'}</td><td data-label="¿Se cumple?">${si(e.credito_ampliandose)}</td></tr></tbody></table>`
+      + `<p class="note" style="margin:8px 0 0">Las dos confirmaciones = FUERTE; una = MEDIA; ninguna = DÉBIL. Telegram solo cuando aparece una FUERTE (máx. 1 por semana). ${Dv.telegram ? 'Hoy: ' + esc(Dv.telegram.motivo) + '.' : ''}</p>${footIn('Yahoo Finance (SPY, RSP, RSPD, RSPS) · FRED (ICE BofA)', e.fecha, null, 'divergencia con reglas fijas')}</div>`
+      + `<div class="card"><div class="chead"><span>Últimas divergencias</span></div><table class="t stack"><thead><tr><th>Inicio</th><th>Fuerza</th></tr></thead><tbody>${(Dv.inicios_recientes || []).slice().reverse().map((x) => `<tr><td data-label="Inicio">${esc(fdy(x.fecha))}</td><td data-label="Fuerza"><span class="ck ${x.fuerza === 'FUERTE' ? 'no' : x.fuerza === 'MEDIA' ? 'par' : 'sd'}">${esc(x.fuerza)}</span>${x.parcial ? ' <small>parcial</small>' : ''}</td></tr>`).join('') || '<tr><td colspan="2">ninguna</td></tr>'}</tbody></table>`
+      + `<p class="note" style="margin:8px 0 0">Una divergencia nueva solo cuenta si hace 10 o más sesiones que no había ninguna. «Parcial» = falta el dato de una confirmación (el crédito de FRED solo cubre 3 años). La amplitud usada es la que ya mide NEXORA (RSP frente a SPY); el porcentaje de valores del S&amp;P sobre su SMA 200 no se calcula. Cada cruce válido y cada divergencia quedan en el <a href="#/marcador">Marcador</a> y se miden sobre SPY a T+20 y T+60 frente a la tasa base.</p></div></div>`;
+  }
+  return h;
+}
+
+function consumoHtml(M, RR) {
   const T = M.tesis || {}, C = M.capas || {}, mk = M.mercado || {}, cap = mk.cap, ig = mk.igual, pw = mk.pesos;
   const tag = CS_TAG[T.resultado] || 'sin';
   let h = essential(
@@ -53,6 +103,7 @@ function consumoHtml(M) {
   }).join('') + `</tbody></table>${footIn('FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, UMCSENT, DRCCLACBS); fechas de publicación de FRED/ALFRED (tabla de #/publicados)', M.fecha_datos, null, 'cada dato sale semanas después del mes al que se refiere')}</div>`;
   h += `<div class="sect"><h2>Reglas de la tesis (fijas)</h2><span class="more">impresas tal como las aplica el motor</span></div><div class="card"><details class="qa" open><summary>Cómo se calcula cada capa y el resultado</summary>${(M.reglas || []).map((r) => `<p style="margin:6px 0">${esc(r)}</p>`).join('')}</details><details class="qa"><summary>Avisos de contexto (no puntúan en la tesis)</summary>${(M.reglas_contexto || []).map((r) => `<p style="margin:6px 0">${esc(r)}</p>`).join('')}</details></div>`;
   if (M.errores && Object.keys(M.errores).length) h += `<div class="note">Fuentes sin dato en la última ejecución (SIN DATO, no se estima): ${Object.entries(M.errores).map(([k, v]) => esc(k + ': ' + String(v).slice(0, 90))).join(' · ')}</div>`;
+  h += cnsRatio(RR);
   return h + '<div class="note">Hecho, interpretación, hipótesis y escenario van separados: los datos y los ratios son hechos; la tesis es una lectura con reglas fijas, no una recomendación de compra o venta.</div>';
 }
 
@@ -66,7 +117,9 @@ function pageConsumo() {
     try { const r = await fetch('data/consumo.json?v=' + Date.now(), { cache: 'no-store' }); if (r.ok) M = await r.json(); } catch (e) { /* SIN DATO */ }
     if (document.getElementById('cs-root') !== root) return;
     if (!M || !M.tesis) { root.innerHTML = noData('Consumo (consumo.json)'); return; }
-    f5.paint(root, () => consumoHtml(M));
+    let RR = null;
+    try { const r2 = await fetch('data/consumo_ratio.json?v=' + Date.now(), { cache: 'no-store' }); if (r2.ok) RR = await r2.json(); } catch (e) { /* SIN DATO */ }
+    f5.paint(root, () => consumoHtml(M, RR));
   });
   return h;
 }

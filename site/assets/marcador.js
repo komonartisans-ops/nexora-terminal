@@ -20,7 +20,7 @@ function mcGammaIntradia(G) {
   return h;
 }
 const MC_TIPOS = [['tesis', 'Tesis por activo (cambios)'], ['fed', 'Alertas Fed'], ['skew', 'SKEW alto con ≥ 2 confirmaciones'], ['regimen', 'Régimen (cambios)'],
-  ['liquidez', 'Liquidez (cambios de etiqueta)'], ['consumo', 'Tesis de consumo (cambios)'], ['petroleo', 'Tesis de petróleo (cambios)'], ['reaccion', 'Reacción a eventos (solo registro)']];
+  ['liquidez', 'Liquidez (cambios de etiqueta)'], ['consumo', 'Tesis de consumo (cambios)'], ['petroleo', 'Tesis de petróleo (cambios)'], ['cruce_sma200_ratio', 'Cruce SMA200 del ratio de consumo (válido tras 5 cierres)'], ['divergencia_ratio', 'Divergencia SPY / consumo amplio'], ['reaccion', 'Reacción a eventos (solo registro)']];
 const mcPct = (v) => (v == null ? '—' : num(v, 1) + ' %');
 const mcRet = (v, u) => (v == null ? '—' : `${v > 0 ? '+' : ''}${num(v, u === 'pb' ? 1 : 2)} ${u === 'pb' ? 'pb' : '%'}`);
 const mcCls = (v) => (v == null ? '' : v > 0 ? 'up' : v < 0 ? 'down' : 'flat');
@@ -38,6 +38,7 @@ function mcTabla(res, titulo, sub) {
   h += `<div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Tipo de señal</th><th>Señales</th><th>Medidas a T+${esc(MC.h)}</th><th>% acierto</th><th>Azar (tasa base)</th><th>Dif. (pp)</th><th>Retorno medio</th><th>Peor caso</th><th>Peor adverso</th><th style="text-align:left">Fiabilidad</th></tr></thead><tbody>`;
   h += filas.map(([t, nom]) => {
     const d = res[t], b = d.horizontes[MC.h];
+    if (!b) return `<tr><td data-label="Tipo de señal" style="text-align:left"><b>${esc(nom)}</b></td><td data-label="Señales">${d.n_senales}</td><td colspan="8" style="text-align:left;color:var(--dim)">este tipo se mide a T+${Object.keys(d.horizontes).join(' y T+')} sesiones: cambia el horizonte arriba</td></tr>`;
     const punt = d.n_senales - d.no_puntuables;
     if (t === 'reaccion' || !punt) {
       return `<tr><td data-label="Tipo" style="text-align:left"><b>${esc(nom)}</b></td><td data-label="Señales" class="mono">${d.n_senales}</td><td colspan="8" data-label="Medición" style="text-align:left;color:var(--dim)">${t === 'reaccion' ? 'solo registro: reglas v3 congeladas, no se puntúa' : 'ninguna con dirección esperada (no puntuables: ' + d.no_puntuables + ')'}</td></tr>`;
@@ -63,17 +64,17 @@ function mcHtml(M) {
     'Hecho: cada señal se midió (criterio v2) con cierres oficiales a 1, 5 y 20 sesiones frente al cierre anterior a su emisión; «neutral» = movimiento menor que 0,25 σ del activo a ese horizonte. Interpretación: nada se concluye aquí; si el % de acierto no supera claramente la tasa base (lo que se acierta por azar en ese activo y horizonte), la señal no aporta información medible.',
     `Con menos de ${M.min_n || 20} señales medidas el grupo se marca «muestra insuficiente». Las vivas y las reconstruidas no se mezclan.`, 'Cómo leerlo');
   h += `<div class="banner amber" style="margin:0 0 14px;border-radius:6px"><b>Criterio v2 (${esc((M.criterio && M.criterio.desde) || '')}).</b> ${esc(M.cambio_criterio || '')}</div>`;
-  h += `<div class="filters" style="margin:0 0 6px">${['1', '5', '20'].map(btn).join('')}</div>`;
+  h += `<div class="filters" style="margin:0 0 6px">${['1', '5', '20', '60'].map(btn).join('')}</div>`;
   h += mcTabla(viv, 'Señales vivas', 'emitidas por el sistema en su momento · el marcador que cuenta');
   h += mcTabla(bf, 'Señales reconstruidas (backfill)', 'pasado reconstruido desde el histórico de contexto y los CSV de memoria · no es lo mismo que acertar en vivo');
-  h += '<div class="sect"><h2>Últimas señales</h2><span class="more">más recientes primero · hasta 60</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th>Fecha (UTC)</th><th style="text-align:left">Tipo</th><th>Activo</th><th>Dirección</th><th style="text-align:left">Qué la disparó</th><th>Origen</th><th>T+1</th><th>T+5</th><th>T+20</th></tr></thead><tbody>';
+  h += '<div class="sect"><h2>Últimas señales</h2><span class="more">más recientes primero · hasta 60</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th>Fecha (UTC)</th><th style="text-align:left">Tipo</th><th>Activo</th><th>Dirección</th><th style="text-align:left">Qué la disparó</th><th>Origen</th><th>T+1</th><th>T+5</th><th>T+20</th><th>T+60</th></tr></thead><tbody>';
   h += (M.senales || []).slice(0, 60).map((s) => {
     const hz = s.horizontes;
     const cel = (k) => (typeof hz === 'string' ? `<span class="ck sd">${esc(hz.toLowerCase())}</span>` : mcChip(hz[k]));
     return `<tr><td data-label="Fecha" class="mono">${esc(s.fecha_utc)}</td><td data-label="Tipo" style="text-align:left">${esc(s.tipo)}</td><td data-label="Activo">${esc(s.activo)}</td><td data-label="Dirección"><span class="tag ${s.direccion === 'ALCISTA' ? 'alc' : s.direccion === 'BAJISTA' ? 'baj' : 'sin'}">${esc(s.direccion.toLowerCase())}</span></td>
       <td data-label="Disparo" style="text-align:left;white-space:normal;max-width:380px">${esc(s.valor)}${s.criterio ? `<small>${esc(s.criterio)}</small>` : ''}${s.nota ? `<small>${esc(s.nota)}</small>` : ''}</td><td data-label="Origen"><span class="ck ${s.origen === 'vivo' ? 'ok' : 'sd'}">${esc(s.origen)}</span></td>
-      <td data-label="T+1">${cel('1')}</td><td data-label="T+5">${cel('5')}</td><td data-label="T+20">${cel('20')}</td></tr>`;
-  }).join('') || '<tr><td colspan="9" style="text-align:left;color:var(--dim)">Sin señales registradas.</td></tr>';
+      <td data-label="T+1">${cel('1')}</td><td data-label="T+5">${cel('5')}</td><td data-label="T+20">${cel('20')}</td><td data-label="T+60">${cel('60')}</td></tr>`;
+  }).join('') || '<tr><td colspan="10" style="text-align:left;color:var(--dim)">Sin señales registradas.</td></tr>';
   h += `</tbody></table>${footIn('engine/marcador.py (data/marcador_senales.csv y data/marcador_resultados.csv, solo añadir)', M.generado_utc && M.generado_utc.slice(0, 10), null, 'cierres de Yahoo Finance (precios) y FRED (2Y)')}</div>`;
   h += mcGammaIntradia(MC.gi);
   h += `<div class="sect"><h2>Reglas del marcador</h2><span class="more">fijas; no cambian según el resultado</span></div><div class="card"><details class="qa" open><summary>Criterios v2: qué cuenta como señal, qué se espera y cómo se mide</summary><p style="white-space:pre-line">${esc(M.reglas || '')}</p></details></div>`;

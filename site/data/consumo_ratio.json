@@ -1,0 +1,718 @@
+{
+ "version": 1,
+ "ok": true,
+ "generado_utc": "2026-10-20 06:14 UTC",
+ "fecha_datos": "2026-10-19",
+ "filtro_sma200": {
+  "ratios": {
+   "cap": {
+    "nombre": "XLY/XLP",
+    "diario": {
+     "fecha": "2026-10-19",
+     "valor": 1.31246,
+     "sma200": 1.37956,
+     "dist_pct": -4.86,
+     "lado_actual": -1,
+     "vigente": -1,
+     "pendiente": 0,
+     "cruces_12m": 3,
+     "poco_fiable": false,
+     "ultimo_cruce": {
+      "fecha": "2026-04-29",
+      "sentido": "A LA BAJA"
+     },
+     "cruces_12m_fechas": [
+      {
+       "fecha": "2026-02-09",
+       "sentido": "A LA BAJA"
+      },
+      {
+       "fecha": "2026-04-21",
+       "sentido": "AL ALZA"
+      },
+      {
+       "fecha": "2026-04-29",
+       "sentido": "A LA BAJA"
+      }
+     ],
+     "estado": "BAJO SU SMA 200",
+     "vigente_texto": "A LA BAJA",
+     "nota": null,
+     "unidad_cierre": "sesiones"
+    },
+    "semanal": {
+     "fecha": "2026-10-16",
+     "valor": 1.2835,
+     "sma200": 1.25781,
+     "dist_pct": 2.04,
+     "lado_actual": 1,
+     "vigente": 1,
+     "pendiente": 0,
+     "cruces_12m": 0,
+     "poco_fiable": false,
+     "ultimo_cruce": {
+      "fecha": "2024-10-18",
+      "sentido": "AL ALZA"
+     },
+     "cruces_12m_fechas": [],
+     "estado": "SOBRE SU SMA 200",
+     "vigente_texto": "AL ALZA",
+     "nota": null,
+     "unidad_cierre": "semanas"
+    }
+   },
+   "igual": {
+    "nombre": "RSPD/RSPS",
+    "diario": {
+     "fecha": "2026-10-19",
+     "valor": 1.75244,
+     "sma200": 1.83333,
+     "dist_pct": -4.41,
+     "lado_actual": -1,
+     "vigente": -1,
+     "pendiente": 0,
+     "cruces_12m": 3,
+     "poco_fiable": false,
+     "ultimo_cruce": {
+      "fecha": "2026-05-04",
+      "sentido": "A LA BAJA"
+     },
+     "cruces_12m_fechas": [
+      {
+       "fecha": "2026-02-09",
+       "sentido": "A LA BAJA"
+      },
+      {
+       "fecha": "2026-04-17",
+       "sentido": "AL ALZA"
+      },
+      {
+       "fecha": "2026-05-04",
+       "sentido": "A LA BAJA"
+      }
+     ],
+     "estado": "BAJO SU SMA 200",
+     "vigente_texto": "A LA BAJA",
+     "nota": null,
+     "unidad_cierre": "sesiones"
+    },
+    "semanal": {
+     "fecha": "2026-10-16",
+     "valor": 1.74386,
+     "sma200": 1.62287,
+     "dist_pct": 7.46,
+     "lado_actual": 1,
+     "vigente": 1,
+     "pendiente": 0,
+     "cruces_12m": 0,
+     "poco_fiable": false,
+     "ultimo_cruce": {
+      "fecha": "2023-07-07",
+      "sentido": "AL ALZA"
+     },
+     "cruces_12m_fechas": [],
+     "estado": "SOBRE SU SMA 200",
+     "vigente_texto": "AL ALZA",
+     "nota": null,
+     "unidad_cierre": "semanas"
+    }
+   }
+  },
+  "cierres_para_cruce": 5,
+  "umbral_cruces_12m": 4,
+  "nota_lateral": "filtro poco fiable ahora (mercado lateral)"
+ },
+ "rotacion": {
+  "estado": "OK",
+  "spy": {
+   "ret_1m": 0.63,
+   "ret_3m": 2.43,
+   "fecha": "2026-10-19"
+  },
+  "filas": [
+   {
+    "etf": "XLE",
+    "ret_1m": 5.43,
+    "ret_3m": 15.9,
+    "rel_1m": 4.8,
+    "rel_3m": 13.47,
+    "fecha": "2026-10-19",
+    "puesto_3m": 1,
+    "puesto_1m": 1
+   },
+   {
+    "etf": "XLV",
+    "ret_1m": 4.31,
+    "ret_3m": 9.61,
+    "rel_1m": 3.68,
+    "rel_3m": 7.18,
+    "fecha": "2026-10-19",
+    "puesto_3m": 2,
+    "puesto_1m": 3
+   },
+   {
+    "etf": "XLP",
+    "ret_1m": 5.33,
+    "ret_3m": 3.75,
+    "rel_1m": 4.7,
+    "rel_3m": 1.32,
+    "fecha": "2026-10-19",
+    "puesto_3m": 3,
+    "puesto_1m": 2
+   },
+   {
+    "etf": "XLK",
+    "ret_1m": -1.92,
+    "ret_3m": 2.87,
+    "rel_1m": -2.55,
+    "rel_3m": 0.43,
+    "fecha": "2026-10-19",
+    "puesto_3m": 4,
+    "puesto_1m": 8
+   },
+   {
+    "etf": "XLY",
+    "ret_1m": 3.09,
+    "ret_3m": -0.36,
+    "rel_1m": 2.46,
+    "rel_3m": -2.79,
+    "fecha": "2026-10-19",
+    "puesto_3m": 5,
+    "puesto_1m": 4
+   },
+   {
+    "etf": "XLF",
+    "ret_1m": -1.43,
+    "ret_3m": -1.87,
+    "rel_1m": -2.06,
+    "rel_3m": -4.3,
+    "fecha": "2026-10-19",
+    "puesto_3m": 6,
+    "puesto_1m": 6
+   },
+   {
+    "etf": "XLI",
+    "ret_1m": -1.81,
+    "ret_3m": -6.71,
+    "rel_1m": -2.44,
+    "rel_3m": -9.14,
+    "fecha": "2026-10-19",
+    "puesto_3m": 7,
+    "puesto_1m": 7
+   },
+   {
+    "etf": "XLU",
+    "ret_1m": 0.63,
+    "ret_3m": -7.93,
+    "rel_1m": 0.0,
+    "rel_3m": -10.36,
+    "fecha": "2026-10-19",
+    "puesto_3m": 8,
+    "puesto_1m": 5
+   }
+  ],
+  "nota": "Rendimiento relativo = rendimiento del ETF menos el de SPY, en puntos porcentuales (21 sesiones = 1 mes; 63 = 3 meses). Solo describe lo que ha pasado; no recomienda ninguna acción ni sector."
+ },
+ "divergencia": {
+  "hoy": {
+   "fecha": "2026-10-19",
+   "activa": false,
+   "spy_max_63": false,
+   "ratio_vs_max63_pct": -7.32,
+   "amplitud_pp": 1.25,
+   "amplitud_a_la_baja": false,
+   "credito_ampliandose": true,
+   "credito_detalle": [
+    "CCC +221 pb en 1 mes"
+   ],
+   "fuerza": null,
+   "parcial": false
+  },
+  "ultimos_30": [
+   {
+    "fecha": "2026-09-08",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.49,
+    "amplitud_pp": -0.67,
+    "amplitud_a_la_baja": false,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-09",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.65,
+    "amplitud_pp": -1.68,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-10",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -6.01,
+    "amplitud_pp": -1.68,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-11",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.4,
+    "amplitud_pp": -1.78,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-14",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.52,
+    "amplitud_pp": -1.49,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-15",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -6.56,
+    "amplitud_pp": -1.12,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-16",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -6.93,
+    "amplitud_pp": -1.67,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-17",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -6.71,
+    "amplitud_pp": -3.1,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-18",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -6.57,
+    "amplitud_pp": -3.51,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-21",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -4.98,
+    "amplitud_pp": -5.07,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-22",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -4.95,
+    "amplitud_pp": -5.41,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-23",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -6.0,
+    "amplitud_pp": -4.96,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-24",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.64,
+    "amplitud_pp": -5.48,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": false,
+    "credito_detalle": [],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-25",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.25,
+    "amplitud_pp": -4.7,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "HY +25 pb en 5 días"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-28",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -6.02,
+    "amplitud_pp": -4.48,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "HY +36 pb en 5 días",
+     "CCC +69 pb en 5 días"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-29",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.24,
+    "amplitud_pp": -4.14,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "HY +40 pb en 5 días",
+     "CCC +82 pb en 5 días"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-09-30",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -4.69,
+    "amplitud_pp": -4.51,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "HY +39 pb en 5 días",
+     "CCC +86 pb en 5 días"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-01",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -3.96,
+    "amplitud_pp": -4.24,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "HY +44 pb en 5 días",
+     "CCC +103 pb en 5 días"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-02",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -4.29,
+    "amplitud_pp": -4.23,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +74 pb en 5 días"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-05",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -4.9,
+    "amplitud_pp": -4.2,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +65 pb en 5 días"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-06",
+    "activa": true,
+    "spy_max_63": true,
+    "ratio_vs_max63_pct": -4.58,
+    "amplitud_pp": -3.74,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +160 pb en 1 mes"
+    ],
+    "fuerza": "FUERTE",
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-07",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.13,
+    "amplitud_pp": -3.83,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +174 pb en 1 mes"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-08",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.59,
+    "amplitud_pp": -2.73,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +196 pb en 1 mes"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-09",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.42,
+    "amplitud_pp": -2.72,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +189 pb en 1 mes"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-12",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -6.65,
+    "amplitud_pp": -3.11,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +177 pb en 1 mes"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-13",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -6.24,
+    "amplitud_pp": -3.03,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +191 pb en 1 mes"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-14",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -8.37,
+    "amplitud_pp": -2.15,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +201 pb en 1 mes"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-15",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -6.51,
+    "amplitud_pp": -0.41,
+    "amplitud_a_la_baja": false,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +193 pb en 1 mes"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-16",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -7.77,
+    "amplitud_pp": 0.64,
+    "amplitud_a_la_baja": false,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +221 pb en 1 mes"
+    ],
+    "fuerza": null,
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-19",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -7.32,
+    "amplitud_pp": 1.25,
+    "amplitud_a_la_baja": false,
+    "credito_ampliandose": true,
+    "credito_detalle": [
+     "CCC +221 pb en 1 mes"
+    ],
+    "fuerza": null,
+    "parcial": false
+   }
+  ],
+  "inicios_recientes": [
+   {
+    "fecha": "2025-06-03",
+    "fuerza": "MEDIA",
+    "parcial": false
+   },
+   {
+    "fecha": "2025-10-24",
+    "fuerza": "DÉBIL",
+    "parcial": false
+   },
+   {
+    "fecha": "2025-12-10",
+    "fuerza": "DÉBIL",
+    "parcial": false
+   },
+   {
+    "fecha": "2026-01-27",
+    "fuerza": "DÉBIL",
+    "parcial": false
+   },
+   {
+    "fecha": "2026-04-24",
+    "fuerza": "MEDIA",
+    "parcial": false
+   },
+   {
+    "fecha": "2026-10-06",
+    "fuerza": "FUERTE",
+    "parcial": false
+   }
+  ],
+  "umbral_pct": 3.0,
+  "ventana_sesiones": 63,
+  "amplitud": {
+   "medida": "RSP frente a SPY a 20 sesiones (pp)",
+   "umbral_pp": -1.0,
+   "origen": "misma medida y umbral que indices.py (NEXORA no calcula el % de valores del S&P sobre su SMA 200)"
+  },
+  "credito": {
+   "umbrales_pb": {
+    "ig": [
+     10,
+     25
+    ],
+    "bbb": [
+     12,
+     30
+    ],
+    "hy": [
+     25,
+     75
+    ],
+    "ccc": [
+     60,
+     150
+    ]
+   },
+   "origen": "ciclo.py (5 días, 1 mes); FRED solo da 3 años de los diferenciales ICE BofA"
+  },
+  "telegram": {
+   "enviado": false,
+   "motivo": "no aparece una divergencia FUERTE hoy"
+  }
+ },
+ "marcador": {
+  "senales_nuevas": 0,
+  "tipos": [
+   "cruce_sma200_ratio",
+   "divergencia_ratio"
+  ],
+  "horizontes": [
+   20,
+   60
+  ]
+ },
+ "reglas": [
+  "Filtro SMA 200: cierre del ratio frente a su media de 200 (sesiones en diario, cierres semanales en semanal). Un cruce solo es válido tras 5 cierres consecutivos al otro lado del lado vigente; un cierre de vuelta reinicia la cuenta.",
+  "Cruces válidos en 12 meses: si hay 4 o más, nota «filtro poco fiable ahora (mercado lateral)».",
+  "Rotación: rendimiento relativo frente a SPY (pp) a 1 mes (21 sesiones) y 3 meses (63) de XLY, XLP, XLK, XLE, XLU, XLV, XLF y XLI, ordenado por el de 3 meses. Solo describe.",
+  "Divergencia: SPY marca máximo de cierre de 63 sesiones y RSPD/RSPS está más de un 3 % por debajo de su propio máximo de 63 sesiones.",
+  "Confirmaciones: amplitud a la baja en 1 mes (RSP frente a SPY a 20 sesiones ≤ −1 pp, medida y umbral de indices.py) y diferenciales de crédito ampliándose (umbrales de ciclo.py). Las dos = FUERTE; una = MEDIA; ninguna = DÉBIL; sin dato de una = «parcial».",
+  "Una divergencia nueva solo cuenta si hace 10 o más sesiones que no había ninguna. Telegram solo cuando APARECE una FUERTE (máx. 1 por semana).",
+  "Marcador: «cruce_sma200_ratio» (SPY alcista tras un cruce al alza, bajista tras uno a la baja) y «divergencia_ratio» (SPY bajista), a T+20 y T+60 frente a la tasa base; el pasado desde 2010 es backfill."
+ ],
+ "errores": {},
+ "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS, SPY, RSP y ocho sectores SPDR) · FRED (diferenciales ICE BofA IG, BBB, HY, CCC) · reglas de indices.py y ciclo.py"
+}

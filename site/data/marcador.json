@@ -1,14 +1,25 @@
 {
  "version": 2,
  "version_criterio": 2,
- "generado_utc": "2026-10-20 06:07 UTC",
+ "generado_utc": "2026-10-20 06:14 UTC",
  "ok": true,
  "min_n": 20,
  "horizontes": [
   1,
   5,
-  20
+  20,
+  60
  ],
+ "horizontes_por_tipo": {
+  "cruce_sma200_ratio": [
+   20,
+   60
+  ],
+  "divergencia_ratio": [
+   20,
+   60
+  ]
+ },
  "criterio": {
   "version": 2,
   "neutral": "|retorno| < 0.25 × σ_h (σ de 250 sesiones × √h; en pb para el 2Y)",
@@ -17,6 +28,23 @@
  },
  "cambio_criterio": "Criterio v2 (18-oct-2026): el neutral pasa de ±0,1 % fijo a |retorno| < 0,25 × σ_h del activo (σ de 250 sesiones × √h; σ en pb para el 2Y), y el SKEW deja de puntuarse por la dirección del cierre: acierto si el S&P tiene una caída máxima intrahorizonte ≥ 1 σ_h o el VIX sube ≥ 20 %. Todos los resultados, también los de backfill, se recalcularon como filas nuevas con version_criterio = 2; los de v1 se conservan sin tocar en data/marcador_resultados.csv y no se muestran aquí.",
  "series_disponibles": true,
+ "criterios_tipo": {
+  "petroleo": {
+   "actual": 2,
+   "versiones": {
+    "1": {
+     "desde": "2026-10-19",
+     "hasta": "2026-10-20",
+     "regla": "tesis de petróleo con COT a favor de la tendencia: percentil 3 años del dinero gestionado ≥ 66 → +1, ≤ 34 → −1 (Fase 15; sin señales registradas con esta versión)"
+    },
+    "2": {
+     "desde": "2026-10-20",
+     "hasta": null,
+     "regla": "tesis de petróleo con el criterio ÚNICO de COT de NEXORA, solo extremos a la contra: percentil 3 años ≥ 90 → −1, ≤ 10 → +1, resto 0"
+    }
+   }
+  }
+ },
  "resumen": {
   "backfill": {
    "tesis": {
@@ -234,6 +262,82 @@
       "muestra_insuficiente": true
      }
     }
+   },
+   "cruce_sma200_ratio": {
+    "n_senales": 106,
+    "no_puntuables": 0,
+    "horizontes": {
+     "20": {
+      "n": 106,
+      "aciertos": 47,
+      "fallos": 40,
+      "neutrales": 19,
+      "pendientes": 0,
+      "comp_caida": 0,
+      "comp_vix": 0,
+      "acierto_pct": 44.3,
+      "ret_medio": 0.362,
+      "peor_ret": -28.954,
+      "peor_mae": -28.954,
+      "base_media_pct": 40.2,
+      "diferencia_pp": 4.1,
+      "muestra_insuficiente": false
+     },
+     "60": {
+      "n": 106,
+      "aciertos": 48,
+      "fallos": 45,
+      "neutrales": 13,
+      "pendientes": 0,
+      "comp_caida": 0,
+      "comp_vix": 0,
+      "acierto_pct": 45.3,
+      "ret_medio": -0.307,
+      "peor_ret": -23.504,
+      "peor_mae": -33.96,
+      "base_media_pct": 39.5,
+      "diferencia_pp": 5.8,
+      "muestra_insuficiente": false
+     }
+    }
+   },
+   "divergencia_ratio": {
+    "n_senales": 38,
+    "no_puntuables": 0,
+    "horizontes": {
+     "20": {
+      "n": 37,
+      "aciertos": 9,
+      "fallos": 20,
+      "neutrales": 8,
+      "pendientes": 1,
+      "comp_caida": 0,
+      "comp_vix": 0,
+      "acierto_pct": 24.3,
+      "ret_medio": -0.773,
+      "peor_ret": -4.826,
+      "peor_mae": -5.575,
+      "base_media_pct": 22.9,
+      "diferencia_pp": 1.4,
+      "muestra_insuficiente": false
+     },
+     "60": {
+      "n": 37,
+      "aciertos": 4,
+      "fallos": 22,
+      "neutrales": 11,
+      "pendientes": 1,
+      "comp_caida": 0,
+      "comp_vix": 0,
+      "acierto_pct": 10.8,
+      "ret_medio": -2.192,
+      "peor_ret": -9.445,
+      "peor_mae": -10.602,
+      "base_media_pct": 16.3,
+      "diferencia_pp": -5.5,
+      "muestra_insuficiente": false
+     }
+    }
    }
   },
   "vivo": {
@@ -347,7 +451,7 @@
    }
   }
  },
- "n_senales": 57,
+ "n_senales": 201,
  "n_anuladas": 0,
  "senales": [
   {
@@ -360,6 +464,7 @@
    "origen": "vivo",
    "run_id": "39375277592",
    "nota": "",
+   "criterio": null,
    "horizontes": "NO PUNTUABLE"
   },
   {
@@ -372,6 +477,7 @@
    "origen": "vivo",
    "run_id": "39332643459",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "PENDIENTE"
@@ -394,6 +500,7 @@
    "origen": "vivo",
    "run_id": "39266055621",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "FALLO",
@@ -422,6 +529,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": "NO PUNTUABLE"
   },
   {
@@ -434,6 +542,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "FALLO",
@@ -462,6 +571,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "NEUTRAL",
@@ -490,6 +600,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "NEUTRAL",
@@ -518,6 +629,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "FALLO",
@@ -546,6 +658,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": "NO PUNTUABLE"
   },
   {
@@ -558,6 +671,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "NEUTRAL",
@@ -586,6 +700,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "FALLO",
@@ -614,6 +729,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "ACIERTO",
@@ -642,6 +758,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": "NO PUNTUABLE"
   },
   {
@@ -654,6 +771,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -666,6 +784,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -678,6 +797,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -690,6 +810,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": "NO PUNTUABLE"
   },
   {
@@ -702,6 +823,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": "NO PUNTUABLE"
   },
   {
@@ -714,6 +836,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "ACIERTO",
@@ -742,6 +865,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -754,6 +878,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "ACIERTO",
@@ -782,6 +907,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -794,6 +920,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "FALLO",
@@ -822,6 +949,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": "NO PUNTUABLE"
   },
   {
@@ -834,6 +962,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": "NO PUNTUABLE"
   },
   {
@@ -846,6 +975,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": "NO PUNTUABLE"
   },
   {
@@ -858,6 +988,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "NEUTRAL",
@@ -892,6 +1023,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "ACIERTO",
@@ -926,6 +1058,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "ACIERTO",
@@ -960,6 +1093,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "ACIERTO",
@@ -994,6 +1128,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "",
+   "criterio": null,
    "horizontes": {
     "1": {
      "estado": "ACIERTO",
@@ -1019,6 +1154,26 @@
    }
   },
   {
+   "id": "divergencia_ratio-spy-202610062130-05942954cb",
+   "fecha_utc": "2026-10-06 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia FUERTE: SPY en máximo de 63 sesiones y RSPD/RSPS -4.6 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "PENDIENTE"
+    },
+    "60": {
+     "estado": "PENDIENTE"
+    }
+   }
+  },
+  {
    "id": "reaccion-evento-202610022000-7e42a54cce",
    "fecha_utc": "2026-10-02 20:00",
    "tipo": "reaccion",
@@ -1028,6 +1183,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1040,6 +1196,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1052,6 +1209,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1064,6 +1222,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1076,6 +1235,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1088,6 +1248,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1100,6 +1261,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1112,6 +1274,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1124,6 +1287,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1136,6 +1300,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1148,6 +1313,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1160,6 +1326,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1172,6 +1339,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1184,6 +1352,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1196,6 +1365,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1208,6 +1378,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1220,6 +1391,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1232,6 +1404,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1244,6 +1417,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1256,6 +1430,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1268,6 +1443,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1280,6 +1456,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1292,6 +1469,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1304,6 +1482,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1316,6 +1495,7 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
   },
   {
@@ -1328,15 +1508,4592 @@
    "origen": "backfill",
    "run_id": "backfill",
    "nota": "solo registro: no se puntúa",
+   "criterio": null,
    "horizontes": "SOLO REGISTRO"
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202605042130-a82a352c9a",
+   "fecha_utc": "2026-05-04 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -5.788,
+     "mae": -5.788,
+     "unidad": "%",
+     "base_pct": 15.2,
+     "fecha_fin": "2026-06-02",
+     "sigma_h": 3.5058
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.298,
+     "mae": -5.788,
+     "unidad": "%",
+     "base_pct": 11.0,
+     "fecha_fin": "2026-07-30",
+     "sigma_h": 6.0722
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202604292130-4d2705d82e",
+   "fecha_utc": "2026-04-29 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -6.046,
+     "mae": -6.046,
+     "unidad": "%",
+     "base_pct": 14.7,
+     "fecha_fin": "2026-05-28",
+     "sigma_h": 3.5251
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.866,
+     "mae": -6.744,
+     "unidad": "%",
+     "base_pct": 11.0,
+     "fecha_fin": "2026-07-27",
+     "sigma_h": 6.1056
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202604242130-6c200a83e8",
+   "fecha_utc": "2026-04-24 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia MEDIA: SPY en máximo de 63 sesiones y RSPD/RSPS -3.5 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.44,
+     "mae": -4.795,
+     "unidad": "%",
+     "base_pct": 14.7,
+     "fecha_fin": "2026-05-22",
+     "sigma_h": 3.5241
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -4.688,
+     "mae": -6.391,
+     "unidad": "%",
+     "base_pct": 11.0,
+     "fecha_fin": "2026-07-22",
+     "sigma_h": 6.104
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202604212130-f9fcca3b37",
+   "fecha_utc": "2026-04-21 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 4.211,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 62.8,
+     "fecha_fin": "2026-05-19",
+     "sigma_h": 3.5796
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 5.569,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 75.9,
+     "fecha_fin": "2026-07-17",
+     "sigma_h": 6.2
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202604172130-e8223cf788",
+   "fecha_utc": "2026-04-17 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 4.088,
+     "mae": -0.853,
+     "unidad": "%",
+     "base_pct": 61.9,
+     "fecha_fin": "2026-05-15",
+     "sigma_h": 3.7086
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 6.29,
+     "mae": -0.853,
+     "unidad": "%",
+     "base_pct": 74.9,
+     "fecha_fin": "2026-07-15",
+     "sigma_h": 6.4235
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202602092130-3bed14361f",
+   "fecha_utc": "2026-02-09 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.417,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 16.9,
+     "fecha_fin": "2026-03-10",
+     "sigma_h": 5.4693
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -5.747,
+     "mae": -5.747,
+     "unidad": "%",
+     "base_pct": 4.2,
+     "fecha_fin": "2026-05-06",
+     "sigma_h": 9.473
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202602092130-c205c9bf7b",
+   "fecha_utc": "2026-02-09 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.417,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 16.9,
+     "fecha_fin": "2026-03-10",
+     "sigma_h": 5.4693
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -5.747,
+     "mae": -5.747,
+     "unidad": "%",
+     "base_pct": 4.2,
+     "fecha_fin": "2026-05-06",
+     "sigma_h": 9.473
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202601272130-520ee875b5",
+   "fecha_utc": "2026-01-27 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL: SPY en máximo de 63 sesiones y RSPD/RSPS -7.2 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.336,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 20.3,
+     "fecha_fin": "2026-02-25",
+     "sigma_h": 5.443
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -1.863,
+     "mae": -2.26,
+     "unidad": "%",
+     "base_pct": 8.9,
+     "fecha_fin": "2026-04-23",
+     "sigma_h": 9.4275
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202512102130-4455f3b5b8",
+   "fecha_utc": "2025-12-10 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL: SPY en máximo de 63 sesiones y RSPD/RSPS -3.3 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -0.945,
+     "mae": -0.945,
+     "unidad": "%",
+     "base_pct": 23.4,
+     "fecha_fin": "2026-01-09",
+     "sigma_h": 5.5636
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 1.511,
+     "mae": -1.152,
+     "unidad": "%",
+     "base_pct": 25.1,
+     "fecha_fin": "2026-03-10",
+     "sigma_h": 9.6365
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202510242130-b21716c29b",
+   "fecha_utc": "2025-10-24 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL: SPY en máximo de 63 sesiones y RSPD/RSPS -3.0 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.69,
+     "mae": -1.497,
+     "unidad": "%",
+     "base_pct": 24.2,
+     "fecha_fin": "2025-11-21",
+     "sigma_h": 5.5376
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -1.732,
+     "mae": -2.645,
+     "unidad": "%",
+     "base_pct": 28.3,
+     "fecha_fin": "2026-01-22",
+     "sigma_h": 9.5914
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202506032130-693f67a097",
+   "fecha_utc": "2025-06-03 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia MEDIA: SPY en máximo de 63 sesiones y RSPD/RSPS -4.1 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.087,
+     "mae": -4.087,
+     "unidad": "%",
+     "base_pct": 28.6,
+     "fecha_fin": "2025-07-02",
+     "sigma_h": 5.7597
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -8.863,
+     "mae": -8.863,
+     "unidad": "%",
+     "base_pct": 28.3,
+     "fecha_fin": "2025-08-28",
+     "sigma_h": 9.9762
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202505162130-174400f2de",
+   "fecha_utc": "2025-05-16 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 1.427,
+     "mae": -2.54,
+     "unidad": "%",
+     "base_pct": 51.1,
+     "fecha_fin": "2025-06-16",
+     "sigma_h": 5.7183
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 8.531,
+     "mae": -2.54,
+     "unidad": "%",
+     "base_pct": 54.5,
+     "fecha_fin": "2025-08-13",
+     "sigma_h": 9.9044
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202505142130-32297613f8",
+   "fecha_utc": "2025-05-14 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.75,
+     "mae": -1.443,
+     "unidad": "%",
+     "base_pct": 51.1,
+     "fecha_fin": "2025-06-12",
+     "sigma_h": 5.7249
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 8.225,
+     "mae": -1.443,
+     "unidad": "%",
+     "base_pct": 54.5,
+     "fecha_fin": "2025-08-11",
+     "sigma_h": 9.9159
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202504032130-a3af3030b0",
+   "fecha_utc": "2025-04-03 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -5.601,
+     "mae": -5.601,
+     "unidad": "%",
+     "base_pct": 23.8,
+     "fecha_fin": "2025-05-02",
+     "sigma_h": 4.1528
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -15.083,
+     "mae": -15.12,
+     "unidad": "%",
+     "base_pct": 13.1,
+     "fecha_fin": "2025-07-01",
+     "sigma_h": 7.1928
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202503122130-84395a6171",
+   "fecha_utc": "2025-03-12 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.834,
+     "mae": -2.968,
+     "unidad": "%",
+     "base_pct": 22.5,
+     "fecha_fin": "2025-04-09",
+     "sigma_h": 3.7686
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -7.206,
+     "mae": -7.206,
+     "unidad": "%",
+     "base_pct": 4.7,
+     "fecha_fin": "2025-06-06",
+     "sigma_h": 6.5274
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202410182130-8207c82c20",
+   "fecha_utc": "2024-10-18 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.198,
+     "mae": -2.728,
+     "unidad": "%",
+     "base_pct": 79.7,
+     "fecha_fin": "2024-11-15",
+     "sigma_h": 3.4695
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 1.206,
+     "mae": -2.728,
+     "unidad": "%",
+     "base_pct": 95.3,
+     "fecha_fin": "2025-01-16",
+     "sigma_h": 6.0094
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202409252130-1b52ea0f8d",
+   "fecha_utc": "2024-09-25 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.395,
+     "mae": -0.393,
+     "unidad": "%",
+     "base_pct": 75.3,
+     "fecha_fin": "2024-10-23",
+     "sigma_h": 3.5326
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 2.817,
+     "mae": -0.393,
+     "unidad": "%",
+     "base_pct": 96.3,
+     "fecha_fin": "2024-12-19",
+     "sigma_h": 6.1186
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202409182130-d3b6a88bd4",
+   "fecha_utc": "2024-09-18 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 3.723,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 72.7,
+     "fecha_fin": "2024-10-16",
+     "sigma_h": 3.5639
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 7.647,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 96.3,
+     "fecha_fin": "2024-12-12",
+     "sigma_h": 6.1729
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202409092130-12f4ce6808",
+   "fecha_utc": "2024-09-09 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -3.915,
+     "mae": -5.005,
+     "unidad": "%",
+     "base_pct": 17.7,
+     "fecha_fin": "2024-10-07",
+     "sigma_h": 3.5967
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -10.523,
+     "mae": -10.523,
+     "unidad": "%",
+     "base_pct": 0.0,
+     "fecha_fin": "2024-12-03",
+     "sigma_h": 6.2297
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202408302130-85b0e76863",
+   "fecha_utc": "2024-08-30 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP semanal: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.788,
+     "mae": -1.788,
+     "unidad": "%",
+     "base_pct": 19.9,
+     "fecha_fin": "2024-09-30",
+     "sigma_h": 3.5101
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -6.005,
+     "mae": -6.223,
+     "unidad": "%",
+     "base_pct": 0.0,
+     "fecha_fin": "2024-11-25",
+     "sigma_h": 6.0797
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202408272130-8c642831eb",
+   "fecha_utc": "2024-08-27 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.51,
+     "mae": -3.775,
+     "unidad": "%",
+     "base_pct": 67.5,
+     "fecha_fin": "2024-09-25",
+     "sigma_h": 3.4982
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 5.154,
+     "mae": -3.775,
+     "unidad": "%",
+     "base_pct": 95.3,
+     "fecha_fin": "2024-11-20",
+     "sigma_h": 6.0591
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202408082130-65befca6de",
+   "fecha_utc": "2024-08-08 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.83,
+     "mae": -6.224,
+     "unidad": "%",
+     "base_pct": 21.2,
+     "fecha_fin": "2024-09-06",
+     "sigma_h": 3.514
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -7.611,
+     "mae": -10.165,
+     "unidad": "%",
+     "base_pct": 1.6,
+     "fecha_fin": "2024-11-01",
+     "sigma_h": 6.0865
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202407302130-24dedbe84a",
+   "fecha_utc": "2024-07-30 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -3.609,
+     "mae": -3.714,
+     "unidad": "%",
+     "base_pct": 19.0,
+     "fecha_fin": "2024-08-27",
+     "sigma_h": 3.2828
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -6.64,
+     "mae": -7.858,
+     "unidad": "%",
+     "base_pct": 5.2,
+     "fecha_fin": "2024-10-23",
+     "sigma_h": 5.6859
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202407122130-d067eddffd",
+   "fecha_utc": "2024-07-12 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.822,
+     "mae": -7.609,
+     "unidad": "%",
+     "base_pct": 64.1,
+     "fecha_fin": "2024-08-09",
+     "sigma_h": 3.1675
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 1.395,
+     "mae": -7.609,
+     "unidad": "%",
+     "base_pct": 83.8,
+     "fecha_fin": "2024-10-07",
+     "sigma_h": 5.4862
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202407032130-0ec9222aab",
+   "fecha_utc": "2024-07-03 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.532,
+     "mae": -2.366,
+     "unidad": "%",
+     "base_pct": 63.2,
+     "fecha_fin": "2024-08-01",
+     "sigma_h": 3.1576
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 3.629,
+     "mae": -6.18,
+     "unidad": "%",
+     "base_pct": 80.6,
+     "fecha_fin": "2024-09-27",
+     "sigma_h": 5.4691
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202406072130-8f3ca06928",
+   "fecha_utc": "2024-06-07 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP semanal: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.084,
+     "mae": -4.084,
+     "unidad": "%",
+     "base_pct": 23.8,
+     "fecha_fin": "2024-07-09",
+     "sigma_h": 3.2242
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.172,
+     "mae": -5.777,
+     "unidad": "%",
+     "base_pct": 16.2,
+     "fecha_fin": "2024-09-04",
+     "sigma_h": 5.5845
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202405142130-c1db6d9ddd",
+   "fecha_utc": "2024-05-14 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL: SPY en máximo de 63 sesiones y RSPD/RSPS -5.4 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -3.451,
+     "mae": -3.451,
+     "unidad": "%",
+     "base_pct": 22.9,
+     "fecha_fin": "2024-06-12",
+     "sigma_h": 3.2748
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -1.852,
+     "mae": -7.942,
+     "unidad": "%",
+     "base_pct": 16.2,
+     "fecha_fin": "2024-08-09",
+     "sigma_h": 5.6722
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202404222130-d057f35541",
+   "fecha_utc": "2024-04-22 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -6.071,
+     "mae": -6.071,
+     "unidad": "%",
+     "base_pct": 19.0,
+     "fecha_fin": "2024-05-20",
+     "sigma_h": 3.3449
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -10.594,
+     "mae": -13.035,
+     "unidad": "%",
+     "base_pct": 16.2,
+     "fecha_fin": "2024-07-18",
+     "sigma_h": 5.7935
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202401232130-19a390e1a3",
+   "fecha_utc": "2024-01-23 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia MEDIA: SPY en máximo de 63 sesiones y RSPD/RSPS -3.5 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.547,
+     "mae": -3.537,
+     "unidad": "%",
+     "base_pct": 25.1,
+     "fecha_fin": "2024-02-21",
+     "sigma_h": 3.5965
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.024,
+     "mae": -7.901,
+     "unidad": "%",
+     "base_pct": 16.8,
+     "fecha_fin": "2024-04-18",
+     "sigma_h": 6.2293
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202307252130-6b0ad79be2",
+   "fecha_utc": "2023-07-25 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.0 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 3.796,
+     "mae": -0.516,
+     "unidad": "%",
+     "base_pct": 31.2,
+     "fecha_fin": "2023-08-22",
+     "sigma_h": 5.3745
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 5.54,
+     "mae": -0.516,
+     "unidad": "%",
+     "base_pct": 15.7,
+     "fecha_fin": "2023-10-18",
+     "sigma_h": 9.3089
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202307142130-f8dffeea9f",
+   "fecha_utc": "2023-07-14 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -0.808,
+     "mae": -0.808,
+     "unidad": "%",
+     "base_pct": 54.1,
+     "fecha_fin": "2023-08-11",
+     "sigma_h": 5.4505
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.782,
+     "mae": -6.163,
+     "unidad": "%",
+     "base_pct": 58.6,
+     "fecha_fin": "2023-10-09",
+     "sigma_h": 9.4405
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202307072130-fd90fa3d11",
+   "fecha_utc": "2023-07-07 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.883,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 54.1,
+     "fecha_fin": "2023-08-04",
+     "sigma_h": 5.4853
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -2.563,
+     "mae": -2.889,
+     "unidad": "%",
+     "base_pct": 56.0,
+     "fecha_fin": "2023-10-02",
+     "sigma_h": 9.5007
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202305242130-607ba3ec39",
+   "fecha_utc": "2023-05-24 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 5.381,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 47.2,
+     "fecha_fin": "2023-06-23",
+     "sigma_h": 5.9972
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 6.872,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 44.0,
+     "fecha_fin": "2023-08-21",
+     "sigma_h": 10.3875
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202305182130-4930de27fa",
+   "fecha_utc": "2023-05-18 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia MEDIA (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -4.2 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.826,
+     "mae": -5.575,
+     "unidad": "%",
+     "base_pct": 37.7,
+     "fecha_fin": "2023-06-16",
+     "sigma_h": 6.0161
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -5.644,
+     "mae": -9.198,
+     "unidad": "%",
+     "base_pct": 26.7,
+     "fecha_fin": "2023-08-15",
+     "sigma_h": 10.4201
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202302272130-9fe3f1e1e9",
+   "fecha_utc": "2023-02-27 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.312,
+     "mae": -1.695,
+     "unidad": "%",
+     "base_pct": 43.3,
+     "fecha_fin": "2023-03-27",
+     "sigma_h": 6.7165
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -4.113,
+     "mae": -5.406,
+     "unidad": "%",
+     "base_pct": 44.0,
+     "fecha_fin": "2023-05-23",
+     "sigma_h": 11.6332
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202302072130-6856c35db0",
+   "fecha_utc": "2023-02-07 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -3.919,
+     "mae": -4.925,
+     "unidad": "%",
+     "base_pct": 42.4,
+     "fecha_fin": "2023-03-08",
+     "sigma_h": 6.8202
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -2.423,
+     "mae": -7.185,
+     "unidad": "%",
+     "base_pct": 28.3,
+     "fecha_fin": "2023-05-04",
+     "sigma_h": 11.8129
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202301102130-68e8689b3a",
+   "fecha_utc": "2023-01-10 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 5.139,
+     "mae": -0.497,
+     "unidad": "%",
+     "base_pct": 35.1,
+     "fecha_fin": "2023-02-08",
+     "sigma_h": 6.8696
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 4.765,
+     "mae": -1.336,
+     "unidad": "%",
+     "base_pct": 18.3,
+     "fecha_fin": "2023-04-06",
+     "sigma_h": 11.8984
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202205202130-a06eb08a31",
+   "fecha_utc": "2022-05-20 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP semanal: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 3.737,
+     "mae": -7.125,
+     "unidad": "%",
+     "base_pct": 35.1,
+     "fecha_fin": "2022-06-21",
+     "sigma_h": 5.0226
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -9.501,
+     "mae": -10.284,
+     "unidad": "%",
+     "base_pct": 40.3,
+     "fecha_fin": "2022-08-17",
+     "sigma_h": 8.6995
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202204292130-49f4400a7a",
+   "fecha_utc": "2022-04-29 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS semanal: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -0.791,
+     "mae": -4.141,
+     "unidad": "%",
+     "base_pct": 29.9,
+     "fecha_fin": "2022-05-27",
+     "sigma_h": 4.6238
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 2.66,
+     "mae": -4.141,
+     "unidad": "%",
+     "base_pct": 33.0,
+     "fecha_fin": "2022-07-27",
+     "sigma_h": 8.0086
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202201202130-58f7d27f23",
+   "fecha_utc": "2022-01-20 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.169,
+     "mae": -2.415,
+     "unidad": "%",
+     "base_pct": 15.2,
+     "fecha_fin": "2022-02-17",
+     "sigma_h": 3.7569
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 1.965,
+     "mae": -3.313,
+     "unidad": "%",
+     "base_pct": 0.5,
+     "fecha_fin": "2022-04-18",
+     "sigma_h": 6.5072
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202112172130-ace9a28c58",
+   "fecha_utc": "2021-12-17 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.735,
+     "mae": -3.879,
+     "unidad": "%",
+     "base_pct": 13.0,
+     "fecha_fin": "2022-01-18",
+     "sigma_h": 3.638
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 5.273,
+     "mae": -3.879,
+     "unidad": "%",
+     "base_pct": 0.5,
+     "fecha_fin": "2022-03-16",
+     "sigma_h": 6.3011
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202112102130-2af5baa86e",
+   "fecha_utc": "2021-12-10 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia MEDIA (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -4.2 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.111,
+     "mae": -1.481,
+     "unidad": "%",
+     "base_pct": 12.6,
+     "fecha_fin": "2022-01-10",
+     "sigma_h": 3.5921
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 9.205,
+     "mae": -1.481,
+     "unidad": "%",
+     "base_pct": 0.5,
+     "fecha_fin": "2022-03-09",
+     "sigma_h": 6.2216
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202108302130-6854d50518",
+   "fecha_utc": "2021-08-30 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.093,
+     "mae": -4.113,
+     "unidad": "%",
+     "base_pct": 73.6,
+     "fecha_fin": "2021-09-28",
+     "sigma_h": 4.2176
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 3.529,
+     "mae": -5.216,
+     "unidad": "%",
+     "base_pct": 99.5,
+     "fecha_fin": "2021-11-23",
+     "sigma_h": 7.305
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202108202130-f24373a844",
+   "fecha_utc": "2021-08-20 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.102,
+     "mae": -2.217,
+     "unidad": "%",
+     "base_pct": 8.2,
+     "fecha_fin": "2021-09-20",
+     "sigma_h": 4.22
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -5.429,
+     "mae": -5.767,
+     "unidad": "%",
+     "base_pct": 0.0,
+     "fecha_fin": "2021-11-15",
+     "sigma_h": 7.3093
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202108162130-baf06de154",
+   "fecha_utc": "2021-08-16 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.3 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.626,
+     "mae": -1.392,
+     "unidad": "%",
+     "base_pct": 9.1,
+     "fecha_fin": "2021-09-14",
+     "sigma_h": 4.2074
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -4.566,
+     "mae": -4.913,
+     "unidad": "%",
+     "base_pct": 0.0,
+     "fecha_fin": "2021-11-09",
+     "sigma_h": 7.2875
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202106042130-2caba1e96d",
+   "fecha_utc": "2021-06-04 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -5.9 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.631,
+     "mae": -2.631,
+     "unidad": "%",
+     "base_pct": 10.0,
+     "fecha_fin": "2021-07-02",
+     "sigma_h": 4.752
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -7.011,
+     "mae": -7.011,
+     "unidad": "%",
+     "base_pct": 0.5,
+     "fecha_fin": "2021-08-30",
+     "sigma_h": 8.2308
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202106022130-76a8444876",
+   "fecha_utc": "2021-06-02 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.839,
+     "mae": -1.287,
+     "unidad": "%",
+     "base_pct": 68.0,
+     "fecha_fin": "2021-06-30",
+     "sigma_h": 4.8049
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 6.169,
+     "mae": -1.287,
+     "unidad": "%",
+     "base_pct": 95.3,
+     "fecha_fin": "2021-08-26",
+     "sigma_h": 8.3222
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202105212130-2ba702ebbc",
+   "fecha_utc": "2021-05-21 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.427,
+     "mae": -2.487,
+     "unidad": "%",
+     "base_pct": 10.4,
+     "fecha_fin": "2021-06-21",
+     "sigma_h": 4.8317
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -7.013,
+     "mae": -7.719,
+     "unidad": "%",
+     "base_pct": 0.5,
+     "fecha_fin": "2021-08-17",
+     "sigma_h": 8.3687
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202012042130-088ef33a1a",
+   "fecha_utc": "2020-12-04 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.4,
+     "mae": -1.403,
+     "unidad": "%",
+     "base_pct": 57.1,
+     "fecha_fin": "2021-01-05",
+     "sigma_h": 9.4833
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 1.852,
+     "mae": -1.403,
+     "unidad": "%",
+     "base_pct": 59.2,
+     "fecha_fin": "2021-03-04",
+     "sigma_h": 16.4256
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202011132130-271acad924",
+   "fecha_utc": "2020-11-13 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.5 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -1.832,
+     "mae": -3.371,
+     "unidad": "%",
+     "base_pct": 19.0,
+     "fecha_fin": "2020-12-14",
+     "sigma_h": 9.462
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -9.106,
+     "mae": -9.106,
+     "unidad": "%",
+     "base_pct": 29.3,
+     "fecha_fin": "2021-02-11",
+     "sigma_h": 16.3887
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202008142130-040194be3e",
+   "fecha_utc": "2020-08-14 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.481,
+     "mae": -1.078,
+     "unidad": "%",
+     "base_pct": 59.3,
+     "fecha_fin": "2020-09-14",
+     "sigma_h": 9.1555
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 5.261,
+     "mae": -4.216,
+     "unidad": "%",
+     "base_pct": 62.3,
+     "fecha_fin": "2020-11-09",
+     "sigma_h": 15.8578
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202007202130-e33e3738f0",
+   "fecha_utc": "2020-07-20 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia MEDIA (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -6.8 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.19,
+     "mae": -4.19,
+     "unidad": "%",
+     "base_pct": 18.6,
+     "fecha_fin": "2020-08-17",
+     "sigma_h": 9.2705
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -7.958,
+     "mae": -10.292,
+     "unidad": "%",
+     "base_pct": 29.3,
+     "fecha_fin": "2020-10-13",
+     "sigma_h": 16.057
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202005152130-667623348c",
+   "fecha_utc": "2020-05-15 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 7.255,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 50.6,
+     "fecha_fin": "2020-06-15",
+     "sigma_h": 8.9334
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 16.25,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 42.9,
+     "fecha_fin": "2020-08-11",
+     "sigma_h": 15.4731
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202005082130-19cd283151",
+   "fecha_utc": "2020-05-08 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 10.518,
+     "mae": -3.707,
+     "unidad": "%",
+     "base_pct": 51.1,
+     "fecha_fin": "2020-06-08",
+     "sigma_h": 8.9061
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 12.864,
+     "mae": -3.707,
+     "unidad": "%",
+     "base_pct": 42.9,
+     "fecha_fin": "2020-08-04",
+     "sigma_h": 15.4259
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202004092130-5dd83cd8eb",
+   "fecha_utc": "2020-04-09 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP semanal: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -5.119,
+     "mae": -5.395,
+     "unidad": "%",
+     "base_pct": 27.7,
+     "fecha_fin": "2020-05-08",
+     "sigma_h": 8.6749
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -12.789,
+     "mae": -16.175,
+     "unidad": "%",
+     "base_pct": 15.2,
+     "fecha_fin": "2020-07-07",
+     "sigma_h": 15.0253
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202003062130-18aabaf6e5",
+   "fecha_utc": "2020-03-06 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 16.564,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 23.8,
+     "fecha_fin": "2020-04-03",
+     "sigma_h": 4.3815
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.57,
+     "mae": -3.57,
+     "unidad": "%",
+     "base_pct": 5.2,
+     "fecha_fin": "2020-06-02",
+     "sigma_h": 7.589
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202002212130-00765d7710",
+   "fecha_utc": "2020-02-21 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS semanal: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 31.39,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 20.8,
+     "fecha_fin": "2020-03-20",
+     "sigma_h": 3.3847
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 11.539,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 3.7,
+     "fecha_fin": "2020-05-18",
+     "sigma_h": 5.8624
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202002142130-37cdfa2756",
+   "fecha_utc": "2020-02-14 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -28.954,
+     "mae": -28.954,
+     "unidad": "%",
+     "base_pct": 68.0,
+     "fecha_fin": "2020-03-16",
+     "sigma_h": 3.37
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -15.086,
+     "mae": -33.96,
+     "unidad": "%",
+     "base_pct": 80.6,
+     "fecha_fin": "2020-05-12",
+     "sigma_h": 5.837
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202002052130-e18c0e58a9",
+   "fecha_utc": "2020-02-05 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia MEDIA (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.4 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 9.133,
+     "mae": -1.646,
+     "unidad": "%",
+     "base_pct": 20.8,
+     "fecha_fin": "2020-03-05",
+     "sigma_h": 3.3863
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 15.042,
+     "mae": -1.646,
+     "unidad": "%",
+     "base_pct": 3.7,
+     "fecha_fin": "2020-05-01",
+     "sigma_h": 5.8652
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202001212130-9731d45e96",
+   "fecha_utc": "2020-01-21 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.125,
+     "mae": -2.125,
+     "unidad": "%",
+     "base_pct": 20.3,
+     "fecha_fin": "2020-02-19",
+     "sigma_h": 3.3111
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 15.756,
+     "mae": -2.125,
+     "unidad": "%",
+     "base_pct": 3.7,
+     "fecha_fin": "2020-04-16",
+     "sigma_h": 5.7351
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-202001082130-ceaaeb706f",
+   "fecha_utc": "2020-01-08 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.937,
+     "mae": -0.838,
+     "unidad": "%",
+     "base_pct": 68.8,
+     "fecha_fin": "2020-02-06",
+     "sigma_h": 3.3606
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -23.504,
+     "mae": -31.284,
+     "unidad": "%",
+     "base_pct": 80.6,
+     "fecha_fin": "2020-04-03",
+     "sigma_h": 5.8207
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201911152130-d9e372ce3a",
+   "fecha_utc": "2019-11-15 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.473,
+     "mae": -0.718,
+     "unidad": "%",
+     "base_pct": 59.7,
+     "fecha_fin": "2019-12-16",
+     "sigma_h": 4.3819
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 8.105,
+     "mae": -0.718,
+     "unidad": "%",
+     "base_pct": 73.3,
+     "fecha_fin": "2020-02-13",
+     "sigma_h": 7.5897
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201909242130-7606d8a3cd",
+   "fecha_utc": "2019-09-24 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -1.061,
+     "mae": -1.393,
+     "unidad": "%",
+     "base_pct": 34.2,
+     "fecha_fin": "2019-10-22",
+     "sigma_h": 4.7434
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -8.017,
+     "mae": -8.017,
+     "unidad": "%",
+     "base_pct": 13.1,
+     "fecha_fin": "2019-12-18",
+     "sigma_h": 8.2158
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201909132130-e47d939732",
+   "fecha_utc": "2019-09-13 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.598,
+     "mae": -4.328,
+     "unidad": "%",
+     "base_pct": 49.8,
+     "fecha_fin": "2019-10-11",
+     "sigma_h": 4.743
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 4.248,
+     "mae": -4.328,
+     "unidad": "%",
+     "base_pct": 59.7,
+     "fecha_fin": "2019-12-09",
+     "sigma_h": 8.2152
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201908302130-b6b65ce04f",
+   "fecha_utc": "2019-08-30 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS semanal: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.477,
+     "mae": -3.023,
+     "unidad": "%",
+     "base_pct": 38.1,
+     "fecha_fin": "2019-09-30",
+     "sigma_h": 4.7165
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -7.153,
+     "mae": -7.153,
+     "unidad": "%",
+     "base_pct": 21.5,
+     "fecha_fin": "2019-11-25",
+     "sigma_h": 8.1692
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201908082130-c5f396c4ff",
+   "fecha_utc": "2019-08-08 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.509,
+     "mae": -1.509,
+     "unidad": "%",
+     "base_pct": 32.5,
+     "fecha_fin": "2019-09-06",
+     "sigma_h": 4.5047
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -4.264,
+     "mae": -4.264,
+     "unidad": "%",
+     "base_pct": 28.8,
+     "fecha_fin": "2019-11-01",
+     "sigma_h": 7.8024
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201906242130-7a875c317a",
+   "fecha_utc": "2019-06-24 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.176,
+     "mae": -1.08,
+     "unidad": "%",
+     "base_pct": 52.4,
+     "fecha_fin": "2019-07-23",
+     "sigma_h": 4.3615
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 2.541,
+     "mae": -3.344,
+     "unidad": "%",
+     "base_pct": 46.6,
+     "fecha_fin": "2019-09-18",
+     "sigma_h": 7.5543
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201906202130-a090f8d070",
+   "fecha_utc": "2019-06-20 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -6.8 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -0.443,
+     "mae": -1.653,
+     "unidad": "%",
+     "base_pct": 29.9,
+     "fecha_fin": "2019-07-19",
+     "sigma_h": 4.3753
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -1.453,
+     "mae": -2.079,
+     "unidad": "%",
+     "base_pct": 35.1,
+     "fecha_fin": "2019-09-16",
+     "sigma_h": 7.5783
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201905172130-c07dbe8f58",
+   "fecha_utc": "2019-05-17 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.235,
+     "mae": -1.308,
+     "unidad": "%",
+     "base_pct": 26.4,
+     "fecha_fin": "2019-06-17",
+     "sigma_h": 4.3016
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -2.347,
+     "mae": -5.657,
+     "unidad": "%",
+     "base_pct": 35.6,
+     "fecha_fin": "2019-08-13",
+     "sigma_h": 7.4505
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201905102130-cfaeb8ac12",
+   "fecha_utc": "2019-05-10 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -0.302,
+     "mae": -0.302,
+     "unidad": "%",
+     "base_pct": 24.7,
+     "fecha_fin": "2019-06-10",
+     "sigma_h": 4.2259
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 0.104,
+     "mae": -4.828,
+     "unidad": "%",
+     "base_pct": 35.6,
+     "fecha_fin": "2019-08-06",
+     "sigma_h": 7.3194
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201904302130-75abe47cd4",
+   "fecha_utc": "2019-04-30 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.7 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 5.357,
+     "mae": -0.003,
+     "unidad": "%",
+     "base_pct": 24.7,
+     "fecha_fin": "2019-05-29",
+     "sigma_h": 4.2158
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -2.034,
+     "mae": -2.524,
+     "unidad": "%",
+     "base_pct": 35.6,
+     "fecha_fin": "2019-07-25",
+     "sigma_h": 7.302
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201904052130-85a7289a1e",
+   "fecha_utc": "2019-04-05 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.473,
+     "mae": -0.437,
+     "unidad": "%",
+     "base_pct": 54.1,
+     "fecha_fin": "2019-05-06",
+     "sigma_h": 4.2906
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 2.724,
+     "mae": -4.852,
+     "unidad": "%",
+     "base_pct": 51.8,
+     "fecha_fin": "2019-07-02",
+     "sigma_h": 7.4316
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201904052130-7bf498d461",
+   "fecha_utc": "2019-04-05 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.473,
+     "mae": -0.437,
+     "unidad": "%",
+     "base_pct": 54.1,
+     "fecha_fin": "2019-05-06",
+     "sigma_h": 4.2906
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 2.724,
+     "mae": -4.852,
+     "unidad": "%",
+     "base_pct": 51.8,
+     "fecha_fin": "2019-07-02",
+     "sigma_h": 7.4316
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201903282130-789e08f4dc",
+   "fecha_utc": "2019-03-28 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.524,
+     "mae": -4.524,
+     "unidad": "%",
+     "base_pct": 25.1,
+     "fecha_fin": "2019-04-26",
+     "sigma_h": 4.3961
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -4.606,
+     "mae": -5.397,
+     "unidad": "%",
+     "base_pct": 35.1,
+     "fecha_fin": "2019-06-24",
+     "sigma_h": 7.6143
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201901302130-e7e3101233",
+   "fecha_utc": "2019-01-30 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 4.148,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 40.7,
+     "fecha_fin": "2019-02-28",
+     "sigma_h": 5.0093
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 9.653,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 44.0,
+     "fecha_fin": "2019-04-26",
+     "sigma_h": 8.6764
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201810242130-6632a7401e",
+   "fecha_utc": "2018-10-24 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.113,
+     "mae": -5.914,
+     "unidad": "%",
+     "base_pct": 22.9,
+     "fecha_fin": "2018-11-21",
+     "sigma_h": 3.8919
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 0.72,
+     "mae": -5.914,
+     "unidad": "%",
+     "base_pct": 18.3,
+     "fecha_fin": "2019-01-23",
+     "sigma_h": 6.741
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201810102130-9f2d4218c6",
+   "fecha_utc": "2018-10-10 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -0.974,
+     "mae": -0.974,
+     "unidad": "%",
+     "base_pct": 19.0,
+     "fecha_fin": "2018-11-07",
+     "sigma_h": 3.6453
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 7.736,
+     "mae": -0.974,
+     "unidad": "%",
+     "base_pct": 14.7,
+     "fecha_fin": "2019-01-08",
+     "sigma_h": 6.3139
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201809202130-1877a25e7a",
+   "fecha_utc": "2018-09-20 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.1 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 5.852,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 18.6,
+     "fecha_fin": "2018-10-18",
+     "sigma_h": 3.5178
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 13.019,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 14.7,
+     "fecha_fin": "2018-12-17",
+     "sigma_h": 6.0929
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201807122130-e77d8ce8d8",
+   "fecha_utc": "2018-07-12 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -4.8 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.04,
+     "mae": -2.223,
+     "unidad": "%",
+     "base_pct": 22.1,
+     "fecha_fin": "2018-08-09",
+     "sigma_h": 3.5357
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.025,
+     "mae": -5.086,
+     "unidad": "%",
+     "base_pct": 14.7,
+     "fecha_fin": "2018-10-05",
+     "sigma_h": 6.1239
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201802092130-f836b972da",
+   "fecha_utc": "2018-02-09 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 6.509,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 71.4,
+     "fecha_fin": "2018-03-12",
+     "sigma_h": 2.7113
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 2.073,
+     "mae": -1.541,
+     "unidad": "%",
+     "base_pct": 92.1,
+     "fecha_fin": "2018-05-08",
+     "sigma_h": 4.6962
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201711082130-576a5b1325",
+   "fecha_utc": "2017-11-08 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.9 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.914,
+     "mae": -2.277,
+     "unidad": "%",
+     "base_pct": 16.0,
+     "fecha_fin": "2017-12-07",
+     "sigma_h": 1.9647
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.867,
+     "mae": -10.602,
+     "unidad": "%",
+     "base_pct": 0.0,
+     "fecha_fin": "2018-02-06",
+     "sigma_h": 3.403
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201709262130-6774bb8d5c",
+   "fecha_utc": "2017-09-26 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 3.003,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 68.0,
+     "fecha_fin": "2017-10-24",
+     "sigma_h": 2.1624
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 7.207,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 95.3,
+     "fecha_fin": "2017-12-20",
+     "sigma_h": 3.7454
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201708152130-f975d19ccb",
+   "fecha_utc": "2017-08-15 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.485,
+     "mae": -1.485,
+     "unidad": "%",
+     "base_pct": 22.9,
+     "fecha_fin": "2017-09-13",
+     "sigma_h": 2.333
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -5.111,
+     "mae": -5.111,
+     "unidad": "%",
+     "base_pct": 0.5,
+     "fecha_fin": "2017-11-08",
+     "sigma_h": 4.0409
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201707032130-c4b1efc33d",
+   "fecha_utc": "2017-07-03 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.11,
+     "mae": -0.685,
+     "unidad": "%",
+     "base_pct": 61.9,
+     "fecha_fin": "2017-08-01",
+     "sigma_h": 2.3294
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 3.237,
+     "mae": -0.685,
+     "unidad": "%",
+     "base_pct": 78.5,
+     "fecha_fin": "2017-09-27",
+     "sigma_h": 4.0347
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201705242130-b4dca56b0a",
+   "fecha_utc": "2017-05-24 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia MEDIA (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -5.4 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -0.927,
+     "mae": -1.683,
+     "unidad": "%",
+     "base_pct": 23.4,
+     "fecha_fin": "2017-06-22",
+     "sigma_h": 2.7335
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -0.873,
+     "mae": -3.017,
+     "unidad": "%",
+     "base_pct": 8.9,
+     "fecha_fin": "2017-08-18",
+     "sigma_h": 4.7346
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201705222130-5721a3a796",
+   "fecha_utc": "2017-05-22 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.457,
+     "mae": -2.146,
+     "unidad": "%",
+     "base_pct": 23.4,
+     "fecha_fin": "2017-06-20",
+     "sigma_h": 2.7383
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.098,
+     "mae": -3.486,
+     "unidad": "%",
+     "base_pct": 8.9,
+     "fecha_fin": "2017-08-16",
+     "sigma_h": 4.7429
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201702092130-aa6cfe1dd6",
+   "fecha_utc": "2017-02-09 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -7.2 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -3.075,
+     "mae": -3.981,
+     "unidad": "%",
+     "base_pct": 18.2,
+     "fecha_fin": "2017-03-10",
+     "sigma_h": 3.0684
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.929,
+     "mae": -3.981,
+     "unidad": "%",
+     "base_pct": 8.4,
+     "fecha_fin": "2017-05-08",
+     "sigma_h": 5.3146
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201701252130-f3c0ed235f",
+   "fecha_utc": "2017-01-25 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -5.4 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.993,
+     "mae": -3.014,
+     "unidad": "%",
+     "base_pct": 17.7,
+     "fecha_fin": "2017-02-23",
+     "sigma_h": 3.3192
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -2.187,
+     "mae": -4.447,
+     "unidad": "%",
+     "base_pct": 6.8,
+     "fecha_fin": "2017-04-21",
+     "sigma_h": 5.749
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201609222130-59e9e24eac",
+   "fecha_utc": "2016-09-22 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.519,
+     "mae": -2.21,
+     "unidad": "%",
+     "base_pct": 49.4,
+     "fecha_fin": "2016-10-20",
+     "sigma_h": 4.1732
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 3.619,
+     "mae": -3.974,
+     "unidad": "%",
+     "base_pct": 63.4,
+     "fecha_fin": "2016-12-16",
+     "sigma_h": 7.2281
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201609132130-48d2dcd607",
+   "fecha_utc": "2016-09-13 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.094,
+     "mae": -0.038,
+     "unidad": "%",
+     "base_pct": 51.5,
+     "fecha_fin": "2016-10-11",
+     "sigma_h": 4.2091
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 5.332,
+     "mae": -2.195,
+     "unidad": "%",
+     "base_pct": 63.4,
+     "fecha_fin": "2016-12-07",
+     "sigma_h": 7.2905
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201608262130-3b8eaf33ec",
+   "fecha_utc": "2016-08-26 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.404,
+     "mae": -1.905,
+     "unidad": "%",
+     "base_pct": 53.2,
+     "fecha_fin": "2016-09-26",
+     "sigma_h": 4.3507
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 1.316,
+     "mae": -4.022,
+     "unidad": "%",
+     "base_pct": 62.3,
+     "fecha_fin": "2016-11-21",
+     "sigma_h": 7.5356
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201607082130-ceca711719",
+   "fecha_utc": "2016-07-08 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP semanal: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.601,
+     "mae": -2.601,
+     "unidad": "%",
+     "base_pct": 35.1,
+     "fecha_fin": "2016-08-05",
+     "sigma_h": 4.8716
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -1.472,
+     "mae": -3.028,
+     "unidad": "%",
+     "base_pct": 29.8,
+     "fecha_fin": "2016-10-03",
+     "sigma_h": 8.4378
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201607082130-1b4a955184",
+   "fecha_utc": "2016-07-08 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -10.6 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.601,
+     "mae": -2.601,
+     "unidad": "%",
+     "base_pct": 35.1,
+     "fecha_fin": "2016-08-05",
+     "sigma_h": 4.8716
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -1.472,
+     "mae": -3.028,
+     "unidad": "%",
+     "base_pct": 29.8,
+     "fecha_fin": "2016-10-03",
+     "sigma_h": 8.4378
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201605272130-ae9bc344fd",
+   "fecha_utc": "2016-05-27 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -6.4 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 5.061,
+     "mae": -1.013,
+     "unidad": "%",
+     "base_pct": 35.9,
+     "fecha_fin": "2016-06-27",
+     "sigma_h": 4.7491
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -4.152,
+     "mae": -4.209,
+     "unidad": "%",
+     "base_pct": 44.0,
+     "fecha_fin": "2016-08-23",
+     "sigma_h": 8.2257
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201512172130-fcbf913ad9",
+   "fecha_utc": "2015-12-17 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 8.201,
+     "mae": -1.24,
+     "unidad": "%",
+     "base_pct": 28.6,
+     "fecha_fin": "2016-01-19",
+     "sigma_h": 4.3159
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 0.742,
+     "mae": -1.24,
+     "unidad": "%",
+     "base_pct": 25.1,
+     "fecha_fin": "2016-03-16",
+     "sigma_h": 7.4753
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201509042130-c2856f77be",
+   "fecha_utc": "2015-09-04 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS semanal: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -3.053,
+     "mae": -3.941,
+     "unidad": "%",
+     "base_pct": 30.3,
+     "fecha_fin": "2015-10-05",
+     "sigma_h": 4.1378
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -9.393,
+     "mae": -9.559,
+     "unidad": "%",
+     "base_pct": 8.4,
+     "fecha_fin": "2015-12-01",
+     "sigma_h": 7.1669
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201507302130-45021d5caa",
+   "fecha_utc": "2015-07-30 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 5.479,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 29.4,
+     "fecha_fin": "2015-08-27",
+     "sigma_h": 3.418
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 1.57,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 1.6,
+     "fecha_fin": "2015-10-23",
+     "sigma_h": 5.9201
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201505142130-447613cdcd",
+   "fecha_utc": "2015-05-14 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -4.5 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.037,
+     "mae": -0.608,
+     "unidad": "%",
+     "base_pct": 26.0,
+     "fecha_fin": "2015-06-12",
+     "sigma_h": 3.2776
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 0.773,
+     "mae": -0.608,
+     "unidad": "%",
+     "base_pct": 6.3,
+     "fecha_fin": "2015-08-10",
+     "sigma_h": 5.677
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201502132130-a022dda182",
+   "fecha_utc": "2015-02-13 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -0.572,
+     "mae": -2.517,
+     "unidad": "%",
+     "base_pct": 48.9,
+     "fecha_fin": "2015-03-16",
+     "sigma_h": 3.254
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 0.095,
+     "mae": -2.517,
+     "unidad": "%",
+     "base_pct": 79.1,
+     "fecha_fin": "2015-05-12",
+     "sigma_h": 5.6361
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201502092130-6c9723bca7",
+   "fecha_utc": "2015-02-09 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.171,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 48.9,
+     "fecha_fin": "2015-03-10",
+     "sigma_h": 3.2353
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 1.666,
+     "mae": -0.064,
+     "unidad": "%",
+     "base_pct": 80.1,
+     "fecha_fin": "2015-05-06",
+     "sigma_h": 5.6037
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201501122130-a015bd737f",
+   "fecha_utc": "2015-01-12 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.053,
+     "mae": -2.053,
+     "unidad": "%",
+     "base_pct": 21.2,
+     "fecha_fin": "2015-02-10",
+     "sigma_h": 3.2635
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.084,
+     "mae": -4.609,
+     "unidad": "%",
+     "base_pct": 6.3,
+     "fecha_fin": "2015-04-09",
+     "sigma_h": 5.6525
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201501022130-aea454d46f",
+   "fecha_utc": "2015-01-02 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.709,
+     "mae": -3.12,
+     "unidad": "%",
+     "base_pct": 53.2,
+     "fecha_fin": "2015-02-02",
+     "sigma_h": 3.1777
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 0.487,
+     "mae": -3.12,
+     "unidad": "%",
+     "base_pct": 80.6,
+     "fecha_fin": "2015-03-31",
+     "sigma_h": 5.5039
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201411052130-c0af55c28e",
+   "fecha_utc": "2014-11-05 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -5.6 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.629,
+     "mae": -2.743,
+     "unidad": "%",
+     "base_pct": 22.9,
+     "fecha_fin": "2014-12-04",
+     "sigma_h": 3.0687
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -1.236,
+     "mae": -3.153,
+     "unidad": "%",
+     "base_pct": 6.8,
+     "fecha_fin": "2015-02-03",
+     "sigma_h": 5.3151
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201409192130-0e725ac2f8",
+   "fecha_utc": "2014-09-19 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 6.094,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 14.3,
+     "fecha_fin": "2014-10-17",
+     "sigma_h": 2.8353
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 0.593,
+     "mae": -3.637,
+     "unidad": "%",
+     "base_pct": 0.5,
+     "fecha_fin": "2014-12-15",
+     "sigma_h": 4.9108
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201408052130-5c74bf9ccd",
+   "fecha_utc": "2014-08-05 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 4.422,
+     "mae": -0.51,
+     "unidad": "%",
+     "base_pct": 66.7,
+     "fecha_fin": "2014-09-03",
+     "sigma_h": 2.9448
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 3.177,
+     "mae": -2.989,
+     "unidad": "%",
+     "base_pct": 90.6,
+     "fecha_fin": "2014-10-29",
+     "sigma_h": 5.1006
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201405122130-f8d8089e08",
+   "fecha_utc": "2014-05-12 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -7.7 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -3.061,
+     "mae": -3.061,
+     "unidad": "%",
+     "base_pct": 23.8,
+     "fecha_fin": "2014-06-10",
+     "sigma_h": 3.1838
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -1.201,
+     "mae": -4.668,
+     "unidad": "%",
+     "base_pct": 1.0,
+     "fecha_fin": "2014-08-06",
+     "sigma_h": 5.5144
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201404112130-68b73807b1",
+   "fecha_utc": "2014-04-11 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.562,
+     "mae": -4.562,
+     "unidad": "%",
+     "base_pct": 22.9,
+     "fecha_fin": "2014-05-12",
+     "sigma_h": 3.2312
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -8.6,
+     "mae": -9.195,
+     "unidad": "%",
+     "base_pct": 1.0,
+     "fecha_fin": "2014-07-09",
+     "sigma_h": 5.5966
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201404022130-e5bd058004",
+   "fecha_utc": "2014-04-02 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.6 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.291,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 20.8,
+     "fecha_fin": "2014-05-01",
+     "sigma_h": 3.2293
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -3.674,
+     "mae": -4.024,
+     "unidad": "%",
+     "base_pct": 0.5,
+     "fecha_fin": "2014-06-27",
+     "sigma_h": 5.5933
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201403282130-00903e4786",
+   "fecha_utc": "2014-03-28 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -0.749,
+     "mae": -1.828,
+     "unidad": "%",
+     "base_pct": 20.8,
+     "fecha_fin": "2014-04-28",
+     "sigma_h": 3.2368
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -4.965,
+     "mae": -5.925,
+     "unidad": "%",
+     "base_pct": 0.5,
+     "fecha_fin": "2014-06-24",
+     "sigma_h": 5.6063
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201310172130-2551e5e0ed",
+   "fecha_utc": "2013-10-17 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.3 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -3.493,
+     "mae": -3.493,
+     "unidad": "%",
+     "base_pct": 17.3,
+     "fecha_fin": "2013-11-14",
+     "sigma_h": 3.4072
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -6.033,
+     "mae": -6.622,
+     "unidad": "%",
+     "base_pct": 0.5,
+     "fecha_fin": "2014-01-14",
+     "sigma_h": 5.9014
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201305092130-33e25699d5",
+   "fecha_utc": "2013-05-09 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.179,
+     "mae": -0.988,
+     "unidad": "%",
+     "base_pct": 69.3,
+     "fecha_fin": "2013-06-07",
+     "sigma_h": 3.6351
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 4.801,
+     "mae": -3.573,
+     "unidad": "%",
+     "base_pct": 74.9,
+     "fecha_fin": "2013-08-05",
+     "sigma_h": 6.2962
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201304292130-369219827d",
+   "fecha_utc": "2013-04-29 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -4.4 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.394,
+     "mae": -4.94,
+     "unidad": "%",
+     "base_pct": 17.7,
+     "fecha_fin": "2013-05-28",
+     "sigma_h": 3.6541
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -5.788,
+     "mae": -6.403,
+     "unidad": "%",
+     "base_pct": 11.0,
+     "fecha_fin": "2013-07-24",
+     "sigma_h": 6.3291
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201304022130-182d0d7992",
+   "fecha_utc": "2013-04-02 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -6.0 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.824,
+     "mae": -1.824,
+     "unidad": "%",
+     "base_pct": 22.9,
+     "fecha_fin": "2013-04-30",
+     "sigma_h": 3.6469
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -2.117,
+     "mae": -6.6,
+     "unidad": "%",
+     "base_pct": 17.8,
+     "fecha_fin": "2013-06-26",
+     "sigma_h": 6.3166
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201303272130-96cf1e88e3",
+   "fecha_utc": "2013-03-27 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.492,
+     "mae": -1.921,
+     "unidad": "%",
+     "base_pct": 23.4,
+     "fecha_fin": "2013-04-25",
+     "sigma_h": 3.647
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -1.844,
+     "mae": -7.03,
+     "unidad": "%",
+     "base_pct": 19.4,
+     "fecha_fin": "2013-06-21",
+     "sigma_h": 6.3168
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201303122130-dba375acec",
+   "fecha_utc": "2013-03-12 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.921,
+     "mae": -0.848,
+     "unidad": "%",
+     "base_pct": 56.3,
+     "fecha_fin": "2013-04-10",
+     "sigma_h": 3.6772
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 4.529,
+     "mae": -0.989,
+     "unidad": "%",
+     "base_pct": 53.4,
+     "fecha_fin": "2013-06-06",
+     "sigma_h": 6.369
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201303052130-8758443cd2",
+   "fecha_utc": "2013-03-05 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -4.4 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -0.609,
+     "mae": -1.64,
+     "unidad": "%",
+     "base_pct": 26.8,
+     "fecha_fin": "2013-04-03",
+     "sigma_h": 3.7137
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -7.479,
+     "mae": -8.348,
+     "unidad": "%",
+     "base_pct": 27.7,
+     "fecha_fin": "2013-05-30",
+     "sigma_h": 6.4324
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201302272130-3a5f10b13f",
+   "fecha_utc": "2013-02-27 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.817,
+     "mae": -3.173,
+     "unidad": "%",
+     "base_pct": 26.8,
+     "fecha_fin": "2013-03-27",
+     "sigma_h": 3.71
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -8.913,
+     "mae": -10.045,
+     "unidad": "%",
+     "base_pct": 29.8,
+     "fecha_fin": "2013-05-23",
+     "sigma_h": 6.4259
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201212212130-b80dba2ea8",
+   "fecha_utc": "2012-12-21 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 4.608,
+     "mae": -1.933,
+     "unidad": "%",
+     "base_pct": 58.0,
+     "fecha_fin": "2013-01-23",
+     "sigma_h": 3.6
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 8.103,
+     "mae": -1.933,
+     "unidad": "%",
+     "base_pct": 49.2,
+     "fecha_fin": "2013-03-21",
+     "sigma_h": 6.2353
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201212102130-f0f2fc1a8f",
+   "fecha_utc": "2012-12-10 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -2.422,
+     "mae": -2.737,
+     "unidad": "%",
+     "base_pct": 26.4,
+     "fecha_fin": "2013-01-09",
+     "sigma_h": 3.6952
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -9.104,
+     "mae": -9.104,
+     "unidad": "%",
+     "base_pct": 28.8,
+     "fecha_fin": "2013-03-08",
+     "sigma_h": 6.4003
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201209122130-00a4a23916",
+   "fecha_utc": "2012-09-12 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -0.769,
+     "mae": -0.769,
+     "unidad": "%",
+     "base_pct": 59.7,
+     "fecha_fin": "2012-10-10",
+     "sigma_h": 5.1429
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -1.33,
+     "mae": -6.018,
+     "unidad": "%",
+     "base_pct": 66.0,
+     "fecha_fin": "2012-12-10",
+     "sigma_h": 8.9078
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201209042130-deeb47da16",
+   "fecha_utc": "2012-09-04 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.46,
+     "mae": -0.085,
+     "unidad": "%",
+     "base_pct": 58.0,
+     "fecha_fin": "2012-10-02",
+     "sigma_h": 5.2167
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 0.794,
+     "mae": -3.779,
+     "unidad": "%",
+     "base_pct": 66.0,
+     "fecha_fin": "2012-11-30",
+     "sigma_h": 9.0356
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201208032130-cfb349a14c",
+   "fecha_utc": "2012-08-03 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia MEDIA (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -5.7 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -1.299,
+     "mae": -2.038,
+     "unidad": "%",
+     "base_pct": 21.6,
+     "fecha_fin": "2012-08-31",
+     "sigma_h": 6.1117
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": -1.435,
+     "mae": -5.662,
+     "unidad": "%",
+     "base_pct": 19.4,
+     "fecha_fin": "2012-10-31",
+     "sigma_h": 10.5859
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201207052130-dc284a66ce",
+   "fecha_utc": "2012-07-05 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.11,
+     "mae": -1.382,
+     "unidad": "%",
+     "base_pct": 29.4,
+     "fecha_fin": "2012-08-02",
+     "sigma_h": 6.5489
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -5.249,
+     "mae": -7.639,
+     "unidad": "%",
+     "base_pct": 24.1,
+     "fecha_fin": "2012-09-28",
+     "sigma_h": 11.343
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201206152130-cf48249b87",
+   "fecha_utc": "2012-06-15 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": -0.962,
+     "mae": -2.438,
+     "unidad": "%",
+     "base_pct": 31.6,
+     "fecha_fin": "2012-07-16",
+     "sigma_h": 6.513
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -7.283,
+     "mae": -7.597,
+     "unidad": "%",
+     "base_pct": 26.7,
+     "fecha_fin": "2012-09-11",
+     "sigma_h": 11.2809
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201201182130-8e2f81fcf1",
+   "fecha_utc": "2012-01-18 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.898,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 39.0,
+     "fecha_fin": "2012-02-15",
+     "sigma_h": 6.5162
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 4.871,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 28.8,
+     "fecha_fin": "2012-04-13",
+     "sigma_h": 11.2864
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201201172130-86796a9811",
+   "fecha_utc": "2012-01-17 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 4.523,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 39.0,
+     "fecha_fin": "2012-02-14",
+     "sigma_h": 6.509
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 7.306,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 28.3,
+     "fecha_fin": "2012-04-12",
+     "sigma_h": 11.274
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201111152130-969d0e9570",
+   "fecha_utc": "2011-11-15 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 3.442,
+     "mae": -0.516,
+     "unidad": "%",
+     "base_pct": 29.9,
+     "fecha_fin": "2011-12-14",
+     "sigma_h": 6.1702
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -7.36,
+     "mae": -7.36,
+     "unidad": "%",
+     "base_pct": 35.1,
+     "fecha_fin": "2012-02-13",
+     "sigma_h": 10.6871
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201111022130-a55ee64304",
+   "fecha_utc": "2011-11-02 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "NEUTRAL",
+     "ret": 0.79,
+     "mae": -6.17,
+     "unidad": "%",
+     "base_pct": 49.4,
+     "fecha_fin": "2011-12-01",
+     "sigma_h": 6.0527
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 5.912,
+     "mae": -6.17,
+     "unidad": "%",
+     "base_pct": 31.4,
+     "fecha_fin": "2012-01-31",
+     "sigma_h": 10.4837
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201108082130-6732809fd6",
+   "fecha_utc": "2011-08-08 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.213,
+     "mae": -8.872,
+     "unidad": "%",
+     "base_pct": 18.2,
+     "fecha_fin": "2011-09-06",
+     "sigma_h": 4.3988
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -8.676,
+     "mae": -14.582,
+     "unidad": "%",
+     "base_pct": 9.4,
+     "fecha_fin": "2011-11-01",
+     "sigma_h": 7.6189
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201108032130-105878254d",
+   "fecha_utc": "2011-08-03 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 3.131,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 19.0,
+     "fecha_fin": "2011-08-31",
+     "sigma_h": 3.8449
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -1.95,
+     "mae": -1.95,
+     "unidad": "%",
+     "base_pct": 9.4,
+     "fecha_fin": "2011-10-27",
+     "sigma_h": 6.6595
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201107082130-acf7e4d192",
+   "fecha_utc": "2011-07-08 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -10.655,
+     "mae": -10.655,
+     "unidad": "%",
+     "base_pct": 65.4,
+     "fecha_fin": "2011-08-05",
+     "sigma_h": 3.8581
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -18.207,
+     "mae": -18.207,
+     "unidad": "%",
+     "base_pct": 79.6,
+     "fecha_fin": "2011-10-03",
+     "sigma_h": 6.6825
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201107052130-ee6a5d6471",
+   "fecha_utc": "2011-07-05 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -6.218,
+     "mae": -6.218,
+     "unidad": "%",
+     "base_pct": 65.4,
+     "fecha_fin": "2011-08-02",
+     "sigma_h": 3.8676
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -13.953,
+     "mae": -16.105,
+     "unidad": "%",
+     "base_pct": 80.1,
+     "fecha_fin": "2011-09-28",
+     "sigma_h": 6.6989
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201105252130-7f973996f1",
+   "fecha_utc": "2011-05-25 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 3.089,
+     "mae": -1.896,
+     "unidad": "%",
+     "base_pct": 17.7,
+     "fecha_fin": "2011-06-23",
+     "sigma_h": 4.2764
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 14.918,
+     "mae": -2.243,
+     "unidad": "%",
+     "base_pct": 1.6,
+     "fecha_fin": "2011-08-19",
+     "sigma_h": 7.4069
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201105192130-5253fcaea0",
+   "fecha_utc": "2011-05-19 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 5.665,
+     "mae": -0.163,
+     "unidad": "%",
+     "base_pct": 16.5,
+     "fecha_fin": "2011-06-17",
+     "sigma_h": 4.3738
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 10.44,
+     "mae": -0.505,
+     "unidad": "%",
+     "base_pct": 2.1,
+     "fecha_fin": "2011-08-15",
+     "sigma_h": 7.5757
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201104262130-10ca54eb3f",
+   "fecha_utc": "2011-04-26 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -5.4 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 2.107,
+     "mae": -1.217,
+     "unidad": "%",
+     "base_pct": 21.6,
+     "fecha_fin": "2011-05-24",
+     "sigma_h": 4.9388
+    },
+    "60": {
+     "estado": "NEUTRAL",
+     "ret": 0.223,
+     "mae": -1.217,
+     "unidad": "%",
+     "base_pct": 8.4,
+     "fecha_fin": "2011-07-21",
+     "sigma_h": 8.5542
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201010222130-6709fcd29f",
+   "fecha_utc": "2010-10-22 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 1.639,
+     "mae": -0.161,
+     "unidad": "%",
+     "base_pct": 53.2,
+     "fecha_fin": "2010-11-19",
+     "sigma_h": 5.2316
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 8.365,
+     "mae": -0.161,
+     "unidad": "%",
+     "base_pct": 45.5,
+     "fecha_fin": "2011-01-19",
+     "sigma_h": 9.0613
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201010182130-523727cb16",
+   "fecha_utc": "2010-10-18 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.0 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -1.48,
+     "mae": -3.754,
+     "unidad": "%",
+     "base_pct": 32.5,
+     "fecha_fin": "2010-11-15",
+     "sigma_h": 5.245
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -8.708,
+     "mae": -8.708,
+     "unidad": "%",
+     "base_pct": 33.0,
+     "fecha_fin": "2011-01-12",
+     "sigma_h": 9.0846
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201010012130-bb8a663633",
+   "fecha_utc": "2010-10-01 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP semanal: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 3.385,
+     "mae": -0.75,
+     "unidad": "%",
+     "base_pct": 48.5,
+     "fecha_fin": "2010-10-29",
+     "sigma_h": 5.2577
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 9.79,
+     "mae": -0.75,
+     "unidad": "%",
+     "base_pct": 45.5,
+     "fecha_fin": "2010-12-28",
+     "sigma_h": 9.1066
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201009292130-0eeb30c866",
+   "fecha_utc": "2010-09-29 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "RSPD/RSPS diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 3.416,
+     "mae": -0.629,
+     "unidad": "%",
+     "base_pct": 48.1,
+     "fecha_fin": "2010-10-27",
+     "sigma_h": 5.2737
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 9.723,
+     "mae": -0.629,
+     "unidad": "%",
+     "base_pct": 45.5,
+     "fecha_fin": "2010-12-23",
+     "sigma_h": 9.1343
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-201009152130-661d844991",
+   "fecha_utc": "2010-09-15 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia DÉBIL (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -3.0 % bajo el suyo",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -4.28,
+     "mae": -4.28,
+     "unidad": "%",
+     "base_pct": 32.5,
+     "fecha_fin": "2010-10-13",
+     "sigma_h": 5.3087
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -9.445,
+     "mae": -9.445,
+     "unidad": "%",
+     "base_pct": 33.0,
+     "fecha_fin": "2010-12-09",
+     "sigma_h": 9.1949
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201009092130-f04deb8309",
+   "fecha_utc": "2010-09-09 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "ALCISTA",
+   "valor": "XLY/XLP diario: cierra sobre su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "ACIERTO",
+     "ret": 4.481,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 46.8,
+     "fecha_fin": "2010-10-07",
+     "sigma_h": 5.3167
+    },
+    "60": {
+     "estado": "ACIERTO",
+     "ret": 10.792,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 47.6,
+     "fecha_fin": "2010-12-03",
+     "sigma_h": 9.2088
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201008262130-804f0a54cd",
+   "fecha_utc": "2010-08-26 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "XLY/XLP diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -9.113,
+     "mae": -9.113,
+     "unidad": "%",
+     "base_pct": 29.0,
+     "fecha_fin": "2010-09-24",
+     "sigma_h": 5.2638
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -14.312,
+     "mae": -16.621,
+     "unidad": "%",
+     "base_pct": 32.5,
+     "fecha_fin": "2010-11-19",
+     "sigma_h": 9.1171
+    }
+   }
+  },
+  {
+   "id": "cruce_sma200_ratio-spy-201007022130-1ac40d1934",
+   "fecha_utc": "2010-07-02 21:30",
+   "tipo": "cruce_sma200_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "RSPD/RSPS diario: cierra bajo su SMA 200 tras 5 cierres seguidos",
+   "origen": "backfill",
+   "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "FALLO",
+     "ret": -10.333,
+     "mae": -10.333,
+     "unidad": "%",
+     "base_pct": 23.4,
+     "fecha_fin": "2010-08-02",
+     "sigma_h": 5.1834
+    },
+    "60": {
+     "estado": "FALLO",
+     "ret": -12.202,
+     "mae": -12.348,
+     "unidad": "%",
+     "base_pct": 17.3,
+     "fecha_fin": "2010-09-28",
+     "sigma_h": 8.9779
+    }
+   }
   }
  ],
- "reglas": "Señales y su dirección esperada(reglas FIJAS de este módulo, impresas también en la página):\n  tesis      cambia la etiqueta de tesis de Oro, NQ, ES o BTC. ALCISTA* = el activo sube; BAJISTA* = baja; SIN TESIS = no puntuable.\n  fed        alerta Fed emitida (cambio del resultado más probable o tipo esperado a diciembre ≥ 10 pb). Activo US2Y (rendimiento del bono a 2 años, FRED):\n             más subidas descontadas = el 2Y sube; más recortes = baja. La dirección se lee del texto de la alerta; si no se puede, no puntuable.\n  regimen    cambia el cuadrante del régimen macro. Activo NQ: FAVORABLE = sube, DESFAVORABLE = baja (campo «riesgo» del propio régimen); MIXTO = no puntuable.\n  liquidez   cambia la etiqueta del monitor de liquidez. Activo BTC: «SEÑALES INICIALES DE GIRO» / «GIRO DE LIQUIDEZ EN CURSO» = sube; «SIN GIRO» = no puntuable.\n  skew       alerta SKEW en zona alta relativa con ≥ 2 confirmaciones. NO se puntúa por la dirección del cierre. ACIERTO si dentro del horizonte (T+1, T+5, T+20):\n             (a) el S&P 500 tiene una caída máxima intrahorizonte ≥ 1 σ_h (peor cierre frente al cierre de referencia; σ_h = desviación típica de los\n             retornos diarios de las últimas 250 sesiones × √h) O (b) el VIX sube ≥ 20 % (máximo de los cierres del horizonte frente al de referencia).\n             Si no ocurre ninguno de los dos, FALLO. Se guardan los dos componentes. Tasa base = frecuencia de ese mismo evento en cualquier ventana de h sesiones\n             de las 250 anteriores a la señal (con σ_h y umbral del VIX fijos en la referencia).\n  consumo    cambia la tesis de consumo (#/consumo). Activo RSPD/RSPS (ratio de peso igual): CONSUMO FUERTE y DIVERGENCIA MERCADO DEFENSIVO = sube; SE ENFRÍA, CONSUMO DÉBIL y\n             DIVERGENCIA MERCADO ADELANTADO = baja; SIN TESIS = no puntuable. Se mide a T+1, T+5 y T+20 igual que el resto (el horizonte que importa es T+20).\n  petroleo   cambia la tesis de petróleo (#/petroleo). Activo WTI (precio al contado de Cushing, FRED DCOILWTICO: sin los saltos de vencimiento de los futuros empalmados): ALCISTA = sube;\n             BAJISTA = baja; SIN TESIS = no puntuable. Se mide a T+1, T+5 y T+20 igual que el resto (el horizonte que importa es T+20).\n  reaccion   clasificación del monitor de reacción a eventos (T+5 y CIERRE): SOLO REGISTRO, no se puntúa (reglas v3 congeladas).\nMedición (criterio v2): referencia = último cierre COMPLETO anterior a la señal (si sale desde las 21:30 UTC y el activo no es cripto, cuenta el cierre de ese día);\nT+n = cierre n sesiones después. Retorno en la dirección esperada. NEUTRAL si |retorno| < 0,25 × σ_h del activo (σ de los cambios diarios de las 250 sesiones\nanteriores a la señal × √h; en pb para el 2Y). ACIERTO si el retorno ≥ +0,25 σ_h y FALLO si ≤ −0,25 σ_h. Con menos de 60 cambios diarios previos: PENDIENTE.\nRetorno máximo adverso = el peor retorno (en la dirección esperada) de los cierres entre la referencia y T+n (≤ 0). Tasa base = % de ventanas de n sesiones\nanteriores a la señal (hasta 250) en las que el activo habría «acertado» en esa dirección con el mismo umbral: lo que se acierta por azar.\nCambio de criterio (18-oct-2026): v1 usaba neutral ±0,1 % fijo y puntuaba el SKEW por la dirección del cierre. Los resultados v1 se conservan sin tocar en\ndata/marcador_resultados.csv; los resultados v2 se recalcularon para TODAS las señales (también las de backfill) como filas nuevas con version_criterio = 2.",
+ "reglas": "Señales y su dirección esperada(reglas FIJAS de este módulo, impresas también en la página):\n  tesis      cambia la etiqueta de tesis de Oro, NQ, ES o BTC. ALCISTA* = el activo sube; BAJISTA* = baja; SIN TESIS = no puntuable.\n  fed        alerta Fed emitida (cambio del resultado más probable o tipo esperado a diciembre ≥ 10 pb). Activo US2Y (rendimiento del bono a 2 años, FRED):\n             más subidas descontadas = el 2Y sube; más recortes = baja. La dirección se lee del texto de la alerta; si no se puede, no puntuable.\n  regimen    cambia el cuadrante del régimen macro. Activo NQ: FAVORABLE = sube, DESFAVORABLE = baja (campo «riesgo» del propio régimen); MIXTO = no puntuable.\n  liquidez   cambia la etiqueta del monitor de liquidez. Activo BTC: «SEÑALES INICIALES DE GIRO» / «GIRO DE LIQUIDEZ EN CURSO» = sube; «SIN GIRO» = no puntuable.\n  skew       alerta SKEW en zona alta relativa con ≥ 2 confirmaciones. NO se puntúa por la dirección del cierre. ACIERTO si dentro del horizonte (T+1, T+5, T+20):\n             (a) el S&P 500 tiene una caída máxima intrahorizonte ≥ 1 σ_h (peor cierre frente al cierre de referencia; σ_h = desviación típica de los\n             retornos diarios de las últimas 250 sesiones × √h) O (b) el VIX sube ≥ 20 % (máximo de los cierres del horizonte frente al de referencia).\n             Si no ocurre ninguno de los dos, FALLO. Se guardan los dos componentes. Tasa base = frecuencia de ese mismo evento en cualquier ventana de h sesiones\n             de las 250 anteriores a la señal (con σ_h y umbral del VIX fijos en la referencia).\n  cruce_sma200_ratio / divergencia_ratio   usos del ratio de consumo (#/consumo, consumo_ratio.py): un cruce VÁLIDO (5 cierres seguidos) de XLY/XLP o RSPD/RSPS sobre/bajo su SMA 200 (diario\n             o semanal) = SPY sube/baja; una divergencia (SPY en máximo de 63 sesiones y RSPD/RSPS > 3 % bajo el suyo) = SPY baja. Se miden SOLO a T+20 y T+60 sobre SPY frente a la tasa base.\n  consumo    cambia la tesis de consumo (#/consumo). Activo RSPD/RSPS (ratio de peso igual): CONSUMO FUERTE y DIVERGENCIA MERCADO DEFENSIVO = sube; SE ENFRÍA, CONSUMO DÉBIL y\n             DIVERGENCIA MERCADO ADELANTADO = baja; SIN TESIS = no puntuable. Se mide a T+1, T+5 y T+20 igual que el resto (el horizonte que importa es T+20).\n  petroleo   cambia la tesis de petróleo (#/petroleo). Activo WTI (precio al contado de Cushing, FRED DCOILWTICO: sin los saltos de vencimiento de los futuros empalmados): ALCISTA = sube;\n             BAJISTA = baja; SIN TESIS = no puntuable. Se mide a T+1, T+5 y T+20 igual que el resto (el horizonte que importa es T+20).\n  reaccion   clasificación del monitor de reacción a eventos (T+5 y CIERRE): SOLO REGISTRO, no se puntúa (reglas v3 congeladas).\nMedición (criterio v2): referencia = último cierre COMPLETO anterior a la señal (si sale desde las 21:30 UTC y el activo no es cripto, cuenta el cierre de ese día);\nT+n = cierre n sesiones después. Retorno en la dirección esperada. NEUTRAL si |retorno| < 0,25 × σ_h del activo (σ de los cambios diarios de las 250 sesiones\nanteriores a la señal × √h; en pb para el 2Y). ACIERTO si el retorno ≥ +0,25 σ_h y FALLO si ≤ −0,25 σ_h. Con menos de 60 cambios diarios previos: PENDIENTE.\nRetorno máximo adverso = el peor retorno (en la dirección esperada) de los cierres entre la referencia y T+n (≤ 0). Tasa base = % de ventanas de n sesiones\nanteriores a la señal (hasta 250) en las que el activo habría «acertado» en esa dirección con el mismo umbral: lo que se acierta por azar.\nCambio de criterio (18-oct-2026): v1 usaba neutral ±0,1 % fijo y puntuaba el SKEW por la dirección del cierre. Los resultados v1 se conservan sin tocar en\ndata/marcador_resultados.csv; los resultados v2 se recalcularon para TODAS las señales (también las de backfill) como filas nuevas con version_criterio = 2.",
  "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas.",
  "ultima_ejecucion": {
   "senales_nuevas": 0,
-  "resultados_nuevos": 0,
-  "evaluo": false
+  "resultados_nuevos": 286,
+  "evaluo": true
  },
- "duracion_s": 0.0
+ "duracion_s": 0.2
 }
