@@ -53,7 +53,8 @@ function gauge(p) {
   const col = p >= 90 ? 'var(--neg)' : p <= 10 ? 'var(--pos)' : 'var(--amber)';
   return `<div class="gauge" title="percentil ${p} a 3 años"><i style="left:${Math.min(98, Math.max(2, p))}%;background:${col}"></i></div><div class="hs" style="text-align:center">p${p}</div>`;
 }
-const EST_CLS = { 'EXTREMO LARGO': 'no', 'EXTREMO CORTO': 'ok', 'LARGO ELEVADO': 'par', 'CORTO ELEVADO': 'par', 'INTERMEDIO': 'sd', 'SIN DATO': 'sd' };
+/* color por la ZONA del percentil (la etiqueta es «<largo|corto> <zona>»): extremo alto = rojo, extremo bajo = verde, alto/bajo = ámbar, medio = gris */
+const EST_CLS = new Proxy({}, { get: (_, k) => { const e = String(k); return /EXTREMO ALTO$/.test(e) ? 'no' : /EXTREMO BAJO$/.test(e) ? 'ok' : /(ALTO|BAJO)$/.test(e) ? 'par' : 'sd'; } });
 function bloqueCot(b) {
   if (!b) return '<td colspan="3" style="color:var(--dim);text-align:center">SIN DATO</td>';
   return `<td><b>${sg(b.neto, 0)}</b></td><td>${pill(b.cambio_semana, 0, '')}</td><td style="min-width:96px">${gauge(b.percentil_3a)}</td>`;
@@ -68,7 +69,7 @@ function pagePosicionamiento() {
   const ext = [];
   ok.forEach((c) => {
     [['no_comerciales', 'no comerciales'], ['gestores', 'gestores']].forEach(([k, n]) => {
-      const b = c[k]; if (b && (b.percentil_3a >= 90 || b.percentil_3a <= 10)) ext.push(`${c.nombre} (${n}: ${b.percentil_3a >= 90 ? 'largo' : 'corto'} extremo, p${b.percentil_3a})`);
+      const b = c[k]; if (b && (b.percentil_3a >= 90 || b.percentil_3a <= 10)) ext.push(`${c.nombre} (${n}: ${b.neto > 0 ? 'largo' : b.neto < 0 ? 'corto' : 'plano'} ${b.percentil_3a >= 90 ? 'extremo alto' : 'extremo bajo'}, p${b.percentil_3a})`);
     });
   });
   const mov = ok.filter((c) => c.no_comerciales).sort((a, b) => Math.abs(b.no_comerciales.cambio_semana) / (b.no_comerciales.max_3a - b.no_comerciales.min_3a || 1) - Math.abs(a.no_comerciales.cambio_semana) / (a.no_comerciales.max_3a - a.no_comerciales.min_3a || 1))[0];

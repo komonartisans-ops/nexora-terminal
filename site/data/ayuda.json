@@ -1601,8 +1601,8 @@
   ],
   "posicionamiento (cot) del wti": [
    "Cuántos contratos de WTI tienen comprados menos vendidos los fondos que gestionan dinero (informe de la CFTC, viernes con datos del martes).",
-   "El percentil a 3 años dice si esa posición es alta o baja frente a su historia reciente.",
-   "Una posición muy cargada hacia un lado indica qué apuesta ya está hecha."
+   "La etiqueta junta el lado (largo o corto, por el signo del neto) y el nivel frente a su historia de 3 años: «largo bajo, percentil 14» = están largos, pero mucho menos que de costumbre.",
+   "Criterio único de NEXORA: solo los extremos puntúan y a la contra (percentil ≥ 90 → −1, ≤ 10 → +1, resto 0)."
   ],
   "neto del dinero gestionado": [
    "Largos menos cortos de los fondos en WTI, últimas 104 semanas.",
@@ -1644,15 +1644,10 @@
    "Mientras una regla tenga menos de 20 avisos medidos está «congelada»: no se concluye nada ni se cambian sus umbrales.",
    "Mide hechos de precio frente a niveles; no es una recomendación de compra o venta."
   ],
-  "criterios de cot en nexora": [
-   "Cómo trata NEXORA el posicionamiento (COT) en cada módulo: oro mira el cambio semanal del neto, índices mira extremos del percentil a 52 semanas y la página Posicionamiento etiqueta por zonas del percentil.",
-   "La última columna dice qué tesis de petróleo saldría hoy con cada criterio; «cambiaría» marca los que darían otro resultado.",
-   "No hay un voto común: aquí se enseñan las diferencias, y el voto de la tesis solo cambia si tú lo decides."
-  ],
   "brent: futuro (yahoo) frente a brent fechado (fred), mismo día": [
-   "Compara el futuro Brent (Yahoo) con el Brent fechado que publica FRED, pero del mismo día: FRED llega con unos días de retraso.",
-   "Si la diferencia del mismo día supera el 10 %, queda marcada en Integridad de datos como discrepancia para revisar.",
-   "Con escasez de petróleo físico, el fechado puede ir muy por encima del futuro sin que haya ningún error."
+   "Compara el futuro Brent (Yahoo) con el Brent al contado del mismo día. FRED y la EIA publican la misma serie al contado, así que cuentan como una sola fuente.",
+   "Si la diferencia del mismo día supera el 10 %, queda marcada en Integridad de datos hasta que el futuro y el contado coincidan.",
+   "Con escasez de petróleo físico el contado puede ir muy por encima del futuro sin que haya ningún error."
   ]
  },
  "glosario": [

@@ -71,7 +71,7 @@ function mcHtml(M) {
     const hz = s.horizontes;
     const cel = (k) => (typeof hz === 'string' ? `<span class="ck sd">${esc(hz.toLowerCase())}</span>` : mcChip(hz[k]));
     return `<tr><td data-label="Fecha" class="mono">${esc(s.fecha_utc)}</td><td data-label="Tipo" style="text-align:left">${esc(s.tipo)}</td><td data-label="Activo">${esc(s.activo)}</td><td data-label="Dirección"><span class="tag ${s.direccion === 'ALCISTA' ? 'alc' : s.direccion === 'BAJISTA' ? 'baj' : 'sin'}">${esc(s.direccion.toLowerCase())}</span></td>
-      <td data-label="Disparo" style="text-align:left;white-space:normal;max-width:380px">${esc(s.valor)}${s.nota ? `<small>${esc(s.nota)}</small>` : ''}</td><td data-label="Origen"><span class="ck ${s.origen === 'vivo' ? 'ok' : 'sd'}">${esc(s.origen)}</span></td>
+      <td data-label="Disparo" style="text-align:left;white-space:normal;max-width:380px">${esc(s.valor)}${s.criterio ? `<small>${esc(s.criterio)}</small>` : ''}${s.nota ? `<small>${esc(s.nota)}</small>` : ''}</td><td data-label="Origen"><span class="ck ${s.origen === 'vivo' ? 'ok' : 'sd'}">${esc(s.origen)}</span></td>
       <td data-label="T+1">${cel('1')}</td><td data-label="T+5">${cel('5')}</td><td data-label="T+20">${cel('20')}</td></tr>`;
   }).join('') || '<tr><td colspan="9" style="text-align:left;color:var(--dim)">Sin señales registradas.</td></tr>';
   h += `</tbody></table>${footIn('engine/marcador.py (data/marcador_senales.csv y data/marcador_resultados.csv, solo añadir)', M.generado_utc && M.generado_utc.slice(0, 10), null, 'cierres de Yahoo Finance (precios) y FRED (2Y)')}</div>`;
