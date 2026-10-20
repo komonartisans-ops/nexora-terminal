@@ -373,6 +373,102 @@ def discrepancias(raiz):
     return ult
 
 
+# ---------------------------------------------------------------- discrepancias REVISADAS (data/discrepancias_revisadas.csv, solo añadir)
+CAMPOS_REV = ["id", "registrada_utc", "clave", "estado", "motivo", "revisor", "dif_pct_ref", "signo_ref", "nota"]
+BRENT_REABRIR_PCT = 25.0         # una discrepancia de Brent revisada se reabre si la diferencia supera este % o cambia de signo; se cierra sola al bajar del umbral de 10 % (lo hace petroleo.py)
+
+
+def clave_disc(r):
+    """Clave estable de una discrepancia: BRENT cambia de día cada comparación, así que se revisa por serie; el resto por (serie, periodo, tipo)."""
+    return "BRENT" if r["serie"] == "BRENT" else f"{r['serie']}|{r['periodo']}|{r['tipo']}"
+
+
+def clave_cal(x):
+    return f"CALENDARIO|{x['serie']}|{x['proximo']['fecha']}"
+
+
+def _signo(r):
+    try:
+        return 1 if float(r["primaria_valor"]) > float(r["fred_valor"]) else -1 if float(r["primaria_valor"]) < float(r["fred_valor"]) else 0
+    except (TypeError, ValueError, KeyError):
+        return 0
+
+
+def revisiones(raiz):
+    """Último estado por clave: REVISADA, REABIERTA o CERRADA (la última fila manda)."""
+    ult = {}
+    for r in leer_csv(P(raiz, "data", "discrepancias_revisadas.csv")):
+        ult[r["clave"]] = r
+    return ult
+
+
+def _fila_rev(clave, estado, motivo, revisor, ahora, dif="", signo="", nota=""):
+    sello = ahora.strftime("%Y-%m-%d %H:%M UTC")
+    return {"id": f"{clave}|{sello}|{estado}", "registrada_utc": sello, "clave": clave, "estado": estado, "motivo": motivo, "revisor": revisor, "dif_pct_ref": dif, "signo_ref": signo, "nota": nota}
+
+
+def revisar(raiz, clave, motivo, revisor, ahora=None, abiertas=None, calendario=None):
+    """Marca como REVISADA una discrepancia abierta (con motivo y fecha). Solo añade una fila; no toca lo anterior. Devuelve la fila o lanza ValueError si esa clave no está abierta."""
+    ahora = ahora or dt.datetime.now(UTC)
+    abiertas = [r for r in discrepancias(raiz).values() if r["estado"] == "ABIERTA"] if abiertas is None else abiertas
+    dif, signo = "", ""
+    for r in abiertas:
+        if clave_disc(r) == clave:
+            dif, signo = r.get("dif_pct", ""), _signo(r)
+            break
+    else:
+        if clave not in {clave_cal(x) for x in (calendario or [])}:
+            raise ValueError(f"no hay ninguna discrepancia abierta con la clave «{clave}»")
+    fila = _fila_rev(clave, "REVISADA", motivo, revisor, ahora, dif, signo)
+    anadir_csv(P(raiz, "data", "discrepancias_revisadas.csv"), [fila], CAMPOS_REV, lambda r: r["id"])
+    return fila
+
+
+def aplicar_revisadas(raiz, ahora, abiertas, calendario):
+    """Separa lo que cuenta (abiertas y de calendario sin revisar) de lo REVISADO (gris, visible, fuera del contador). Reglas, todas con una fila nueva en el CSV:
+    · BRENT revisada se reabre si |diferencia| > 25 % o el signo se invierte (REABIERTA: vuelve a contar hasta que se revise otra vez).
+    · Una revisada cuya discrepancia ya no existe (Brent por debajo del 10 %, o el calendario ya coincide / salió el dato) se cierra sola (CERRADA).
+    Devuelve (abiertas, calendario, revisadas)."""
+    rev = revisiones(raiz)
+    nuevas, revisadas, ab, cal = [], [], [], []
+    vivas = set()
+    for r in abiertas:
+        k = clave_disc(r)
+        vivas.add(k)
+        e = rev.get(k)
+        if not e or e["estado"] != "REVISADA":
+            ab.append(r)
+            continue
+        try:
+            dif = abs(float(r.get("dif_pct") or 0))
+        except ValueError:
+            dif = 0.0
+        if k == "BRENT" and (dif > BRENT_REABRIR_PCT or (str(_signo(r)) != str(e.get("signo_ref")) and e.get("signo_ref") not in ("", None))):
+            motivo = (f"diferencia {dif:.1f} % > {BRENT_REABRIR_PCT:g} %" if dif > BRENT_REABRIR_PCT else "el signo de la diferencia se ha invertido")
+            nuevas.append(_fila_rev(k, "REABIERTA", e["motivo"], e["revisor"], ahora, e.get("dif_pct_ref", ""), e.get("signo_ref", ""), "se reabre sola: " + motivo))
+            ab.append(r)
+        else:
+            revisadas.append({"clave": k, "tipo": "VALOR", "titulo": f"{r['serie']} {r['periodo'][:10]} ({r['tipo'].lower()})",
+                              "detalle": f"{r['primaria']} {r['primaria_valor']} frente a FRED {r['fred_valor']}" + (f" ({float(r['dif_pct']):.1f} %)" if r.get("dif_pct") else ""),
+                              "motivo": e["motivo"], "revisor": e["revisor"], "registrada_utc": e["registrada_utc"],
+                              "regla": f"Se reabre si la diferencia pasa del {BRENT_REABRIR_PCT:g} % o cambia de signo; se cierra sola al bajar del 10 %." if k == "BRENT" else "Se cierra sola cuando la discrepancia desaparece."})
+    for x in calendario:
+        k = clave_cal(x)
+        vivas.add(k)
+        e = rev.get(k)
+        if e and e["estado"] == "REVISADA":
+            revisadas.append({"clave": k, "tipo": "CALENDARIO", "titulo": f"{x['dato']} · calendario", "detalle": f"FRED «{x['fred']}» frente a «{x['oficial']}» ({x['motivo']})",
+                              "motivo": e["motivo"], "revisor": e["revisor"], "registrada_utc": e["registrada_utc"], "regla": "Se cierra sola cuando sale el dato esperado o los calendarios coinciden."})
+        else:
+            cal.append(x)
+    for k, e in rev.items():
+        if e["estado"] == "REVISADA" and k not in vivas:
+            nuevas.append(_fila_rev(k, "CERRADA", e["motivo"], e["revisor"], ahora, nota="se cierra sola: la discrepancia ya no existe (dato publicado, calendarios coinciden o diferencia por debajo del umbral)"))
+    if nuevas:
+        anadir_csv(P(raiz, "data", "discrepancias_revisadas.csv"), nuevas, CAMPOS_REV, lambda r: r["id"])
+    return ab, cal, revisadas
+
+
 def cotejar_bls(raiz=RAIZ, ahora=None, red=None, forzar=False):
     """Compara FRED con BLS para IPC, IPC subyacente e IPP. Devuelve las filas de discrepancia nuevas (ABIERTA / CERRADA)."""
     ahora = ahora or dt.datetime.now(UTC)
@@ -772,8 +868,11 @@ def construir(raiz=RAIZ, ahora=None):
     ahora = ahora or dt.datetime.now(UTC)
     disc = discrepancias(raiz)
     abiertas = [r for r in disc.values() if r["estado"] == "ABIERTA"]
-    bloques = estado_bloques(raiz, ahora, len(abiertas))
     pubs = tabla_publicaciones(raiz, ahora)
+    cal_todas = [{"dato": x["dato"], "serie": x["serie"], "fred": x["proximo"]["texto"], "oficial": x["proximo"]["otra_fuente"]["texto"], "oficial_fuente": x["proximo"]["otra_fuente"]["fuente"],
+                  "motivo": x["proximo"]["discrepancia_calendario"], "proximo": {"fecha": x["proximo"]["fecha"]}} for x in pubs if x.get("proximo") and x["proximo"].get("discrepancia_calendario")]
+    abiertas, cal_abiertas, revisadas = aplicar_revisadas(raiz, ahora, abiertas, cal_todas)      # las REVISADAS salen del contador pero siguen visibles
+    bloques = estado_bloques(raiz, ahora, len(abiertas))
     al_dia = sum(b["color"] == "verde" for b in bloques)
     vig = _estado_v(raiz).get("avisos", {})
     est = _est_i(raiz)
@@ -784,8 +883,8 @@ def construir(raiz=RAIZ, ahora=None):
             "retrasos_registro": [x for x in pubs if x["retraso_dias"] is not None],
             "discrepancias_abiertas": [{k: r[k] for k in ("serie", "periodo", "tipo", "fred_valor", "primaria", "primaria_valor", "dif_pct", "detectada_utc", "nota")} for r in abiertas],
             "n_discrepancias_historial": len(leer_csv(P(raiz, "data", "discrepancias.csv"))),
-            "discrepancias_calendario": [{"dato": x["dato"], "fred": x["proximo"]["texto"], "oficial": x["proximo"]["otra_fuente"]["texto"], "oficial_fuente": x["proximo"]["otra_fuente"]["fuente"],
-                                          "motivo": x["proximo"]["discrepancia_calendario"]} for x in pubs if x.get("proximo") and x["proximo"].get("discrepancia_calendario")],
+            "discrepancias_calendario": [{k: x[k] for k in ("dato", "fred", "oficial", "oficial_fuente", "motivo")} for x in cal_abiertas],
+            "discrepancias_revisadas": revisadas,
             "segunda_fuente": {"BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
                                "BEA": ("API de BEA activa (secreto BEA_API_KEY): PCE y PIB real con el mismo umbral; manda BEA" if os.environ.get("BEA_API_KEY") else BEA_SIN_DATO),
                                "bea_activa": bool(os.environ.get("BEA_API_KEY")), "bls_consultas_hoy": est["bls"].get("n", 0), "bls_ultimo_error": est["bls"].get("ultimo_error"),
@@ -825,6 +924,12 @@ def bloque_contexto(raiz=RAIZ):
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "evaluar"
+    if cmd == "revisar":                                   # python integridad.py revisar CLAVE "motivo" [revisor]
+        J = construir()
+        cal = [{"serie": x["serie"], "proximo": {"fecha": x["proximo"]["fecha"]}} for x in J["publicaciones"] if x.get("proximo") and x["proximo"].get("discrepancia_calendario")]
+        fila = revisar(RAIZ, sys.argv[2], sys.argv[3], sys.argv[4] if len(sys.argv) > 4 else "Ruiz", calendario=cal)
+        print("REVISADA:", fila["clave"], "·", fila["registrada_utc"])
+        cmd = "construir"
     if cmd == "vigilar":
         try:
             refrescar_michigan()                           # pasada de «reacciones»: mira antes la web de Michigan si hay un lanzamiento por registrar

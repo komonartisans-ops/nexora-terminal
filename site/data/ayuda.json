@@ -1678,6 +1678,11 @@
    "Mide, sesión a sesión, si el oro tocó la zona «nivel ± 0,25 × EM» en la sesión siguiente a la de los niveles, y cómo cerró: rechazado (cierra fuera de la zona del mismo lado por el que llegó), atravesado (del lado contrario) o dentro de la zona.",
    "Se mide sobre GLD, que es donde están los niveles. Con menos de 20 sesiones evaluadas está «congelada»: no se concluye nada ni se cambian los umbrales.",
    "Son hechos de precio frente a niveles; no es una recomendación de compra o venta."
+  ],
+  "discrepancias revisadas": [
+   "Una discrepancia que ya has mirado y entendido (por ejemplo, Brent físico frente a futuro en backwardation). Se muestra en gris con su motivo y la fecha, no cuenta en el contador de la cabecera y sigue visible.",
+   "Se reabre sola si cambia de forma relevante (Brent: diferencia de más del 25 % o signo invertido) y se cierra sola cuando desaparece (Brent por debajo del 10 %, o sale el dato esperado).",
+   "Todo queda registrado, solo añadiendo filas, en data/discrepancias_revisadas.csv."
   ]
  },
  "glosario": [

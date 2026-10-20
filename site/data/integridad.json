@@ -1,13 +1,13 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-20 07:07 UTC",
+ "generado_utc": "2026-10-20 07:18 UTC",
  "resumen": {
-  "al_dia": 27,
+  "al_dia": 28,
   "total": 28,
-  "retrasados": 1,
+  "retrasados": 0,
   "sin_dato": 0,
-  "texto": "Integridad: 27/28 al día"
+  "texto": "Integridad: 28/28 al día"
  },
  "bloques": [
   {
@@ -18,7 +18,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-20",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -30,7 +30,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-20",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -42,7 +42,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-16",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -54,7 +54,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-20",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -66,9 +66,9 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
-   "discrepancias_abiertas": 1
+   "discrepancias_abiertas": 0
   },
   {
    "etapa": "resumen",
@@ -78,7 +78,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-20",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -90,7 +90,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-20",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -102,7 +102,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-20",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -114,7 +114,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -126,7 +126,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": null,
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -138,7 +138,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -150,7 +150,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -159,8 +159,8 @@
    "bloque": "Reevaluación de tesis",
    "pagina": "tesis",
    "frecuencia": "cada hora (laborables)",
-   "color": "ambar",
-   "motivo": "la última ejecución falló; se muestra el último dato válido",
+   "color": "verde",
+   "motivo": "al día",
    "ultimo_dato": "2026-10-20",
    "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
@@ -174,7 +174,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-20",
-   "registrado_utc": "2026-10-20 07:07 UTC",
+   "registrado_utc": "2026-10-20 06:07 UTC",
    "proximo_utc": "2026-10-20 08:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -1581,34 +1581,36 @@
    "segunda_fuente": null
   }
  ],
- "discrepancias_abiertas": [
-  {
-   "serie": "BRENT",
-   "periodo": "2026-10-14",
-   "tipo": "VALOR",
-   "fred_valor": "126.55",
-   "primaria": "Yahoo BZ=F (futuro)",
-   "primaria_valor": "106.06",
-   "dif_pct": "16.1900",
-   "detectada_utc": "2026-10-19 15:07 UTC",
-   "nota": "el mismo día (2026-10-14) el futuro BZ=F (106.06) y el Brent fechado de FRED (126.55) difieren -16.2 % (> 10 %): puede ser físico frente a futuro (escasez física) o un dato mal leído. Revisar; no se corrige ninguno"
-  }
- ],
+ "discrepancias_abiertas": [],
  "n_discrepancias_historial": 1,
- "discrepancias_calendario": [
+ "discrepancias_calendario": [],
+ "discrepancias_revisadas": [
   {
-   "dato": "Ofertas de empleo (JOLTS)",
-   "fred": "JOLTS de septiembre · 3-nov",
-   "oficial": "JOLTS de octubre · 1-dic",
-   "oficial_fuente": "BLS · calendario oficial anual (descargado 2026-10-18)",
-   "motivo": "el calendario oficial no lista el periodo «septiembre 2026»: su siguiente fila es «octubre 2026» (2026-12-01)"
+   "clave": "BRENT",
+   "tipo": "VALOR",
+   "titulo": "BRENT 2026-10-14 (valor)",
+   "detalle": "Yahoo BZ=F (futuro) 106.06 frente a FRED 126.55 (16.2 %)",
+   "motivo": "Físico (Dated, FRED/EIA) vs futuro dic (BZ=F) en mercado en backwardation; sin fuente independiente gratuita. Revisado por Ruiz 20-10-2026",
+   "revisor": "Ruiz",
+   "registrada_utc": "2026-10-20 07:18 UTC",
+   "regla": "Se reabre si la diferencia pasa del 25 % o cambia de signo; se cierra sola al bajar del 10 %."
+  },
+  {
+   "clave": "CALENDARIO|JTSJOL|2026-11-03",
+   "tipo": "CALENDARIO",
+   "titulo": "Ofertas de empleo (JOLTS) · calendario",
+   "detalle": "FRED «JOLTS de septiembre · 3-nov» frente a «JOLTS de octubre · 1-dic» (el calendario oficial no lista el periodo «septiembre 2026»: su siguiente fila es «octubre 2026» (2026-12-01))",
+   "motivo": "Pendiente de resolver el 3-nov con el dato real",
+   "revisor": "Ruiz",
+   "registrada_utc": "2026-10-20 07:18 UTC",
+   "regla": "Se cierra sola cuando sale el dato esperado o los calendarios coinciden."
   }
  ],
  "segunda_fuente": {
   "BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
-  "BEA": "API de BEA activa (secreto BEA_API_KEY): PCE y PIB real con el mismo umbral; manda BEA",
-  "bea_activa": true,
-  "bls_consultas_hoy": 4,
+  "BEA": "BEA exige clave de API (UserID): sin el secreto BEA_API_KEY no hay acceso, SIN DATO (no se inventa).",
+  "bea_activa": false,
+  "bls_consultas_hoy": 3,
   "bls_ultimo_error": null,
   "bea_ultimo_error": null
  },
@@ -1616,7 +1618,5 @@
   "avisos": 0,
   "ultimos": [],
   "regla": "aviso si a la hora de publicación + 2 h el periodo nuevo no está en publicados.json"
- },
- "errores": {},
- "duracion_s": 361.2
+ }
 }
