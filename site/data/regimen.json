@@ -23,7 +23,7 @@
     "evidencia": [
      "IPC subyacente: 3 meses anualizado 3.4 % vs 2.6 % interanual (2026-09)",
      "PCE subyacente: 3 meses anualizado 2.0 % vs 3.0 % interanual (2026-08)",
-     "Inflación esperada a 10 años (breakeven) 2.35 % (+2 pb en 20 sesiones)",
+     "Inflación esperada a 10 años (breakeven) 2.35 % (+1 pb en 20 sesiones)",
      "Expectativas de inflación a 1 año (U. Michigan) 4.0 % (-0.8 pp en 3 meses)"
     ],
     "fuente": "BLS, BEA, U. Michigan, Tesoro vía FRED",
@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-20): reunión del 2026-10-28 subida 16 % / mantener 84 % / bajada 0 % (-2 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +38 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-20): reunión del 2026-10-28 subida 16 % / mantener 84 % / bajada 0 % (-2 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +37 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.77 % vs tipo efectivo 3.88 % → +89 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +62 pb (+3 pb en 5 sesiones)"
@@ -109,7 +109,7 @@
     "dir": "",
     "evidencia": [
      "2s10s +38 pb (+13 pb en 20 sesiones: 2Y +1 pb, 10Y +14 pb) → BEAR STEEPENING (sube más el largo: prima por plazo, fiscal o inflación)",
-     "10 años − 3 meses +88 pb (2026-10-19)"
+     "10 años − 3 meses +86 pb (2026-10-20)"
     ],
     "fuente": "U.S. Treasury; FRED T10Y3M",
     "puntos": null
@@ -1050,6 +1050,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-20 20:27 UTC",
- "duracion_s": 10.3
+ "generado_utc": "2026-10-20 21:07 UTC",
+ "duracion_s": 9.2
 }
