@@ -41,7 +41,7 @@ XAU tesis=alcista;int=debil;flip=4167.1;cw=4144.2;pw=3762.5;em=57.8;maxg=4253.2;
 - Los niveles (`flip`, `cw`, `pw`, `maxg`, `em`) son los de la cadena de opciones del ETF **GLD** (Cboe), pasados a precio XAU/USD con el ratio XAU/GLD (`ratio`, de la fecha `rf`). Se etiquetan siempre **«GLD, referencia»**: no hay cadena gratuita del oro al contado.
 - `tesis` e `int` salen de la tesis de oro de NEXORA; `cot` = lado, nivel y percentil a 3 años del dinero gestionado en COMEX; `etf` = toneladas del trust GLD en 5 sesiones; `evento` = eventos ALTA del día con hora de Madrid (`@na` si no hay hora publicada, `no` si no hay).
 - El indicador [`NexoraOro.pine`](tradingview/NexoraOro.pine) añade la parte en vivo (DXY y tipo real a 10 años `FRED:DFII10` frente a su media de 50, y el aviso «oro sube con tipo real al alza» en 5 sesiones), PDH/PDL y los máximos/mínimos de Asia y Londres. Instalación: [`INSTALACION_ORO.md`](tradingview/INSTALACION_ORO.md).
-- En la web: `#/gamma` (sección «Gamma del oro») y `#/marcador` («Gamma oro»: ¿tocó el oro la zona nivel ± 0,25×EM en la sesión siguiente?, medido sobre GLD, congelado hasta 20 sesiones).
+- En la web: `#/gamma` (pestañas US500, US100, US30 y ORO) y `#/marcador` («Gamma oro»: ¿tocó el oro la zona nivel ± 0,25×EM en la sesión siguiente?, medido sobre GLD, congelado hasta 20 sesiones).
 
 ## De dónde salen los datos y con qué retraso
 

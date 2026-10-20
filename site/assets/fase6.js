@@ -189,74 +189,113 @@ function lineasNivel(niveles) {
     },
   };
 }
-function gammaBloque(k, x, fecha) {
-  const b = x.base || {};
-  const F = (o) => (o && o.fut != null ? nf(o.fut, 0) : '—');
-  const Iv = (o) => (o ? nf(o.idx, 0) : '—');
+/* ---- gamma por activo (pestañas US500 · US100 · US30 · ORO): misma estructura completa para los cuatro ---- */
+const GM_ACT = [{ id: 'US500', es: 'ES', fuente: 'Yahoo Finance (ES=F) · data/historico_gamma.csv' }, { id: 'US100', es: 'NQ', fuente: 'Yahoo Finance (NQ=F) · data/historico_gamma.csv' },
+  { id: 'US30', fuente: 'Yahoo Finance (YM=F) · data/historico_gamma.csv (indice YM)' }, { id: 'ORO', fuente: 'GLD (Yahoo Finance) · data/historico_gamma_oro.csv' }];
+let GM_GRAF = [];
+function gmEntrada(a) {
+  const G = D.gamma || {};
+  if (a.id === 'US500' || a.id === 'US100') return { x: (G.indices || {})[a.es], rev: (G.revision || {})[a.es], err: (G.errores || {})[a.es] };
+  const x = a.id === 'US30' ? D.gamma_us30 : D.gamma_oro;
+  return { x, rev: x && x.revision, err: x && x.error_ultimo };
+}
+const gmN = (v, d) => (v == null ? '—' : nf(v, d));
+const gmG = (m, d = 1) => (m == null ? '—' : Math.abs(m) >= 1000 ? `${nf(m / 1000, d)} mm $` : `${nf(m, 0)} M $`);      // GEX en M$ si es pequeño (GLD, DIA), en mm $ si no
+/* Lo esencial: qué ha cambiado frente a la sesión guardada anterior, qué significa el régimen y qué vigilar (hechos del JSON; la lectura es hipótesis) */
+function gmEsencial(x, C, F, dec, ref) {
+  const u = C === 'XAU' ? C : (F || C);      // el oro compara sus niveles en XAU; los demás, en el futuro
+  let l1;
+  if (!x.anterior) l1 = `Primera sesión guardada de este activo (${esc(dmy(x.sesion))}): todavía no hay una sesión anterior con la que comparar. Hoy la gamma es ${esc(String(x.regimen).toLowerCase())} (${gmG(x.gex_neto_musd)} por 1 %).`;
+  else {
+    const n = x.anterior.niveles, f = (k, t) => (n[k] && n[k].dif != null ? `${t} ${nf(n[k].antes, dec)} → ${nf(n[k].ahora, dec)} (${sg(n[k].dif, dec)})` : `${t} SIN DATO`);
+    l1 = `Frente a la sesión del ${esc(dmy(x.anterior.sesion_anterior))}: ${f('call_wall', 'Call Wall')}, ${f('put_wall', 'Put Wall')}, ${f('flip', 'Gamma Flip')} (${esc(u)}). ${x.anterior.regimen.cambio ? `<b>Cambio de régimen: de gamma ${esc(String(x.anterior.regimen.antes).toLowerCase())} a ${esc(String(x.regimen).toLowerCase())}.</b>` : `Régimen sin cambios: gamma ${esc(String(x.regimen).toLowerCase())}.`}`;
+  }
   const pos = x.regimen === 'POSITIVA';
-  const dist = (o) => (o && x.spot_fut != null && o.fut != null ? `${sg(o.fut - x.spot_fut, 0, ' pts')} (${sg((o.fut / x.spot_fut - 1) * 100, 2, ' %')})` : '');
-  let h = `<div class="sect"><h2>${esc(x.nombre)}</h2><span class="more">sesión ${esc(dmy(x.sesion))} · ${x.cierre_confirmado ? 'cierre de Nueva York' : 'SNAPSHOT INTRADÍA (no es el cierre)'} · ${x.n_vencimientos} vencimientos · ${x.n_grupos} strikes</span></div>`;
-  h += '<div class="grid g4">';
-  h += `<div class="card kpi"><div class="lab">Precio del futuro ${k}</div><div class="exp">${esc(x.indice)} ${nf(x.spot_idx, 2)} + base</div><div class="big">${x.spot_fut != null ? nf(x.spot_fut, 2) : SD}</div>
-    <table><tr><td>Base del día</td><td>${b.base != null ? sg(b.base, 2, ' pts') : 'SIN DATO'}</td></tr><tr><td>Método</td><td style="text-align:right;white-space:normal;font-size:10.5px">${esc(b.metodo || '')}</td></tr></table>${foot(b.fuente || 'Yahoo Finance', x.sesion)}</div>`;
-  h += `<div class="card kpi"><div class="lab">Call Wall</div><div class="exp">Mayor gamma de calls por encima del precio</div><div class="big up">${F(x.call_wall)}<small> ${k}</small></div>
-    <table><tr><td>En el índice</td><td>${Iv(x.call_wall)}</td></tr><tr><td>Distancia</td><td>${dist(x.call_wall)}</td></tr><tr><td>GEX del tramo</td><td>${x.call_wall ? nf(x.call_wall.musd / 1000, 1) + ' mm $' : '—'}</td></tr></table>${foot('CRITERIO NEXORA · Cboe', x.sesion)}</div>`;
-  h += `<div class="card kpi"><div class="lab">Put Wall</div><div class="exp">Mayor gamma de puts por debajo del precio</div><div class="big down">${F(x.put_wall)}<small> ${k}</small></div>
-    <table><tr><td>En el índice</td><td>${Iv(x.put_wall)}</td></tr><tr><td>Distancia</td><td>${dist(x.put_wall)}</td></tr><tr><td>GEX del tramo</td><td>${x.put_wall ? nf(x.put_wall.musd / 1000, 1) + ' mm $' : '—'}</td></tr></table>${foot('CRITERIO NEXORA · Cboe', x.sesion)}</div>`;
-  h += `<div class="card kpi"><div class="lab">Gamma Flip · régimen</div><div class="exp">Precio donde el GEX neto cambia de signo</div><div class="big amber">${x.flip ? F(x.flip) : 'SIN CRUCE'}<small> ${k}</small></div>
-    <table><tr><td>Régimen</td><td><span class="ck ${pos ? 'ok' : 'no'}">GAMMA ${esc(x.regimen)}</span></td></tr><tr><td>En el índice</td><td>${x.flip ? Iv(x.flip) : '—'}</td></tr><tr><td>GEX neto</td><td>${nf(x.gex_neto_musd / 1000, 1)} mm $ / 1 %</td></tr></table>${foot('CRITERIO NEXORA · Cboe', x.sesion)}</div></div>`;
-  const eje = (p) => Math.round(p.fut != null ? p.fut : p.k);
+  const l2 = `Hipótesis (no hecho): con gamma ${pos ? 'positiva' : 'negativa'}, las coberturas de los creadores de mercado tienden a ${pos ? 'frenar los movimientos (venden en subidas, compran en bajadas)' : 'amplificarlos (compran en subidas, venden en bajadas)'}. Depende de suponer que los clientes están largos de puts y los creadores largos de calls: el interés abierto no revela quién está de cada lado.${ref ? ` Los niveles son los de ${esc(ref)} pasados a ${esc(C)}: una referencia, no las opciones del propio ${esc(C)}.` : ''}`;
+  const sp = x.spot_idx, niv = [['Call Wall', x.call_wall], ['Put Wall', x.put_wall], ['Gamma Flip', x.flip]].filter(([, o]) => o && sp != null).map(([t, o]) => [t, o.idx - sp]).sort((a, b) => Math.abs(a[1]) - Math.abs(b[1]));
+  const em = x.em && x.em.puntos != null ? ` El EM (movimiento esperado de un día) es ${nf(x.em.puntos, dec)} pts.` : '';
+  const l3 = `${niv.length ? `El nivel más cercano es el ${esc(niv[0][0])}, a ${sg(niv[0][1], dec)} pts del precio.` : ''}${em} Un cierre firme más allá del Call Wall o por debajo del Put Wall invalida el nivel. Se recalcula en cada cierre de Nueva York (21:30 UTC).`;
+  return essential(l1, l2, l3);
+}
+function gmHistorial(a, x, rev, C, F, dec) {
+  const k = F || C, etf = x.etiqueta ? ` (${esc(a.id === 'ORO' ? 'GLD $' : 'DIA')})` : '';
+  let h = '<div class="sect"><h2>Cómo reaccionó el precio en cada nivel</h2><span class="more">cada sesión guardada frente a la barra de la sesión siguiente</span></div>';
+  h += `<div class="note" style="margin-top:0">Histórico propio: ${x.sesiones_guardadas || 0} ${x.sesiones_guardadas === 1 ? 'sesión guardada' : 'sesiones guardadas'} (el histórico empieza con este módulo: no hay cadenas de opciones gratuitas anteriores, no se reconstruye). Se evalúa sesión a sesión${a.id === 'ORO' ? '; se mide sobre GLD, donde están los niveles (niveles en $ de GLD)' : '; se excluyen las ventanas de vencimiento trimestral del futuro'}.</div>`;
+  const col = { RECHAZADO: 'ok', DEFENDIDO: 'ok', SUPERADO: 'no', ROTO: 'no', 'NO TOCADO': 'sd', 'CERRÓ POR ENCIMA': 'par', 'CERRÓ POR DEBAJO': 'par' };
+  const d = a.id === 'ORO' ? 1 : 0;
+  h += `<div class="card pad0 scroll" style="margin-bottom:12px"><table class="t"><thead><tr><th>${esc(k)} · sesión${etf}</th><th>Estado</th><th>Call Wall</th><th>Put Wall</th><th>Gamma Flip</th><th>Sesión siguiente (máx · mín · cierre)</th></tr></thead><tbody>`;
+  if (!rev || rev.sin_dato || !rev.sesiones.length) h += '<tr><td colspan="6" style="text-align:left;color:var(--dim)">SIN DATO: todavía no hay sesiones guardadas o la fuente no respondió.</td></tr>';
+  else h += rev.sesiones.slice(0, 20).map((s) => {
+    const c = (n) => { const v = s.niveles && s.niveles[n]; return v ? `<span class="ck ${col[v.resultado] || 'sd'}">${esc(v.resultado)}</span><small>${nf(v.nivel, d)} · cierre ${sg(v.dist_cierre, d)}</small>` : '—'; };
+    const sig = s.sesion_siguiente;
+    return `<tr><td>${esc(dmy(s.fecha_sesion))}</td><td><span class="ck ${s.estado === 'EVALUADA' ? 'ok' : s.estado === 'ROLL' ? 'par' : 'sd'}">${esc(s.estado)}</span></td><td>${c('Call Wall')}</td><td>${c('Put Wall')}</td><td>${c('Gamma Flip')}</td>
+      <td>${sig ? `${esc(fd(sig.fecha))}: ${nf(sig.h, d)} · ${nf(sig.l, d)} · ${nf(sig.c, d)}` : esc(s.nota || 'esperando la sesión siguiente')}</td></tr>`;
+  }).join('');
+  const rs = rev && rev.resumen && rev.resumen['Call Wall'];
+  h += `</tbody></table>${footIn(a.fuente, false, null, rs ? `Call Wall: ${rs.respetadas ?? 0} rechazos en ${rs.tocadas} toques · Put Wall: ${rev.resumen['Put Wall'].respetadas ?? 0} defensas en ${rev.resumen['Put Wall'].tocadas} toques` : '')}</div>`;
+  return h;
+}
+/* devuelve {html, montar}: montar() dibuja los gráficos cuando el HTML ya está en la página */
+function gmActivo(a) {
+  const { x, rev, err } = gmEntrada(a);
+  if (!x) return { html: `<div class="sect"><h2>${esc(a.id)}</h2></div>${noData('Gamma ' + a.id)}${err ? errores({ [a.id]: err }) : ''}`, montar() {} };
+  if (x.sin_dato) return { html: `<div class="sect"><h2>${esc(a.id)} · ${esc(x.nombre || '')}</h2><span class="more">${esc(x.etiqueta || '')}</span></div><div class="card"><div class="empty" style="height:auto;padding:24px;white-space:normal">${esc(x.motivo)}</div>${foot(x.fuente || 'Cboe', false, null, 'SIN DATO')}</div>`, montar() {} };
+  const C = x.contado || x.indice, F = x.futuro !== undefined ? x.futuro : x.clave, dec = (C === 'XAU' || C === 'GLD') ? 1 : 0, b = x.base || {}, ref = x.etiqueta ? x.etiqueta.replace(', referencia', '') : '';
+  const pos = x.regimen === 'POSITIVA', tieneF = F != null && x.spot_fut != null;
+  const Ci = (o) => (o ? gmN(o.idx, dec) : '—'), Fu = (o) => (F && o && o.fut != null ? gmN(o.fut, dec) : 'SIN DATO');
+  const dist = (o) => (o && x.spot_idx != null ? `${sg(o.idx - x.spot_idx, dec, ' pts')} (${sg((o.idx / x.spot_idx - 1) * 100, 2, ' %')})` : '—');
+  const mg = x.max_gamma;
+  let h = `<div class="sect"><h2>${esc(a.id)} · ${esc(x.nombre)}</h2><span class="more">${x.etiqueta ? `<span class="tag sin">${esc(x.etiqueta)}</span> ` : ''}sesión ${esc(dmy(x.sesion))} · ${x.cierre_confirmado ? 'cierre de Nueva York' : 'SNAPSHOT INTRADÍA (no es el cierre)'} · ${x.n_vencimientos} vencimientos · ${x.n_grupos} strikes</span></div>`;
+  h += gmEsencial(x, C, F, dec, ref);
+  h += '<div class="grid g3" style="margin-top:12px">';
+  h += `<div class="card kpi"><div class="lab">Precio ${esc(C)}</div><div class="exp">${F ? `Contado en grande · futuro ${esc(F)} debajo` : 'Contado'}</div><div class="big">${gmN(x.spot_idx, 2)}<small> ${esc(C)}</small></div>
+    <table><tr><td>Futuro ${esc(F || '')}</td><td>${tieneF ? nf(x.spot_fut, 2) : 'SIN DATO'}</td></tr><tr><td>Base del día</td><td>${b.base != null ? sg(b.base, 2, ' pts') : 'SIN DATO'}</td></tr><tr><td>Método</td><td style="text-align:right;white-space:normal;font-size:10.5px">${esc(b.metodo || '')}</td></tr></table>${foot(b.fuente || 'Yahoo Finance', x.sesion)}</div>`;
+  [['Call Wall', x.call_wall, 'up', 'Mayor gamma de calls por encima del precio'], ['Put Wall', x.put_wall, 'down', 'Mayor gamma de puts por debajo del precio']].forEach(([t, o, cl, ex]) => {
+    h += `<div class="card kpi"><div class="lab">${t}</div><div class="exp">${ex}</div><div class="big ${cl}">${Ci(o)}<small> ${esc(C)}</small></div>
+      <table><tr><td>Futuro ${esc(F || '')}</td><td>${Fu(o)}</td></tr><tr><td>Distancia</td><td>${dist(o)}</td></tr><tr><td>GEX del tramo</td><td>${o ? gmG(o.musd) : '—'}</td></tr></table>${foot('CRITERIO NEXORA · Cboe', x.sesion)}</div>`;
+  });
+  h += `<div class="card kpi"><div class="lab">Gamma Flip · régimen</div><div class="exp">Precio donde el GEX neto cambia de signo</div><div class="big amber">${x.flip ? Ci(x.flip) : 'SIN CRUCE'}<small> ${esc(C)}</small></div>
+    <table><tr><td>Futuro ${esc(F || '')}</td><td>${x.flip ? Fu(x.flip) : '—'}</td></tr><tr><td>Régimen</td><td><span class="ck ${pos ? 'ok' : 'no'}">GAMMA ${esc(x.regimen)}</span></td></tr><tr><td>GEX neto</td><td>${gmG(x.gex_neto_musd)} / 1 %</td></tr></table>${foot('CRITERIO NEXORA · Cboe', x.sesion)}</div>`;
+  h += `<div class="card kpi"><div class="lab">Max Gamma · ${mg ? (mg.tipo === 'pin' ? 'pin' : 'acelera') : 'SIN DATO'}</div><div class="exp">Tramo con más gamma absoluta (calls + |puts|)</div><div class="big" style="color:var(--blue,#6C8EBF)">${Ci(mg)}<small> ${esc(C)}</small></div>
+    <table><tr><td>Futuro ${esc(F || '')}</td><td>${Fu(mg)}</td></tr><tr><td>Tipo</td><td>${mg && mg.tipo ? `<span class="ck ${mg.tipo === 'pin' ? 'ok' : 'no'}">${mg.tipo === 'pin' ? 'PIN' : 'ACELERA'}</span>` : '—'}</td></tr><tr><td>GEX neto del tramo</td><td>${mg && mg.neto_musd != null ? (mg.neto_musd > 0 ? '+' : '') + gmG(mg.neto_musd, 2) : '—'}</td></tr></table>
+    <div class="note" style="margin:6px 0 0">«Pin» solo si la gamma neta del tramo es positiva (las coberturas frenan el precio contra el nivel); si es negativa, «acelera».</div>${foot('CRITERIO NEXORA · Cboe', x.sesion)}</div>`;
+  const em = x.em || {};
+  h += `<div class="card kpi"><div class="lab">EM · movimiento esperado de 1 día</div><div class="exp">${esc(em.formula || '')}</div><div class="big">${em.puntos != null ? nf(em.puntos, dec) : 'SIN DATO'}<small> pts</small></div>
+    <table><tr><td>Volatilidad</td><td>${em.vol != null ? esc(em.vol_simbolo) + ' ' + nf(em.vol, 1) : 'SIN DATO'}</td></tr><tr><td>En porcentaje</td><td>${em.pct != null ? nf(em.pct, 2) + ' %' : '—'}</td></tr><tr><td>Banda del día</td><td>${em.puntos != null && x.spot_idx != null ? nf(x.spot_idx - em.puntos, dec) + ' – ' + nf(x.spot_idx + em.puntos, dec) : '—'}</td></tr></table>${foot(em.fuente || 'Yahoo Finance', em.vol_fecha || x.sesion)}</div></div>`;
+  h += '<div class="grid g21" style="margin-top:12px">';
+  h += `<div class="card"><h3>GEX por nivel de precio</h3><div class="sub">Verde = gamma de calls · rojo = gamma de puts · en dólares por cada 1 % de movimiento${x.etiqueta ? ' · calculado con ' + esc(ref) : ''}. Eje en ${esc(F || C)}</div><div style="position:relative;height:320px"><canvas id="gP_${a.id}"></canvas></div>${foot('CRITERIO NEXORA · Cboe (retraso 15 min)', x.sesion)}</div>`;
+  h += `<div class="card"><h3>GEX neto según el precio</h3><div class="sub">Recalculado a cada precio hipotético. Por encima del flip: gamma positiva</div><div style="position:relative;height:320px"><canvas id="gC_${a.id}"></canvas></div>${foot('CRITERIO NEXORA · Cboe', x.sesion)}</div></div>`;
+  const tb = (t, lst, cl) => `<div class="card pad0 scroll"><table class="t"><thead><tr><th>${t}</th><th>${esc(F || C)}</th><th>${esc(C)}</th><th>GEX / 1 %</th></tr></thead><tbody>${lst.map((r) => `<tr><td>${t === 'Mayores tramos de calls' ? 'Call' : 'Put'}</td><td><b class="${cl}">${F && r.fut != null ? nf(r.fut, dec) : '—'}</b></td><td>${nf(r.idx, dec)}</td><td>${gmG(r.musd, 2)}</td></tr>`).join('')}</tbody></table></div>`;
+  h += `<div class="grid g2" style="margin-top:12px">${tb('Mayores tramos de calls', x.top_calls, 'up')}${tb('Mayores tramos de puts', x.top_puts, 'down')}</div>`;
+  h += gmHistorial(a, x, rev, C, F, dec);
+  if (x.etiqueta) h += `<div class="note">${esc(x.etiqueta)}: no existe una cadena de opciones gratuita del ${esc(C)}; los niveles son los del ETF ${esc(ref)} multiplicados por ${esc(C)}/${esc(ref)} (${x.ratio_contado != null ? nf(x.ratio_contado, 4) : x.ratio && x.ratio.valor != null ? nf(x.ratio.valor, 4) : 'SIN DATO'}${x.ratio && x.ratio.fecha ? ' del ' + esc(dmy(x.ratio.fecha)) : ''}). Es una aproximación.</div>`;
   const niv = [{ v: x.spot_fut ?? x.spot_idx, c: '#E6E8EB', t: 'precio', dash: true, fila: 0 }, { v: x.call_wall && (x.call_wall.fut ?? x.call_wall.idx), c: '#2FA36B', t: 'Call Wall', fila: 1 },
     { v: x.put_wall && (x.put_wall.fut ?? x.put_wall.idx), c: '#C8463D', t: 'Put Wall', fila: 2 }, { v: x.flip && (x.flip.fut ?? x.flip.idx), c: '#C8A24A', t: 'Flip', fila: 3 }];
-  MOUNT.push(() => {
+  const montar = () => {
     if (!window.Chart) return;
-    const el = document.getElementById('gP_' + k);
+    const el = document.getElementById('gP_' + a.id), usaF = F != null && x.spot_fut != null;
+    const eje = (p) => Math.round(usaF && p.fut != null ? p.fut : p.k);
     if (el) {
-      const P = x.perfil.filter((p) => Math.abs(p.k / x.spot_idx - 1) <= 0.04);
-      new Chart(el, { type: 'bar', plugins: [lineasNivel(niv)], data: { labels: P.map((p) => eje(p)), datasets: [
+      const P = x.perfil.filter((p) => Math.abs(p.k / x.spot_idx - 1) <= 0.04), pq = Math.max(...P.map((p) => Math.max(p.call, -p.put))) < 1000, dv = pq ? 1 : 1000, un = pq ? 'M $' : 'mm $';
+      GM_GRAF.push(new Chart(el, { type: 'bar', plugins: [lineasNivel(niv)], data: { labels: P.map((p) => eje(p)), datasets: [
         { label: 'GEX calls', data: P.map((p) => p.call), backgroundColor: '#2FA36B', stack: 's', maxBarThickness: 12 },
         { label: 'GEX puts', data: P.map((p) => p.put), backgroundColor: '#C8463D', stack: 's', maxBarThickness: 12 }] },
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#8A93A0', boxWidth: 10, font: { family: 'IBM Plex Mono', size: 10 } } },
-        tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${num(c.parsed.y / 1000, 2)} mm $` } } },
+        tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${num(c.parsed.y / dv, 2)} ${un}` } } },
       scales: { x: { stacked: true, ticks: { color: '#8A93A0', font: { family: 'IBM Plex Mono', size: 10 }, maxRotation: 0, autoSkip: true, maxTicksLimit: 12 }, grid: { display: false } },
-        y: { stacked: true, ticks: { color: '#8A93A0', font: { family: 'IBM Plex Mono', size: 10 }, callback: (v) => num(v / 1000, 0) }, grid: { color: '#14181e' }, title: { display: true, text: 'mm $ por 1 %', color: '#5C6470', font: { size: 10 } } } } } });
+        y: { stacked: true, ticks: { color: '#8A93A0', font: { family: 'IBM Plex Mono', size: 10 }, callback: (v) => num(v / dv, 0) }, grid: { color: '#14181e' }, title: { display: true, text: un + ' por 1 %', color: '#5C6470', font: { size: 10 } } } } } }));
     }
-    const e2 = document.getElementById('gC_' + k);
+    const e2 = document.getElementById('gC_' + a.id);
     if (e2) {
-      const b0 = (x.base && x.base.base) || 0;
-      const C = x.curva.map(([s, g]) => [s + b0, g]);
-      new Chart(e2, { type: 'line', plugins: [lineasNivel([niv[0], niv[3]])], data: { labels: C.map((c) => Math.round(c[0])), datasets: [{ label: 'GEX neto', data: C.map((c) => c[1]), borderColor: '#C8A24A', backgroundColor: 'rgba(200,162,74,.12)', fill: { target: 'origin' }, pointRadius: 0, tension: 0.25, borderWidth: 2 }] },
-        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { title: (i) => `${k} ${i[0].label}`, label: (c) => `GEX neto: ${num(c.parsed.y / 1000, 1)} mm $` } } },
+      const b0 = usaF ? (b.base || 0) : 0;
+      const Cv = x.curva.map(([s, g]) => [s + b0, g]), cq = Math.max(...Cv.map((c) => Math.abs(c[1]))) < 1000, dc = cq ? 1 : 1000;
+      GM_GRAF.push(new Chart(e2, { type: 'line', plugins: [lineasNivel([niv[0], niv[3]])], data: { labels: Cv.map((c) => Math.round(c[0])), datasets: [{ label: 'GEX neto', data: Cv.map((c) => c[1]), borderColor: '#C8A24A', backgroundColor: 'rgba(200,162,74,.12)', fill: { target: 'origin' }, pointRadius: 0, tension: 0.25, borderWidth: 2 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { title: (i) => `${F || C} ${i[0].label}`, label: (c) => `GEX neto: ${num(c.parsed.y / dc, 1)} ${cq ? 'M $' : 'mm $'}` } } },
           scales: { x: { ticks: { color: '#8A93A0', font: { family: 'IBM Plex Mono', size: 10 }, maxTicksLimit: 9, maxRotation: 0 }, grid: { display: false } },
-            y: { ticks: { color: '#8A93A0', font: { family: 'IBM Plex Mono', size: 10 }, callback: (v) => num(v / 1000, 0) }, grid: { color: '#14181e' } } } } });
+            y: { ticks: { color: '#8A93A0', font: { family: 'IBM Plex Mono', size: 10 }, callback: (v) => num(v / dc, 0) }, grid: { color: '#14181e' } } } } }));
     }
-  });
-  h += '<div class="grid g21" style="margin-top:12px">';
-  h += `<div class="card"><h3>GEX por nivel de precio del futuro</h3><div class="sub">Verde = gamma de calls · rojo = gamma de puts · en mm $ por cada 1 % de movimiento (SPX+SPY / NDX+QQQ sumados)</div><div style="position:relative;height:320px"><canvas id="gP_${k}"></canvas></div>${foot('CRITERIO NEXORA · Cboe (retraso 15 min)', x.sesion)}</div>`;
-  h += `<div class="card"><h3>GEX neto según el precio</h3><div class="sub">Recalculado a cada precio hipotético. Por encima del flip: gamma positiva</div><div style="position:relative;height:320px"><canvas id="gC_${k}"></canvas></div>${foot('CRITERIO NEXORA · Cboe', x.sesion)}</div></div>`;
-  h += `<div class="grid g2" style="margin-top:12px"><div class="card pad0 scroll"><table class="t"><thead><tr><th>Mayores tramos de calls</th><th>${k}</th><th>Índice</th><th>mm $</th></tr></thead><tbody>${x.top_calls.map((t) => `<tr><td>Call</td><td><b class="up">${t.fut != null ? nf(t.fut, 0) : '—'}</b></td><td>${nf(t.idx, 0)}</td><td>${nf(t.musd / 1000, 2)}</td></tr>`).join('')}</tbody></table></div>
-    <div class="card pad0 scroll"><table class="t"><thead><tr><th>Mayores tramos de puts</th><th>${k}</th><th>Índice</th><th>mm $</th></tr></thead><tbody>${x.top_puts.map((t) => `<tr><td>Put</td><td><b class="down">${t.fut != null ? nf(t.fut, 0) : '—'}</b></td><td>${nf(t.idx, 0)}</td><td>${nf(t.musd / 1000, 2)}</td></tr>`).join('')}</tbody></table></div></div>`;
-  return h;
-}
-function revisionHtml(G) {
-  const R = G.revision || {};
-  let h = '<div class="sect"><h2>Cómo reaccionó el futuro en cada nivel</h2><span class="more">cada sesión guardada frente a la barra del futuro de la sesión siguiente</span></div>';
-  h += `<div class="note" style="margin-top:0">Histórico propio: ${G.sesiones_guardadas || 0} ${G.sesiones_guardadas === 1 ? 'sesión guardada' : 'sesiones guardadas'} (el histórico empieza con este módulo: no hay cadenas de opciones gratuitas anteriores, no se reconstruye). Se evalúa sesión a sesión; se excluyen las ventanas de vencimiento trimestral del futuro.</div>`;
-  const col = { RECHAZADO: 'ok', DEFENDIDO: 'ok', SUPERADO: 'no', ROTO: 'no', 'NO TOCADO': 'sd', 'CERRÓ POR ENCIMA': 'par', 'CERRÓ POR DEBAJO': 'par' };
-  ['ES', 'NQ'].forEach((k) => {
-    const r = R[k];
-    h += `<div class="card pad0 scroll" style="margin-bottom:12px"><table class="t"><thead><tr><th>${k} · sesión</th><th>Estado</th><th>Call Wall</th><th>Put Wall</th><th>Gamma Flip</th><th>Sesión siguiente (máx · mín · cierre)</th></tr></thead><tbody>`;
-    if (!r || r.sin_dato || !r.sesiones.length) h += '<tr><td colspan="6" style="text-align:left;color:var(--dim)">SIN DATO: todavía no hay sesiones guardadas o la fuente no respondió.</td></tr>';
-    else h += r.sesiones.slice(0, 20).map((s) => {
-      const c = (n) => { const v = s.niveles && s.niveles[n]; return v ? `<span class="ck ${col[v.resultado] || 'sd'}">${esc(v.resultado)}</span><small>${nf(v.nivel, 0)} · cierre ${sg(v.dist_cierre, 0)}</small>` : '—'; };
-      const sig = s.sesion_siguiente;
-      return `<tr><td>${esc(dmy(s.fecha_sesion))}</td><td><span class="ck ${s.estado === 'EVALUADA' ? 'ok' : s.estado === 'ROLL' ? 'par' : 'sd'}">${esc(s.estado)}</span></td><td>${c('Call Wall')}</td><td>${c('Put Wall')}</td><td>${c('Gamma Flip')}</td>
-        <td>${sig ? `${esc(fd(sig.fecha))}: ${nf(sig.h, 0)} · ${nf(sig.l, 0)} · ${nf(sig.c, 0)}` : esc(s.nota || 'esperando la sesión siguiente')}</td></tr>`;
-    }).join('');
-    const rs = r && r.resumen;
-    h += `</tbody></table>${footIn('Yahoo Finance (' + (k === 'ES' ? 'ES=F' : 'NQ=F') + ') · data/historico_gamma.csv', false, null, rs ? `Call Wall: ${rs['Call Wall'].respetadas ?? 0} rechazos en ${rs['Call Wall'].tocadas} toques · Put Wall: ${rs['Put Wall'].respetadas ?? 0} defensas en ${rs['Put Wall'].tocadas} toques` : '')}</div>`;
-  });
-  return h;
+  };
+  return { html: h, montar };
 }
 /* línea de niveles para TradingView: el MISMO formato que el Telegram de las 15:00 (engine/gamma_intradia.py · linea_niveles) */
 function lineaNivelesGamma(G) {
@@ -269,7 +308,7 @@ function lineaNivelesGamma(G) {
 }
 function plataformasHtml(G) {
   const I = (G && G.indices) || {}, v = (o) => (o && o.fut != null ? nf(o.fut, 1) : 'SIN DATO');
-  let h = '<div class="sect"><h2>Niveles para tus plataformas</h2><span class="more">precios de futuro · NinjaTrader 8 y TradingView</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Índice</th><th>Gamma Flip</th><th>Call Wall</th><th>Put Wall</th><th>Max Gamma</th><th>EM (1 día)</th><th>Sesión de los niveles</th></tr></thead><tbody>';
+  let h = '<div class="sect"><h2>Niveles para plataformas</h2><span class="more">precios de futuro · NinjaTrader 8 y TradingView</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Índice</th><th>Gamma Flip</th><th>Call Wall</th><th>Put Wall</th><th>Max Gamma</th><th>EM (1 día)</th><th>Sesión de los niveles</th></tr></thead><tbody>';
   h += ['ES', 'NQ'].map((k) => { const x = I[k]; if (!x) return `<tr><td data-label="Índice" style="text-align:left"><b>${k}</b></td><td colspan="6"><span class="sd-val">SIN DATO</span></td></tr>`; const em = x.em || {};
     return `<tr><td data-label="Índice" style="text-align:left"><b>${k}</b></td><td data-label="Gamma Flip">${v(x.flip)}</td><td data-label="Call Wall">${v(x.call_wall)}</td><td data-label="Put Wall">${v(x.put_wall)}</td><td data-label="Max Gamma">${v(x.max_gamma)}</td><td data-label="EM (1 día)">${em.puntos != null ? nf(em.puntos, 1) + ' pts <small>(' + esc(em.vol_simbolo) + ' ' + nf(em.vol, 1) + ')</small>' : 'SIN DATO'}</td><td data-label="Sesión de los niveles">${esc(dmy(x.sesion))}</td></tr>`; }).join('');
   h += `</tbody></table><div class="note" style="padding:8px 16px 4px">Línea para el indicador de TradingView (la misma que llega por Telegram a las 15:00, hora de Madrid):</div><div style="padding:0 16px 8px"><code id="gLinea" style="display:block;white-space:normal;word-break:break-all;padding:8px;border:1px solid var(--line);border-radius:6px">${esc(lineaNivelesGamma(G))}</code>
@@ -284,18 +323,14 @@ function plataformasHtml(G) {
   });
   return h;
 }
-/* gamma del oro: niveles de GLD (referencia) en precio XAU/USD + la línea ORO para el indicador «NEXORA Oro» de TradingView */
-function oroGammaHtml(GO) {
-  let h = '<div class="sect"><h2>Gamma del oro (GLD, referencia)</h2><span class="more">cadena de opciones de GLD pasada a precio XAU/USD · TradingView</span></div>';
-  if (!GO || !GO.niveles) return h + `<div class="card"><div class="empty" style="height:90px">SIN DATO · data/gamma_oro.json</div></div>`;
-  const r = GO.ratio, em = GO.em || {}, f = (x, d) => (x == null ? 'SIN DATO' : nf(x, d));
-  h += `<div class="card pad0 scroll"><table class="t stack"><thead><tr><th style="text-align:left">Nivel (GLD, referencia)</th><th>GLD ($)</th><th>XAU/USD</th><th>Gamma (M$ por 1 %)</th></tr></thead><tbody>`
-    + GO.niveles.map((x) => `<tr><td data-label="Nivel" style="text-align:left"><b>${esc(x.nombre)}</b></td><td data-label="GLD ($)">${f(x.gld, 1)}</td><td data-label="XAU/USD">${f(x.xau, 1)}</td><td data-label="Gamma">${x.musd == null ? '—' : nf(x.musd, 1)}</td></tr>`).join('')
-    + `<tr><td data-label="Nivel" style="text-align:left"><b>EM (1 día)</b></td><td data-label="GLD ($)">${f(em.puntos, 1)} <small>(${esc(em.vol_simbolo || 'GVZ')} ${f(em.vol, 1)})</small></td><td data-label="XAU/USD">${f(GO.em_xau, 1)}</td><td data-label="Gamma">—</td></tr></tbody></table>`
-    + `<div class="note" style="padding:8px 16px 4px">Sesión de la cadena: ${esc(dmy(GO.sesion))} · gamma ${esc(String(GO.regimen || '').toLowerCase())} (${f(GO.gex_neto_musd, 0)} M$ por 1 %). ${r ? `Ratio XAU/GLD <b>${nf(r.valor, 4)}</b> del ${esc(dmy(r.fecha))}${r.exacto ? '' : ' (APROXIMADO: no es el de la sesión)'} · XAU ${nf(r.xau, 1)} ($, ${esc(r.xau_hora_utc)} UTC) / GLD ${nf(r.gld_cierre, 2)} ($).` : '<b>SIN ratio XAU/GLD:</b> los niveles quedan solo en GLD.'}</div>`
-    + `<div class="note" style="padding:0 16px 4px">Línea ORO para el indicador «NEXORA Oro» de TradingView (la misma que llega por Telegram a las 15:00, hora de Madrid; aquí con el evento de la última actualización):</div><div style="padding:0 16px 8px"><code id="gLineaOro" style="display:block;white-space:normal;word-break:break-all;padding:8px;border:1px solid var(--line);border-radius:6px">${esc(GO.linea || 'SIN DATO')}</code>
-    <button class="fbtn" id="gCopiarOro" style="margin-top:6px" type="button">Copiar línea</button> <span class="note" id="gCopiadoOro"></span></div>`
-    + `<div class="note" style="padding:0 16px 12px">No existe una cadena de opciones gratuita del oro al contado: estos niveles son los del ETF <b>GLD</b> multiplicados por el ratio XAU/GLD, una <b>referencia</b> y no niveles de opciones sobre XAU/USD (el ratio deriva despacio y varía unas décimas según la hora, así que cada nivel es una aproximación de unos pocos dólares). Su medición (¿reaccionó el oro a ±0,25×EM del nivel en la sesión siguiente?) está en <a href="#/marcador">Marcador</a>. ${esc(GO.fuente || '')}.</div></div>`;
+/* línea ORO para el indicador «NEXORA Oro» de TradingView (parte del bloque final «Niveles para plataformas») */
+function oroLineaHtml(GO) {
+  let h = '<div class="card" style="margin-top:12px"><div class="chead"><span>Oro · línea para el indicador «NEXORA Oro» de TradingView</span></div>';
+  if (!GO || GO.sin_dato || !GO.linea) return h + '<div class="note">SIN DATO · data/gamma_oro.json</div></div>';
+  const r = GO.ratio;
+  h += `<div class="note" style="padding:0 0 4px">La misma línea que llega por Telegram a las 15:00 (hora de Madrid), aquí con el evento de la última actualización. Niveles de GLD (referencia) en precio XAU/USD${r ? `, ratio XAU/GLD ${nf(r.valor, 4)} del ${esc(dmy(r.fecha))}${r.exacto ? '' : ' (APROXIMADO)'}` : ', SIN ratio XAU/GLD'}.</div><div><code id="gLineaOro" style="display:block;white-space:normal;word-break:break-all;padding:8px;border:1px solid var(--line);border-radius:6px">${esc(GO.linea)}</code>
+    <button class="fbtn" id="gCopiarOro" style="margin-top:6px" type="button">Copiar línea</button> <span class="note" id="gCopiadoOro"></span></div>
+    <div class="note">Su medición (¿tocó el oro la zona nivel ± 0,25×EM en la sesión siguiente?) está en <a href="#/marcador">Marcador</a>. ${esc(GO.fuente || '')}.</div></div>`;
   MOUNT.push(() => {
     const b = document.getElementById('gCopiarOro');
     if (b) b.addEventListener('click', async () => {
@@ -307,27 +342,38 @@ function oroGammaHtml(GO) {
 }
 function pageGamma() {
   const G = D.gamma;
-  let h = head('Análisis', 'Gamma de índices', 'Dónde están las coberturas de opciones que obligan a los creadores de mercado a comprar o vender: Call Wall, Put Wall y Gamma Flip de SPX+SPY (ES) y NDX+QQQ (NQ), convertidos a precio del futuro con la base del día.',
-    `Calculado con la cadena de opciones de Cboe (retraso de 15 min) tras el cierre de Nueva York · descargado: ${G && G.generado_utc ? esc(horaAct(G.generado_utc)) : 'SIN DATO'} <span class="tag sin" style="margin-left:6px">CRITERIO NEXORA</span>`);
+  let h = head('Análisis', 'Gamma por activo', 'Dónde están las coberturas de opciones que obligan a los creadores de mercado a comprar o vender: Call Wall, Put Wall, Gamma Flip y Max Gamma de US500 (SPX+SPY → ES), US100 (NDX+QQQ → NQ), US30 (DIA, referencia → DJI y YM) y ORO (GLD, referencia → XAU y GC).',
+    `Calculado con las cadenas de opciones de Cboe (retraso de 15 min) tras el cierre de Nueva York · descargado: ${G && G.generado_utc ? esc(horaAct(G.generado_utc)) : 'SIN DATO'} <span class="tag sin" style="margin-left:6px">CRITERIO NEXORA</span>`);
   h += fallo('gamma');
   if (!G || !G.indices) return h + noData('Gamma de índices');
   const I = G.indices, es = I.ES, nq = I.NQ;
-  const un = (x) => (x ? x.resumen_texto : 'SIN DATO');
-  h += essential(`${esc(un(es))}. ${nq ? 'NQ: ' + esc(un(nq)) + '.' : ''}`,
-    `Hipótesis (no hecho): con gamma positiva, las coberturas de los creadores de mercado tienden a frenar los movimientos (venden en subidas, compran en bajadas); con gamma negativa los amplifican. Esto depende de suponer que los clientes están largos de puts y los creadores largos de calls: el interés abierto no revela quién está de cada lado. Sesión ${es ? esc(dmy(es.sesion)) : ''}.`,
-    'Los muros son más fiables cerca de vencimientos y con el precio próximo; un cierre firme más allá del Call Wall o por debajo del Put Wall invalida el nivel. Se recalcula en cada cierre de Nueva York (21:30 UTC).');
-  if (G.descartados_intradia && Object.keys(G.descartados_intradia).length) h += `<div class="banner amber" style="margin:0 0 12px;border-radius:6px">Se conserva el último cierre válido: la última descarga fue intradía y no se usa.</div>`;
-  ['ES', 'NQ'].forEach((k) => { if (I[k]) h += gammaBloque(k, I[k], G.generado_utc); else h += `<div class="sect"><h2>${k}</h2></div>${noData('Gamma ' + k)}`; });
-  h += revisionHtml(G);
-  h += plataformasHtml(G);
-  h += oroGammaHtml(D.gamma_oro);
+  const guardada = lsGet('nexora_gamma_tab', 'US500'), tab0 = GM_ACT.some((a) => a.id === guardada) ? guardada : 'US500';
+  h += `<div class="picker" id="gm-tabs" role="tablist" style="margin:0 0 12px;display:flex;gap:6px;flex-wrap:wrap">${GM_ACT.map((a) => `<button class="fbtn ${a.id === tab0 ? 'on' : ''}" role="tab" aria-selected="${a.id === tab0}" data-t="${a.id}">${a.id}</button>`).join('')}</div><div id="gm-root"></div>`;
+  if (G.descartados_intradia && Object.keys(G.descartados_intradia).length) h += `<div class="banner amber" style="margin:12px 0;border-radius:6px">Se conserva el último cierre válido: la última descarga fue intradía y no se usa.</div>`;
   const v = (es && es.validacion_gamma) || {};
   const vn = (nq && nq.validacion_gamma) || {};
   h += `<div class="sect"><h2>Método · CRITERIO NEXORA</h2><span class="more">método propio, documentado; no es un dato oficial de ningún proveedor</span></div><div class="card"><div class="note" style="margin-top:0;white-space:pre-line">${esc(G.metodo)}</div>
+    <div class="note">US30 y ORO: no hay cadenas de opciones gratuitas del Dow ni del oro al contado, así que se usan las de los ETF DIA y GLD («DIA, referencia», «GLD, referencia») con el mismo método y se convierten con el ratio contado/ETF de la sesión (DJI/DIA y XAU/GLD); el futuro es el nivel de contado más la base del día (YM − DJI, GC − XAU). Con datos insuficientes: SIN DATO.</div>
     <div class="row2"><span>Validación: gamma propia frente a la de Cboe (mediana del error, donde Cboe ≥ 0,002)</span><span class="mono">ES ${v.mediana_error_rel_pct != null ? nf(v.mediana_error_rel_pct, 1) + ' %' : '—'} · NQ ${vn.mediana_error_rel_pct != null ? nf(vn.mediana_error_rel_pct, 1) + ' %' : '—'}</span></div>
     <div class="note">Límites: el interés abierto es el de la víspera (la OCC lo publica cada mañana); las opciones de 0DTE del día no están en el cierre; el signo de la posición de los creadores de mercado es un supuesto; la base cambia con el roll trimestral del futuro.
     Memoria permanente: <a class="src" href="https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/historico_gamma.csv" target="_blank" rel="noopener">data/historico_gamma.csv</a>.</div>
     ${foot(G.fuente, es && es.sesion, G.url)}</div>`;
+  h += plataformasHtml(G);
+  h += oroLineaHtml(D.gamma_oro);
+  MOUNT.push(() => {
+    const root = document.getElementById('gm-root'), bar = document.getElementById('gm-tabs');
+    if (!root || !bar) return;
+    const pintar = (id) => {
+      GM_GRAF.forEach((c) => { try { c.destroy(); } catch (e) { /* ya destruido */ } });
+      GM_GRAF = [];
+      const r = gmActivo(GM_ACT.find((a) => a.id === id) || GM_ACT[0]);
+      root.innerHTML = r.html;
+      r.montar();
+      $$('button', bar).forEach((b) => { const on = b.dataset.t === id; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
+    };
+    bar.addEventListener('click', (e) => { const b = e.target.closest('[data-t]'); if (!b) return; lsSet('nexora_gamma_tab', b.dataset.t); pintar(b.dataset.t); });
+    pintar(tab0);
+  });
   return h + errores(Object.assign({}, G.errores, G.errores_revision));
 }
 

@@ -253,11 +253,11 @@
   },
   {
    "id": "gamma",
-   "titulo": "Gamma de índices",
-   "pregunta": "¿Las opciones van a frenar o a acelerar los movimientos del S&P y del Nasdaq?",
+   "titulo": "Gamma por activo",
+   "pregunta": "¿Las opciones van a frenar o a acelerar los movimientos del S&P, el Nasdaq, el Dow y el oro?",
    "diez": "Mira si la gamma es positiva (frena) o negativa (acelera) y dónde están el Gamma Flip y los muros.",
    "frecuencia": "Una vez al día, al cierre de EE. UU. (21:30 UTC).",
-   "generico": "Gamma de índices: niveles de opciones que influyen en el movimiento."
+   "generico": "Gamma por activo: niveles de opciones (US500, US100, US30 y ORO) que influyen en el movimiento."
   },
   {
    "id": "semis",
@@ -1029,9 +1029,10 @@
    "Resume el ánimo general de los inversores."
   ],
   "us30": [
-   "El Dow Jones: 30 grandes empresas industriales y de consumo.",
-   "Mira su cambio frente al Nasdaq.",
-   "Si lidera el Dow, el mercado es más defensivo."
+   "Los niveles de opciones del activo: Call Wall (mayor gamma de calls por encima del precio), Put Wall (mayor gamma de puts por debajo), Gamma Flip (precio donde la gamma neta cambia de signo) y Max Gamma (el tramo con más gamma absoluta).",
+   "Cada nivel se muestra en el precio de contado en grande y en el del futuro debajo, con la base del día (futuro − contado).",
+   "Con gamma positiva las coberturas tienden a frenar el precio; con gamma negativa, a amplificarlo. Es una hipótesis: el interés abierto no dice quién está de cada lado.",
+   "Para el Dow no hay cadena gratuita del índice: se usa la del ETF DIA («DIA, referencia») convertida a DJI y al futuro YM. Si no hay datos suficientes, aparece SIN DATO."
   ],
   "russell 2000": [
    "El índice de las pequeñas empresas de EE. UU.",
@@ -1634,11 +1635,6 @@
    "Están impresas tal cual: no hay nada oculto ni IA.",
    "Si quieres cambiarlas, hay que cambiar el código y se verá en el historial."
   ],
-  "niveles para tus plataformas": [
-   "Los niveles de gamma de hoy en precio de futuro (ES y NQ), listos para llevarlos a NinjaTrader 8 o a TradingView, y la línea de texto que NEXORA manda por Telegram a las 15:00.",
-   "Gamma Flip, Call Wall, Put Wall y Max Gamma salen de la cadena de opciones del cierre anterior; el EM es el movimiento esperado de un día según el VIX (ES) o el VXN (NQ).",
-   "Son niveles de referencia, no señales: contexto, no entradas."
-  ],
   "gamma intradía": [
    "Los avisos de Telegram de ES y NQ durante la sesión (velas de 5 min) y cuánto se movió el precio después de cada uno: MFE = máximo a favor, MAE = máximo en contra, a 15, 30 y 60 minutos.",
    "Mientras una regla tenga menos de 20 avisos medidos está «congelada»: no se concluye nada ni se cambian sus umbrales.",
@@ -1683,6 +1679,39 @@
    "Una discrepancia que ya has mirado y entendido (por ejemplo, Brent físico frente a futuro en backwardation). Se muestra en gris con su motivo y la fecha, no cuenta en el contador de la cabecera y sigue visible.",
    "Se reabre sola si cambia de forma relevante (Brent: diferencia de más del 25 % o signo invertido) y se cierra sola cuando desaparece (Brent por debajo del 10 %, o sale el dato esperado).",
    "Todo queda registrado, solo añadiendo filas, en data/discrepancias_revisadas.csv."
+  ],
+  "niveles para plataformas": [
+   "Los niveles de gamma de hoy en precio de futuro (ES y NQ), listos para llevarlos a NinjaTrader 8 o a TradingView, y la línea de texto que NEXORA manda por Telegram a las 15:00.",
+   "Gamma Flip, Call Wall, Put Wall y Max Gamma salen de la cadena de opciones del cierre anterior; el EM es el movimiento esperado de un día según el VIX (ES) o el VXN (NQ).",
+   "Son niveles de referencia, no señales: contexto, no entradas."
+  ],
+  "us500": [
+   "Los niveles de opciones del activo: Call Wall (mayor gamma de calls por encima del precio), Put Wall (mayor gamma de puts por debajo), Gamma Flip (precio donde la gamma neta cambia de signo) y Max Gamma (el tramo con más gamma absoluta).",
+   "Cada nivel se muestra en el precio de contado en grande y en el del futuro debajo, con la base del día (futuro − contado).",
+   "Con gamma positiva las coberturas tienden a frenar el precio; con gamma negativa, a amplificarlo. Es una hipótesis: el interés abierto no dice quién está de cada lado."
+  ],
+  "us100": [
+   "Los niveles de opciones del activo: Call Wall (mayor gamma de calls por encima del precio), Put Wall (mayor gamma de puts por debajo), Gamma Flip (precio donde la gamma neta cambia de signo) y Max Gamma (el tramo con más gamma absoluta).",
+   "Cada nivel se muestra en el precio de contado en grande y en el del futuro debajo, con la base del día (futuro − contado).",
+   "Con gamma positiva las coberturas tienden a frenar el precio; con gamma negativa, a amplificarlo. Es una hipótesis: el interés abierto no dice quién está de cada lado."
+  ],
+  "oro ·": [
+   "Los niveles de opciones del activo: Call Wall (mayor gamma de calls por encima del precio), Put Wall (mayor gamma de puts por debajo), Gamma Flip (precio donde la gamma neta cambia de signo) y Max Gamma (el tramo con más gamma absoluta).",
+   "Cada nivel se muestra en el precio de contado en grande y en el del futuro debajo, con la base del día (futuro − contado).",
+   "Con gamma positiva las coberturas tienden a frenar el precio; con gamma negativa, a amplificarlo. Es una hipótesis: el interés abierto no dice quién está de cada lado.",
+   "Para el oro se usa la cadena del ETF GLD («GLD, referencia») convertida a XAU/USD y al futuro GC con el ratio XAU/GLD de la fecha indicada: es una aproximación."
+  ],
+  "max gamma": [
+   "El tramo de precio con más gamma absoluta (calls + puts). Es «pin» solo si la gamma neta de ese tramo es positiva: las coberturas tienden a frenar el precio contra el nivel. Si es negativa, «acelera»: tienden a empujarlo.",
+   "Es un nivel de referencia, no un pronóstico."
+  ],
+  "em ·": [
+   "Movimiento esperado de un día: precio × volatilidad implícita (VIX, VXN, VXD o GVZ según el activo) / 100 / √252.",
+   "Es una aproximación estándar y gratuita, no el straddle del día."
+  ],
+  "cómo reaccionó el precio": [
+   "Cada sesión guardada frente a la sesión siguiente: si el precio tocó el Call Wall, el Put Wall o el Gamma Flip y cómo cerró (rechazado, superado, defendido, roto…).",
+   "El histórico empieza con este módulo; con pocas sesiones no se concluye nada."
   ]
  },
  "glosario": [

@@ -72,7 +72,7 @@ const PAGES = [
   { id: 'divisas', g: 'Análisis', t: 'Sesgo de divisas', d: 'Matriz de ocho divisas por factores', f: 4 },
   { id: 'posicionamiento', g: 'Análisis', t: 'Posicionamiento (COT)', d: 'CFTC: neto no comercial y gestores de activos', f: 4 },
   { id: 'skew', g: 'Análisis', t: 'Riesgo de cola (SKEW)', d: 'SKEW de Cboe, confirmaciones y estudio histórico', f: 6 },
-  { id: 'gamma', g: 'Análisis', t: 'Gamma de índices', d: 'Call Wall, Put Wall y Gamma Flip en ES y NQ', f: 6 },
+  { id: 'gamma', g: 'Análisis', t: 'Gamma por activo', d: 'Call Wall, Put Wall, Gamma Flip y Max Gamma en US500, US100, US30 y ORO', f: 6 },
   { id: 'semis', g: 'Análisis', t: 'Semis vs Software', d: 'Ratio SMH/IGV, escenario del día e impacto en NQ, ES, YM', f: 6 },
   { id: 'oro', g: 'Análisis', t: 'Oro, reservas y flujos', d: 'Tipo real, DXY, GLD, compras de bancos centrales', f: 3 },
   { id: 'indices', g: 'Análisis', t: 'Índices USA', d: 'Amplitud, beneficios, VIX, XLY/XLP', f: 3 },
@@ -801,7 +801,7 @@ function route() {
 }
 
 async function cargar() {
-  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma', 'gamma_oro', 'bancos', 'tono', 'reacciones', 'agenda', 'salud', 'etf', 'integridad', 'petroleo'].map(async (n) => {
+  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma', 'gamma_oro', 'gamma_us30', 'bancos', 'tono', 'reacciones', 'agenda', 'salud', 'etf', 'integridad', 'petroleo'].map(async (n) => {
     try { const r = await fetch(`data/${n}.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) D[n] = await r.json(); } catch (e) { /* SIN DATO */ }
   }));
 }
