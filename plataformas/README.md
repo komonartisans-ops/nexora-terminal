@@ -18,6 +18,7 @@ Dos indicadores **de contexto** (no de entradas): dibujan en tu gráfico los niv
 |---|---|---|---|
 | **NinjaTrader 8** | Lee solo `https://komonartisans-ops.github.io/nexora-terminal/data/gamma.json` cada 15 minutos | [`ninjatrader/`](ninjatrader/) | [`INSTALACION.md`](ninjatrader/INSTALACION.md) |
 | **TradingView** | Tú pegas la línea que NEXORA te envía por Telegram a las 15:00 (Madrid) | [`tradingview/`](tradingview/) | [`INSTALACION.md`](tradingview/INSTALACION.md) |
+| **TradingView · Oro** | Tú pegas la línea `XAU …` que llega en el mismo Telegram de las 15:00 (niveles de GLD, referencia, en precio XAU/USD) | [`tradingview/`](tradingview/) | [`INSTALACION_ORO.md`](tradingview/INSTALACION_ORO.md) |
 
 ## La línea de Telegram (TradingView)
 
@@ -28,6 +29,19 @@ ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6 | NQ flip=29920.4;cw=2989
 ```
 
 El mensaje indica también la sesión de la cadena de Cboe de la que salen los niveles, la fuente y, si los niveles tienen más de 4 días, un aviso de antigüedad.
+
+## Oro (XAU/USD): línea `XAU` y el indicador «NEXORA Oro»
+
+El mismo mensaje de las 15:00 trae una segunda línea para el oro:
+
+```
+XAU tesis=alcista;int=debil;flip=4167.1;cw=4144.2;pw=3762.5;em=57.8;maxg=4253.2;ratio=10.9057;rf=2026-10-19;cot=largo-bajo_p27;etf=+3.1;evento=no
+```
+
+- Los niveles (`flip`, `cw`, `pw`, `maxg`, `em`) son los de la cadena de opciones del ETF **GLD** (Cboe), pasados a precio XAU/USD con el ratio XAU/GLD (`ratio`, de la fecha `rf`). Se etiquetan siempre **«GLD, referencia»**: no hay cadena gratuita del oro al contado.
+- `tesis` e `int` salen de la tesis de oro de NEXORA; `cot` = lado, nivel y percentil a 3 años del dinero gestionado en COMEX; `etf` = toneladas del trust GLD en 5 sesiones; `evento` = eventos ALTA del día con hora de Madrid (`@na` si no hay hora publicada, `no` si no hay).
+- El indicador [`NexoraOro.pine`](tradingview/NexoraOro.pine) añade la parte en vivo (DXY y tipo real a 10 años `FRED:DFII10` frente a su media de 50, y el aviso «oro sube con tipo real al alza» en 5 sesiones), PDH/PDL y los máximos/mínimos de Asia y Londres. Instalación: [`INSTALACION_ORO.md`](tradingview/INSTALACION_ORO.md).
+- En la web: `#/gamma` (sección «Gamma del oro») y `#/marcador` («Gamma oro»: ¿tocó el oro la zona nivel ± 0,25×EM en la sesión siguiente?, medido sobre GLD, congelado hasta 20 sesiones).
 
 ## De dónde salen los datos y con qué retraso
 

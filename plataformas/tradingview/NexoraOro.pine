@@ -1,0 +1,203 @@
+//@version=6
+// NEXORA · Oro (XAU/USD). Indicador de CONTEXTO, no de entradas.
+// Parte EN VIVO: dólar (TVC:DXY) y tipo real a 10 años de EE. UU. (FRED:DFII10, TIPS a vencimiento constante) frente a su media de 50 sesiones, y aviso si el oro sube con el tipo real al alza.
+// Parte DIARIA: pega en el campo de texto la línea ORO que NEXORA envía por Telegram a las 15:00 (Madrid), p. ej.:
+//   XAU tesis=alcista;int=debil;flip=4167.1;cw=4144.2;pw=3762.5;em=57.8;maxg=4253.2;ratio=10.9057;rf=2026-10-19;cot=largo-bajo_p27;etf=+3.1;evento=no
+// Los niveles de gamma son los de GLD (ETF de oro) pasados a precio XAU/USD con el ratio XAU/GLD de la fecha «rf»: son una REFERENCIA («GLD ref.»), no niveles de opciones sobre el oro al contado.
+// Además dibuja PDH/PDL y los máximos/mínimos de Asia y Londres. Si un valor es «na», no se dibuja.
+indicator("NEXORA · Oro", shorttitle = "NEXORA Oro", overlay = true, max_lines_count = 60, max_labels_count = 60)
+
+// ---------------------------------------------------------------- entradas
+grpN = "Línea ORO (Telegram)"
+linea = input.string("", "Línea ORO", group = grpN, tooltip = "Pega aquí la línea que empieza por XAU y que NEXORA envía a las 15:00 (Madrid).")
+verMaxG = input.bool(true, "Mostrar Max Gamma", group = grpN)
+verEM = input.bool(true, "Mostrar banda EM (alrededor del cierre anterior)", group = grpN)
+verEtq = input.bool(true, "Mostrar etiquetas de precio", group = grpN)
+forzar = input.bool(false, "Dibujar aunque el gráfico no sea oro", group = grpN, tooltip = "Por defecto los niveles solo se dibujan en XAUUSD, GOLD, GC o MGC.")
+colFlip = input.color(color.new(#E0B040, 0), "GLD ref. · Gamma Flip", group = grpN)
+colCW = input.color(color.new(#E05A4F, 0), "GLD ref. · Call Wall", group = grpN)
+colPW = input.color(color.new(#35B26F, 0), "GLD ref. · Put Wall", group = grpN)
+colMG = input.color(color.new(#3A8FE0, 0), "GLD ref. · Max Gamma", group = grpN)
+colEM = input.color(color.new(#6FA8DC, 85), "Banda EM", group = grpN)
+
+grpL = "Parte en vivo (dólar y tipo real)"
+simDXY = input.symbol("TVC:DXY", "Índice del dólar", group = grpL)
+simReal = input.symbol("FRED:DFII10", "Tipo real a 10 años", group = grpL, tooltip = "FRED:DFII10 = rendimiento de los bonos del Tesoro ligados a la inflación (TIPS) a 10 años, dato diario.")
+nMedia = input.int(50, "Media (sesiones)", minval = 5, group = grpL)
+nAviso = input.int(5, "Ventana del aviso (sesiones)", minval = 1, group = grpL)
+
+grpS = "Sesiones y día anterior"
+verPD = input.bool(true, "PDH / PDL (máximo y mínimo del día anterior)", group = grpS)
+verAsia = input.bool(true, "Máx./mín. de Asia", group = grpS)
+verLon = input.bool(true, "Máx./mín. de Londres", group = grpS)
+tz = input.string("America/New_York", "Zona horaria de las sesiones", group = grpS, tooltip = "Las horas de abajo se leen en esta zona. Por defecto, hora de Nueva York (ET).")
+sesAsia = input.session("2000-0200", "Sesión de Asia", group = grpS)
+sesLon = input.session("0200-0500", "Sesión de Londres", group = grpS)
+
+// ---------------------------------------------------------------- lectura de la línea (funciones puras sobre texto)
+// texto asociado a «clave» dentro de «XAU clave=valor;clave=valor»; "" si falta
+f_texto(string seg, string clave) =>
+    string r = ""
+    pares = str.split(seg, ";")
+    for p in pares
+        t = str.trim(p)
+        palabras = str.split(t, " ")
+        ultimo = array.get(palabras, array.size(palabras) - 1)      // «XAU tesis=alcista» → «tesis=alcista»
+        kv = str.split(ultimo, "=")
+        if array.size(kv) == 2 and str.trim(array.get(kv, 0)) == clave
+            r := str.trim(array.get(kv, 1))
+    r
+
+// número asociado a «clave»; na si falta o vale «na»
+f_valor(string seg, string clave) =>
+    t = f_texto(seg, clave)
+    t == "" ? na : str.tonumber(t)
+
+// primer segmento de la línea que empieza por XAU
+f_segmento(string texto) =>
+    string res = ""
+    segs = str.split(texto, "|")
+    for s in segs
+        t = str.trim(s)
+        palabras = str.split(t, " ")
+        if res == "" and array.size(palabras) > 0 and str.upper(array.get(palabras, 0)) == "XAU"
+            res := t
+    res
+
+// «AAAA-MM-DD» → marca de tiempo (ms); na si no es una fecha
+f_fecha(string s) =>
+    p = str.split(s, "-")
+    array.size(p) == 3 ? timestamp("UTC", int(str.tonumber(array.get(p, 0))), int(str.tonumber(array.get(p, 1))), int(str.tonumber(array.get(p, 2))), 0, 0) : na
+
+// texto legible: guiones bajos y medios → espacios, «_p27» → « · p27», «@» → « · »
+f_legible(string s) =>
+    str.replace_all(str.replace_all(str.replace_all(str.replace_all(s, "_p", " · p"), "_", " "), "-", " "), "@", " · ")
+
+seg = f_segmento(linea)
+hayLinea = str.length(str.trim(linea)) > 0
+valido = seg != ""
+
+esOro = forzar or str.upper(syminfo.root) == "XAUUSD" or str.upper(syminfo.root) == "GOLD" or str.upper(syminfo.root) == "GC" or str.upper(syminfo.root) == "MGC"
+
+tesis = valido ? f_texto(seg, "tesis") : ""
+inten = valido ? f_texto(seg, "int") : ""
+flip = valido and esOro ? f_valor(seg, "flip") : na
+cw = valido and esOro ? f_valor(seg, "cw") : na
+pw = valido and esOro ? f_valor(seg, "pw") : na
+em = valido and esOro ? f_valor(seg, "em") : na
+maxg = valido and esOro ? f_valor(seg, "maxg") : na
+ratio = valido ? f_valor(seg, "ratio") : na
+rf = valido ? f_texto(seg, "rf") : ""
+cot = valido ? f_texto(seg, "cot") : ""
+etf = valido ? f_texto(seg, "etf") : ""
+evento = valido ? f_texto(seg, "evento") : ""
+diasLinea = na(f_fecha(rf)) ? na : (timenow - f_fecha(rf)) / 86400000.0
+
+// ---------------------------------------------------------------- parte en vivo: dólar y tipo real
+[dxy, dxyMa] = request.security(simDXY, "D", [close, ta.sma(close, nMedia)])
+[real, real5, realMa] = request.security(simReal, "D", [close, close[nAviso], ta.sma(close, nMedia)])
+[oroD, oroD5] = request.security(syminfo.tickerid, "D", [close, close[nAviso]])
+
+dxySube = not na(dxy) and not na(dxyMa) and dxy > dxyMa
+realSube = not na(real) and not na(realMa) and real > realMa
+realAlza = not na(real) and not na(real5) and real > real5
+oroAlza = not na(oroD) and not na(oroD5) and oroD > oroD5
+avisoOroReal = oroAlza and realAlza
+
+alertcondition(avisoOroReal, "Oro sube con tipo real al alza", "NEXORA Oro: el oro sube con el tipo real al alza en las últimas sesiones")
+
+// ---------------------------------------------------------------- referencias diarias y sesiones
+pdh = request.security(syminfo.tickerid, "D", high[1], lookahead = barmerge.lookahead_on)
+pdl = request.security(syminfo.tickerid, "D", low[1], lookahead = barmerge.lookahead_on)
+cierreAnt = request.security(syminfo.tickerid, "D", close[1], lookahead = barmerge.lookahead_on)
+
+f_sesion(string ses) =>
+    enSes = not na(time(timeframe.period, ses, tz))
+    nueva = enSes and not enSes[1]
+    var float mx = na
+    var float mn = na
+    if nueva
+        mx := high
+        mn := low
+    else if enSes
+        mx := math.max(mx, high)
+        mn := math.min(mn, low)
+    [mx, mn, enSes]
+
+[asiaH, asiaL, enAsia] = f_sesion(sesAsia)
+[lonH, lonL, enLon] = f_sesion(sesLon)
+
+plot(verPD ? pdh : na, "PDH", color = color.new(color.silver, 0), linewidth = 1, style = plot.style_linebr)
+plot(verPD ? pdl : na, "PDL", color = color.new(color.silver, 0), linewidth = 1, style = plot.style_linebr)
+plot(verAsia ? asiaH : na, "Asia máx.", color = color.new(color.orange, 20), linewidth = 1, style = plot.style_linebr)
+plot(verAsia ? asiaL : na, "Asia mín.", color = color.new(color.orange, 20), linewidth = 1, style = plot.style_linebr)
+plot(verLon ? lonH : na, "Londres máx.", color = color.new(color.aqua, 20), linewidth = 1, style = plot.style_linebr)
+plot(verLon ? lonL : na, "Londres mín.", color = color.new(color.aqua, 20), linewidth = 1, style = plot.style_linebr)
+
+// ---------------------------------------------------------------- niveles de GLD (referencia) en precio XAU/USD: líneas finas hasta la última barra
+var line lFlip = na
+var line lCW = na
+var line lPW = na
+var line lMG = na
+var line lUp = na
+var line lDn = na
+var linefill banda = na
+var label eFlip = na
+var label eCW = na
+var label ePW = na
+var label eMG = na
+
+f_linea(line l, float y, color c, string estilo) =>
+    line.delete(l)
+    na(y) ? na : line.new(bar_index - 1, y, bar_index, y, extend = extend.both, color = c, width = 1, style = estilo)
+
+f_etq(label e, float y, string txt, color c) =>
+    label.delete(e)
+    verEtq and not na(y) ? label.new(bar_index, y, "GLD ref. · " + txt + " " + str.tostring(y, "#.#"), style = label.style_label_left, color = color.new(c, 85), textcolor = c, size = size.small) : na
+
+if barstate.islast
+    lFlip := f_linea(lFlip, flip, colFlip, line.style_solid)
+    lCW := f_linea(lCW, cw, colCW, line.style_solid)
+    lPW := f_linea(lPW, pw, colPW, line.style_solid)
+    lMG := f_linea(lMG, verMaxG ? maxg : na, colMG, line.style_dashed)
+    eFlip := f_etq(eFlip, flip, "Gamma Flip", colFlip)
+    eCW := f_etq(eCW, cw, "Call Wall", colCW)
+    ePW := f_etq(ePW, pw, "Put Wall", colPW)
+    eMG := f_etq(eMG, verMaxG ? maxg : na, "Max Gamma", colMG)
+    linefill.delete(banda)
+    line.delete(lUp)
+    line.delete(lDn)
+    if verEM and not na(em) and not na(cierreAnt)
+        lUp := line.new(bar_index - 1, cierreAnt + em, bar_index, cierreAnt + em, extend = extend.both, color = color.new(colEM, 40), width = 1, style = line.style_dotted)
+        lDn := line.new(bar_index - 1, cierreAnt - em, bar_index, cierreAnt - em, extend = extend.both, color = color.new(colEM, 40), width = 1, style = line.style_dotted)
+        banda := linefill.new(lUp, lDn, colEM)
+    else
+        lUp := na
+        lDn := na
+        banda := na
+
+// ---------------------------------------------------------------- panel
+var table tbl = table.new(position.top_right, 2, 11, border_width = 1)
+f_fila(int fila, string a, string b, color cb) =>
+    table.cell(tbl, 0, fila, a, text_color = color.silver, bgcolor = color.new(color.black, 30), text_size = size.small, text_halign = text.align_left)
+    table.cell(tbl, 1, fila, b, text_color = cb, bgcolor = color.new(color.black, 30), text_size = size.small, text_halign = text.align_left)
+
+if barstate.islast
+    cVerde = color.new(#35B26F, 0)
+    cRojo = color.new(#E05A4F, 0)
+    cGris = color.gray
+    f_fila(0, "NEXORA Oro", "en vivo (cierre diario)", color.white)
+    f_fila(1, "Dólar (DXY)", na(dxy) ? "SIN DATO" : str.tostring(dxy, "#.##") + (dxySube ? " · ↑ sobre su media de " : " · ↓ bajo su media de ") + str.tostring(nMedia), na(dxy) ? cGris : dxySube ? cRojo : cVerde)
+    f_fila(2, "Tipo real 10A", na(real) ? "SIN DATO" : str.tostring(real, "#.##") + "% · " + (realSube ? "↑ sobre su media de " : "↓ bajo su media de ") + str.tostring(nMedia), na(real) ? cGris : realSube ? cRojo : cVerde)
+    f_fila(3, "Aviso", avisoOroReal ? "Oro sube con tipo real al alza (" + str.tostring(nAviso) + " sesiones)" : "sin aviso (oro " + (oroAlza ? "sube" : "no sube") + ", tipo real " + (realAlza ? "al alza" : "no al alza") + ")", avisoOroReal ? color.new(#E0B040, 0) : cGris)
+    f_fila(4, "Línea ORO", not hayLinea ? "pega la línea de Telegram" : not valido ? "la línea no empieza por XAU" : "leída", not valido ? cGris : color.white)
+    if valido
+        f_fila(5, "Tesis", tesis == "" ? "SIN DATO" : str.upper(f_legible(tesis)) + (inten == "" or inten == "na" ? "" : " " + str.upper(inten)), color.white)
+        f_fila(6, "COT (dinero gestionado)", cot == "" or cot == "na" ? "SIN DATO" : f_legible(cot), color.white)
+        f_fila(7, "ETF GLD (5 sesiones)", etf == "" or etf == "na" ? "SIN DATO" : etf + " t", color.white)
+        f_fila(8, "Evento ALTA (Madrid)", evento == "" or evento == "na" or evento == "no" ? "ninguno con hora" : f_legible(evento), color.white)
+        f_fila(9, "GLD ref.", na(ratio) ? "sin ratio XAU/GLD" : "ratio " + str.tostring(ratio, "#.####") + " del " + rf + (na(diasLinea) ? "" : diasLinea > 4 ? " · ANTIGUA (" + str.tostring(diasLinea, "#") + " días)" : ""), na(diasLinea) ? cGris : diasLinea > 4 ? cRojo : color.white)
+        f_fila(10, "Aviso", esOro ? "Contexto de mercado, no una entrada" : "el gráfico no es oro: niveles ocultos", cGris)
+    else
+        for i = 5 to 10
+            f_fila(i, "", "", cGris)
