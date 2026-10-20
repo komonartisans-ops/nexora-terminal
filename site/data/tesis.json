@@ -191,9 +191,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -1.05,
+     "ret_pct": -1.38,
      "fecha": "2026-10-20",
-     "precio": 4153.2002
+     "precio": 4139.2998
     },
     "5": {
      "estado": "PENDIENTE"
@@ -233,7 +233,10 @@
    "capturado_utc": "2026-10-19 05:30 UTC",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "ACIERTO",
+     "ret_pct": -1.59,
+     "fecha": "2026-10-20",
+     "precio": 81285.9297
     },
     "5": {
      "estado": "PENDIENTE"
@@ -314,9 +317,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -0.67,
+     "ret_pct": -1.0,
      "fecha": "2026-10-20",
-     "precio": 4153.2002
+     "precio": 4139.2998
     },
     "5": {
      "estado": "PENDIENTE"
@@ -357,9 +360,9 @@
    "horizontes": {
     "1": {
      "estado": "ACIERTO",
-     "ret_pct": -0.48,
-     "fecha": "2026-10-20",
-     "precio": 81672.1797
+     "ret_pct": -0.26,
+     "fecha": "2026-10-19",
+     "precio": 81853.5391
     },
     "5": {
      "estado": "PENDIENTE"
@@ -440,9 +443,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -0.67,
+     "ret_pct": -1.0,
      "fecha": "2026-10-20",
-     "precio": 4153.2002
+     "precio": 4139.2998
     },
     "5": {
      "estado": "PENDIENTE"
@@ -882,9 +885,9 @@
     },
     "5": {
      "estado": "ACIERTO",
-     "ret_pct": -1.93,
-     "fecha": "2026-10-20",
-     "precio": 81672.1797
+     "ret_pct": -1.71,
+     "fecha": "2026-10-19",
+     "precio": 81853.5391
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1580,8 +1583,8 @@
  "resumen": {
   "Bitcoin": {
    "1": {
-    "aciertos": 5,
-    "evaluadas": 8
+    "aciertos": 6,
+    "evaluadas": 9
    },
    "5": {
     "aciertos": 4,
@@ -1647,6 +1650,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-20 07:07 UTC",
+ "generado_utc": "2026-10-20 08:07 UTC",
  "duracion_s": 0.0
 }
