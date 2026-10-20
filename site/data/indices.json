@@ -1,8 +1,8 @@
 {
  "ok": true,
- "generado_utc": "2026-10-20 05:30 UTC",
+ "generado_utc": "2026-10-20 10:18 UTC",
  "metricas": {
-  "generado_utc": "2026-10-20 05:33 UTC",
+  "generado_utc": "2026-10-20 10:21 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer los índices (S&P 500 · Nasdaq 100 · US30 · Russell 2000)",
   "indices": {
    "S&P 500": {
@@ -177,34 +177,34 @@
   },
   "tiempo_real": {
    "SPY": {
-    "precio": 766.48,
-    "cambio_pct": 0.42,
-    "hora": "Oct 19, 2026",
-    "estado_mercado": "Closed"
+    "precio": 766.54,
+    "cambio_pct": 0.01,
+    "hora": "Oct 20, 2026 6:23 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "QQQ": {
-    "precio": 718.36,
-    "cambio_pct": 1.21,
-    "hora": "Oct 19, 2026",
-    "estado_mercado": "Closed"
+    "precio": 715.85,
+    "cambio_pct": -0.35,
+    "hora": "Oct 20, 2026 6:23 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "DIA": {
-    "precio": 518.92,
-    "cambio_pct": -0.03,
-    "hora": "Oct 19, 2026",
-    "estado_mercado": "Closed"
+    "precio": 520.18,
+    "cambio_pct": 0.24,
+    "hora": "Oct 20, 2026 6:16 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "IWM": {
-    "precio": 271.28,
-    "cambio_pct": 0.31,
-    "hora": "Oct 19, 2026",
-    "estado_mercado": "Closed"
+    "precio": 271.51,
+    "cambio_pct": 0.08,
+    "hora": "Oct 20, 2026 6:23 AM ET",
+    "estado_mercado": "Pre-Market"
    },
    "NDX": {
     "precio": 29529.34,
     "cambio_pct": 1.17,
     "hora": "Oct 19, 2026",
-    "estado_mercado": "Closed"
+    "estado_mercado": "Pre-Market"
    }
   },
   "t2Y": {
@@ -521,41 +521,41 @@
    },
    "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "concentracion": {
-    "fecha_pesos": "16-Oct-2026",
+    "fecha_pesos": "19-Oct-2026",
     "pesos": [
      {
       "ticker": "AMZN",
       "nombre": "Amazon.Com Inc",
-      "peso": 22.73
+      "peso": 23.45
      },
      {
       "ticker": "TSLA",
       "nombre": "Tesla Inc",
-      "peso": 17.11
+      "peso": 17.44
      },
      {
       "ticker": "HD",
       "nombre": "Home Depot Inc",
-      "peso": 5.28
+      "peso": 5.2
      },
      {
       "ticker": "TJX",
       "nombre": "Tjx Companies Inc",
-      "peso": 4.39
+      "peso": 4.32
      },
      {
       "ticker": "MCD",
       "nombre": "Mcdonald S Corp",
-      "peso": 4.3
+      "peso": 4.22
      }
     ],
-    "amzn_tsla_peso": 39.84,
+    "amzn_tsla_peso": 40.89,
     "fuente": "State Street SSGA, posiciones diarias de XLY",
     "amzn_13s_pct": 6.02,
     "tsla_13s_pct": -2.87,
-    "contribucion_pp": 0.88,
-    "xly_sin_amzn_tsla_13s_pct": -2.06,
-    "ratio_sin_amzn_tsla_13s_pct": -5.6,
+    "contribucion_pp": 0.91,
+    "xly_sin_amzn_tsla_13s_pct": -2.15,
+    "ratio_sin_amzn_tsla_13s_pct": -5.69,
     "lectura": "MOVIMIENTO AMPLIO (no depende solo de Amazon/Tesla)",
     "nota": "ESTIMACIÓN con los pesos actuales (los pesos cambian con el precio); orientativa."
    }
@@ -568,7 +568,9 @@
     "apalancados_percentil_52s": 42,
     "gestores_neto": 915835,
     "gestores_1s": 9220,
-    "oi": 1931607
+    "oi": 1931607,
+    "apalancados_etiqueta": "corto bajo, percentil 23",
+    "gestores_etiqueta": "largo medio, percentil 41"
    },
    "Nasdaq 100 (mini)": {
     "fecha": "2026-10-13",
@@ -577,7 +579,9 @@
     "apalancados_percentil_52s": 77,
     "gestores_neto": 75323,
     "gestores_1s": 1525,
-    "oi": 279515
+    "oi": 279515,
+    "apalancados_etiqueta": "corto alto, percentil 84",
+    "gestores_etiqueta": "largo medio, percentil 50"
    },
    "Dow (x$5)": {
     "fecha": "2026-10-13",
@@ -586,7 +590,9 @@
     "apalancados_percentil_52s": 100,
     "gestores_neto": 10873,
     "gestores_1s": -8749,
-    "oi": 90364
+    "oi": 90364,
+    "apalancados_etiqueta": "largo alto, percentil 70",
+    "gestores_etiqueta": "largo alto, percentil 74"
    },
    "Russell 2000 (E-mini)": {
     "fecha": "2026-10-13",
@@ -595,7 +601,9 @@
     "apalancados_percentil_52s": 19,
     "gestores_neto": 29528,
     "gestores_1s": -15967,
-    "oi": 444784
+    "oi": 444784,
+    "apalancados_etiqueta": "corto bajo, percentil 13",
+    "gestores_etiqueta": "largo medio, percentil 45"
    }
   },
   "beneficios": {
@@ -1103,7 +1111,7 @@
    {
     "id": "cot_S&P 500 (E-mini)",
     "dato": "COT S&P 500 (E-mini)",
-    "valor": "apalancados -408,726 (+6,361 1s; percentil 52s 42%) · gestores +915,835 (+9,220)",
+    "valor": "apalancados -408,726 (+6,361 1s; percentil 52s 42%) · gestores +915,835 (+9,220) · etiqueta COT (3 años): apalancados corto bajo, percentil 23, gestores largo medio, percentil 41",
     "estado": "CONTEXTO",
     "lectura": "Posicionamiento sin extremos",
     "fuente": "CFTC TFF, posiciones del 2026-10-13"
@@ -1111,7 +1119,7 @@
    {
     "id": "cot_Nasdaq 100 (mini)",
     "dato": "COT Nasdaq 100 (mini)",
-    "valor": "apalancados -11,593 (+7,619 1s; percentil 52s 77%) · gestores +75,323 (+1,525)",
+    "valor": "apalancados -11,593 (+7,619 1s; percentil 52s 77%) · gestores +75,323 (+1,525) · etiqueta COT (3 años): apalancados corto alto, percentil 84, gestores largo medio, percentil 50",
     "estado": "CONTEXTO",
     "lectura": "Posicionamiento sin extremos",
     "fuente": "CFTC TFF, posiciones del 2026-10-13"
@@ -1119,7 +1127,7 @@
    {
     "id": "cot_Dow (x$5)",
     "dato": "COT Dow (x$5)",
-    "valor": "apalancados +2,809 (+6,976 1s; percentil 52s 100%) · gestores +10,873 (-8,749)",
+    "valor": "apalancados +2,809 (+6,976 1s; percentil 52s 100%) · gestores +10,873 (-8,749) · etiqueta COT (3 años): apalancados largo alto, percentil 70, gestores largo alto, percentil 74",
     "estado": "CONTEXTO",
     "lectura": "Apalancados muy largos: posicionamiento saturado",
     "fuente": "CFTC TFF, posiciones del 2026-10-13"
@@ -1127,7 +1135,7 @@
    {
     "id": "cot_Russell 2000 (E-mini)",
     "dato": "COT Russell 2000 (E-mini)",
-    "valor": "apalancados -91,647 (+13,670 1s; percentil 52s 19%) · gestores +29,528 (-15,967)",
+    "valor": "apalancados -91,647 (+13,670 1s; percentil 52s 19%) · gestores +29,528 (-15,967) · etiqueta COT (3 años): apalancados corto bajo, percentil 13, gestores largo medio, percentil 45",
     "estado": "CONTEXTO",
     "lectura": "Posicionamiento sin extremos",
     "fuente": "CFTC TFF, posiciones del 2026-10-13"
@@ -3279,13 +3287,13 @@
    "lectura": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "historico": "Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %).",
    "aviso": "Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
-   "concentracion": "Amazon + Tesla pesan el 39,8 % de XLY (16-Oct-2026); en 13 semanas Amazon +6,0 %, Tesla -2,9 %. Sin ellas, el ratio habría variado -5,6 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla.",
-   "tesis": "XLY/XLP 1,3125 (2026-10-19) · -4,9 % frente a su media de 200 sesiones · 13 semanas -4,0 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 39,8 % de XLY (16-Oct-2026); en 13 semanas Amazon +6,0 %, Tesla -2,9 %. Sin ellas, el ratio habría variado -5,6 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
+   "concentracion": "Amazon + Tesla pesan el 40,9 % de XLY (19-Oct-2026); en 13 semanas Amazon +6,0 %, Tesla -2,9 %. Sin ellas, el ratio habría variado -5,7 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla.",
+   "tesis": "XLY/XLP 1,3125 (2026-10-19) · -4,9 % frente a su media de 200 sesiones · 13 semanas -4,0 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 40,9 % de XLY (19-Oct-2026); en 13 semanas Amazon +6,0 %, Tesla -2,9 %. Sin ellas, el ratio habría variado -5,7 % (estimación): el movimiento es amplio, no depende solo de Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
    "estado_mercado": "DEFENSIVO",
    "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
   },
   "reacciones": null
  },
- "evaluado_utc": "2026-10-20 06:07 UTC",
+ "evaluado_utc": "2026-10-20 10:18 UTC",
  "fedwatch_fecha_precios": "2026-10-20"
 }

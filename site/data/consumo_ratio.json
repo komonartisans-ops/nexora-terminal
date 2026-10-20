@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-20 06:14 UTC",
+ "generado_utc": "2026-10-20 10:18 UTC",
  "fecha_datos": "2026-10-19",
  "filtro_sma200": {
   "ratios": {
@@ -714,5 +714,6 @@
   "Marcador: «cruce_sma200_ratio» (SPY alcista tras un cruce al alza, bajista tras uno a la baja) y «divergencia_ratio» (SPY bajista), a T+20 y T+60 frente a la tasa base; el pasado desde 2010 es backfill."
  ],
  "errores": {},
- "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS, SPY, RSP y ocho sectores SPDR) · FRED (diferenciales ICE BofA IG, BBB, HY, CCC) · reglas de indices.py y ciclo.py"
+ "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS, SPY, RSP y ocho sectores SPDR) · FRED (diferenciales ICE BofA IG, BBB, HY, CCC) · reglas de indices.py y ciclo.py",
+ "duracion_s": 17.2
 }

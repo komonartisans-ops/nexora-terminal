@@ -1,6 +1,6 @@
 {
  "metricas": {
-  "generado_utc": "2026-10-20T05:33:50Z",
+  "generado_utc": "2026-10-20T10:21:36Z",
   "errores": {},
   "reservas": {
    "fecha": "2026-10-14",
@@ -256,20 +256,20 @@
   },
   "adicionales": {
    "stablecoins": {
-    "valor_B": 303.75890651588,
-    "delta_30d_B": 0.23028230088004875,
-    "pct_30d": 0.07586839675355683,
-    "delta_7d_B": -2.3469490131199677
+    "valor_B": 303.73684833848,
+    "delta_30d_B": 0.20822412348002217,
+    "pct_30d": 0.06860114890928037,
+    "delta_7d_B": -2.3690071905199943
    },
    "funding_btc": {
-    "anualizado_7d_pct": 6.114648785102768,
-    "anualizado_30d_pct": 4.821377607276773,
-    "hasta": "2026-10-20T00:00"
+    "anualizado_7d_pct": 6.255775395579797,
+    "anualizado_30d_pct": 4.783463754224509,
+    "hasta": "2026-10-20T08:00"
    },
    "funding_eth": {
-    "anualizado_7d_pct": 5.2398253625664335,
-    "anualizado_30d_pct": 3.9661178591645427,
-    "hasta": "2026-10-20T00:00"
+    "anualizado_7d_pct": 5.391955754834012,
+    "anualizado_30d_pct": 3.963475293262004,
+    "hasta": "2026-10-20T08:00"
    },
    "oi_btc": {
     "valor_B": 3.2989417044657996,
@@ -282,11 +282,11 @@
     "fecha": "2026-10-19"
    },
    "mercado": {
-    "mcap_total_usd": 2756486932414.1357,
-    "volumen_24h_usd": 69005478913.75667,
-    "dominancia_btc_pct": 59.59899022807241,
-    "dominancia_eth_pct": 10.629758675514157,
-    "mcap_cambio_24h_pct": -2.729820820720248
+    "mcap_total_usd": 2744770111723.342,
+    "volumen_24h_usd": 67981792555.679184,
+    "dominancia_btc_pct": 59.59271834568528,
+    "dominancia_eth_pct": 10.60515591471507,
+    "mcap_cambio_24h_pct": -3.19089924372183
    }
   },
   "contexto": {
@@ -338,41 +338,41 @@
    },
    "dvol": {
     "fecha": "2026-10-20",
-    "valor": 37.52,
-    "media_30d": 36.730666666666664,
-    "percentil_1a": 21.83288409703504
+    "valor": 38.23,
+    "media_30d": 36.754333333333335,
+    "percentil_1a": 26.68463611859838
    },
    "opciones": {
-    "put_call_oi": 0.5989723263629956,
-    "oi_total_btc": 391312.5,
-    "precio_ref": 81865.16,
+    "put_call_oi": 0.5945307453320618,
+    "oi_total_btc": 388774.5,
+    "precio_ref": 81513.84,
     "vencimientos": [
      {
       "fecha": "2026-10-30",
-      "oi_btc": 148856.20000000004,
-      "nocional_B": 12.186136629992005
+      "oi_btc": 148768.70000000007,
+      "nocional_B": 12.126708008808004
      },
      {
       "fecha": "2026-10-23",
-      "oi_btc": 15105.000000000004,
-      "nocional_B": 1.2365732418000004
+      "oi_btc": 14969.000000000002,
+      "nocional_B": 1.22018067096
      },
      {
       "fecha": "2026-11-06",
-      "oi_btc": 3640.5999999999995,
-      "nocional_B": 0.29803830149599997
+      "oi_btc": 3911.2999999999997,
+      "nocional_B": 0.31882508239199997
      }
     ]
    },
    "usdt": {
-    "valor_B": 183.00731982659,
-    "delta_30d_B": -0.2986342864100209,
-    "pct_30d": -0.1629157589861626
+    "valor_B": 182.99778030575,
+    "delta_30d_B": -0.3081738072500002,
+    "pct_30d": -0.16811991118413136
    },
    "usdc": {
-    "valor_B": 72.25797033672,
-    "delta_30d_B": -2.08028414028,
-    "pct_30d": -2.798403264800403
+    "valor_B": 72.25246761676,
+    "delta_30d_B": -2.085786860240006,
+    "pct_30d": -2.805805537020433
    }
   }
  },
@@ -726,29 +726,29 @@
     {
      "nombre": "Volatilidad implícita BTC (DVOL)",
      "estado": "NEUTRAL",
-     "valor": "37.5",
-     "lectura": "media 30d 36.7 · percentil 1 año 22",
+     "valor": "38.2",
+     "lectura": "media 30d 36.8 · percentil 1 año 27",
      "fuente": "Deribit"
     },
     {
      "nombre": "Opciones BTC: put/call (open interest)",
      "estado": "FAVORABLE",
-     "valor": "0.60",
-     "lectura": "vencimientos grandes: 2026-10-30 148,856 BTC (~12.2 B$); 2026-10-23 15,105 BTC (~1.2 B$); 2026-11-06 3,641 BTC (~0.3 B$)",
+     "valor": "0.59",
+     "lectura": "vencimientos grandes: 2026-10-30 148,769 BTC (~12.1 B$); 2026-10-23 14,969 BTC (~1.2 B$); 2026-11-06 3,911 BTC (~0.3 B$)",
      "fuente": "Deribit"
     },
     {
      "nombre": "Oferta USDT",
      "estado": "NEUTRAL",
      "valor": "183.0 B$",
-     "lectura": "30d -0.3 B$ (-0.16%) · USDT ≈ demanda offshore",
+     "lectura": "30d -0.3 B$ (-0.17%) · USDT ≈ demanda offshore",
      "fuente": "DefiLlama"
     },
     {
      "nombre": "Oferta USDC",
      "estado": "DESFAVORABLE",
      "valor": "72.3 B$",
-     "lectura": "30d -2.1 B$ (-2.80%) · USDC ≈ demanda regulada/EE. UU.",
+     "lectura": "30d -2.1 B$ (-2.81%) · USDC ≈ demanda regulada/EE. UU.",
      "fuente": "DefiLlama"
     }
    ],
@@ -13318,8 +13318,8 @@
  },
  "errores_historico": {},
  "ok": true,
- "generado_utc": "2026-10-20 05:30 UTC",
- "duracion_s": 52.8,
- "evaluado_utc": "2026-10-20 10:07 UTC",
+ "generado_utc": "2026-10-20 10:18 UTC",
+ "duracion_s": 58.0,
+ "evaluado_utc": "2026-10-20 10:18 UTC",
  "fedwatch_fecha_precios": "2026-10-20"
 }

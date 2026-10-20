@@ -6,7 +6,7 @@
   {
    "activo": "Oro",
    "viento": "EN CONTRA",
-   "texto": "En contra: sube el tipo real (lo que más les pesa). Su movimiento lo explica la macro."
+   "texto": "En contra: sube el tipo real (lo que más les pesa)."
   },
   {
    "activo": "Nasdaq 100",
@@ -174,9 +174,9 @@
    "valor": 7690.73
   },
   "Oro": {
-   "delta": -0.7019108825999432,
+   "delta": -0.6634479221257039,
    "fecha": "2026-10-20",
-   "valor": 4130.89990234375
+   "valor": 4132.5
   },
   "Bitcoin": {
    "delta": -0.20627545137997805,
@@ -199,7 +199,7 @@
   "Oro": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI (hoy ya empujan en sentido contrario).",
-   "hoy": "En contra: sube el tipo real (lo que más les pesa). Su movimiento lo explica la macro.",
+   "hoy": "En contra: sube el tipo real (lo que más les pesa).",
    "semana": "A favor: baja el tipo real (lo que más les ayuda).",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -487,23 +487,23 @@
  },
  "motores_propios": {
   "oro_xau": {
-   "calculado_utc": "2026-10-20 05:30 UTC",
+   "calculado_utc": "2026-10-20 10:18 UTC",
    "ok": true,
    "disponible": true
   },
   "indices": {
-   "calculado_utc": "2026-10-20 05:30 UTC",
+   "calculado_utc": "2026-10-20 10:18 UTC",
    "ok": true,
    "disponible": true
   },
   "liquidez_cripto": {
-   "calculado_utc": "2026-10-20 05:30 UTC",
+   "calculado_utc": "2026-10-20 10:18 UTC",
    "ok": true,
    "disponible": true
   }
  },
  "sencillo_activos": "Empujan a favor: Oro; empujan en contra: S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000; sin ventaja clara: Nasdaq 100 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-20 10:07 UTC",
- "duracion_s": 108.2
+ "generado_utc": "2026-10-20 10:18 UTC",
+ "duracion_s": 108.4
 }
