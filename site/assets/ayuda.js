@@ -192,7 +192,7 @@ function ayGuiaHtml(d, C) {
 
 function pageGuia() {
   const h = head('Guía', 'Cómo leer NEXORA', 'Para quien empieza de cero: qué es, para qué sirve, cómo se lee cada página y qué significan las palabras raras.',
-    'Texto fijo en <a class="src" href="data/ayuda.json">ayuda.json</a>; los ejemplos usan los datos de hoy.') + '<div id="gl-root"><div class="empty" style="height:160px">CARGANDO LA GUÍA…</div></div>';
+    'Texto fijo en <a class="src" href="data/ayuda.json">ayuda.json</a>; los ejemplos usan los datos de hoy.') + '<div class="card" style="margin-bottom:14px"><div class="note" style="margin:0"><b>Aviso legal.</b> NEXORA es una herramienta personal de análisis, con fines educativos e informativos. No es asesoramiento financiero ni una recomendación de compra o venta. Los datos proceden de fuentes públicas citadas en cada bloque y pueden contener retrasos o errores. Operar en mercados conlleva riesgo de pérdida.</div></div>' + '<div id="gl-root"><div class="empty" style="height:160px">CARGANDO LA GUÍA…</div></div>';
   MOUNT.push(async () => {
     const root = document.getElementById('gl-root');
     if (!root) return;

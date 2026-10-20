@@ -492,3 +492,12 @@ dl.gl { margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4p
 @media (max-width: 760px) { .integ { font-size: 9.5px; padding: 2px 6px; } }
 .t td small { display: block; color: var(--dim); font-size: 10px; margin-top: 1px; white-space: normal; }
 @media (max-width: 760px) { .integ { font-size: 0; padding: 2px 6px; } .integ::after { content: 'Int. ' attr(data-c); font-size: 9.5px; } }
+
+/* aviso legal: párrafo en el pie de todas las páginas y franja discreta (cerrable) en la primera visita */
+.aviso-legal-pie { margin: 0 auto 12px; max-width: 900px; line-height: 1.5; color: var(--muted); }
+.aviso-franja { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: flex; align-items: center; gap: 14px; padding: 8px 18px; font-size: 11px; line-height: 1.4; color: var(--muted); background: rgba(16,19,25,.96); border-top: 1px solid var(--border2); }
+.aviso-franja[hidden] { display: none; }
+.aviso-franja span { flex: 1; }
+.aviso-franja button { flex: none; background: none; border: 1px solid var(--border2); border-radius: 6px; color: var(--text); font-size: 11px; padding: 5px 10px; cursor: pointer; }
+.aviso-franja button:hover { background: var(--hover); }
+@media (max-width: 860px) { .aviso-franja { font-size: 10.5px; padding: 8px 12px; gap: 10px; } }
