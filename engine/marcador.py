@@ -23,6 +23,8 @@ Señales y su dirección esperada (reglas FIJAS de este módulo, impresas tambi�
              retornos diarios de las últimas 250 sesiones × √h) O (b) el VIX sube ≥ 20 % (máximo de los cierres del horizonte frente al de referencia).
              Si no ocurre ninguno de los dos, FALLO. Se guardan los dos componentes. Tasa base = frecuencia de ese mismo evento en cualquier ventana de h sesiones
              de las 250 anteriores a la señal (con σ_h y umbral del VIX fijos en la referencia).
+  cruce_sma200_ratio / divergencia_ratio   usos del ratio de consumo (#/consumo, consumo_ratio.py): un cruce VÁLIDO (5 cierres seguidos) de XLY/XLP o RSPD/RSPS sobre/bajo su SMA 200 (diario
+             o semanal) = SPY sube/baja; una divergencia (SPY en máximo de 63 sesiones y RSPD/RSPS > 3 % bajo el suyo) = SPY baja. Se miden SOLO a T+20 y T+60 sobre SPY frente a la tasa base.
   consumo    cambia la tesis de consumo (#/consumo). Activo RSPD/RSPS (ratio de peso igual): CONSUMO FUERTE y DIVERGENCIA MERCADO DEFENSIVO = sube; SE ENFRÍA, CONSUMO DÉBIL y
              DIVERGENCIA MERCADO ADELANTADO = baja; SIN TESIS = no puntuable. Se mide a T+1, T+5 y T+20 igual que el resto (el horizonte que importa es T+20).
   petroleo   cambia la tesis de petróleo (#/petroleo). Activo WTI (precio al contado de Cushing, FRED DCOILWTICO: sin los saltos de vencimiento de los futuros empalmados): ALCISTA = sube;
@@ -66,9 +68,10 @@ MIN_N = 20
 VENTANA_BASE = 250
 MIN_VENTANAS_BASE = 60
 CRIPTO = {"btc"}
-TIPOS_PUNTUABLES = ("tesis", "fed", "skew", "regimen", "liquidez", "consumo", "petroleo")
+TIPOS_PUNTUABLES = ("tesis", "fed", "skew", "regimen", "liquidez", "consumo", "petroleo", "cruce_sma200_ratio", "divergencia_ratio")
+HORIZ_TIPO = {"cruce_sma200_ratio": (20, 60), "divergencia_ratio": (20, 60)}   # los tipos del ratio de consumo se miden a T+20 y T+60 (el resto, a T+1, T+5 y T+20)
 ACT = {"Oro": ("ORO", "oro"), "Nasdaq 100": ("NQ", "ndx"), "S&P 500": ("ES", "spx"), "Bitcoin": ("BTC", "btc")}
-SERIE_DE = {"ORO": "oro", "NQ": "ndx", "ES": "spx", "BTC": "btc", "US2Y": "us2y", "RSPD/RSPS": "rsd", "WTI": "wti"}
+SERIE_DE = {"ORO": "oro", "NQ": "ndx", "ES": "spx", "BTC": "btc", "US2Y": "us2y", "RSPD/RSPS": "rsd", "WTI": "wti", "SPY": "spy"}
 LIQ_ALCISTA = ("GIRO DE LIQUIDEZ EN CURSO", "SEÑALES INICIALES DE GIRO")
 # Versiones de criterio de las SEÑALES de un tipo (las filas ya registradas no se reescriben: cada señal lleva su versión en la columna «umbral»; los resultados quedan donde están).
 CRITERIOS_TIPO = {"petroleo": {"actual": 2, "versiones": {
@@ -357,6 +360,11 @@ def cargar_series(raiz):
         out[k] = [(d, float(v)) for d, v in s if v is not None]
     rsd = ((((leer_json(P(sd, "consumo.json")) or {}).get("graficos") or {}).get("igual") or {}).get("ratio")) or []     # ratio RSPD/RSPS (peso igual) de #/consumo
     out["rsd"] = [(d, float(v)) for d, v in rsd if v is not None]
+    try:                                                       # SPY (cierres diarios guardados por consumo_ratio.py: histórico completo para medir el backfill desde 2010)
+        with open(P(raiz, "data", "spy_cierres.csv"), encoding="utf-8", newline="") as f:
+            out["spy"] = [(r["fecha"], float(r["cierre"])) for r in csv.DictReader(f)]
+    except OSError:
+        out["spy"] = []
     wsp = (((leer_json(P(sd, "petroleo.json")) or {}).get("precios") or {}).get("wti_spot_serie")) or []     # WTI al contado (FRED DCOILWTICO) de #/petroleo
     out["wti"] = [(d, float(v)) for d, v in wsp if v is not None]
     t = ((leer_json(P(sd, "tipos.json")) or {}).get("t2y") or {}).get("serie") or []
@@ -500,7 +508,7 @@ def evaluar(raiz=RAIZ, ahora=None):
         if not clave or not series.get(clave):
             continue
         d = 1 if s["direccion"] == "ALCISTA" else -1
-        for n in HORIZONTES:
+        for n in HORIZ_TIPO.get(s["tipo"], HORIZONTES):
             if (s["id"], str(n)) in hechos:
                 continue
             m = medir_skew(series["spx"], series.get("vix") or [], s["fecha_utc"], n) if es_skew else medir(series[clave], clave, s["fecha_utc"], d, n)
@@ -532,12 +540,12 @@ def resumen(raiz=RAIZ, ahora=None):
     for s in activas:
         o, t = s["origen"], s["tipo"]
         puntuable = t in TIPOS_PUNTUABLES and (t == "skew" or s["direccion"] in ("ALCISTA", "BAJISTA"))
-        d = por.setdefault(o, {}).setdefault(t, {"n_senales": 0, "no_puntuables": 0, "horizontes": {str(h): {"n": 0, "aciertos": 0, "fallos": 0, "neutrales": 0, "pendientes": 0, "comp_caida": 0, "comp_vix": 0, "_ret": [], "_mae": [], "_base": []} for h in HORIZONTES}})
+        d = por.setdefault(o, {}).setdefault(t, {"n_senales": 0, "no_puntuables": 0, "horizontes": {str(h): {"n": 0, "aciertos": 0, "fallos": 0, "neutrales": 0, "pendientes": 0, "comp_caida": 0, "comp_vix": 0, "_ret": [], "_mae": [], "_base": []} for h in HORIZ_TIPO.get(t, HORIZONTES)}})
         d["n_senales"] += 1
         hs = {}
         if not puntuable:
             d["no_puntuables"] += 1
-        for h in HORIZONTES:
+        for h in HORIZ_TIPO.get(t, HORIZONTES):
             x = res.get(s["id"], {}).get(h)
             if not puntuable:
                 continue
@@ -574,7 +582,7 @@ def resumen(raiz=RAIZ, ahora=None):
                 b["diferencia_pp"] = round(b["acierto_pct"] - b["base_media_pct"], 1) if n and base else None
                 b["muestra_insuficiente"] = n < MIN_N
     detalle.sort(key=lambda x: x["fecha_utc"], reverse=True)
-    return {"version": 2, "version_criterio": 2, "generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "ok": True, "min_n": MIN_N, "horizontes": list(HORIZONTES),
+    return {"version": 2, "version_criterio": 2, "generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "ok": True, "min_n": MIN_N, "horizontes": sorted(set(HORIZONTES) | {h for v in HORIZ_TIPO.values() for h in v}), "horizontes_por_tipo": {k: list(v) for k, v in HORIZ_TIPO.items()},
             "criterio": {"version": 2, "neutral": f"|retorno| < {K_NEUTRAL} × σ_h (σ de 250 sesiones × √h; en pb para el 2Y)", "skew": f"caída máxima intrahorizonte ≥ {K_CAIDA:g} σ_h o VIX ≥ +{VIX_SUBE_PCT:g} %", "desde": "2026-10-18"},
             "cambio_criterio": "Criterio v2 (18-oct-2026): el neutral pasa de ±0,1 % fijo a |retorno| < 0,25 × σ_h del activo (σ de 250 sesiones × √h; σ en pb para el 2Y), y el SKEW deja de puntuarse por la dirección del cierre: acierto si el S&P tiene una caída máxima intrahorizonte ≥ 1 σ_h o el VIX sube ≥ 20 %. Todos los resultados, también los de backfill, se recalcularon como filas nuevas con version_criterio = 2; los de v1 se conservan sin tocar en data/marcador_resultados.csv y no se muestran aquí.",
             "series_disponibles": series_ok, "criterios_tipo": CRITERIOS_TIPO,

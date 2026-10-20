@@ -402,6 +402,14 @@ def _petroleo():
         return _sd("petroleo.py (" + type(e).__name__ + ")")
 
 
+def _consumo_ratio():
+    try:
+        import consumo_ratio
+        return consumo_ratio.bloque_contexto()
+    except Exception as e:  # noqa: BLE001
+        return _sd("consumo_ratio.py (" + type(e).__name__ + ")")
+
+
 def _consumo():
     try:
         import consumo
@@ -472,6 +480,7 @@ def construir():
         "marcador": _marcador(),
         "integridad": _integridad(),
         "consumo": _consumo(),
+        "consumo_ratio": _consumo_ratio(),
         "petroleo": _petroleo(),
         "alertas_recientes": [{"fecha_utc": a.get("fecha_utc"), "titulo": a.get("titulo"), "enviada": a.get("enviada"), "l1": a.get("l1")}
                               for a in ((J["alertas"] or {}).get("recientes") or [])[-5:]],
