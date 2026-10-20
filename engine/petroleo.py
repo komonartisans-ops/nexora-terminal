@@ -20,8 +20,8 @@ TESIS DE PETRÓLEO (reglas FIJAS, impresas también en la página; no usan umbra
                 (la página dice qué par se ha usado y data/historico_curva_wti.csv lo registra en la columna «par»).
   INVENTARIOS:  crudo, gasolina y destilados frente a su media de 5 años de la misma semana: por debajo en más de un 2 % vota +1; por encima en más de un 2 % vota −1; si no, 0.
                 La suma de los tres da el voto: ≥ +2 = +1; ≤ −2 = −1; si no, 0.
-  COT:          percentil a 3 años del neto del dinero gestionado en WTI: ≥ 66 = +1; ≤ 34 = −1; si no, 0. (Ese criterio es propio de petróleo: NEXORA no tiene un voto de COT común a oro,
-                índices y divisas; la página enseña las diferencias y qué voto saldría con cada una.)
+  COT:          criterio ÚNICO de NEXORA (cot.py) sobre el percentil a 3 años del neto del dinero gestionado en WTI, solo extremos A LA CONTRA: ≥ 90 = −1 (posicionamiento saturado);
+                ≤ 10 = +1; el resto 0. La etiqueta es el signo del neto + la zona del percentil («largo bajo, percentil 14»); oro e índices muestran la misma etiqueta pero no puntúan.
   RESULTADO: suma de los cuatro votos (necesita dato en PRECIO y en al menos otros dos factores; si no, SIN TESIS por falta de dato). ≥ +2 ALCISTA; ≤ −2 BAJISTA; si no, SIN TESIS.
   INTENSIDAD: FUERTE si la suma es ±3 o más y ningún factor vota en contra; si no, DÉBIL.
   Dirección para el marcador (WTI a T+20): ALCISTA = sube; BAJISTA = baja; SIN TESIS = no puntuable.
@@ -51,7 +51,8 @@ UMBRAL_CURVA_PCT = 0.5
 DIAS_HABILES_MIN_M1 = 5            # con menos días hábiles hasta el vencimiento del 1.er contrato se usa el par 2.º–3.º
 UMBRAL_BRENT_PCT = 10.0            # diferencia (Yahoo BZ=F frente a FRED DCOILBRENTEU, MISMO día) a partir de la cual se abre una discrepancia en #/integridad
 UMBRAL_INV_PCT = 2.0
-COT_ALTO, COT_BAJO = 66, 34
+COT_ALTO, COT_BAJO = 90, 10          # criterio único (cot.py): extremos a la contra
+CRITERIO_VERSION = 2               # v1 (Fase 15, 19-oct-2026): COT a favor de la tendencia, ≥ 66 → +1 / ≤ 34 → −1. v2 (20-oct-2026): criterio único a la contra, ≥ 90 → −1 / ≤ 10 → +1
 MIN_DATOS = 3                       # factores con dato necesarios (PRECIO incluido)
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"}
 EIA_SERIES = {"crudo": ("WCESTUS1", "Crudo (sin SPR)"), "gasolina": ("WGTSTUS1", "Gasolina total"), "destilados": ("WDISTUS1", "Destilados")}
@@ -554,34 +555,6 @@ def relaciones(wti, t5yie, dxy, xle):
 
 
 # ---------------------------------------------------------------- COT del WTI (motor de cot.py)
-def etiqueta_cot(neto, pct):
-    """Lado de la posición (por el SIGNO del neto) y nivel frente a su historia (percentil a 3 años, con los mismos cortes del voto: ≤ 34 bajo, ≥ 66 alto). Un neto positivo nunca se llama «corto»:
-    «largo bajo, percentil 14» = los fondos están largos, pero mucho menos que de costumbre."""
-    lado = "largo" if neto > 0 else "corto" if neto < 0 else "plano"
-    nivel = "bajo" if pct <= COT_BAJO else "alto" if pct >= COT_ALTO else "medio"
-    return f"{lado} {nivel}, percentil {pct}" if lado != "plano" else f"plano, percentil {pct}"
-
-
-def criterios_cot(g, serie):
-    """Cómo trata NEXORA el COT en cada módulo y qué voto saldría HOY con cada criterio (solo informativo: el voto de la tesis no cambia). No existe un criterio de voto común."""
-    p = g["percentil_3a"]
-    valores = [x[1] for x in serie] if serie else []
-    p52 = round(sum(1 for v in valores[-52:] if v <= g["neto"]) / len(valores[-52:]) * 100) if len(valores) >= 20 else None
-    cs = g["cambio_semana"]
-    return [
-        {"clave": "petroleo", "criterio": "Petróleo (este módulo, Fase 15)", "donde": "petroleo.py", "regla": f"percentil a 3 años del neto del dinero gestionado: ≥ {COT_ALTO} = +1; ≤ {COT_BAJO} = −1; si no, 0",
-         "vota": True, "voto_hoy": 1 if p >= COT_ALTO else -1 if p <= COT_BAJO else 0, "dato": f"percentil 3 años {p}"},
-        {"clave": "cot_py", "criterio": "Página Posicionamiento (COT)", "donde": "cot.py · _estado", "regla": "zonas del percentil a 3 años: ≥ 90 extremo largo, ≥ 70 largo elevado, ≤ 30 corto elevado, ≤ 10 extremo corto. Solo etiqueta, SIN voto; "
-         "y se llama «largo/corto» por el percentil, no por el signo del neto (por eso un neto positivo con percentil bajo aparece como «CORTO ELEVADO»)", "vota": False,
-         "voto_hoy": 1 if p >= 70 else -1 if p <= 30 else 0, "dato": f"percentil 3 años {p} → «{g.get('estado')}»"},
-        {"clave": "oro", "criterio": "Oro (monitor)", "donde": "oro_xau.py · COT GOLD", "regla": "dirección = signo del cambio semanal del neto de managed money (↑/↓); el percentil de 52 semanas se muestra pero no entra; no puntúa",
-         "vota": False, "voto_hoy": 1 if cs > 0 else -1 if cs < 0 else 0, "dato": f"cambio semanal {cs:+,}"},
-        {"clave": "indices", "criterio": "Índices (monitor)", "donde": "indices.py · COT", "regla": "percentil de 52 semanas de los fondos apalancados: ≤ 10 «muy cortos», ≥ 90 «muy largos»; fuera de esos extremos «sin extremos»; no puntúa",
-         "vota": False, "voto_hoy": 1 if (p52 is not None and p52 >= 90) else -1 if (p52 is not None and p52 <= 10) else (0 if p52 is not None else None), "dato": f"percentil 52 semanas {p52}" if p52 is not None else "SIN DATO"},
-        {"clave": "contexto", "criterio": "Apetito/aversión al riesgo", "donde": "contexto.py · _senal_cot", "regla": "media del percentil 3 años de AUD, NZD, CAD, SPX, NDX y RUT menos la de JPY y CHF: ≥ +15 apetito, ≤ −15 aversión; no aplica al petróleo",
-         "vota": False, "voto_hoy": None, "dato": "no aplica"},
-    ]
-
 def cot_wti(J):
     if not J:
         return {"estado": "SIN DATO", "motivo": "cot.json no disponible"}
@@ -589,11 +562,12 @@ def cot_wti(J):
     g = c and (c.get("gestores") or c.get("no_comerciales"))
     if not g:
         return {"estado": "SIN DATO", "motivo": "el contrato WTI no está en la última lectura de la CFTC"}
-    voto = 1 if g["percentil_3a"] >= COT_ALTO else -1 if g["percentil_3a"] <= COT_BAJO else 0
+    import cot as _cot
+    voto = _cot.voto(g["percentil_3a"])
     serie = g.get("serie", [])[-104:]
     return {"estado": "OK", "fecha": g["fecha"], "informe": g.get("informe") or "No comerciales (Legacy)", "neto": g["neto"], "largos": g["largos"], "cortos": g["cortos"], "cambio_semana": g["cambio_semana"],
-            "percentil_3a": g["percentil_3a"], "min_3a": g["min_3a"], "max_3a": g["max_3a"], "etiqueta": etiqueta_cot(g["neto"], g["percentil_3a"]), "zona_cot_py": g.get("estado"), "voto": voto,
-            "criterios": criterios_cot(g, serie), "serie": serie, "fuente": "CFTC · Disaggregated, WTI-PHYSICAL NYMEX (código 067651)"}
+            "percentil_3a": g["percentil_3a"], "min_3a": g["min_3a"], "max_3a": g["max_3a"], "etiqueta": _cot.etiqueta(g["neto"], g["percentil_3a"]), "zona": g.get("estado"), "voto": voto,
+            "criterio": f"criterio único de NEXORA: percentil a 3 años, solo extremos a la contra (≥ {COT_ALTO} → −1; ≤ {COT_BAJO} → +1; resto 0)", "serie": serie, "fuente": "CFTC · Disaggregated, WTI-PHYSICAL NYMEX (código 067651)"}
 
 
 # ---------------------------------------------------------------- tesis
@@ -607,7 +581,7 @@ def tesis(precio, curva_, inv, cot):
     v["inventarios"] = None if not votos_inv else (1 if suma_inv >= 2 else -1 if suma_inv <= -2 else 0)
     v["cot"] = cot.get("voto") if cot.get("estado") == "OK" else None
     con_dato = [k for k, x in v.items() if x is not None]
-    base = {"votos": v, "suma_inventarios": suma_inv if votos_inv else None, "factores_con_dato": len(con_dato)}
+    base = {"criterio_version": CRITERIO_VERSION, "votos": v, "suma_inventarios": suma_inv if votos_inv else None, "factores_con_dato": len(con_dato)}
     if v["precio"] is None or len(con_dato) < MIN_DATOS:
         return {**base, "resultado": "SIN TESIS", "intensidad": None, "puntos": None, "motivo": "faltan datos: hacen falta el precio y al menos otros dos factores",
                 "confirmaria": ["que lleguen datos de al menos tres factores"], "invalidaria": ["—"]}
@@ -632,11 +606,11 @@ def _condiciones(res, precio, curva_, inv, cot, v):
     if res == "ALCISTA":
         c = [f"el WTI se mantiene por encima de {sp}", f"el diferencial {par_t} sigue en backwardation (≥ +0,5 %)", "el próximo informe de la EIA muestra otra caída de inventarios de crudo"]
         i = [f"un cierre del WTI por debajo de {sp}", "la curva pasa a contango (≤ −0,5 %)", "los inventarios de crudo suben por encima de su media de 5 años + 2 %" + (f" (hoy {_n(cr['vs_media_5a_pct'], 1)} %)" if cr.get("vs_media_5a_pct") is not None else ""),
-             f"el neto del dinero gestionado cae al percentil {COT_BAJO} o menos"]
+             f"el neto del dinero gestionado llega al percentil {COT_ALTO} o más (posicionamiento saturado: vota −1)"]
     elif res == "BAJISTA":
         c = [f"el WTI se mantiene por debajo de {sp}", "la curva pasa o sigue en contango (≤ −0,5 %)", "el próximo informe de la EIA muestra una acumulación de inventarios de crudo"]
         i = [f"un cierre del WTI por encima de {sp}", "la curva pasa a backwardation (≥ +0,5 %)", "los inventarios de crudo caen por debajo de su media de 5 años − 2 %" + (f" (hoy {_n(cr['vs_media_5a_pct'], 1)} %)" if cr.get("vs_media_5a_pct") is not None else ""),
-             f"el neto del dinero gestionado sube al percentil {COT_ALTO} o más"]
+             f"el neto del dinero gestionado baja al percentil {COT_BAJO} o menos (posicionamiento agotado: vota +1)"]
     else:
         pos = [k for k, x in v.items() if x == 1]
         neg = [k for k, x in v.items() if x == -1]
@@ -645,29 +619,50 @@ def _condiciones(res, precio, curva_, inv, cot, v):
     return c, i
 
 
-def tesis_por_criterio(pw, cur, inv, cot, T):
-    """Qué tesis saldría con el voto de COT de cada criterio de NEXORA (solo informativo: la tesis usa el de petróleo). Rellena cot['criterios'][i]['tesis_con_este_criterio']."""
-    for c in cot.get("criterios") or []:
-        if c.get("voto_hoy") is None:
+EIA_BRENT = "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RBRTE&f=D"
+MES3 = {m: i + 1 for i, m in enumerate("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split())}
+
+
+def parse_eia_diario(html):
+    """Serie diaria de la EIA (LeafHandler …&f=D): una fila por semana «AAAA Mes-dd to Mes-dd» con 5 celdas (lun-vie); las celdas vacías (festivos, sin dato) se saltan. → [(fecha, valor)]."""
+    out = []
+    for fila in re.findall(r"<tr[^>]*>(.*?)</tr>", html, re.S):
+        m = re.search(r"(\d{4}) ([A-Z][a-z]{2})-\s*(\d{1,2}) to", re.sub(r"&nbsp;", " ", fila))
+        if not m or m.group(2) not in MES3:
             continue
-        T2 = tesis(pw, cur, inv, {"estado": "OK", "voto": c["voto_hoy"]})
-        c["tesis_con_este_criterio"] = {"resultado": T2["resultado"], "intensidad": T2["intensidad"], "puntos": T2["puntos"], "cambia": (T2["resultado"], T2["intensidad"]) != (T["resultado"], T["intensidad"])}
+        try:
+            lunes = dt.date(int(m.group(1)), MES3[m.group(2)], int(m.group(3)))
+        except ValueError:
+            continue
+        celdas = re.findall(r"<td class='B3'>(.*?)</td>", fila, re.S)
+        for i, c in enumerate(celdas[:5]):
+            t = re.sub(r"&nbsp;|\s", "", c)
+            if re.fullmatch(r"-?\d+(\.\d+)?", t):
+                out.append((lunes + dt.timedelta(days=i), float(t)))
+    return sorted(set(out))
 
 
-def comparar_brent(yahoo, fred_, umbral=UMBRAL_BRENT_PCT):
+def comparar_brent(yahoo, fred_, umbral=UMBRAL_BRENT_PCT, eia=None):
     """Yahoo BZ=F (futuro) frente a FRED DCOILBRENTEU (Brent fechado) del MISMO día: FRED va retrasado, así que se compara en la última fecha que tienen en común y se muestra la fecha
     de la última lectura de cada uno. Discrepancia si la diferencia de ese día supera el umbral (10 %)."""
     if not yahoo or not fred_:
         return None
-    dy, df = dict(yahoo), dict(fred_)
+    dy, df, de = dict(yahoo), dict(fred_), dict(eia or [])
     comunes = sorted(set(dy) & set(df))
     out = {"yahoo": {"valor": round(yahoo[-1][1], 2), "fecha": yahoo[-1][0].isoformat()}, "fred": {"valor": round(fred_[-1][1], 2), "fecha": fred_[-1][0].isoformat()},
-           "retraso_fred_dias": (yahoo[-1][0] - fred_[-1][0]).days, "umbral_pct": umbral, "mismo_dia": None, "discrepancia": False}
+           "retraso_fred_dias": (yahoo[-1][0] - fred_[-1][0]).days, "umbral_pct": umbral, "mismo_dia": None, "discrepancia": False,
+           "eia": ({"valor": round(eia[-1][1], 2), "fecha": eia[-1][0].isoformat()} if eia else None),
+           "fuentes_independientes": "Yahoo BZ=F es un FUTURO; FRED DCOILBRENTEU y la EIA (RBRTE, Europe Brent Spot Price FOB) son la MISMA serie de precios al contado (FRED la republica): "
+                                     "valen como una sola fuente. La discrepancia se cierra cuando el futuro y el contado coinciden dentro del umbral."}
     if comunes:
         d = comunes[-1]
         dif = round((dy[d] / df[d] - 1) * 100, 6)                  # redondeo: el umbral exacto (10 %) no depende del error de coma flotante
         out["mismo_dia"] = {"fecha": d.isoformat(), "yahoo": round(dy[d], 2), "fred": round(df[d], 2), "dif_pct": round(dif, 2), "dif_usd": round(dy[d] - df[d], 2)}
         out["discrepancia"] = abs(dif) > umbral
+        if d in de:
+            out["mismo_dia"]["eia"] = round(de[d], 2)
+            out["mismo_dia"]["eia_igual_a_fred"] = abs(de[d] - df[d]) < 0.005
+            out["mismo_dia"]["dif_eia_pct"] = round((dy[d] / de[d] - 1) * 100, 2)
     return out
 
 
@@ -687,8 +682,9 @@ def registrar_discrepancia_brent(raiz, comp, ahora):
     ya = previo.get(("BRENT", m["fecha"], "VALOR"))
     if comp["discrepancia"] and (not ya or ya["estado"] != "ABIERTA"):
         filas.append({**base, "id": f"BRENT|{m['fecha']}|VALOR|{stamp}|ABIERTA", "periodo": m["fecha"], "estado": "ABIERTA",
-                      "nota": (f"el mismo día ({m['fecha']}) el futuro BZ=F ({m['yahoo']}) y el Brent fechado de FRED ({m['fred']}) difieren {m['dif_pct']:+.1f} % (> {comp['umbral_pct']:g} %): puede ser físico frente a futuro "
-                               "(escasez física) o un dato mal leído. Revisar; no se corrige ninguno")})
+                      "nota": (f"el mismo día ({m['fecha']}) el futuro BZ=F ({m['yahoo']}) y el Brent al contado de FRED ({m['fred']})"
+                               + (f" = EIA ({m['eia']})" if m.get("eia") is not None else "") + f" difieren {m['dif_pct']:+.1f} % (> {comp['umbral_pct']:g} %): puede ser físico frente a futuro "
+                               "(escasez física) o un dato mal leído. FRED y la EIA son la misma serie: sigue abierta hasta que el futuro y el contado coincidan. Revisar; no se corrige ninguno")})
     elif not comp["discrepancia"] and ya and ya["estado"] == "ABIERTA":
         filas.append({**base, "id": f"BRENT|{m['fecha']}|VALOR|{stamp}|CERRADA", "periodo": m["fecha"], "estado": "CERRADA", "nota": "ya coinciden (diferencia por debajo del umbral)"})
     return I.anadir_csv(P(raiz, "data", "discrepancias.csv"), filas, I.CAMPOS_DISC, lambda r: r["id"])
@@ -799,8 +795,8 @@ def construir(fuentes=None, ahora=None, raiz=None):
     gas = _intentar(err, "fred_GASREGW", lambda: F["fred"]("GASREGW", (hoy - dt.timedelta(days=900)).isoformat()), [])
     rel = relaciones(wti, t5, dxy, xle) if wti else {"wti_cambio_3m_pct": None, "filas": []}
     T = tesis(pw, cur, inv, cot)
-    tesis_por_criterio(pw, cur, inv, cot, T)
-    brent_cmp = comparar_brent(brent if brent is not f_brent else None, f_brent)
+    eia_b = _intentar(err, "eia_brent", lambda: parse_eia_diario(F["eia"](EIA_BRENT)), [])
+    brent_cmp = comparar_brent(brent if brent is not f_brent else None, f_brent, eia=eia_b or None)
     if brent_cmp:
         try:
             registrar_discrepancia_brent(raiz, brent_cmp, ahora)

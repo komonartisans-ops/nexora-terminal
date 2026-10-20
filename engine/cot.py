@@ -63,10 +63,46 @@ def _resumen(serie):
             "serie": [[s[0], s[1]] for s in serie]}
 
 
-def _estado(pct):
-    if pct is None:
+# CRITERIO ÚNICO de COT en todo NEXORA (percentil de 3 años del neto):
+#   ETIQUETA = lado de la posición (SIGNO del neto: largo/corto) + zona del percentil (extremo alto ≥ 90, alto ≥ 70, medio, bajo ≤ 30, extremo bajo ≤ 10).
+#              Un neto positivo nunca se llama «corto»: «largo bajo, percentil 14» = fondos largos, pero mucho menos que de costumbre.
+#   VOTO     = solo extremos A LA CONTRA: percentil ≥ 90 → −1 (posicionamiento saturado), ≤ 10 → +1, resto 0. Solo vota la tesis de petróleo; oro e índices NO puntúan pero muestran la misma etiqueta.
+CORTE_EXTREMO = 10
+ZONAS = ((90, "extremo alto"), (70, "alto"), (31, "medio"), (11, "bajo"), (0, "extremo bajo"))
+
+
+def zona(pct):
+    return next(n for c, n in ZONAS if pct >= c)
+
+
+def lado(neto):
+    return "largo" if neto > 0 else "corto" if neto < 0 else "plano"
+
+
+def etiqueta(neto, pct):
+    """«largo bajo, percentil 14»: signo del neto + zona del percentil de 3 años."""
+    if neto is None or pct is None:
         return "SIN DATO"
-    return "EXTREMO LARGO" if pct >= 90 else "EXTREMO CORTO" if pct <= 10 else "LARGO ELEVADO" if pct >= 70 else "CORTO ELEVADO" if pct <= 30 else "INTERMEDIO"
+    return f"{lado(neto)} {zona(pct)}, percentil {pct}"
+
+
+def voto(pct):
+    """Voto del criterio único: solo extremos a la contra (≥ 90 → −1; ≤ 10 → +1; resto 0). None si no hay percentil."""
+    if pct is None:
+        return None
+    return -1 if pct >= 100 - CORTE_EXTREMO else 1 if pct <= CORTE_EXTREMO else 0
+
+
+def percentil(valores, actual):
+    """Percentil (0-100) de `actual` entre `valores` (posición entre las observaciones, igual que _resumen)."""
+    return round(sum(1 for v in valores if v <= actual) / len(valores) * 100) if valores else None
+
+
+def _estado(pct, neto=None):
+    """Etiqueta corta en mayúsculas para la web: «LARGO BAJO», «CORTO EXTREMO ALTO»… (lado por el signo del neto, zona por el percentil)."""
+    if pct is None or neto is None:
+        return "SIN DATO"
+    return f"{lado(neto)} {zona(pct)}".upper()
 
 
 def medir():
@@ -100,9 +136,9 @@ def medir():
             gs, gnom = _resumen(tff.get(cod)), "Gestores de activos (TFF)"
         fa = _resumen(lev.get(cod)) if k not in ("oro", "wti") else None
         out.append({"clave": k, "nombre": nombre, "grupo": grupo, "codigo": cod, "sin_dato": not (nc or gs),
-                    "no_comerciales": nc and {**nc, "estado": _estado(nc["percentil_3a"])},
-                    "gestores": gs and {**gs, "estado": _estado(gs["percentil_3a"]), "informe": gnom},
-                    "apalancados": fa and {**fa, "estado": _estado(fa["percentil_3a"])}})
+                    "no_comerciales": nc and {**nc, "estado": _estado(nc["percentil_3a"], nc["neto"]), "etiqueta": etiqueta(nc["neto"], nc["percentil_3a"])},
+                    "gestores": gs and {**gs, "estado": _estado(gs["percentil_3a"], gs["neto"]), "etiqueta": etiqueta(gs["neto"], gs["percentil_3a"]), "informe": gnom},
+                    "apalancados": fa and {**fa, "estado": _estado(fa["percentil_3a"], fa["neto"]), "etiqueta": etiqueta(fa["neto"], fa["percentil_3a"])}})
     fechas = [c["no_comerciales"]["fecha"] for c in out if c["no_comerciales"]] + [c["gestores"]["fecha"] for c in out if c["gestores"]]
     fecha = max(fechas)
     # memoria permanente (solo se añade): una fila por contrato y semana de informe
@@ -115,7 +151,7 @@ def medir():
     csvlog.anadir("historico_cot.csv", filas_csv, ("fecha_informe", "contrato", "tipo"))
     return {"fecha_informe": fecha, "publicado": "viernes siguiente, 15:30 ET (datos del martes)", "contratos": out, "errores": err,
             "fuente": "CFTC · Commitments of Traders (API Socrata publicreporting.cftc.gov)", "url": URL_INFORME,
-            "metodo": f"Neto = largos − cortos. Percentil = posición del neto actual entre las ~{ANIOS * 52} semanas anteriores (≥90 extremo largo, ≤10 extremo corto)."}
+            "metodo": f"Neto = largos − cortos. Percentil = posición del neto actual entre las ~{ANIOS * 52} semanas anteriores Etiqueta = lado por el SIGNO del neto + zona del percentil (extremo alto ≥ 90, alto ≥ 70, medio, bajo ≤ 30, extremo bajo ≤ 10). Criterio único de NEXORA: solo los extremos (≥ 90 / ≤ 10) puntúan, a la contra."}
 
 
 if __name__ == "__main__":

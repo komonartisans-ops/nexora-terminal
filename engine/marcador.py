@@ -70,6 +70,10 @@ TIPOS_PUNTUABLES = ("tesis", "fed", "skew", "regimen", "liquidez", "consumo", "p
 ACT = {"Oro": ("ORO", "oro"), "Nasdaq 100": ("NQ", "ndx"), "S&P 500": ("ES", "spx"), "Bitcoin": ("BTC", "btc")}
 SERIE_DE = {"ORO": "oro", "NQ": "ndx", "ES": "spx", "BTC": "btc", "US2Y": "us2y", "RSPD/RSPS": "rsd", "WTI": "wti"}
 LIQ_ALCISTA = ("GIRO DE LIQUIDEZ EN CURSO", "SEÑALES INICIALES DE GIRO")
+# Versiones de criterio de las SEÑALES de un tipo (las filas ya registradas no se reescriben: cada señal lleva su versión en la columna «umbral»; los resultados quedan donde están).
+CRITERIOS_TIPO = {"petroleo": {"actual": 2, "versiones": {
+    "1": {"desde": "2026-10-19", "hasta": "2026-10-20", "regla": "tesis de petróleo con COT a favor de la tendencia: percentil 3 años del dinero gestionado ≥ 66 → +1, ≤ 34 → −1 (Fase 15; sin señales registradas con esta versión)"},
+    "2": {"desde": "2026-10-20", "hasta": None, "regla": "tesis de petróleo con el criterio ÚNICO de COT de NEXORA, solo extremos a la contra: percentil 3 años ≥ 90 → −1, ≤ 10 → +1, resto 0"}}}}
 DIR_CONSUMO = {"CONSUMO FUERTE": "ALCISTA", "DIVERGENCIA MERCADO DEFENSIVO": "ALCISTA", "SE ENFRÍA": "BAJISTA", "CONSUMO DÉBIL": "BAJISTA", "DIVERGENCIA MERCADO ADELANTADO": "BAJISTA"}
 PASOS = {"bajada": -1, "mantener": 0, "subida": 1}
 
@@ -145,7 +149,7 @@ def senal_de_cambio(serie, ts, prev, valor, extra, run_id, origen, nota=""):
         return senal("consumo", "RSPD/RSPS", d, ts, f"{prev} → {valor}", "cambio de la tesis de consumo", "consumo.py (consumo.json)", run_id, origen, nota)
     if serie == "petroleo":
         d = dir_tesis(valor)
-        return senal("petroleo", "WTI", d, ts, f"{prev} → {valor}", "cambio de la tesis de petróleo", "petroleo.py (petroleo.json)", run_id, origen, nota)
+        return senal("petroleo", "WTI", d, ts, f"{prev} → {valor}", f"cambio de la tesis de petróleo · criterio petróleo v{CRITERIOS_TIPO['petroleo']['actual']} (COT único a la contra 90/10)", "petroleo.py (petroleo.json)", run_id, origen, nota)
     if serie == "liquidez":
         d = "ALCISTA" if valor in LIQ_ALCISTA else "NINGUNA"
         return senal("liquidez", "BTC", d, ts, f"{prev} → {valor}", "cambio de la etiqueta de liquidez", "liquidez_cripto.py (liquidez.json)", run_id, origen, nota)
@@ -556,7 +560,7 @@ def resumen(raiz=RAIZ, ahora=None):
             hs[str(h)] = {"estado": x["resultado"], "ret": _num(x["ret"]), "mae": _num(x["mae"]), "unidad": x["unidad"], "base_pct": _num(x["base_pct"]), "fecha_fin": x["fecha_fin"], "sigma_h": _num(x.get("sigma_h")),
                           **({"comp_caida": x.get("comp_caida") == "1", "comp_vix": x.get("comp_vix") == "1", "caida_max_pct": _num(x.get("caida_max_pct")), "vix_max_pct": _num(x.get("vix_max_pct"))} if t == "skew" else {})}
         detalle.append({"id": s["id"], "fecha_utc": s["fecha_utc"], "tipo": t, "activo": s["activo"], "direccion": s["direccion"], "valor": s["valor"], "origen": o,
-                        "run_id": s["run_id"], "nota": s["nota"], "horizontes": hs if puntuable else "SOLO REGISTRO" if t == "reaccion" else "NO PUNTUABLE"})
+                        "run_id": s["run_id"], "nota": s["nota"], "criterio": (s.get("umbral") if t == "petroleo" else None), "horizontes": hs if puntuable else "SOLO REGISTRO" if t == "reaccion" else "NO PUNTUABLE"})
     for o, tipos in por.items():
         for t, d in tipos.items():
             for h, b in d["horizontes"].items():
@@ -573,7 +577,7 @@ def resumen(raiz=RAIZ, ahora=None):
     return {"version": 2, "version_criterio": 2, "generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "ok": True, "min_n": MIN_N, "horizontes": list(HORIZONTES),
             "criterio": {"version": 2, "neutral": f"|retorno| < {K_NEUTRAL} × σ_h (σ de 250 sesiones × √h; en pb para el 2Y)", "skew": f"caída máxima intrahorizonte ≥ {K_CAIDA:g} σ_h o VIX ≥ +{VIX_SUBE_PCT:g} %", "desde": "2026-10-18"},
             "cambio_criterio": "Criterio v2 (18-oct-2026): el neutral pasa de ±0,1 % fijo a |retorno| < 0,25 × σ_h del activo (σ de 250 sesiones × √h; σ en pb para el 2Y), y el SKEW deja de puntuarse por la dirección del cierre: acierto si el S&P tiene una caída máxima intrahorizonte ≥ 1 σ_h o el VIX sube ≥ 20 %. Todos los resultados, también los de backfill, se recalcularon como filas nuevas con version_criterio = 2; los de v1 se conservan sin tocar en data/marcador_resultados.csv y no se muestran aquí.",
-            "series_disponibles": series_ok,
+            "series_disponibles": series_ok, "criterios_tipo": CRITERIOS_TIPO,
             "resumen": por, "n_senales": len(activas), "n_anuladas": len(anuladas), "senales": detalle[:400],
             "reglas": "Señales y su dirección esperada" + __doc__.split("Señales y su dirección esperada")[1].strip(),
             "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas."}

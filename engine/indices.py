@@ -146,13 +146,19 @@ def amplitud_mercado():
     return {"todas": res(todo), "grandes_10B": res(grandes)}
 
 
+def _etq_cot(serie, neto):
+    """Etiqueta única de COT de NEXORA (signo del neto + zona del percentil de 3 años); SIN DATO con menos de 100 semanas. No puntúa en este monitor."""
+    import cot as _c
+    return _c.etiqueta(neto, round(sum(1 for v in serie if v <= neto) / len(serie) * 100)) if len(serie) >= 100 else "SIN DATO"
+
+
 def cftc_indices():
     """CFTC Traders in Financial Futures: fondos apalancados y gestores de activos en futuros de índices."""
     codes = {"S&P 500 (E-mini)": "13874A", "Nasdaq 100 (mini)": "209742", "Dow (x$5)": "124603", "Russell 2000 (E-mini)": "239742"}
     out = {}
     for nm, c in codes.items():
         rows = get_json("https://publicreporting.cftc.gov/resource/gpe5-46if.json?cftc_contract_market_code=" + c +
-                        "&$order=report_date_as_yyyy_mm_dd%20DESC&$limit=60&$select=report_date_as_yyyy_mm_dd,lev_money_positions_long,"
+                        "&$order=report_date_as_yyyy_mm_dd%20DESC&$limit=160&$select=report_date_as_yyyy_mm_dd,lev_money_positions_long,"
                         "lev_money_positions_short,asset_mgr_positions_long,asset_mgr_positions_short,open_interest_all")
         h = sorted(rows, key=lambda r: r["report_date_as_yyyy_mm_dd"])
         g = lambda r, k: int(float(r.get(k) or 0))  # noqa: E731
@@ -161,7 +167,8 @@ def cftc_indices():
         last52 = lev[-52:]
         out[nm] = {"fecha": h[-1]["report_date_as_yyyy_mm_dd"][:10], "apalancados_neto": lev[-1], "apalancados_1s": lev[-1] - lev[-2],
                    "apalancados_percentil_52s": round(sum(x <= lev[-1] for x in last52) / len(last52) * 100),
-                   "gestores_neto": am[-1], "gestores_1s": am[-1] - am[-2], "oi": g(h[-1], "open_interest_all")}
+                   "gestores_neto": am[-1], "gestores_1s": am[-1] - am[-2], "oi": g(h[-1], "open_interest_all"),
+                   "apalancados_etiqueta": _etq_cot(lev[-156:], lev[-1]), "gestores_etiqueta": _etq_cot(am[-156:], am[-1])}
     return out
 
 
@@ -969,6 +976,7 @@ def evaluar(M, fedwatch=None, ism=None):
                    "estado": CTX, "lectura": ("Apalancados muy cortos: riesgo de cierre de cortos (short squeeze)" if v["apalancados_percentil_52s"] <= 10 else
                                               "Apalancados muy largos: posicionamiento saturado" if v["apalancados_percentil_52s"] >= 90 else "Posicionamiento sin extremos"),
                    "fuente": f"CFTC TFF, posiciones del {v['fecha']}"})
+        AD[-1]["valor"] += f" · etiqueta COT (3 años): apalancados {v['apalancados_etiqueta']}, gestores {v['gestores_etiqueta']}"
     for k, nm in (("nasdaq_real10", "¿SE CUMPLE Nasdaq ↔ 10Y real?"), ("sp_dxy", "¿SE CUMPLE S&P ↔ DXY?"), ("sp_10y", "Correlación S&P ↔ 10Y (bolsa-bonos)")):
         r = RL.get(k)
         if r:

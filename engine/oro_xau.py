@@ -182,6 +182,17 @@ def gld_holdings():
     return out
 
 
+def _pct3(cot, neto):
+    """Percentil a 3 años (156 semanas) del neto de managed money: criterio único de COT de NEXORA (None con menos de 100 semanas)."""
+    h = [x["mm_neto"] for x in cot[-156:]]
+    return round(sum(1 for v in h if v <= neto) / len(h) * 100) if len(h) >= 100 else None
+
+
+def _etq3(cot, neto):
+    import cot as _c
+    return _c.etiqueta(neto, _pct3(cot, neto))
+
+
 def cftc_gold(n: int = 160):
     """CFTC Disaggregated Futures Only, COMEX Gold (088691). Posiciones del martes, publicado el viernes."""
     rows = get_json("https://publicreporting.cftc.gov/resource/72hh-3qpy.json?cftc_contract_market_code=088691"
@@ -366,6 +377,7 @@ def medir():
         M["cot"] = {"fecha": last["fecha"], "mm_neto": last["mm_neto"], "mm_neto_1s": last["mm_neto"] - prev["mm_neto"],
                     "mm_largos_1s": last["mm_largos"] - prev["mm_largos"], "mm_cortos_1s": last["mm_cortos"] - prev["mm_cortos"],
                     "mm_percentil_52s": round(sum(h <= last["mm_neto"] for h in hist) / len(hist) * 100),
+                    "mm_percentil_3a": _pct3(cot, last["mm_neto"]), "mm_etiqueta": _etq3(cot, last["mm_neto"]),
                     "comerciales_neto": last["comerciales_neto"], "comerciales_1s": last["comerciales_neto"] - prev["comerciales_neto"],
                     "oi": last["oi"], "oi_1s": last["oi"] - prev["oi"], "oi_1s_pct": r2((last["oi"] / prev["oi"] - 1) * 100),
                     "fecha_previa": prev["fecha"], "fuente": "CFTC Disaggregated Futures Only, COMEX Gold 088691 (posiciones del martes)"}
@@ -674,7 +686,7 @@ def evaluar(M, fedwatch=None):
         quien = ("managed money AUMENTA neto" if ct["mm_neto_1s"] > 0 else "managed money REDUCE neto") + \
                 (" (salen largos)" if ct["mm_largos_1s"] < 0 and ct["mm_neto_1s"] < 0 else " (cubren cortos)" if ct["mm_cortos_1s"] < 0 and ct["mm_neto_1s"] > 0 else "")
         add("cot", "COT GOLD", "Managed Money + Commercials", "↑" if ct["mm_neto_1s"] > 0 else "↓",
-            f"MM neto {ct['mm_neto']:+,} ({ct['mm_neto_1s']:+,} en 1s · percentil 52s {ct['mm_percentil_52s']}%) · comerciales {ct['comerciales_neto']:+,} ({ct['comerciales_1s']:+,})",
+            f"MM neto {ct['mm_neto']:+,} ({ct['mm_neto_1s']:+,} en 1s · percentil 52s {ct['mm_percentil_52s']}%) · etiqueta COT (3 años): {ct['mm_etiqueta']} · comerciales {ct['comerciales_neto']:+,} ({ct['comerciales_1s']:+,})",
             CTX, f"{quien}. Depende de quién reduce/aumenta (CH). Posiciones del {ct['fecha']}.", ct["fuente"], puntua=False)
     # ETF
     et = M.get("etf")

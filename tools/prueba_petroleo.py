@@ -182,11 +182,11 @@ assert t["resultado"] == "ALCISTA" and t["factores_con_dato"] == 3 and t["puntos
 t = P.tesis(PR, cv("ESCASEZ"), iv(1, 1, 1), ct_(1))
 assert all(isinstance(x, list) and x for x in (t["confirmaria"], t["invalidaria"])) and "90,00 $" in t["confirmaria"][0]
 assert P.tesis(PRB, cv("SOBRA"), iv(-1, -1, -1), ct_(-1))["confirmaria"][0].startswith("el WTI se mantiene por debajo")
-cot_alto = P.cot_wti({"contratos": [{"clave": "wti", "gestores": {"percentil_3a": 66, "fecha": "2026-10-13", "neto": 1, "largos": 2, "cortos": 1, "cambio_semana": 0, "min_3a": 0, "max_3a": 5}}]})
-cot_bajo = P.cot_wti({"contratos": [{"clave": "wti", "gestores": {"percentil_3a": 34, "fecha": "2026-10-13", "neto": 1, "largos": 2, "cortos": 1, "cambio_semana": 0, "min_3a": 0, "max_3a": 5}}]})
+cot_alto = P.cot_wti({"contratos": [{"clave": "wti", "gestores": {"percentil_3a": 90, "fecha": "2026-10-13", "neto": 1, "largos": 2, "cortos": 1, "cambio_semana": 0, "min_3a": 0, "max_3a": 5}}]})
+cot_bajo = P.cot_wti({"contratos": [{"clave": "wti", "gestores": {"percentil_3a": 10, "fecha": "2026-10-13", "neto": 1, "largos": 2, "cortos": 1, "cambio_semana": 0, "min_3a": 0, "max_3a": 5}}]})
 cot_med = P.cot_wti({"contratos": [{"clave": "wti", "gestores": {"percentil_3a": 50, "fecha": "2026-10-13", "neto": 1, "largos": 2, "cortos": 1, "cambio_semana": 0, "min_3a": 0, "max_3a": 5}}]})
-assert (cot_alto["voto"], cot_bajo["voto"], cot_med["voto"]) == (1, -1, 0) and P.cot_wti(None)["estado"] == "SIN DATO" and P.cot_wti({"contratos": []})["estado"] == "SIN DATO"
-print("7) OK tesis: 4 votos = ALCISTA FUERTE; +2 con un voto en contra = DÉBIL; −2 = BAJISTA DÉBIL; −4 = BAJISTA FUERTE; 0/±1 = SIN TESIS; sin precio o con < 3 factores = SIN TESIS; COT ≥ 66 → +1, ≤ 34 → −1")
+assert (cot_alto["voto"], cot_bajo["voto"], cot_med["voto"]) == (-1, 1, 0) and P.cot_wti(None)["estado"] == "SIN DATO" and P.cot_wti({"contratos": []})["estado"] == "SIN DATO"
+print("7) OK tesis: 4 votos = ALCISTA FUERTE; +2 con un voto en contra = DÉBIL; −2 = BAJISTA DÉBIL; −4 = BAJISTA FUERTE; 0/±1 = SIN TESIS; sin precio o con < 3 factores = SIN TESIS; COT ≥ 90 → −1, ≤ 10 → +1")
 
 # ---------------------------------------------------------------- 8) relaciones (no puntúan)
 n = 90
@@ -243,7 +243,7 @@ assert J["tesis"]["resultado"] in ("ALCISTA", "BAJISTA", "SIN TESIS") and not J[
 assert J["precios"]["wti"]["contrato_cl_f"] == "CLZ26.NYM" and J["precios"]["wti"]["aviso_empalme"], "el empalme se corrige en construir()"
 assert J["curva"]["par_usado"] == "2-3" and J["curva"]["m1"] == "CLZ26.NYM" and J["curva"]["m2"] == "CLF27.NYM" and J["curva"]["historico_propio"]["dias"] == 1 and os.path.exists(os.path.join(T, "data", "historico_curva_wti.csv"))
 assert J["plataformas"]["estado"] == "SIN DATO" and "bakerhughes" in J["plataformas"]["motivo"].lower() and J["inventarios"]["proximo_informe"]["fecha"] == "2026-10-21"
-assert J["gasolina"]["consumo"]["tesis"] == "DIVERGENCIA MERCADO DEFENSIVO" and J["cot"]["voto"] == -1 and len(J["reglas"]) >= 6 and len(J["precios"]["wti_spot_serie"]) > 100
+assert J["gasolina"]["consumo"]["tesis"] == "DIVERGENCIA MERCADO DEFENSIVO" and J["cot"]["voto"] == 0 and len(J["reglas"]) >= 6 and len(J["precios"]["wti_spot_serie"]) > 100
 assert J["precios"]["segunda_fuente"]["wti"]["fred"] == 101.9
 # cada fuente falla por separado
 def sin(*nombres):
@@ -389,33 +389,57 @@ h3 = P.historico_propio(T, P.curva(ctx(D(2026, 10, 14)), D(2026, 10, 14)), en("2
 assert len(open(ruta, encoding="utf-8").read().splitlines()) == 4 and h3["par"] == "2-3"
 print("13) OK curva: 1 día hábil → par 2.º–3.º (dic/ene) con el motivo y el 1.º–2.º como referencia; 5 días hábiles → 1.º–2.º; 4 → 2.º–3.º; sin 3.º → 1.º–2.º con aviso; histórico con columna «par» (fila antigua intacta = 1-2) y percentil por par")
 
-# ---------------------------------------------------------------- 14) COT: etiqueta por el signo del neto y criterios de NEXORA
-assert P.etiqueta_cot(40574, 14) == "largo bajo, percentil 14", P.etiqueta_cot(40574, 14)
-assert P.etiqueta_cot(-40574, 14) == "corto bajo, percentil 14" and P.etiqueta_cot(5000, 80) == "largo alto, percentil 80" and P.etiqueta_cot(-5000, 50) == "corto medio, percentil 50" and P.etiqueta_cot(0, 50) == "plano, percentil 50"
-assert P.etiqueta_cot(1, 34) == "largo bajo, percentil 34" and P.etiqueta_cot(1, 66) == "largo alto, percentil 66" and P.etiqueta_cot(1, 35) == "largo medio, percentil 35"
+# ---------------------------------------------------------------- 14) COT: criterio ÚNICO (etiqueta por el signo del neto; voto solo en extremos a la contra)
+import cot as CO  # noqa: E402
+import indices as IX  # noqa: E402
+import oro_xau as OX  # noqa: E402
+assert CO.etiqueta(40574, 14) == "largo bajo, percentil 14", CO.etiqueta(40574, 14)
+assert CO.etiqueta(-40574, 14) == "corto bajo, percentil 14" and CO.etiqueta(5000, 80) == "largo alto, percentil 80" and CO.etiqueta(-5000, 50) == "corto medio, percentil 50" and CO.etiqueta(0, 50) == "plano medio, percentil 50"
+assert [CO.zona(p) for p in (0, 10, 11, 30, 31, 69, 70, 89, 90, 100)] == ["extremo bajo", "extremo bajo", "bajo", "bajo", "medio", "medio", "alto", "alto", "extremo alto", "extremo alto"]
+assert CO._estado(14, 40574) == "LARGO BAJO" and CO._estado(95, -1) == "CORTO EXTREMO ALTO" and CO._estado(None, 5) == "SIN DATO" and CO.etiqueta(None, 5) == "SIN DATO"
+assert [CO.voto(p) for p in (0, 10, 11, 50, 89, 90, 100)] == [1, 1, 0, 0, 0, -1, -1] and CO.voto(None) is None, "solo extremos, a la contra: ≥ 90 → −1; ≤ 10 → +1"
 serie52 = [[f"2026-01-{i:02d}", 100000 - i * 2000] for i in range(1, 29)] + [[f"2026-02-{i:02d}", 30000 + i * 100] for i in range(1, 29)]
-g = {"percentil_3a": 14, "neto": 40574, "cambio_semana": -13024, "estado": "CORTO ELEVADO", "fecha": "2026-10-13", "largos": 171973, "cortos": 131399, "min_3a": -38154, "max_3a": 254544, "serie": serie52,
-     "informe": "Dinero gestionado (Disaggregated)"}
-cw = P.cot_wti({"contratos": [{"clave": "wti", "gestores": g}]})
-assert cw["etiqueta"] == "largo bajo, percentil 14" and cw["zona_cot_py"] == "CORTO ELEVADO" and cw["voto"] == -1, "la etiqueta es la nueva; el voto (−1) y la zona de cot.py no cambian"
-K = {x["clave"]: x for x in cw["criterios"]}
-assert [x["clave"] for x in cw["criterios"]] == ["petroleo", "cot_py", "oro", "indices", "contexto"]
-assert (K["petroleo"]["voto_hoy"], K["cot_py"]["voto_hoy"], K["oro"]["voto_hoy"]) == (-1, -1, -1) and K["petroleo"]["vota"] is True and K["cot_py"]["vota"] is False and K["contexto"]["voto_hoy"] is None
-assert K["indices"]["voto_hoy"] == 0 and "percentil 52 semanas" in K["indices"]["dato"], "con percentil 52s fuera de extremos (≤ 10 / ≥ 90) el criterio de índices daría 0"
-cw2 = P.cot_wti({"contratos": [{"clave": "wti", "gestores": {**g, "percentil_3a": 95, "cambio_semana": 500}}]})
-v2 = {x["clave"]: x["voto_hoy"] for x in cw2["criterios"]}
-assert v2["cot_py"] == 1 and v2["oro"] == 1 and cw2["voto"] == 1
-cwx = P.cot_wti({"contratos": [{"clave": "wti", "gestores": g}]})
-Tx = P.tesis({"valor": 100.0, "sma200": 90.0}, {"estado": "ESCASEZ"}, iv(1, 1, 1), cwx)
-assert (Tx["resultado"], Tx["intensidad"], Tx["puntos"]) == ("ALCISTA", "DÉBIL", 2)
-P.tesis_por_criterio({"valor": 100.0, "sma200": 90.0}, {"estado": "ESCASEZ"}, iv(1, 1, 1), cwx, Tx)
-alt = {x["clave"]: x.get("tesis_con_este_criterio") for x in cwx["criterios"]}
-assert alt["contexto"] is None and alt["petroleo"]["cambia"] is False and alt["oro"]["cambia"] is False and alt["cot_py"]["cambia"] is False
-assert alt["indices"] == {"resultado": "ALCISTA", "intensidad": "FUERTE", "puntos": 3, "cambia": True}, alt["indices"]
-assert Tx["votos"]["cot"] == -1, "el voto de la tesis no cambia"
-J = P.construir({"yahoo": yahoo_sim, "fred": fred_sim, "eia": eia_sim, "cot": lambda: {"contratos": [{"clave": "wti", "gestores": g}]}, "consumo": lambda: None}, en("2026-10-19", "15:00"), nueva())
-assert all("tesis_con_este_criterio" in x for x in J["cot"]["criterios"] if x["voto_hoy"] is not None), "construir() rellena las tesis alternativas"
-print("14) OK COT: «largo bajo, percentil 14» (neto positivo nunca «corto»); 5 criterios de NEXORA con su voto de hoy: petróleo −1, página COT −1, oro −1, índices 0 (CAMBIARÍA), contexto no aplica; el voto de la tesis (−1) no cambia")
+
+
+def gx(pct, neto=40574, **kw):
+    return {"percentil_3a": pct, "neto": neto, "cambio_semana": -13024, "estado": CO._estado(pct, neto), "fecha": "2026-10-13", "largos": 171973, "cortos": 131399, "min_3a": -38154, "max_3a": 254544,
+            "serie": serie52, "informe": "Dinero gestionado (Disaggregated)", **kw}
+
+
+cw = P.cot_wti({"contratos": [{"clave": "wti", "gestores": gx(14)}]})
+assert cw["etiqueta"] == "largo bajo, percentil 14" and cw["zona"] == "LARGO BAJO" and cw["voto"] == 0, "hoy: largo bajo, sin extremo → voto 0 (antes −1 con el criterio de la Fase 15)"
+for pct, v in ((66, 0), (34, 0), (89, 0), (90, -1), (99, -1), (11, 0), (10, 1), (0, 1)):
+    assert P.cot_wti({"contratos": [{"clave": "wti", "gestores": gx(pct)}]})["voto"] == v, (pct, v)
+assert P.cot_wti({"contratos": [{"clave": "wti", "gestores": gx(5, neto=-300)}]})["etiqueta"] == "corto extremo bajo, percentil 5"
+assert "criterios" not in cw and "ÚNICO" not in cw["criterio"].upper() or "único" in cw["criterio"]
+# la tesis de hoy con el voto nuevo: precio +1, curva +1, inventarios +1, COT 0 = ALCISTA FUERTE (+3); con el criterio anterior era ALCISTA DÉBIL (+2)
+Tn = P.tesis({"valor": 100.0, "sma200": 90.0}, {"estado": "ESCASEZ"}, iv(1, 1, 1), cw)
+assert (Tn["resultado"], Tn["intensidad"], Tn["puntos"], Tn["criterio_version"]) == ("ALCISTA", "FUERTE", 3, 2)
+To = P.tesis({"valor": 100.0, "sma200": 90.0}, {"estado": "ESCASEZ"}, iv(1, 1, 1), {"estado": "OK", "voto": -1})
+assert (To["resultado"], To["intensidad"], To["puntos"]) == ("ALCISTA", "DÉBIL", 2), "con el voto antiguo (−1) sería DÉBIL"
+Ts = P.tesis({"valor": 100.0, "sma200": 90.0}, {"estado": "ESCASEZ"}, iv(1, 1, 1), P.cot_wti({"contratos": [{"clave": "wti", "gestores": gx(95)}]}))
+assert (Ts["resultado"], Ts["intensidad"], Ts["puntos"]) == ("ALCISTA", "DÉBIL", 2) and "percentil 90 o más" in Ts["invalidaria"][3], "un COT saturado (≥ 90) vota −1"
+# oro e índices: misma etiqueta, sin puntuar (los dos mantienen su lectura propia)
+assert OX._pct3([{"mm_neto": i} for i in range(160)], 150) == 94 and OX._pct3([{"mm_neto": i} for i in range(60)], 5) is None, "con menos de 100 semanas, SIN DATO"
+assert OX._etq3([{"mm_neto": i} for i in range(160)], 150) == "largo extremo alto, percentil 94" and IX._etq_cot(list(range(156)), 10) == "largo extremo bajo, percentil 7" and IX._etq_cot(list(range(50)), 10) == "SIN DATO"
+J = P.construir({"yahoo": yahoo_sim, "fred": fred_sim, "eia": eia_sim, "cot": lambda: {"contratos": [{"clave": "wti", "gestores": gx(14)}]}, "consumo": lambda: None}, en("2026-10-19", "15:00"), nueva())
+assert J["cot"]["voto"] == 0 and J["tesis"]["criterio_version"] == 2 and J["tesis"]["votos"]["cot"] == 0
+print("14) OK COT criterio único: «largo bajo, percentil 14» (neto positivo nunca «corto»); voto solo en extremos a la contra (≥ 90 → −1, ≤ 10 → +1, 66/34 ya no puntúan); hoy el voto pasa de −1 a 0 y la tesis de ALCISTA DÉBIL (+2) a ALCISTA FUERTE (+3); oro e índices muestran la misma etiqueta sin puntuar")
+
+# ---------------------------------------------------------------- 14b) marcador: nueva versión de criterio sin tocar lo anterior
+import marcador as MC  # noqa: E402
+assert MC.CRITERIOS_TIPO["petroleo"]["actual"] == 2 and set(MC.CRITERIOS_TIPO["petroleo"]["versiones"]) == {"1", "2"} and MC.CRITERIOS_TIPO["petroleo"]["versiones"]["1"]["hasta"] == "2026-10-20"
+sg = MC.senal_de_cambio("petroleo", "2026-10-20 10:00", "SIN TESIS", "ALCISTA", None, "run-x", "vivo")
+assert sg["tipo"] == "petroleo" and sg["direccion"] == "ALCISTA" and "criterio petróleo v2" in sg["umbral"] and "90/10" in sg["umbral"], sg
+T = nueva()
+filas_antes = [{"id": "petroleo-wti-v1", "fecha_utc": "2026-10-19 12:00", "tipo": "petroleo", "activo": "WTI", "direccion": "ALCISTA", "valor": "SIN TESIS → ALCISTA", "umbral": "cambio de la tesis de petróleo (v1)", "fuente": "x",
+                "run_id": "r", "origen": "vivo", "estado": "ACTIVA", "anula_id": "", "nota": ""}]
+MC.anadir(os.path.join(T, "data", "marcador_senales.csv"), filas_antes, MC.CAMPOS, lambda r: r["id"])
+antes = open(os.path.join(T, "data", "marcador_senales.csv"), encoding="utf-8").read()
+R = MC.resumen(T, en("2026-10-20", "12:00"))
+assert R["criterios_tipo"]["petroleo"]["actual"] == 2 and open(os.path.join(T, "data", "marcador_senales.csv"), encoding="utf-8").read() == antes, "el resumen no reescribe las señales anteriores"
+assert [x["criterio"] for x in R["senales"] if x["tipo"] == "petroleo"] == ["cambio de la tesis de petróleo (v1)"], "la señal antigua conserva su propio criterio (v1)"
+print("14b) OK marcador: criterio de petróleo v2 registrado (v1 hasta el 20-oct); las señales nuevas llevan «criterio petróleo v2 (COT único a la contra 90/10)» y las antiguas conservan el suyo; nada se reescribe")
 
 # ---------------------------------------------------------------- 15) Brent: BZ=F frente a DCOILBRENTEU del MISMO día y discrepancia > 10 % en integridad
 yb = [(D(2026, 10, 12) + dt.timedelta(days=i), 105.0 + i) for i in range(0, 8)]            # 12…19 oct
@@ -447,5 +471,37 @@ if J["precios"]["brent_comparacion"]["discrepancia"]:
     ji = I.construir(T, en("2026-10-19", "15:30"))
     assert [(d["serie"], d["periodo"]) for d in ji["discrepancias_abiertas"]] == [("BRENT", J["precios"]["brent_comparacion"]["mismo_dia"]["fecha"])], "#/integridad la muestra como discrepancia abierta"
 print("15) OK Brent: compara el MISMO día (14-oct: BZ=F 107,00 frente a FRED 126,55) y enseña la fecha de cada uno; 10,0 % exacto no es discrepancia; > 10 % abre una discrepancia BRENT en integridad, la siguiente comparación cierra la anterior y abre la nueva, y al volver bajo el umbral no queda ninguna abierta")
+
+
+# ---------------------------------------------------------------- 16) Brent: tercera fuente (EIA RBRTE diario, mismo día) y discrepancia abierta hasta que coincidan futuro y contado
+HTML_EIA = ("<table><tr><td class='B6'>&nbsp;&nbsp;2026 Oct-12 to Oct-16</td><td class='B3'>129.95</td><td class='B3'>125.78</td><td class='B3'>126.55</td><td class='B3'></td><td class='B3'>&nbsp;</td></tr>"
+            "<tr><td class='B6'>&nbsp;&nbsp;2025 Dec-29 to Jan- 2</td><td class='B3'>61.10</td><td class='B3'>NA</td><td class='B3'>62.00</td><td class='B3'>62.50</td><td class='B3'>63.00</td></tr>"
+            "<tr><td class='F2'>Release Date: 10/15/2026</td></tr></table>")
+pe = P.parse_eia_diario(HTML_EIA)
+assert pe == [(D(2025, 12, 29), 61.1), (D(2025, 12, 31), 62.0), (D(2026, 1, 1), 62.5), (D(2026, 1, 2), 63.0), (D(2026, 10, 12), 129.95), (D(2026, 10, 13), 125.78), (D(2026, 10, 14), 126.55)], pe
+assert P.parse_eia_diario("<html>sin tabla</html>") == []
+fb3 = [(D(2026, 10, 12), 129.95), (D(2026, 10, 13), 125.78), (D(2026, 10, 14), 126.55)]
+yb3 = [(D(2026, 10, 12), 108.0), (D(2026, 10, 13), 105.0), (D(2026, 10, 14), 106.06), (D(2026, 10, 19), 108.2)]
+c3 = P.comparar_brent(yb3, fb3, eia=pe[-3:])
+assert c3["eia"] == {"valor": 126.55, "fecha": "2026-10-14"} and c3["mismo_dia"]["eia"] == 126.55 and c3["mismo_dia"]["eia_igual_a_fred"] is True and c3["mismo_dia"]["dif_eia_pct"] == c3["mismo_dia"]["dif_pct"]
+assert c3["discrepancia"] is True and "MISMA serie" in c3["fuentes_independientes"], "FRED y EIA coinciden entre sí (misma serie) pero eso NO cierra la discrepancia"
+c3b = P.comparar_brent(yb3, fb3, eia=[(D(2026, 10, 14), 126.55 + 0.5)])
+assert c3b["mismo_dia"]["eia_igual_a_fred"] is False
+c3c = P.comparar_brent(yb3, fb3, eia=None)
+assert c3c["eia"] is None and "eia" not in c3c["mismo_dia"] and c3c["discrepancia"] is True, "sin EIA el resultado es el de siempre"
+T = nueva()
+P.registrar_discrepancia_brent(T, c3, en("2026-10-20", "09:00"))
+ab = [r for r in I.discrepancias(T).values() if r["estado"] == "ABIERTA"]
+assert len(ab) == 1 and "= EIA (126.55)" in ab[0]["nota"] and "misma serie" in ab[0]["nota"] and "sigue abierta hasta que el futuro y el contado coincidan" in ab[0]["nota"]
+c_ok = P.comparar_brent([(D(2026, 10, 14), 120.0)], [(D(2026, 10, 14), 126.55)], eia=[(D(2026, 10, 14), 126.55)])
+assert c_ok["discrepancia"] is False and c_ok["mismo_dia"]["eia_igual_a_fred"] is True
+c_ok["mismo_dia"]["fecha"] = "2026-10-14"
+P.registrar_discrepancia_brent(T, c_ok, en("2026-10-20", "10:00"))
+assert not [r for r in I.discrepancias(T).values() if r["estado"] == "ABIERTA"], "al coincidir futuro y contado se cierra"
+Jb = P.construir({"yahoo": yahoo_sim, "fred": fred_sim, "eia": lambda u: (HTML_EIA if "RBRTE" in u else html_largo), "cot": lambda: cot_ok, "consumo": lambda: None}, en("2026-10-19", "15:00"), nueva())
+assert Jb["precios"]["brent_comparacion"]["eia"] is not None and "eia_brent" not in Jb["errores"]
+Jr = P.construir({"yahoo": yahoo_sim, "fred": fred_sim, "eia": lambda u: (_ for _ in ()).throw(OSError("EIA caída")) if "RBRTE" in u else html_largo, "cot": lambda: cot_ok, "consumo": lambda: None}, en("2026-10-19", "15:00"), nueva())
+assert Jr["precios"]["brent_comparacion"]["eia"] is None and "eia_brent" in Jr["errores"], "la EIA caída deja esa fuente en SIN DATO y el resto sigue"
+print("16) OK Brent con tercera fuente: la EIA (RBRTE diario) se lee celda a celda (huecos de festivos y semanas a caballo de año); FRED y EIA son la misma serie (idénticas el mismo día) y por eso NO cierran la discrepancia: sigue abierta hasta que futuro y contado coincidan (< 10 %); EIA caída → SIN DATO")
 
 print("\nTODO OK · sin red, sin envíos reales")
