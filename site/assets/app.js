@@ -101,10 +101,20 @@ function pintarMenu() {
   const nav = $('#nav');
   nav.innerHTML = '<a class="nav-btn nav-guia" href="#/guia" data-id="guia">Cómo leer NEXORA</a>' + GROUPS.map((g) => `<div class="nav-item" data-g="${g}">
     <button class="nav-btn">${g} <span class="chev">▾</span></button>
-    <div class="menu">${paginasVisibles().filter((p) => p.g === g).map((p) => `<a href="#/${p.id}" data-id="${p.id}"><div class="t">${esc(p.t)}${!LIVE.has(p.id) ? `<span class="fase">F${p.f}</span>` : ''}</div><div class="d">${esc(p.d)}</div></a>`).join('')}</div>
+    <div class="menu${paginasVisibles().filter((p) => p.g === g).length > 8 ? ' many' : ''}" tabindex="-1" role="menu">${paginasVisibles().filter((p) => p.g === g).map((p) => `<a href="#/${p.id}" data-id="${p.id}"><div class="t">${esc(p.t)}${!LIVE.has(p.id) ? `<span class="fase">F${p.f}</span>` : ''}</div><div class="d">${esc(p.d)}</div></a>`).join('')}</div>
   </div>`).join('');
   $$('.nav-item', nav).forEach((it) => {
-    $('.nav-btn', it).addEventListener('click', (e) => { e.stopPropagation(); const o = it.classList.contains('open'); $$('.nav-item').forEach((x) => x.classList.remove('open')); if (!o) it.classList.add('open'); });
+    const btn = $('.nav-btn', it), menu = $('.menu', it);
+    btn.addEventListener('click', (e) => { e.stopPropagation(); const o = it.classList.contains('open'); $$('.nav-item').forEach((x) => x.classList.remove('open')); if (!o) { it.classList.add('open'); if (!nav.classList.contains('show')) menu.focus({ preventScroll: true }); } });
+    menu.addEventListener('click', (e) => e.stopPropagation());       // un clic o un arrastre de la barra dentro del menú no lo cierra (los enlaces sí lo cierran por su propio manejador)
+    menu.addEventListener('keydown', (e) => {                          // flechas, Inicio/Fin y Esc
+      const as = $$('a', menu), i = as.indexOf(document.activeElement);
+      if (e.key === 'Escape') { it.classList.remove('open'); btn.focus(); return; }
+      const paso = e.key === 'ArrowDown' ? 1 : e.key === 'ArrowUp' ? -1 : 0;
+      if (paso) { e.preventDefault(); as[Math.min(as.length - 1, Math.max(0, i < 0 ? (paso > 0 ? 0 : as.length - 1) : i + paso))].focus(); }
+      else if (e.key === 'Home') { e.preventDefault(); as[0].focus(); } else if (e.key === 'End') { e.preventDefault(); as[as.length - 1].focus(); }
+      else if (e.key === 'PageDown') { e.preventDefault(); menu.scrollBy({ top: menu.clientHeight * 0.85 }); } else if (e.key === 'PageUp') { e.preventDefault(); menu.scrollBy({ top: -menu.clientHeight * 0.85 }); }
+    });
   });
   $$('.nav-guia', nav).forEach((a) => a.addEventListener('click', () => nav.classList.remove('show')));
   $$('.menu a', nav).forEach((a) => a.addEventListener('click', () => { nav.classList.remove('show'); $$('.nav-item').forEach((x) => x.classList.remove('open')); }));

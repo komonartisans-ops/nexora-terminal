@@ -30,6 +30,18 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .nav-btn .chev { font-size: 8px; opacity: .6; }
 .menu { display: none; position: absolute; top: 40px; left: 0; min-width: 330px; background: #101319; border: 1px solid var(--border2); border-radius: 10px; padding: 8px; box-shadow: 0 18px 50px rgba(0,0,0,.6); }
 .nav-item.open .menu { display: block; }
+/* desplegables: nunca más altos que la pantalla (cabecera 48 px + 16 px de margen), con scroll propio y barra visible; la rueda no se pasa a la página */
+.menu { --hdr: 48px; max-height: calc(100vh - var(--hdr) - 16px); max-height: calc(100dvh - var(--hdr) - 16px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #4a5260 #14181e; outline: none; }
+.menu::-webkit-scrollbar { width: 10px; }
+.menu::-webkit-scrollbar-track { background: #14181e; border-radius: 8px; }
+.menu::-webkit-scrollbar-thumb { background: #4a5260; border-radius: 8px; border: 2px solid #14181e; }
+.menu::-webkit-scrollbar-thumb:hover { background: #6b7587; }
+.menu a:focus-visible { outline: 1px solid var(--amber); outline-offset: -1px; background: var(--hover); }
+/* pantallas anchas: más de 8 entradas → 2 columnas */
+@media (min-width: 1200px) {
+  .nav-item.open .menu.many { display: grid; grid-template-columns: 1fr 1fr; gap: 0 6px; width: 700px; max-width: calc(100vw - 32px); align-content: start; }
+  .nav-item:nth-last-child(-n+2) .menu.many { left: auto; right: 0; }
+}
 .menu .grp { font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); padding: 8px 10px 4px; }
 .menu a { display: block; padding: 7px 10px; border-radius: 6px; }
 .menu a:hover { background: var(--hover); }
@@ -214,9 +226,11 @@ table.mini th:last-child, table.mini td:last-child { text-align: right; }
 @media (max-width: 860px) {
   .topbar { gap: 10px; padding: 0 12px; }
   .burger { display: block; }
-  .nav { display: none; position: fixed; top: 48px; left: 0; right: 0; bottom: 0; background: var(--bg); flex-direction: column; padding: 10px 12px; overflow-y: auto; margin: 0; }
+  /* altura explícita: el backdrop-filter de la cabecera hace que «bottom: 0» se mida contra la cabecera (panel de 20 px sin scroll) */
+  .nav { display: none; position: fixed; top: 48px; left: 0; right: 0; bottom: auto; height: calc(100vh - 48px); height: calc(100dvh - 48px); background: var(--bg); flex-direction: column; padding: 10px 12px; overflow-y: auto; margin: 0; }
   .nav.show { display: flex; }
-  .nav-item .menu { position: static; display: block; box-shadow: none; border: 0; background: none; min-width: 0; padding: 0 0 8px 8px; }
+  .nav-item .menu { position: static; display: block; box-shadow: none; border: 0; background: none; min-width: 0; padding: 0 0 8px 8px; max-height: none; overflow: visible; }
+  .nav { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
   .nav-btn { font-weight: 600; color: var(--text); }
   .search input { width: 120px; } .search kbd { display: none; }
   main { padding: 18px 14px 50px; }
