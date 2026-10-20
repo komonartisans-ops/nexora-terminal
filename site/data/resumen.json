@@ -1,7 +1,7 @@
 {
  "periodo": "hoy",
- "corte": "Datos entre el 2026-10-16 y el 2026-10-20 (cada fuente publica a su hora)",
- "movido": "El tipo real a 10 años sube 6 pb; financiarse le cuesta más a las empresas de riesgo (+8 pb). En conjunto: el dinero se encarece.",
+ "corte": "Datos entre el 2026-10-19 y el 2026-10-20 (cada fuente publica a su hora)",
+ "movido": "El tipo real a 10 años sube 6 pb. En conjunto: el dinero se encarece.",
  "significa": [
   {
    "activo": "Oro",
@@ -16,7 +16,7 @@
   {
    "activo": "S&P 500",
    "viento": "EN CONTRA",
-   "texto": "En contra: el crédito se encarece."
+   "texto": "En contra: sube el tipo real (lo que más les pesa)."
   },
   {
    "activo": "Bitcoin",
@@ -42,8 +42,7 @@
  "tesis": "Viento macro EN CONTRA del oro: sube el tipo real (lo que más les pesa). Lo que puede girarlo: después del cierre.",
  "sencillo": "El tipo real es lo que paga un bono después de descontar la inflación. Si sube, guardar el dinero en bonos se vuelve atractivo y pierden atractivo lo que no paga intereses (oro, bitcoin) y las tecnológicas.",
  "motores_significativos": [
-  "real",
-  "hy"
+  "real"
  ],
  "errores": {
   "lbma": "HTTPError: HTTP Error 403: Forbidden"
@@ -55,12 +54,6 @@
     "sube": true,
     "peso": -3.0,
     "razon": "sube el tipo real (lo que más les pesa)"
-   },
-   {
-    "motor": "hy",
-    "sube": true,
-    "peso": -1.0,
-    "razon": "el crédito se encarece"
    }
   ],
   "S&P 500": [
@@ -69,12 +62,6 @@
     "sube": true,
     "peso": -1.5,
     "razon": "sube el tipo real (lo que más les pesa)"
-   },
-   {
-    "motor": "hy",
-    "sube": true,
-    "peso": -1.5,
-    "razon": "el crédito se encarece"
    }
   ],
   "Oro": [
@@ -91,12 +78,6 @@
     "sube": true,
     "peso": -1.5,
     "razon": "sube el tipo real (lo que más les pesa)"
-   },
-   {
-    "motor": "hy",
-    "sube": true,
-    "peso": -1.0,
-    "razon": "el crédito se encarece"
    }
   ],
   "US30 · Dow Jones": [
@@ -105,12 +86,6 @@
     "sube": true,
     "peso": -1.5,
     "razon": "sube el tipo real (lo que más les pesa)"
-   },
-   {
-    "motor": "hy",
-    "sube": true,
-    "peso": -1.25,
-    "razon": "el crédito se encarece"
    }
   ],
   "Russell 2000": [
@@ -119,12 +94,6 @@
     "sube": true,
     "peso": -2.25,
     "razon": "sube el tipo real (lo que más les pesa)"
-   },
-   {
-    "motor": "hy",
-    "sube": true,
-    "peso": -2.0,
-    "razon": "el crédito se encarece"
    }
   ]
  },
@@ -150,9 +119,9 @@
    "fecha": "2026-10-19"
   },
   "hy": {
-   "valor": 331.0,
-   "delta": 8.000000000000007,
-   "fecha": "2026-10-16"
+   "valor": 329.0,
+   "delta": -2.0000000000000018,
+   "fecha": "2026-10-19"
   },
   "fed": {
    "valor": 16.0,
@@ -174,9 +143,9 @@
    "valor": 7690.73
   },
   "Oro": {
-   "delta": -0.3798055959675528,
+   "delta": 0.04566963051730877,
    "fecha": "2026-10-20",
-   "valor": 4144.2998046875
+   "valor": 4162.0
   },
   "Bitcoin": {
    "delta": -0.20627545137997805,
@@ -275,19 +244,13 @@
      "sube": true,
      "peso": -3.0,
      "razon": "sube el tipo real (lo que más les pesa)"
-    },
-    {
-     "motor": "hy",
-     "sube": true,
-     "peso": -1.0,
-     "razon": "el crédito se encarece"
     }
    ]
   },
   "S&P 500": {
    "etiqueta": "BAJISTA DÉBIL",
    "tesis": "BAJISTA DÉBIL: solo lo empuja la macro de la semana (en contra); lo otro está neutral. Lo que la rompería: que ganen peso ADV/DECLINE (amplitud) y VIX TERM STRUCTURE (hoy ya empujan en sentido contrario).",
-   "hoy": "En contra: el crédito se encarece.",
+   "hoy": "En contra: sube el tipo real (lo que más les pesa).",
    "semana": "En contra: el crédito se encarece (pesa más que: baja el tipo real (lo que más les ayuda)). Su movimiento lo explica la macro.",
    "viento_semana": "EN CONTRA",
    "propio": {
@@ -325,12 +288,6 @@
      "sube": true,
      "peso": -1.5,
      "razon": "sube el tipo real (lo que más les pesa)"
-    },
-    {
-     "motor": "hy",
-     "sube": true,
-     "peso": -1.5,
-     "razon": "el crédito se encarece"
     }
    ]
   },
@@ -375,12 +332,6 @@
      "sube": true,
      "peso": -1.5,
      "razon": "sube el tipo real (lo que más les pesa)"
-    },
-    {
-     "motor": "hy",
-     "sube": true,
-     "peso": -1.0,
-     "razon": "el crédito se encarece"
     }
    ]
   },
@@ -425,12 +376,6 @@
      "sube": true,
      "peso": -1.5,
      "razon": "sube el tipo real (lo que más les pesa)"
-    },
-    {
-     "motor": "hy",
-     "sube": true,
-     "peso": -1.25,
-     "razon": "el crédito se encarece"
     }
    ]
   },
@@ -475,12 +420,6 @@
      "sube": true,
      "peso": -2.25,
      "razon": "sube el tipo real (lo que más les pesa)"
-    },
-    {
-     "motor": "hy",
-     "sube": true,
-     "peso": -2.0,
-     "razon": "el crédito se encarece"
     }
    ]
   }
@@ -504,6 +443,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro; empujan en contra: S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000; sin ventaja clara: Nasdaq 100 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-20 14:07 UTC",
- "duracion_s": 108.4
+ "generado_utc": "2026-10-20 15:07 UTC",
+ "duracion_s": 109.9
 }
