@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-21 20:09 UTC",
+ "generado_utc": "2026-10-21 20:36 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -309,7 +309,7 @@
   "hasta": "2026-10-28",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-21 20:09 UTC"
+  "generado_utc": "2026-10-21 20:36 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }
