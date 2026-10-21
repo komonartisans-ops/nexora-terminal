@@ -1,7 +1,7 @@
 {
  "version": 2,
  "version_criterio": 2,
- "generado_utc": "2026-10-21 21:07 UTC",
+ "generado_utc": "2026-10-21 21:30 UTC",
  "ok": true,
  "min_n": 20,
  "horizontes": [
@@ -346,19 +346,19 @@
     "no_puntuables": 3,
     "horizontes": {
      "1": {
-      "n": 1,
-      "aciertos": 0,
+      "n": 4,
+      "aciertos": 1,
       "fallos": 1,
-      "neutrales": 0,
-      "pendientes": 4,
+      "neutrales": 2,
+      "pendientes": 1,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": 0.0,
-      "ret_medio": -1.171,
+      "acierto_pct": 25.0,
+      "ret_medio": 0.193,
       "peor_ret": -1.171,
       "peor_mae": -1.171,
-      "base_media_pct": 33.7,
-      "diferencia_pp": -33.7,
+      "base_media_pct": 37.8,
+      "diferencia_pp": -12.8,
       "muestra_insuficiente": true
      },
      "5": {
@@ -448,10 +448,48 @@
       "muestra_insuficiente": true
      }
     }
+   },
+   "divergencia_ratio": {
+    "n_senales": 1,
+    "no_puntuables": 0,
+    "horizontes": {
+     "20": {
+      "n": 0,
+      "aciertos": 0,
+      "fallos": 0,
+      "neutrales": 0,
+      "pendientes": 1,
+      "comp_caida": 0,
+      "comp_vix": 0,
+      "acierto_pct": null,
+      "ret_medio": null,
+      "peor_ret": null,
+      "peor_mae": null,
+      "base_media_pct": null,
+      "diferencia_pp": null,
+      "muestra_insuficiente": true
+     },
+     "60": {
+      "n": 0,
+      "aciertos": 0,
+      "fallos": 0,
+      "neutrales": 0,
+      "pendientes": 1,
+      "comp_caida": 0,
+      "comp_vix": 0,
+      "acierto_pct": null,
+      "ret_medio": null,
+      "peor_ret": null,
+      "peor_mae": null,
+      "base_media_pct": null,
+      "diferencia_pp": null,
+      "muestra_insuficiente": true
+     }
+    }
    }
   }
  },
- "n_senales": 207,
+ "n_senales": 208,
  "n_anuladas": 0,
  "senales": [
   {
@@ -467,7 +505,13 @@
    "criterio": null,
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "NEUTRAL",
+     "ret": 0.408,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 37.2,
+     "fecha_fin": "2026-10-21",
+     "sigma_h": 1.7518
     },
     "5": {
      "estado": "PENDIENTE"
@@ -503,7 +547,13 @@
    "criterio": null,
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "NEUTRAL",
+     "ret": 0.408,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 37.2,
+     "fecha_fin": "2026-10-21",
+     "sigma_h": 1.7518
     },
     "5": {
      "estado": "PENDIENTE"
@@ -526,7 +576,13 @@
    "criterio": null,
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "ACIERTO",
+     "ret": 1.127,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 43.0,
+     "fecha_fin": "2026-10-21",
+     "sigma_h": 1.2488
     },
     "5": {
      "estado": "PENDIENTE"
@@ -1314,6 +1370,26 @@
    "valor": "divergencia FUERTE: SPY en máximo de 63 sesiones y RSPD/RSPS -4.6 % bajo el suyo",
    "origen": "backfill",
    "run_id": "backfill",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "20": {
+     "estado": "PENDIENTE"
+    },
+    "60": {
+     "estado": "PENDIENTE"
+    }
+   }
+  },
+  {
+   "id": "divergencia_ratio-spy-202610062130-e4aafe48e9",
+   "fecha_utc": "2026-10-06 21:30",
+   "tipo": "divergencia_ratio",
+   "activo": "SPY",
+   "direccion": "BAJISTA",
+   "valor": "divergencia MEDIA (parcial: sin dato de crédito): SPY en máximo de 63 sesiones y RSPD/RSPS -4.6 % bajo el suyo",
+   "origen": "vivo",
+   "run_id": "39679387971",
    "nota": "",
    "criterio": null,
    "horizontes": {
@@ -6244,8 +6320,8 @@
  "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas.",
  "ultima_ejecucion": {
   "senales_nuevas": 0,
-  "resultados_nuevos": 0,
-  "evaluo": false
+  "resultados_nuevos": 3,
+  "evaluo": true
  },
  "duracion_s": 0.0
 }

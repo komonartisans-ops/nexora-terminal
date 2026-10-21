@@ -2,713 +2,726 @@
  "clave": "GC",
  "nombre": "Oro (GLD, referencia) → XAU/USD y futuro GC",
  "indice": "XAU",
- "sesion": "2026-10-20",
+ "sesion": "2026-10-21",
  "cierre_confirmado": true,
- "ultima_operacion_et": "2026-10-20 15:59:59",
- "spot_idx": 4126.1,
+ "ultima_operacion_et": "2026-10-21 15:59:59",
+ "spot_idx": 4142.3,
  "ratio_etf": 1.0,
- "gex_neto_musd": -209.4,
- "gex_calls_musd": 553.1,
- "gex_puts_musd": -762.5,
+ "gex_neto_musd": -119.1,
+ "gex_calls_musd": 561.8,
+ "gex_puts_musd": -680.9,
  "regimen": "NEGATIVA",
  "call_wall": {
-  "idx": 4151.8,
-  "musd": 74.3,
+  "idx": 4153.8,
+  "musd": 76.5,
   "etf": 380,
-  "fut": 4168.2
+  "fut": 4171.0
  },
  "put_wall": {
-  "idx": 3769.4,
-  "musd": 63.9,
+  "idx": 3771.2,
+  "musd": 56.0,
   "etf": 345,
-  "fut": 3785.8
+  "fut": 3788.4
  },
  "flip": {
-  "idx": 4149.6,
-  "etf": 379.8,
-  "fut": 4166.0
+  "idx": 4165.8,
+  "etf": 381.1,
+  "fut": 4183.0
  },
  "max_gamma": {
-  "idx": 4151.8,
-  "musd": 137.8,
-  "neto_musd": 10.8,
+  "idx": 4153.8,
+  "musd": 144.9,
+  "neto_musd": 8.1,
   "tipo": "pin",
   "etf": 380,
-  "fut": 4168.2
+  "fut": 4171.0
  },
  "otros_cruces_idx": [],
  "top_calls": [
   {
-   "idx": 4151.8,
-   "musd": 74.3,
+   "idx": 4153.8,
+   "musd": 76.5,
    "etf": 380,
-   "fut": 4168.2
+   "fut": 4171.0
   },
   {
-   "idx": 4206.4,
-   "musd": 39.9,
+   "idx": 4208.4,
+   "musd": 47.8,
    "etf": 385,
-   "fut": 4222.8
+   "fut": 4225.6
   },
   {
-   "idx": 4261.0,
-   "musd": 38.2,
+   "idx": 4263.1,
+   "musd": 42.9,
    "etf": 390,
-   "fut": 4277.4
+   "fut": 4280.3
   },
   {
-   "idx": 4370.3,
-   "musd": 36.6,
+   "idx": 4372.4,
+   "musd": 41.7,
    "etf": 400,
-   "fut": 4386.7
+   "fut": 4389.6
   },
   {
-   "idx": 4162.7,
-   "musd": 33.2,
-   "etf": 381,
-   "fut": 4179.1
+   "idx": 4099.1,
+   "musd": 29.0,
+   "etf": 375,
+   "fut": 4116.3
   }
  ],
  "top_puts": [
   {
-   "idx": 4261.0,
-   "musd": 74.3,
+   "idx": 4263.1,
+   "musd": 80.9,
    "etf": 390,
-   "fut": 4277.4
+   "fut": 4280.3
   },
   {
-   "idx": 3769.4,
-   "musd": 63.9,
-   "etf": 345,
-   "fut": 3785.8
-  },
-  {
-   "idx": 4151.8,
-   "musd": 63.5,
+   "idx": 4153.8,
+   "musd": 68.4,
    "etf": 380,
-   "fut": 4168.2
+   "fut": 4171.0
   },
   {
-   "idx": 4097.1,
-   "musd": 47.4,
+   "idx": 3771.2,
+   "musd": 56.0,
+   "etf": 345,
+   "fut": 3788.4
+  },
+  {
+   "idx": 4099.1,
+   "musd": 38.4,
    "etf": 375,
-   "fut": 4113.5
+   "fut": 4116.3
   },
   {
-   "idx": 4042.5,
-   "musd": 40.3,
+   "idx": 4044.5,
+   "musd": 31.2,
    "etf": 370,
-   "fut": 4058.9
+   "fut": 4061.7
   }
  ],
  "perfil": [
   {
-   "k": 3824.0,
-   "call": 1.4,
-   "put": -20.1,
-   "net": -18.6,
-   "fut": 3840.4
+   "k": 3825.8,
+   "call": 1.3,
+   "put": -17.7,
+   "net": -16.4,
+   "fut": 3843.0
   },
   {
-   "k": 3834.9,
+   "k": 3836.8,
    "call": 0.0,
    "put": -0.2,
    "net": -0.2,
-   "fut": 3851.3
+   "fut": 3854.0
   },
   {
-   "k": 3845.9,
+   "k": 3847.7,
+   "call": 0.0,
+   "put": -0.1,
+   "net": -0.1,
+   "fut": 3864.9
+  },
+  {
+   "k": 3858.6,
    "call": 0.0,
    "put": -0.2,
    "net": -0.1,
-   "fut": 3862.3
+   "fut": 3875.8
   },
   {
-   "k": 3856.8,
-   "call": 0.0,
-   "put": -0.2,
-   "net": -0.2,
-   "fut": 3873.2
-  },
-  {
-   "k": 3867.7,
+   "k": 3869.6,
    "call": 0.1,
    "put": -0.6,
-   "net": -0.6,
-   "fut": 3884.1
+   "net": -0.5,
+   "fut": 3886.8
   },
   {
-   "k": 3878.6,
-   "call": 0.4,
-   "put": -19.8,
-   "net": -19.4,
-   "fut": 3895.0
+   "k": 3880.5,
+   "call": 0.3,
+   "put": -17.4,
+   "net": -17.0,
+   "fut": 3897.7
   },
   {
-   "k": 3889.6,
+   "k": 3891.4,
+   "call": 0.0,
+   "put": -0.3,
+   "net": -0.3,
+   "fut": 3908.6
+  },
+  {
+   "k": 3902.4,
+   "call": 0.0,
+   "put": -0.2,
+   "net": -0.1,
+   "fut": 3919.6
+  },
+  {
+   "k": 3913.3,
    "call": 0.0,
    "put": -0.4,
-   "net": -0.3,
-   "fut": 3906.0
+   "net": -0.4,
+   "fut": 3930.5
   },
   {
-   "k": 3900.5,
-   "call": 0.0,
-   "put": -0.2,
-   "net": -0.1,
-   "fut": 3916.9
-  },
-  {
-   "k": 3911.4,
+   "k": 3924.2,
    "call": 0.0,
    "put": -0.5,
-   "net": -0.4,
-   "fut": 3927.8
+   "net": -0.5,
+   "fut": 3941.4
   },
   {
-   "k": 3922.3,
+   "k": 3935.2,
+   "call": 0.5,
+   "put": -25.5,
+   "net": -24.9,
+   "fut": 3952.4
+  },
+  {
+   "k": 3946.1,
+   "call": 0.1,
+   "put": -3.6,
+   "net": -3.6,
+   "fut": 3963.3
+  },
+  {
+   "k": 3957.0,
    "call": 0.0,
-   "put": -0.6,
-   "net": -0.6,
-   "fut": 3938.7
+   "put": -2.0,
+   "net": -2.0,
+   "fut": 3974.2
   },
   {
-   "k": 3933.3,
-   "call": 0.7,
-   "put": -30.0,
-   "net": -29.3,
-   "fut": 3949.7
-  },
-  {
-   "k": 3944.2,
+   "k": 3967.9,
    "call": 0.1,
-   "put": -4.2,
-   "net": -4.2,
-   "fut": 3960.6
+   "put": -5.1,
+   "net": -5.0,
+   "fut": 3985.1
   },
   {
-   "k": 3955.1,
-   "call": 0.1,
-   "put": -2.4,
-   "net": -2.4,
-   "fut": 3971.5
-  },
-  {
-   "k": 3966.0,
-   "call": 0.1,
-   "put": -8.3,
-   "net": -8.1,
-   "fut": 3982.4
-  },
-  {
-   "k": 3977.0,
+   "k": 3978.9,
    "call": 0.2,
-   "put": -3.7,
-   "net": -3.5,
-   "fut": 3993.4
+   "put": -3.4,
+   "net": -3.2,
+   "fut": 3996.1
   },
   {
-   "k": 3987.9,
-   "call": 1.3,
-   "put": -28.1,
-   "net": -26.8,
-   "fut": 4004.3
+   "k": 3989.8,
+   "call": 1.1,
+   "put": -23.5,
+   "net": -22.4,
+   "fut": 4007.0
   },
   {
-   "k": 3998.8,
-   "call": 0.8,
-   "put": -9.3,
-   "net": -8.5,
-   "fut": 4015.2
-  },
-  {
-   "k": 4009.7,
-   "call": 0.3,
-   "put": -6.9,
-   "net": -6.6,
-   "fut": 4026.1
-  },
-  {
-   "k": 4020.7,
-   "call": 0.9,
-   "put": -5.7,
-   "net": -4.8,
-   "fut": 4037.1
-  },
-  {
-   "k": 4031.6,
-   "call": 1.3,
-   "put": -15.3,
-   "net": -14.0,
-   "fut": 4048.0
-  },
-  {
-   "k": 4042.5,
-   "call": 3.8,
-   "put": -40.3,
-   "net": -36.5,
-   "fut": 4058.9
-  },
-  {
-   "k": 4053.4,
-   "call": 1.8,
-   "put": -7.9,
-   "net": -6.2,
-   "fut": 4069.8
-  },
-  {
-   "k": 4064.4,
+   "k": 4000.7,
    "call": 0.6,
-   "put": -17.9,
-   "net": -17.3,
-   "fut": 4080.8
+   "put": -6.9,
+   "net": -6.3,
+   "fut": 4017.9
   },
   {
-   "k": 4075.3,
-   "call": 2.4,
-   "put": -15.2,
-   "net": -12.8,
-   "fut": 4091.7
+   "k": 4011.7,
+   "call": 0.2,
+   "put": -4.6,
+   "net": -4.4,
+   "fut": 4028.9
   },
   {
-   "k": 4086.2,
-   "call": 3.3,
-   "put": -18.7,
-   "net": -15.3,
-   "fut": 4102.6
+   "k": 4022.6,
+   "call": 0.8,
+   "put": -4.2,
+   "net": -3.4,
+   "fut": 4039.8
   },
   {
-   "k": 4097.1,
-   "call": 31.3,
-   "put": -47.4,
-   "net": -16.1,
-   "fut": 4113.5
+   "k": 4033.5,
+   "call": 1.1,
+   "put": -10.1,
+   "net": -9.0,
+   "fut": 4050.7
   },
   {
-   "k": 4108.1,
-   "call": 3.8,
-   "put": -21.7,
-   "net": -17.9,
-   "fut": 4124.5
+   "k": 4044.5,
+   "call": 3.2,
+   "put": -31.2,
+   "net": -28.0,
+   "fut": 4061.7
   },
   {
-   "k": 4119.0,
-   "call": 7.4,
-   "put": -20.5,
-   "net": -13.1,
-   "fut": 4135.4
+   "k": 4055.4,
+   "call": 1.3,
+   "put": -5.5,
+   "net": -4.2,
+   "fut": 4072.6
   },
   {
-   "k": 4129.9,
-   "call": 17.1,
-   "put": -21.2,
-   "net": -4.1,
-   "fut": 4146.3
+   "k": 4066.3,
+   "call": 0.3,
+   "put": -11.6,
+   "net": -11.2,
+   "fut": 4083.5
   },
   {
-   "k": 4140.9,
-   "call": 9.1,
-   "put": -15.9,
-   "net": -6.8,
-   "fut": 4157.3
+   "k": 4077.3,
+   "call": 1.6,
+   "put": -10.3,
+   "net": -8.7,
+   "fut": 4094.5
   },
   {
-   "k": 4151.8,
-   "call": 74.3,
-   "put": -63.5,
-   "net": 10.8,
-   "fut": 4168.2
+   "k": 4088.2,
+   "call": 1.8,
+   "put": -8.0,
+   "net": -6.2,
+   "fut": 4105.4
   },
   {
-   "k": 4162.7,
-   "call": 33.2,
-   "put": -16.6,
-   "net": 16.6,
-   "fut": 4179.1
+   "k": 4099.1,
+   "call": 29.0,
+   "put": -38.4,
+   "net": -9.4,
+   "fut": 4116.3
   },
   {
-   "k": 4173.6,
-   "call": 29.8,
-   "put": -7.0,
-   "net": 22.8,
-   "fut": 4190.0
+   "k": 4110.1,
+   "call": 3.7,
+   "put": -16.3,
+   "net": -12.7,
+   "fut": 4127.3
   },
   {
-   "k": 4184.6,
-   "call": 21.1,
-   "put": -5.7,
-   "net": 15.4,
-   "fut": 4201.0
+   "k": 4121.0,
+   "call": 4.5,
+   "put": -17.4,
+   "net": -13.0,
+   "fut": 4138.2
   },
   {
-   "k": 4195.5,
-   "call": 18.1,
-   "put": -3.3,
-   "net": 14.8,
-   "fut": 4211.9
+   "k": 4131.9,
+   "call": 11.8,
+   "put": -14.1,
+   "net": -2.3,
+   "fut": 4149.1
   },
   {
-   "k": 4206.4,
-   "call": 39.9,
-   "put": -10.8,
-   "net": 29.1,
-   "fut": 4222.8
+   "k": 4142.8,
+   "call": 7.5,
+   "put": -16.2,
+   "net": -8.7,
+   "fut": 4160.0
   },
   {
-   "k": 4217.3,
-   "call": 11.3,
-   "put": -1.9,
-   "net": 9.4,
-   "fut": 4233.7
+   "k": 4153.8,
+   "call": 76.5,
+   "put": -68.4,
+   "net": 8.1,
+   "fut": 4171.0
   },
   {
-   "k": 4228.3,
-   "call": 10.8,
-   "put": -1.9,
-   "net": 9.0,
-   "fut": 4244.7
+   "k": 4164.7,
+   "call": 14.7,
+   "put": -19.9,
+   "net": -5.2,
+   "fut": 4181.9
   },
   {
-   "k": 4239.2,
-   "call": 19.1,
-   "put": -1.8,
-   "net": 17.3,
-   "fut": 4255.6
+   "k": 4175.6,
+   "call": 22.7,
+   "put": -8.3,
+   "net": 14.4,
+   "fut": 4192.8
   },
   {
-   "k": 4250.1,
-   "call": 9.9,
+   "k": 4186.6,
+   "call": 22.4,
+   "put": -7.2,
+   "net": 15.2,
+   "fut": 4203.8
+  },
+  {
+   "k": 4197.5,
+   "call": 21.8,
+   "put": -3.7,
+   "net": 18.2,
+   "fut": 4214.7
+  },
+  {
+   "k": 4208.4,
+   "call": 47.8,
+   "put": -12.8,
+   "net": 35.0,
+   "fut": 4225.6
+  },
+  {
+   "k": 4219.4,
+   "call": 10.4,
+   "put": -2.4,
+   "net": 8.0,
+   "fut": 4236.6
+  },
+  {
+   "k": 4230.3,
+   "call": 13.3,
+   "put": -2.3,
+   "net": 10.9,
+   "fut": 4247.5
+  },
+  {
+   "k": 4241.2,
+   "call": 23.7,
+   "put": -2.2,
+   "net": 21.5,
+   "fut": 4258.4
+  },
+  {
+   "k": 4252.2,
+   "call": 11.6,
+   "put": -0.9,
+   "net": 10.7,
+   "fut": 4269.4
+  },
+  {
+   "k": 4263.1,
+   "call": 42.9,
+   "put": -80.9,
+   "net": -38.0,
+   "fut": 4280.3
+  },
+  {
+   "k": 4274.0,
+   "call": 14.0,
    "put": -0.7,
-   "net": 9.2,
-   "fut": 4266.5
+   "net": 13.3,
+   "fut": 4291.2
   },
   {
-   "k": 4261.0,
-   "call": 38.2,
-   "put": -74.3,
-   "net": -36.1,
-   "fut": 4277.4
+   "k": 4284.9,
+   "call": 5.8,
+   "put": -2.1,
+   "net": 3.7,
+   "fut": 4302.1
   },
   {
-   "k": 4272.0,
-   "call": 13.1,
-   "put": -0.6,
-   "net": 12.6,
-   "fut": 4288.4
+   "k": 4295.9,
+   "call": 5.9,
+   "put": -1.9,
+   "net": 4.0,
+   "fut": 4313.1
   },
   {
-   "k": 4282.9,
-   "call": 5.1,
-   "put": -1.8,
+   "k": 4306.8,
+   "call": 3.6,
+   "put": -0.7,
+   "net": 2.9,
+   "fut": 4324.0
+  },
+  {
+   "k": 4317.7,
+   "call": 26.8,
+   "put": -4.8,
+   "net": 22.0,
+   "fut": 4334.9
+  },
+  {
+   "k": 4328.7,
+   "call": 3.7,
+   "put": -0.3,
+   "net": 3.4,
+   "fut": 4345.9
+  },
+  {
+   "k": 4339.6,
+   "call": 3.6,
+   "put": -0.3,
    "net": 3.3,
-   "fut": 4299.3
+   "fut": 4356.8
   },
   {
-   "k": 4293.8,
-   "call": 5.1,
-   "put": -1.6,
-   "net": 3.5,
-   "fut": 4310.2
-  },
-  {
-   "k": 4304.7,
-   "call": 3.1,
-   "put": -0.6,
-   "net": 2.6,
-   "fut": 4321.1
-  },
-  {
-   "k": 4315.7,
-   "call": 23.4,
-   "put": -4.4,
-   "net": 19.1,
-   "fut": 4332.1
-  },
-  {
-   "k": 4326.6,
-   "call": 3.0,
-   "put": -0.2,
-   "net": 2.7,
-   "fut": 4343.0
-  },
-  {
-   "k": 4337.5,
+   "k": 4350.5,
    "call": 2.7,
    "put": -0.3,
    "net": 2.4,
-   "fut": 4353.9
+   "fut": 4367.7
   },
   {
-   "k": 4348.4,
-   "call": 2.1,
-   "put": -0.2,
-   "net": 1.9,
-   "fut": 4364.8
+   "k": 4361.5,
+   "call": 2.8,
+   "put": -0.5,
+   "net": 2.3,
+   "fut": 4378.7
   },
   {
-   "k": 4359.4,
-   "call": 2.3,
-   "put": -0.4,
-   "net": 1.9,
-   "fut": 4375.8
+   "k": 4372.4,
+   "call": 41.7,
+   "put": -17.8,
+   "net": 23.8,
+   "fut": 4389.6
   },
   {
-   "k": 4370.3,
-   "call": 36.6,
-   "put": -16.2,
-   "net": 20.3,
-   "fut": 4386.7
-  },
-  {
-   "k": 4381.2,
-   "call": 2.3,
+   "k": 4383.3,
+   "call": 2.7,
    "put": -0.1,
-   "net": 2.2,
-   "fut": 4397.6
+   "net": 2.6,
+   "fut": 4400.5
   },
   {
-   "k": 4392.1,
-   "call": 1.6,
-   "put": -0.3,
-   "net": 1.3,
-   "fut": 4408.5
+   "k": 4394.3,
+   "call": 1.8,
+   "put": -0.4,
+   "net": 1.4,
+   "fut": 4411.5
   },
   {
-   "k": 4403.1,
+   "k": 4405.2,
+   "call": 1.0,
+   "put": -0.1,
+   "net": 0.9,
+   "fut": 4422.4
+  },
+  {
+   "k": 4416.1,
+   "call": 2.0,
+   "put": -0.1,
+   "net": 1.8,
+   "fut": 4433.3
+  },
+  {
+   "k": 4427.1,
+   "call": 12.3,
+   "put": -5.7,
+   "net": 6.6,
+   "fut": 4444.3
+  },
+  {
+   "k": 4438.0,
+   "call": 1.4,
+   "put": -0.0,
+   "net": 1.4,
+   "fut": 4455.2
+  },
+  {
+   "k": 4448.9,
+   "call": 2.6,
+   "put": -0.0,
+   "net": 2.6,
+   "fut": 4466.1
+  },
+  {
+   "k": 4459.8,
    "call": 0.9,
    "put": -0.1,
    "net": 0.8,
-   "fut": 4419.5
+   "fut": 4477.0
   },
   {
-   "k": 4414.0,
-   "call": 1.4,
-   "put": -0.1,
-   "net": 1.3,
-   "fut": 4430.4
-  },
-  {
-   "k": 4424.9,
-   "call": 11.0,
-   "put": -5.2,
-   "net": 5.8,
-   "fut": 4441.3
-  },
-  {
-   "k": 4435.8,
-   "call": 1.2,
+   "k": 4470.8,
+   "call": 0.6,
    "put": -0.0,
-   "net": 1.2,
-   "fut": 4452.2
-  },
-  {
-   "k": 4446.8,
-   "call": 2.2,
-   "put": -0.0,
-   "net": 2.2,
-   "fut": 4463.2
+   "net": 0.6,
+   "fut": 4488.0
   }
  ],
  "curva": [
   [
-   3628.4,
-   -500.8
+   3648.8,
+   -522.7
   ],
   [
-   3648.1,
-   -519.2
+   3669.5,
+   -539.9
   ],
   [
-   3668.9,
-   -536.0
+   3690.3,
+   -555.1
   ],
   [
-   3689.6,
-   -551.0
+   3711.1,
+   -568.6
   ],
   [
-   3710.4,
-   -564.5
+   3731.8,
+   -580.4
   ],
   [
-   3731.1,
-   -576.5
+   3752.6,
+   -590.8
   ],
   [
-   3751.9,
-   -587.3
+   3773.4,
+   -600.2
   ],
   [
-   3772.7,
-   -597.2
+   3794.1,
+   -608.8
   ],
   [
-   3793.4,
-   -606.5
+   3814.9,
+   -617.1
   ],
   [
-   3813.1,
-   -615.5
+   3835.7,
+   -625.3
   ],
   [
-   3833.8,
-   -624.4
+   3856.5,
+   -633.4
   ],
   [
-   3854.6,
-   -633.0
+   3877.2,
+   -641.1
   ],
   [
-   3875.4,
-   -641.3
+   3898.0,
+   -647.7
   ],
   [
-   3896.1,
-   -648.6
+   3918.8,
+   -652.2
   ],
   [
-   3916.9,
-   -654.2
+   3939.5,
+   -653.2
   ],
   [
-   3937.6,
-   -657.3
+   3960.3,
+   -649.4
   ],
   [
-   3957.3,
-   -656.8
+   3981.1,
+   -639.4
   ],
   [
-   3978.1,
-   -651.3
+   4001.8,
+   -621.7
   ],
   [
-   3998.8,
-   -639.1
+   4022.6,
+   -594.6
   ],
   [
-   4019.6,
-   -617.5
+   4043.4,
+   -556.4
   ],
   [
-   4040.3,
-   -583.3
+   4064.1,
+   -504.3
   ],
   [
-   4061.1,
-   -531.3
+   4084.9,
+   -435.5
   ],
   [
-   4081.9,
-   -454.9
+   4105.7,
+   -347.4
   ],
   [
-   4102.6,
-   -347.8
+   4126.4,
+   -240.3
   ],
   [
-   4122.3,
-   -209.4
+   4147.2,
+   -119.1
   ],
   [
-   4143.0,
-   -50.5
+   4166.9,
+   7.1
   ],
   [
-   4163.8,
-   108.5
+   4187.7,
+   127.1
   ],
   [
-   4184.6,
-   248.4
+   4208.4,
+   232.0
   ],
   [
-   4205.3,
-   360.7
+   4229.2,
+   317.0
   ],
   [
-   4226.1,
-   445.8
+   4250.0,
+   381.3
   ],
   [
-   4246.8,
-   506.5
+   4270.7,
+   426.9
   ],
   [
-   4266.5,
-   544.5
+   4291.5,
+   456.3
   ],
   [
-   4287.3,
-   561.6
+   4312.3,
+   472.6
   ],
   [
-   4308.0,
-   560.9
+   4333.0,
+   478.3
   ],
   [
-   4328.8,
-   547.1
+   4353.8,
+   475.7
   ],
   [
-   4349.5,
-   525.7
+   4374.6,
+   467.1
   ],
   [
-   4370.3,
-   501.1
+   4395.4,
+   454.3
   ],
   [
-   4391.1,
-   476.3
+   4416.1,
+   439.2
   ],
   [
-   4411.8,
-   452.8
+   4436.9,
+   422.9
   ],
   [
-   4431.5,
-   430.8
+   4457.7,
+   406.5
   ],
   [
-   4452.2,
-   410.4
+   4478.4,
+   390.5
   ],
   [
-   4473.0,
-   391.4
+   4499.2,
+   375.2
   ],
   [
-   4493.8,
-   373.5
+   4520.0,
+   360.6
   ],
   [
-   4514.5,
-   356.9
+   4540.7,
+   346.7
   ],
   [
-   4535.3,
-   341.2
+   4561.5,
+   333.5
   ],
   [
-   4556.0,
-   326.4
+   4582.3,
+   320.7
   ],
   [
-   4575.7,
-   312.3
+   4603.0,
+   308.2
   ],
   [
-   4596.5,
-   298.8
+   4623.8,
+   295.8
   ],
   [
-   4617.2,
-   285.7
+   4644.6,
+   283.6
   ]
  ],
  "vencimientos": [
-  "2026-10-21",
   "2026-10-22",
   "2026-10-23",
   "2026-10-26",
@@ -724,29 +737,29 @@
   "2026-11-20",
   "2026-11-27"
  ],
- "n_vencimientos": 15,
- "n_grupos": 964,
+ "n_vencimientos": 14,
+ "n_grupos": 911,
  "cadenas": {
   "GLD": {
    "descartes_oi_sin_iv": 0,
-   "grupos": 1067,
-   "opciones": 964,
-   "spot": 377.34,
-   "ultima_operacion": "2026-10-20T15:59:59"
+   "grupos": 1013,
+   "opciones": 911,
+   "spot": 379.35,
+   "ultima_operacion": "2026-10-21T15:59:59"
   }
  },
  "validacion_gamma": {
-  "n": 232,
-  "mediana_error_rel_pct": 2.31,
-  "p90_error_rel_pct": 7.08
+  "n": 245,
+  "mediana_error_rel_pct": 0.96,
+  "p90_error_rel_pct": 2.17
  },
  "em": {
-  "puntos": 56.8,
-  "pct": 1.375,
-  "vol": 21.83,
+  "puntos": 55.7,
+  "pct": 1.346,
+  "vol": 21.36,
   "vol_simbolo": "GVZ",
-  "vol_fecha": "2026-10-20",
-  "ref": 4126.1,
+  "vol_fecha": "2026-10-21",
+  "ref": 4142.3,
   "formula": "GLD × GVZ / 100 / √252 × ratio XAU/GLD",
   "fuente": "Yahoo Finance (^GVZ)",
   "unidad": "XAU/USD"
@@ -757,8 +770,8 @@
    "clave": "flip",
    "corto": "flip",
    "nombre": "Gamma Flip",
-   "gld": 379.8,
-   "xau": 4149.6,
+   "gld": 381.1,
+   "xau": 4165.8,
    "musd": null
   },
   {
@@ -766,58 +779,58 @@
    "corto": "cw",
    "nombre": "Call Wall",
    "gld": 380,
-   "xau": 4151.8,
-   "musd": 74.3
+   "xau": 4153.8,
+   "musd": 76.5
   },
   {
    "clave": "put_wall",
    "corto": "pw",
    "nombre": "Put Wall",
    "gld": 345,
-   "xau": 3769.4,
-   "musd": 63.9
+   "xau": 3771.2,
+   "musd": 56.0
   },
   {
    "clave": "max_gamma",
    "corto": "maxg",
    "nombre": "Max Gamma",
    "gld": 380,
-   "xau": 4151.8,
-   "musd": 137.8
+   "xau": 4153.8,
+   "musd": 144.9
   }
  ],
- "em_xau": 56.8,
+ "em_xau": 55.7,
  "ratio": {
-  "valor": 10.92573,
-  "fecha": "2026-10-20",
+  "valor": 10.93099,
+  "fecha": "2026-10-21",
   "exacto": true,
-  "gld_cierre": 377.65,
-  "xau": 4126.1,
-  "xau_hora_utc": "2026-10-20 21:32",
+  "gld_cierre": 378.95,
+  "xau": 4142.3,
+  "xau_hora_utc": "2026-10-21 21:32",
   "fuente_xau": "gold-api.com (XAU/USD al contado)",
   "nota": "ratio de la sesión"
  },
- "spot_gld": 377.34,
+ "spot_gld": 379.35,
  "em_gld": {
-  "puntos": 5.2,
-  "pct": 1.375,
-  "vol": 21.83,
+  "puntos": 5.1,
+  "pct": 1.346,
+  "vol": 21.36,
   "vol_simbolo": "GVZ",
-  "vol_fecha": "2026-10-20",
-  "ref": 377.34,
+  "vol_fecha": "2026-10-21",
+  "ref": 379.35,
   "formula": "precio × GVZ / 100 / √252",
   "fuente": "Yahoo Finance (^GVZ)"
  },
- "historico_escrito": false,
+ "historico_escrito": true,
  "marcador": {
-  "sesiones_guardadas": 1,
-  "evaluadas": 0,
+  "sesiones_guardadas": 2,
+  "evaluadas": 1,
   "min_n": 20,
   "estado": "CONGELADA",
   "por_nivel": {
    "flip": {
     "nivel": "Gamma Flip",
-    "evaluadas": 0,
+    "evaluadas": 1,
     "tocadas": 0,
     "rechazadas": 0,
     "atravesadas": 0,
@@ -825,15 +838,15 @@
    },
    "call_wall": {
     "nivel": "Call Wall",
-    "evaluadas": 0,
-    "tocadas": 0,
+    "evaluadas": 1,
+    "tocadas": 1,
     "rechazadas": 0,
     "atravesadas": 0,
-    "dentro": 0
+    "dentro": 1
    },
    "put_wall": {
     "nivel": "Put Wall",
-    "evaluadas": 0,
+    "evaluadas": 1,
     "tocadas": 0,
     "rechazadas": 0,
     "atravesadas": 0,
@@ -841,67 +854,156 @@
    },
    "max_gamma": {
     "nivel": "Max Gamma",
-    "evaluadas": 0,
-    "tocadas": 0,
+    "evaluadas": 1,
+    "tocadas": 1,
     "rechazadas": 0,
     "atravesadas": 0,
-    "dentro": 0
+    "dentro": 1
    }
   },
-  "ultimas": [],
+  "ultimas": [
+   {
+    "fecha_sesion": "2026-10-20",
+    "nivel": "Max Gamma",
+    "nivel_gld": "380.0",
+    "fecha_t1": "2026-10-21",
+    "tocado": "SI",
+    "resultado": "DENTRO"
+   },
+   {
+    "fecha_sesion": "2026-10-20",
+    "nivel": "Put Wall",
+    "nivel_gld": "345.0",
+    "fecha_t1": "2026-10-21",
+    "tocado": "NO",
+    "resultado": "NO TOCADO"
+   },
+   {
+    "fecha_sesion": "2026-10-20",
+    "nivel": "Call Wall",
+    "nivel_gld": "380.0",
+    "fecha_t1": "2026-10-21",
+    "tocado": "SI",
+    "resultado": "DENTRO"
+   },
+   {
+    "fecha_sesion": "2026-10-20",
+    "nivel": "Gamma Flip",
+    "nivel_gld": "381.7",
+    "fecha_t1": "2026-10-21",
+    "tocado": "NO",
+    "resultado": "NO TOCADO"
+   }
+  ],
   "criterio": "Zona = nivel ± 0.25×EM (EM = GLD × GVZ / 100 / √252). TOCADO si el rango de la sesión siguiente entra en la zona; RECHAZADO / ATRAVESADO / DENTRO según dónde cierra. Medido sobre GLD (donde están los niveles). Descriptivo: con n < 20 no se concluye nada ni se tocan los umbrales."
  },
  "revision": {
   "sesiones": [
    {
-    "fecha_sesion": "2026-10-20",
-    "spot_fut": 377.77,
+    "fecha_sesion": "2026-10-21",
+    "spot_fut": 379.35,
     "niveles": {},
     "estado": "PENDIENTE"
+   },
+   {
+    "fecha_sesion": "2026-10-20",
+    "spot_fut": 377.77,
+    "niveles": {
+     "Call Wall": {
+      "nivel": 380.0,
+      "tocado": false,
+      "resultado": "NO TOCADO",
+      "dist_cierre": -1.0
+     },
+     "Put Wall": {
+      "nivel": 345.0,
+      "tocado": false,
+      "resultado": "NO TOCADO",
+      "dist_cierre": 34.0
+     },
+     "Gamma Flip": {
+      "nivel": 381.7,
+      "tocado": false,
+      "resultado": "CERRÓ POR DEBAJO",
+      "dist_cierre": -2.7
+     }
+    },
+    "estado": "EVALUADA",
+    "sesion_siguiente": {
+     "fecha": "2026-10-21",
+     "o": 379.1700134277344,
+     "h": 379.54998779296875,
+     "l": 376.20001220703125,
+     "c": 378.95001220703125
+    }
    }
   ],
   "resumen": {
    "Call Wall": {
-    "evaluadas": 0,
+    "evaluadas": 1,
     "tocadas": 0,
     "respetadas": 0
    },
    "Put Wall": {
-    "evaluadas": 0,
+    "evaluadas": 1,
     "tocadas": 0,
     "respetadas": 0
    },
    "Gamma Flip": {
-    "evaluadas": 0,
-    "tocadas": 0,
+    "evaluadas": 1,
+    "tocadas": 1,
     "respetadas": null
    }
   }
  },
  "revision_unidad": "GLD ($): los niveles se miden sobre el ETF, donde están",
- "spot_etf": 377.34,
- "ratio_contado": 10.92573,
- "spot_fut": 4142.5,
+ "spot_etf": 379.35,
+ "ratio_contado": 10.93099,
+ "spot_fut": 4159.5,
  "base": {
-  "base": 16.4,
-  "fut": 4142.5,
-  "idx": 4126.1,
+  "base": 17.2,
+  "fut": 4159.5,
+  "idx": 4142.3,
   "momento_et": null,
   "aproximada": false,
-  "metodo": "GC=F − XAU/USD al contado (última barra de 5 min de GC=F de Yahoo previa al spot, 2026-10-20 20:55 UTC)",
+  "metodo": "GC=F − XAU/USD al contado (última barra de 5 min de GC=F de Yahoo previa al spot, 2026-10-21 20:59 UTC)",
   "fuente": "Yahoo Finance (GC=F) y gold-api.com (XAU/USD)",
   "errores": []
  },
  "contado": "XAU",
  "futuro": "GC",
  "unidad": "XAU",
- "anterior": null,
- "sesiones_guardadas": 1,
- "resumen_texto": "GLD, referencia · Gamma Flip 4.150, Call Wall 4.152, Put Wall 3.769, Max Gamma 4.152 (XAU/USD) · gamma negativa · ratio XAU/GLD 10.926 del 20-10",
- "linea": "XAU tesis=alcista;int=debil;flip=4149.6;cw=4151.8;pw=3769.4;em=56.8;maxg=4151.8;ratio=10.9257;rf=2026-10-20;cot=largo-bajo_p27;etf=+6.0;evento=no",
+ "anterior": {
+  "sesion_anterior": "2026-10-20",
+  "niveles": {
+   "call_wall": {
+    "antes": 4151.8,
+    "ahora": 4153.8,
+    "dif": 2.0
+   },
+   "put_wall": {
+    "antes": 3769.4,
+    "ahora": 3771.2,
+    "dif": 1.8
+   },
+   "flip": {
+    "antes": 4170.4,
+    "ahora": 4165.8,
+    "dif": -4.6
+   }
+  },
+  "regimen": {
+   "antes": "NEGATIVA",
+   "ahora": "NEGATIVA",
+   "cambio": false
+  }
+ },
+ "sesiones_guardadas": 2,
+ "resumen_texto": "GLD, referencia · Gamma Flip 4.166, Call Wall 4.154, Put Wall 3.771, Max Gamma 4.154 (XAU/USD) · gamma negativa · ratio XAU/GLD 10.931 del 21-10",
+ "linea": "XAU tesis=alcista;int=debil;flip=4165.8;cw=4153.8;pw=3771.2;em=55.7;maxg=4153.8;ratio=10.9310;rf=2026-10-21;cot=largo-bajo_p27;etf=+6.0;evento=no",
  "fuente": "Cboe · cadena de opciones de GLD con 15 min de retraso (cdn-api.cboe.com), GVZ y GLD de Yahoo Finance, XAU/USD de gold-api.com",
  "metodo": "el mismo que SPX/NDX en gamma.py, con una sola cadena y sin escalar ETF): 1. Cadena GLD de Cboe: vencimientos de 1 a 45 días, strikes a ±15 %, IV por (vencimiento, strike), gamma recalculada con Black-Scholes, GEX$ = gamma × OI × 100 × S² × 1 %. Convención de signo (HIPÓTESIS): calls +, puts −. 2. Tramos de 1 $ de GLD. Call Wall = tramo por encima del precio con más GEX de calls; Put Wall = por debajo con más GEX de puts; Gamma Flip = precio de GLD al que el GEX neto cambia de signo (barrido ±12 %); Max Gamma = tramo con más gamma absoluta (calls + |puts|). 3. EM (movimiento esperado de UN día) = precio de GLD × GVZ / 100 / √252 (GVZ = índice de volatilidad implícita del oro de Cboe, cierre de la sesión de la cadena). 4. Conversión a precio XAU/USD: nivel XAU = nivel GLD × ratio, con ratio = XAU spot / cierre de GLD de ESA sesión. El ratio se anota cada cierre en data/xau_gld_ratio.csv (solo añadir) con su fecha: GLD al cierre de Nueva York (16:00 ET) y XAU al contado a la hora de la ejecución de cierre (21:30 UTC, ≈ cierre diario del oro al contado, 17:00 ET). Si falta el ratio de la sesión se usa el último anotado (≤ 5 días) y se avisa con su fecha; sin ratio los niveles quedan solo en GLD (SIN DATO en XAU). El ratio no es constante: deriva despacio (comisiones del fondo) y varía unas décimas entre momentos del día, así que un nivel en XAU es una aproximación de unos pocos dólares. 5. Solo se guarda histórico con snapshot del cierre de Nueva York y desde la ejecución de cierre.",
  "ok": true,
- "generado_utc": "2026-10-21 10:23 UTC",
- "duracion_s": 0.3
+ "generado_utc": "2026-10-21 21:30 UTC",
+ "duracion_s": 1.1
 }
