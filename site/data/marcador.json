@@ -1,7 +1,7 @@
 {
  "version": 2,
  "version_criterio": 2,
- "generado_utc": "2026-10-21 10:07 UTC",
+ "generado_utc": "2026-10-21 10:23 UTC",
  "ok": true,
  "min_n": 20,
  "horizontes": [
@@ -68,19 +68,19 @@
       "muestra_insuficiente": true
      },
      "5": {
-      "n": 6,
+      "n": 7,
       "aciertos": 1,
       "fallos": 2,
-      "neutrales": 3,
-      "pendientes": 6,
+      "neutrales": 4,
+      "pendientes": 5,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": 16.7,
-      "ret_medio": -0.522,
+      "acierto_pct": 14.3,
+      "ret_medio": -0.586,
       "peor_ret": -3.53,
       "peor_mae": -4.521,
-      "base_media_pct": 41.2,
-      "diferencia_pp": -24.5,
+      "base_media_pct": 40.3,
+      "diferencia_pp": -26.0,
       "muestra_insuficiente": true
      },
      "20": {
@@ -810,7 +810,13 @@
      "sigma_h": 2.0779
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "NEUTRAL",
+     "ret": -0.973,
+     "mae": -0.973,
+     "unidad": "%",
+     "base_pct": 34.6,
+     "fecha_fin": "2026-10-20",
+     "sigma_h": 4.6464
     },
     "20": {
      "estado": "PENDIENTE"
@@ -6179,8 +6185,8 @@
  "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas.",
  "ultima_ejecucion": {
   "senales_nuevas": 0,
-  "resultados_nuevos": 0,
-  "evaluo": false
+  "resultados_nuevos": 1,
+  "evaluo": true
  },
- "duracion_s": 0.0
+ "duracion_s": 0.1
 }

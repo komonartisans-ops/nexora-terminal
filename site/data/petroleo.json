@@ -1,22 +1,22 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-21 05:30 UTC",
+ "generado_utc": "2026-10-21 10:23 UTC",
  "fecha_datos": "2026-10-21",
  "precios": {
   "wti": {
-   "valor": 99.08,
+   "valor": 100.07,
    "fecha": "2026-10-21",
-   "sma50": 92.2,
+   "sma50": 92.22,
    "sma200": 84.85,
-   "dist_sma200_pct": 16.77,
-   "cambio_1d_pct": 1.29,
-   "cambio_5d_pct": 5.52,
-   "cambio_21d_pct": 4.75,
-   "cambio_63d_pct": 7.47,
+   "dist_sma200_pct": 17.93,
+   "cambio_1d_pct": 2.3,
+   "cambio_5d_pct": 6.57,
+   "cambio_21d_pct": 5.79,
+   "cambio_63d_pct": 8.55,
    "fuente": "Yahoo Finance (CL=F, futuro continuo del primer vencimiento)",
    "contrato_cl_f": "CLZ26.NYM",
-   "aviso_empalme": "CL=F apunta hoy a CLZ26.NYM; el cambio de 1 día se mide sobre ese contrato (1,29 %) y no sobre la serie empalmada (-2,66 %), que mezcla dos contratos"
+   "aviso_empalme": "CL=F apunta hoy a CLZ26.NYM; el cambio de 1 día se mide sobre ese contrato (2,30 %) y no sobre la serie empalmada (-1,69 %), que mezcla dos contratos"
   },
   "wti_spot_serie": [
    [
@@ -2189,15 +2189,15 @@
    ]
   ],
   "brent": {
-   "valor": 110.36,
+   "valor": 110.94,
    "fecha": "2026-10-21",
-   "sma50": 99.79,
+   "sma50": 99.8,
    "sma200": 90.64,
-   "dist_sma200_pct": 21.76,
-   "cambio_1d_pct": 1.44,
-   "cambio_5d_pct": 4.05,
-   "cambio_21d_pct": 11.19,
-   "cambio_63d_pct": 9.6,
+   "dist_sma200_pct": 22.4,
+   "cambio_1d_pct": 1.98,
+   "cambio_5d_pct": 4.6,
+   "cambio_21d_pct": 11.78,
+   "cambio_63d_pct": 10.18,
    "fuente": "Yahoo Finance (BZ=F, futuro)"
   },
   "segunda_fuente": {
@@ -2220,7 +2220,7 @@
   },
   "brent_comparacion": {
    "yahoo": {
-    "valor": 110.36,
+    "valor": 110.94,
     "fecha": "2026-10-21"
    },
    "fred": {
@@ -2246,7 +2246,7 @@
    },
    "fuentes_independientes": "Yahoo BZ=F es un FUTURO; FRED DCOILBRENTEU y la EIA (RBRTE, Europe Brent Spot Price FOB) son la MISMA serie de precios al contado (FRED la republica): valen como una sola fuente. La discrepancia se cierra cuando el futuro y el contado coinciden dentro del umbral."
   },
-  "spread_brent_wti": 11.28
+  "spread_brent_wti": 10.87
  },
  "graficos": {
   "wti": {
@@ -4265,7 +4265,7 @@
     ],
     [
      "2026-10-21",
-     99.08
+     100.07
     ]
    ],
    "sma50": [
@@ -6087,7 +6087,7 @@
     ],
     [
      "2026-10-21",
-     92.203
+     92.223
     ]
    ],
    "sma200": [
@@ -7309,7 +7309,7 @@
     ],
     [
      "2026-10-21",
-     84.848
+     84.853
     ]
    ]
   },
@@ -9329,7 +9329,7 @@
     ],
     [
      "2026-10-21",
-     110.36
+     110.94
     ]
    ],
    "sma50": [
@@ -11151,7 +11151,7 @@
     ],
     [
      "2026-10-21",
-     99.785
+     99.797
     ]
    ],
    "sma200": [
@@ -12373,7 +12373,7 @@
     ],
     [
      "2026-10-21",
-     90.635
+     90.638
     ]
    ]
   }
@@ -12383,10 +12383,10 @@
   "par_usado": "1-2",
   "m1": "CLZ26.NYM",
   "m2": "CLF27.NYM",
-  "precio_m1": 99.08,
-  "precio_m2": 97.17,
-  "diferencial": 1.91,
-  "diferencial_pct": 1.97,
+  "precio_m1": 100.07,
+  "precio_m2": 98.21,
+  "diferencial": 1.86,
+  "diferencial_pct": 1.89,
   "estado": "ESCASEZ",
   "vence_m1": "2026-11-20",
   "dias_a_vencimiento_m1": 30,
@@ -12398,7 +12398,7 @@
   "motivo_par": null,
   "info_1_2": null,
   "aviso": null,
-  "percentil_par": 91,
+  "percentil_par": 88,
   "dias_par": 503,
   "min_pct": -0.17,
   "max_pct": 4.93,
@@ -13441,7 +13441,7 @@
    ],
    [
     "2026-10-21",
-    1.966
+    1.894
    ]
   ],
   "historico_propio": {
@@ -15960,7 +15960,7 @@
   }
  },
  "relaciones": {
-  "wti_cambio_3m_pct": 7.47,
+  "wti_cambio_3m_pct": 8.55,
   "filas": [
    {
     "clave": "t5yie",
@@ -15975,9 +15975,9 @@
    {
     "clave": "dxy",
     "nombre": "Dólar (DXY)",
-    "valor": 101.79,
+    "valor": 101.76,
     "fecha": "2026-10-21",
-    "cambio_3m": 0.35,
+    "cambio_3m": 0.33,
     "unidad_cambio": "%",
     "correlacion_60d": -0.08,
     "lectura": "sin relación clara en 60 sesiones"
@@ -16022,7 +16022,7 @@
   "causa_efecto": [
    [
     "Curva escasez",
-    "el 1.er vencimiento (dic-2026) cotiza 1,91 $ (1,97 %) frente al 2.º (ene-2027): el mercado paga por tener petróleo ya (escasez a corto plazo)"
+    "el 1.er vencimiento (dic-2026) cotiza 1,86 $ (1,89 %) frente al 2.º (ene-2027): el mercado paga por tener petróleo ya (escasez a corto plazo)"
    ],
    [
     "Inventarios de crudo",
@@ -16030,7 +16030,7 @@
    ],
    [
     "Precio frente a su media de 200",
-    "WTI 99,08 $, 16,8 % frente a 84,85 $: tendencia de fondo al alza"
+    "WTI 100,07 $, 17,9 % frente a 84,85 $: tendencia de fondo al alza"
    ]
   ]
  },
@@ -16049,5 +16049,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (CL=F, BZ=F, contratos CL<mes><año>.NYM, XLE, DXY) · FRED (DCOILWTICO, DCOILBRENTEU, GASREGW, T5YIE) · EIA (Weekly Petroleum Status Report) · CFTC (WTI-PHYSICAL)",
- "duracion_s": 49.3
+ "duracion_s": 53.4
 }

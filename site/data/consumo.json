@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-21 05:30 UTC",
+ "generado_utc": "2026-10-21 10:23 UTC",
  "fecha_datos": "2026-10-20",
  "mercado": {
   "cap": {
@@ -23,10 +23,10 @@
    "sobre_sma200": false
   },
   "pesos": {
-   "fecha": "19-Oct-2026",
-   "amzn": 23.45,
-   "tsla": 17.44,
-   "suma": 40.89,
+   "fecha": "20-Oct-2026",
+   "amzn": 23.26,
+   "tsla": 17.56,
+   "suma": 40.82,
    "fuente": "State Street SSGA, posiciones diarias de XLY"
   },
   "diferencia_3m_pp": -1.26,
@@ -12264,5 +12264,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, DRCCLACBS; UMCSENT como respaldo) · Universidad de Michigan (sca.isr.umich.edu, ánimo del consumidor)",
- "duracion_s": 3.1
+ "duracion_s": 4.0
 }
