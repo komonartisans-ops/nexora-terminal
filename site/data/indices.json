@@ -715,11 +715,11 @@
     "id": "fedwatch",
     "dato": "FedWatch",
     "que_mirar": "Recortes/subidas descontados",
-    "dir": "↓",
-    "valor": "2026-10-28: subida 14 % · mantener 86 % · bajada 0 %",
-    "estado": "FAVORABLE",
-    "lectura": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -5 pb en 5 sesiones · Más relajación",
-    "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-21",
+    "dir": "?",
+    "valor": "—",
+    "estado": "SIN DATO",
+    "lectura": "FedWatch no disponible hoy (fallo de descarga). Nunca se estima.",
+    "fuente": "CME FedWatch",
     "puntua": true
    },
    {
@@ -835,10 +835,10 @@
   ],
   "entorno": {
    "lectura": "MIXTO",
-   "risk_on": 4,
+   "risk_on": 3,
    "risk_off": 2,
-   "sin_dato": 0,
-   "disponibles": 7,
+   "sin_dato": 1,
+   "disponibles": 6,
    "condiciones": [
     {
      "id": "t2y",
@@ -873,7 +873,7 @@
     {
      "id": "fedwatch",
      "condicion": "FedWatch más relajado",
-     "estado": "RISK-ON"
+     "estado": "SIN DATO"
     }
    ],
    "liquidez": "NEUTRAL",
@@ -983,7 +983,7 @@
     "par": "2Y ↔ FedWatch",
     "busca": "2Y ↓ + más recortes descontados",
     "estado": "NO SE CUMPLE",
-    "detalle": "2Y +0 pb · FedWatch FAVORABLE",
+    "detalle": "2Y +0 pb · FedWatch SIN DATO",
     "lectura": "Relajación de expectativas de tipos"
    },
    {
@@ -1189,14 +1189,16 @@
     "fuente": "Nasdaq Data (cierres de XLY y XLP; ratio de precios, igual que TradingView); Census, ventas minoristas reales (FRED RRSFS), media 3 meses vs 3 anteriores"
    }
   ],
-  "avisos": [],
+  "avisos": [
+   "Entorno evaluado sobre 6 de 7 condiciones: FedWatch sin dato hoy (fallo de descarga)."
+  ],
   "pasos": [
    {
     "n": 1,
     "paso": "MACRO",
     "que": "2Y → 10Y → 10Y real → DXY → NFCI → FedWatch → VIX",
     "estado": "NEUTRAL",
-    "detalle": "MIXTO: 4 risk-on, 2 risk-off, 0 sin dato de 7"
+    "detalle": "MIXTO: 3 risk-on, 2 risk-off, 1 sin dato de 7"
    },
    {
     "n": 2,
@@ -1269,7 +1271,7 @@
    {
     "n": 3,
     "pregunta": "¿FedWatch está relajándose o endureciéndose?",
-    "respuesta": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -5 pb en 5 sesiones · Más relajación Proxy letras: +3 pb en 5 sesiones."
+    "respuesta": "FedWatch no disponible hoy (fallo de descarga). Nunca se estima. Proxy letras: +3 pb en 5 sesiones."
    },
    {
     "n": 4,
@@ -3294,6 +3296,6 @@
   },
   "reacciones": null
  },
- "evaluado_utc": "2026-10-21 14:07 UTC",
+ "evaluado_utc": "2026-10-21 15:07 UTC",
  "fedwatch_fecha_precios": "2026-10-21"
 }

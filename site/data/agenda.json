@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-21 14:09 UTC",
+ "generado_utc": "2026-10-21 15:09 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -265,66 +265,6 @@
   ],
   "proximos_7_dias": [
    {
-    "fecha": "2026-10-22",
-    "fecha_et": "2026-10-22",
-    "dia": "jue",
-    "hora_ny": "08:30",
-    "hora_madrid": "14:30",
-    "evento": "Peticiones de paro semanales",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-22",
-    "fecha_et": "2026-10-22",
-    "dia": "jue",
-    "hora_ny": "16:30",
-    "hora_madrid": "22:30",
-    "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-23",
-    "fecha_et": "2026-10-23",
-    "dia": "vie",
-    "hora_ny": "10:00",
-    "hora_madrid": "16:00",
-    "evento": "Confianza U. Michigan (expectativas de inflación)",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-27",
-    "fecha_et": "2026-10-27",
-    "dia": "mar",
-    "hora_ny": "08:30",
-    "hora_madrid": "13:30",
-    "evento": "Pedidos de fábrica y bienes duraderos (Census, M3)",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-27",
-    "fecha_et": "2026-10-27",
-    "dia": "mar",
-    "hora_ny": "10:00",
-    "hora_madrid": "15:00",
-    "evento": "Vivienda iniciada y permisos (Census)",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-27",
-    "fecha_et": "2026-10-27",
-    "dia": "mar",
-    "hora_ny": "10:00",
-    "hora_madrid": "15:00",
-    "evento": "Ventas de vivienda nueva (Census)",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
     "fecha": "2026-10-28",
     "fecha_et": "2026-10-28",
     "dia": "mié",
@@ -369,7 +309,7 @@
   "hasta": "2026-10-28",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-21 14:09 UTC"
+  "generado_utc": "2026-10-21 15:09 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }

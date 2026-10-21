@@ -339,11 +339,11 @@
     "id": "fedwatch",
     "dato": "FedWatch",
     "que_mirar": "Probabilidades de recortes/subidas",
-    "dir": "↓",
-    "valor": "2026-10-28: subida 14 % · mantener 86 % · bajada 0 %",
-    "estado": "FAVORABLE",
-    "lectura": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -5 pb en 5 sesiones · Más relajación descontada",
-    "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-21",
+    "dir": "?",
+    "valor": "—",
+    "estado": "SIN DATO",
+    "lectura": "CME FedWatch no tiene API gratuita. Nunca se estima.",
+    "fuente": "CME FedWatch",
     "puntua": true
    },
    {
@@ -487,7 +487,7 @@
     "par": "2Y ↔ FedWatch",
     "busca": "2Y ↓ + más recortes descontados",
     "estado": "NO SE CUMPLE",
-    "detalle": "2Y +0 pb · FedWatch FAVORABLE",
+    "detalle": "2Y +0 pb · FedWatch SIN DATO",
     "lectura": "Expectativas de tipos más relajadas"
    },
    {
@@ -527,11 +527,11 @@
    }
   ],
   "confluencia": {
-   "lectura": "PREDOMINIO FAVORABLE",
-   "favorables": 3,
+   "lectura": "MIXTO",
+   "favorables": 2,
    "contrarias": 1,
-   "sin_dato": 0,
-   "disponibles": 5,
+   "sin_dato": 1,
+   "disponibles": 4,
    "nucleo": [
     {
      "id": "dxy",
@@ -554,8 +554,8 @@
     {
      "id": "fedwatch",
      "dato": "FedWatch",
-     "dir": "↓",
-     "estado": "FAVORABLE"
+     "dir": "?",
+     "estado": "SIN DATO"
     },
     {
      "id": "nfci",
@@ -682,15 +682,15 @@
   ],
   "eventos": null,
   "avisos": [
-   "DIVERGENCIA: la macro acompaña pero el precio no confirma. CH §7: esperar a que el precio confirme."
+   "Confluencia evaluada sobre 4 de 5 condiciones: FedWatch sin dato hoy (fallo de descarga)."
   ],
   "pasos": [
    {
     "n": 1,
     "paso": "MACRO",
     "que": "DXY → 2Y → 10Y → 10Y real → FedWatch → NFCI",
-    "estado": "FAVORABLE",
-    "detalle": "PREDOMINIO FAVORABLE: 3 a favor, 1 en contra, 0 sin dato de 5"
+    "estado": "NEUTRAL",
+    "detalle": "MIXTO: 2 a favor, 1 en contra, 1 sin dato de 5"
    },
    {
     "n": 2,
@@ -761,7 +761,7 @@
    {
     "n": 4,
     "pregunta": "¿FedWatch se mueve hacia recortes o subidas?",
-    "respuesta": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -5 pb en 5 sesiones · Más relajación descontada"
+    "respuesta": "CME FedWatch no tiene API gratuita. Nunca se estima."
    },
    {
     "n": 5,
@@ -5011,6 +5011,6 @@
    ]
   ]
  },
- "evaluado_utc": "2026-10-21 14:07 UTC",
+ "evaluado_utc": "2026-10-21 15:07 UTC",
  "fedwatch_fecha_precios": "2026-10-21"
 }

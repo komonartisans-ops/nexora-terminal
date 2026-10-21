@@ -1,4 +1,4 @@
-capturado_utc,modo,evento,etapas_ok,etapas_fallo,duracion_s
+capturado_utc,modo,evento,etapas_ok,etapas_fallo,duracion_s,run_id
 2026-10-08 15:34 UTC,diario,local,"precios,fedwatch,tipos,ciclo,publicados",,140.1
 2026-10-08 15:42 UTC,diario,local,"resumen,regimen,alertas",,604.1
 2026-10-08 15:53 UTC,diario,local,"ciclo,alertas",,8.1
@@ -139,3 +139,4 @@ capturado_utc,modo,evento,etapas_ok,etapas_fallo,duracion_s
 2026-10-21 12:07 UTC,horario,workflow_dispatch,"precios,fedwatch,tipos,calendario,publicados,reevaluar,resumen,tesis,regimen,noticias,skew,alertas,gamma_intradia,marcador,integridad,contexto",etf,643.7
 2026-10-21 13:07 UTC,horario,workflow_dispatch,"precios,fedwatch,tipos,calendario,publicados,reevaluar,resumen,tesis,regimen,noticias,skew,alertas,gamma_intradia,marcador,integridad,contexto",etf,649.0
 2026-10-21 14:07 UTC,horario,workflow_dispatch,"precios,fedwatch,tipos,calendario,publicados,reevaluar,resumen,tesis,regimen,noticias,skew,alertas,gamma_intradia,marcador,integridad,contexto",etf,690.1
+2026-10-21 15:07 UTC,horario,workflow_dispatch,"precios,tipos,calendario,publicados,reevaluar,resumen,tesis,regimen,noticias,skew,alertas,gamma_intradia,marcador,integridad,contexto","fedwatch,etf",287.5,39622802583

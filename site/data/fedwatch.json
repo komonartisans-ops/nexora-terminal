@@ -14485,6 +14485,8 @@
    "nota": null
   }
  },
- "ok": true,
- "duracion_s": 22.8
+ "ok": false,
+ "duracion_s": 22.8,
+ "error": "RuntimeError: sin precios de futuros ZQ: {}",
+ "ultimo_dato_valido_utc": "2026-10-21 14:07 UTC"
 }
