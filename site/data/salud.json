@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-21 15:21 UTC",
+ "generado_utc": "2026-10-21 15:22 UTC",
  "workflows": [
   {
    "workflow": "actualizar",
@@ -9,8 +9,8 @@
    "hoy_fallidas": 0,
    "ultima_utc": "2026-10-21 15:07",
    "ultima_evento": "workflow_dispatch",
-   "ultima_estado": "in_progress",
-   "horas_desde_ultima": 0.2
+   "ultima_estado": "success",
+   "horas_desde_ultima": 0.3
   },
   {
    "workflow": "reacciones",
