@@ -45,7 +45,7 @@
     "estado": "NEUTRAL",
     "dir": "→",
     "evidencia": [
-     "Monitor de liquidez cripto: SEÑALES INICIALES DE GIRO (4/8 condiciones, 1 en drenaje)",
+     "Monitor de liquidez cripto: SEÑALES INICIALES DE GIRO (5/8 condiciones, 1 en drenaje)",
      "Balance de la Fed 6.76 T$ (+0.2 % en 13 semanas)",
      "TGA 965.0 B$ (-39.3 B$ en 4 semanas)",
      "RRP 0.2 B$ (-0.2 B$ en 4 semanas)",
@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-21): reunión del 2026-10-28 subida 14 % / mantener 86 % / bajada 0 % (-2 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +36 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-21): reunión del 2026-10-28 subida 14 % / mantener 86 % / bajada 0 % (-2 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +36 pb vs hoy (más blanda (el mercado espera tipos más bajos) que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.79 % vs tipo efectivo 3.88 % → +91 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +63 pb (+3 pb en 5 sesiones)"
@@ -162,12 +162,12 @@
     "lectura": "SEÑALES INICIALES DE GIRO",
     "sentido": "FAVORABLE",
     "precio": "BTC CONFIRMA",
-    "detalle": "checklist 4/8 · BTC 30 días +2.2 %"
+    "detalle": "checklist 5/8 · BTC 30 días +2.2 %"
    },
    {
     "monitor": "Oro (XAU/USD)",
-    "lectura": "MIXTO",
-    "sentido": "NEUTRAL",
+    "lectura": "PREDOMINIO FAVORABLE",
+    "sentido": "FAVORABLE",
     "precio": "CONFIRMA DEBILIDAD",
     "detalle": "oro 20 sesiones -4.4 %"
    },
@@ -179,7 +179,7 @@
     "detalle": "amplitud CONFIRMA · S&P 20 sesiones -0.7 %"
    }
   ],
-  "concordancia": "2 DE 3: NEUTRAL (Liquidez cripto: FAVORABLE)",
+  "concordancia": "2 DE 3: FAVORABLE (Índices USA: NEUTRAL)",
   "motor": [
    {
     "motor": "Bono a 2 años",
@@ -347,7 +347,7 @@
    },
    {
     "pregunta": "¿Coinciden los tres monitores?",
-    "respuesta": "2 DE 3: NEUTRAL (Liquidez cripto: FAVORABLE)"
+    "respuesta": "2 DE 3: FAVORABLE (Índices USA: NEUTRAL)"
    },
    {
     "pregunta": "¿Hay un motor común?",
@@ -1050,6 +1050,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-21 13:07 UTC",
- "duracion_s": 8.5
+ "generado_utc": "2026-10-21 14:07 UTC",
+ "duracion_s": 23.9
 }

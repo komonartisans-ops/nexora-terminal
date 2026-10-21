@@ -1,7 +1,7 @@
 {
  "version": 2,
  "version_criterio": 2,
- "generado_utc": "2026-10-21 13:07 UTC",
+ "generado_utc": "2026-10-21 14:07 UTC",
  "ok": true,
  "min_n": 20,
  "horizontes": [
@@ -342,7 +342,7 @@
   },
   "vivo": {
    "tesis": {
-    "n_senales": 5,
+    "n_senales": 6,
     "no_puntuables": 2,
     "horizontes": {
      "1": {
@@ -350,7 +350,7 @@
       "aciertos": 0,
       "fallos": 1,
       "neutrales": 0,
-      "pendientes": 2,
+      "pendientes": 3,
       "comp_caida": 0,
       "comp_vix": 0,
       "acierto_pct": 0.0,
@@ -366,7 +366,7 @@
       "aciertos": 0,
       "fallos": 0,
       "neutrales": 0,
-      "pendientes": 3,
+      "pendientes": 4,
       "comp_caida": 0,
       "comp_vix": 0,
       "acierto_pct": null,
@@ -382,7 +382,7 @@
       "aciertos": 0,
       "fallos": 0,
       "neutrales": 0,
-      "pendientes": 3,
+      "pendientes": 4,
       "comp_caida": 0,
       "comp_vix": 0,
       "acierto_pct": null,
@@ -451,9 +451,32 @@
    }
   }
  },
- "n_senales": 204,
+ "n_senales": 205,
  "n_anuladas": 0,
  "senales": [
+  {
+   "id": "tesis-oro-202610211412-5d3f938cb3",
+   "fecha_utc": "2026-10-21 14:12",
+   "tipo": "tesis",
+   "activo": "ORO",
+   "direccion": "ALCISTA",
+   "valor": "ALCISTA DÉBIL → ALCISTA",
+   "origen": "vivo",
+   "run_id": "39614011474",
+   "nota": "",
+   "criterio": null,
+   "horizontes": {
+    "1": {
+     "estado": "PENDIENTE"
+    },
+    "5": {
+     "estado": "PENDIENTE"
+    },
+    "20": {
+     "estado": "PENDIENTE"
+    }
+   }
+  },
   {
    "id": "tesis-nq-202610210541-2aa92c10ba",
    "fecha_utc": "2026-10-21 05:41",
@@ -6184,7 +6207,7 @@
  "reglas": "Señales y su dirección esperada(reglas FIJAS de este módulo, impresas también en la página):\n  tesis      cambia la etiqueta de tesis de Oro, NQ, ES o BTC. ALCISTA* = el activo sube; BAJISTA* = baja; SIN TESIS = no puntuable.\n  fed        alerta Fed emitida (cambio del resultado más probable o tipo esperado a diciembre ≥ 10 pb). Activo US2Y (rendimiento del bono a 2 años, FRED):\n             más subidas descontadas = el 2Y sube; más recortes = baja. La dirección se lee del texto de la alerta; si no se puede, no puntuable.\n  regimen    cambia el cuadrante del régimen macro. Activo NQ: FAVORABLE = sube, DESFAVORABLE = baja (campo «riesgo» del propio régimen); MIXTO = no puntuable.\n  liquidez   cambia la etiqueta del monitor de liquidez. Activo BTC: «SEÑALES INICIALES DE GIRO» / «GIRO DE LIQUIDEZ EN CURSO» = sube; «SIN GIRO» = no puntuable.\n  skew       alerta SKEW en zona alta relativa con ≥ 2 confirmaciones. NO se puntúa por la dirección del cierre. ACIERTO si dentro del horizonte (T+1, T+5, T+20):\n             (a) el S&P 500 tiene una caída máxima intrahorizonte ≥ 1 σ_h (peor cierre frente al cierre de referencia; σ_h = desviación típica de los\n             retornos diarios de las últimas 250 sesiones × √h) O (b) el VIX sube ≥ 20 % (máximo de los cierres del horizonte frente al de referencia).\n             Si no ocurre ninguno de los dos, FALLO. Se guardan los dos componentes. Tasa base = frecuencia de ese mismo evento en cualquier ventana de h sesiones\n             de las 250 anteriores a la señal (con σ_h y umbral del VIX fijos en la referencia).\n  cruce_sma200_ratio / divergencia_ratio   usos del ratio de consumo (#/consumo, consumo_ratio.py): un cruce VÁLIDO (5 cierres seguidos) de XLY/XLP o RSPD/RSPS sobre/bajo su SMA 200 (diario\n             o semanal) = SPY sube/baja; una divergencia (SPY en máximo de 63 sesiones y RSPD/RSPS > 3 % bajo el suyo) = SPY baja. Se miden SOLO a T+20 y T+60 sobre SPY frente a la tasa base.\n  consumo    cambia la tesis de consumo (#/consumo). Activo RSPD/RSPS (ratio de peso igual): CONSUMO FUERTE y DIVERGENCIA MERCADO DEFENSIVO = sube; SE ENFRÍA, CONSUMO DÉBIL y\n             DIVERGENCIA MERCADO ADELANTADO = baja; SIN TESIS = no puntuable. Se mide a T+1, T+5 y T+20 igual que el resto (el horizonte que importa es T+20).\n  petroleo   cambia la tesis de petróleo (#/petroleo). Activo WTI (precio al contado de Cushing, FRED DCOILWTICO: sin los saltos de vencimiento de los futuros empalmados): ALCISTA = sube;\n             BAJISTA = baja; SIN TESIS = no puntuable. Se mide a T+1, T+5 y T+20 igual que el resto (el horizonte que importa es T+20).\n  reaccion   clasificación del monitor de reacción a eventos (T+5 y CIERRE): SOLO REGISTRO, no se puntúa (reglas v3 congeladas).\nMedición (criterio v2): referencia = último cierre COMPLETO anterior a la señal (si sale desde las 21:30 UTC y el activo no es cripto, cuenta el cierre de ese día);\nT+n = cierre n sesiones después. Retorno en la dirección esperada. NEUTRAL si |retorno| < 0,25 × σ_h del activo (σ de los cambios diarios de las 250 sesiones\nanteriores a la señal × √h; en pb para el 2Y). ACIERTO si el retorno ≥ +0,25 σ_h y FALLO si ≤ −0,25 σ_h. Con menos de 60 cambios diarios previos: PENDIENTE.\nRetorno máximo adverso = el peor retorno (en la dirección esperada) de los cierres entre la referencia y T+n (≤ 0). Tasa base = % de ventanas de n sesiones\nanteriores a la señal (hasta 250) en las que el activo habría «acertado» en esa dirección con el mismo umbral: lo que se acierta por azar.\nCambio de criterio (18-oct-2026): v1 usaba neutral ±0,1 % fijo y puntuaba el SKEW por la dirección del cierre. Los resultados v1 se conservan sin tocar en\ndata/marcador_resultados.csv; los resultados v2 se recalcularon para TODAS las señales (también las de backfill) como filas nuevas con version_criterio = 2.",
  "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas.",
  "ultima_ejecucion": {
-  "senales_nuevas": 0,
+  "senales_nuevas": 1,
   "resultados_nuevos": 0,
   "evaluo": false
  },
