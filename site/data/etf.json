@@ -173,7 +173,9 @@
  "errores": {},
  "fuente": "Farside Investors (tabla HTML, validada fila a fila)",
  "corte": "Día de negociación D hasta el cierre de EE. UU. (16:00 ET); Farside no fija hora de publicación; las correcciones se guardan como filas nuevas en data/historico_etf_flujos.csv",
- "ok": true,
+ "ok": false,
  "generado_utc": "2026-10-21 08:07 UTC",
- "duracion_s": 1.2
+ "duracion_s": 1.2,
+ "error": "RuntimeError: Farside no respondió o cambió su estructura: btc: HTTPError: HTTP Error 521: <none>; eth: HTTPError: HTTP Error 521: <none>",
+ "ultimo_dato_valido_utc": "2026-10-21 08:07 UTC"
 }
