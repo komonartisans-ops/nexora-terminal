@@ -2,6 +2,16 @@
  "items": [
   {
    "banco": "BCE",
+   "tipo": "Discurso",
+   "titulo": "Euro liquidity lines and the international monetary system",
+   "orador": "Philip R. Lane",
+   "fecha_utc": "2026-10-21 04:15",
+   "fecha": "2026-10-21",
+   "enlace": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261021~401d6c4b70.en.html",
+   "fuente": "bce"
+  },
+  {
+   "banco": "BCE",
    "tipo": "Entrevista",
    "titulo": "Interview with Die Presse",
    "orador": "Frank Elderson",
@@ -701,16 +711,6 @@
    "fuente": "fed_speech"
   },
   {
-   "banco": "BCE",
-   "tipo": "Discurso",
-   "titulo": "Central banks on-chain",
-   "orador": "Isabel Schnabel",
-   "fecha_utc": "2026-10-01 15:30",
-   "fecha": "2026-10-01",
-   "enlace": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261001_1~a0be67193b.en.pdf",
-   "fuente": "bce"
-  },
-  {
    "banco": "Fed",
    "tipo": "Discurso",
    "titulo": "The Data Version of Godzilla versus Kong: FRED Takes on AI",
@@ -1324,7 +1324,7 @@
    "n": 15,
    "url": "https://www.ecb.europa.eu/rss/press.html",
    "pagina": "https://www.ecb.europa.eu/press/html/index.en.html",
-   "ultimo": "2026-10-20 07:00"
+   "ultimo": "2026-10-21 04:15"
   },
   "boj": {
    "banco": "BoJ",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-20 23:46 UTC",
- "duracion_s": 6.1
+ "generado_utc": "2026-10-21 05:30 UTC",
+ "duracion_s": 6.5
 }
