@@ -989,8 +989,10 @@ def main():
             historico_contexto.archivar(publicado)
     # una fila por ejecución (garantiza que data/ crece en cada run)
     ok = [e for e in etapas if estado[e]["ok"]]
+    csvlog.asegurar_columna("ejecuciones.csv", "run_id")       # el run de GitHub Actions: lo usa tools/vigilar_cierre.py para comprobar el cierre sin mirar meta.json (que la hora siguiente sobrescribe)
     csvlog.anadir("ejecuciones.csv", [{"capturado_utc": STAMP, "modo": modo_ef, "evento": os.environ.get("GITHUB_EVENT_NAME", "local"),
-                                       "etapas_ok": ",".join(ok), "etapas_fallo": ",".join(e for e in etapas if e not in ok), "duracion_s": dur}], ("capturado_utc", "modo"))
+                                       "etapas_ok": ",".join(ok), "etapas_fallo": ",".join(e for e in etapas if e not in ok), "duracion_s": dur,
+                                       "run_id": os.environ.get("GITHUB_RUN_ID", "")}], ("capturado_utc", "modo"))
     return 0
 
 
