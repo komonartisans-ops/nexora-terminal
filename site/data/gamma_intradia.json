@@ -1,27 +1,27 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-21 15:07 UTC",
+ "generado_utc": "2026-10-21 16:07 UTC",
  "min_n": 20,
  "horizontes_min": [
   15,
   30,
   60
  ],
- "n_senales": 5,
+ "n_senales": 9,
  "por_regla": {
   "cambio_regimen": {
    "regla": "cambio_regimen",
    "nombre": "Cambio de régimen de gamma",
-   "n_senales": 1,
+   "n_senales": 5,
    "horizontes": {
     "15": {
-     "n": 1,
-     "n_con_direccion": 1,
-     "mfe_mediana_pts": 45.25,
-     "mae_mediana_pts": 14.0,
-     "mfe_mediana_em": 0.09,
-     "mae_mediana_em": 0.028,
+     "n": 5,
+     "n_con_direccion": 5,
+     "mfe_mediana_pts": 31.5,
+     "mae_mediana_pts": 0.0,
+     "mfe_mediana_em": 0.067,
+     "mae_mediana_em": 0.0,
      "mfe_mayor_que_mae_pct": 100
     },
     "30": {
@@ -168,6 +168,42 @@
  "metodo": "MFE = máxima excursión a favor y MAE = máxima excursión en contra de la dirección hipotética de la regla, frente al cierre de la vela de disparo, con barras de 5 min de Yahoo Finance. Solo se miden los avisos enviados en vivo. No hay acierto/fallo: con n < 20 por regla no se concluye nada y las reglas no se tocan.",
  "ultimas": [
   {
+   "fecha_et": "2026-10-21",
+   "indice": "NQ",
+   "regla": "cambio_regimen",
+   "direccion": "ALCISTA",
+   "precio_ref": "30026.0",
+   "regimen": "positiva",
+   "evento_alta": ""
+  },
+  {
+   "fecha_et": "2026-10-21",
+   "indice": "ES",
+   "regla": "cambio_regimen",
+   "direccion": "ALCISTA",
+   "precio_ref": "7793.0",
+   "regimen": "positiva",
+   "evento_alta": ""
+  },
+  {
+   "fecha_et": "2026-10-21",
+   "indice": "NQ",
+   "regla": "cambio_regimen",
+   "direccion": "ALCISTA",
+   "precio_ref": "30028.0",
+   "regimen": "positiva",
+   "evento_alta": ""
+  },
+  {
+   "fecha_et": "2026-10-21",
+   "indice": "ES",
+   "regla": "cambio_regimen",
+   "direccion": "ALCISTA",
+   "precio_ref": "7793.25",
+   "regimen": "positiva",
+   "evento_alta": ""
+  },
+  {
    "fecha_et": "2026-10-20",
    "indice": "NQ",
    "regla": "em_agotado",
@@ -202,17 +238,8 @@
    "precio_ref": "29871.0",
    "regimen": "positiva",
    "evento_alta": ""
-  },
-  {
-   "fecha_et": "2026-10-19",
-   "indice": "NQ",
-   "regla": "cambio_regimen",
-   "direccion": "ALCISTA",
-   "precio_ref": "29938.25",
-   "regimen": "positiva",
-   "evento_alta": ""
   }
  ],
  "fuente": "gamma_intradia.py (data/gamma_intradia_senales.csv, data/gamma_intradia_resultados.csv)",
- "duracion_s": 0.0
+ "duracion_s": 0.4
 }
