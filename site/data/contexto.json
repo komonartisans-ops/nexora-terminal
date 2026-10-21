@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generado_utc": "2026-10-21 16:07 UTC",
+ "generado_utc": "2026-10-21 17:04 UTC",
  "terminal": "https://komonartisans-ops.github.io/nexora-terminal/",
  "proposito": "Resumen compacto de todo el terminal NEXORA para redactar informes. Fuente y fecha en cada bloque. Sin IA en su generación.",
  "lectura_para_informes": [
@@ -16,7 +16,7 @@
  "frescura": {
   "precios": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "fedwatch": {
    "ok": false,
@@ -24,7 +24,7 @@
   },
   "calendario": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "liquidez": {
    "ok": true,
@@ -32,11 +32,11 @@
   },
   "resumen": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "tipos": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "ciclo": {
    "ok": true,
@@ -44,15 +44,15 @@
   },
   "publicados": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "regimen": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "alertas": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "monitores": {
    "ok": true,
@@ -72,11 +72,11 @@
   },
   "noticias": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "skew": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "semis": {
    "ok": true,
@@ -88,11 +88,11 @@
   },
   "contexto": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 15:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
   },
   "tesis": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "bancos": {
    "ok": true,
@@ -108,23 +108,23 @@
   },
   "reevaluar": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "etf": {
-   "ok": false,
-   "ultimo_ok_utc": "2026-10-21 08:07 UTC"
+   "ok": true,
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "marcador": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "integridad": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "gamma_intradia": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "consumo": {
    "ok": true,
@@ -152,141 +152,137 @@
   {
    "etapa": "fedwatch",
    "error": "RuntimeError: sin precios de futuros ZQ: {}"
-  },
-  {
-   "etapa": "etf",
-   "error": "RuntimeError: Farside no respondió o cambió su estructura: btc: HTTPError: HTTP Error 521: <none>; eth: HTTPError: HTTP Error 521: <none>"
   }
  ],
  "mercado": {
-  "actualizado_utc": "2026-10-21 16:07 UTC",
+  "actualizado_utc": "2026-10-21 17:04 UTC",
   "activos": {
    "oro": {
     "nombre": "Oro",
-    "valor": 4150.6,
+    "valor": 4150.2,
     "fecha": "2026-10-21",
-    "cambio_1d_pct": 0.19,
-    "cambio_5d_pct": 1.04,
-    "cambio_21d_pct": -5.16,
-    "cambio_63d_pct": 2.48,
+    "cambio_1d_pct": 0.18,
+    "cambio_5d_pct": 1.03,
+    "cambio_21d_pct": -5.17,
+    "cambio_63d_pct": 2.47,
     "vs_sma50_pct": -4.8,
     "fuente": "Futuros oro COMEX (Yahoo Finance)"
    },
    "btc": {
     "nombre": "Bitcoin",
-    "valor": 84497.34,
+    "valor": 84410.32,
     "fecha": "2026-10-21",
-    "cambio_1d_pct": 1.88,
-    "cambio_5d_pct": 3.68,
-    "cambio_21d_pct": 1.13,
-    "cambio_63d_pct": 21.99,
-    "vs_sma50_pct": 3.4,
+    "cambio_1d_pct": 1.77,
+    "cambio_5d_pct": 3.57,
+    "cambio_21d_pct": 1.03,
+    "cambio_63d_pct": 21.86,
+    "vs_sma50_pct": 3.3,
     "fuente": "BTC-USD (Yahoo Finance)"
    },
    "spx": {
     "nombre": "S&P 500",
-    "valor": 7749.89,
+    "valor": 7760.07,
     "fecha": "2026-10-21",
-    "cambio_1d_pct": 0.48,
-    "cambio_5d_pct": 0.4,
-    "cambio_21d_pct": -0.19,
-    "cambio_63d_pct": 4.61,
-    "vs_sma50_pct": 0.6,
+    "cambio_1d_pct": 0.62,
+    "cambio_5d_pct": 0.53,
+    "cambio_21d_pct": -0.06,
+    "cambio_63d_pct": 4.75,
+    "vs_sma50_pct": 0.7,
     "fuente": "S&P 500 (Yahoo Finance)"
    },
    "ndx": {
     "nombre": "Nasdaq 100",
-    "valor": 29835.06,
+    "valor": 29889.19,
     "fecha": "2026-10-21",
-    "cambio_1d_pct": 1.17,
-    "cambio_5d_pct": -0.39,
-    "cambio_21d_pct": -2.92,
-    "cambio_63d_pct": 4.85,
-    "vs_sma50_pct": -0.1,
+    "cambio_1d_pct": 1.35,
+    "cambio_5d_pct": -0.21,
+    "cambio_21d_pct": -2.74,
+    "cambio_63d_pct": 5.04,
+    "vs_sma50_pct": 0.1,
     "fuente": "Nasdaq 100 (Yahoo Finance)"
    },
    "dji": {
     "nombre": "US30 · Dow Jones",
-    "valor": 52626.8,
+    "valor": 52709.48,
     "fecha": "2026-10-21",
-    "cambio_1d_pct": 0.25,
-    "cambio_5d_pct": 1.95,
-    "cambio_21d_pct": 1.47,
-    "cambio_63d_pct": 1.77,
-    "vs_sma50_pct": 0.5,
+    "cambio_1d_pct": 0.41,
+    "cambio_5d_pct": 2.11,
+    "cambio_21d_pct": 1.63,
+    "cambio_63d_pct": 1.93,
+    "vs_sma50_pct": 0.7,
     "fuente": "Dow Jones (Yahoo Finance)"
    },
    "rut": {
     "nombre": "Russell 2000",
-    "valor": 2786.38,
+    "valor": 2786.57,
     "fecha": "2026-10-21",
     "cambio_1d_pct": 0.47,
-    "cambio_5d_pct": 2.08,
+    "cambio_5d_pct": 2.09,
     "cambio_21d_pct": -3.58,
-    "cambio_63d_pct": -5.23,
+    "cambio_63d_pct": -5.22,
     "vs_sma50_pct": -3.6,
     "fuente": "Russell 2000 (Yahoo Finance)"
    },
    "vix": {
     "nombre": "VIX",
-    "valor": 16.71,
+    "valor": 16.73,
     "fecha": "2026-10-21",
-    "cambio_1d_pct": -3.47,
-    "cambio_5d_pct": -0.95,
-    "cambio_21d_pct": 17.59,
-    "cambio_63d_pct": -10.06,
-    "vs_sma50_pct": 6.2,
+    "cambio_1d_pct": -3.35,
+    "cambio_5d_pct": -0.83,
+    "cambio_21d_pct": 17.73,
+    "cambio_63d_pct": -9.96,
+    "vs_sma50_pct": 6.3,
     "fuente": "Cboe VIX (Yahoo Finance)"
    },
    "dxy": {
     "nombre": "Índice dólar (DXY)",
-    "valor": 101.8,
+    "valor": 101.71,
     "fecha": "2026-10-21",
-    "cambio_1d_pct": 0.07,
-    "cambio_5d_pct": -0.73,
-    "cambio_21d_pct": 1.19,
-    "cambio_63d_pct": 0.36,
-    "vs_sma50_pct": 1.3,
+    "cambio_1d_pct": -0.02,
+    "cambio_5d_pct": -0.82,
+    "cambio_21d_pct": 1.1,
+    "cambio_63d_pct": 0.27,
+    "vs_sma50_pct": 1.2,
     "fuente": "ICE DXY (Yahoo Finance)"
    },
    "wti": {
     "nombre": "Petróleo WTI",
-    "valor": 96.86,
+    "valor": 96.73,
     "fecha": "2026-10-21",
-    "cambio_1d_pct": -4.84,
-    "cambio_5d_pct": 1.86,
-    "cambio_21d_pct": 2.4,
-    "cambio_63d_pct": 5.07,
-    "vs_sma50_pct": 5.1,
+    "cambio_1d_pct": -4.97,
+    "cambio_5d_pct": 1.72,
+    "cambio_21d_pct": 2.26,
+    "cambio_63d_pct": 4.92,
+    "vs_sma50_pct": 5.0,
     "fuente": "Futuros WTI NYMEX, primer vencimiento (Yahoo Finance CL=F; serie empalmada)"
    },
    "brent": {
     "nombre": "Petróleo Brent",
-    "valor": 108.45,
+    "valor": 108.5,
     "fecha": "2026-10-21",
-    "cambio_1d_pct": -0.31,
-    "cambio_5d_pct": 2.25,
-    "cambio_21d_pct": 9.27,
-    "cambio_63d_pct": 7.71,
-    "vs_sma50_pct": 8.7,
+    "cambio_1d_pct": -0.27,
+    "cambio_5d_pct": 2.3,
+    "cambio_21d_pct": 9.32,
+    "cambio_63d_pct": 7.76,
+    "vs_sma50_pct": 8.8,
     "fuente": "Futuros Brent ICE, primer vencimiento (Yahoo Finance BZ=F; serie empalmada)"
    },
    "move": {
     "nombre": "MOVE (volatilidad de bonos)",
-    "valor": 97.43,
+    "valor": 97.4,
     "fecha": "2026-10-21",
-    "cambio_1d_pct": -4.2,
-    "cambio_5d_pct": -1.65,
-    "cambio_21d_pct": 19.98,
-    "cambio_63d_pct": 27.67,
-    "vs_sma50_pct": 12.5,
+    "cambio_1d_pct": -4.23,
+    "cambio_5d_pct": -1.68,
+    "cambio_21d_pct": 19.95,
+    "cambio_63d_pct": 27.63,
+    "vs_sma50_pct": 12.4,
     "fuente": "ICE BofA MOVE (Yahoo Finance ^MOVE)"
    }
   }
  },
  "tesis": {
   "corte_datos": "Datos entre el 2026-10-20 y el 2026-10-21 (cada fuente publica a su hora)",
-  "actualizado_utc": "2026-10-21 16:07 UTC",
+  "actualizado_utc": "2026-10-21 17:04 UTC",
   "que_lo_ha_movido": "Sin cambio macro relevante hoy: ni la Fed, ni los tipos, ni el dólar, ni el miedo se han movido por encima de los umbrales. Lo que se mueva hoy lo explican flujos o noticias concretas, no un cambio de fondo.",
   "vigilar": [
    "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
@@ -458,7 +454,7 @@
    }
   ],
   "contradicciones": [],
-  "actualizado_utc": "2026-10-21 16:07 UTC",
+  "actualizado_utc": "2026-10-21 17:04 UTC",
   "fuente": "Mapa de régimen NEXORA (FRED, BLS, BEA, Fed regionales, monitores propios)"
  },
  "ciclo": {
@@ -617,28 +613,20 @@
  },
  "etf_flujos_btc_eth": {
   "btc": {
-   "ultimo_dia": "2026-10-20",
-   "total_musd": 23.2,
-   "por_etf_no_cero_musd": {
-    "IBIT": 29.9,
-    "FBTC": 3.6,
-    "BITB": -10.3
-   },
-   "acum_5_sesiones_musd": 211.2
+   "ultimo_dia": "2026-10-21",
+   "total_musd": 0.0,
+   "por_etf_no_cero_musd": {},
+   "acum_5_sesiones_musd": 472.6
   },
   "eth": {
-   "ultimo_dia": "2026-10-20",
-   "total_musd": -26.1,
-   "por_etf_no_cero_musd": {
-    "ETHA": -33.0,
-    "FETH": 3.6,
-    "ETH": 3.3
-   },
-   "acum_5_sesiones_musd": -388.9
+   "ultimo_dia": "2026-10-21",
+   "total_musd": 0.0,
+   "por_etf_no_cero_musd": {},
+   "acum_5_sesiones_musd": -259.4
   },
   "corte": "Día de negociación D hasta el cierre de EE. UU. (16:00 ET); Farside no fija hora de publicación; las correcciones se guardan como filas nuevas en data/historico_etf_flujos.csv",
   "fuente": "Farside Investors (tabla HTML, validada fila a fila)",
-  "actualizado_utc": "2026-10-21 08:07 UTC"
+  "actualizado_utc": "2026-10-21 17:04 UTC"
  },
  "fedwatch_y_tipos": {
   "fecha_precios": "2026-10-21",
@@ -807,7 +795,7 @@
    "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 2. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
    "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
   },
-  "actualizado_utc": "2026-10-21 16:07 UTC",
+  "actualizado_utc": "2026-10-21 17:04 UTC",
   "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)",
   "etiqueta": "CRITERIO NEXORA (zonas y episodios)"
  },
@@ -3554,7 +3542,7 @@
    }
   },
   "ultimos_publicados": [],
-  "actualizado_utc": "2026-10-21 16:07 UTC",
+  "actualizado_utc": "2026-10-21 17:04 UTC",
   "fuente": "Calendario NEXORA · sin consenso de analistas (es de pago)"
  },
  "agenda": {
@@ -3616,7 +3604,7 @@
   "hasta": "2026-10-28",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-21 16:12 UTC"
+  "generado_utc": "2026-10-21 17:09 UTC"
  },
  "marcador": {
   "version_criterio": 2,
@@ -3627,7 +3615,7 @@
    "desde": "2026-10-18"
   },
   "cambio_criterio": "Criterio v2 (18-oct-2026): el neutral pasa de ±0,1 % fijo a |retorno| < 0,25 × σ_h del activo (σ de 250 sesiones × √h; σ en pb para el 2Y), y el SKEW deja de puntuarse por la dirección del cierre: acierto si el S&P tiene una caída máxima intrahorizonte ≥ 1 σ_h o el VIX sube ≥ 20 %. Todos los resultados, también los de backfill, se recalcularon como filas nuevas con version_criterio = 2; los de v1 se conservan sin tocar en data/marcador_resultados.csv y no se muestran aquí.",
-  "actualizado_utc": "2026-10-21 16:07 UTC",
+  "actualizado_utc": "2026-10-21 17:04 UTC",
   "n_senales": 207,
   "n_anuladas": 0,
   "por_origen_y_tipo": {
@@ -3940,12 +3928,11 @@
   "fuente": "marcador.py (data/marcador_senales.csv, data/marcador_resultados_v2.csv, criterio v2); cierres de Yahoo Finance y FRED"
  },
  "integridad": {
-  "actualizado_utc": "2026-10-21 16:07 UTC",
-  "resumen": "Integridad: 25/28 al día",
+  "actualizado_utc": "2026-10-21 17:04 UTC",
+  "resumen": "Integridad: 26/28 al día",
   "retrasados": [
    "FedWatch propio · la última ejecución falló; se muestra el último dato válido",
-   "Flujos de ETF de BTC y ETH · retrasado 8 h frente a su frecuencia (cada hora en laborables)",
-   "Reacción a eventos · retrasado 6 h frente a su frecuencia (cada hora en laborables)"
+   "Reacción a eventos · retrasado 7 h frente a su frecuencia (cada hora en laborables)"
   ],
   "sin_dato": [],
   "DISCREPANCIAS_ABIERTAS": "ninguna",
@@ -4263,5 +4250,5 @@
   }
  ],
  "ok": true,
- "duracion_s": 0.0
+ "duracion_s": 0.1
 }

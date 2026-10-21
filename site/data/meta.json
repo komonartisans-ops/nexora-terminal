@@ -1,27 +1,27 @@
 {
- "actualizado_utc": "2026-10-21 16:07 UTC",
+ "actualizado_utc": "2026-10-21 17:04 UTC",
  "modo": "horario",
  "etapas": {
   "precios": {
    "ok": true,
-   "duracion_s": 11.0,
+   "duracion_s": 9.8,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "fedwatch": {
    "ok": false,
-   "duracion_s": 5.7,
+   "duracion_s": 5.1,
    "error": "RuntimeError: sin precios de futuros ZQ: {}",
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
    "ultimo_ok_utc": "2026-10-21 14:07 UTC"
   },
   "calendario": {
    "ok": true,
-   "duracion_s": 41.4,
+   "duracion_s": 35.5,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "liquidez": {
    "ok": true,
@@ -32,17 +32,17 @@
   },
   "resumen": {
    "ok": true,
-   "duracion_s": 116.8,
+   "duracion_s": 110.4,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "tipos": {
    "ok": true,
-   "duracion_s": 69.7,
+   "duracion_s": 75.9,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "ciclo": {
    "ok": true,
@@ -53,24 +53,24 @@
   },
   "publicados": {
    "ok": true,
-   "duracion_s": 6.5,
+   "duracion_s": 2.5,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "regimen": {
    "ok": true,
-   "duracion_s": 7.8,
+   "duracion_s": 4.0,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "alertas": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "monitores": {
    "ok": true,
@@ -102,17 +102,17 @@
   },
   "noticias": {
    "ok": true,
-   "duracion_s": 7.0,
+   "duracion_s": 6.8,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "skew": {
    "ok": true,
-   "duracion_s": 2.0,
+   "duracion_s": 1.4,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "semis": {
    "ok": true,
@@ -130,17 +130,17 @@
   },
   "contexto": {
    "ok": true,
-   "duracion_s": 0.0,
+   "duracion_s": 0.1,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "tesis": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "bancos": {
    "ok": true,
@@ -165,38 +165,38 @@
   },
   "reevaluar": {
    "ok": true,
-   "duracion_s": 16.5,
+   "duracion_s": 13.3,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "etf": {
-   "ok": false,
-   "duracion_s": 19.5,
-   "error": "RuntimeError: Farside no respondió o cambió su estructura: btc: HTTPError: HTTP Error 521: <none>; eth: HTTPError: HTTP Error 521: <none>",
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 08:07 UTC"
+   "ok": true,
+   "duracion_s": 1.0,
+   "error": null,
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "marcador": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "integridad": {
    "ok": true,
    "duracion_s": 0.1,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "gamma_intradia": {
    "ok": true,
-   "duracion_s": 0.4,
+   "duracion_s": 0.2,
    "error": null,
-   "ejecutada_utc": "2026-10-21 16:07 UTC",
-   "ultimo_ok_utc": "2026-10-21 16:07 UTC"
+   "ejecutada_utc": "2026-10-21 17:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 17:04 UTC"
   },
   "consumo": {
    "ok": true,
@@ -234,5 +234,5 @@
    "ultimo_ok_utc": "2026-10-21 10:23 UTC"
   }
  },
- "duracion_total_s": 304.5
+ "duracion_total_s": 266.4
 }

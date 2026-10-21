@@ -1,46 +1,46 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-21 16:07 UTC",
+ "generado_utc": "2026-10-21 17:04 UTC",
  "min_n": 20,
  "horizontes_min": [
   15,
   30,
   60
  ],
- "n_senales": 9,
+ "n_senales": 11,
  "por_regla": {
   "cambio_regimen": {
    "regla": "cambio_regimen",
    "nombre": "Cambio de régimen de gamma",
-   "n_senales": 5,
+   "n_senales": 7,
    "horizontes": {
     "15": {
-     "n": 5,
-     "n_con_direccion": 5,
+     "n": 7,
+     "n_con_direccion": 7,
      "mfe_mediana_pts": 31.5,
-     "mae_mediana_pts": 0.0,
+     "mae_mediana_pts": 0.25,
      "mfe_mediana_em": 0.067,
-     "mae_mediana_em": 0.0,
+     "mae_mediana_em": 0.003,
      "mfe_mayor_que_mae_pct": 100
     },
     "30": {
-     "n": 1,
-     "n_con_direccion": 1,
-     "mfe_mediana_pts": 45.25,
+     "n": 5,
+     "n_con_direccion": 5,
+     "mfe_mediana_pts": 31.5,
      "mae_mediana_pts": 14.0,
-     "mfe_mediana_em": 0.09,
-     "mae_mediana_em": 0.028,
-     "mfe_mayor_que_mae_pct": 100
+     "mfe_mediana_em": 0.067,
+     "mae_mediana_em": 0.041,
+     "mfe_mayor_que_mae_pct": 80
     },
     "60": {
-     "n": 1,
-     "n_con_direccion": 1,
+     "n": 5,
+     "n_con_direccion": 5,
      "mfe_mediana_pts": 45.25,
-     "mae_mediana_pts": 96.75,
-     "mfe_mediana_em": 0.09,
-     "mae_mediana_em": 0.193,
-     "mfe_mayor_que_mae_pct": 0
+     "mae_mediana_pts": 41.5,
+     "mfe_mediana_em": 0.16,
+     "mae_mediana_em": 0.088,
+     "mfe_mayor_que_mae_pct": 80
     }
    },
    "fiable": false,
@@ -172,6 +172,24 @@
    "indice": "NQ",
    "regla": "cambio_regimen",
    "direccion": "ALCISTA",
+   "precio_ref": "30051.5",
+   "regimen": "positiva",
+   "evento_alta": ""
+  },
+  {
+   "fecha_et": "2026-10-21",
+   "indice": "NQ",
+   "regla": "cambio_regimen",
+   "direccion": "ALCISTA",
+   "precio_ref": "30057.5",
+   "regimen": "positiva",
+   "evento_alta": ""
+  },
+  {
+   "fecha_et": "2026-10-21",
+   "indice": "NQ",
+   "regla": "cambio_regimen",
+   "direccion": "ALCISTA",
    "precio_ref": "30026.0",
    "regimen": "positiva",
    "evento_alta": ""
@@ -220,26 +238,8 @@
    "precio_ref": "29879.5",
    "regimen": "negativa",
    "evento_alta": ""
-  },
-  {
-   "fecha_et": "2026-10-19",
-   "indice": "NQ",
-   "regla": "techo_gamma_positiva",
-   "direccion": "BAJISTA",
-   "precio_ref": "29891.25",
-   "regimen": "positiva",
-   "evento_alta": ""
-  },
-  {
-   "fecha_et": "2026-10-19",
-   "indice": "NQ",
-   "regla": "techo_gamma_positiva",
-   "direccion": "BAJISTA",
-   "precio_ref": "29871.0",
-   "regimen": "positiva",
-   "evento_alta": ""
   }
  ],
  "fuente": "gamma_intradia.py (data/gamma_intradia_senales.csv, data/gamma_intradia_resultados.csv)",
- "duracion_s": 0.4
+ "duracion_s": 0.2
 }

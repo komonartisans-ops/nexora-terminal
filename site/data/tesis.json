@@ -131,9 +131,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 1.27,
+     "ret_pct": 1.43,
      "fecha": "2026-10-21",
-     "precio": 52626.8008
+     "precio": 52709.4805
     },
     "5": {
      "estado": "PENDIENTE"
@@ -154,9 +154,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 0.77,
+     "ret_pct": 0.9,
      "fecha": "2026-10-21",
-     "precio": 7749.8901
+     "precio": 7760.0698
     },
     "5": {
      "estado": "PENDIENTE"
@@ -177,9 +177,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 2.13,
+     "ret_pct": 2.14,
      "fecha": "2026-10-21",
-     "precio": 2786.3772
+     "precio": 2786.5674
     },
     "5": {
      "estado": "PENDIENTE"
@@ -200,9 +200,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -0.09,
+     "ret_pct": -0.1,
      "fecha": "2026-10-21",
-     "precio": 4150.6001
+     "precio": 4150.2002
     },
     "5": {
      "estado": "PENDIENTE"
@@ -243,9 +243,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": 3.23,
+     "ret_pct": 3.13,
      "fecha": "2026-10-21",
-     "precio": 84497.3438
+     "precio": 84410.3203
     },
     "5": {
      "estado": "PENDIENTE"
@@ -789,9 +789,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": 2.96,
+     "ret_pct": 2.86,
      "fecha": "2026-10-21",
-     "precio": 84497.3438
+     "precio": 84410.3203
     },
     "20": {
      "estado": "PENDIENTE"
@@ -941,9 +941,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": 1.85,
+     "ret_pct": 2.01,
      "fecha": "2026-10-21",
-     "precio": 52626.8008
+     "precio": 52709.4805
     },
     "20": {
      "estado": "PENDIENTE"
@@ -989,7 +989,7 @@
      "estado": "FALLO",
      "ret_pct": 0.11,
      "fecha": "2026-10-21",
-     "precio": 2786.3772
+     "precio": 2786.5674
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1033,9 +1033,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": -2.4,
+     "ret_pct": -2.23,
      "fecha": "2026-10-21",
-     "precio": 29835.0625
+     "precio": 29889.1914
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1830,6 +1830,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-21 16:07 UTC",
+ "generado_utc": "2026-10-21 17:04 UTC",
  "duracion_s": 0.0
 }

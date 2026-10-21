@@ -54,19 +54,19 @@
     [
      "2026-10-20",
      23.2
+    ],
+    [
+     "2026-10-21",
+     0.0
     ]
    ],
    "ultimo": {
-    "fecha": "2026-10-20",
-    "total_musd": 23.2,
-    "por_etf": {
-     "IBIT": 29.9,
-     "FBTC": 3.6,
-     "BITB": -10.3
-    }
+    "fecha": "2026-10-21",
+    "total_musd": 0.0,
+    "por_etf": {}
    },
-   "acum_5d_musd": 211.2,
-   "acum_dias": 13,
+   "acum_5d_musd": 472.6,
+   "acum_dias": 14,
    "filas_descartadas": 0,
    "tickers": [
     "IBIT",
@@ -139,19 +139,19 @@
     [
      "2026-10-20",
      -26.1
+    ],
+    [
+     "2026-10-21",
+     0.0
     ]
    ],
    "ultimo": {
-    "fecha": "2026-10-20",
-    "total_musd": -26.1,
-    "por_etf": {
-     "ETHA": -33.0,
-     "FETH": 3.6,
-     "ETH": 3.3
-    }
+    "fecha": "2026-10-21",
+    "total_musd": 0.0,
+    "por_etf": {}
    },
-   "acum_5d_musd": -388.9,
-   "acum_dias": 13,
+   "acum_5d_musd": -259.4,
+   "acum_dias": 14,
    "filas_descartadas": 0,
    "tickers": [
     "ETHA",
@@ -173,9 +173,7 @@
  "errores": {},
  "fuente": "Farside Investors (tabla HTML, validada fila a fila)",
  "corte": "Día de negociación D hasta el cierre de EE. UU. (16:00 ET); Farside no fija hora de publicación; las correcciones se guardan como filas nuevas en data/historico_etf_flujos.csv",
- "ok": false,
- "generado_utc": "2026-10-21 08:07 UTC",
- "duracion_s": 1.2,
- "error": "RuntimeError: Farside no respondió o cambió su estructura: btc: HTTPError: HTTP Error 521: <none>; eth: HTTPError: HTTP Error 521: <none>",
- "ultimo_dato_valido_utc": "2026-10-21 08:07 UTC"
+ "ok": true,
+ "generado_utc": "2026-10-21 17:04 UTC",
+ "duracion_s": 1.0
 }
