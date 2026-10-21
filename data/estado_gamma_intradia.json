@@ -28,6 +28,22 @@
    "regla": "em_agotado",
    "t_cierre_utc": "2026-10-20T14:30:00",
    "enviado_utc": "2026-10-20 14:38 UTC"
+  },
+  "gi-es-cambio_regimen-202610211545": {
+   "estado": "ENVIADO",
+   "fecha_et": "2026-10-21",
+   "indice": "ES",
+   "regla": "cambio_regimen",
+   "t_cierre_utc": "2026-10-21T15:45:00",
+   "enviado_utc": "2026-10-21 15:51 UTC"
+  },
+  "gi-nq-cambio_regimen-202610211545": {
+   "estado": "ENVIADO",
+   "fecha_et": "2026-10-21",
+   "indice": "NQ",
+   "regla": "cambio_regimen",
+   "t_cierre_utc": "2026-10-21T15:45:00",
+   "enviado_utc": "2026-10-21 15:51 UTC"
   }
  }
 }
