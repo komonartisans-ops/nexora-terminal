@@ -1,7 +1,7 @@
 {
- "generado": "2026-10-21 23:09 Madrid",
- "desde": "2026-09-11",
- "hasta": "2026-11-11",
+ "generado": "2026-10-22 00:09 Madrid",
+ "desde": "2026-09-12",
+ "hasta": "2026-11-12",
  "eventos": [
   {
    "fecha": "2026-09-16",
@@ -57,20 +57,6 @@
    "que_mirar": "≥ 50 expansión, < 50 contracción; precios pagados = presión inflacionista.",
    "fuente": "ISM (Institute for Supply Management)",
    "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/rob-report-calendar/",
-   "nota": ""
-  },
-  {
-   "fecha": "2026-10-21",
-   "fecha_madrid": "2026-10-21",
-   "dia": "mié",
-   "hora_ny": "10:30",
-   "hora_madrid": "16:30",
-   "evento": "Inventarios de petróleo EIA (semana al 16-10)",
-   "importancia": "MEDIA",
-   "afecta": "petróleo · índices",
-   "que_mirar": "Cambio semanal de crudo, gasolina y destilados frente a la media de 5 años.",
-   "fuente": "EIA · Weekly Petroleum Status Report (calendario oficial)",
-   "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
    "nota": ""
   },
   {
@@ -240,6 +226,20 @@
    "fuente": "EIA · Weekly Petroleum Status Report (calendario oficial)",
    "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
    "nota": ""
+  },
+  {
+   "fecha": "2026-11-12",
+   "fecha_madrid": "2026-11-12",
+   "dia": "jue",
+   "hora_ny": "12:00",
+   "hora_madrid": "18:00",
+   "evento": "Inventarios de petróleo EIA (semana al 06-11)",
+   "importancia": "MEDIA",
+   "afecta": "petróleo · índices",
+   "que_mirar": "Cambio semanal de crudo, gasolina y destilados frente a la media de 5 años.",
+   "fuente": "EIA · Weekly Petroleum Status Report (calendario oficial)",
+   "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
+   "nota": ""
   }
  ],
  "fed_vigilar": [
@@ -263,15 +263,15 @@
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
-   "dias": 7
+   "dias": 6
   },
   "BCE": {
    "fecha": "2026-10-29",
-   "dias": 8
+   "dias": 7
   },
   "Banco de Japón": {
    "fecha": "2026-10-30",
-   "dias": 9
+   "dias": 8
   }
  },
  "errores": {
@@ -322,6 +322,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-21 21:07 UTC",
- "duracion_s": 33.4
+ "generado_utc": "2026-10-21 22:07 UTC",
+ "duracion_s": 37.9
 }

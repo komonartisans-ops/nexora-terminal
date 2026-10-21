@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-21 21:09 UTC",
+ "generado_utc": "2026-10-21 22:09 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -251,18 +251,7 @@
   }
  ],
  "agenda": {
-  "hoy": [
-   {
-    "fecha": "2026-10-21",
-    "fecha_et": "2026-10-21",
-    "dia": "mié",
-    "hora_ny": "10:30",
-    "hora_madrid": "16:30",
-    "evento": "Inventarios de petróleo EIA (semana al 16-10)",
-    "importancia": "MEDIA",
-    "nota": null
-   }
-  ],
+  "hoy": [],
   "proximos_7_dias": [
    {
     "fecha": "2026-10-28",
@@ -303,13 +292,43 @@
     "evento": "Resultados Alphabet (GOOGL)",
     "importancia": "ALTA",
     "nota": "fecha CONFIRMADA"
+   },
+   {
+    "fecha": "2026-10-29",
+    "fecha_et": "2026-10-29",
+    "dia": "jue",
+    "hora_ny": null,
+    "hora_madrid": null,
+    "evento": "Resultados Amazon (AMZN)",
+    "importancia": "ALTA",
+    "nota": "fecha CONFIRMADA"
+   },
+   {
+    "fecha": "2026-10-29",
+    "fecha_et": "2026-10-29",
+    "dia": "jue",
+    "hora_ny": null,
+    "hora_madrid": null,
+    "evento": "Decisión de política monetaria del BCE",
+    "importancia": "MEDIA",
+    "nota": "hora de publicación: ver BCE"
+   },
+   {
+    "fecha": "2026-10-29",
+    "fecha_et": "2026-10-29",
+    "dia": "jue",
+    "hora_ny": null,
+    "hora_madrid": null,
+    "evento": "Resultados Eli Lilly (LLY)",
+    "importancia": "MEDIA",
+    "nota": "fecha CONFIRMADA"
    }
   ],
   "regla_horas": "Fed: horas del calendario oficial en ET (también en actos en el extranjero); FRED: hora central → ET; todo se convierte a Madrid y el día es el de Madrid.",
-  "hasta": "2026-10-28",
+  "hasta": "2026-10-29",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-21 21:09 UTC"
+  "generado_utc": "2026-10-21 22:09 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }
