@@ -1,25 +1,25 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-20 21:30 UTC",
- "fecha_datos": "2026-10-20",
+ "generado_utc": "2026-10-21 00:04 UTC",
+ "fecha_datos": "2026-10-19",
  "mercado": {
   "cap": {
    "nombre": "XLY/XLP · consumo discrecional / básico (ponderado por capitalización)",
-   "fecha": "2026-10-20",
-   "ratio": 1.31624,
-   "sma200": 1.37852,
-   "dist_sma200_pct": -4.52,
-   "pendiente_3m_pct": -2.59,
+   "fecha": "2026-10-19",
+   "ratio": 1.31246,
+   "sma200": 1.37956,
+   "dist_sma200_pct": -4.86,
+   "pendiente_3m_pct": -3.96,
    "sobre_sma200": false
   },
   "igual": {
    "nombre": "RSPD/RSPS · consumo discrecional / básico en peso igual",
-   "fecha": "2026-10-20",
-   "ratio": 1.76143,
-   "sma200": 1.83228,
-   "dist_sma200_pct": -3.87,
-   "pendiente_3m_pct": -1.33,
+   "fecha": "2026-10-19",
+   "ratio": 1.75244,
+   "sma200": 1.83333,
+   "dist_sma200_pct": -4.41,
+   "pendiente_3m_pct": -2.68,
    "sobre_sma200": false
   },
   "pesos": {
@@ -29,7 +29,7 @@
    "suma": 40.89,
    "fuente": "State Street SSGA, posiciones diarias de XLY"
   },
-  "diferencia_3m_pp": -1.26,
+  "diferencia_3m_pp": -1.28,
   "aviso": null,
   "sentido": null,
   "umbral_pp": 2.0
@@ -2037,10 +2037,6 @@
     [
      "2026-10-19",
      1.31246
-    ],
-    [
-     "2026-10-20",
-     1.31624
     ]
    ],
    "sma50": [
@@ -4043,10 +4039,6 @@
     [
      "2026-10-19",
      1.35219
-    ],
-    [
-     "2026-10-20",
-     1.35034
     ]
    ],
    "sma200": [
@@ -6049,10 +6041,6 @@
     [
      "2026-10-19",
      1.37956
-    ],
-    [
-     "2026-10-20",
-     1.37852
     ]
    ]
   },
@@ -8058,10 +8046,6 @@
     [
      "2026-10-19",
      1.75244
-    ],
-    [
-     "2026-10-20",
-     1.76143
     ]
    ],
    "sma50": [
@@ -10064,10 +10048,6 @@
     [
      "2026-10-19",
      1.79791
-    ],
-    [
-     "2026-10-20",
-     1.7955
     ]
    ],
    "sma200": [
@@ -12070,10 +12050,6 @@
     [
      "2026-10-19",
      1.83333
-    ],
-    [
-     "2026-10-20",
-     1.83228
     ]
    ]
   }
@@ -12175,7 +12151,7 @@
  "capas": {
   "mercado": {
    "estado": "BAJA",
-   "detalle": "RSPD/RSPS -3.87 % frente a su media de 200 y -1.33 % en 3 meses"
+   "detalle": "RSPD/RSPS -4.41 % frente a su media de 200 y -2.68 % en 3 meses"
   },
   "real": {
    "estado": "ALZA",
@@ -12220,7 +12196,7 @@
     "periodo": "2026-08-01",
     "texto": "agosto 2026",
     "valor": 51.7,
-    "antiguedad_dias": 50,
+    "antiguedad_dias": 51,
     "meses_de_retraso": 2,
     "coincide": true,
     "michigan_mismo_periodo": 51.7
@@ -12264,5 +12240,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, DRCCLACBS; UMCSENT como respaldo) · Universidad de Michigan (sca.isr.umich.edu, ánimo del consumidor)",
- "duracion_s": 4.2
+ "duracion_s": 5.1
 }

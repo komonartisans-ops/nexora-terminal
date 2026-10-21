@@ -1,13 +1,13 @@
 {
- "actualizado_utc": "2026-10-20 23:46 UTC",
- "modo": "horario",
+ "actualizado_utc": "2026-10-21 00:04 UTC",
+ "modo": "cierre",
  "etapas": {
   "precios": {
    "ok": true,
-   "duracion_s": 9.8,
+   "duracion_s": 10.7,
    "error": null,
-   "ejecutada_utc": "2026-10-20 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-20 23:46 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "fedwatch": {
    "ok": true,
@@ -69,8 +69,8 @@
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-20 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-20 23:46 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "monitores": {
    "ok": true,
@@ -109,31 +109,31 @@
   },
   "skew": {
    "ok": true,
-   "duracion_s": 1.2,
+   "duracion_s": 1.8,
    "error": null,
-   "ejecutada_utc": "2026-10-20 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-20 23:46 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "semis": {
    "ok": true,
-   "duracion_s": 18.1,
+   "duracion_s": 19.5,
    "error": null,
-   "ejecutada_utc": "2026-10-20 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-20 21:30 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "gamma": {
    "ok": true,
-   "duracion_s": 6.3,
+   "duracion_s": 8.0,
    "error": null,
-   "ejecutada_utc": "2026-10-20 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-20 21:30 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "contexto": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-20 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-20 23:46 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "tesis": {
    "ok": true,
@@ -144,17 +144,17 @@
   },
   "bancos": {
    "ok": true,
-   "duracion_s": 11.6,
+   "duracion_s": 10.4,
    "error": null,
-   "ejecutada_utc": "2026-10-20 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-20 21:30 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "tono": {
    "ok": true,
-   "duracion_s": 27.0,
+   "duracion_s": 28.7,
    "error": null,
-   "ejecutada_utc": "2026-10-20 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-20 21:30 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "reacciones": {
    "ok": true,
@@ -181,58 +181,58 @@
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-20 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-20 23:46 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "integridad": {
    "ok": true,
-   "duracion_s": 360.9,
+   "duracion_s": 361.2,
    "error": null,
-   "ejecutada_utc": "2026-10-20 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-20 23:46 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "gamma_intradia": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-20 23:46 UTC",
-   "ultimo_ok_utc": "2026-10-20 23:46 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "consumo": {
    "ok": true,
-   "duracion_s": 4.2,
+   "duracion_s": 5.1,
    "error": null,
-   "ejecutada_utc": "2026-10-20 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-20 21:30 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "petroleo": {
    "ok": true,
-   "duracion_s": 55.5,
+   "duracion_s": 60.0,
    "error": null,
-   "ejecutada_utc": "2026-10-20 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-20 21:30 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "gamma_oro": {
    "ok": true,
-   "duracion_s": 0.8,
+   "duracion_s": 0.5,
    "error": null,
-   "ejecutada_utc": "2026-10-20 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-20 21:30 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "consumo_ratio": {
    "ok": true,
-   "duracion_s": 15.3,
+   "duracion_s": 15.2,
    "error": null,
-   "ejecutada_utc": "2026-10-20 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-20 21:30 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   },
   "gamma_us30": {
    "ok": true,
-   "duracion_s": 1.6,
+   "duracion_s": 0.8,
    "error": null,
-   "ejecutada_utc": "2026-10-20 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-20 21:30 UTC"
+   "ejecutada_utc": "2026-10-21 00:04 UTC",
+   "ultimo_ok_utc": "2026-10-21 00:04 UTC"
   }
  },
- "duracion_total_s": 619.4
+ "duracion_total_s": 522.0
 }
