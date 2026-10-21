@@ -78,8 +78,8 @@ def gc_en(hora_utc):
     r = precios._yahoo("GC=F", "5d", "5m")
     c = r["indicators"]["quote"][0]["close"]
     cand = [(t, v) for t, v in zip(r["timestamp"], c) if v is not None and t <= objetivo]
-    if not cand or objetivo - cand[-1][0] > 1800:
-        raise RuntimeError("sin barra de GC=F cerca de esa hora")
+    if not cand or objetivo - cand[-1][0] > 5400:
+        raise RuntimeError("sin barra de GC=F en los 90 min previos (el futuro del oro para de 21:00 a 22:00 UTC, y el spot sigue)")
     t, v = cand[-1]
     return float(v), dt.datetime.fromtimestamp(t, UTC).strftime("%Y-%m-%d %H:%M")
 
@@ -110,7 +110,7 @@ def base_para(raiz, sesion):
         return None
     b = float(r["base"])
     return {"base": b, "fut": float(r["gc_precio"]), "idx": float(r["xau_spot"]), "momento_et": None, "aproximada": r["fecha"] != sesion,
-            "metodo": ("GC=F − XAU/USD al contado en el mismo momento (barra de 5 min de Yahoo, " + r["gc_barra_utc"] + " UTC)") + ("" if r["fecha"] == sesion else f" · APROXIMADA: base del {r['fecha']}"),
+            "metodo": ("GC=F − XAU/USD al contado (última barra de 5 min de GC=F de Yahoo previa al spot, " + r["gc_barra_utc"] + " UTC)") + ("" if r["fecha"] == sesion else f" · APROXIMADA: base del {r['fecha']}"),
             "fuente": "Yahoo Finance (GC=F) y gold-api.com (XAU/USD)", "errores": []}
 
 
