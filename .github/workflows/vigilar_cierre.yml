@@ -1,0 +1,44 @@
+name: vigilar_cierre
+
+# Vigilante del cierre de 21:30 UTC: comprueba en data/ejecuciones.csv (no en meta.json) que todas las etapas del modo «cierre» corrieron OK en ese run.
+# SOLO workflow_dispatch (sin schedule:): lo dispara cron-job.org a las 22:15 UTC todos los días (docs/DISPARO_EXTERNO.md, tarea C). Sábado y domingo sale con OK sin avisar.
+# Si hay una etapa fallida o ausente avisa por Telegram; si el propio vigilante no puede comprobar, avisa «vigilante sin poder comprobar». Un fallo silencioso no vale.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vigilar_cierre
+  cancel-in-progress: false
+
+jobs:
+  vigilar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Comprobar el cierre
+        env:
+          PYTHONUTF8: "1"
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          VIGILANTE_AVISADO_FILE: /tmp/vigilante_avisado
+        run: python tools/vigilar_cierre.py --gh --esperar --avisar
+      - name: Guardar el registro de ejecuciones del vigilante
+        if: always()
+        run: python engine/push_seguro.py "vigilante del cierre $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]"
+      - name: Respaldo — avisar si el vigilante cayó sin poder avisar
+        if: failure()
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ ! -f /tmp/vigilante_avisado ]; then
+            curl -s -o /dev/null -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" -d "chat_id=${TELEGRAM_CHAT_ID}" --data-urlencode "text=NEXORA · vigilante sin poder comprobar el cierre: el workflow vigilar_cierre falló antes de avisar. Revisa la ejecución en GitHub Actions."
+          fi

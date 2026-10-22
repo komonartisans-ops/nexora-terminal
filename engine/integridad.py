@@ -252,6 +252,25 @@ def vigilar(raiz=RAIZ, ahora=None, seco=False, enviar=None, push=False):
         else:
             print("vigilante: Telegram no aceptó el aviso (se reintenta):", err)
             out.append((clave, "ERROR", err or ""))
+    vc = estado_vigilante_cierre(raiz, ahora)
+    if vc["alerta"]:
+        clave = f"vigilar_cierre|{vc['ultima_fecha'] or DESDE_VIGILAR_CIERRE}"
+        if clave not in est["avisos"]:
+            txt = (f"<b>NEXORA · Integridad</b>\nEl vigilante del cierre no ha corrido en {vc['dias_habiles_sin_correr']} días hábiles (último: {vc['ultima_fecha'] or 'ninguno'}). "
+                   "Revisa el disparo externo de cron-job.org (tarea C, 22:15 UTC) y el workflow vigilar_cierre.")
+            if seco:
+                print("[seco · no se envía]\n" + txt + "\n")
+                out.append((clave, "SECO", txt))
+            else:
+                import telegram
+                ok, err = (enviar or telegram.enviar)(txt)
+                if ok:
+                    nuevos[clave] = {"estado": "AVISADO", "avisado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "dato": "vigilar_cierre", "periodo": vc["ultima_fecha"] or DESDE_VIGILAR_CIERRE,
+                                     "evento": "el vigilante del cierre no corre", "publicado_utc": ""}
+                    out.append((clave, "AVISADO", txt))
+                else:
+                    print("vigilante: Telegram no aceptó el aviso (se reintenta):", err)
+                    out.append((clave, "ERROR", err or ""))
     if nuevos and not seco:
         _guardar_v(raiz, est, nuevos)
         if push and os.environ.get("GITHUB_ACTIONS"):
@@ -467,6 +486,36 @@ def aplicar_revisadas(raiz, ahora, abiertas, calendario):
     if nuevas:
         anadir_csv(P(raiz, "data", "discrepancias_revisadas.csv"), nuevas, CAMPOS_REV, lambda r: r["id"])
     return ab, cal, revisadas
+
+
+# ---------------------------------------------------------------- el vigilante del vigilante: ¿corre tools/vigilar_cierre.py?
+DESDE_VIGILAR_CIERRE = "2026-10-22"      # primer día en que debe correr (alta del workflow vigilar_cierre)
+UMBRAL_VIGILAR_DIAS_HABILES = 2
+
+
+def dias_habiles_entre(d0, d1):
+    """Días laborables (lun-vie) en (d0, d1]."""
+    n, d = 0, d0
+    while d < d1:
+        d += dt.timedelta(days=1)
+        if d.weekday() < 5:
+            n += 1
+    return n
+
+
+def estado_vigilante_cierre(raiz, ahora):
+    """Lee data/vigilar_cierre.csv (una fila por ejecución del vigilante). Alerta si lleva ≥ 2 días hábiles sin correr (se cuentan hasta AYER: la de hoy es a las 22:15 UTC)."""
+    filas = leer_csv(P(raiz, "data", "vigilar_cierre.csv"))
+    ult = max(filas, key=lambda r: (r["fecha"], r["ejecutado_utc"])) if filas else None
+    ref = dt.date.fromisoformat(ult["fecha"]) if ult else dt.date.fromisoformat(DESDE_VIGILAR_CIERRE) - dt.timedelta(days=1)
+    ayer = ahora.date() - dt.timedelta(days=1)
+    sin = dias_habiles_entre(ref, ayer) if ayer > ref else 0
+    alerta = sin >= UMBRAL_VIGILAR_DIAS_HABILES
+    return {"ultima_fecha": ult["fecha"] if ult else None, "ultima_ejecucion_utc": ult["ejecutado_utc"] if ult else None, "ultimo_resultado": ult["resultado"] if ult else None,
+            "dias_habiles_sin_correr": sin, "umbral_dias_habiles": UMBRAL_VIGILAR_DIAS_HABILES, "alerta": alerta, "ejecuciones_registradas": len(filas),
+            "texto": (f"El vigilante del cierre lleva {sin} días hábiles sin correr (último: {ult['fecha'] if ult else 'ninguno todavía'})." if alerta else
+                      (f"El vigilante del cierre corrió el {ult['fecha']}: {ult['resultado']}." if ult else "El vigilante del cierre todavía no ha corrido (primera ejecución: 22-oct a las 22:15 UTC).")),
+            "fuente": "data/vigilar_cierre.csv · workflow vigilar_cierre (cron-job.org 22:15 UTC)"}
 
 
 def cotejar_bls(raiz=RAIZ, ahora=None, red=None, forzar=False):
@@ -885,6 +934,7 @@ def construir(raiz=RAIZ, ahora=None):
             "n_discrepancias_historial": len(leer_csv(P(raiz, "data", "discrepancias.csv"))),
             "discrepancias_calendario": [{k: x[k] for k in ("dato", "fred", "oficial", "oficial_fuente", "motivo")} for x in cal_abiertas],
             "discrepancias_revisadas": revisadas,
+            "vigilante_cierre": estado_vigilante_cierre(raiz, ahora),
             "segunda_fuente": {"BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
                                "BEA": ("API de BEA activa (secreto BEA_API_KEY): PCE y PIB real con el mismo umbral; manda BEA" if os.environ.get("BEA_API_KEY") else BEA_SIN_DATO),
                                "bea_activa": bool(os.environ.get("BEA_API_KEY")), "bls_consultas_hoy": est["bls"].get("n", 0), "bls_ultimo_error": est["bls"].get("ultimo_error"),

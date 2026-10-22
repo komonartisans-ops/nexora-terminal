@@ -62,6 +62,18 @@ Base de las URL: `https://api.github.com/repos/komonartisans-ops/nexora-terminal
 
 *(Opcionales, mismas cabeceras)*: `diario` a las 05:30 UTC lun-vie → `{"ref":"main","inputs":{"modo":"diario"}}`; `cierre` a las 21:30 UTC lun-vie → `{"ref":"main","inputs":{"modo":"cierre"}}`.
 
+### Tarea C · vigilante del cierre, todos los días a las 22:15 UTC
+
+Ejecuta `tools/vigilar_cierre.py --gh --esperar --avisar` (`vigilar_cierre.yml`, **solo** `workflow_dispatch`, sin `schedule:`): comprueba en `data/ejecuciones.csv` (no en `meta.json`, que la hora siguiente sobrescribe) que las 16 etapas del modo cierre de las 21:30 UTC corrieron OK. Avisa por Telegram si una falla o falta, y avisa «vigilante sin poder comprobar» si él mismo falla. Sábado y domingo sale con OK sin avisar. Deja una fila por ejecución en `data/vigilar_cierre.csv`; `#/integridad` y el vigilante de integridad avisan si no corre en 2 días hábiles; `#/salud` cuenta su ejecución diaria.
+
+| Campo | Valor |
+|---|---|
+| Title | `nexora vigilar cierre` |
+| URL | `https://api.github.com/repos/komonartisans-ops/nexora-terminal/actions/workflows/vigilar_cierre.yml/dispatches` |
+| Time zone | `UTC` (no se mueve con los cambios de hora de Europa, 25-oct, ni de EE. UU., 1-nov: el cierre de 21:30 UTC tampoco) |
+| Schedule | Minutos: `15` · Horas: `22` · Días del mes, meses y días de la semana: todos |
+| Body | `{"ref":"main"}` |
+
 ### Tarea B · reacciones, cada 5 minutos de 11:00 a 21:55 UTC en días laborables
 
 Desde el 18-oct-2026 B1 cubre 11-21 UTC (antes 12-20) para que el aviso previo por Telegram llegue a los eventos de las 08:00 ET (aviso a las 11:30 UTC en verano) y a los resultados «después del cierre» de invierno (16:05 ET = 21:05 UTC, aviso a las 20:30 UTC). B2 (21:00) queda como respaldo redundante: la concurrencia de GitHub evita ejecuciones solapadas.

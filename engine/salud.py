@@ -53,9 +53,14 @@ def _esp_agenda(n):       # 8:00 Madrid, lun-vie
     return 0 if m.weekday() >= 5 else int(m.hour >= 8)
 
 
+def _esp_vigilar(n):      # 22:15 UTC todos los días (el vigilante sale con OK los fines de semana)
+    return int(n.time() >= dt.time(22, 15))
+
+
 WORKFLOWS = [("actualizar", "actualizar.yml", _esp_actualizar, "cada hora, 06-22 UTC, lun-vie"),
              ("reacciones", "reacciones.yml", _esp_reacciones, "cada 5 min, 12:00-21:00 UTC, lun-vie"),
-             ("agenda_diaria", "agenda_diaria.yml", _esp_agenda, "8:00 Madrid, lun-vie")]
+             ("agenda_diaria", "agenda_diaria.yml", _esp_agenda, "8:00 Madrid, lun-vie"),
+             ("vigilar_cierre", "vigilar_cierre.yml", _esp_vigilar, "22:15 UTC, todos los días")]
 
 
 def medir(ahora=None):

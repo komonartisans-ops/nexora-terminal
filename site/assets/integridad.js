@@ -47,6 +47,8 @@ function pageIntegridad() {
   h += essential(`${esc(r.texto)}: ${r.retrasados} retrasado(s) y ${r.sin_dato} sin dato. ${disc.length ? disc.length + ' discrepancia(s) abierta(s) entre FRED y la fuente primaria.' : 'Sin discrepancias abiertas con la fuente primaria.'}`,
     'Hecho: «al día» = la última ejecución válida es posterior a la última programada para ese bloque (con la tolerancia de sus crones); «retrasado» = no lo es o la última ejecución falló; «sin dato» = no hay ninguna. Interpretación: un bloque retrasado no significa que el dato sea malo, sino que puede estar viejo.',
     'Mira primero las discrepancias abiertas y los retrasos de registro: son lo que más afecta a la fiabilidad de lo que lees.', 'Cómo leerlo');
+  const vc = I.vigilante_cierre;
+  if (vc && vc.alerta) h += `<div class="banner red" style="margin:0 0 14px;border-radius:6px"><b>Vigilante del cierre parado:</b> ${esc(vc.texto)} Revisa el disparo externo (cron-job.org, 22:15 UTC).</div>`;
   const dcal = I.discrepancias_calendario || [];
   if (dcal.length) h += `<div class="banner amber" style="margin:0 0 14px;border-radius:6px"><b>Discrepancia de calendario:</b> ${dcal.map((d) => `${esc(d.dato)}: FRED «${esc(d.fred)}» frente a «${esc(d.oficial)}» (${esc(d.motivo)})`).join(' · ')}. Se muestran las dos fechas; no se elige una.</div>`;
   if (disc.length) h += `<div class="banner red" style="margin:0 0 14px;border-radius:6px"><b>DISCREPANCIA abierta:</b> ${disc.map((d) => `${esc(d.serie)} ${esc(d.periodo.slice(0, 7))} (${esc(d.tipo.toLowerCase())}): FRED ${esc(d.fred_valor)} frente a ${esc(d.primaria)} ${esc(d.primaria_valor)}${d.dif_pct ? ' (' + esc(num(+d.dif_pct, 3)) + ' %)' : ''}`).join(' · ')}. Manda la fuente primaria.</div>`;
@@ -68,9 +70,10 @@ function pageIntegridad() {
   h += integMichigan(I.michigan);
   h += integEia(I.eia);
   const V = I.vigilante || {}, S = I.segunda_fuente || {};
-  h += '<div class="sect"><h2>Vigilante y segunda fuente</h2><span class="more">cómo se comprueba cada dato</span></div><div class="grid g2"><div class="card"><div class="chead"><span>Vigilante de publicaciones</span></div>'
+  h += '<div class="sect"><h2>Vigilante y segunda fuente</h2><span class="more">cómo se comprueba cada dato</span></div><div class="grid g3"><div class="card"><div class="chead"><span>Vigilante de publicaciones</span></div>'
     + `<p class="note" style="margin:6px 0">Regla: ${esc(V.regla || '')}. Un aviso por dato.</p><p class="note" style="margin:0">${V.avisos ? V.avisos + ' aviso(s) enviado(s) hasta ahora.' : 'Ningún aviso enviado todavía: no ha faltado ningún dato.'}</p></div>`
-    + `<div class="card"><div class="chead"><span>Segunda fuente</span></div><p class="note" style="margin:6px 0"><b>BLS</b> (IPC, IPC subyacente, IPP): ${esc(S.BLS || '')}.</p><p class="note" style="margin:0"><b>BEA</b> (PIB, PCE): ${esc(S.BEA || '')}</p>${S.bls_ultimo_error ? `<p class="note" style="margin:4px 0 0">Último error de BLS: ${esc(S.bls_ultimo_error)}</p>` : ''}${S.bea_ultimo_error ? `<p class="note" style="margin:4px 0 0">Último error de BEA: ${esc(S.bea_ultimo_error)}</p>` : ''}</div></div>`;
+    + `<div class="card"><div class="chead"><span>Vigilante del cierre</span></div><p class="note" style="margin:6px 0">${esc(vc ? vc.texto : 'SIN DATO')}</p><p class="note" style="margin:0">Comprueba cada día a las 22:15 UTC, en data/ejecuciones.csv, que las etapas del cierre de las 21:30 UTC corrieron OK; avisa por Telegram si no. Si él mismo no corre en 2 días hábiles, avisa esta página.</p></div>
+    <div class="card"><div class="chead"><span>Segunda fuente</span></div><p class="note" style="margin:6px 0"><b>BLS</b> (IPC, IPC subyacente, IPP): ${esc(S.BLS || '')}.</p><p class="note" style="margin:0"><b>BEA</b> (PIB, PCE): ${esc(S.BEA || '')}</p>${S.bls_ultimo_error ? `<p class="note" style="margin:4px 0 0">Último error de BLS: ${esc(S.bls_ultimo_error)}</p>` : ''}${S.bea_ultimo_error ? `<p class="note" style="margin:4px 0 0">Último error de BEA: ${esc(S.bea_ultimo_error)}</p>` : ''}</div></div>`;
   return h;
 }
 
