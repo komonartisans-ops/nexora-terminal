@@ -1,7 +1,7 @@
 {
  "periodo": "hoy",
  "corte": "Datos entre el 2026-10-21 y el 2026-10-22 (cada fuente publica a su hora)",
- "movido": "La probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 16 % a 4 %. En conjunto: el dinero se abarata.",
+ "movido": "La probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 16 % a 6 %. En conjunto: el dinero se abarata.",
  "significa": [
   {
    "activo": "Oro",
@@ -25,8 +25,8 @@
   },
   {
    "activo": "US30 · Dow Jones",
-   "viento": "A FAVOR",
-   "texto": "A favor: la Fed se ve menos dura. Su movimiento lo explica la macro."
+   "viento": "SIN VIENTO CLARO",
+   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro."
   },
   {
    "activo": "Russell 2000",
@@ -35,7 +35,7 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 4 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 6 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
   "mié 28 oct · Resultados Alphabet (GOOGL): BPA estimado $2.94 · después del cierre"
  ],
@@ -52,7 +52,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 1.8,
+    "peso": 1.5,
     "razon": "la Fed se ve menos dura"
    }
   ],
@@ -60,7 +60,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 1.2,
+    "peso": 1.0,
     "razon": "la Fed se ve menos dura"
    }
   ],
@@ -68,7 +68,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 1.2,
+    "peso": 1.0,
     "razon": "la Fed se ve menos dura"
    }
   ],
@@ -76,7 +76,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 1.8,
+    "peso": 1.5,
     "razon": "la Fed se ve menos dura"
    }
   ],
@@ -84,7 +84,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 0.9,
+    "peso": 0.75,
     "razon": "la Fed se ve menos dura"
    }
   ],
@@ -92,7 +92,7 @@
    {
     "motor": "fed",
     "sube": false,
-    "peso": 2.4,
+    "peso": 2.0,
     "razon": "la Fed se ve menos dura"
    }
   ]
@@ -124,10 +124,10 @@
    "fecha": "2026-10-21"
   },
   "fed": {
-   "valor": 4.0,
+   "valor": 6.0,
    "antes": 16.0,
    "reunion": "2026-10-28",
-   "delta": -12.0,
+   "delta": -10.0,
    "fecha": "2026-10-22"
   }
  },
@@ -143,9 +143,9 @@
    "valor": 7757.17
   },
   "Oro": {
-   "delta": -2.1614446065511994,
+   "delta": -2.1590384977409616,
    "fecha": "2026-10-22",
-   "valor": 4060.300048828125
+   "valor": 4060.39990234375
   },
   "Bitcoin": {
    "delta": 1.309902088613879,
@@ -200,7 +200,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 1.2,
+     "peso": 1.0,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -244,7 +244,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 1.8,
+     "peso": 1.5,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -288,7 +288,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 1.2,
+     "peso": 1.0,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -335,7 +335,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 1.8,
+     "peso": 1.5,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -343,7 +343,7 @@
   "US30 · Dow Jones": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: la Fed se ve menos dura. Su movimiento lo explica la macro.",
+   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
    "semana": "A favor: la Fed se ve menos dura. Su movimiento lo explica la macro.",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -379,7 +379,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 0.9,
+     "peso": 0.75,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -423,7 +423,7 @@
     {
      "motor": "fed",
      "sube": false,
-     "peso": 2.4,
+     "peso": 2.0,
      "razon": "la Fed se ve menos dura"
     }
    ]
@@ -448,6 +448,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000. Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-22 17:24 UTC",
- "duracion_s": 110.4
+ "generado_utc": "2026-10-22 18:07 UTC",
+ "duracion_s": 109.8
 }
