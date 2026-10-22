@@ -3,6 +3,16 @@
   {
    "banco": "BoJ",
    "tipo": "Novedad",
+   "titulo": "Bank of Japan Accounts (October 20)",
+   "orador": null,
+   "fecha_utc": "2026-10-22 01:00",
+   "fecha": "2026-10-22",
+   "enlace": "http://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261020.htm",
+   "fuente": "boj"
+  },
+  {
+   "banco": "BoJ",
+   "tipo": "Novedad",
    "titulo": "Senior Loan Officer Opinion Survey (Oct.)",
    "orador": null,
    "fecha_utc": "2026-10-21 23:50",
@@ -901,16 +911,6 @@
    "fuente": "boj"
   },
   {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "Services Producer Price Index (Aug.)",
-   "orador": null,
-   "fecha_utc": "2026-09-27 23:50",
-   "fecha": "2026-09-27",
-   "enlace": "http://www.boj.or.jp/en/statistics/pi/cspi_release/sppi2608.pdf",
-   "fuente": "boj"
-  },
-  {
    "banco": "Fed",
    "tipo": "Comunicado",
    "titulo": "Federal Reserve Board announces approval of application by Peoples Bancorp Inc.",
@@ -1083,26 +1083,6 @@
   {
    "banco": "BoE",
    "tipo": "Noticia",
-   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "Asset Purchase Facility: Gilt Sales – Market Notice 17 September 2026",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
    "titulo": "Exchange of letters between the Governor and the Chancellor regarding CPI Inflation - September 2026",
    "orador": null,
    "fecha_utc": "2026-09-17 11:00",
@@ -1118,6 +1098,26 @@
    "fecha_utc": "2026-09-17 11:00",
    "fecha": "2026-09-17",
    "enlace": "https://www.bankofengland.co.uk/letter/2026/exchange-of-letters-between-the-governor-and-the-chancellor-regarding-qt-and-the-apf",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Asset Purchase Facility: Gilt Sales – Market Notice 17 September 2026",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/markets/market-notices/2026/asset-purchase-facility-gilt-sales-market-notice-17-september-2026",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
    "fuente": "boe"
   },
   {
@@ -1332,7 +1332,7 @@
    "n": 40,
    "url": "https://www.boj.or.jp/en/rss/whatsnew.xml",
    "pagina": "https://www.boj.or.jp/en/whatsnew.htm",
-   "ultimo": "2026-10-21 23:50"
+   "ultimo": "2026-10-22 01:00"
   },
   "boe": {
    "banco": "BoE",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-21 23:58 UTC",
- "duracion_s": 6.2
+ "generado_utc": "2026-10-22 05:30 UTC",
+ "duracion_s": 8.8
 }

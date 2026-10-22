@@ -1,2 +1,3 @@
 id,detectada_utc,serie,periodo,tipo,fred_valor,primaria,primaria_valor,dif_pct,estado,nota
 BRENT|2026-10-14|VALOR|2026-10-19 15:07 UTC|ABIERTA,2026-10-19 15:07 UTC,BRENT,2026-10-14,VALOR,126.55,Yahoo BZ=F (futuro),106.06,16.1900,ABIERTA,el mismo día (2026-10-14) el futuro BZ=F (106.06) y el Brent fechado de FRED (126.55) difieren -16.2 % (> 10 %): puede ser físico frente a futuro (escasez física) o un dato mal leído. Revisar; no se corrige ninguno
+BRENT|2026-10-14|VALOR|2026-10-22 05:41 UTC|CERRADA,2026-10-22 05:41 UTC,BRENT,2026-10-14,VALOR,115.22,Yahoo BZ=F (futuro),108.79,5.5800,CERRADA,sustituida por la comparación del 2026-10-20

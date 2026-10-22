@@ -1,25 +1,25 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-22 00:09 UTC",
- "fecha_datos": "2026-10-20",
+ "generado_utc": "2026-10-22 05:30 UTC",
+ "fecha_datos": "2026-10-21",
  "mercado": {
   "cap": {
    "nombre": "XLY/XLP · consumo discrecional / básico (ponderado por capitalización)",
-   "fecha": "2026-10-20",
-   "ratio": 1.31624,
-   "sma200": 1.37852,
-   "dist_sma200_pct": -4.52,
-   "pendiente_3m_pct": -2.59,
+   "fecha": "2026-10-21",
+   "ratio": 1.32625,
+   "sma200": 1.37738,
+   "dist_sma200_pct": -3.71,
+   "pendiente_3m_pct": 1.47,
    "sobre_sma200": false
   },
   "igual": {
    "nombre": "RSPD/RSPS · consumo discrecional / básico en peso igual",
-   "fecha": "2026-10-20",
+   "fecha": "2026-10-21",
    "ratio": 1.76143,
-   "sma200": 1.83228,
-   "dist_sma200_pct": -3.87,
-   "pendiente_3m_pct": -1.33,
+   "sma200": 1.83107,
+   "dist_sma200_pct": -3.8,
+   "pendiente_3m_pct": -1.28,
    "sobre_sma200": false
   },
   "pesos": {
@@ -29,9 +29,9 @@
    "suma": 40.82,
    "fuente": "State Street SSGA, posiciones diarias de XLY"
   },
-  "diferencia_3m_pp": -1.26,
-  "aviso": null,
-  "sentido": null,
+  "diferencia_3m_pp": 2.75,
+  "aviso": "el ratio lo mueven AMZN+TSLA, no el consumo amplio: empujan XLY/XLP al alza (+2,75 pp frente a RSPD/RSPS en 3 meses)",
+  "sentido": "AL ALZA",
   "umbral_pp": 2.0
  },
  "graficos": {
@@ -2041,6 +2041,10 @@
     [
      "2026-10-20",
      1.31624
+    ],
+    [
+     "2026-10-21",
+     1.32625
     ]
    ],
    "sma50": [
@@ -4047,6 +4051,10 @@
     [
      "2026-10-20",
      1.35034
+    ],
+    [
+     "2026-10-21",
+     1.3487
     ]
    ],
    "sma200": [
@@ -6053,6 +6061,10 @@
     [
      "2026-10-20",
      1.37852
+    ],
+    [
+     "2026-10-21",
+     1.37738
     ]
    ]
   },
@@ -8062,6 +8074,10 @@
     [
      "2026-10-20",
      1.76143
+    ],
+    [
+     "2026-10-21",
+     1.76143
     ]
    ],
    "sma50": [
@@ -10068,6 +10084,10 @@
     [
      "2026-10-20",
      1.7955
+    ],
+    [
+     "2026-10-21",
+     1.79291
     ]
    ],
    "sma200": [
@@ -12074,6 +12094,10 @@
     [
      "2026-10-20",
      1.83228
+    ],
+    [
+     "2026-10-21",
+     1.83107
     ]
    ]
   }
@@ -12083,58 +12107,108 @@
    "serie": "RRSFS",
    "nombre": "Ventas minoristas reales",
    "capa": "real",
-   "sin_dato": true
+   "unidad": "%",
+   "modo": "yoy",
+   "frecuencia": "M",
+   "periodo": "2026-09-01",
+   "nivel": 221536.0,
+   "valor": 2.48,
+   "tendencia_3m": 0.53,
+   "tendencia_unidad": "%"
   },
   {
    "serie": "PCEC96",
    "nombre": "Consumo real (PCE real)",
    "capa": "real",
-   "sin_dato": true
+   "unidad": "%",
+   "modo": "yoy",
+   "frecuencia": "M",
+   "periodo": "2026-08-01",
+   "nivel": 16955.3,
+   "valor": 2.57,
+   "tendencia_3m": 1.02,
+   "tendencia_unidad": "%"
   },
   {
    "serie": "DSPIC96",
    "nombre": "Renta personal disponible real",
    "capa": "capacidad",
-   "sin_dato": true
+   "unidad": "%",
+   "modo": "yoy",
+   "frecuencia": "M",
+   "periodo": "2026-08-01",
+   "nivel": 18410.5,
+   "valor": 1.3,
+   "tendencia_3m": 0.64,
+   "tendencia_unidad": "%"
   },
   {
    "serie": "PSAVERT",
    "nombre": "Tasa de ahorro personal",
    "capa": "capacidad",
-   "sin_dato": true
+   "unidad": "%",
+   "modo": "nivel",
+   "frecuencia": "M",
+   "periodo": "2026-08-01",
+   "nivel": 4.1,
+   "valor": 4.1,
+   "tendencia_3m": -0.3,
+   "tendencia_unidad": "pp",
+   "media_12m": 4.85
   },
   {
    "serie": "TOTALSL",
    "nombre": "Crédito al consumo (total)",
    "capa": "capacidad",
-   "sin_dato": true
+   "unidad": "%",
+   "modo": "yoy",
+   "frecuencia": "M",
+   "periodo": "2026-08-01",
+   "nivel": 5196778.44,
+   "valor": 2.73,
+   "tendencia_3m": 0.8,
+   "tendencia_unidad": "%"
   },
   {
    "serie": "UMCSENT",
    "nombre": "Confianza del consumidor (U. Michigan)",
    "capa": "contexto",
-   "sin_dato": true
+   "unidad": "índice",
+   "modo": "nivel",
+   "frecuencia": "M",
+   "periodo": "2026-08-01",
+   "nivel": 51.7,
+   "valor": 51.7,
+   "tendencia_3m": 6.9,
+   "tendencia_unidad": "pts"
   },
   {
    "serie": "DRCCLACBS",
    "nombre": "Morosidad de tarjetas de crédito (trimestral)",
    "capa": "capacidad",
-   "sin_dato": true
+   "unidad": "%",
+   "modo": "nivel",
+   "frecuencia": "Q",
+   "periodo": "2026-04-01",
+   "nivel": 2.85,
+   "valor": 2.85,
+   "tendencia_3m": -0.06,
+   "tendencia_unidad": "pp"
   }
  ],
  "capas": {
   "mercado": {
    "estado": "BAJA",
-   "detalle": "RSPD/RSPS -3.87 % frente a su media de 200 y -1.33 % en 3 meses"
+   "detalle": "RSPD/RSPS -3.80 % frente a su media de 200 y -1.28 % en 3 meses"
   },
   "real": {
-   "estado": "SIN DATO",
-   "detalle": "falta alguna serie real"
+   "estado": "ALZA",
+   "detalle": "ventas reales +0.53 % y consumo real +1.02 % en 3 meses"
   },
   "capacidad": {
-   "estado": "MIXTA",
-   "suma": 0,
-   "detalle": "DSPIC96: SIN DATO (vota 0) · PSAVERT: SIN DATO (vota 0) · TOTALSL: SIN DATO (vota 0) · DRCCLACBS: SIN DATO (vota 0)"
+   "estado": "RESPALDA",
+   "suma": 2,
+   "detalle": "DSPIC96: renta real sube (+1) · PSAVERT: ahorro bajo su media de 12 meses (−1) · TOTALSL: crédito crece interanual (+1) · DRCCLACBS: morosidad no sube (+1)"
   }
  },
  "animo": {
@@ -12160,13 +12234,21 @@
     "periodo": "2026-09-01",
     "texto": "septiembre 2026",
     "valor": 48.1,
-    "publicado": null,
+    "publicado": "2026-09-25",
     "visto_utc": "2026-10-19 09:12 UTC"
    },
    "antiguedad_dias": 0,
    "ambar": false,
    "estado": "OK",
-   "fred": null
+   "fred": {
+    "periodo": "2026-08-01",
+    "texto": "agosto 2026",
+    "valor": 51.7,
+    "antiguedad_dias": 52,
+    "meses_de_retraso": 2,
+    "coincide": true,
+    "michigan_mismo_periodo": 51.7
+   }
   },
   "estado": "OK",
   "periodo": "2026-10-01",
@@ -12177,15 +12259,16 @@
   "minimo": 44.8,
   "maximo": 112.0,
   "zona_baja": true,
-  "nota": null
+  "nota": "la gente dice que está mal pero sigue gastando"
  },
  "tesis": {
-  "resultado": "SIN DATO",
-  "intensidad": null,
-  "direccion_marcador": "NINGUNA",
-  "porque": "falta la capa de real (SIN DATO, no se estima)",
-  "confirmaria": "—",
-  "invalidaria": "—"
+  "resultado": "DIVERGENCIA MERCADO DEFENSIVO",
+  "intensidad": "FUERTE",
+  "direccion_marcador": "ALCISTA",
+  "porque": "el mercado de consumo cae pero los datos reales aguantan: el mercado descuenta un deterioro que los datos todavía no muestran",
+  "confirmaria": "el ratio de peso igual recupera su media de 200 sesiones con los datos reales firmes (el mercado se equivocaba)",
+  "invalidaria": "los datos reales giran a la baja en las próximas publicaciones (el mercado tenía razón)",
+  "motivo_intensidad": "cumple la regla completa"
  },
  "reglas_contexto": [
   "Aviso de concentración (no puntúa): si XLY/XLP y RSPD/RSPS se separan más de 2 pp en 3 meses, en cualquier sentido, el ratio lo mueven AMZN+TSLA y no el consumo amplio; se indica hacia dónde empujan (XLY/XLP por encima de RSPD/RSPS = al alza; por debajo = a la baja).",
@@ -12205,5 +12288,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, DRCCLACBS; UMCSENT como respaldo) · Universidad de Michigan (sca.isr.umich.edu, ánimo del consumidor)",
- "duracion_s": 4.0
+ "duracion_s": 5.1
 }

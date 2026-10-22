@@ -1,140 +1,140 @@
 {
  "ok": true,
- "generado_utc": "2026-10-21 10:23 UTC",
+ "generado_utc": "2026-10-22 05:30 UTC",
  "metricas": {
-  "generado_utc": "2026-10-21 10:26 UTC",
+  "generado_utc": "2026-10-22 05:34 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer el oro (XAU/USD)",
   "oro": {
-   "lbma_pm": 4129.7001953125,
-   "fecha": "2026-10-21",
-   "1d_pct": -0.31,
-   "5d_pct": 0.53,
-   "20d_pct": -4.37,
-   "60d_pct": 2.25,
-   "sma50": 4357.85,
-   "sma200": 4537.25,
+   "lbma_pm": 4101.39990234375,
+   "fecha": "2026-10-22",
+   "1d_pct": -1.17,
+   "5d_pct": -1.65,
+   "20d_pct": -4.57,
+   "60d_pct": 1.61,
+   "sma50": 4350.94,
+   "sma200": 4535.38,
    "max_52s": 5318.39990234375,
    "min_52s": 3960.5,
-   "ytd_pct": -4.62,
+   "ytd_pct": -5.27,
    "fuente": "Futuros oro COMEX GC=F (Yahoo Finance), USD/oz · respaldo: LBMA no respondió",
    "respaldo": true,
-   "vs_max_52s_pct": -22.35
+   "vs_max_52s_pct": -22.88
   },
   "oro_intradia": {
    "xaut_okx": {
-    "precio": 4121.0,
-    "hora_utc": "2026-10-21 10:28",
-    "max24h": 4152.0,
-    "min24h": 4109.3
+    "precio": 4090.6,
+    "hora_utc": "2026-10-22 05:35",
+    "max24h": 4143.7,
+    "min24h": 4088.5
    },
    "paxg_coinbase": {
-    "precio": 4121.9,
-    "hora_utc": "2026-10-21 10:27"
+    "precio": 4090.4,
+    "hora_utc": "2026-10-22 05:34"
    },
    "nota": "Proxy: tokens respaldados por oro físico, cotizan 24/7; pueden desviarse unas décimas del spot XAU/USD.",
-   "divergencia_pct": -0.022
+   "divergencia_pct": 0.005
   },
   "dxy": {
-   "valor": 101.84,
-   "fecha": "2026-10-20",
-   "1d_pct": 0.02,
-   "5d_pct": -0.42,
-   "20d_pct": 1.44,
-   "vel_z": -0.55,
+   "valor": 101.65,
+   "fecha": "2026-10-21",
+   "1d_pct": -0.19,
+   "5d_pct": -0.56,
+   "20d_pct": 0.76,
+   "vel_z": -0.74,
    "metodo": "Réplica ICE sobre tipos de referencia del BCE (14:15 CET)"
   },
   "t2Y": {
-   "valor": 4.79,
-   "fecha": "2026-10-20",
+   "valor": 4.81,
+   "fecha": "2026-10-21",
    "1d_pb": 2.0,
-   "5d_pb": 0.0,
-   "20d_pb": 3.0,
-   "vel_z": 0.0,
+   "5d_pb": -1.0,
+   "20d_pb": 10.0,
+   "vel_z": -0.11,
    "fuente": "U.S. Treasury, Daily Par Yield Curve"
   },
   "t5Y": {
-   "valor": 4.94,
-   "fecha": "2026-10-20",
-   "1d_pb": 0.0,
-   "5d_pb": -6.0,
-   "20d_pb": 11.0,
-   "vel_z": -0.66,
+   "valor": 4.95,
+   "fecha": "2026-10-21",
+   "1d_pb": 1.0,
+   "5d_pb": -5.0,
+   "20d_pb": 12.0,
+   "vel_z": -0.55,
    "fuente": "U.S. Treasury, Daily Par Yield Curve"
   },
   "t10Y": {
-   "valor": 5.12,
-   "fecha": "2026-10-20",
-   "1d_pb": -3.0,
-   "5d_pb": -9.0,
-   "20d_pb": 16.0,
-   "vel_z": -1.07,
+   "valor": 5.13,
+   "fecha": "2026-10-21",
+   "1d_pb": 1.0,
+   "5d_pb": -6.0,
+   "20d_pb": 17.0,
+   "vel_z": -0.71,
    "fuente": "U.S. Treasury, Daily Par Yield Curve"
   },
   "t30Y": {
    "valor": 5.42,
-   "fecha": "2026-10-20",
-   "1d_pb": -6.0,
-   "5d_pb": -14.0,
+   "fecha": "2026-10-21",
+   "1d_pb": 0.0,
+   "5d_pb": -10.0,
    "20d_pb": 13.0,
-   "vel_z": -1.81,
+   "vel_z": -1.29,
    "fuente": "U.S. Treasury, Daily Par Yield Curve"
   },
   "real5Y": {
    "valor": 2.55,
-   "fecha": "2026-10-20",
-   "1d_pb": -1.0,
-   "5d_pb": -12.0,
-   "20d_pb": 5.0,
-   "vel_z": -1.36,
+   "fecha": "2026-10-21",
+   "1d_pb": 0.0,
+   "5d_pb": -9.0,
+   "20d_pb": 4.0,
+   "vel_z": -1.01,
    "fuente": "U.S. Treasury, Daily Par Real Yield Curve (TIPS)"
   },
   "real10Y": {
-   "valor": 2.77,
-   "fecha": "2026-10-20",
-   "1d_pb": -3.0,
-   "5d_pb": -11.0,
-   "20d_pb": 15.0,
-   "vel_z": -1.47,
+   "valor": 2.76,
+   "fecha": "2026-10-21",
+   "1d_pb": -1.0,
+   "5d_pb": -8.0,
+   "20d_pb": 13.0,
+   "vel_z": -1.06,
    "fuente": "U.S. Treasury, Daily Par Real Yield Curve (TIPS)"
   },
   "be5Y": {
-   "valor": 2.39,
-   "fecha": "2026-10-20",
-   "5d_pb": 6.0,
-   "20d_pb": 6.0,
+   "valor": 2.4,
+   "fecha": "2026-10-21",
+   "5d_pb": 4.0,
+   "20d_pb": 8.0,
    "fuente": "Nominal − real, U.S. Treasury (misma fecha)"
   },
   "be10Y": {
-   "valor": 2.35,
-   "fecha": "2026-10-20",
+   "valor": 2.37,
+   "fecha": "2026-10-21",
    "5d_pb": 2.0,
-   "20d_pb": 1.0,
+   "20d_pb": 4.0,
    "fuente": "Nominal − real, U.S. Treasury (misma fecha)"
   },
   "nfci": {
-   "valor": -0.499,
-   "fecha": "2026-10-09",
-   "1s": 0.008,
-   "4s": 0.037,
+   "valor": -0.496,
+   "fecha": "2026-10-16",
+   "1s": 0.006,
+   "4s": 0.032,
    "fuente": "Chicago Fed NFCI (FRED), semanal; negativo = más laxo que la media"
   },
   "vix": {
-   "valor": 17.31,
-   "fecha": "2026-10-20",
-   "5d_pct": 13.36,
-   "1d_pct": -6.13,
+   "valor": 16.68,
+   "fecha": "2026-10-21",
+   "5d_pct": -1.13,
+   "1d_pct": -3.64,
    "fuente": "Cboe, VIX History"
   },
   "tga": {
-   "valor_B": 965.0,
-   "fecha": "2026-10-19",
-   "4s_B": -39.3,
-   "3m_B": 136.8,
+   "valor_B": 973.7,
+   "fecha": "2026-10-20",
+   "4s_B": 16.2,
+   "3m_B": 98.7,
    "fuente": "U.S. Treasury, Daily Treasury Statement"
   },
   "rrp": {
    "valor_B": 0.2,
-   "fecha": "2026-10-20",
+   "fecha": "2026-10-21",
    "4s_B": -0.2,
    "fuente": "Fed de Nueva York, ON RRP"
   },
@@ -152,8 +152,8 @@
    "fuente": "Fed H.6, M2SL (FRED), mensual"
   },
   "sofr": {
-   "valor": 3.87,
-   "fecha": "2026-10-19",
+   "valor": 3.88,
+   "fecha": "2026-10-20",
    "iorb": 3.9
   },
   "cot": {
@@ -174,38 +174,38 @@
    "fuente": "CFTC Disaggregated Futures Only, COMEX Gold 088691 (posiciones del martes)"
   },
   "etf": {
-   "gld_t": 1060.18,
-   "fecha": "2026-10-20",
-   "1d_t": 1.71,
-   "5d_t": 5.98,
-   "20d_t": 4.2,
-   "ytd_t": -4.95,
-   "volumen_acciones": 6038333.0,
-   "volumen_media20": 7675108,
+   "gld_t": 1057.62,
+   "fecha": "2026-10-21",
+   "1d_t": -2.56,
+   "5d_t": 3.42,
+   "20d_t": 0.78,
+   "ytd_t": -7.51,
+   "volumen_acciones": 6880831.0,
+   "volumen_media20": 7641802,
    "fuente": "SPDR Gold Shares (GLD), toneladas en el trust — mayor ETF de oro; WGC global en la narrativa"
   },
   "brent": {
-   "valor": 126.55,
-   "fecha": "2026-10-14",
-   "5d_pct": 0.44,
-   "20d_pct": -1.01,
+   "valor": 115.22,
+   "fecha": "2026-10-20",
+   "5d_pct": -8.4,
+   "20d_pct": 0.29,
    "fuente": "EIA vía FRED (DCOILBRENTEU / DCOILWTICO); publica con unos días de retraso"
   },
   "wti": {
-   "valor": 101.91,
-   "fecha": "2026-10-14",
-   "5d_pct": 7.25,
-   "20d_pct": -1.65,
+   "valor": 107.89,
+   "fecha": "2026-10-20",
+   "5d_pct": 13.1,
+   "20d_pct": 11.91,
    "fuente": "EIA vía FRED (DCOILBRENTEU / DCOILWTICO); publica con unos días de retraso"
   },
   "corr_real10": -0.25,
-  "corr_dxy": -0.4,
+  "corr_dxy": -0.39,
   "expectativas_letras": {
-   "fecha": "2026-10-20",
-   "1a_menos_effr_pb": 63.0,
-   "6m_menos_effr_pb": 48.0,
-   "5d_pb": 3.0,
-   "20d_pb": 6.0,
+   "fecha": "2026-10-21",
+   "1a_menos_effr_pb": 64.0,
+   "6m_menos_effr_pb": 47.0,
+   "5d_pb": -1.0,
+   "20d_pb": 9.0,
    "effr": 3.88,
    "fuente": "U.S. Treasury (letra 6M y 1A) − EFFR (Fed NY vía FRED)",
    "nota": "PROXY de expectativas, no es FedWatch: incluye prima por plazo y efectos de oferta de letras."
@@ -218,24 +218,24 @@
     "estado": "SE CUMPLE"
    },
    "dxy": {
-    "corr_20": -0.43,
-    "corr_60": -0.4,
+    "corr_20": -0.39,
+    "corr_60": -0.39,
     "corr_250": -0.38,
     "estado": "SE CUMPLE"
    }
   },
   "niveles": {
    "fuente": "XAUT-USDT (OKX), velas diarias UTC completas — proxy del spot; verificar en el gráfico de XAU/USD",
-   "ultimo_cierre": 4117.0,
-   "fecha": "2026-10-20",
-   "PDH": 4152.0,
-   "PDL": 4112.6,
+   "ultimo_cierre": 4124.7,
+   "fecha": "2026-10-21",
+   "PDH": 4143.7,
+   "PDL": 4106.6,
    "PWH": 4210.7,
    "PWL": 4078.7,
    "PMH": 4500.0,
    "PML": 4117.5,
    "semana_actual_max": 4186.1,
-   "semana_actual_min": 4112.6,
+   "semana_actual_min": 4106.6,
    "max_20s": 4679.8,
    "min_20s": 3943.1,
    "max_52s": 5609.9,
@@ -246,7 +246,7 @@
     4200,
     4300
    ],
-   "atr14": 47.1,
+   "atr14": 43.0,
    "semanales": [
     {
      "semana": "2026-09-07",
@@ -296,9 +296,9 @@
     "dato": "DXY",
     "que_mirar": "Nivel, dirección y velocidad",
     "dir": "↓",
-    "valor": "101.84 · 5d -0.42% · 1d +0.02%",
+    "valor": "101.65 · 5d -0.56% · 1d -0.19%",
     "estado": "FAVORABLE",
-    "lectura": "Baja: suele favorecer al oro · velocidad normal (-0.6σ)",
+    "lectura": "Baja: suele favorecer al oro · velocidad normal (-0.7σ)",
     "fuente": "Réplica ICE sobre tipos de referencia del BCE (14:15 CET)",
     "puntua": true
    },
@@ -307,7 +307,7 @@
     "dato": "US 2Y",
     "que_mirar": "Yield y cambio diario/semanal",
     "dir": "→",
-    "valor": "4.79% · 5d +0 pb · 1d +2 pb",
+    "valor": "4.81% · 5d -1 pb · 1d +2 pb",
     "estado": "NEUTRAL",
     "lectura": "Estable: expectativas Fed sin cambio",
     "fuente": "U.S. Treasury, Daily Par Yield Curve",
@@ -318,7 +318,7 @@
     "dato": "US 10Y",
     "que_mirar": "Yield y velocidad",
     "dir": "↓",
-    "valor": "5.12% · 5d -9 pb · 1d -3 pb",
+    "valor": "5.13% · 5d -6 pb · 1d +1 pb",
     "estado": "FAVORABLE",
     "lectura": "Baja: suele aliviar presión · condiciones financieras",
     "fuente": "U.S. Treasury, Daily Par Yield Curve",
@@ -329,7 +329,7 @@
     "dato": "10Y REAL / TIPS (PRIORIDAD ALTA)",
     "que_mirar": "Nivel + dirección",
     "dir": "↓",
-    "valor": "2.77% · 5d -11 pb · 20d +15 pb",
+    "valor": "2.76% · 5d -8 pb · 20d +13 pb",
     "estado": "FAVORABLE",
     "lectura": "Baja: generalmente favorable (menor coste de oportunidad)",
     "fuente": "U.S. Treasury, Daily Par Real Yield Curve (TIPS)",
@@ -339,11 +339,11 @@
     "id": "fedwatch",
     "dato": "FedWatch",
     "que_mirar": "Probabilidades de recortes/subidas",
-    "dir": "?",
-    "valor": "—",
-    "estado": "SIN DATO",
-    "lectura": "CME FedWatch no tiene API gratuita. Nunca se estima.",
-    "fuente": "CME FedWatch",
+    "dir": "→",
+    "valor": "2026-10-28: subida 14 % · mantener 86 % · bajada 0 %",
+    "estado": "NEUTRAL",
+    "lectura": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -1 pb en 5 sesiones · Sin cambio",
+    "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-22",
     "puntua": true
    },
    {
@@ -351,7 +351,7 @@
     "dato": "NFCI",
     "que_mirar": "Nivel + tendencia",
     "dir": "↑",
-    "valor": "-0.499 · 4s +0.037 · 1s +0.008",
+    "valor": "-0.496 · 4s +0.032 · 1s +0.006",
     "estado": "DESFAVORABLE",
     "lectura": "Sube: condiciones más tensas",
     "fuente": "Chicago Fed NFCI (FRED), semanal; negativo = más laxo que la media",
@@ -362,7 +362,7 @@
     "dato": "VIX",
     "que_mirar": "Nivel + aceleración",
     "dir": "→",
-    "valor": "17.31 · 5d +13.4%",
+    "valor": "16.68 · 5d -1.1%",
     "estado": "CONTEXTO",
     "lectura": "Sin aceleración. Riesgo/aversión, NO señal automática (CH).",
     "fuente": "Cboe, VIX History",
@@ -372,10 +372,10 @@
     "id": "tga",
     "dato": "TGA",
     "que_mirar": "Saldo + dirección",
-    "dir": "↓",
-    "valor": "965.0 B$ · 4s -39.3 B$",
-    "estado": "FAVORABLE",
-    "lectura": "Baja: puede liberar liquidez",
+    "dir": "→",
+    "valor": "973.7 B$ · 4s +16.2 B$",
+    "estado": "NEUTRAL",
+    "lectura": "Estable",
     "fuente": "U.S. Treasury, Daily Treasury Statement",
     "puntua": true
    },
@@ -428,7 +428,7 @@
     "dato": "ETF GOLD FLOWS",
     "que_mirar": "Entradas/salidas de ETF de oro",
     "dir": "↑",
-    "valor": "GLD 1,060.2 t · 5d +6.0 t · 20d +4.2 t · año -5.0 t",
+    "valor": "GLD 1,057.6 t · 5d +3.4 t · 20d +0.8 t · año -7.5 t",
     "estado": "FAVORABLE",
     "lectura": "Entradas: mayor demanda financiera",
     "fuente": "SPDR Gold Shares (GLD), toneladas en el trust — mayor ETF de oro; WGC global en la narrativa",
@@ -441,7 +441,7 @@
     "dir": "↑",
     "valor": "OI 396,345 (+0.06% en 1s) · volumen diario: SIN DATO (CME no accesible)",
     "estado": "CONTEXTO",
-    "lectura": "Precio ↑ + OI ↑: entran posiciones nuevas a favor (participación que confirma) — interpretación NEXORA de «depende del precio + OI».",
+    "lectura": "Precio ↓ + OI ↑: entran cortos nuevos (presión) — interpretación NEXORA de «depende del precio + OI».",
     "fuente": "CFTC (OI semanal)",
     "puntua": false
    },
@@ -449,10 +449,10 @@
     "id": "petroleo",
     "dato": "PETRÓLEO",
     "que_mirar": "Brent/WTI + velocidad",
-    "dir": "→",
-    "valor": "Brent 126.55 $ · 5d +0.4% · 20d -1.0% (2026-10-14)",
+    "dir": "↓",
+    "valor": "Brent 115.22 $ · 5d -8.4% · 20d +0.3% (2026-10-20)",
     "estado": "CONTEXTO",
-    "lectura": "Estable. Contexto inflación/Fed.",
+    "lectura": "Baja: menor presión inflacionaria. Contexto inflación/Fed.",
     "fuente": "EIA vía FRED (DCOILBRENTEU / DCOILWTICO); publica con unos días de retraso",
     "puntua": false
    },
@@ -461,7 +461,7 @@
     "dato": "BREAKEVENS",
     "que_mirar": "5Y/10Y inflación esperada",
     "dir": "→",
-    "valor": "10Y 2.35% (+2 pb 5d) · 5Y 2.39% (+6 pb)",
+    "valor": "10Y 2.37% (+2 pb 5d) · 5Y 2.40% (+4 pb)",
     "estado": "CONTEXTO",
     "lectura": "Estable. Explica parte del nominal.",
     "fuente": "Nominal − real, U.S. Treasury (misma fecha)",
@@ -472,29 +472,29 @@
    {
     "par": "DXY ↔ ORO",
     "busca": "DXY ↓ mientras XAU/USD ↑",
-    "estado": "CUMPLE",
-    "detalle": "DXY -0.42% · oro +0.53% (5 sesiones) · correlación 60d -0.4",
+    "estado": "NO SE CUMPLE",
+    "detalle": "DXY -0.56% · oro -1.65% (5 sesiones) · correlación 60d -0.39",
     "lectura": "Confirmación de la relación inversa"
    },
    {
     "par": "10Y REAL ↔ ORO",
     "busca": "Real yield ↓ mientras oro ↑",
-    "estado": "CUMPLE",
-    "detalle": "10Y real -11 pb · oro +0.53% · correlación 60d -0.25",
+    "estado": "NO SE CUMPLE",
+    "detalle": "10Y real -8 pb · oro -1.65% · correlación 60d -0.25",
     "lectura": "Una de las relaciones macro más importantes"
    },
    {
     "par": "2Y ↔ FedWatch",
     "busca": "2Y ↓ + más recortes descontados",
     "estado": "NO SE CUMPLE",
-    "detalle": "2Y +0 pb · FedWatch SIN DATO",
+    "detalle": "2Y -1 pb · FedWatch NEUTRAL",
     "lectura": "Expectativas de tipos más relajadas"
    },
    {
     "par": "TGA ↔ RESERVAS",
     "busca": "TGA ↓ + reservas ↑",
-    "estado": "PARCIAL",
-    "detalle": "TGA -39.3 B$ · reservas +0.28% (4 semanas)",
+    "estado": "NO SE CUMPLE",
+    "detalle": "TGA +16.2 B$ · reservas +0.28% (4 semanas)",
     "lectura": "Posible liberación de liquidez"
    },
    {
@@ -508,21 +508,21 @@
     "par": "10Y nominal ↔ 10Y real",
     "busca": "Nominal ↑ pero real ↓",
     "estado": "NO SE CUMPLE",
-    "detalle": "10Y -9 pb · real -11 pb · breakeven +2 pb",
+    "detalle": "10Y -6 pb · real -8 pb · breakeven +2 pb",
     "lectura": "La inflación esperada puede explicar el nominal"
    },
    {
     "par": "VIX ↔ ORO",
     "busca": "VIX ↑ + oro ↑",
     "estado": "NO SE CUMPLE",
-    "detalle": "VIX +13.4% · oro +0.53%",
+    "detalle": "VIX -1.1% · oro -1.65%",
     "lectura": "Posible demanda defensiva; comprobar causa"
    },
    {
     "par": "COT/ETF ↔ PRECIO",
     "busca": "Precio y flujos/posicionamiento en la misma dirección",
     "estado": "PARCIAL",
-    "detalle": "ETF acompaña · COT no acompaña · oro +0.53% (5 sesiones)",
+    "detalle": "ETF no acompaña · COT acompaña · oro -1.65% (5 sesiones)",
     "lectura": "Mayor confirmación, aunque no garantía"
    }
   ],
@@ -530,8 +530,8 @@
    "lectura": "MIXTO",
    "favorables": 2,
    "contrarias": 1,
-   "sin_dato": 1,
-   "disponibles": 4,
+   "sin_dato": 0,
+   "disponibles": 5,
    "nucleo": [
     {
      "id": "dxy",
@@ -554,8 +554,8 @@
     {
      "id": "fedwatch",
      "dato": "FedWatch",
-     "dir": "?",
-     "estado": "SIN DATO"
+     "dir": "→",
+     "estado": "NEUTRAL"
     },
     {
      "id": "nfci",
@@ -570,87 +570,87 @@
   },
   "chuleta_60s": "SIN CONFLUENCIA COMPLETA",
   "pools": {
-   "referencia": 4121.0,
-   "atr14": 47.1,
+   "referencia": 4090.6,
+   "atr14": 43.0,
    "encima": [
+    {
+     "id": "PDL+semana_actual_min",
+     "nombre": "mín. día anterior / mín. semana en curso",
+     "nivel": 4106.6,
+     "dist_pct": 0.39,
+     "dist_atr": 0.4
+    },
+    {
+     "id": "PML",
+     "nombre": "mín. mes anterior",
+     "nivel": 4117.5,
+     "dist_pct": 0.66,
+     "dist_atr": 0.6
+    },
     {
      "id": "PDH",
      "nombre": "máx. día anterior",
-     "nivel": 4152.0,
-     "dist_pct": 0.75,
-     "dist_atr": 0.7
+     "nivel": 4143.7,
+     "dist_pct": 1.3,
+     "dist_atr": 1.2
     },
     {
      "id": "semana_actual_max",
      "nombre": "máx. semana en curso",
      "nivel": 4186.1,
-     "dist_pct": 1.58,
-     "dist_atr": 1.4
+     "dist_pct": 2.33,
+     "dist_atr": 2.2
     },
     {
      "id": "PWH",
      "nombre": "máx. semana anterior",
      "nivel": 4210.7,
-     "dist_pct": 2.18,
-     "dist_atr": 1.9
+     "dist_pct": 2.94,
+     "dist_atr": 2.8
     },
     {
      "id": "PMH",
      "nombre": "máx. mes anterior",
      "nivel": 4500.0,
-     "dist_pct": 9.2,
-     "dist_atr": 8.0
+     "dist_pct": 10.01,
+     "dist_atr": 9.5
     },
     {
      "id": "max_20s",
      "nombre": "máx. 20 semanas",
      "nivel": 4679.8,
-     "dist_pct": 13.56,
-     "dist_atr": 11.9
+     "dist_pct": 14.4,
+     "dist_atr": 13.7
     },
     {
      "id": "max_52s",
      "nombre": "máx. 52 semanas",
      "nivel": 5609.9,
-     "dist_pct": 36.13,
-     "dist_atr": 31.6
+     "dist_pct": 37.14,
+     "dist_atr": 35.3
     }
    ],
    "debajo": [
     {
-     "id": "PML",
-     "nombre": "mín. mes anterior",
-     "nivel": 4117.5,
-     "dist_pct": -0.08,
-     "dist_atr": -0.1
-    },
-    {
-     "id": "PDL+semana_actual_min",
-     "nombre": "mín. día anterior / mín. semana en curso",
-     "nivel": 4112.6,
-     "dist_pct": -0.2,
-     "dist_atr": -0.2
-    },
-    {
      "id": "PWL",
      "nombre": "mín. semana anterior",
      "nivel": 4078.7,
-     "dist_pct": -1.03,
-     "dist_atr": -0.9
+     "dist_pct": -0.29,
+     "dist_atr": -0.3
     },
     {
      "id": "min_20s",
      "nombre": "mín. 20 semanas",
      "nivel": 3943.1,
-     "dist_pct": -4.32,
-     "dist_atr": -3.8
+     "dist_pct": -3.61,
+     "dist_atr": -3.4
     },
     {
      "id": "min_52s",
      "nombre": "mín. 52 semanas",
      "nivel": 3892.7,
-     "dist_pct": -5.54,
-     "dist_atr": -4.8
+     "dist_pct": -4.84,
+     "dist_atr": -4.6
     }
    ]
   },
@@ -658,7 +658,7 @@
    {
     "id": "expectativas",
     "dato": "EXPECTATIVAS DE TIPOS (proxy letras)",
-    "valor": "1A − EFFR +63 pb · 5d +3 pb · 20d +6 pb",
+    "valor": "1A − EFFR +64 pb · 5d -1 pb · 20d +9 pb",
     "estado": "CONTEXTO",
     "lectura": "Sin cambio relevante en expectativas. PROXY de expectativas, no es FedWatch: incluye prima por plazo y efectos de oferta de letras. No sustituye a FedWatch en la confluencia.",
     "fuente": "U.S. Treasury (letra 6M y 1A) − EFFR (Fed NY vía FRED)"
@@ -674,23 +674,21 @@
    {
     "id": "rel_dxy",
     "dato": "¿SE CUMPLE ORO ↔ DXY?",
-    "valor": "corr. 20d -0.43 · 60d -0.4 · 250d -0.38",
+    "valor": "corr. 20d -0.39 · 60d -0.39 · 250d -0.38",
     "estado": "SE CUMPLE",
     "lectura": "Relación inversa vigente: la chuleta es fiable para este factor.",
     "fuente": "Cálculo NEXORA con cambios diarios (LBMA PM vs Tesoro / réplica DXY)"
    }
   ],
   "eventos": null,
-  "avisos": [
-   "Confluencia evaluada sobre 4 de 5 condiciones: FedWatch sin dato hoy (fallo de descarga)."
-  ],
+  "avisos": [],
   "pasos": [
    {
     "n": 1,
     "paso": "MACRO",
     "que": "DXY → 2Y → 10Y → 10Y real → FedWatch → NFCI",
     "estado": "NEUTRAL",
-    "detalle": "MIXTO: 2 a favor, 1 en contra, 1 sin dato de 5"
+    "detalle": "MIXTO: 2 a favor, 1 en contra, 0 sin dato de 5"
    },
    {
     "n": 2,
@@ -704,28 +702,28 @@
     "paso": "POSICIONAMIENTO",
     "que": "COT + ETF flows + COMEX OI/volumen",
     "estado": "CONTEXTO",
-    "detalle": "PARCIAL · ETF acompaña · COT no acompaña · oro +0.53% (5 sesiones)"
+    "detalle": "PARCIAL · ETF no acompaña · COT acompaña · oro -1.65% (5 sesiones)"
    },
    {
     "n": 4,
     "paso": "CONTEXTO",
     "que": "VIX + petróleo + breakevens + calendario",
     "estado": "CONTEXTO",
-    "detalle": "Sin aceleración · Estable · Estable"
+    "detalle": "Sin aceleración · Baja: menor presión inflacionaria · Estable"
    },
    {
     "n": 5,
     "paso": "PRECIO (HTF)",
     "que": "Tendencia, máximos/mínimos, zonas y niveles clave",
     "estado": "DESFAVORABLE",
-    "detalle": "LBMA 4,129.70 vs media 50 4,358 / 200 4,537 · 20 sesiones -4.4% · estructura semanal MÁXIMOS DECRECIENTES, mínimos sin tendencia · 1/5 máximos y 2/5 mínimos crecientes en las últimas 6 semanas cerradas"
+    "detalle": "LBMA 4,101.40 vs media 50 4,351 / 200 4,535 · 20 sesiones -4.6% · estructura semanal MÁXIMOS DECRECIENTES, mínimos sin tendencia · 1/5 máximos y 2/5 mínimos crecientes en las últimas 6 semanas cerradas"
    },
    {
     "n": 6,
     "paso": "LIQUIDEZ DEL GRÁFICO",
     "que": "Pools de liquidez; sweep/inducción (modelo ICT)",
     "estado": "CONTEXTO",
-    "detalle": "Ref. 4,121.0 (ATR14 47.1) — encima: máx. día anterior 4,152.0 (+0.7 ATR) · máx. semana en curso 4,186.1 (+1.4 ATR) · máx. semana anterior 4,210.7 (+1.9 ATR) · máx. mes anterior 4,500.0 (+8.0 ATR) — debajo: mín. mes anterior 4,117.5 (-0.1 ATR) · mín. día anterior / mín. semana en curso 4,112.6 (-0.2 ATR) · mín. semana anterior 4,078.7 (-0.9 ATR) · mín. 20 semanas 3,943.1 (-3.8 ATR)"
+    "detalle": "Ref. 4,090.6 (ATR14 43.0) — encima: mín. día anterior / mín. semana en curso 4,106.6 (+0.4 ATR) · mín. mes anterior 4,117.5 (+0.6 ATR) · máx. día anterior 4,143.7 (+1.2 ATR) · máx. semana en curso 4,186.1 (+2.2 ATR) — debajo: mín. semana anterior 4,078.7 (-0.3 ATR) · mín. 20 semanas 3,943.1 (-3.4 ATR) · mín. 52 semanas 3,892.7 (-4.6 ATR)"
    },
    {
     "n": 7,
@@ -746,47 +744,47 @@
    {
     "n": 1,
     "pregunta": "¿DXY sube o baja y a qué velocidad?",
-    "respuesta": "101.84 · 5d -0.42% · 1d +0.02% · Baja: suele favorecer al oro · velocidad normal (-0.6σ)"
+    "respuesta": "101.65 · 5d -0.56% · 1d -0.19% · Baja: suele favorecer al oro · velocidad normal (-0.7σ)"
    },
    {
     "n": 2,
     "pregunta": "¿El 2Y está cambiando las expectativas de tipos?",
-    "respuesta": "4.79% · 5d +0 pb · 1d +2 pb · Estable: expectativas Fed sin cambio"
+    "respuesta": "4.81% · 5d -1 pb · 1d +2 pb · Estable: expectativas Fed sin cambio"
    },
    {
     "n": 3,
     "pregunta": "¿El 10Y real sube o baja?",
-    "respuesta": "2.77% · 5d -11 pb · 20d +15 pb · Baja: generalmente favorable (menor coste de oportunidad)"
+    "respuesta": "2.76% · 5d -8 pb · 20d +13 pb · Baja: generalmente favorable (menor coste de oportunidad)"
    },
    {
     "n": 4,
     "pregunta": "¿FedWatch se mueve hacia recortes o subidas?",
-    "respuesta": "CME FedWatch no tiene API gratuita. Nunca se estima."
+    "respuesta": "1 sesión -2 pts de subida; tipo esperado a 3 reuniones -1 pb en 5 sesiones · Sin cambio"
    },
    {
     "n": 5,
     "pregunta": "¿NFCI se relaja o se endurece?",
-    "respuesta": "-0.499 · 4s +0.037 · 1s +0.008 · Sube: condiciones más tensas"
+    "respuesta": "-0.496 · 4s +0.032 · 1s +0.006 · Sube: condiciones más tensas"
    },
    {
     "n": 6,
     "pregunta": "¿TGA/RRP/reservas están liberando o absorbiendo liquidez?",
-    "respuesta": "Liquidez NEUTRAL: TGA ↓ · RRP ↓ · RESERVAS →"
+    "respuesta": "Liquidez NEUTRAL: TGA → · RRP ↓ · RESERVAS →"
    },
    {
     "n": 7,
     "pregunta": "¿COT y ETF flows confirman o contradicen?",
-    "respuesta": "PARCIAL · ETF acompaña · COT no acompaña · oro +0.53% (5 sesiones)"
+    "respuesta": "PARCIAL · ETF no acompaña · COT acompaña · oro -1.65% (5 sesiones)"
    },
    {
     "n": 8,
     "pregunta": "¿El movimiento del oro tiene sentido con dólar + real yield?",
-    "respuesta": "DXY ↔ ORO: CUMPLE · 10Y REAL ↔ ORO: CUMPLE"
+    "respuesta": "DXY ↔ ORO: NO SE CUMPLE · 10Y REAL ↔ ORO: NO SE CUMPLE"
    },
    {
     "n": 9,
     "pregunta": "¿Dónde está la liquidez en el gráfico y qué nivel puede barrerse?",
-    "respuesta": "Ref. 4,121.0 (ATR14 47.1) — encima: máx. día anterior 4,152.0 (+0.7 ATR) · máx. semana en curso 4,186.1 (+1.4 ATR) · máx. semana anterior 4,210.7 (+1.9 ATR) · máx. mes anterior 4,500.0 (+8.0 ATR) — debajo: mín. mes anterior 4,117.5 (-0.1 ATR) · mín. día anterior / mín. semana en curso 4,112.6 (-0.2 ATR) · mín. semana anterior 4,078.7 (-0.9 ATR) · mín. 20 semanas 3,943.1 (-3.8 ATR) (proxy XAUT; verificar en tu gráfico)"
+    "respuesta": "Ref. 4,090.6 (ATR14 43.0) — encima: mín. día anterior / mín. semana en curso 4,106.6 (+0.4 ATR) · mín. mes anterior 4,117.5 (+0.6 ATR) · máx. día anterior 4,143.7 (+1.2 ATR) · máx. semana en curso 4,186.1 (+2.2 ATR) — debajo: mín. semana anterior 4,078.7 (-0.3 ATR) · mín. 20 semanas 3,943.1 (-3.4 ATR) · mín. 52 semanas 3,892.7 (-4.6 ATR) (proxy XAUT; verificar en tu gráfico)"
    },
    {
     "n": 10,
@@ -1409,10 +1407,6 @@
  },
  "series": {
   "gld_t": [
-   [
-    "2023-03-21",
-    923.11
-   ],
    [
     "2023-03-22",
     923.11
@@ -5008,9 +5002,13 @@
    [
     "2026-10-20",
     1060.18
+   ],
+   [
+    "2026-10-21",
+    1057.62
    ]
   ]
  },
- "evaluado_utc": "2026-10-21 23:58 UTC",
- "fedwatch_fecha_precios": "2026-10-21"
+ "evaluado_utc": "2026-10-22 05:30 UTC",
+ "fedwatch_fecha_precios": "2026-10-22"
 }

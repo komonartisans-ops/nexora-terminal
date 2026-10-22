@@ -84,9 +84,22 @@
    "l4": "Los inversores pagan más de lo habitual en los últimos dos años por seguros contra una caída fuerte de la bolsa. No dice cuándo ni si ocurrirá: en el histórico, la mayoría de las veces no hubo una caída de ese tamaño.",
    "enviada": true,
    "error": null
+  },
+  {
+   "fecha_utc": "2026-10-22 05:41 UTC",
+   "clave": "ciclo_ccc:2026-10-20",
+   "titulo": "Crédito",
+   "l1": "Crédito CCC (las empresas más frágiles): +60 pb en 5 días hasta 1327 pb (2026-10-20, ICE BofA vía FRED). Las empresas pagan más por financiarse: suele adelantarse a la bolsa.",
+   "l2": "Oro neutro, Índices en contra, BTC en contra (interpretación según sensibilidades fijas, no hecho).",
+   "l3": "mié 28 oct · 19:00 (hora de Madrid) · Decisión FOMC (Fed)",
+   "l4": "Es lo que pagan las empresas más endeudadas por financiarse. Si se encarece, el mercado de crédito se preocupa, y suele adelantarse a la bolsa.",
+   "enviada": true,
+   "error": null
   }
  ],
- "candidatas": [],
+ "candidatas": [
+  "ciclo_ccc:2026-10-20"
+ ],
  "no_evaluables": {},
  "telegram_configurado": true,
  "umbrales": {
@@ -113,9 +126,11 @@
   "fed_dic_pb": 10,
   "fed_confirmaciones": 2
  },
- "enviadas_hoy": [],
- "ultima_evaluacion_utc": "2026-10-22 00:10 UTC",
+ "enviadas_hoy": [
+  "ciclo_ccc:2026-10-20"
+ ],
+ "ultima_evaluacion_utc": "2026-10-22 05:41 UTC",
  "ok": true,
- "generado_utc": "2026-10-22 00:09 UTC",
- "duracion_s": 0.0
+ "generado_utc": "2026-10-22 05:30 UTC",
+ "duracion_s": 0.6
 }

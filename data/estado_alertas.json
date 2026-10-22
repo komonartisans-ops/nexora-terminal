@@ -21,14 +21,16 @@
   },
   "2026-10-20": {},
   "2026-10-21": {},
-  "2026-10-22": {}
+  "2026-10-22": {
+   "ciclo_ccc:2026-10-20": "05:41"
+  }
  },
  "fed_ultimo": {
   "reunion": "2026-10-28",
   "subida": 28.0
  },
  "ciclo": {
-  "fecha": "2026-10-21",
+  "fecha": "2026-10-22",
   "fase": "EXPANSIÓN · RIESGO BAJO",
   "senales": {
    "curva": false,
@@ -42,7 +44,9 @@
    "temporal": false,
    "sahm": false
   },
-  "avisado": []
+  "avisado": [
+   "ccc:2026-10-20"
+  ]
  },
  "skew_avisados": [
   "2026-08-17",

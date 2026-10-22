@@ -901,24 +901,50 @@
    {
     "fecha_sesion": "2026-10-20",
     "spot_fut": 377.77,
-    "niveles": {},
-    "estado": "PENDIENTE"
+    "niveles": {
+     "Call Wall": {
+      "nivel": 380.0,
+      "tocado": false,
+      "resultado": "NO TOCADO",
+      "dist_cierre": -1.0
+     },
+     "Put Wall": {
+      "nivel": 345.0,
+      "tocado": false,
+      "resultado": "NO TOCADO",
+      "dist_cierre": 34.0
+     },
+     "Gamma Flip": {
+      "nivel": 381.7,
+      "tocado": false,
+      "resultado": "CERRÓ POR DEBAJO",
+      "dist_cierre": -2.7
+     }
+    },
+    "estado": "EVALUADA",
+    "sesion_siguiente": {
+     "fecha": "2026-10-21",
+     "o": 379.1700134277344,
+     "h": 379.54998779296875,
+     "l": 376.20001220703125,
+     "c": 378.95001220703125
+    }
    }
   ],
   "resumen": {
    "Call Wall": {
-    "evaluadas": 0,
+    "evaluadas": 1,
     "tocadas": 0,
     "respetadas": 0
    },
    "Put Wall": {
-    "evaluadas": 0,
+    "evaluadas": 1,
     "tocadas": 0,
     "respetadas": 0
    },
    "Gamma Flip": {
-    "evaluadas": 0,
-    "tocadas": 0,
+    "evaluadas": 1,
+    "tocadas": 1,
     "respetadas": null
    }
   }
@@ -967,10 +993,10 @@
  },
  "sesiones_guardadas": 2,
  "resumen_texto": "GLD, referencia · Gamma Flip 4.167, Call Wall 4.154, Put Wall 3.771, Max Gamma 4.154 (XAU/USD) · gamma negativa · ratio XAU/GLD 10.931 del 21-10",
- "linea": "XAU tesis=alcista;int=debil;flip=4166.9;cw=4153.8;pw=3771.2;em=55.7;maxg=4153.8;ratio=10.9310;rf=2026-10-21;cot=largo-bajo_p27;etf=+6.0;evento=no",
+ "linea": "XAU tesis=alcista;int=debil;flip=4166.9;cw=4153.8;pw=3771.2;em=55.7;maxg=4153.8;ratio=10.9310;rf=2026-10-21;cot=largo-bajo_p27;etf=+3.4;evento=no",
  "fuente": "Cboe · cadena de opciones de GLD con 15 min de retraso (cdn-api.cboe.com), GVZ y GLD de Yahoo Finance, XAU/USD de gold-api.com",
  "metodo": "el mismo que SPX/NDX en gamma.py, con una sola cadena y sin escalar ETF): 1. Cadena GLD de Cboe: vencimientos de 1 a 45 días, strikes a ±15 %, IV por (vencimiento, strike), gamma recalculada con Black-Scholes, GEX$ = gamma × OI × 100 × S² × 1 %. Convención de signo (HIPÓTESIS): calls +, puts −. 2. Tramos de 1 $ de GLD. Call Wall = tramo por encima del precio con más GEX de calls; Put Wall = por debajo con más GEX de puts; Gamma Flip = precio de GLD al que el GEX neto cambia de signo (barrido ±12 %); Max Gamma = tramo con más gamma absoluta (calls + |puts|). 3. EM (movimiento esperado de UN día) = precio de GLD × GVZ / 100 / √252 (GVZ = índice de volatilidad implícita del oro de Cboe, cierre de la sesión de la cadena). 4. Conversión a precio XAU/USD: nivel XAU = nivel GLD × ratio, con ratio = XAU spot / cierre de GLD de ESA sesión. El ratio se anota cada cierre en data/xau_gld_ratio.csv (solo añadir) con su fecha: GLD al cierre de Nueva York (16:00 ET) y XAU al contado a la hora de la ejecución de cierre (21:30 UTC, ≈ cierre diario del oro al contado, 17:00 ET). Si falta el ratio de la sesión se usa el último anotado (≤ 5 días) y se avisa con su fecha; sin ratio los niveles quedan solo en GLD (SIN DATO en XAU). El ratio no es constante: deriva despacio (comisiones del fondo) y varía unas décimas entre momentos del día, así que un nivel en XAU es una aproximación de unos pocos dólares. 5. Solo se guarda histórico con snapshot del cierre de Nueva York y desde la ejecución de cierre.",
  "ok": true,
- "generado_utc": "2026-10-22 00:09 UTC",
- "duracion_s": 0.6
+ "generado_utc": "2026-10-22 05:30 UTC",
+ "duracion_s": 0.5
 }
