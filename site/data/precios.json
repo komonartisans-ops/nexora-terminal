@@ -3,13 +3,13 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4100.4,
+   "valor": 4100.3,
    "fecha": "2026-10-22",
    "cambio_1d_pct": -1.2,
    "cambio_5d_pct": -1.67,
    "cambio_21d_pct": -5.05,
-   "cambio_63d_pct": 0.73,
-   "sma50": 4350.92,
+   "cambio_63d_pct": 0.72,
+   "sma50": 4350.91,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
@@ -1018,20 +1018,20 @@
     ],
     [
      "2026-10-22",
-     4100.3999
+     4100.2998
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 81734.29,
+   "valor": 81964.5,
    "fecha": "2026-10-22",
-   "cambio_1d_pct": -2.71,
-   "cambio_5d_pct": 0.43,
-   "cambio_21d_pct": -3.68,
-   "cambio_63d_pct": 11.91,
-   "sma50": 81790.74,
+   "cambio_1d_pct": -2.44,
+   "cambio_5d_pct": 0.72,
+   "cambio_21d_pct": -3.4,
+   "cambio_63d_pct": 12.23,
+   "sma50": 81795.35,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2496,7 +2496,7 @@
     ],
     [
      "2026-10-22",
-     81734.2891
+     81964.5
     ]
    ]
   },
@@ -6575,12 +6575,12 @@
   "vix": {
    "nombre": "VIX",
    "simbolo": "^VIX",
-   "valor": 18.4,
+   "valor": 18.54,
    "fecha": "2026-10-22",
-   "cambio_1d_pct": 10.31,
-   "cambio_5d_pct": 11.79,
-   "cambio_21d_pct": 21.21,
-   "cambio_63d_pct": -1.45,
+   "cambio_1d_pct": 11.15,
+   "cambio_5d_pct": 12.64,
+   "cambio_21d_pct": 22.13,
+   "cambio_63d_pct": -0.7,
    "sma50": 15.82,
    "fuente": "Cboe VIX (Yahoo Finance)",
    "serie": [
@@ -7598,19 +7598,19 @@
     ],
     [
      "2026-10-22",
-     18.4
+     18.54
     ]
    ]
   },
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.54,
+   "valor": 101.62,
    "fecha": "2026-10-22",
-   "cambio_1d_pct": -0.24,
-   "cambio_5d_pct": -0.45,
-   "cambio_21d_pct": 0.44,
-   "cambio_63d_pct": 0.07,
+   "cambio_1d_pct": -0.16,
+   "cambio_5d_pct": -0.37,
+   "cambio_21d_pct": 0.52,
+   "cambio_63d_pct": 0.15,
    "sma50": 100.5,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
@@ -8620,20 +8620,20 @@
     ],
     [
      "2026-10-22",
-     101.54
+     101.622
     ]
    ]
   },
   "wti": {
    "nombre": "Petróleo WTI",
    "simbolo": "CL=F",
-   "valor": 99.92,
+   "valor": 99.62,
    "fecha": "2026-10-22",
-   "cambio_1d_pct": 2.85,
-   "cambio_5d_pct": 1.99,
-   "cambio_21d_pct": 8.42,
-   "cambio_63d_pct": 11.88,
-   "sma50": 92.5,
+   "cambio_1d_pct": 2.54,
+   "cambio_5d_pct": 1.68,
+   "cambio_21d_pct": 8.09,
+   "cambio_63d_pct": 11.54,
+   "sma50": 92.49,
    "fuente": "Futuros WTI NYMEX, primer vencimiento (Yahoo Finance CL=F; serie empalmada)",
    "serie": [
     [
@@ -9642,20 +9642,20 @@
     ],
     [
      "2026-10-22",
-     99.92
+     99.62
     ]
    ]
   },
   "brent": {
    "nombre": "Petróleo Brent",
    "simbolo": "BZ=F",
-   "valor": 112.59,
+   "valor": 112.04,
    "fecha": "2026-10-22",
-   "cambio_1d_pct": 3.46,
-   "cambio_5d_pct": 6.3,
-   "cambio_21d_pct": 9.23,
-   "cambio_63d_pct": 16.34,
-   "sma50": 100.23,
+   "cambio_1d_pct": 2.96,
+   "cambio_5d_pct": 5.78,
+   "cambio_21d_pct": 8.69,
+   "cambio_63d_pct": 15.77,
+   "sma50": 100.22,
    "fuente": "Futuros Brent ICE, primer vencimiento (Yahoo Finance BZ=F; serie empalmada)",
    "serie": [
     [
@@ -10664,7 +10664,7 @@
     ],
     [
      "2026-10-22",
-     112.59
+     112.04
     ]
    ]
   },
@@ -11681,6 +11681,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-22 09:07 UTC",
- "duracion_s": 10.1
+ "generado_utc": "2026-10-22 10:07 UTC",
+ "duracion_s": 10.7
 }
