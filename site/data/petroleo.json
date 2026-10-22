@@ -1,19 +1,19 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-22 10:21 UTC",
+ "generado_utc": "2026-10-22 21:30 UTC",
  "fecha_datos": "2026-10-22",
  "precios": {
   "wti": {
-   "valor": 99.42,
+   "valor": 99.1,
    "fecha": "2026-10-22",
-   "sma50": 92.49,
+   "sma50": 92.48,
    "sma200": 85.05,
-   "dist_sma200_pct": 16.9,
-   "cambio_1d_pct": 2.34,
-   "cambio_5d_pct": 3.03,
-   "cambio_21d_pct": 7.88,
-   "cambio_63d_pct": 11.32,
+   "dist_sma200_pct": 16.52,
+   "cambio_1d_pct": 2.01,
+   "cambio_5d_pct": 2.69,
+   "cambio_21d_pct": 7.53,
+   "cambio_63d_pct": 10.96,
    "fuente": "Yahoo Finance (CL=F, futuro continuo del primer vencimiento)",
    "contrato_cl_f": "CLZ26.NYM",
    "aviso_empalme": null
@@ -2201,15 +2201,15 @@
    ]
   ],
   "brent": {
-   "valor": 111.81,
+   "valor": 112.87,
    "fecha": "2026-10-22",
-   "sma50": 100.21,
-   "sma200": 90.88,
-   "dist_sma200_pct": 23.03,
-   "cambio_1d_pct": 2.75,
-   "cambio_5d_pct": 5.56,
-   "cambio_21d_pct": 8.47,
-   "cambio_63d_pct": 15.53,
+   "sma50": 100.23,
+   "sma200": 90.89,
+   "dist_sma200_pct": 24.18,
+   "cambio_1d_pct": 3.72,
+   "cambio_5d_pct": 6.56,
+   "cambio_21d_pct": 9.5,
+   "cambio_63d_pct": 16.63,
    "fuente": "Yahoo Finance (BZ=F, futuro)"
   },
   "segunda_fuente": {
@@ -2232,7 +2232,7 @@
   },
   "brent_comparacion": {
    "yahoo": {
-    "valor": 111.81,
+    "valor": 112.87,
     "fecha": "2026-10-22"
    },
    "fred": {
@@ -2258,7 +2258,7 @@
    },
    "fuentes_independientes": "Yahoo BZ=F es un FUTURO; FRED DCOILBRENTEU y la EIA (RBRTE, Europe Brent Spot Price FOB) son la MISMA serie de precios al contado (FRED la republica): valen como una sola fuente. La discrepancia se cierra cuando el futuro y el contado coinciden dentro del umbral."
   },
-  "spread_brent_wti": 12.39
+  "spread_brent_wti": 13.77
  },
  "graficos": {
   "wti": {
@@ -4277,7 +4277,7 @@
     ],
     [
      "2026-10-22",
-     99.42
+     99.1
     ]
    ],
    "sma50": [
@@ -6099,7 +6099,7 @@
     ],
     [
      "2026-10-22",
-     92.487
+     92.481
     ]
    ],
    "sma200": [
@@ -7321,7 +7321,7 @@
     ],
     [
      "2026-10-22",
-     85.05
+     85.049
     ]
    ]
   },
@@ -9341,7 +9341,7 @@
     ],
     [
      "2026-10-22",
-     111.81
+     112.87
     ]
    ],
    "sma50": [
@@ -11163,7 +11163,7 @@
     ],
     [
      "2026-10-22",
-     100.211
+     100.232
     ]
    ],
    "sma200": [
@@ -12385,7 +12385,7 @@
     ],
     [
      "2026-10-22",
-     90.883
+     90.889
     ]
    ]
   }
@@ -12395,10 +12395,10 @@
   "par_usado": "1-2",
   "m1": "CLZ26.NYM",
   "m2": "CLF27.NYM",
-  "precio_m1": 99.42,
-  "precio_m2": 97.67,
-  "diferencial": 1.75,
-  "diferencial_pct": 1.79,
+  "precio_m1": 99.1,
+  "precio_m2": 97.26,
+  "diferencial": 1.84,
+  "diferencial_pct": 1.89,
   "estado": "ESCASEZ",
   "vence_m1": "2026-11-20",
   "dias_a_vencimiento_m1": 29,
@@ -12410,7 +12410,7 @@
   "motivo_par": null,
   "info_1_2": null,
   "aviso": null,
-  "percentil_par": 87,
+  "percentil_par": 88,
   "dias_par": 503,
   "min_pct": -0.17,
   "max_pct": 4.93,
@@ -13453,7 +13453,7 @@
    ],
    [
     "2026-10-22",
-    1.792
+    1.892
    ]
   ],
   "historico_propio": {
@@ -15972,18 +15972,18 @@
   "consumo": {
    "tesis": "DIVERGENCIA MERCADO DEFENSIVO",
    "intensidad": "FUERTE",
-   "fecha": "2026-10-21"
+   "fecha": "2026-10-22"
   }
  },
  "relaciones": {
-  "wti_cambio_3m_pct": 11.32,
+  "wti_cambio_3m_pct": 10.96,
   "filas": [
    {
     "clave": "t5yie",
     "nombre": "Inflación esperada a 5 años (breakeven, FRED T5YIE)",
-    "valor": 2.4,
-    "fecha": "2026-10-21",
-    "cambio_3m": 10.0,
+    "valor": 2.45,
+    "fecha": "2026-10-22",
+    "cambio_3m": 16.0,
     "unidad_cambio": "pb",
     "correlacion_60d": 0.58,
     "lectura": "se mueven juntos"
@@ -15991,9 +15991,9 @@
    {
     "clave": "dxy",
     "nombre": "Dólar (DXY)",
-    "valor": 101.65,
+    "valor": 101.62,
     "fecha": "2026-10-22",
-    "cambio_3m": 0.18,
+    "cambio_3m": 0.15,
     "unidad_cambio": "%",
     "correlacion_60d": -0.02,
     "lectura": "sin relación clara en 60 sesiones"
@@ -16001,11 +16001,11 @@
    {
     "clave": "xle",
     "nombre": "Energía EE. UU. (ETF XLE)",
-    "valor": 68.16,
-    "fecha": "2026-10-21",
-    "cambio_3m": 14.79,
+    "valor": 67.57,
+    "fecha": "2026-10-22",
+    "cambio_3m": 13.33,
     "unidad_cambio": "%",
-    "correlacion_60d": 0.57,
+    "correlacion_60d": 0.54,
     "lectura": "se mueven juntos"
    }
   ]
@@ -16038,7 +16038,7 @@
   "causa_efecto": [
    [
     "Curva escasez",
-    "el 1.er vencimiento (dic-2026) cotiza 1,75 $ (1,79 %) frente al 2.º (ene-2027): el mercado paga por tener petróleo ya (escasez a corto plazo)"
+    "el 1.er vencimiento (dic-2026) cotiza 1,84 $ (1,89 %) frente al 2.º (ene-2027): el mercado paga por tener petróleo ya (escasez a corto plazo)"
    ],
    [
     "Inventarios de crudo",
@@ -16046,7 +16046,7 @@
    ],
    [
     "Precio frente a su media de 200",
-    "WTI 99,42 $, 16,9 % frente a 85,05 $: tendencia de fondo al alza"
+    "WTI 99,10 $, 16,5 % frente a 85,05 $: tendencia de fondo al alza"
    ]
   ]
  },
@@ -16065,5 +16065,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (CL=F, BZ=F, contratos CL<mes><año>.NYM, XLE, DXY) · FRED (DCOILWTICO, DCOILBRENTEU, GASREGW, T5YIE) · EIA (Weekly Petroleum Status Report) · CFTC (WTI-PHYSICAL)",
- "duracion_s": 11.4
+ "duracion_s": 11.1
 }

@@ -1,7 +1,7 @@
 {
  "version": 2,
  "version_criterio": 2,
- "generado_utc": "2026-10-22 21:07 UTC",
+ "generado_utc": "2026-10-22 21:30 UTC",
  "ok": true,
  "min_n": 20,
  "horizontes": [
@@ -68,19 +68,19 @@
       "muestra_insuficiente": true
      },
      "5": {
-      "n": 8,
+      "n": 11,
       "aciertos": 1,
-      "fallos": 3,
+      "fallos": 6,
       "neutrales": 4,
-      "pendientes": 4,
+      "pendientes": 1,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": 12.5,
-      "ret_medio": -0.898,
+      "acierto_pct": 9.1,
+      "ret_medio": -1.329,
       "peor_ret": -3.53,
       "peor_mae": -4.521,
-      "base_media_pct": 39.6,
-      "diferencia_pp": -27.1,
+      "base_media_pct": 40.7,
+      "diferencia_pp": -31.6,
       "muestra_insuficiente": true
      },
      "20": {
@@ -346,19 +346,19 @@
     "no_puntuables": 3,
     "horizontes": {
      "1": {
-      "n": 5,
+      "n": 7,
       "aciertos": 2,
-      "fallos": 1,
+      "fallos": 3,
       "neutrales": 2,
-      "pendientes": 3,
+      "pendientes": 1,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": 40.0,
-      "ret_medio": 0.413,
-      "peor_ret": -1.171,
-      "peor_mae": -1.171,
-      "base_media_pct": 37.7,
-      "diferencia_pp": 2.3,
+      "acierto_pct": 28.6,
+      "ret_medio": -0.257,
+      "peor_ret": -2.655,
+      "peor_mae": -2.655,
+      "base_media_pct": 38.5,
+      "diferencia_pp": -9.9,
       "muestra_insuficiente": true
      },
      "5": {
@@ -505,7 +505,13 @@
    "criterio": null,
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret": -2.655,
+     "mae": -2.655,
+     "unidad": "%",
+     "base_pct": 37.6,
+     "fecha_fin": "2026-10-22",
+     "sigma_h": 1.7505
     },
     "5": {
      "estado": "PENDIENTE"
@@ -528,7 +534,13 @@
    "criterio": null,
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret": -1.208,
+     "mae": -1.208,
+     "unidad": "%",
+     "base_pct": 43.4,
+     "fecha_fin": "2026-10-22",
+     "sigma_h": 0.8018
     },
     "5": {
      "estado": "PENDIENTE"
@@ -912,7 +924,13 @@
      "sigma_h": 0.8015
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret": -1.041,
+     "mae": -1.093,
+     "unidad": "%",
+     "base_pct": 43.6,
+     "fecha_fin": "2026-10-22",
+     "sigma_h": 1.7975
     },
     "20": {
      "estado": "PENDIENTE"
@@ -954,7 +972,13 @@
      "sigma_h": 1.796
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret": -3.125,
+     "mae": -3.125,
+     "unidad": "%",
+     "base_pct": 43.4,
+     "fecha_fin": "2026-10-22",
+     "sigma_h": 3.9446
     },
     "20": {
      "estado": "PENDIENTE"
@@ -983,7 +1007,13 @@
      "sigma_h": 1.2404
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret": -3.263,
+     "mae": -3.263,
+     "unidad": "%",
+     "base_pct": 43.6,
+     "fecha_fin": "2026-10-22",
+     "sigma_h": 2.7841
     },
     "20": {
      "estado": "PENDIENTE"
@@ -6407,8 +6437,8 @@
  "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas.",
  "ultima_ejecucion": {
   "senales_nuevas": 0,
-  "resultados_nuevos": 0,
-  "evaluo": false
+  "resultados_nuevos": 5,
+  "evaluo": true
  },
- "duracion_s": 0.0
+ "duracion_s": 0.1
 }
