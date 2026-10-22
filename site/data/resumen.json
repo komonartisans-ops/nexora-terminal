@@ -35,7 +35,7 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 14 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 12 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
   "mié 28 oct · Resultados Alphabet (GOOGL): BPA estimado $2.94 · después del cierre"
  ],
@@ -80,10 +80,10 @@
    "fecha": "2026-10-20"
   },
   "fed": {
-   "valor": 14.0,
+   "valor": 12.0,
    "antes": 16.0,
    "reunion": "2026-10-28",
-   "delta": -2.0,
+   "delta": -4.0,
    "fecha": "2026-10-22"
   }
  },
@@ -99,9 +99,9 @@
    "valor": 7757.17
   },
   "Oro": {
-   "delta": -1.361445783132531,
+   "delta": -1.718073465737957,
    "fecha": "2026-10-22",
-   "valor": 4093.5
+   "valor": 4078.699951171875
   },
   "Bitcoin": {
    "delta": 1.309902088613879,
@@ -191,7 +191,7 @@
    "etiqueta": "SIN TESIS",
    "tesis": "SIN TESIS: ni la macro ni su motor propio (MIXTO) marcan dirección.",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
-   "semana": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero el crédito se encarece.",
+   "semana": "Sin viento claro: fuerzas opuestas: la Fed se ve menos dura, pero el crédito se encarece.",
    "viento_semana": "SIN VIENTO CLARO",
    "propio": {
     "veredicto": "MIXTO",
@@ -224,11 +224,11 @@
    "motores": []
   },
   "Bitcoin": {
-   "etiqueta": "SIN TESIS",
-   "tesis": "SIN TESIS: ni la macro ni su motor propio (SEÑALES INICIALES DE GIRO) marcan dirección.",
+   "etiqueta": "ALCISTA DÉBIL",
+   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso Chicago Fed NFCI y Daily Treasury Statement (hoy ya empujan en sentido contrario).",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
-   "semana": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero el crédito se encarece.",
-   "viento_semana": "SIN VIENTO CLARO",
+   "semana": "A favor: la Fed se ve menos dura (pesa más que: el crédito se encarece).",
+   "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "SEÑALES INICIALES DE GIRO",
     "detalle": "checklist de liquidez 4/8 (drenan 1) · secuencia 0/7 pasos",
@@ -299,11 +299,11 @@
    "motores": []
   },
   "Russell 2000": {
-   "etiqueta": "BAJISTA",
-   "tesis": "BAJISTA con confluencia: la macro de la semana (en contra) y su motor propio (DESFAVORABLE) apuntan igual. Lo que la rompería: que ganen peso VIX y ADV/DECLINE (amplitud) (hoy ya empujan en sentido contrario).",
+   "etiqueta": "SIN TESIS",
+   "tesis": "SIN TESIS: choque de fuerzas. La macro de la semana va a favor, pero su motor propio dice DESFAVORABLE. Hasta que una gane, no hay ventaja.",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
-   "semana": "En contra: el crédito se encarece (pesa más que: baja el tipo real (lo que más les ayuda)).",
-   "viento_semana": "EN CONTRA",
+   "semana": "A favor: la Fed se ve menos dura (pesa más que: el crédito se encarece).",
+   "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "DESFAVORABLE",
     "detalle": "4 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Russell 2000: NFCI desfavorable · crédito high yield desfavorable (Tipos + crédito + condiciones financieras + economía doméstica)",
@@ -352,8 +352,8 @@
    "disponible": true
   }
  },
- "sencillo_activos": "Empujan a favor: Oro y Nasdaq 100; empujan en contra: Russell 2000; sin ventaja clara: S&P 500, Bitcoin y US30 · Dow Jones (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
+ "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100 y Bitcoin; sin ventaja clara: S&P 500, US30 · Dow Jones y Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-22 11:07 UTC",
- "duracion_s": 105.3
+ "generado_utc": "2026-10-22 11:39 UTC",
+ "duracion_s": 109.7
 }
