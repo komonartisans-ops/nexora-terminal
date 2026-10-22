@@ -3,6 +3,16 @@
   {
    "banco": "BoJ",
    "tipo": "Novedad",
+   "titulo": "Japanese Government Bonds Held by the Bank of Japan",
+   "orador": null,
+   "fecha_utc": "2026-10-22 08:00",
+   "fecha": "2026-10-22",
+   "enlace": "http://www.boj.or.jp/en/statistics/boj/other/mei/release/2026/mei261020.xlsx",
+   "fuente": "boj"
+  },
+  {
+   "banco": "BoJ",
+   "tipo": "Novedad",
    "titulo": "Developments in Real Exports and Real Imports",
    "orador": null,
    "fecha_utc": "2026-10-22 07:00",
@@ -851,16 +861,6 @@
    "fuente": "boj"
   },
   {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "Payment and Settlement Statistics (Aug.)",
-   "orador": null,
-   "fecha_utc": "2026-09-30 02:00",
-   "fecha": "2026-09-30",
-   "enlace": "http://www.boj.or.jp/en/statistics/set/kess/release/2026/kess2608.pdf",
-   "fuente": "boj"
-  },
-  {
    "banco": "Fed",
    "tipo": "Comunicado",
    "titulo": "Agencies publish resolution plan feedback letters for 15 banking organizations",
@@ -1332,7 +1332,7 @@
    "n": 40,
    "url": "https://www.boj.or.jp/en/rss/whatsnew.xml",
    "pagina": "https://www.boj.or.jp/en/whatsnew.htm",
-   "ultimo": "2026-10-22 07:00"
+   "ultimo": "2026-10-22 08:00"
   },
   "boe": {
    "banco": "BoE",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-22 07:07 UTC",
- "duracion_s": 6.1
+ "generado_utc": "2026-10-22 08:07 UTC",
+ "duracion_s": 6.4
 }
