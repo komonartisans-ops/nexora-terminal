@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-22 12:15 UTC",
+ "generado_utc": "2026-10-22 12:17 UTC",
  "workflows": [
   {
    "workflow": "actualizar",
@@ -10,7 +10,7 @@
    "ultima_utc": "2026-10-22 12:07",
    "ultima_evento": "workflow_dispatch",
    "ultima_estado": "in_progress",
-   "horas_desde_ultima": 0.1
+   "horas_desde_ultima": 0.2
   },
   {
    "workflow": "reacciones",
@@ -20,7 +20,7 @@
    "hoy_fallidas": 0,
    "ultima_utc": "2026-10-22 12:15",
    "ultima_evento": "workflow_dispatch",
-   "ultima_estado": "in_progress",
+   "ultima_estado": "success",
    "horas_desde_ultima": 0.0
   },
   {
@@ -32,7 +32,7 @@
    "ultima_utc": "2026-10-22 11:08",
    "ultima_evento": "schedule",
    "ultima_estado": "success",
-   "horas_desde_ultima": 1.1
+   "horas_desde_ultima": 1.2
   },
   {
    "workflow": "vigilar_cierre",
