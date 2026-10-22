@@ -1,27 +1,27 @@
 {
  "periodo": "hoy",
  "corte": "Datos entre el 2026-10-21 y el 2026-10-22 (cada fuente publica a su hora)",
- "movido": "Sin cambio macro relevante hoy: ni la Fed, ni los tipos, ni el dólar, ni el miedo se han movido por encima de los umbrales. Lo que se mueva hoy lo explican flujos o noticias concretas, no un cambio de fondo.",
+ "movido": "La probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 16 % a 6 %. En conjunto: el dinero se abarata.",
  "significa": [
   {
    "activo": "Oro",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro."
+   "viento": "A FAVOR",
+   "texto": "A favor: la Fed se ve menos dura. Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene."
   },
   {
    "activo": "Nasdaq 100",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro."
+   "viento": "A FAVOR",
+   "texto": "A favor: la Fed se ve menos dura. Su movimiento lo explica la macro."
   },
   {
    "activo": "S&P 500",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente."
+   "viento": "A FAVOR",
+   "texto": "A favor: la Fed se ve menos dura."
   },
   {
    "activo": "Bitcoin",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente."
+   "viento": "A FAVOR",
+   "texto": "A favor: la Fed se ve menos dura."
   },
   {
    "activo": "US30 · Dow Jones",
@@ -30,28 +30,72 @@
   },
   {
    "activo": "Russell 2000",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente."
+   "viento": "A FAVOR",
+   "texto": "A favor: la Fed se ve menos dura."
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 8 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 6 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
   "mié 28 oct · Resultados Alphabet (GOOGL): BPA estimado $2.94 · después del cierre"
  ],
- "tesis": "Sin viento macro claro para el oro. Lo que puede inclinarlo: después del cierre.",
- "sencillo": "Hoy la macro no ha cambiado. Si ves movimientos en el gráfico, se deben a flujos o noticias concretas, no a un cambio de fondo: no hay que leer en ellos más de lo que son.",
- "motores_significativos": [],
+ "tesis": "Viento macro A FAVOR del oro: la Fed se ve menos dura. Lo que puede girarlo: después del cierre.",
+ "sencillo": "La Fed pone el precio del dinero. Cuando el mercado deja de esperar que lo suba, los bonos pasan a pagar menos y el dinero busca rentabilidad en bolsa, oro y cripto; cuando espera subidas, ocurre lo contrario.",
+ "motores_significativos": [
+  "fed"
+ ],
  "errores": {
   "lbma": "HTTPError: HTTP Error 403: Forbidden"
  },
  "detalle_viento": {
-  "Nasdaq 100": [],
-  "S&P 500": [],
-  "Oro": [],
-  "Bitcoin": [],
-  "US30 · Dow Jones": [],
-  "Russell 2000": []
+  "Nasdaq 100": [
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.5,
+    "razon": "la Fed se ve menos dura"
+   }
+  ],
+  "S&P 500": [
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.0,
+    "razon": "la Fed se ve menos dura"
+   }
+  ],
+  "Oro": [
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.0,
+    "razon": "la Fed se ve menos dura"
+   }
+  ],
+  "Bitcoin": [
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.5,
+    "razon": "la Fed se ve menos dura"
+   }
+  ],
+  "US30 · Dow Jones": [
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 0.75,
+    "razon": "la Fed se ve menos dura"
+   }
+  ],
+  "Russell 2000": [
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 2.0,
+    "razon": "la Fed se ve menos dura"
+   }
+  ]
  },
  "motores": {
   "t2y": {
@@ -80,10 +124,10 @@
    "fecha": "2026-10-21"
   },
   "fed": {
-   "valor": 8.0,
+   "valor": 6.0,
    "antes": 16.0,
    "reunion": "2026-10-28",
-   "delta": -8.0,
+   "delta": -10.0,
    "fecha": "2026-10-22"
   }
  },
@@ -99,9 +143,9 @@
    "valor": 7757.17
   },
   "Oro": {
-   "delta": -2.0072300922439723,
+   "delta": -2.3518095820783125,
    "fecha": "2026-10-22",
-   "valor": 4066.699951171875
+   "valor": 4052.39990234375
   },
   "Bitcoin": {
    "delta": 1.309902088613879,
@@ -124,7 +168,7 @@
   "Oro": {
    "etiqueta": "ALCISTA",
    "tesis": "ALCISTA con confluencia: la macro de la semana (a favor) y su motor propio (PREDOMINIO FAVORABLE) apuntan igual. Lo que la rompería: que ganen peso NFCI (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
+   "hoy": "A favor: la Fed se ve menos dura. Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
    "semana": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -152,13 +196,20 @@
     ]
    },
    "motor_propio_nombre": "dólar, tipo real, flujos de ETF y posicionamiento COMEX",
-   "motores": []
+   "motores": [
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.0,
+     "razon": "la Fed se ve menos dura"
+    }
+   ]
   },
   "Nasdaq 100": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda).",
+   "hoy": "A favor: la Fed se ve menos dura. Su movimiento lo explica la macro.",
+   "semana": "A favor: la Fed se ve menos dura.",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "MIXTO",
@@ -189,12 +240,19 @@
     "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "tipos, amplitud, beneficios y volatilidad",
-   "motores": []
+   "motores": [
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.5,
+     "razon": "la Fed se ve menos dura"
+    }
+   ]
   },
   "S&P 500": {
    "etiqueta": "ALCISTA",
    "tesis": "ALCISTA con confluencia: la macro de la semana (a favor) y su motor propio (FAVORABLE) apuntan igual. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
+   "hoy": "A favor: la Fed se ve menos dura.",
    "semana": "A favor: la Fed se ve menos dura.",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -226,12 +284,19 @@
     "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "tipos, amplitud, beneficios y volatilidad",
-   "motores": []
+   "motores": [
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.0,
+     "razon": "la Fed se ve menos dura"
+    }
+   ]
   },
   "Bitcoin": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso Chicago Fed NFCI y Daily Treasury Statement (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
+   "hoy": "A favor: la Fed se ve menos dura.",
    "semana": "A favor: la Fed se ve menos dura.",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -266,13 +331,20 @@
     ]
    },
    "motor_propio_nombre": "liquidez en dólares (Tesoro, Fed, stablecoins) y apetito de riesgo",
-   "motores": []
+   "motores": [
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.5,
+     "razon": "la Fed se ve menos dura"
+    }
+   ]
   },
   "US30 · Dow Jones": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro.",
+   "semana": "A favor: la Fed se ve menos dura. Su movimiento lo explica la macro.",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "MIXTO",
@@ -303,12 +375,19 @@
     "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "ciclo, industriales, financieras y empresas maduras",
-   "motores": []
+   "motores": [
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 0.75,
+     "razon": "la Fed se ve menos dura"
+    }
+   ]
   },
   "Russell 2000": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
+   "hoy": "A favor: la Fed se ve menos dura.",
    "semana": "A favor: la Fed se ve menos dura.",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -340,7 +419,14 @@
     "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "tipos, crédito high yield, condiciones financieras y economía doméstica",
-   "motores": []
+   "motores": [
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 2.0,
+     "razon": "la Fed se ve menos dura"
+    }
+   ]
   }
  },
  "motores_propios": {
@@ -362,6 +448,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000. Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-22 16:07 UTC",
- "duracion_s": 110.0
+ "generado_utc": "2026-10-22 17:03 UTC",
+ "duracion_s": 108.7
 }

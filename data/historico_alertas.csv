@@ -8,3 +8,4 @@ fecha_utc,clave,titulo,enviada,error,l1
 2026-10-19 05:39 UTC,vix,Miedo (VIX),True,,"El VIX está en 20,0 (+21,4 % en la sesión; umbral: >25 o +20 %) (Cboe vía Yahoo Finance, vie 16 oct)."
 2026-10-19 22:13 UTC,skew_rel_2026-10-16,Riesgo de cola (SKEW relativo),True,,"El SKEW de Cboe cierra en 168,6 el vie 16 oct: percentil 96 de las últimas 500 sesiones (zona alta relativa, ≥ p90 = 161,2); el episodio empezó el vie 16 oct. VIX 20,0 · VIX/VIX3M 1,02; confirmaciones encendidas 2 de 2 (Cboe, ciclo.py, FRED/OFR)."
 2026-10-22 05:41 UTC,ciclo_ccc:2026-10-20,Crédito,True,,"Crédito CCC (las empresas más frágiles): +60 pb en 5 días hasta 1327 pb (2026-10-20, ICE BofA vía FRED). Las empresas pagan más por financiarse: suele adelantarse a la bolsa."
+2026-10-22 17:08 UTC,oro,Oro,True,,"El oro se mueve −2,4 % en una sesión: la macro empuja a favor (la Fed se ve menos dura) (futuros COMEX vía Yahoo Finance, jue 22 oct)."

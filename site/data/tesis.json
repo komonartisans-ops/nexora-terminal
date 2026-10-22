@@ -191,9 +191,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -1.68,
+     "ret_pct": -2.1,
      "fecha": "2026-10-22",
-     "precio": 4069.5
+     "precio": 4051.8999
     },
     "5": {
      "estado": "PENDIENTE"
@@ -214,9 +214,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -1.15,
+     "ret_pct": -1.58,
      "fecha": "2026-10-22",
-     "precio": 29150.7266
+     "precio": 29024.6699
     },
     "5": {
      "estado": "PENDIENTE"
@@ -237,9 +237,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -1.52,
+     "ret_pct": -1.98,
      "fecha": "2026-10-22",
-     "precio": 81568.0234
+     "precio": 81187.1016
     },
     "5": {
      "estado": "PENDIENTE"
@@ -782,10 +782,10 @@
      "precio": 82017.6016
     },
     "5": {
-     "estado": "FALLO",
-     "ret_pct": 0.0,
+     "estado": "ACIERTO",
+     "ret_pct": -0.46,
      "fecha": "2026-10-22",
-     "precio": 81568.0234
+     "precio": 81187.1016
     },
     "20": {
      "estado": "PENDIENTE"
@@ -947,9 +947,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": 2.33,
+     "ret_pct": 2.23,
      "fecha": "2026-10-22",
-     "precio": 52826.6016
+     "precio": 52775.0703
     },
     "20": {
      "estado": "PENDIENTE"
@@ -993,9 +993,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": 1.67,
+     "ret_pct": 1.49,
      "fecha": "2026-10-22",
-     "precio": 2775.0479
+     "precio": 2770.1023
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1905,7 +1905,7 @@
     "evaluadas": 11
    },
    "5": {
-    "aciertos": 4,
+    "aciertos": 5,
     "evaluadas": 7
    }
   },
@@ -1968,6 +1968,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-22 16:07 UTC",
+ "generado_utc": "2026-10-22 17:03 UTC",
  "duracion_s": 0.0
 }

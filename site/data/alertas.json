@@ -95,10 +95,25 @@
    "l4": "Es lo que pagan las empresas más endeudadas por financiarse. Si se encarece, el mercado de crédito se preocupa, y suele adelantarse a la bolsa.",
    "enviada": true,
    "error": null
+  },
+  {
+   "fecha_utc": "2026-10-22 17:08 UTC",
+   "clave": "oro",
+   "titulo": "Oro",
+   "l1": "El oro se mueve −2,4 % en una sesión: la macro empuja a favor (la Fed se ve menos dura) (futuros COMEX vía Yahoo Finance, jue 22 oct).",
+   "l2": "Para el oro, un tipo real al alza y un dólar fuerte van en contra; a la baja, a favor (interpretación según sensibilidades fijas, no hecho).",
+   "l3": "mié 28 oct · 19:00 (hora de Madrid) · Decisión FOMC (Fed)",
+   "l4": "El tipo real es lo que paga un bono después de descontar la inflación. Si sube, guardar el dinero en bonos se vuelve atractivo y pierden atractivo lo que no paga intereses (oro, bitcoin) y las tecnológicas.",
+   "enviada": true,
+   "error": null
   }
  ],
- "candidatas": [],
- "no_evaluables": {},
+ "candidatas": [
+  "oro"
+ ],
+ "no_evaluables": {
+  "fed": "pendiente de confirmación: tipo esperado a diciembre -12 pb en 5 sesiones: 1 de 2 ejecuciones"
+ },
  "telegram_configurado": true,
  "umbrales": {
   "fed_pts": 15,
@@ -125,10 +140,11 @@
   "fed_confirmaciones": 2
  },
  "enviadas_hoy": [
-  "ciclo_ccc:2026-10-20"
+  "ciclo_ccc:2026-10-20",
+  "oro"
  ],
- "ultima_evaluacion_utc": "2026-10-22 16:11 UTC",
+ "ultima_evaluacion_utc": "2026-10-22 17:08 UTC",
  "ok": true,
- "generado_utc": "2026-10-22 16:07 UTC",
- "duracion_s": 0.0
+ "generado_utc": "2026-10-22 17:03 UTC",
+ "duracion_s": 0.5
 }
