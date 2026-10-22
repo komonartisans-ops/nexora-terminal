@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generado_utc": "2026-10-22 21:30 UTC",
+ "generado_utc": "2026-10-22 22:07 UTC",
  "terminal": "https://komonartisans-ops.github.io/nexora-terminal/",
  "proposito": "Resumen compacto de todo el terminal NEXORA para redactar informes. Fuente y fecha en cada bloque. Sin IA en su generación.",
  "lectura_para_informes": [
@@ -16,15 +16,15 @@
  "frescura": {
   "precios": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "fedwatch": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "calendario": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "liquidez": {
    "ok": true,
@@ -32,11 +32,11 @@
   },
   "resumen": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "tipos": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "ciclo": {
    "ok": true,
@@ -44,15 +44,15 @@
   },
   "publicados": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "regimen": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "alertas": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "monitores": {
    "ok": true,
@@ -72,11 +72,11 @@
   },
   "noticias": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "skew": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "semis": {
    "ok": true,
@@ -88,11 +88,11 @@
   },
   "contexto": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
   },
   "tesis": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "bancos": {
    "ok": true,
@@ -108,23 +108,23 @@
   },
   "reevaluar": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "etf": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:07 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "marcador": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "integridad": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "gamma_intradia": {
    "ok": true,
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "consumo": {
    "ok": true,
@@ -150,7 +150,7 @@
  "datos_con_mas_de_48h": [],
  "fallos_ultima_ejecucion": [],
  "mercado": {
-  "actualizado_utc": "2026-10-22 21:30 UTC",
+  "actualizado_utc": "2026-10-22 22:07 UTC",
   "activos": {
    "oro": {
     "nombre": "Oro",
@@ -165,13 +165,13 @@
    },
    "btc": {
     "nombre": "Bitcoin",
-    "valor": 81436.88,
+    "valor": 81406.85,
     "fecha": "2026-10-22",
-    "cambio_1d_pct": -3.07,
-    "cambio_5d_pct": 0.07,
-    "cambio_21d_pct": -4.03,
-    "cambio_63d_pct": 11.51,
-    "vs_sma50_pct": -0.4,
+    "cambio_1d_pct": -3.1,
+    "cambio_5d_pct": 0.03,
+    "cambio_21d_pct": -4.06,
+    "cambio_63d_pct": 11.47,
+    "vs_sma50_pct": -0.5,
     "fuente": "BTC-USD (Yahoo Finance)"
    },
    "spx": {
@@ -277,7 +277,7 @@
  },
  "tesis": {
   "corte_datos": "Datos entre el 2026-10-21 y el 2026-10-22 (cada fuente publica a su hora)",
-  "actualizado_utc": "2026-10-22 21:07 UTC",
+  "actualizado_utc": "2026-10-22 22:07 UTC",
   "que_lo_ha_movido": "El bono a 2 años baja 16 pb (hasta 4,65 %); el tipo real a 10 años baja 12 pb; la probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 16 % a 6 %. En conjunto: el dinero se abarata.",
   "vigilar": [
    "Fed mié 28 oct: hoy 6 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
@@ -456,7 +456,7 @@
   "contradicciones": [
    "Divergencia bolsa-crédito: el high yield se amplía mientras el S&P sigue cerca de máximos. Históricamente el crédito suele adelantarse, aunque no siempre."
   ],
-  "actualizado_utc": "2026-10-22 21:07 UTC",
+  "actualizado_utc": "2026-10-22 22:07 UTC",
   "fuente": "Mapa de régimen NEXORA (FRED, BLS, BEA, Fed regionales, monitores propios)"
  },
  "ciclo": {
@@ -627,7 +627,7 @@
   },
   "corte": "Día de negociación D hasta el cierre de EE. UU. (16:00 ET); Farside no fija hora de publicación; las correcciones se guardan como filas nuevas en data/historico_etf_flujos.csv",
   "fuente": "Farside Investors (tabla HTML, validada fila a fila)",
-  "actualizado_utc": "2026-10-22 21:07 UTC"
+  "actualizado_utc": "2026-10-22 22:07 UTC"
  },
  "fedwatch_y_tipos": {
   "fecha_precios": "2026-10-22",
@@ -708,7 +708,7 @@
     "nota": null
    }
   },
-  "actualizado_utc": "2026-10-22 21:07 UTC",
+  "actualizado_utc": "2026-10-22 22:07 UTC",
   "fuente": "FedWatch NEXORA (futuros ZQ, EFFR, calendario FOMC) · Tesoro de EE. UU."
  },
  "riesgo_de_cola_skew": {
@@ -755,7 +755,7 @@
     "nombre": "VIX y estructura de plazos",
     "estado": "CALMA",
     "encendida": false,
-    "valor": "VIX 16.7 · VIX/VIX3M 0.89",
+    "valor": "VIX 16.7 · VIX/VIX3M 0.83",
     "fecha": "2026-10-21",
     "fuente": "Cboe (VIX y VIX3M)"
    },
@@ -796,7 +796,7 @@
    "significa": "Interpretación: se paga una prima inusual por cubrirse de una caída fuerte del S&P 500 (cola izquierda). Confirmaciones encendidas: 1 de 2. El VIX no refleja miedo generalizado: es cobertura de cola sin estrés visible en la volatilidad corriente (hipótesis: posicionamiento institucional, no pánico). Histórico propio: tras 36 entradas en zona alta con 60 sesiones cumplidas, el S&P 500 cayó ≥ 5 % en 10 (28 %) y en 26 (72 %) no (falsas alarmas); en cualquier otra sesión la tasa base de esa caída es del 31 %.",
    "vigilar": "Cierre del SKEW (Cboe, cada sesión): si baja de 140 la señal se apaga; si el VIX/VIX3M se invierte o el crédito (CCC/HY) sigue ampliándose, la cobertura gana confirmación."
   },
-  "actualizado_utc": "2026-10-22 21:30 UTC",
+  "actualizado_utc": "2026-10-22 22:07 UTC",
   "fuente": "Cboe · SKEW, VIX, VIX3M y SPX (cdn-api.cboe.com, CSV públicos)",
   "etiqueta": "CRITERIO NEXORA (zonas y episodios)"
  },
@@ -3568,15 +3568,15 @@
   "bancos_centrales": {
    "Fed (FOMC)": {
     "fecha": "2026-10-28",
-    "dias": 6
+    "dias": 5
    },
    "BCE": {
     "fecha": "2026-10-29",
-    "dias": 7
+    "dias": 6
    },
    "Banco de Japón": {
     "fecha": "2026-10-30",
-    "dias": 8
+    "dias": 7
    }
   },
   "ultimos_publicados": [
@@ -3645,33 +3645,11 @@
     "fuente": "FRED INDPRO"
    }
   ],
-  "actualizado_utc": "2026-10-22 21:07 UTC",
+  "actualizado_utc": "2026-10-22 22:07 UTC",
   "fuente": "Calendario NEXORA · sin consenso de analistas (es de pago)"
  },
  "agenda": {
   "hoy": [
-   {
-    "fecha": "2026-10-22",
-    "fecha_et": "2026-10-22",
-    "dia": "jue",
-    "hora_ny": "08:30",
-    "hora_madrid": "14:30",
-    "evento": "Peticiones de paro semanales",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-22",
-    "fecha_et": "2026-10-22",
-    "dia": "jue",
-    "hora_ny": "16:30",
-    "hora_madrid": "22:30",
-    "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
-    "importancia": "MEDIA",
-    "nota": null
-   }
-  ],
-  "proximos_7_dias": [
    {
     "fecha": "2026-10-23",
     "fecha_et": "2026-10-23",
@@ -3681,7 +3659,9 @@
     "evento": "Confianza U. Michigan (expectativas de inflación)",
     "importancia": "MEDIA",
     "nota": null
-   },
+   }
+  ],
+  "proximos_7_dias": [
    {
     "fecha": "2026-10-27",
     "fecha_et": "2026-10-27",
@@ -3821,13 +3801,33 @@
     "evento": "Resultados Eli Lilly (LLY)",
     "importancia": "MEDIA",
     "nota": "fecha CONFIRMADA"
+   },
+   {
+    "fecha": "2026-10-30",
+    "fecha_et": "2026-10-30",
+    "dia": "vie",
+    "hora_ny": "08:30",
+    "hora_madrid": "13:30",
+    "evento": "Índice de costes laborales (ECI, BLS)",
+    "importancia": "ALTA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-30",
+    "fecha_et": "2026-10-30",
+    "dia": "vie",
+    "hora_ny": null,
+    "hora_madrid": null,
+    "evento": "Decisión de política monetaria del Banco de Japón (día 2)",
+    "importancia": "MEDIA",
+    "nota": "hora de publicación variable (sin hora fija oficial)"
    }
   ],
   "regla_horas": "Fed: horas del calendario oficial en ET (también en actos en el extranjero); FRED: hora central → ET; todo se convierte a Madrid y el día es el de Madrid.",
-  "hasta": "2026-10-29",
+  "hasta": "2026-10-30",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-22 21:39 UTC"
+  "generado_utc": "2026-10-22 22:18 UTC"
  },
  "marcador": {
   "version_criterio": 2,
@@ -3838,7 +3838,7 @@
    "desde": "2026-10-18"
   },
   "cambio_criterio": "Criterio v2 (18-oct-2026): el neutral pasa de ±0,1 % fijo a |retorno| < 0,25 × σ_h del activo (σ de 250 sesiones × √h; σ en pb para el 2Y), y el SKEW deja de puntuarse por la dirección del cierre: acierto si el S&P tiene una caída máxima intrahorizonte ≥ 1 σ_h o el VIX sube ≥ 20 %. Todos los resultados, también los de backfill, se recalcularon como filas nuevas con version_criterio = 2; los de v1 se conservan sin tocar en data/marcador_resultados.csv y no se muestran aquí.",
-  "actualizado_utc": "2026-10-22 21:30 UTC",
+  "actualizado_utc": "2026-10-22 22:07 UTC",
   "n_senales": 211,
   "n_anuladas": 0,
   "por_origen_y_tipo": {
@@ -4179,10 +4179,10 @@
   "fuente": "marcador.py (data/marcador_senales.csv, data/marcador_resultados_v2.csv, criterio v2); cierres de Yahoo Finance y FRED"
  },
  "integridad": {
-  "actualizado_utc": "2026-10-22 21:30 UTC",
+  "actualizado_utc": "2026-10-22 22:07 UTC",
   "resumen": "Integridad: 27/28 al día",
   "retrasados": [
-   "Reacción a eventos · retrasado 11 h frente a su frecuencia (cada hora en laborables)"
+   "Reacción a eventos · retrasado 12 h frente a su frecuencia (cada hora en laborables)"
   ],
   "sin_dato": [],
   "DISCREPANCIAS_ABIERTAS": "ninguna",

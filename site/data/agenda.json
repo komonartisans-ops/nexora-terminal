@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-22 21:09 UTC",
+ "generado_utc": "2026-10-22 22:09 UTC",
  "tabla_importancia": [
   {
    "tipo": "ACTAS",
@@ -253,28 +253,6 @@
  "agenda": {
   "hoy": [
    {
-    "fecha": "2026-10-22",
-    "fecha_et": "2026-10-22",
-    "dia": "jue",
-    "hora_ny": "08:30",
-    "hora_madrid": "14:30",
-    "evento": "Peticiones de paro semanales",
-    "importancia": "MEDIA",
-    "nota": null
-   },
-   {
-    "fecha": "2026-10-22",
-    "fecha_et": "2026-10-22",
-    "dia": "jue",
-    "hora_ny": "16:30",
-    "hora_madrid": "22:30",
-    "evento": "Balance de la Fed H.4.1 (reservas, TGA, RRP)",
-    "importancia": "MEDIA",
-    "nota": null
-   }
-  ],
-  "proximos_7_dias": [
-   {
     "fecha": "2026-10-23",
     "fecha_et": "2026-10-23",
     "dia": "vie",
@@ -283,7 +261,9 @@
     "evento": "Confianza U. Michigan (expectativas de inflación)",
     "importancia": "MEDIA",
     "nota": null
-   },
+   }
+  ],
+  "proximos_7_dias": [
    {
     "fecha": "2026-10-27",
     "fecha_et": "2026-10-27",
@@ -423,13 +403,33 @@
     "evento": "Resultados Eli Lilly (LLY)",
     "importancia": "MEDIA",
     "nota": "fecha CONFIRMADA"
+   },
+   {
+    "fecha": "2026-10-30",
+    "fecha_et": "2026-10-30",
+    "dia": "vie",
+    "hora_ny": "08:30",
+    "hora_madrid": "13:30",
+    "evento": "Índice de costes laborales (ECI, BLS)",
+    "importancia": "ALTA",
+    "nota": null
+   },
+   {
+    "fecha": "2026-10-30",
+    "fecha_et": "2026-10-30",
+    "dia": "vie",
+    "hora_ny": null,
+    "hora_madrid": null,
+    "evento": "Decisión de política monetaria del Banco de Japón (día 2)",
+    "importancia": "MEDIA",
+    "nota": "hora de publicación variable (sin hora fija oficial)"
    }
   ],
   "regla_horas": "Fed: horas del calendario oficial en ET (también en actos en el extranjero); FRED: hora central → ET; todo se convierte a Madrid y el día es el de Madrid.",
-  "hasta": "2026-10-29",
+  "hasta": "2026-10-30",
   "fuente": "Calendarios oficiales: FRED Release Calendar (BLS, BEA, Census), Federal Reserve, ISM, BCE, BoJ, TreasuryDirect",
   "importancia": "Fija por tipo de evento (tabla en site/data/agenda.json)",
-  "generado_utc": "2026-10-22 21:09 UTC"
+  "generado_utc": "2026-10-22 22:09 UTC"
  },
  "contaminacion": "Una fase de un evento de importancia alta se marca «contaminada» si otro evento de importancia alta se publica entre el dato y esa fase."
 }

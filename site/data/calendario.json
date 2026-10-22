@@ -1,7 +1,7 @@
 {
- "generado": "2026-10-22 23:09 Madrid",
- "desde": "2026-09-12",
- "hasta": "2026-11-12",
+ "generado": "2026-10-23 00:09 Madrid",
+ "desde": "2026-09-13",
+ "hasta": "2026-11-13",
  "eventos": [
   {
    "fecha": "2026-09-16",
@@ -1314,6 +1314,34 @@
    "fuente": "FRED Release Calendar · H.4.1 Factors Affecting Reserve Balances",
    "url": "https://fred.stlouisfed.org/releases/calendar?rid=20&y=2026",
    "nota": ""
+  },
+  {
+   "fecha": "2026-11-13",
+   "fecha_madrid": "2026-11-13",
+   "dia": "vie",
+   "hora_ny": "08:30",
+   "hora_madrid": "14:30",
+   "evento": "Precios de producción (PPI)",
+   "importancia": "ALTA",
+   "afecta": "oro · índices",
+   "que_mirar": "Presión de costes que puede llegar al IPC.",
+   "fuente": "FRED Release Calendar · Producer Price Index",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=46&y=2026",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-13",
+   "fecha_madrid": "2026-11-13",
+   "dia": "vie",
+   "hora_ny": "16:15",
+   "hora_madrid": "22:15",
+   "evento": "Crédito bancario H.8",
+   "importancia": "BAJA",
+   "afecta": "índices",
+   "que_mirar": "Crédito de bancos comerciales.",
+   "fuente": "FRED Release Calendar · H.8 Assets and Liabilities of Commercial Banks in the United States",
+   "url": "https://fred.stlouisfed.org/releases/calendar?rid=22&y=2026",
+   "nota": ""
   }
  ],
  "fed_vigilar": [
@@ -1337,15 +1365,15 @@
  "proximos_bancos_centrales": {
   "Fed (FOMC)": {
    "fecha": "2026-10-28",
-   "dias": 6
+   "dias": 5
   },
   "BCE": {
    "fecha": "2026-10-29",
-   "dias": 7
+   "dias": 6
   },
   "Banco de Japón": {
    "fecha": "2026-10-30",
-   "dias": 8
+   "dias": 7
   }
  },
  "errores": {
@@ -1435,6 +1463,6 @@
   }
  },
  "ok": true,
- "generado_utc": "2026-10-22 21:07 UTC",
- "duracion_s": 44.9
+ "generado_utc": "2026-10-22 22:07 UTC",
+ "duracion_s": 44.1
 }
