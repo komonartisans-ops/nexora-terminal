@@ -4,10 +4,6 @@
    "nombre": "Bitcoin",
    "serie": [
     [
-     "2026-10-02",
-     189.9
-    ],
-    [
      "2026-10-05",
      -89.8
     ],
@@ -57,19 +53,22 @@
     ],
     [
      "2026-10-21",
-     40.8
+     77.1
     ]
    ],
    "ultimo": {
     "fecha": "2026-10-21",
-    "total_musd": 40.8,
+    "total_musd": 77.1,
     "por_etf": {
+     "BITB": 19.2,
+     "ARKB": 9.8,
+     "EZBC": 7.3,
      "GBTC": 32.6,
      "BTC": 8.2
     }
    },
-   "acum_5d_musd": 513.4,
-   "acum_dias": 14,
+   "acum_5d_musd": 549.7,
+   "acum_dias": 13,
    "filas_descartadas": 0,
    "tickers": [
     "IBIT",
@@ -91,10 +90,6 @@
   "eth": {
    "nombre": "Ether",
    "serie": [
-    [
-     "2026-10-02",
-     -37.4
-    ],
     [
      "2026-10-05",
      -50.8
@@ -145,18 +140,21 @@
     ],
     [
      "2026-10-21",
-     28.1
+     31.2
     ]
    ],
    "ultimo": {
     "fecha": "2026-10-21",
-    "total_musd": 28.1,
+    "total_musd": 31.2,
     "por_etf": {
+     "ETHW": 0.9,
+     "EZET": 0.9,
+     "MSSE": 1.3,
      "ETH": 28.1
     }
    },
-   "acum_5d_musd": -231.3,
-   "acum_dias": 14,
+   "acum_5d_musd": -228.2,
+   "acum_dias": 13,
    "filas_descartadas": 0,
    "tickers": [
     "ETHA",
@@ -179,6 +177,6 @@
  "fuente": "Farside Investors (tabla HTML, validada fila a fila)",
  "corte": "Día de negociación D hasta el cierre de EE. UU. (16:00 ET); Farside no fija hora de publicación; las correcciones se guardan como filas nuevas en data/historico_etf_flujos.csv",
  "ok": true,
- "generado_utc": "2026-10-21 22:07 UTC",
- "duracion_s": 2.0
+ "generado_utc": "2026-10-21 23:58 UTC",
+ "duracion_s": 1.4
 }
