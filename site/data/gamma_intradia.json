@@ -1,14 +1,14 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-22 18:07 UTC",
+ "generado_utc": "2026-10-22 19:07 UTC",
  "min_n": 20,
  "horizontes_min": [
   15,
   30,
   60
  ],
- "n_senales": 15,
+ "n_senales": 17,
  "por_regla": {
   "cambio_regimen": {
    "regla": "cambio_regimen",
@@ -121,33 +121,33 @@
   "em_agotado": {
    "regla": "em_agotado",
    "nombre": "Movimiento esperado (EM) agotado",
-   "n_senales": 2,
+   "n_senales": 4,
    "horizontes": {
     "15": {
-     "n": 2,
-     "n_con_direccion": 2,
-     "mfe_mediana_pts": 64.5,
-     "mae_mediana_pts": 25.5,
-     "mfe_mediana_em": 0.135,
-     "mae_mediana_em": 0.053,
+     "n": 4,
+     "n_con_direccion": 4,
+     "mfe_mediana_pts": 78.62,
+     "mae_mediana_pts": 15.25,
+     "mfe_mediana_em": 0.168,
+     "mae_mediana_em": 0.032,
      "mfe_mayor_que_mae_pct": 100
     },
     "30": {
-     "n": 2,
-     "n_con_direccion": 2,
-     "mfe_mediana_pts": 64.5,
-     "mae_mediana_pts": 25.5,
-     "mfe_mediana_em": 0.135,
-     "mae_mediana_em": 0.053,
+     "n": 4,
+     "n_con_direccion": 4,
+     "mfe_mediana_pts": 85.25,
+     "mae_mediana_pts": 20.75,
+     "mfe_mediana_em": 0.182,
+     "mae_mediana_em": 0.044,
      "mfe_mayor_que_mae_pct": 100
     },
     "60": {
-     "n": 2,
-     "n_con_direccion": 2,
-     "mfe_mediana_pts": 188.5,
-     "mae_mediana_pts": 25.5,
-     "mfe_mediana_em": 0.394,
-     "mae_mediana_em": 0.053,
+     "n": 4,
+     "n_con_direccion": 4,
+     "mfe_mediana_pts": 145.88,
+     "mae_mediana_pts": 36.5,
+     "mfe_mediana_em": 0.309,
+     "mae_mediana_em": 0.078,
      "mfe_mayor_que_mae_pct": 100
     }
    },
@@ -167,6 +167,24 @@
  ],
  "metodo": "MFE = máxima excursión a favor y MAE = máxima excursión en contra de la dirección hipotética de la regla, frente al cierre de la vela de disparo, con barras de 5 min de Yahoo Finance. Solo se miden los avisos enviados en vivo. No hay acierto/fallo: con n < 20 por regla no se concluye nada y las reglas no se tocan.",
  "ultimas": [
+  {
+   "fecha_et": "2026-10-22",
+   "indice": "NQ",
+   "regla": "em_agotado",
+   "direccion": "ALCISTA",
+   "precio_ref": "29104.75",
+   "regimen": "negativa",
+   "evento_alta": ""
+  },
+  {
+   "fecha_et": "2026-10-22",
+   "indice": "NQ",
+   "regla": "em_agotado",
+   "direccion": "ALCISTA",
+   "precio_ref": "29105.0",
+   "regimen": "negativa",
+   "evento_alta": ""
+  },
   {
    "fecha_et": "2026-10-21",
    "indice": "NQ",
@@ -220,26 +238,8 @@
    "precio_ref": "30057.5",
    "regimen": "positiva",
    "evento_alta": ""
-  },
-  {
-   "fecha_et": "2026-10-21",
-   "indice": "NQ",
-   "regla": "cambio_regimen",
-   "direccion": "ALCISTA",
-   "precio_ref": "30026.0",
-   "regimen": "positiva",
-   "evento_alta": ""
-  },
-  {
-   "fecha_et": "2026-10-21",
-   "indice": "ES",
-   "regla": "cambio_regimen",
-   "direccion": "ALCISTA",
-   "precio_ref": "7793.0",
-   "regimen": "positiva",
-   "evento_alta": ""
   }
  ],
  "fuente": "gamma_intradia.py (data/gamma_intradia_senales.csv, data/gamma_intradia_resultados.csv)",
- "duracion_s": 0.0
+ "duracion_s": 0.1
 }
