@@ -1,7 +1,7 @@
 {
  "periodo": "hoy",
  "corte": "Datos entre el 2026-10-21 y el 2026-10-22 (cada fuente publica a su hora)",
- "movido": "El bono a 2 años baja 16 pb (hasta 4,65 %); el tipo real a 10 años baja 12 pb. En conjunto: el dinero se abarata.",
+ "movido": "El bono a 2 años baja 16 pb (hasta 4,65 %); el tipo real a 10 años baja 12 pb; la probabilidad de que la Fed SUBA tipos el mié 28 oct pasa de 16 % a 6 %. En conjunto: el dinero se abarata.",
  "significa": [
   {
    "activo": "Oro",
@@ -35,7 +35,7 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 8 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 6 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
   "mié 28 oct · Resultados Alphabet (GOOGL): BPA estimado $2.94 · después del cierre"
  ],
@@ -43,7 +43,8 @@
  "sencillo": "El bono a 2 años es la apuesta del mercado sobre lo que hará la Fed. Si baja, el mercado espera dinero más barato y eso ayuda a la bolsa, al oro y a cripto; si sube, los frena.",
  "motores_significativos": [
   "t2y",
-  "real"
+  "real",
+  "fed"
  ],
  "errores": {
   "lbma": "HTTPError: HTTP Error 403: Forbidden"
@@ -61,6 +62,12 @@
     "sube": false,
     "peso": 6.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.5,
+    "razon": "la Fed se ve menos dura"
    }
   ],
   "S&P 500": [
@@ -75,6 +82,12 @@
     "sube": false,
     "peso": 3.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.0,
+    "razon": "la Fed se ve menos dura"
    }
   ],
   "Oro": [
@@ -89,6 +102,12 @@
     "sube": false,
     "peso": 6.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.0,
+    "razon": "la Fed se ve menos dura"
    }
   ],
   "Bitcoin": [
@@ -103,6 +122,12 @@
     "sube": false,
     "peso": 3.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 1.5,
+    "razon": "la Fed se ve menos dura"
    }
   ],
   "US30 · Dow Jones": [
@@ -117,6 +142,12 @@
     "sube": false,
     "peso": 3.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 0.75,
+    "razon": "la Fed se ve menos dura"
    }
   ],
   "Russell 2000": [
@@ -131,6 +162,12 @@
     "sube": false,
     "peso": 4.5,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "fed",
+    "sube": false,
+    "peso": 2.0,
+    "razon": "la Fed se ve menos dura"
    }
   ]
  },
@@ -161,10 +198,10 @@
    "fecha": "2026-10-21"
   },
   "fed": {
-   "valor": 8.0,
+   "valor": 6.0,
    "antes": 16.0,
    "reunion": "2026-10-28",
-   "delta": -8.0,
+   "delta": -10.0,
    "fecha": "2026-10-22"
   }
  },
@@ -180,9 +217,9 @@
    "valor": 7757.17
   },
   "Oro": {
-   "delta": -2.6843349962349383,
+   "delta": -2.6554205101656625,
    "fecha": "2026-10-22",
-   "valor": 4038.60009765625
+   "valor": 4039.800048828125
   },
   "Bitcoin": {
    "delta": 1.309902088613879,
@@ -245,6 +282,12 @@
      "sube": false,
      "peso": 6.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.0,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   },
@@ -295,6 +338,12 @@
      "sube": false,
      "peso": 6.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.5,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   },
@@ -345,6 +394,12 @@
      "sube": false,
      "peso": 3.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.0,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   },
@@ -398,6 +453,12 @@
      "sube": false,
      "peso": 3.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 1.5,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   },
@@ -448,6 +509,12 @@
      "sube": false,
      "peso": 3.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 0.75,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   },
@@ -498,6 +565,12 @@
      "sube": false,
      "peso": 4.5,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "fed",
+     "sube": false,
+     "peso": 2.0,
+     "razon": "la Fed se ve menos dura"
     }
    ]
   }
@@ -521,6 +594,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000. Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-22 20:30 UTC",
- "duracion_s": 103.5
+ "generado_utc": "2026-10-22 21:07 UTC",
+ "duracion_s": 104.6
 }
