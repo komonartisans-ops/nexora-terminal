@@ -35,7 +35,7 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 14 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 16 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
   "mié 28 oct · Resultados Alphabet (GOOGL): BPA estimado $2.94 · después del cierre"
  ],
@@ -80,10 +80,10 @@
    "fecha": "2026-10-20"
   },
   "fed": {
-   "valor": 14.0,
+   "valor": 16.0,
    "antes": 16.0,
    "reunion": "2026-10-28",
-   "delta": -2.0,
+   "delta": 0.0,
    "fecha": "2026-10-22"
   }
  },
@@ -99,9 +99,9 @@
    "valor": 7757.17
   },
   "Oro": {
-   "delta": -1.074701148343371,
+   "delta": -1.2530120481927698,
    "fecha": "2026-10-22",
-   "valor": 4105.39990234375
+   "valor": 4098.0
   },
   "Bitcoin": {
    "delta": 1.309902088613879,
@@ -125,7 +125,7 @@
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI (hoy ya empujan en sentido contrario).",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda).",
+   "semana": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "MIXTO",
@@ -354,6 +354,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro y Nasdaq 100; empujan en contra: Russell 2000; sin ventaja clara: S&P 500, Bitcoin y US30 · Dow Jones (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-22 08:07 UTC",
- "duracion_s": 102.5
+ "generado_utc": "2026-10-22 09:07 UTC",
+ "duracion_s": 109.0
 }
