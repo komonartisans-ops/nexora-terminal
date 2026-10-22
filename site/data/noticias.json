@@ -3,6 +3,16 @@
   {
    "banco": "BoJ",
    "tipo": "Novedad",
+   "titulo": "Developments in Real Exports and Real Imports",
+   "orador": null,
+   "fecha_utc": "2026-10-22 07:00",
+   "fecha": "2026-10-22",
+   "enlace": "http://www.boj.or.jp/en/research/research_data/reri/index.htm",
+   "fuente": "boj"
+  },
+  {
+   "banco": "BoJ",
+   "tipo": "Novedad",
    "titulo": "Bank of Japan Accounts (October 20)",
    "orador": null,
    "fecha_utc": "2026-10-22 01:00",
@@ -901,16 +911,6 @@
    "fuente": "fed_speech"
   },
   {
-   "banco": "BoJ",
-   "tipo": "Novedad",
-   "titulo": "Minutes of the Monetary Policy Meeting on July 30 and 31, 2026",
-   "orador": null,
-   "fecha_utc": "2026-09-27 23:50",
-   "fecha": "2026-09-27",
-   "enlace": "http://www.boj.or.jp/en/mopo/mpmsche_minu/minu_2026/g260731.pdf",
-   "fuente": "boj"
-  },
-  {
    "banco": "Fed",
    "tipo": "Comunicado",
    "titulo": "Federal Reserve Board announces approval of application by Peoples Bancorp Inc.",
@@ -1332,7 +1332,7 @@
    "n": 40,
    "url": "https://www.boj.or.jp/en/rss/whatsnew.xml",
    "pagina": "https://www.boj.or.jp/en/whatsnew.htm",
-   "ultimo": "2026-10-22 01:00"
+   "ultimo": "2026-10-22 07:00"
   },
   "boe": {
    "banco": "BoE",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-22 06:07 UTC",
- "duracion_s": 6.4
+ "generado_utc": "2026-10-22 07:07 UTC",
+ "duracion_s": 6.1
 }
