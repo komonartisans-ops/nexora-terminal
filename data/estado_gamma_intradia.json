@@ -80,6 +80,14 @@
   "gi-nq-cambio_regimen-202610211935": {
    "estado": "REPETIDO",
    "fecha_et": "2026-10-21"
+  },
+  "gi-nq-em_agotado-202610221805": {
+   "estado": "ENVIADO",
+   "fecha_et": "2026-10-22",
+   "indice": "NQ",
+   "regla": "em_agotado",
+   "t_cierre_utc": "2026-10-22T18:05:00",
+   "enviado_utc": "2026-10-22 18:15 UTC"
   }
  }
 }
