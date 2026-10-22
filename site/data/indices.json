@@ -715,10 +715,10 @@
     "id": "fedwatch",
     "dato": "FedWatch",
     "que_mirar": "Recortes/subidas descontados",
-    "dir": "→",
-    "valor": "2026-10-28: subida 12 % · mantener 88 % · bajada 0 %",
-    "estado": "NEUTRAL",
-    "lectura": "1 sesión -4 pts de subida; tipo esperado a 3 reuniones -4 pb en 5 sesiones · Sin cambio",
+    "dir": "↓",
+    "valor": "2026-10-28: subida 10 % · mantener 90 % · bajada 0 %",
+    "estado": "FAVORABLE",
+    "lectura": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones -5 pb en 5 sesiones · Más relajación",
     "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-22",
     "puntua": true
    },
@@ -834,8 +834,8 @@
    }
   ],
   "entorno": {
-   "lectura": "MIXTO",
-   "risk_on": 4,
+   "lectura": "PREDOMINIO RISK-ON",
+   "risk_on": 5,
    "risk_off": 1,
    "sin_dato": 0,
    "disponibles": 7,
@@ -873,13 +873,13 @@
     {
      "id": "fedwatch",
      "condicion": "FedWatch más relajado",
-     "estado": "NEUTRAL"
+     "estado": "RISK-ON"
     }
    ],
    "liquidez": "NEUTRAL",
    "breadth": "CONFIRMA"
   },
-  "chuleta_60s": "SIN CONFLUENCIA COMPLETA",
+  "chuleta_60s": "RISK-ON",
   "por_indice": [
    {
     "indice": "S&P 500",
@@ -901,8 +901,8 @@
       "estado": "SIN DATO"
      }
     ],
-    "entorno": "MIXTO",
-    "puntos": 1,
+    "entorno": "FAVORABLE",
+    "puntos": 2,
     "estructura": "LATERAL · 2/5 máximos y 2/5 mínimos crecientes"
    },
    {
@@ -926,7 +926,7 @@
      }
     ],
     "entorno": "MIXTO",
-    "puntos": 0,
+    "puntos": 1,
     "estructura": "LATERAL · 3/5 máximos y 3/5 mínimos crecientes"
    },
    {
@@ -950,7 +950,7 @@
      }
     ],
     "entorno": "MIXTO",
-    "puntos": 0,
+    "puntos": 1,
     "estructura": "MÁXIMOS DECRECIENTES · 1/5 máximos y 2/5 mínimos crecientes"
    },
    {
@@ -973,8 +973,8 @@
       "estado": "DESFAVORABLE"
      }
     ],
-    "entorno": "DESFAVORABLE",
-    "puntos": -2,
+    "entorno": "MIXTO",
+    "puntos": -1,
     "estructura": "BAJISTA (máximos y mínimos decrecientes) · 1/5 máximos y 0/5 mínimos crecientes"
    }
   ],
@@ -983,7 +983,7 @@
     "par": "2Y ↔ FedWatch",
     "busca": "2Y ↓ + más recortes descontados",
     "estado": "NO SE CUMPLE",
-    "detalle": "2Y -1 pb · FedWatch NEUTRAL",
+    "detalle": "2Y -1 pb · FedWatch FAVORABLE",
     "lectura": "Relajación de expectativas de tipos"
    },
    {
@@ -1195,8 +1195,8 @@
     "n": 1,
     "paso": "MACRO",
     "que": "2Y → 10Y → 10Y real → DXY → NFCI → FedWatch → VIX",
-    "estado": "NEUTRAL",
-    "detalle": "MIXTO: 4 risk-on, 1 risk-off, 0 sin dato de 7"
+    "estado": "FAVORABLE",
+    "detalle": "PREDOMINIO RISK-ON: 5 risk-on, 1 risk-off, 0 sin dato de 7"
    },
    {
     "n": 2,
@@ -1269,7 +1269,7 @@
    {
     "n": 3,
     "pregunta": "¿FedWatch está relajándose o endureciéndose?",
-    "respuesta": "1 sesión -4 pts de subida; tipo esperado a 3 reuniones -4 pb en 5 sesiones · Sin cambio Proxy letras: -1 pb en 5 sesiones."
+    "respuesta": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones -5 pb en 5 sesiones · Más relajación Proxy letras: -1 pb en 5 sesiones."
    },
    {
     "n": 4,
@@ -3294,6 +3294,6 @@
   },
   "reacciones": null
  },
- "evaluado_utc": "2026-10-22 13:07 UTC",
+ "evaluado_utc": "2026-10-22 14:07 UTC",
  "fedwatch_fecha_precios": "2026-10-22"
 }

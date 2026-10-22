@@ -191,9 +191,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -0.99,
+     "ret_pct": -1.61,
      "fecha": "2026-10-22",
-     "precio": 4098.0
+     "precio": 4072.3999
     },
     "5": {
      "estado": "PENDIENTE"
@@ -213,7 +213,10 @@
    "capturado_utc": "2026-10-21 05:30 UTC",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret_pct": -0.52,
+     "fecha": "2026-10-22",
+     "precio": 29336.3711
     },
     "5": {
      "estado": "PENDIENTE"
@@ -234,9 +237,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -1.47,
+     "ret_pct": -1.55,
      "fecha": "2026-10-22",
-     "precio": 81605.7422
+     "precio": 81538.5938
     },
     "5": {
      "estado": "PENDIENTE"
@@ -779,10 +782,10 @@
      "precio": 82017.6016
     },
     "5": {
-     "estado": "FALLO",
-     "ret_pct": 0.05,
+     "estado": "ACIERTO",
+     "ret_pct": -0.03,
      "fecha": "2026-10-22",
-     "precio": 81605.7422
+     "precio": 81538.5938
     },
     "20": {
      "estado": "PENDIENTE"
@@ -943,7 +946,10 @@
      "precio": 52002.4102
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret_pct": 2.22,
+     "fecha": "2026-10-22",
+     "precio": 52769.3281
     },
     "20": {
      "estado": "PENDIENTE"
@@ -986,7 +992,10 @@
      "precio": 2721.3701
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret_pct": 1.64,
+     "fecha": "2026-10-22",
+     "precio": 2774.1873
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1896,14 +1905,14 @@
     "evaluadas": 11
    },
    "5": {
-    "aciertos": 4,
+    "aciertos": 5,
     "evaluadas": 7
    }
   },
   "Nasdaq 100": {
    "1": {
     "aciertos": 0,
-    "evaluadas": 3
+    "evaluadas": 4
    },
    "5": {
     "aciertos": 0,
@@ -1927,7 +1936,7 @@
    },
    "5": {
     "aciertos": 4,
-    "evaluadas": 5
+    "evaluadas": 6
    }
   },
   "S&P 500": {
@@ -1947,7 +1956,7 @@
    },
    "5": {
     "aciertos": 1,
-    "evaluadas": 5
+    "evaluadas": 6
    }
   }
  },
@@ -1959,6 +1968,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-22 13:07 UTC",
+ "generado_utc": "2026-10-22 14:07 UTC",
  "duracion_s": 0.0
 }

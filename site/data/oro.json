@@ -339,10 +339,10 @@
     "id": "fedwatch",
     "dato": "FedWatch",
     "que_mirar": "Probabilidades de recortes/subidas",
-    "dir": "→",
-    "valor": "2026-10-28: subida 12 % · mantener 88 % · bajada 0 %",
-    "estado": "NEUTRAL",
-    "lectura": "1 sesión -4 pts de subida; tipo esperado a 3 reuniones -4 pb en 5 sesiones · Sin cambio",
+    "dir": "↓",
+    "valor": "2026-10-28: subida 10 % · mantener 90 % · bajada 0 %",
+    "estado": "FAVORABLE",
+    "lectura": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones -5 pb en 5 sesiones · Más relajación descontada",
     "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-22",
     "puntua": true
    },
@@ -487,7 +487,7 @@
     "par": "2Y ↔ FedWatch",
     "busca": "2Y ↓ + más recortes descontados",
     "estado": "NO SE CUMPLE",
-    "detalle": "2Y -1 pb · FedWatch NEUTRAL",
+    "detalle": "2Y -1 pb · FedWatch FAVORABLE",
     "lectura": "Expectativas de tipos más relajadas"
    },
    {
@@ -527,8 +527,8 @@
    }
   ],
   "confluencia": {
-   "lectura": "MIXTO",
-   "favorables": 2,
+   "lectura": "PREDOMINIO FAVORABLE",
+   "favorables": 3,
    "contrarias": 1,
    "sin_dato": 0,
    "disponibles": 5,
@@ -554,8 +554,8 @@
     {
      "id": "fedwatch",
      "dato": "FedWatch",
-     "dir": "→",
-     "estado": "NEUTRAL"
+     "dir": "↓",
+     "estado": "FAVORABLE"
     },
     {
      "id": "nfci",
@@ -681,14 +681,16 @@
    }
   ],
   "eventos": null,
-  "avisos": [],
+  "avisos": [
+   "DIVERGENCIA: la macro acompaña pero el precio no confirma. CH §7: esperar a que el precio confirme."
+  ],
   "pasos": [
    {
     "n": 1,
     "paso": "MACRO",
     "que": "DXY → 2Y → 10Y → 10Y real → FedWatch → NFCI",
-    "estado": "NEUTRAL",
-    "detalle": "MIXTO: 2 a favor, 1 en contra, 0 sin dato de 5"
+    "estado": "FAVORABLE",
+    "detalle": "PREDOMINIO FAVORABLE: 3 a favor, 1 en contra, 0 sin dato de 5"
    },
    {
     "n": 2,
@@ -759,7 +761,7 @@
    {
     "n": 4,
     "pregunta": "¿FedWatch se mueve hacia recortes o subidas?",
-    "respuesta": "1 sesión -4 pts de subida; tipo esperado a 3 reuniones -4 pb en 5 sesiones · Sin cambio"
+    "respuesta": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones -5 pb en 5 sesiones · Más relajación descontada"
    },
    {
     "n": 5,
@@ -5009,6 +5011,6 @@
    ]
   ]
  },
- "evaluado_utc": "2026-10-22 13:07 UTC",
+ "evaluado_utc": "2026-10-22 14:07 UTC",
  "fedwatch_fecha_precios": "2026-10-22"
 }

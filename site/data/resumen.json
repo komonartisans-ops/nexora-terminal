@@ -1,6 +1,6 @@
 {
  "periodo": "hoy",
- "corte": "Datos entre el 2026-10-20 y el 2026-10-22 (cada fuente publica a su hora)",
+ "corte": "Datos entre el 2026-10-21 y el 2026-10-22 (cada fuente publica a su hora)",
  "movido": "Sin cambio macro relevante hoy: ni la Fed, ni los tipos, ni el dólar, ni el miedo se han movido por encima de los umbrales. Lo que se mueva hoy lo explican flujos o noticias concretas, no un cambio de fondo.",
  "significa": [
   {
@@ -35,7 +35,7 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 12 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 10 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
   "mié 28 oct · Resultados Alphabet (GOOGL): BPA estimado $2.94 · después del cierre"
  ],
@@ -65,9 +65,9 @@
    "fecha": "2026-10-21"
   },
   "dxy": {
-   "valor": 101.65337841906228,
-   "delta": -0.18647163662571797,
-   "fecha": "2026-10-21"
+   "valor": 101.75549585076955,
+   "delta": 0.10045650552439334,
+   "fecha": "2026-10-22"
   },
   "vix": {
    "valor": 16.68,
@@ -75,15 +75,15 @@
    "fecha": "2026-10-21"
   },
   "hy": {
-   "valor": 333.0,
-   "delta": 4.0000000000000036,
-   "fecha": "2026-10-20"
+   "valor": 327.0,
+   "delta": -6.000000000000005,
+   "fecha": "2026-10-21"
   },
   "fed": {
-   "valor": 12.0,
+   "valor": 10.0,
    "antes": 16.0,
    "reunion": "2026-10-28",
-   "delta": -4.0,
+   "delta": -6.0,
    "fecha": "2026-10-22"
   }
  },
@@ -99,9 +99,9 @@
    "valor": 7757.17
   },
   "Oro": {
-   "delta": -1.2554240399096361,
+   "delta": -1.9397590361445838,
    "fecha": "2026-10-22",
-   "valor": 4097.89990234375
+   "valor": 4069.5
   },
   "Bitcoin": {
    "delta": 1.309902088613879,
@@ -122,14 +122,14 @@
  "fuente": "Tesoro de EE. UU. (2Y, 10Y real), BCE (réplica del dólar), Cboe (VIX, S&P 500), Nasdaq (Nasdaq 100), LBMA o COMEX GC=F (Yahoo) si LBMA falla (oro), Coinbase (bitcoin), ICE BofA vía FRED (crédito), FedWatch NEXORA (futuros ZQ).",
  "tesis_activos": {
   "Oro": {
-   "etiqueta": "ALCISTA DÉBIL",
-   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI (hoy ya empujan en sentido contrario).",
+   "etiqueta": "ALCISTA",
+   "tesis": "ALCISTA con confluencia: la macro de la semana (a favor) y su motor propio (PREDOMINIO FAVORABLE) apuntan igual. Lo que la rompería: que ganen peso NFCI (hoy ya empujan en sentido contrario).",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
    "semana": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
    "viento_semana": "A FAVOR",
    "propio": {
-    "veredicto": "MIXTO",
-    "detalle": "2 a favor / 1 en contra de 5 datos núcleo · precio: CONFIRMA DEBILIDAD",
+    "veredicto": "PREDOMINIO FAVORABLE",
+    "detalle": "3 a favor / 1 en contra de 5 datos núcleo · precio: CONFIRMA DEBILIDAD",
     "favor": [
      "DXY 101.65 · 5d -0.56% · 1d -0.19% (Baja: suele favorecer al oro · velocidad normal (-0.7σ))",
      "10Y REAL / TIPS (PRIORIDAD ALTA) 2.76% · 5d -8 pb · 20d +13 pb (Baja: generalmente favorable (menor coste de oportunidad))"
@@ -140,13 +140,16 @@
     "favor_n": [
      "DXY",
      "10Y REAL / TIPS (PRIORIDAD ALTA)",
+     "FedWatch",
      "US 10Y",
      "ETF GOLD FLOWS"
     ],
     "contra_n": [
      "NFCI"
     ],
-    "avisos": []
+    "avisos": [
+     "DIVERGENCIA: la macro acompaña pero el precio no confirma. CH §7: esperar a que el precio confirme."
+    ]
    },
    "motor_propio_nombre": "dólar, tipo real, flujos de ETF y posicionamiento COMEX",
    "motores": []
@@ -155,11 +158,11 @@
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: el crédito se encarece).",
+   "semana": "A favor: baja el tipo real (lo que más les ayuda).",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "MIXTO",
-    "detalle": "4 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Nasdaq 100: 10Y real favorable · semiconductores desfavorable (Tipos reales + yields + mega-cap growth/tech)",
+    "detalle": "5 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Nasdaq 100: 10Y real favorable · semiconductores desfavorable (Tipos reales + yields + mega-cap growth/tech)",
     "favor": [
      "VIX 16.68 · 5d -1.1% · percentil 1 año 43% (Estable. Riesgo, no señal automática (CH).)",
      "ADV/DECLINE (amplitud) grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones (Fortaleza interna)"
@@ -175,6 +178,7 @@
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
+     "FedWatch",
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
@@ -188,14 +192,14 @@
    "motores": []
   },
   "S&P 500": {
-   "etiqueta": "SIN TESIS",
-   "tesis": "SIN TESIS: ni la macro ni su motor propio (MIXTO) marcan dirección.",
+   "etiqueta": "ALCISTA",
+   "tesis": "ALCISTA con confluencia: la macro de la semana (a favor) y su motor propio (FAVORABLE) apuntan igual. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
-   "semana": "Sin viento claro: fuerzas opuestas: la Fed se ve menos dura, pero el crédito se encarece.",
-   "viento_semana": "SIN VIENTO CLARO",
+   "semana": "A favor: la Fed se ve menos dura.",
+   "viento_semana": "A FAVOR",
    "propio": {
-    "veredicto": "MIXTO",
-    "detalle": "4 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del S&P 500: amplitud favorable · beneficios sin dato (Tipos + beneficios + amplitud + mega caps)",
+    "veredicto": "FAVORABLE",
+    "detalle": "5 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del S&P 500: amplitud favorable · beneficios sin dato (Tipos + beneficios + amplitud + mega caps)",
     "favor": [
      "VIX 16.68 · 5d -1.1% · percentil 1 año 43% (Estable. Riesgo, no señal automática (CH).)",
      "ADV/DECLINE (amplitud) grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones (Fortaleza interna)"
@@ -211,6 +215,7 @@
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
+     "FedWatch",
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
@@ -227,11 +232,11 @@
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso Chicago Fed NFCI y Daily Treasury Statement (hoy ya empujan en sentido contrario).",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
-   "semana": "A favor: la Fed se ve menos dura (pesa más que: el crédito se encarece).",
+   "semana": "A favor: la Fed se ve menos dura.",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "SEÑALES INICIALES DE GIRO",
-    "detalle": "checklist de liquidez 4/8 (drenan 1) · secuencia 0/7 pasos",
+    "detalle": "checklist de liquidez 5/8 (drenan 1) · secuencia 1/7 pasos",
     "favor": [
      "ON RRP (facilidad, RRPONTSYD) 0.2 B$ (4s -0.2 B$ (2026-10-21) · AVISO: saldo < 50 B$, colchón agotado; la dirección cumple la regla pero su efecto sobre la liquidez es despreciable)",
      "Treasury 10Y 5.13% (1d +1 pb · 1s -6 pb · 4s +2 pb (2026-10-21))"
@@ -242,6 +247,7 @@
     ],
     "favor_n": [
      "Treasury 10Y",
+     "CME FedWatch",
      "M2",
      "SOFR",
      "Emisiones / subastas Treasury",
@@ -263,14 +269,14 @@
    "motores": []
   },
   "US30 · Dow Jones": {
-   "etiqueta": "SIN TESIS",
-   "tesis": "SIN TESIS: ni la macro ni su motor propio (MIXTO) marcan dirección.",
+   "etiqueta": "ALCISTA DÉBIL",
+   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
-   "semana": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero el crédito se encarece. Se mueve por motivos propios, no por la macro.",
-   "viento_semana": "SIN VIENTO CLARO",
+   "semana": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro.",
+   "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "MIXTO",
-    "detalle": "4 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del US30 · Dow Jones: industriales desfavorable · financieras favorable (Ciclo, industriales, financieros, empresas maduras)",
+    "detalle": "5 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del US30 · Dow Jones: industriales desfavorable · financieras favorable (Ciclo, industriales, financieros, empresas maduras)",
     "favor": [
      "VIX 16.68 · 5d -1.1% · percentil 1 año 43% (Estable. Riesgo, no señal automática (CH).)",
      "ADV/DECLINE (amplitud) grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones (Fortaleza interna)"
@@ -286,6 +292,7 @@
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
+     "FedWatch",
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
@@ -299,14 +306,14 @@
    "motores": []
   },
   "Russell 2000": {
-   "etiqueta": "SIN TESIS",
-   "tesis": "SIN TESIS: choque de fuerzas. La macro de la semana va a favor, pero su motor propio dice DESFAVORABLE. Hasta que una gane, no hay ventaja.",
+   "etiqueta": "ALCISTA DÉBIL",
+   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
    "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
-   "semana": "A favor: la Fed se ve menos dura (pesa más que: el crédito se encarece).",
+   "semana": "A favor: la Fed se ve menos dura.",
    "viento_semana": "A FAVOR",
    "propio": {
-    "veredicto": "DESFAVORABLE",
-    "detalle": "4 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Russell 2000: NFCI desfavorable · crédito high yield desfavorable (Tipos + crédito + condiciones financieras + economía doméstica)",
+    "veredicto": "MIXTO",
+    "detalle": "5 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Russell 2000: NFCI desfavorable · crédito high yield desfavorable (Tipos + crédito + condiciones financieras + economía doméstica)",
     "favor": [
      "VIX 16.68 · 5d -1.1% · percentil 1 año 43% (Estable. Riesgo, no señal automática (CH).)",
      "ADV/DECLINE (amplitud) grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones (Fortaleza interna)"
@@ -322,6 +329,7 @@
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
+     "FedWatch",
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
@@ -352,8 +360,8 @@
    "disponible": true
   }
  },
- "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100 y Bitcoin; sin ventaja clara: S&P 500, US30 · Dow Jones y Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
+ "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000. Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-22 13:07 UTC",
- "duracion_s": 107.4
+ "generado_utc": "2026-10-22 14:07 UTC",
+ "duracion_s": 107.8
 }

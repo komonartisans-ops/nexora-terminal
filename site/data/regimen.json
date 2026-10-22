@@ -45,7 +45,7 @@
     "estado": "NEUTRAL",
     "dir": "→",
     "evidencia": [
-     "Monitor de liquidez cripto: SEÑALES INICIALES DE GIRO (4/8 condiciones, 1 en drenaje)",
+     "Monitor de liquidez cripto: SEÑALES INICIALES DE GIRO (5/8 condiciones, 1 en drenaje)",
      "Balance de la Fed 6.76 T$ (+0.2 % en 13 semanas)",
      "TGA 973.7 B$ (+16.2 B$ en 4 semanas)",
      "RRP 0.2 B$ (-0.2 B$ en 4 semanas)",
@@ -57,15 +57,15 @@
    },
    {
     "dimension": "CRÉDITO",
-    "estado": "ESTABLE · ESTRÉS EN HIGH YIELD",
-    "dir": "→",
+    "estado": "SE ENDURECE (menos crédito, diferenciales ↑) · ESTRÉS EN HIGH YIELD",
+    "dir": "↓",
     "evidencia": [
-     "Diferencial high yield 333 pb (+65 pb en 20 sesiones)",
-     "Diferencial grado de inversión 87 pb (+10 pb en 20 sesiones)",
+     "Diferencial high yield 327 pb (+54 pb en 20 sesiones)",
+     "Diferencial grado de inversión 88 pb (+11 pb en 20 sesiones)",
      "Crédito bancario 13 semanas anualizado +5.6 % vs +6.2 % interanual (H.8)"
     ],
     "fuente": "ICE BofA y Fed H.8 vía FRED",
-    "puntos": -1
+    "puntos": -2
    },
    {
     "dimension": "POLÍTICA MONETARIA",
@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-22): reunión del 2026-10-28 subida 12 % / mantener 88 % / bajada 0 % (-4 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +34 pb vs hoy (sin cambio relevante que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-22): reunión del 2026-10-28 subida 10 % / mantener 90 % / bajada 0 % (-6 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +32 pb vs hoy (más blanda (el mercado espera tipos más bajos) que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.81 % vs tipo efectivo 3.88 % → +93 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +64 pb (-1 pb en 5 sesiones)"
@@ -140,7 +140,7 @@
      "10Y real: semana -8.0 · mes +13.0 pb",
      "DXY: semana -0.6 · mes +0.8 %",
      "VIX: semana -1.1 · mes — %",
-     "High yield: semana — · mes +65.0 pb"
+     "High yield: semana — · mes +54.0 pb"
     ],
     "fuente": "Cboe, FRED, Coinbase, Tesoro, BCE; oro: COMEX GC=F (Yahoo Finance), respaldo: LBMA no respondió (datos de los tres monitores)",
     "puntos": null
@@ -154,7 +154,7 @@
    "cuadrante": "REFLACIÓN",
    "detalle": "Filadelfia media 3 meses +18.3 · IPC subyacente 3m anualizado − interanual +0.85 pp"
   },
-  "riesgo": "MIXTO",
+  "riesgo": "PREDOMINIO RISK-ON",
   "liquidez": "NEUTRAL",
   "monitores": [
    {
@@ -162,24 +162,24 @@
     "lectura": "SEÑALES INICIALES DE GIRO",
     "sentido": "FAVORABLE",
     "precio": "BTC NO CONFIRMA",
-    "detalle": "checklist 4/8 · BTC 30 días -3.0 %"
+    "detalle": "checklist 5/8 · BTC 30 días -3.0 %"
    },
    {
     "monitor": "Oro (XAU/USD)",
-    "lectura": "MIXTO",
-    "sentido": "NEUTRAL",
+    "lectura": "PREDOMINIO FAVORABLE",
+    "sentido": "FAVORABLE",
     "precio": "CONFIRMA DEBILIDAD",
     "detalle": "oro 20 sesiones -4.5 %"
    },
    {
     "monitor": "Índices USA",
-    "lectura": "MIXTO",
-    "sentido": "NEUTRAL",
+    "lectura": "PREDOMINIO RISK-ON",
+    "sentido": "FAVORABLE",
     "precio": "CONFIRMA FUERZA",
     "detalle": "amplitud CONFIRMA · S&P 20 sesiones +0.7 %"
    }
   ],
-  "concordancia": "2 DE 3: NEUTRAL (Liquidez cripto: FAVORABLE)",
+  "concordancia": "LOS TRES COINCIDEN: FAVORABLE",
   "motor": [
    {
     "motor": "Bono a 2 años",
@@ -267,7 +267,7 @@
    },
    "High yield": {
     "semana": null,
-    "mes": 64.99999999999999,
+    "mes": 54.0,
     "unidad": "pb"
    }
   },
@@ -326,7 +326,7 @@
    },
    {
     "pregunta": "¿Qué está desacelerando?",
-    "respuesta": "Nada con claridad."
+    "respuesta": "crédito"
    },
    {
     "pregunta": "¿Dónde aparece estrés?",
@@ -338,7 +338,7 @@
    },
    {
     "pregunta": "¿Qué hacen los bancos centrales?",
-    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 12 %, mantener 88 %, bajada 0 % (ayer subida 16 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
+    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 10 %, mantener 90 %, bajada 0 % (ayer subida 16 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
    },
    {
     "pregunta": "¿Qué dice el consumo (mercado frente a datos reales)?",
@@ -346,7 +346,7 @@
    },
    {
     "pregunta": "¿Coinciden los tres monitores?",
-    "respuesta": "2 DE 3: NEUTRAL (Liquidez cripto: FAVORABLE)"
+    "respuesta": "LOS TRES COINCIDEN: FAVORABLE"
    },
    {
     "pregunta": "¿Hay un motor común?",
@@ -1049,6 +1049,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-22 13:07 UTC",
- "duracion_s": 12.3
+ "generado_utc": "2026-10-22 14:07 UTC",
+ "duracion_s": 10.4
 }

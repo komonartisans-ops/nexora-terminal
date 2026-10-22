@@ -459,10 +459,10 @@
     "id": "fedwatch",
     "nombre": "CME FedWatch",
     "nivel": "núcleo",
-    "estado": "NEUTRAL",
-    "dir": "→",
-    "valor": "2026-10-28: subida 12 % · mantener 88 % · bajada 0 %",
-    "detalle": "1 sesión -4 pts de subida; tipo esperado a 3 reuniones -4 pb en 5 sesiones",
+    "estado": "FAVORABLE",
+    "dir": "relajación ↑",
+    "valor": "2026-10-28: subida 10 % · mantener 90 % · bajada 0 %",
+    "detalle": "1 sesión -6 pts de subida; tipo esperado a 3 reuniones -5 pb en 5 sesiones",
     "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-22",
     "frecuencia": "diaria"
    },
@@ -513,7 +513,7 @@
    "nfci": "↑",
    "dxy": "↑",
    "h41": "→",
-   "fedwatch": "→"
+   "fedwatch": "relajación ↑"
   },
   "checklist": [
    {
@@ -562,12 +562,12 @@
    {
     "n": 8,
     "condicion": "FedWatch más relajado",
-    "estado": "NO CUMPLE",
+    "estado": "CUMPLE",
     "id": "fedwatch"
    }
   ],
   "checklist_resumen": {
-   "cumple": 4,
+   "cumple": 5,
    "sin_dato": 0,
    "total": 8,
    "drenaje": 1
@@ -588,8 +588,8 @@
    {
     "n": 3,
     "paso": "FedWatch más relajado",
-    "estado": "NO CUMPLE",
-    "detalle": "→"
+    "estado": "CUMPLE",
+    "detalle": "relajación ↑"
    },
    {
     "n": 4,
@@ -617,13 +617,13 @@
    }
   ],
   "secuencia_hasta": 0,
-  "secuencia_cumplidos": 0,
+  "secuencia_cumplidos": 1,
   "lectura": "SEÑALES INICIALES DE GIRO",
   "avisos": [
    "ON RRP agotado: la condición «RRP ↓» ya no aporta liquidez aunque se cumpla."
   ],
   "nucleo": {
-   "fav": 2,
+   "fav": 3,
    "des": 1,
    "n": 8
   },
@@ -13312,6 +13312,6 @@
  "ok": true,
  "generado_utc": "2026-10-22 10:21 UTC",
  "duracion_s": 53.5,
- "evaluado_utc": "2026-10-22 13:07 UTC",
+ "evaluado_utc": "2026-10-22 14:07 UTC",
  "fedwatch_fecha_precios": "2026-10-22"
 }
