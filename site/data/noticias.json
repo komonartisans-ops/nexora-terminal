@@ -1083,21 +1083,11 @@
   {
    "banco": "BoE",
    "tipo": "Noticia",
-   "titulo": "Exchange of letters between the Governor and the Chancellor regarding CPI Inflation - September 2026",
+   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
    "orador": null,
    "fecha_utc": "2026-09-17 11:00",
    "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/letter/2026/cpi-inflation-september-2026",
-   "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "Exchange of letters between the Governor and the Chancellor regarding QT and the APF - September 2026",
-   "orador": null,
-   "fecha_utc": "2026-09-17 11:00",
-   "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/letter/2026/exchange-of-letters-between-the-governor-and-the-chancellor-regarding-qt-and-the-apf",
+   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
    "fuente": "boe"
   },
   {
@@ -1113,11 +1103,21 @@
   {
    "banco": "BoE",
    "tipo": "Noticia",
-   "titulo": "Bank rate maintained at 3.75% - September 2026 Monetary Policy Summary and Minutes",
+   "titulo": "Exchange of letters between the Governor and the Chancellor regarding CPI Inflation - September 2026",
    "orador": null,
    "fecha_utc": "2026-09-17 11:00",
    "fecha": "2026-09-17",
-   "enlace": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",
+   "enlace": "https://www.bankofengland.co.uk/letter/2026/cpi-inflation-september-2026",
+   "fuente": "boe"
+  },
+  {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Exchange of letters between the Governor and the Chancellor regarding QT and the APF - September 2026",
+   "orador": null,
+   "fecha_utc": "2026-09-17 11:00",
+   "fecha": "2026-09-17",
+   "enlace": "https://www.bankofengland.co.uk/letter/2026/exchange-of-letters-between-the-governor-and-the-chancellor-regarding-qt-and-the-apf",
    "fuente": "boe"
   },
   {
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-22 05:30 UTC",
- "duracion_s": 8.8
+ "generado_utc": "2026-10-22 06:07 UTC",
+ "duracion_s": 6.4
 }
