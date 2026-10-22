@@ -1,7 +1,7 @@
 {
  "version": 2,
  "version_criterio": 2,
- "generado_utc": "2026-10-22 10:07 UTC",
+ "generado_utc": "2026-10-22 10:21 UTC",
  "ok": true,
  "min_n": 20,
  "horizontes": [
@@ -68,19 +68,19 @@
       "muestra_insuficiente": true
      },
      "5": {
-      "n": 7,
+      "n": 8,
       "aciertos": 1,
-      "fallos": 2,
+      "fallos": 3,
       "neutrales": 4,
-      "pendientes": 5,
+      "pendientes": 4,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": 14.3,
-      "ret_medio": -0.586,
+      "acierto_pct": 12.5,
+      "ret_medio": -0.898,
       "peor_ret": -3.53,
       "peor_mae": -4.521,
-      "base_media_pct": 40.3,
-      "diferencia_pp": -26.0,
+      "base_media_pct": 39.6,
+      "diferencia_pp": -27.1,
       "muestra_insuficiente": true
      },
      "20": {
@@ -122,19 +122,19 @@
       "muestra_insuficiente": true
      },
      "5": {
-      "n": 1,
-      "aciertos": 0,
+      "n": 2,
+      "aciertos": 1,
       "fallos": 0,
       "neutrales": 1,
-      "pendientes": 1,
+      "pendientes": 0,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": 0.0,
-      "ret_medio": 0.357,
+      "acierto_pct": 50.0,
+      "ret_medio": 1.719,
       "peor_ret": 0.357,
       "peor_mae": -0.221,
       "base_media_pct": 37.4,
-      "diferencia_pp": -37.4,
+      "diferencia_pp": 12.6,
       "muestra_insuficiente": true
      },
      "20": {
@@ -346,19 +346,19 @@
     "no_puntuables": 3,
     "horizontes": {
      "1": {
-      "n": 4,
-      "aciertos": 1,
+      "n": 5,
+      "aciertos": 2,
       "fallos": 1,
       "neutrales": 2,
-      "pendientes": 1,
+      "pendientes": 0,
       "comp_caida": 0,
       "comp_vix": 0,
-      "acierto_pct": 25.0,
-      "ret_medio": 0.193,
+      "acierto_pct": 40.0,
+      "ret_medio": 0.413,
       "peor_ret": -1.171,
       "peor_mae": -1.171,
-      "base_media_pct": 37.8,
-      "diferencia_pp": -12.8,
+      "base_media_pct": 37.7,
+      "diferencia_pp": 2.3,
       "muestra_insuficiente": true
      },
      "5": {
@@ -618,7 +618,13 @@
    "criterio": null,
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "ACIERTO",
+     "ret": 1.291,
+     "mae": 0.0,
+     "unidad": "%",
+     "base_pct": 37.6,
+     "fecha_fin": "2026-10-21",
+     "sigma_h": 2.0664
     },
     "5": {
      "estado": "PENDIENTE"
@@ -767,7 +773,13 @@
      "sigma_h": 2.0769
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret": -3.081,
+     "mae": -3.081,
+     "unidad": "%",
+     "base_pct": 34.6,
+     "fecha_fin": "2026-10-21",
+     "sigma_h": 4.6441
     },
     "20": {
      "estado": "PENDIENTE"
@@ -796,7 +808,13 @@
      "sigma_h": 2.0769
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "ACIERTO",
+     "ret": 3.081,
+     "mae": -0.146,
+     "unidad": "%",
+     "base_pct": 37.4,
+     "fecha_fin": "2026-10-21",
+     "sigma_h": 4.6441
     },
     "20": {
      "estado": "PENDIENTE"
@@ -6320,8 +6338,8 @@
  "nota": "Las señales se solapan en el tiempo (p. ej. cambios de tesis seguidos del mismo activo): no son observaciones independientes. Sin conclusiones automáticas.",
  "ultima_ejecucion": {
   "senales_nuevas": 0,
-  "resultados_nuevos": 0,
-  "evaluo": false
+  "resultados_nuevos": 3,
+  "evaluo": true
  },
- "duracion_s": 0.0
+ "duracion_s": 0.1
 }

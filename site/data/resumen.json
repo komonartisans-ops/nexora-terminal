@@ -99,9 +99,9 @@
    "valor": 7757.17
   },
   "Oro": {
-   "delta": -1.1325301204819227,
+   "delta": -1.1662627070783138,
    "fecha": "2026-10-22",
-   "valor": 4103.0
+   "valor": 4101.60009765625
   },
   "Bitcoin": {
    "delta": 1.309902088613879,
@@ -337,23 +337,23 @@
  },
  "motores_propios": {
   "oro_xau": {
-   "calculado_utc": "2026-10-22 05:30 UTC",
+   "calculado_utc": "2026-10-22 10:21 UTC",
    "ok": true,
    "disponible": true
   },
   "indices": {
-   "calculado_utc": "2026-10-22 05:30 UTC",
+   "calculado_utc": "2026-10-22 10:21 UTC",
    "ok": true,
    "disponible": true
   },
   "liquidez_cripto": {
-   "calculado_utc": "2026-10-22 05:30 UTC",
+   "calculado_utc": "2026-10-22 10:21 UTC",
    "ok": true,
    "disponible": true
   }
  },
  "sencillo_activos": "Empujan a favor: Oro y Nasdaq 100; empujan en contra: Russell 2000; sin ventaja clara: S&P 500, Bitcoin y US30 · Dow Jones (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-22 10:07 UTC",
- "duracion_s": 111.5
+ "generado_utc": "2026-10-22 10:21 UTC",
+ "duracion_s": 107.8
 }
