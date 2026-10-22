@@ -5,18 +5,18 @@
    "workflow": "actualizar",
    "horario_esperado": "cada hora, 06-22 UTC, lun-vie",
    "esperadas_hasta_ahora": 10,
-   "hoy_ejecutadas": 11,
+   "hoy_ejecutadas": 14,
    "hoy_fallidas": 0,
-   "ultima_utc": "2026-10-22 11:39",
-   "ultima_evento": "schedule",
-   "ultima_estado": "success",
-   "horas_desde_ultima": 3.8
+   "ultima_utc": "2026-10-22 15:07",
+   "ultima_evento": "workflow_dispatch",
+   "ultima_estado": "queued",
+   "horas_desde_ultima": 0.3
   },
   {
    "workflow": "reacciones",
    "horario_esperado": "cada 5 min, 12:00-21:00 UTC, lun-vie",
    "esperadas_hasta_ahora": 42,
-   "hoy_ejecutadas": 2,
+   "hoy_ejecutadas": 56,
    "hoy_fallidas": 0,
    "ultima_utc": "2026-10-22 15:25",
    "ultima_evento": "workflow_dispatch",
@@ -27,7 +27,7 @@
    "workflow": "agenda_diaria",
    "horario_esperado": "8:00 Madrid, lun-vie",
    "esperadas_hasta_ahora": 1,
-   "hoy_ejecutadas": 1,
+   "hoy_ejecutadas": 3,
    "hoy_fallidas": 0,
    "ultima_utc": "2026-10-22 12:39",
    "ultima_evento": "schedule",
@@ -42,8 +42,8 @@
    "hoy_fallidas": 0
   }
  ],
- "actualizar_parada": true,
- "aviso_telegram_enviado": true,
+ "actualizar_parada": false,
+ "aviso_telegram_enviado": false,
  "umbral_actualizar_h": 2.0,
  "nota": "Esperadas = horario del disparo externo (cron-job.org); los crones de GitHub son respaldo y no están garantizados. Ejecutadas = ejecuciones creadas hoy (UTC)."
 }
