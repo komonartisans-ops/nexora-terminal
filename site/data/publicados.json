@@ -298,16 +298,6 @@
    "url": "https://fred.stlouisfed.org/series/ICSA",
    "periodos": [
     {
-     "periodo": "2026-08-22",
-     "valor": 204000.0,
-     "nivel_original": 204000.0,
-     "nivel_actual": 204000.0,
-     "revisado": false,
-     "n_revisiones": 0,
-     "visto_primera_vez": "2026-10-08",
-     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
-    },
-    {
      "periodo": "2026-08-29",
      "valor": 207000.0,
      "nivel_original": 207000.0,
@@ -369,16 +359,26 @@
     },
     {
      "periodo": "2026-10-10",
-     "valor": 199000.0,
+     "valor": 200000.0,
      "nivel_original": 199000.0,
-     "nivel_actual": 199000.0,
+     "nivel_actual": 200000.0,
+     "revisado": true,
+     "n_revisiones": 1,
+     "visto_primera_vez": "2026-10-16",
+     "tipo_primer_registro": "PRIMERA"
+    },
+    {
+     "periodo": "2026-10-17",
+     "valor": 194000.0,
+     "nivel_original": 194000.0,
+     "nivel_actual": 194000.0,
      "revisado": false,
      "n_revisiones": 0,
-     "visto_primera_vez": "2026-10-16",
+     "visto_primera_vez": "2026-10-22",
      "tipo_primer_registro": "PRIMERA"
     }
    ],
-   "fecha_publicacion_calendario": "2026-10-15"
+   "fecha_publicacion_calendario": "2026-10-22"
   },
   "Ventas minoristas": {
    "serie": "RSAFS",
@@ -1351,6 +1351,24 @@
  },
  "revisiones": [
   {
+   "serie": "Peticiones iniciales de subsidio (semanal)",
+   "id": "ICSA",
+   "periodo": "2026-10-10",
+   "original": 199000.0,
+   "revisado": 200000.0,
+   "visto": "2026-10-22",
+   "unidad": "personas"
+  },
+  {
+   "serie": "Peticiones continuadas de subsidio (semanal)",
+   "id": "CCSA",
+   "periodo": "2026-10-03",
+   "original": 1710000.0,
+   "revisado": 1703000.0,
+   "visto": "2026-10-22",
+   "unidad": "personas"
+  },
+  {
    "serie": "Viviendas iniciadas",
    "id": "HOUST",
    "periodo": "2026-07-01",
@@ -1486,14 +1504,14 @@
    "unidad": "índice"
   }
  ],
- "n_revisiones": 15,
- "filas_registro": 836,
+ "n_revisiones": 17,
+ "filas_registro": 840,
  "registro_desde": "2026-10-08",
- "nuevas_filas": 0,
- "nuevos": 0,
+ "nuevas_filas": 4,
+ "nuevos": 2,
  "errores": {},
  "nota": "El registro de revisiones empieza el día de la primera ejecución: antes de esa fecha no hay vintages guardados y no se inventan.",
  "ok": true,
- "generado_utc": "2026-10-22 12:07 UTC",
- "duracion_s": 6.7
+ "generado_utc": "2026-10-22 13:07 UTC",
+ "duracion_s": 7.9
 }
