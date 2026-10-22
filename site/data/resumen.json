@@ -1,37 +1,37 @@
 {
  "periodo": "hoy",
  "corte": "Datos entre el 2026-10-21 y el 2026-10-22 (cada fuente publica a su hora)",
- "movido": "Sin cambio macro relevante hoy: ni la Fed, ni los tipos, ni el dólar, ni el miedo se han movido por encima de los umbrales. Lo que se mueva hoy lo explican flujos o noticias concretas, no un cambio de fondo.",
+ "movido": "El bono a 2 años baja 16 pb (hasta 4,65 %); el tipo real a 10 años baja 12 pb. En conjunto: el dinero se abarata.",
  "significa": [
   {
    "activo": "Oro",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro."
+   "viento": "A FAVOR",
+   "texto": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene."
   },
   {
    "activo": "Nasdaq 100",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro."
+   "viento": "A FAVOR",
+   "texto": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro."
   },
   {
    "activo": "S&P 500",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente."
+   "viento": "A FAVOR",
+   "texto": "A favor: bajan los tipos a corto plazo."
   },
   {
    "activo": "Bitcoin",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente."
+   "viento": "A FAVOR",
+   "texto": "A favor: bajan los tipos a corto plazo."
   },
   {
    "activo": "US30 · Dow Jones",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro."
+   "viento": "A FAVOR",
+   "texto": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro."
   },
   {
    "activo": "Russell 2000",
-   "viento": "SIN VIENTO CLARO",
-   "texto": "Sin viento claro: la macro no ha cambiado lo suficiente."
+   "viento": "A FAVOR",
+   "texto": "A favor: bajan los tipos a corto plazo."
   }
  ],
  "vigilar": [
@@ -39,30 +39,111 @@
   "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
   "mié 28 oct · Resultados Alphabet (GOOGL): BPA estimado $2.94 · después del cierre"
  ],
- "tesis": "Sin viento macro claro para el oro. Lo que puede inclinarlo: después del cierre.",
- "sencillo": "Hoy la macro no ha cambiado. Si ves movimientos en el gráfico, se deben a flujos o noticias concretas, no a un cambio de fondo: no hay que leer en ellos más de lo que son.",
- "motores_significativos": [],
+ "tesis": "Viento macro A FAVOR del oro: baja el tipo real (lo que más les ayuda). Lo que puede girarlo: después del cierre.",
+ "sencillo": "El bono a 2 años es la apuesta del mercado sobre lo que hará la Fed. Si baja, el mercado espera dinero más barato y eso ayuda a la bolsa, al oro y a cripto; si sube, los frena.",
+ "motores_significativos": [
+  "t2y",
+  "real"
+ ],
  "errores": {
   "lbma": "HTTPError: HTTP Error 403: Forbidden"
  },
  "detalle_viento": {
-  "Nasdaq 100": [],
-  "S&P 500": [],
-  "Oro": [],
-  "Bitcoin": [],
-  "US30 · Dow Jones": [],
-  "Russell 2000": []
+  "Nasdaq 100": [
+   {
+    "motor": "t2y",
+    "sube": false,
+    "peso": 3,
+    "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "real",
+    "sube": false,
+    "peso": 6.0,
+    "razon": "baja el tipo real (lo que más les ayuda)"
+   }
+  ],
+  "S&P 500": [
+   {
+    "motor": "t2y",
+    "sube": false,
+    "peso": 3,
+    "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "real",
+    "sube": false,
+    "peso": 3.0,
+    "razon": "baja el tipo real (lo que más les ayuda)"
+   }
+  ],
+  "Oro": [
+   {
+    "motor": "t2y",
+    "sube": false,
+    "peso": 3,
+    "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "real",
+    "sube": false,
+    "peso": 6.0,
+    "razon": "baja el tipo real (lo que más les ayuda)"
+   }
+  ],
+  "Bitcoin": [
+   {
+    "motor": "t2y",
+    "sube": false,
+    "peso": 3,
+    "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "real",
+    "sube": false,
+    "peso": 3.0,
+    "razon": "baja el tipo real (lo que más les ayuda)"
+   }
+  ],
+  "US30 · Dow Jones": [
+   {
+    "motor": "t2y",
+    "sube": false,
+    "peso": 1.5,
+    "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "real",
+    "sube": false,
+    "peso": 3.0,
+    "razon": "baja el tipo real (lo que más les ayuda)"
+   }
+  ],
+  "Russell 2000": [
+   {
+    "motor": "t2y",
+    "sube": false,
+    "peso": 4.5,
+    "razon": "bajan los tipos a corto plazo"
+   },
+   {
+    "motor": "real",
+    "sube": false,
+    "peso": 4.5,
+    "razon": "baja el tipo real (lo que más les ayuda)"
+   }
+  ]
  },
  "motores": {
   "t2y": {
-   "valor": 4.81,
-   "delta": 1.9999999999999574,
-   "fecha": "2026-10-21"
+   "valor": 4.65,
+   "delta": -15.999999999999925,
+   "fecha": "2026-10-22"
   },
   "real": {
-   "valor": 2.76,
-   "delta": -1.000000000000023,
-   "fecha": "2026-10-21"
+   "valor": 2.64,
+   "delta": -11.999999999999966,
+   "fecha": "2026-10-22"
   },
   "dxy": {
    "valor": 101.75549585076955,
@@ -99,9 +180,9 @@
    "valor": 7757.17
   },
   "Oro": {
-   "delta": -2.5349385824548154,
+   "delta": -2.5204842808734917,
    "fecha": "2026-10-22",
-   "valor": 4044.800048828125
+   "valor": 4045.39990234375
   },
   "Bitcoin": {
    "delta": 1.309902088613879,
@@ -124,7 +205,7 @@
   "Oro": {
    "etiqueta": "ALCISTA",
    "tesis": "ALCISTA con confluencia: la macro de la semana (a favor) y su motor propio (PREDOMINIO FAVORABLE) apuntan igual. Lo que la rompería: que ganen peso NFCI (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
+   "hoy": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
    "semana": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -152,12 +233,25 @@
     ]
    },
    "motor_propio_nombre": "dólar, tipo real, flujos de ETF y posicionamiento COMEX",
-   "motores": []
+   "motores": [
+    {
+     "motor": "t2y",
+     "sube": false,
+     "peso": 3,
+     "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "real",
+     "sube": false,
+     "peso": 6.0,
+     "razon": "baja el tipo real (lo que más les ayuda)"
+    }
+   ]
   },
   "Nasdaq 100": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
+   "hoy": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro.",
    "semana": "A favor: baja el tipo real (lo que más les ayuda).",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -189,13 +283,26 @@
     "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "tipos, amplitud, beneficios y volatilidad",
-   "motores": []
+   "motores": [
+    {
+     "motor": "t2y",
+     "sube": false,
+     "peso": 3,
+     "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "real",
+     "sube": false,
+     "peso": 6.0,
+     "razon": "baja el tipo real (lo que más les ayuda)"
+    }
+   ]
   },
   "S&P 500": {
    "etiqueta": "ALCISTA",
    "tesis": "ALCISTA con confluencia: la macro de la semana (a favor) y su motor propio (FAVORABLE) apuntan igual. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
-   "semana": "A favor: la Fed se ve menos dura.",
+   "hoy": "A favor: bajan los tipos a corto plazo.",
+   "semana": "A favor: baja el tipo real (lo que más les ayuda).",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "FAVORABLE",
@@ -226,12 +333,25 @@
     "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "tipos, amplitud, beneficios y volatilidad",
-   "motores": []
+   "motores": [
+    {
+     "motor": "t2y",
+     "sube": false,
+     "peso": 3,
+     "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "real",
+     "sube": false,
+     "peso": 3.0,
+     "razon": "baja el tipo real (lo que más les ayuda)"
+    }
+   ]
   },
   "Bitcoin": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso Chicago Fed NFCI y Daily Treasury Statement (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
+   "hoy": "A favor: bajan los tipos a corto plazo.",
    "semana": "A favor: la Fed se ve menos dura.",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -266,12 +386,25 @@
     ]
    },
    "motor_propio_nombre": "liquidez en dólares (Tesoro, Fed, stablecoins) y apetito de riesgo",
-   "motores": []
+   "motores": [
+    {
+     "motor": "t2y",
+     "sube": false,
+     "peso": 3,
+     "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "real",
+     "sube": false,
+     "peso": 3.0,
+     "razon": "baja el tipo real (lo que más les ayuda)"
+    }
+   ]
   },
   "US30 · Dow Jones": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente. Se mueve por motivos propios, no por la macro.",
+   "hoy": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro.",
    "semana": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro.",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -303,12 +436,25 @@
     "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "ciclo, industriales, financieras y empresas maduras",
-   "motores": []
+   "motores": [
+    {
+     "motor": "t2y",
+     "sube": false,
+     "peso": 1.5,
+     "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "real",
+     "sube": false,
+     "peso": 3.0,
+     "razon": "baja el tipo real (lo que más les ayuda)"
+    }
+   ]
   },
   "Russell 2000": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "Sin viento claro: la macro no ha cambiado lo suficiente.",
+   "hoy": "A favor: bajan los tipos a corto plazo.",
    "semana": "A favor: la Fed se ve menos dura.",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -340,7 +486,20 @@
     "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "tipos, crédito high yield, condiciones financieras y economía doméstica",
-   "motores": []
+   "motores": [
+    {
+     "motor": "t2y",
+     "sube": false,
+     "peso": 4.5,
+     "razon": "bajan los tipos a corto plazo"
+    },
+    {
+     "motor": "real",
+     "sube": false,
+     "peso": 4.5,
+     "razon": "baja el tipo real (lo que más les ayuda)"
+    }
+   ]
   }
  },
  "motores_propios": {
@@ -362,6 +521,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000. Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-22 19:07 UTC",
- "duracion_s": 105.2
+ "generado_utc": "2026-10-22 20:07 UTC",
+ "duracion_s": 104.5
 }

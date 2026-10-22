@@ -1,6 +1,16 @@
 {
  "items": [
   {
+   "banco": "BoE",
+   "tipo": "Noticia",
+   "titulo": "Regulators unveil plans to simplify Senior Manager and Certification Regime",
+   "orador": null,
+   "fecha_utc": "2026-10-22 20:00",
+   "fecha": "2026-10-22",
+   "enlace": "https://www.bankofengland.co.uk/news/2026/october/regulators-unveil-plans-to-simplify-senior-manager-and-certification-regime",
+   "fuente": "boe"
+  },
+  {
    "banco": "BoJ",
    "tipo": "Novedad",
    "titulo": "Japanese Government Bonds Held by the Bank of Japan",
@@ -1289,16 +1299,6 @@
    "fecha": "2026-07-20",
    "enlace": "https://www.bankofengland.co.uk/news/2026/july/pra-fines-hdi-global-se-4165000-for-inaccurate-reporting",
    "fuente": "boe"
-  },
-  {
-   "banco": "BoE",
-   "tipo": "Noticia",
-   "titulo": "PRA and FCA propose new captive insurance regime to drive UK growth and competitiveness",
-   "orador": null,
-   "fecha_utc": "2026-07-14 14:00",
-   "fecha": "2026-07-14",
-   "enlace": "https://www.bankofengland.co.uk/news/2026/july/pra-and-fca-propose-new-captive-insurance-regime-to-drive-uk-growth-and-competitiveness",
-   "fuente": "boe"
   }
  ],
  "fuentes": {
@@ -1340,7 +1340,7 @@
    "n": 40,
    "url": "https://www.bankofengland.co.uk/rss/news",
    "pagina": "https://www.bankofengland.co.uk/news",
-   "ultimo": "2026-10-16 11:00"
+   "ultimo": "2026-10-22 20:00"
   },
   "tesoro": {
    "banco": "Tesoro EE. UU.",
@@ -1354,6 +1354,6 @@
  "n_total": 130,
  "nota": "Solo titular, fecha, orador y enlace procedentes de los RSS oficiales. NEXORA no resume ni interpreta el contenido.",
  "ok": true,
- "generado_utc": "2026-10-22 19:07 UTC",
- "duracion_s": 7.2
+ "generado_utc": "2026-10-22 20:07 UTC",
+ "duracion_s": 7.6
 }
