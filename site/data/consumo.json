@@ -1,25 +1,25 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-21 21:30 UTC",
- "fecha_datos": "2026-10-21",
+ "generado_utc": "2026-10-22 00:09 UTC",
+ "fecha_datos": "2026-10-20",
  "mercado": {
   "cap": {
    "nombre": "XLY/XLP · consumo discrecional / básico (ponderado por capitalización)",
-   "fecha": "2026-10-21",
-   "ratio": 1.32625,
-   "sma200": 1.37738,
-   "dist_sma200_pct": -3.71,
-   "pendiente_3m_pct": 1.47,
+   "fecha": "2026-10-20",
+   "ratio": 1.31624,
+   "sma200": 1.37852,
+   "dist_sma200_pct": -4.52,
+   "pendiente_3m_pct": -2.59,
    "sobre_sma200": false
   },
   "igual": {
    "nombre": "RSPD/RSPS · consumo discrecional / básico en peso igual",
-   "fecha": "2026-10-21",
-   "ratio": 1.76171,
-   "sma200": 1.83107,
-   "dist_sma200_pct": -3.79,
-   "pendiente_3m_pct": -1.26,
+   "fecha": "2026-10-20",
+   "ratio": 1.76143,
+   "sma200": 1.83228,
+   "dist_sma200_pct": -3.87,
+   "pendiente_3m_pct": -1.33,
    "sobre_sma200": false
   },
   "pesos": {
@@ -29,9 +29,9 @@
    "suma": 40.82,
    "fuente": "State Street SSGA, posiciones diarias de XLY"
   },
-  "diferencia_3m_pp": 2.73,
-  "aviso": "el ratio lo mueven AMZN+TSLA, no el consumo amplio: empujan XLY/XLP al alza (+2,73 pp frente a RSPD/RSPS en 3 meses)",
-  "sentido": "AL ALZA",
+  "diferencia_3m_pp": -1.26,
+  "aviso": null,
+  "sentido": null,
   "umbral_pp": 2.0
  },
  "graficos": {
@@ -2041,10 +2041,6 @@
     [
      "2026-10-20",
      1.31624
-    ],
-    [
-     "2026-10-21",
-     1.32625
     ]
    ],
    "sma50": [
@@ -4051,10 +4047,6 @@
     [
      "2026-10-20",
      1.35034
-    ],
-    [
-     "2026-10-21",
-     1.3487
     ]
    ],
    "sma200": [
@@ -6061,10 +6053,6 @@
     [
      "2026-10-20",
      1.37852
-    ],
-    [
-     "2026-10-21",
-     1.37738
     ]
    ]
   },
@@ -8074,10 +8062,6 @@
     [
      "2026-10-20",
      1.76143
-    ],
-    [
-     "2026-10-21",
-     1.76171
     ]
    ],
    "sma50": [
@@ -10084,10 +10068,6 @@
     [
      "2026-10-20",
      1.7955
-    ],
-    [
-     "2026-10-21",
-     1.79292
     ]
    ],
    "sma200": [
@@ -12094,10 +12074,6 @@
     [
      "2026-10-20",
      1.83228
-    ],
-    [
-     "2026-10-21",
-     1.83107
     ]
    ]
   }
@@ -12149,7 +12125,7 @@
  "capas": {
   "mercado": {
    "estado": "BAJA",
-   "detalle": "RSPD/RSPS -3.79 % frente a su media de 200 y -1.26 % en 3 meses"
+   "detalle": "RSPD/RSPS -3.87 % frente a su media de 200 y -1.33 % en 3 meses"
   },
   "real": {
    "estado": "SIN DATO",
@@ -12229,5 +12205,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS) · State Street SSGA (posiciones de XLY) · FRED (RRSFS, PCEC96, DSPIC96, PSAVERT, TOTALSL, DRCCLACBS; UMCSENT como respaldo) · Universidad de Michigan (sca.isr.umich.edu, ánimo del consumidor)",
- "duracion_s": 3.5
+ "duracion_s": 4.0
 }

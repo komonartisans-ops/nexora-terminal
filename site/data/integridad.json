@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-21 23:58 UTC",
+ "generado_utc": "2026-10-22 00:09 UTC",
  "resumen": {
   "al_dia": 26,
   "total": 28,
@@ -18,7 +18,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-21",
-   "registrado_utc": "2026-10-21 23:58 UTC",
+   "registrado_utc": "2026-10-22 00:09 UTC",
    "proximo_utc": "2026-10-22 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -53,7 +53,7 @@
    "frecuencia": "cada hora (laborables)",
    "color": "verde",
    "motivo": "al día",
-   "ultimo_dato": "2026-10-21",
+   "ultimo_dato": "2026-10-22",
    "registrado_utc": "2026-10-21 23:58 UTC",
    "proximo_utc": "2026-10-22 06:07 UTC",
    "discrepancias_abiertas": 0
@@ -138,7 +138,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-20",
-   "registrado_utc": "2026-10-21 23:58 UTC",
+   "registrado_utc": "2026-10-22 00:09 UTC",
    "proximo_utc": "2026-10-22 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -150,7 +150,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-19",
-   "registrado_utc": "2026-10-21 23:58 UTC",
+   "registrado_utc": "2026-10-22 00:09 UTC",
    "proximo_utc": "2026-10-22 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -174,7 +174,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-21",
-   "registrado_utc": "2026-10-21 23:58 UTC",
+   "registrado_utc": "2026-10-22 00:09 UTC",
    "proximo_utc": "2026-10-22 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -186,7 +186,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": null,
-   "registrado_utc": "2026-10-21 22:07 UTC",
+   "registrado_utc": "2026-10-21 23:58 UTC",
    "proximo_utc": "2026-10-22 06:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -210,7 +210,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-21",
-   "registrado_utc": "2026-10-21 21:30 UTC",
+   "registrado_utc": "2026-10-22 00:09 UTC",
    "proximo_utc": "2026-10-22 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -222,7 +222,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-21",
-   "registrado_utc": "2026-10-21 21:30 UTC",
+   "registrado_utc": "2026-10-22 00:09 UTC",
    "proximo_utc": "2026-10-22 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -306,7 +306,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-21",
-   "registrado_utc": "2026-10-21 21:30 UTC",
+   "registrado_utc": "2026-10-22 00:09 UTC",
    "proximo_utc": "2026-10-22 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -318,7 +318,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-21",
-   "registrado_utc": "2026-10-21 21:30 UTC",
+   "registrado_utc": "2026-10-22 00:09 UTC",
    "proximo_utc": "2026-10-22 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -330,7 +330,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-21",
-   "registrado_utc": "2026-10-21 21:30 UTC",
+   "registrado_utc": "2026-10-22 00:09 UTC",
    "proximo_utc": "2026-10-22 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -342,7 +342,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-21",
-   "registrado_utc": "2026-10-21 21:30 UTC",
+   "registrado_utc": "2026-10-22 00:09 UTC",
    "proximo_utc": "2026-10-22 05:30 UTC",
    "discrepancias_abiertas": 0
   }
@@ -432,7 +432,7 @@
   "BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
   "BEA": "API de BEA activa (secreto BEA_API_KEY): PCE y PIB real con el mismo umbral; manda BEA",
   "bea_activa": true,
-  "bls_consultas_hoy": 1,
+  "bls_consultas_hoy": 2,
   "bls_ultimo_error": null,
   "bea_ultimo_error": null
  },
@@ -442,5 +442,5 @@
   "regla": "aviso si a la hora de publicación + 2 h el periodo nuevo no está en publicados.json"
  },
  "errores": {},
- "duracion_s": 0.5
+ "duracion_s": 0.7
 }

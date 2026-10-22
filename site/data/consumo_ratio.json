@@ -1,17 +1,17 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-21 21:30 UTC",
- "fecha_datos": "2026-10-21",
+ "generado_utc": "2026-10-22 00:09 UTC",
+ "fecha_datos": "2026-10-20",
  "filtro_sma200": {
   "ratios": {
    "cap": {
     "nombre": "XLY/XLP",
     "diario": {
-     "fecha": "2026-10-21",
-     "valor": 1.32625,
-     "sma200": 1.37738,
-     "dist_pct": -3.71,
+     "fecha": "2026-10-20",
+     "valor": 1.31624,
+     "sma200": 1.37852,
+     "dist_pct": -4.52,
      "lado_actual": -1,
      "vigente": -1,
      "pendiente": 0,
@@ -64,10 +64,10 @@
    "igual": {
     "nombre": "RSPD/RSPS",
     "diario": {
-     "fecha": "2026-10-21",
-     "valor": 1.76171,
-     "sma200": 1.83107,
-     "dist_pct": -3.79,
+     "fecha": "2026-10-20",
+     "valor": 1.76143,
+     "sma200": 1.83228,
+     "dist_pct": -3.87,
      "lado_actual": -1,
      "vigente": -1,
      "pendiente": 0,
@@ -125,88 +125,88 @@
  "rotacion": {
   "estado": "OK",
   "spy": {
-   "ret_1m": -0.04,
-   "ret_3m": 4.73,
-   "fecha": "2026-10-21"
+   "ret_1m": -0.58,
+   "ret_3m": 2.9,
+   "fecha": "2026-10-20"
   },
   "filas": [
    {
     "etf": "XLE",
-    "ret_1m": 10.33,
-    "ret_3m": 14.79,
-    "rel_1m": 10.36,
-    "rel_3m": 10.06,
-    "fecha": "2026-10-21",
+    "ret_1m": 8.82,
+    "ret_3m": 14.81,
+    "rel_1m": 9.4,
+    "rel_3m": 11.92,
+    "fecha": "2026-10-20",
     "puesto_3m": 1,
     "puesto_1m": 1
    },
    {
     "etf": "XLV",
-    "ret_1m": 5.33,
-    "ret_3m": 10.84,
-    "rel_1m": 5.36,
-    "rel_3m": 6.11,
-    "fecha": "2026-10-21",
+    "ret_1m": 6.4,
+    "ret_3m": 12.79,
+    "rel_1m": 6.97,
+    "rel_3m": 9.89,
+    "fecha": "2026-10-20",
     "puesto_3m": 2,
+    "puesto_1m": 3
+   },
+   {
+    "etf": "XLP",
+    "ret_1m": 7.12,
+    "ret_3m": 3.99,
+    "rel_1m": 7.69,
+    "rel_3m": 1.1,
+    "fecha": "2026-10-20",
+    "puesto_3m": 3,
     "puesto_1m": 2
    },
    {
-    "etf": "XLY",
-    "ret_1m": 2.85,
-    "ret_3m": 6.22,
-    "rel_1m": 2.89,
-    "rel_3m": 1.5,
-    "fecha": "2026-10-21",
-    "puesto_3m": 3,
-    "puesto_1m": 5
-   },
-   {
     "etf": "XLK",
-    "ret_1m": -3.94,
-    "ret_3m": 5.65,
-    "rel_1m": -3.9,
-    "rel_3m": 0.93,
-    "fecha": "2026-10-21",
+    "ret_1m": -4.83,
+    "ret_3m": 2.87,
+    "rel_1m": -4.25,
+    "rel_3m": -0.03,
+    "fecha": "2026-10-20",
     "puesto_3m": 4,
     "puesto_1m": 8
    },
    {
-    "etf": "XLP",
-    "ret_1m": 5.29,
-    "ret_3m": 4.69,
-    "rel_1m": 5.33,
-    "rel_3m": -0.04,
-    "fecha": "2026-10-21",
+    "etf": "XLY",
+    "ret_1m": 2.91,
+    "ret_3m": 1.3,
+    "rel_1m": 3.49,
+    "rel_3m": -1.6,
+    "fecha": "2026-10-20",
     "puesto_3m": 5,
-    "puesto_1m": 3
+    "puesto_1m": 5
    },
    {
     "etf": "XLF",
-    "ret_1m": 2.26,
-    "ret_3m": 0.38,
-    "rel_1m": 2.3,
-    "rel_3m": -4.35,
-    "fecha": "2026-10-21",
+    "ret_1m": -0.32,
+    "ret_3m": -0.59,
+    "rel_1m": 0.25,
+    "rel_3m": -3.48,
+    "fecha": "2026-10-20",
     "puesto_3m": 6,
     "puesto_1m": 6
    },
    {
     "etf": "XLI",
-    "ret_1m": -1.15,
-    "ret_3m": -7.49,
-    "rel_1m": -1.11,
-    "rel_3m": -12.22,
-    "fecha": "2026-10-21",
+    "ret_1m": -1.87,
+    "ret_3m": -6.74,
+    "rel_1m": -1.3,
+    "rel_3m": -9.63,
+    "fecha": "2026-10-20",
     "puesto_3m": 7,
     "puesto_1m": 7
    },
    {
     "etf": "XLU",
-    "ret_1m": 3.63,
-    "ret_3m": -9.07,
-    "rel_1m": 3.66,
-    "rel_3m": -13.8,
-    "fecha": "2026-10-21",
+    "ret_1m": 3.0,
+    "ret_3m": -8.82,
+    "rel_1m": 3.58,
+    "rel_3m": -11.71,
+    "fecha": "2026-10-20",
     "puesto_3m": 8,
     "puesto_1m": 4
    }
@@ -215,11 +215,11 @@
  },
  "divergencia": {
   "hoy": {
-   "fecha": "2026-10-21",
+   "fecha": "2026-10-20",
    "activa": false,
    "spy_max_63": false,
-   "ratio_vs_max63_pct": -6.83,
-   "amplitud_pp": 1.83,
+   "ratio_vs_max63_pct": -6.84,
+   "amplitud_pp": 2.0,
    "amplitud_a_la_baja": false,
    "credito_ampliandose": null,
    "credito_detalle": null,
@@ -227,6 +227,18 @@
    "parcial": false
   },
   "ultimos_30": [
+   {
+    "fecha": "2026-09-09",
+    "activa": false,
+    "spy_max_63": false,
+    "ratio_vs_max63_pct": -5.65,
+    "amplitud_pp": -1.68,
+    "amplitud_a_la_baja": true,
+    "credito_ampliandose": null,
+    "credito_detalle": null,
+    "fuerza": null,
+    "parcial": false
+   },
    {
     "fecha": "2026-09-10",
     "activa": false,
@@ -574,18 +586,6 @@
     "credito_detalle": null,
     "fuerza": null,
     "parcial": false
-   },
-   {
-    "fecha": "2026-10-21",
-    "activa": false,
-    "spy_max_63": false,
-    "ratio_vs_max63_pct": -6.83,
-    "amplitud_pp": 1.83,
-    "amplitud_a_la_baja": false,
-    "credito_ampliandose": null,
-    "credito_detalle": null,
-    "fuerza": null,
-    "parcial": false
    }
   ],
   "inicios_recientes": [
@@ -654,7 +654,7 @@
   }
  },
  "marcador": {
-  "senales_nuevas": 1,
+  "senales_nuevas": 0,
   "tipos": [
    "cruce_sma200_ratio",
    "divergencia_ratio"
@@ -675,5 +675,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (XLY, XLP, RSPD, RSPS, SPY, RSP y ocho sectores SPDR) · FRED (diferenciales ICE BofA IG, BBB, HY, CCC) · reglas de indices.py y ciclo.py",
- "duracion_s": 11.4
+ "duracion_s": 13.0
 }
