@@ -81,6 +81,7 @@ def publicar(texto, sesgo, tipo, visibilidad, fecha=None, corte=None, raiz=RAIZ,
     destino = escribir_privado(ruta_priv, fm + "\n\n" + texto, solo_local)
     # el informe ya extraído (secciones, escenarios…) también va al repo PRIVADO: la vista del terminal lo lee con el token del Diario; no se reanaliza en el navegador
     estructura = {k: parsed[k] for k in ("secciones", "bloques", "orden", "tesis_central", "veredicto", "tesis_final", "escenarios", "red_team", "data_gaps", "reconocido")}
+    estructura["cotejo"] = cot            # el cotejo con los textos literales del informe (filas, eventos y líneas de la Fed) solo en el repo privado
     estructura.update({"id": id_, "fecha": fecha, "corte_madrid": corte, "tipo": tipo, "sesgo_oro": sesgo, "hash": h, "texto": texto})
     escribir_privado(ruta_priv[:-3] + ".json", json.dumps(estructura, ensure_ascii=False, indent=1), solo_local)
     # 3) repo público: índice, cotejo y (solo si visibilidad=resumen) el resumen
@@ -104,7 +105,10 @@ def publicar(texto, sesgo, tipo, visibilidad, fecha=None, corte=None, raiz=RAIZ,
     os.makedirs(os.path.dirname(ruta_ind), exist_ok=True)
     A.anadir_csv(ruta_ind, filas, A.CAMPOS_INDICE, lambda r: (r["id"], r["estado"]))
     assert len(A.leer_csv(ruta_ind)) == n0 + len(filas)
-    reg = {"id": id_, "fecha": fecha, "tipo": tipo, "registrada_utc": sello, "panel": [{k: v for k, v in x.items() if k != "texto"} for x in cot["panel"]], "calendario": cot["calendario"], "fed": cot["fed"], "resumen": cot["resumen"], "resumen_calendario": cot["resumen_calendario"],
+    reg = {"id": id_, "fecha": fecha, "tipo": tipo, "registrada_utc": sello, "panel": [{k: v for k, v in x.items() if k != "texto"} for x in cot["panel"]],
+           "calendario": [{k: v for k, v in x.items() if k != "texto"} for x in cot["calendario"]],       # sin el texto del evento del informe (solo fecha, hora, estado, evento de NEXORA y nota)
+           "fed": {"informe": [], "informe_n": len(cot["fed"]["informe"]), "informe_fuente": cot["fed"]["informe_fuente"], "nexora": cot["fed"]["nexora"]},      # las líneas literales de la Fed van al repo privado
+           "resumen": cot["resumen"], "resumen_calendario": cot["resumen_calendario"],
            "tolerancias": cot["tolerancias"], "resumen_publico": resumen}
     with open(A.P(raiz, "data", "analisis_cotejos.jsonl"), "a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps(reg, ensure_ascii=False) + "\n")

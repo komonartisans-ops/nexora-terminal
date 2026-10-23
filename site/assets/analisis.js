@@ -42,8 +42,8 @@ function anAnterior(e, todas) {
   return `<div class="card"><div class="note" style="margin:0"><b>Tesis anterior → hoy.</b> <a href="#/analisis" data-an="${esc(a.id)}">${esc(fdy(a.fecha))}</a>: <span class="ck ${anSesgoCls(a.sesgo_oro)}">${esc(a.sesgo_oro)}</span> → <span class="ck ${anSesgoCls(e.sesgo_oro)}">${esc(e.sesgo_oro)}</span> ${a.sesgo_oro === e.sesgo_oro ? '(sin cambio de sesgo)' : '<b>(cambio de sesgo)</b>'}. El sesgo lo indica Ruiz al publicar; NEXORA no lo deduce del texto.</div></div>`;
 }
 
-function anCotejo(e) {
-  const c = e.cotejo;
+function anCotejo(e, P) {
+  const c = e.cotejo, priv = P && P.cotejo;        // los textos literales del informe (eventos B.3, líneas de la Fed) solo vienen del repo privado
   if (!c) return `<div class="card"><div class="empty" style="height:80px">SIN DATO · cotejo</div></div>`;
   let h = `<div class="sect"><h2>Cotejo del panel A.2 con NEXORA</h2><span class="more">tolerancias: ${esc(c.tolerancias || '')}</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th></th><th style="text-align:left">Dato</th><th>Informe</th><th>NEXORA</th><th>Diferencia</th><th style="text-align:left">Fuente y fecha de NEXORA</th></tr></thead><tbody>`;
   h += (c.panel || []).map((f) => `<tr><td data-label="Estado"><span class="ck ${anEstCls(f.estado)}">${esc(f.estado)}</span></td><td data-label="Dato" style="text-align:left"><b>${esc(f.nombre)}</b></td><td data-label="Informe" class="mono">${anV(f.valor)}</td>`
@@ -52,13 +52,13 @@ function anCotejo(e) {
   h += `</tbody></table>${footIn('engine/analisis.py · históricos propios de NEXORA (misma fecha)', e.fecha, null, '✅ coincide · ⚠️ difiere · — NEXORA no lo tiene (nunca se rellena)')}</div>`;
   const cal = c.calendario || [];
   h += `<div class="sect"><h2>Calendario B.3 frente a la agenda de NEXORA</h2><span class="more">tiene en cuenta el cambio de hora (Europa 25-oct, EE. UU. 1-nov)</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th></th><th>Día</th><th>Hora informe</th><th style="text-align:left">Evento del informe</th><th>NEXORA (Madrid)</th><th style="text-align:left">Nota</th></tr></thead><tbody>`
-    + (cal.length ? cal.map((f) => `<tr><td data-label="Estado"><span class="ck ${anEstCls(f.estado)}">${esc(f.estado)}</span></td><td data-label="Día">${esc(fdy(f.fecha))}</td><td data-label="Hora informe" class="mono">${esc(f.hora || '—')}</td><td data-label="Evento" style="text-align:left">${esc(f.texto || '—')}</td>`
+    + (cal.length ? cal.map((f) => `<tr><td data-label="Estado"><span class="ck ${anEstCls(f.estado)}">${esc(f.estado)}</span></td><td data-label="Día">${esc(fdy(f.fecha))}</td><td data-label="Hora informe" class="mono">${esc(f.hora || '—')}</td><td data-label="Evento" style="text-align:left">${f.texto ? esc(f.texto) : ((priv && (priv.calendario || []).find((x) => x.fecha === f.fecha && x.hora === f.hora) || {}).texto ? esc(priv.calendario.find((x) => x.fecha === f.fecha && x.hora === f.hora).texto) : '<small>(privado)</small>')}</td>`
       + `<td data-label="NEXORA" class="mono">${f.nexora ? esc((f.nexora.hora_madrid || '—') + ' · ' + (f.nexora.evento || '')) : '—'}</td><td data-label="Nota" style="text-align:left"><small>${esc(f.nota || '')}</small></td></tr>`).join('')
       : '<tr><td colspan="6" style="text-align:left;color:var(--dim)">El calendario B.3 no se reconoció en el informe o no tiene eventos con hora.</td></tr>');
   h += `</tbody></table></div>`;
   const F = c.fed || {};
   h += `<div class="sect"><h2>Probabilidades de la Fed · lado a lado</h2><span class="more">cada una con su fuente; son métodos distintos y no se juzgan</span></div><div class="grid g2"><div class="card"><div class="chead"><span>Informe</span></div>`
-    + `${(F.informe || []).length ? F.informe.map((l) => `<p class="note" style="margin:4px 0">${esc(l)}</p>`).join('') : '<p class="note" style="margin:4px 0"><span class="sd-val">SIN DATO</span> · el informe no trae probabilidades de la Fed reconocibles</p>'}<div class="foot"><span>Fuente: ${esc(F.informe_fuente || '')}</span></div></div>`
+    + `${((priv && priv.fed && priv.fed.informe) || F.informe || []).length ? ((priv && priv.fed && priv.fed.informe) || F.informe).map((l) => `<p class="note" style="margin:4px 0">${esc(l)}</p>`).join('') : (F.informe_n ? `<p class="note" style="margin:4px 0">${esc(String(F.informe_n))} línea(s) sobre la Fed en el informe (texto privado: conecta el Diario para verlas)</p>` : '<p class="note" style="margin:4px 0"><span class="sd-val">SIN DATO</span> · el informe no trae probabilidades de la Fed reconocibles</p>')}<div class="foot"><span>Fuente: ${esc(F.informe_fuente || '')}</span></div></div>`
     + `<div class="card"><div class="chead"><span>NEXORA (fedwatch.py)</span></div>${F.nexora ? `<p class="note" style="margin:4px 0">Reunión del ${esc(fdy(F.nexora.reunion))}: subida ${anN(F.nexora.subida, 1)} % · mantiene ${anN(F.nexora.mantiene, 1)} % · bajada ${anN(F.nexora.bajada, 1)} %</p>` : '<p class="note"><span class="sd-val">SIN DATO</span></p>'}<div class="foot"><span>Fuente: ${esc(F.nexora ? F.nexora.fuente : '')}</span><span>${F.nexora ? 'precios del ' + esc(fdy(F.nexora.fecha_precios)) : ''}</span></div></div></div>`;
   return h;
 }
@@ -123,10 +123,10 @@ function pageAnalisis() {
       const vig = todas.filter((x) => x.tipo === AN.tipo && x.estado === 'VIGENTE');
       const e = (AN.sel && todas.find((x) => x.id === AN.sel && x.tipo === AN.tipo)) || vig[vig.length - 1] || null;
       if (!e) { root.innerHTML = `<div class="card"><div class="empty" style="height:80px">Todavía no hay informes ${esc(AN.tipo)}.</div></div>` + anHistorico(todas, null); return; }
-      root.innerHTML = anCabecera(e, undefined) + anAnterior(e, todas) + anBloques(e, null) + anCotejo(e) + anHistorico(todas, e) + anAcumulado(A);
+      root.innerHTML = anCabecera(e, undefined) + anAnterior(e, todas) + anBloques(e, null) + anCotejo(e, null) + anHistorico(todas, e) + anAcumulado(A);
       const P = await anPrivado(e);
-      if (document.getElementById('an-root') === root && P) root.innerHTML = anCabecera(e, P) + anAnterior(e, todas) + anBloques(e, P) + anCotejo(e) + anHistorico(todas, e) + anAcumulado(A);
-      else if (document.getElementById('an-root') === root) root.innerHTML = anCabecera(e, null) + anAnterior(e, todas) + anBloques(e, null) + anCotejo(e) + anHistorico(todas, e) + anAcumulado(A);
+      if (document.getElementById('an-root') === root && P) root.innerHTML = anCabecera(e, P) + anAnterior(e, todas) + anBloques(e, P) + anCotejo(e, P) + anHistorico(todas, e) + anAcumulado(A);
+      else if (document.getElementById('an-root') === root) root.innerHTML = anCabecera(e, null) + anAnterior(e, todas) + anBloques(e, null) + anCotejo(e, null) + anHistorico(todas, e) + anAcumulado(A);
     };
     const clic = (ev) => {
       const t = ev.target.closest('[data-tipo]'), s = ev.target.closest('[data-sesgo]'), a = ev.target.closest('[data-an]');

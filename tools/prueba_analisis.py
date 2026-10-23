@@ -43,13 +43,13 @@ A.2 Panel
 | Reservas | 2,963T |
 | SOFR | 3,88 % |
 | COT oro neto | 107.089 |
-Probabilidad Fed (CME FedWatch): 92% mantener, 8% subida en la reunión del 28-oct.
+Probabilidad Fed (CME FedWatch): 92% mantener, 8% subida en la reunión del 28-oct. {FRASE_PRIVADA}
 
 B. Calendario
 B.3 Calendario de la semana
 Martes 21-oct
 14:30 IPC EE. UU.
-16:00 Discurso de Powell
+16:00 Discurso de Powell {FRASE_PRIVADA}
 
 G. Oro
 Escenario 1: Base
@@ -169,6 +169,10 @@ for dp, _d, fs in os.walk(R):
         if FRASE_PRIVADA in open(os.path.join(dp, n), encoding="utf-8", errors="ignore").read():
             fugas.append(os.path.join(dp, n))
 assert not fugas and not os.path.exists(os.path.join(R, "data", "analisis")), fugas
+pub_c = json.load(open(os.path.join(R, "site", "data", "analisis.json"), encoding="utf-8"))["entradas"][0]["cotejo"]
+assert all("texto" not in x for x in pub_c["calendario"]) and pub_c["fed"]["informe"] == [] and pub_c["fed"]["informe_n"] >= 1 and pub_c["fed"]["nexora"]["mantiene"] == 92.0, "público: sin el texto de los eventos ni las líneas de la Fed del informe"
+_pj = json.load(open(os.path.join(PRIV, "analisis", "2026", "2026-10-20_ORO_MACRO.json"), encoding="utf-8"))
+assert any(FRASE_PRIVADA in (x.get("texto") or "") for x in _pj["cotejo"]["calendario"]) and any(FRASE_PRIVADA in l for l in _pj["cotejo"]["fed"]["informe"]), "los textos literales sí están en el JSON privado"
 J = json.load(open(os.path.join(R, "site", "data", "analisis.json"), encoding="utf-8"))
 assert J["n"] == 1 and J["entradas"][0]["visibilidad"] == "privado" and J["entradas"][0]["resumen_publico"] is None and J["entradas"][0]["sesgo_oro"] == "neutral" and J["entradas"][0]["cotejo"]["resumen"]["ok"] == 13
 assert all("texto" not in x for x in J["entradas"][0]["cotejo"]["panel"]), "el cotejo público no lleva el texto de las filas del informe"
