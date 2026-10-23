@@ -69,11 +69,32 @@ function pageIntegridad() {
   h += `<div class="note" style="padding:0 16px 12px">Histórico anterior al arreglo del disparo externo (cron-job.org): el registro se hacía a la primera ejecución del día siguiente, por eso sale ≈ 1 día. Las filas anteriores a esta versión solo guardan la fecha de registro (retraso en días); las nuevas guardan también la hora (retraso en horas). Los datos de «carga inicial» no cuentan: se bajaron de golpe al empezar y no miden el retraso. Desde la ampliación de la franja de reacciones y el vigilante, este número debe bajar.</div></div>`;
   h += integMichigan(I.michigan);
   h += integEia(I.eia);
+  h += integSpotOro(I.spot_oro);
   const V = I.vigilante || {}, S = I.segunda_fuente || {};
   h += '<div class="sect"><h2>Vigilante y segunda fuente</h2><span class="more">cómo se comprueba cada dato</span></div><div class="grid g3"><div class="card"><div class="chead"><span>Vigilante de publicaciones</span></div>'
     + `<p class="note" style="margin:6px 0">Regla: ${esc(V.regla || '')}. Un aviso por dato.</p><p class="note" style="margin:0">${V.avisos ? V.avisos + ' aviso(s) enviado(s) hasta ahora.' : 'Ningún aviso enviado todavía: no ha faltado ningún dato.'}</p></div>`
     + `<div class="card"><div class="chead"><span>Vigilante del cierre</span></div><p class="note" style="margin:6px 0">${esc(vc ? vc.texto : 'SIN DATO')}</p><p class="note" style="margin:0">Comprueba cada día a las 22:15 UTC, en data/ejecuciones.csv, que las etapas del cierre de las 21:30 UTC corrieron OK; avisa por Telegram si no. Si él mismo no corre en 2 días hábiles, avisa esta página.</p></div>
     <div class="card"><div class="chead"><span>Segunda fuente</span></div><p class="note" style="margin:6px 0"><b>BLS</b> (IPC, IPC subyacente, IPP): ${esc(S.BLS || '')}.</p><p class="note" style="margin:0"><b>BEA</b> (PIB, PCE): ${esc(S.BEA || '')}</p>${S.bls_ultimo_error ? `<p class="note" style="margin:4px 0 0">Último error de BLS: ${esc(S.bls_ultimo_error)}</p>` : ''}${S.bea_ultimo_error ? `<p class="note" style="margin:4px 0 0">Último error de BEA: ${esc(S.bea_ultimo_error)}</p>` : ''}</div></div>`;
+  return h;
+}
+
+/* Fase 19: contraste del spot del oro (gold-api frente a GC=F − base y Swissquote) */
+function integSpotOro(B) {
+  let h = '<div class="sect"><h2>Spot del oro · contraste de fuentes</h2><span class="more">gold-api · GC=F − base · Swissquote · umbral 0,3 %</span></div>';
+  const u = B && B.ultimo;
+  if (!u) return h + '<div class="card"><p class="note" style="margin:0">SIN DATO: el primer contraste se registra en el cierre de las 21:30 UTC (data/xau_spot_contraste.csv).</p></div>';
+  const cls = (e) => (e === 'OK' ? 'ok' : e === 'DUDOSO' ? 'no' : e === 'GC_IMPLICITO' || e === 'SWISSQUOTE' || e === 'NO_SINCRONIZADO' ? 'par' : 'sd');
+  const dp = (x) => (x === '' || x == null ? '—' : `${+x > 0 ? '+' : ''}${esc(num(+x, 3))} %`);
+  if (B.racha_swiss_caido >= B.sesiones_swiss_aviso) h += `<div class="banner red" style="margin:0 0 14px;border-radius:6px"><b>Swissquote sin responder ${B.racha_swiss_caido} sesiones seguidas</b> (desde ${esc(fdy(B.racha_swiss_desde))}): el spot del oro depende solo de gold-api. El GC=F es informativo (retraso ~10 min).</div>`;
+  else if (u.swiss_precio === '') h += `<div class="banner amber" style="margin:0 0 14px;border-radius:6px"><b>Swissquote no respondió en el último contraste</b> (${B.racha_swiss_caido} de ${B.sesiones_swiss_aviso} sesiones seguidas antes del aviso por Telegram).</div>`;
+  if (B.racha_dudoso >= 2) h += `<div class="banner red" style="margin:0 0 14px;border-radius:6px"><b>Spot del oro dudoso ${B.racha_dudoso} sesiones seguidas</b> (desde ${esc(fdy(B.racha_desde))}). El ratio XAU/GLD y la base GC−XAU no se actualizan mientras dure.</div>`;
+  else if (u.estado === 'DUDOSO') h += `<div class="banner amber" style="margin:0 0 14px;border-radius:6px"><b>Spot del oro dudoso el ${esc(fdy(u.fecha))}:</b> el ratio XAU/GLD no se actualizó (se usa el último OK). Si se repite mañana, aviso por Telegram.</div>`;
+  h += `<div class="card"><div class="chead"><span>Último contraste · ${esc(fdy(u.fecha))}</span><span class="ck ${cls(u.estado)}">${esc(u.estado)}</span></div>`
+    + `<p class="note" style="margin:6px 0">${esc(u.texto_fuentes)}</p><p class="note" style="margin:0">Spot usado: <b>${esc(u.spot_usado)}</b> (${esc(u.spot_fuente)}) · ratio XAU/GLD: ${u.ratio_fuente === 'ANTERIOR' ? '<b>NO actualizado</b> (se usa el último OK)' : 'de la sesión'}${u.nota ? ' · ' + esc(u.nota) : ''}</p>`
+    + `<p class="note" style="margin:6px 0 0">${esc(B.regla)}</p></div>`;
+  h += '<div class="card pad0 scroll" style="margin-top:12px"><table class="t stack"><thead><tr><th style="text-align:left">Sesión</th><th>gold-api</th><th>GC implícito <small>informativo (retraso ~10 min)</small></th><th>Dif. GC</th><th>Swissquote</th><th>Dif. Swiss</th><th>Estado</th><th>Ratio</th></tr></thead><tbody>'
+    + (B.historial || []).map((r) => `<tr><td data-label="Sesión" style="text-align:left">${esc(fdy(r.fecha))}</td><td data-label="gold-api">${esc(r.spot_principal || 'CAÍDA')}</td><td data-label="GC implícito">${esc(r.spot_gc_implicito || '—')}</td><td data-label="Dif. GC">${r.spot_gc_implicito && (r.dif_gc_pct === '' || r.dif_gc_pct == null) ? 'informativo' : dp(r.dif_gc_pct)}</td><td data-label="Swissquote">${esc(r.swiss_precio || '—')}</td><td data-label="Dif. Swiss">${dp(r.dif_swiss_pct)}</td><td data-label="Estado"><span class="ck ${cls(r.estado)}">${esc(r.estado)}</span></td><td data-label="Ratio">${esc(r.ratio_fuente)}</td></tr>`).join('')
+    + `</tbody></table>${footIn(B.fuente, u.fecha, null, '2 sesiones seguidas en DUDOSO → un aviso por Telegram')}</div>`;
   return h;
 }
 

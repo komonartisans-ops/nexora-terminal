@@ -271,6 +271,33 @@ def vigilar(raiz=RAIZ, ahora=None, seco=False, enviar=None, push=False):
                 else:
                     print("vigilante: Telegram no aceptó el aviso (se reintenta):", err)
                     out.append((clave, "ERROR", err or ""))
+    # Fase 19: un solo aviso por racha (clave = inicio de la racha): spot del oro en ⚠️ 2 sesiones seguidas, o Swissquote sin responder 3 sesiones seguidas
+    try:
+        import spot_oro
+        n1, i1 = spot_oro.racha_dudoso(raiz)
+        n2, i2 = spot_oro.racha_swiss_caido(raiz)
+        pendientes = []
+        if n1 >= 2:
+            pendientes.append((f"spot_oro|{i1}", "spot_oro", i1, "spot del oro dudoso 2 sesiones seguidas", spot_oro.mensaje_racha(n1, i1, spot_oro.filas(raiz)[-1])))
+        if n2 >= spot_oro.SESIONES_SWISS_CAIDO:
+            pendientes.append((f"swiss_caido|{i2}", "swiss_caido", i2, "Swissquote sin responder 3 sesiones seguidas", spot_oro.mensaje_swiss_caido(n2, i2)))
+        for clave, dato, periodo, evento, txt in pendientes:
+            if clave in est["avisos"]:
+                continue
+            if seco:
+                print("[seco · no se envía]\n" + txt + "\n")
+                out.append((clave, "SECO", txt))
+                continue
+            import telegram
+            ok, err = (enviar or telegram.enviar)(txt)
+            if ok:
+                nuevos[clave] = {"estado": "AVISADO", "avisado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "dato": dato, "periodo": periodo, "evento": evento, "publicado_utc": ""}
+                out.append((clave, "AVISADO", txt))
+            else:
+                print("vigilante: Telegram no aceptó el aviso (se reintenta):", err)
+                out.append((clave, "ERROR", err or ""))
+    except Exception as e:  # noqa: BLE001
+        print("vigilante spot_oro:", type(e).__name__, str(e)[:100])
     if nuevos and not seco:
         _guardar_v(raiz, est, nuevos)
         if push and os.environ.get("GITHUB_ACTIONS"):
@@ -913,6 +940,11 @@ def bloque_eia(raiz, ahora):
     return B
 
 
+def _resumen_spot(raiz):
+    import spot_oro
+    return spot_oro.resumen(raiz)
+
+
 def construir(raiz=RAIZ, ahora=None):
     ahora = ahora or dt.datetime.now(UTC)
     disc = discrepancias(raiz)
@@ -935,6 +967,7 @@ def construir(raiz=RAIZ, ahora=None):
             "discrepancias_calendario": [{k: x[k] for k in ("dato", "fred", "oficial", "oficial_fuente", "motivo")} for x in cal_abiertas],
             "discrepancias_revisadas": revisadas,
             "vigilante_cierre": estado_vigilante_cierre(raiz, ahora),
+            "spot_oro": _resumen_spot(raiz),
             "segunda_fuente": {"BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
                                "BEA": ("API de BEA activa (secreto BEA_API_KEY): PCE y PIB real con el mismo umbral; manda BEA" if os.environ.get("BEA_API_KEY") else BEA_SIN_DATO),
                                "bea_activa": bool(os.environ.get("BEA_API_KEY")), "bls_consultas_hoy": est["bls"].get("n", 0), "bls_ultimo_error": est["bls"].get("ultimo_error"),

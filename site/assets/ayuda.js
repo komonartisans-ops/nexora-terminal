@@ -51,8 +51,9 @@ function ayAbrir(btn) {
   const ya = btn.getAttribute('aria-expanded') === 'true';
   ayCerrar();
   if (ya) return;
-  const r = ayBuscar(btn.dataset.t, ayPagina());
-  AY.pop.innerHTML = `<button class="ay-x" aria-label="Cerrar">×</button><div class="ay-t">${esc(btn.dataset.t)}</div>${r ? ayHtml(r) : '<p>Sin texto de ayuda para este bloque.</p>'}`;
+  const propio = btn.dataset.ayh ? btn.dataset.ayh.split('\n').map((l) => `<p>${esc(l)}</p>`).join('') : '';      // texto del propio bloque (datos vivos, p. ej. las fuentes del spot del oro)
+  const r = propio ? null : ayBuscar(btn.dataset.t, ayPagina());
+  AY.pop.innerHTML = `<button class="ay-x" aria-label="Cerrar">×</button><div class="ay-t">${esc(btn.dataset.t)}</div>${propio || (r ? ayHtml(r) : '<p>Sin texto de ayuda para este bloque.</p>')}`;
   AY.pop.hidden = false; btn.setAttribute('aria-expanded', 'true');
   if (window.innerWidth <= 600) { AY.pop.style.cssText = ''; AY.pop.classList.add('sheet'); return; }
   AY.pop.classList.remove('sheet');

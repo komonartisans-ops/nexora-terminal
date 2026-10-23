@@ -64,7 +64,7 @@ Base de las URL: `https://api.github.com/repos/komonartisans-ops/nexora-terminal
 
 ### Tarea C · vigilante del cierre, todos los días a las 22:15 UTC
 
-Ejecuta `tools/vigilar_cierre.py --gh --esperar --avisar` (`vigilar_cierre.yml`, **solo** `workflow_dispatch`, sin `schedule:`): comprueba en `data/ejecuciones.csv` (no en `meta.json`, que la hora siguiente sobrescribe) que las 16 etapas del modo cierre de las 21:30 UTC corrieron OK. Avisa por Telegram si una falla o falta, y avisa «vigilante sin poder comprobar» si él mismo falla. Sábado y domingo sale con OK sin avisar. Deja una fila por ejecución en `data/vigilar_cierre.csv`; `#/integridad` y el vigilante de integridad avisan si no corre en 2 días hábiles; `#/salud` cuenta su ejecución diaria.
+Ejecuta `tools/vigilar_cierre.py --gh --esperar --avisar` (`vigilar_cierre.yml`, **solo** `workflow_dispatch`, sin `schedule:`): comprueba en `data/ejecuciones.csv` (no en `meta.json`, que la hora siguiente sobrescribe) que todas las etapas del modo cierre (las lee de `MODOS["cierre"]` de `engine/build.py`, incluida `spot_oro`) de las 21:30 UTC corrieron OK. Avisa por Telegram si una falla o falta, y avisa «vigilante sin poder comprobar» si él mismo falla. Sábado y domingo sale con OK sin avisar. Deja una fila por ejecución en `data/vigilar_cierre.csv`; `#/integridad` y el vigilante de integridad avisan si no corre en 2 días hábiles; `#/salud` cuenta su ejecución diaria.
 
 | Campo | Valor |
 |---|---|

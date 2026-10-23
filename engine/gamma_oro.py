@@ -32,6 +32,7 @@ import fuentes
 import gamma
 import gamma_intradia as GI
 import precios
+import spot_oro as SO
 
 UTC, MAD, NY = GI.UTC, GI.MAD, GI.NY
 RAIZ = GI.RAIZ
@@ -84,9 +85,20 @@ def gc_en(hora_utc):
     return float(v), dt.datetime.fromtimestamp(t, UTC).strftime("%Y-%m-%d %H:%M")
 
 
-def anotar_base(raiz, sesion, fila_ratio, fuentes_=None, medido_utc=""):
-    """Base del día del futuro GC = GC − XAU en el mismo momento que el ratio (solo añadir). None si falta algún dato."""
+def fuentes_spot(fuentes_):
+    """Funciones de spot para el contraste. Con fuentes inyectadas (pruebas) solo se usan las que se pasan: no se llama a la red por una fuente ausente."""
     f = fuentes_ or {}
+    if fuentes_ is None:
+        return {"principal": xau_spot, "gc": gc_en, "swiss": SO.swiss}
+    return {"principal": f.get("xau"), "gc": f.get("gc"), "swiss": f.get("swiss")}
+
+
+def anotar_base(raiz, sesion, fila_ratio, fuentes_=None, medido_utc=""):
+    """Base del día del futuro GC = GC − XAU en el mismo momento que el ratio (solo añadir). None si falta algún dato o si el spot del día es el GC implícito (sería circular)."""
+    f = fuentes_ or {}
+    if str(fila_ratio.get("fuente_xau", "")).startswith("GC_IMPLICITO"):
+        print("base GC sin anotar: el spot de hoy es el GC implícito")
+        return None
     try:
         gc, barra = (f.get("gc") or gc_en)(fila_ratio["xau_hora_utc"])
     except Exception as e:  # noqa: BLE001
@@ -132,15 +144,23 @@ def ratio_para(raiz, sesion):
 
 
 def anotar_ratio(raiz, sesion, fuentes_=None, medido_utc=""):
-    """Anota (solo añadir) el ratio de la sesión. Devuelve la fila o None si falta algún cierre (sin inventar)."""
-    f = fuentes_ or {}
+    """Anota (solo añadir) el ratio de la sesión. Devuelve la fila o None si falta algún cierre (sin inventar) o si el spot de hoy es DUDOSO (Fase 19: el ratio no se actualiza ese día)."""
     try:
-        g = (f.get("gld_cierre") or gld_cierre)(dt.date.fromisoformat(sesion))
-        x, hora, fuente = (f.get("xau") or xau_spot)()
+        g = ((fuentes_ or {}).get("gld_cierre") or gld_cierre)(dt.date.fromisoformat(sesion))
+        fs = fuentes_spot(fuentes_)
+        d = SO.decidir(raiz, sesion, fs["principal"], fs["gc"], fs["swiss"], medido_utc=medido_utc)
+        if d is None:
+            raise RuntimeError("sin spot del oro (principal caída y sin GC implícito)")
     except Exception as e:  # noqa: BLE001
         print("ratio XAU/GLD sin anotar:", type(e).__name__, str(e)[:100])
         return None
-    fila = {"fecha": sesion, "gld_cierre": round(float(g), 4), "xau_spot": round(float(x), 2), "ratio": round(float(x) / float(g), 5), "xau_hora_utc": hora, "fuente_xau": fuente, "medido_utc": medido_utc}
+    if d["estado"] in ("DUDOSO", "SWISSQUOTE"):
+        print(f"ratio XAU/GLD NO actualizado: spot {'dudoso' if d['estado'] == 'DUDOSO' else 'solo de Swissquote, último recurso'} ({SO.texto_fuentes(d)}); se usa el último ratio OK (ratio_fuente=ANTERIOR)")
+        return None
+    x, hora = float(d["spot_usado"]), d["hora_utc"] if d["spot_fuente"] == "GC_IMPLICITO" else d["principal_hora_utc"]
+    fuente = ("gold-api.com (XAU/USD al contado)" if d["spot_fuente"] == "GOLD_API"
+              else f"GC_IMPLICITO: GC=F {d['gc_precio']} − base {d['base_usada']} del {d['base_fecha']} (principal caída)")
+    fila = {"fecha": sesion, "gld_cierre": round(float(g), 4), "xau_spot": round(x, 2), "ratio": round(x / float(g), 5), "xau_hora_utc": hora, "fuente_xau": fuente, "medido_utc": medido_utc}
     GI._anadir_csv(P(raiz, "data", "xau_gld_ratio.csv"), [fila], CAMPOS_RATIO, lambda r: r["fecha"])
     return fila
 
@@ -165,7 +185,8 @@ def convertir(M, r):
     em = (M.get("em") or {}).get("puntos")
     M["niveles"] = niv
     M["em_xau"] = round(em * k, 1) if (em and k) else None
-    M["ratio"] = ({**r, "nota": ("ratio de la sesión" if r["exacto"] else f"APROXIMADO: ratio del {r['fecha']} (no hay el de la sesión)")} if r else None)
+    M["ratio"] = ({**r, "ratio_fuente": "SESION" if r["exacto"] else "ANTERIOR",
+                   "nota": ("ratio de la sesión" if r["exacto"] else f"APROXIMADO: ratio del {r['fecha']} (no hay el de la sesión)")} if r else None)
     return M
 
 
@@ -278,11 +299,12 @@ def etapa(escribir_cierre=False, hoy=None, stamp="", raiz=RAIZ, previo=None, fue
         return previo
     escribe = bool(escribir_cierre and M["cierre_confirmado"] and M["sesion"] == (hoy or dt.datetime.now(UTC).strftime("%Y-%m-%d")))
     if escribe:
-        fr = anotar_ratio(raiz, M["sesion"], f, stamp)
+        fr = anotar_ratio(raiz, M["sesion"], fuentes_, stamp)
         if fr:
-            anotar_base(raiz, M["sesion"], fr, f, stamp)
+            anotar_base(raiz, M["sesion"], fr, fuentes_, stamp)
     r = ratio_para(raiz, M["sesion"])
     convertir(M, r)
+    M["spot_contraste"] = SO.resumen_fila(SO.fila_de(raiz, M["sesion"]))      # Fase 19: contraste del spot de ESTA sesión (None si no se ha contrastado)
     M["spot_gld"] = M["spot_idx"]
     M["em_gld"] = M["em"]
     M["historico_escrito"] = False
@@ -322,7 +344,7 @@ def etapa(escribir_cierre=False, hoy=None, stamp="", raiz=RAIZ, previo=None, fue
     except Exception as e:  # noqa: BLE001
         M["linea"] = None
         M["error_linea"] = f"{type(e).__name__}: {str(e)[:100]}"
-    M["fuente"] = "Cboe · cadena de opciones de GLD con 15 min de retraso (cdn-api.cboe.com), GVZ y GLD de Yahoo Finance, XAU/USD de gold-api.com"
+    M["fuente"] = "Cboe · cadena de opciones de GLD con 15 min de retraso (cdn-api.cboe.com), GVZ y GLD de Yahoo Finance, XAU/USD de gold-api.com contrastado con GC=F − base y Swissquote (Fase 19)"
     M["metodo"] = re.sub(r"\n {2,}", " ", __doc__.split("Método (")[1].split("MARCADOR")[0]).strip()
     M["ok"] = True
     return M
@@ -382,7 +404,8 @@ def linea_oro(raiz=RAIZ, ahora=None, J=None):
     evento = "+".join(x[1] for x in evs[:2]) or "no"
     r = J.get("ratio") or {}
     return (f"XAU tesis={tesis};int={inten};flip={_v((n.get('flip') or {}).get('xau'))};cw={_v((n.get('cw') or {}).get('xau'))};pw={_v((n.get('pw') or {}).get('xau'))};"
-            f"em={_v(J.get('em_xau'))};maxg={_v((n.get('maxg') or {}).get('xau'))};ratio={_v(r.get('valor'), 4)};rf={r.get('fecha') or 'na'};cot={cot};etf={etf};evento={evento}")
+            f"em={_v(J.get('em_xau'))};maxg={_v((n.get('maxg') or {}).get('xau'))};ratio={_v(r.get('valor'), 4)};rf={r.get('fecha') or 'na'};cot={cot};etf={etf};evento={evento}"
+            + (";spot=dudoso" if (J.get("spot_contraste") or {}).get("estado") == "DUDOSO" else ""))
 
 
 def mensaje_oro(raiz=RAIZ, ahora=None):

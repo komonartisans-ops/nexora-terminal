@@ -236,6 +236,17 @@ function gmHistorial(a, x, rev, C, F, dec) {
   return h;
 }
 /* devuelve {html, montar}: montar() dibuja los gráficos cuando el HTML ya está en la página */
+/* Fase 19: chip del contraste del spot del oro (solo ORO) con las fuentes en su ⓘ */
+function gmSpotFila(x) {
+  if (!x.etiqueta || x.clave !== 'GC') return '';
+  const c = x.spot_contraste;
+  if (!c) return `<tr><td>Spot</td><td><span class="ck sd">SIN CONTRASTE</span></td></tr>`;
+  const e = c.estado, cls = e === 'OK' ? 'ok' : e === 'DUDOSO' ? 'no' : 'par';
+  const txt = e === 'OK' ? 'spot verificado' : e === 'DUDOSO' ? 'spot dudoso' : e === 'GC_IMPLICITO' ? 'spot = GC implícito' : e === 'SWISSQUOTE' ? 'spot = Swissquote (último recurso)' : e === 'NO_SINCRONIZADO' ? 'spot no sincronizado' : 'spot sin contrastar';
+  const ayh = [`Estado: ${e} · umbral ${nf(c.umbral_pct, 1)} % entre fuentes de la misma hora (±5 min).`, c.texto_fuentes || '',
+    `Spot usado: ${c.spot_usado} (${c.spot_fuente}) · ratio XAU/GLD: ${c.ratio_fuente === 'ANTERIOR' ? 'NO actualizado hoy, se usa el último OK' : 'de la sesión'}.`, c.nota || ''].filter(Boolean).join('\n');
+  return `<tr><td>Spot <button type="button" class="info" data-t="Spot del oro: fuentes" data-ayh="${esc(ayh)}" aria-label="Fuentes del spot del oro" aria-expanded="false">ⓘ</button></td><td><span class="ck ${cls}" title="${esc(c.texto_fuentes || '')}">${esc(txt)}</span></td></tr>`;
+}
 function gmActivo(a) {
   const { x, rev, err } = gmEntrada(a);
   if (!x) return { html: `<div class="sect"><h2>${esc(a.id)}</h2></div>${noData('Gamma ' + a.id)}${err ? errores({ [a.id]: err }) : ''}`, montar() {} };
@@ -249,7 +260,7 @@ function gmActivo(a) {
   h += gmEsencial(x, C, F, dec, ref);
   h += '<div class="grid g3" style="margin-top:12px">';
   h += `<div class="card kpi"><div class="lab">Precio ${esc(C)}</div><div class="exp">${F ? `Contado en grande · futuro ${esc(F)} debajo` : 'Contado'}</div><div class="big">${gmN(x.spot_idx, 2)}<small> ${esc(C)}</small></div>
-    <table><tr><td>Futuro ${esc(F || '')}</td><td>${tieneF ? nf(x.spot_fut, 2) : 'SIN DATO'}</td></tr><tr><td>Base del día</td><td>${b.base != null ? sg(b.base, 2, ' pts') : 'SIN DATO'}</td></tr><tr><td>Método</td><td style="text-align:right;white-space:normal;font-size:10.5px">${esc(b.metodo || '')}</td></tr></table>${foot(b.fuente || 'Yahoo Finance', x.sesion)}</div>`;
+    <table><tr><td>Futuro ${esc(F || '')}</td><td>${tieneF ? nf(x.spot_fut, 2) : 'SIN DATO'}</td></tr><tr><td>Base del día</td><td>${b.base != null ? sg(b.base, 2, ' pts') : 'SIN DATO'}</td></tr>${gmSpotFila(x)}<tr><td>Método</td><td style="text-align:right;white-space:normal;font-size:10.5px">${esc(b.metodo || '')}</td></tr></table>${foot(b.fuente || 'Yahoo Finance', x.sesion)}</div>`;
   [['Call Wall', x.call_wall, 'up', 'Mayor gamma de calls por encima del precio'], ['Put Wall', x.put_wall, 'down', 'Mayor gamma de puts por debajo del precio']].forEach(([t, o, cl, ex]) => {
     h += `<div class="card kpi"><div class="lab">${t}</div><div class="exp">${ex}</div><div class="big ${cl}">${Ci(o)}<small> ${esc(C)}</small></div>
       <table><tr><td>Futuro ${esc(F || '')}</td><td>${Fu(o)}</td></tr><tr><td>Distancia</td><td>${dist(o)}</td></tr><tr><td>GEX del tramo</td><td>${o ? gmG(o.musd) : '—'}</td></tr></table>${foot('CRITERIO NEXORA · Cboe', x.sesion)}</div>`;
