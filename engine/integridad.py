@@ -505,7 +505,7 @@ def dias_habiles_entre(d0, d1):
 
 def estado_vigilante_cierre(raiz, ahora):
     """Lee data/vigilar_cierre.csv (una fila por ejecución del vigilante). Alerta si lleva ≥ 2 días hábiles sin correr (se cuentan hasta AYER: la de hoy es a las 22:15 UTC)."""
-    filas = leer_csv(P(raiz, "data", "vigilar_cierre.csv"))
+    filas = [r for r in leer_csv(P(raiz, "data", "vigilar_cierre.csv")) if r.get("resultado") != "SIMULACRO"]      # un SIMULACRO no cuenta como ejecución real
     ult = max(filas, key=lambda r: (r["fecha"], r["ejecutado_utc"])) if filas else None
     ref = dt.date.fromisoformat(ult["fecha"]) if ult else dt.date.fromisoformat(DESDE_VIGILAR_CIERRE) - dt.timedelta(days=1)
     ayer = ahora.date() - dt.timedelta(days=1)

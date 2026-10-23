@@ -5,6 +5,13 @@ name: vigilar_cierre
 # Si hay una etapa fallida o ausente avisa por Telegram; si el propio vigilante no puede comprobar, avisa «vigilante sin poder comprobar». Un fallo silencioso no vale.
 on:
   workflow_dispatch:
+    inputs:
+      run_id:
+        description: "run_id del cierre a comprobar (vacío = el de hoy). Un run_id inexistente fuerza la ruta «sin cierre»"
+        default: ""
+      simulacro:
+        description: "true = SIMULACRO: mensaje [SIMULACRO] y registro SIMULACRO (no cuenta como alerta ni como ejecución real)"
+        default: "false"
 
 permissions:
   contents: write
@@ -29,7 +36,13 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           VIGILANTE_AVISADO_FILE: /tmp/vigilante_avisado
-        run: python tools/vigilar_cierre.py --gh --esperar --avisar
+          ENTRADA_RUN_ID: ${{ github.event.inputs.run_id }}
+          ENTRADA_SIMULACRO: ${{ github.event.inputs.simulacro }}
+        run: |
+          ARGS=()
+          if [ -n "$ENTRADA_RUN_ID" ]; then ARGS+=(--run-id "$ENTRADA_RUN_ID"); fi
+          if [ "$ENTRADA_SIMULACRO" = "true" ]; then ARGS+=(--simulacro); fi
+          python tools/vigilar_cierre.py --gh --esperar --avisar "${ARGS[@]}"
       - name: Guardar el registro de ejecuciones del vigilante
         if: always()
         run: python engine/push_seguro.py "vigilante del cierre $(date -u +'%Y-%m-%d %H:%M') UTC [skip ci]"

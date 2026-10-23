@@ -133,6 +133,22 @@ av = [m for m in rec if "vigilante del cierre" in m]
 assert len(av) == 1 and "Revisa el disparo externo" in av[0], rec
 print("10) OK integridad: aviso si el vigilante no corre en 2 días hábiles (una sola vez); fines de semana no cuentan")
 
+# 11) SIMULACRO autorizado: run_id inexistente fuerza la ruta «sin cierre»; mensaje [SIMULACRO]; registro SIMULACRO; no cuenta en integridad
+LOG2 = os.path.join(tempfile.mkdtemp(prefix="vs_"), "vigilar_cierre.csv")
+n0 = len(enviados)
+cod, r = V.ejecutar("2026-10-24", run_id="999999999", leer_fn=lambda: dia_ok, enviar_fn=env, avisar=True, log=LOG2, ahora=dt.datetime(2026, 10, 24, 22, 15, tzinfo=UTC), simulacro=True)
+assert cod == 0 and r["avisado"] is True and len(enviados) == n0 + 1 and enviados[-1].startswith("[SIMULACRO] NEXORA") and "no hay ninguna ejecución de cierre registrada con run_id 999999999" in enviados[-1] and "no es una alerta real" in enviados[-1]
+assert "SIN_EJECUCION" in r["motivo"], "recorre la ruta «sin cierre» (también en sábado: el simulacro funciona cualquier día)"
+filas2 = list(__import__("csv").DictReader(open(LOG2, encoding="utf-8")))
+assert [x["resultado"] for x in filas2] == ["SIMULACRO"], filas2
+shutil_ = __import__("shutil")
+TR2 = tempfile.mkdtemp(prefix="vi2_")
+os.makedirs(os.path.join(TR2, "data"))
+shutil_.copy(LOG2, os.path.join(TR2, "data", "vigilar_cierre.csv"))
+v2 = I.estado_vigilante_cierre(TR2, dt.datetime(2026, 10, 28, 9, 0, tzinfo=UTC))
+assert v2["ejecuciones_registradas"] == 0 and v2["ultima_fecha"] is None, "un SIMULACRO no cuenta como ejecución real del vigilante"
+print("11) OK simulacro: " + enviados[-1])
+
 # 7) los datos reales del repo: el cierre del 20-oct (21:30 UTC) corrió las 17 etapas
 real = V.comprobar(V.leer_local(), "2026-10-20")
 assert real["ok"] is True, real

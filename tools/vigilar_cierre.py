@@ -8,6 +8,7 @@ Uso:  python tools/vigilar_cierre.py [--fecha AAAA-MM-DD] [--run-id N] [--csv RU
   --run-id  filas de ese run_id (el del cierre); sin él, la primera ejecución de la fecha cuyo modo contiene «cierre» y que empieza a las 21:30 UTC o después
   --gh      lee data/ejecuciones.csv del repositorio con `gh api` (sin clonar); --esperar sondea hasta que aparezca el cierre (límite 23:30 UTC)
   --avisar  envía la alerta por Telegram SOLO si hay problema. Si el propio vigilante no puede comprobar (excepción, sin acceso al CSV) avisa «vigilante sin poder comprobar».
+  --simulacro  SIMULACRO autorizado: el mensaje empieza por [SIMULACRO], la fila del registro lleva resultado SIMULACRO (no cuenta como ejecución real ni como ALERTA) y funciona cualquier día. Con --run-id inexistente fuerza la ruta «sin cierre»
   --sin-registro  no escribe data/vigilar_cierre.csv (el registro de ejecuciones del vigilante, que el vigilante de integridad usa para saber que corre)
 Días sin cierre (sábado y domingo, según el cron del cierre en actualizar.yml): sale con OK y sin avisar. Los festivos de la bolsa SÍ ejecutan el cierre (cron lun-vie) y se comprueban.
 Código de salida: 0 = OK (o día sin cierre); 1 = alerta de etapas; 2 = el vigilante no pudo comprobar."""
@@ -144,12 +145,12 @@ def _avisar(texto, enviar_fn):
     return bool(ok)
 
 
-def ejecutar(fecha=None, run_id=None, leer_fn=None, enviar_fn=None, avisar=False, esperadas=None, ahora=None, log=None, espera_fn=None):
+def ejecutar(fecha=None, run_id=None, leer_fn=None, enviar_fn=None, avisar=False, esperadas=None, ahora=None, log=None, espera_fn=None, simulacro=False):
     """Una pasada completa. Devuelve (código de salida, resultado). Nunca lanza: cualquier fallo del propio vigilante se convierte en «vigilante sin poder comprobar» (código 2) y se avisa."""
     ahora = ahora or dt.datetime.now(dt.timezone.utc)
     fecha = fecha or ahora.strftime("%Y-%m-%d")
     try:
-        if not toca_cierre(fecha):
+        if not simulacro and not toca_cierre(fecha):
             res = {"ok": True, "fecha": fecha, "run": None, "motivo": "NO_TOCA", "faltan": [], "fallan": [], "avisado": False,
                    "mensaje": f"NEXORA · {fecha} ({['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'][dt.date.fromisoformat(fecha).weekday()]}): hoy no hay cierre; nada que comprobar."}
             if log:
@@ -163,6 +164,14 @@ def ejecutar(fecha=None, run_id=None, leer_fn=None, enviar_fn=None, avisar=False
                 break
             ahora = espera_fn()                       # espera y devuelve la hora nueva
         res["avisado"] = False
+        if simulacro:
+            res["mensaje"] = "[SIMULACRO] " + res["mensaje"] + " Simulacro autorizado: no es una alerta real."
+            res["motivo"] = "SIMULACRO(" + res["motivo"] + ")"
+            if avisar:
+                res["avisado"] = _avisar(res["mensaje"], enviar_fn)
+            if log:
+                _registrar(log, fecha, "SIMULACRO", (res.get("run") or {}).get("run_id"), res["mensaje"], ahora)
+            return (0 if res["avisado"] else 1), res
         if not res["ok"] and avisar:
             res["avisado"] = _avisar(res["mensaje"], enviar_fn)
         if log:
@@ -196,6 +205,7 @@ def main():
     ap.add_argument("--esperar", action="store_true")
     ap.add_argument("--avisar", action="store_true")
     ap.add_argument("--sin-registro", action="store_true")
+    ap.add_argument("--simulacro", action="store_true")
     a = ap.parse_args()
     enviar = None
     try:
@@ -210,7 +220,7 @@ def main():
     def espera():
         time.sleep(240)
         return dt.datetime.now(dt.timezone.utc)
-    cod, res = ejecutar(a.fecha, a.run_id, leer, enviar, a.avisar, None, None, None if a.sin_registro else os.path.join(RAIZ, "data", "vigilar_cierre.csv"), espera if a.esperar else None)
+    cod, res = ejecutar(a.fecha, a.run_id, leer, enviar, a.avisar, None, None, None if a.sin_registro else os.path.join(RAIZ, "data", "vigilar_cierre.csv"), espera if (a.esperar and not a.run_id and not a.simulacro) else None, a.simulacro)
     print(res["mensaje"])
     if res.get("avisado"):
         print("aviso enviado por Telegram")
