@@ -217,9 +217,9 @@
    "valor": 7663.43
   },
   "Oro": {
-   "delta": -0.5492021777123046,
+   "delta": -0.5344289157171223,
    "fecha": "2026-10-23",
-   "valor": 4038.10009765625
+   "valor": 4038.699951171875
   },
   "Bitcoin": {
    "delta": -3.2341811041923685,
@@ -431,7 +431,8 @@
      "M2",
      "SOFR",
      "Emisiones / subastas Treasury",
-     "VIX"
+     "VIX",
+     "Opciones BTC: put/call (open interest)"
     ],
     "contra_n": [
      "Chicago Fed NFCI",
@@ -583,23 +584,23 @@
  },
  "motores_propios": {
   "oro_xau": {
-   "calculado_utc": "2026-10-23 05:30 UTC",
+   "calculado_utc": "2026-10-23 10:19 UTC",
    "ok": true,
    "disponible": true
   },
   "indices": {
-   "calculado_utc": "2026-10-23 05:30 UTC",
+   "calculado_utc": "2026-10-23 10:19 UTC",
    "ok": true,
    "disponible": true
   },
   "liquidez_cripto": {
-   "calculado_utc": "2026-10-23 05:30 UTC",
+   "calculado_utc": "2026-10-23 10:19 UTC",
    "ok": true,
    "disponible": true
   }
  },
  "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin y US30 · Dow Jones; sin ventaja clara: Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-23 10:07 UTC",
- "duracion_s": 104.5
+ "generado_utc": "2026-10-23 10:19 UTC",
+ "duracion_s": 109.4
 }

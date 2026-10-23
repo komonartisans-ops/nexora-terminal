@@ -133,7 +133,7 @@
      "S&P 500: semana -1.0 · mes -0.5 %",
      "Nasdaq 100: semana -3.3 · mes -5.0 %",
      "Russell 2000: semana +0.6 · mes -1.8 %",
-     "Oro (COMEX GC=F, respaldo): semana -3.6 · mes -6.8 %",
+     "Oro (COMEX GC=F, respaldo): semana -3.4 · mes -6.6 %",
      "Bitcoin: semana -1.0 · mes -5.7 %",
      "Ether: semana -2.2 · mes -13.3 %",
      "10Y nominal: semana -14.0 · mes -15.0 pb",
@@ -169,7 +169,7 @@
     "lectura": "PREDOMINIO FAVORABLE",
     "sentido": "FAVORABLE",
     "precio": "CONFIRMA DEBILIDAD",
-    "detalle": "oro 20 sesiones -6.8 %"
+    "detalle": "oro 20 sesiones -6.6 %"
    },
    {
     "monitor": "Índices USA",
@@ -231,8 +231,8 @@
     "unidad": "%"
    },
    "Oro (COMEX GC=F, respaldo)": {
-    "semana": -3.64,
-    "mes": -6.76,
+    "semana": -3.43,
+    "mes": -6.56,
     "unidad": "%"
    },
    "Bitcoin": {
@@ -1037,8 +1037,8 @@
    "lectura": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "historico": "Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %).",
    "aviso": "Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
-   "concentracion": "Amazon + Tesla pesan el 41,4 % de XLY (21-Oct-2026); en 13 semanas Amazon +7,9 %, Tesla +19,7 %. Sin ellas, el ratio habría variado -7,0 % (estimación): lo mueven sobre todo Amazon y Tesla.",
-   "tesis": "XLY/XLP 1,2780 (2026-10-22) · -7,1 % frente a su media de 200 sesiones · 13 semanas -1,7 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 41,4 % de XLY (21-Oct-2026); en 13 semanas Amazon +7,9 %, Tesla +19,7 %. Sin ellas, el ratio habría variado -7,0 % (estimación): lo mueven sobre todo Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
+   "concentracion": "Amazon + Tesla pesan el 39,9 % de XLY (22-Oct-2026); en 13 semanas Amazon +7,9 %, Tesla +19,7 %. Sin ellas, el ratio habría variado -6,7 % (estimación): lo mueven sobre todo Amazon y Tesla.",
+   "tesis": "XLY/XLP 1,2780 (2026-10-22) · -7,1 % frente a su media de 200 sesiones · 13 semanas -1,7 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 39,9 % de XLY (22-Oct-2026); en 13 semanas Amazon +7,9 %, Tesla +19,7 %. Sin ellas, el ratio habría variado -6,7 % (estimación): lo mueven sobre todo Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
    "estado_mercado": "DEFENSIVO",
    "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
   }
@@ -1050,6 +1050,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-23 10:07 UTC",
- "duracion_s": 10.7
+ "generado_utc": "2026-10-23 10:19 UTC",
+ "duracion_s": 7.7
 }

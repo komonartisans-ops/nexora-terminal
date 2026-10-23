@@ -1,38 +1,38 @@
 {
  "ok": true,
- "generado_utc": "2026-10-23 05:30 UTC",
+ "generado_utc": "2026-10-23 10:19 UTC",
  "metricas": {
-  "generado_utc": "2026-10-23 05:34 UTC",
+  "generado_utc": "2026-10-23 10:22 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer el oro (XAU/USD)",
   "oro": {
-   "lbma_pm": 4029.10009765625,
+   "lbma_pm": 4037.60009765625,
    "fecha": "2026-10-23",
-   "1d_pct": -0.77,
-   "5d_pct": -3.64,
-   "20d_pct": -6.76,
-   "60d_pct": -1.73,
-   "sma50": 4342.29,
-   "sma200": 4533.0,
+   "1d_pct": -0.56,
+   "5d_pct": -3.43,
+   "20d_pct": -6.56,
+   "60d_pct": -1.52,
+   "sma50": 4342.46,
+   "sma200": 4533.05,
    "max_52s": 5318.39990234375,
    "min_52s": 3960.5,
-   "ytd_pct": -6.94,
+   "ytd_pct": -6.74,
    "fuente": "Futuros oro COMEX GC=F (Yahoo Finance), USD/oz · respaldo: LBMA no respondió",
    "respaldo": true,
-   "vs_max_52s_pct": -24.24
+   "vs_max_52s_pct": -24.08
   },
   "oro_intradia": {
    "xaut_okx": {
-    "precio": 4027.0,
-    "hora_utc": "2026-10-23 05:35",
-    "max24h": 4105.5,
+    "precio": 4027.4,
+    "hora_utc": "2026-10-23 10:23",
+    "max24h": 4095.1,
     "min24h": 3995.5
    },
    "paxg_coinbase": {
-    "precio": 4029.95,
-    "hora_utc": "2026-10-23 05:34"
+    "precio": 4031.21,
+    "hora_utc": "2026-10-23 10:23"
    },
    "nota": "Proxy: tokens respaldados por oro físico, cotizan 24/7; pueden desviarse unas décimas del spot XAU/USD.",
-   "divergencia_pct": -0.073
+   "divergencia_pct": -0.095
   },
   "dxy": {
    "valor": 101.76,
@@ -473,14 +473,14 @@
     "par": "DXY ↔ ORO",
     "busca": "DXY ↓ mientras XAU/USD ↑",
     "estado": "NO SE CUMPLE",
-    "detalle": "DXY -0.35% · oro -3.64% (5 sesiones) · correlación 60d -0.39",
+    "detalle": "DXY -0.35% · oro -3.43% (5 sesiones) · correlación 60d -0.39",
     "lectura": "Confirmación de la relación inversa"
    },
    {
     "par": "10Y REAL ↔ ORO",
     "busca": "Real yield ↓ mientras oro ↑",
     "estado": "NO SE CUMPLE",
-    "detalle": "10Y real -14 pb · oro -3.64% · correlación 60d -0.17",
+    "detalle": "10Y real -14 pb · oro -3.43% · correlación 60d -0.17",
     "lectura": "Una de las relaciones macro más importantes"
    },
    {
@@ -515,14 +515,14 @@
     "par": "VIX ↔ ORO",
     "busca": "VIX ↑ + oro ↑",
     "estado": "NO SE CUMPLE",
-    "detalle": "VIX +15.6% · oro -3.64%",
+    "detalle": "VIX +15.6% · oro -3.43%",
     "lectura": "Posible demanda defensiva; comprobar causa"
    },
    {
     "par": "COT/ETF ↔ PRECIO",
     "busca": "Precio y flujos/posicionamiento en la misma dirección",
     "estado": "CUMPLE",
-    "detalle": "ETF acompaña · COT acompaña · oro -3.64% (5 sesiones)",
+    "detalle": "ETF acompaña · COT acompaña · oro -3.43% (5 sesiones)",
     "lectura": "Mayor confirmación, aunque no garantía"
    }
   ],
@@ -570,64 +570,64 @@
   },
   "chuleta_60s": "SIN CONFLUENCIA COMPLETA",
   "pools": {
-   "referencia": 4027.0,
+   "referencia": 4027.4,
    "atr14": 47.6,
    "encima": [
     {
      "id": "PWL",
      "nombre": "mín. semana anterior",
      "nivel": 4078.7,
-     "dist_pct": 1.28,
+     "dist_pct": 1.27,
      "dist_atr": 1.1
     },
     {
      "id": "PML",
      "nombre": "mín. mes anterior",
      "nivel": 4117.5,
-     "dist_pct": 2.25,
+     "dist_pct": 2.24,
      "dist_atr": 1.9
     },
     {
      "id": "PDH",
      "nombre": "máx. día anterior",
      "nivel": 4125.8,
-     "dist_pct": 2.45,
+     "dist_pct": 2.44,
      "dist_atr": 2.1
     },
     {
      "id": "semana_actual_max",
      "nombre": "máx. semana en curso",
      "nivel": 4186.1,
-     "dist_pct": 3.95,
+     "dist_pct": 3.94,
      "dist_atr": 3.3
     },
     {
      "id": "PWH",
      "nombre": "máx. semana anterior",
      "nivel": 4210.7,
-     "dist_pct": 4.56,
+     "dist_pct": 4.55,
      "dist_atr": 3.9
     },
     {
      "id": "PMH",
      "nombre": "máx. mes anterior",
      "nivel": 4500.0,
-     "dist_pct": 11.75,
+     "dist_pct": 11.73,
      "dist_atr": 9.9
     },
     {
      "id": "max_20s",
      "nombre": "máx. 20 semanas",
      "nivel": 4679.8,
-     "dist_pct": 16.21,
+     "dist_pct": 16.2,
      "dist_atr": 13.7
     },
     {
      "id": "max_52s",
      "nombre": "máx. 52 semanas",
      "nivel": 5609.9,
-     "dist_pct": 39.31,
-     "dist_atr": 33.3
+     "dist_pct": 39.29,
+     "dist_atr": 33.2
     }
    ],
    "debajo": [
@@ -635,21 +635,21 @@
      "id": "PDL+semana_actual_min",
      "nombre": "mín. día anterior / mín. semana en curso",
      "nivel": 4025.8,
-     "dist_pct": -0.03,
+     "dist_pct": -0.04,
      "dist_atr": -0.0
     },
     {
      "id": "min_20s",
      "nombre": "mín. 20 semanas",
      "nivel": 3943.1,
-     "dist_pct": -2.08,
+     "dist_pct": -2.09,
      "dist_atr": -1.8
     },
     {
      "id": "min_52s",
      "nombre": "mín. 52 semanas",
      "nivel": 3892.7,
-     "dist_pct": -3.33,
+     "dist_pct": -3.34,
      "dist_atr": -2.8
     }
    ]
@@ -704,7 +704,7 @@
     "paso": "POSICIONAMIENTO",
     "que": "COT + ETF flows + COMEX OI/volumen",
     "estado": "CONTEXTO",
-    "detalle": "CUMPLE · ETF acompaña · COT acompaña · oro -3.64% (5 sesiones)"
+    "detalle": "CUMPLE · ETF acompaña · COT acompaña · oro -3.43% (5 sesiones)"
    },
    {
     "n": 4,
@@ -718,14 +718,14 @@
     "paso": "PRECIO (HTF)",
     "que": "Tendencia, máximos/mínimos, zonas y niveles clave",
     "estado": "DESFAVORABLE",
-    "detalle": "LBMA 4,029.10 vs media 50 4,342 / 200 4,533 · 20 sesiones -6.8% · estructura semanal MÁXIMOS DECRECIENTES, mínimos sin tendencia · 1/5 máximos y 2/5 mínimos crecientes en las últimas 6 semanas cerradas · la semana en curso ya perfora el mínimo de la anterior"
+    "detalle": "LBMA 4,037.60 vs media 50 4,342 / 200 4,533 · 20 sesiones -6.6% · estructura semanal MÁXIMOS DECRECIENTES, mínimos sin tendencia · 1/5 máximos y 2/5 mínimos crecientes en las últimas 6 semanas cerradas · la semana en curso ya perfora el mínimo de la anterior"
    },
    {
     "n": 6,
     "paso": "LIQUIDEZ DEL GRÁFICO",
     "que": "Pools de liquidez; sweep/inducción (modelo ICT)",
     "estado": "CONTEXTO",
-    "detalle": "Ref. 4,027.0 (ATR14 47.6) — encima: mín. semana anterior 4,078.7 (+1.1 ATR) · mín. mes anterior 4,117.5 (+1.9 ATR) · máx. día anterior 4,125.8 (+2.1 ATR) · máx. semana en curso 4,186.1 (+3.3 ATR) — debajo: mín. día anterior / mín. semana en curso 4,025.8 (-0.0 ATR) · mín. 20 semanas 3,943.1 (-1.8 ATR) · mín. 52 semanas 3,892.7 (-2.8 ATR)"
+    "detalle": "Ref. 4,027.4 (ATR14 47.6) — encima: mín. semana anterior 4,078.7 (+1.1 ATR) · mín. mes anterior 4,117.5 (+1.9 ATR) · máx. día anterior 4,125.8 (+2.1 ATR) · máx. semana en curso 4,186.1 (+3.3 ATR) — debajo: mín. día anterior / mín. semana en curso 4,025.8 (-0.0 ATR) · mín. 20 semanas 3,943.1 (-1.8 ATR) · mín. 52 semanas 3,892.7 (-2.8 ATR)"
    },
    {
     "n": 7,
@@ -776,7 +776,7 @@
    {
     "n": 7,
     "pregunta": "¿COT y ETF flows confirman o contradicen?",
-    "respuesta": "CUMPLE · ETF acompaña · COT acompaña · oro -3.64% (5 sesiones)"
+    "respuesta": "CUMPLE · ETF acompaña · COT acompaña · oro -3.43% (5 sesiones)"
    },
    {
     "n": 8,
@@ -786,7 +786,7 @@
    {
     "n": 9,
     "pregunta": "¿Dónde está la liquidez en el gráfico y qué nivel puede barrerse?",
-    "respuesta": "Ref. 4,027.0 (ATR14 47.6) — encima: mín. semana anterior 4,078.7 (+1.1 ATR) · mín. mes anterior 4,117.5 (+1.9 ATR) · máx. día anterior 4,125.8 (+2.1 ATR) · máx. semana en curso 4,186.1 (+3.3 ATR) — debajo: mín. día anterior / mín. semana en curso 4,025.8 (-0.0 ATR) · mín. 20 semanas 3,943.1 (-1.8 ATR) · mín. 52 semanas 3,892.7 (-2.8 ATR) (proxy XAUT; verificar en tu gráfico)"
+    "respuesta": "Ref. 4,027.4 (ATR14 47.6) — encima: mín. semana anterior 4,078.7 (+1.1 ATR) · mín. mes anterior 4,117.5 (+1.9 ATR) · máx. día anterior 4,125.8 (+2.1 ATR) · máx. semana en curso 4,186.1 (+3.3 ATR) — debajo: mín. día anterior / mín. semana en curso 4,025.8 (-0.0 ATR) · mín. 20 semanas 3,943.1 (-1.8 ATR) · mín. 52 semanas 3,892.7 (-2.8 ATR) (proxy XAUT; verificar en tu gráfico)"
    },
    {
     "n": 10,
@@ -5011,6 +5011,6 @@
    ]
   ]
  },
- "evaluado_utc": "2026-10-23 10:07 UTC",
+ "evaluado_utc": "2026-10-23 10:19 UTC",
  "fedwatch_fecha_precios": "2026-10-23"
 }

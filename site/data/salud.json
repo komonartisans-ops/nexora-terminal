@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-10-23 10:18 UTC",
+ "generado_utc": "2026-10-23 10:36 UTC",
  "workflows": [
   {
    "workflow": "actualizar",
@@ -9,8 +9,8 @@
    "hoy_fallidas": 0,
    "ultima_utc": "2026-10-23 10:17",
    "ultima_evento": "schedule",
-   "ultima_estado": "pending",
-   "horas_desde_ultima": 0.0
+   "ultima_estado": "in_progress",
+   "horas_desde_ultima": 0.3
   },
   {
    "workflow": "reacciones",
@@ -21,7 +21,7 @@
    "ultima_utc": "2026-10-23 05:05",
    "ultima_evento": "schedule",
    "ultima_estado": "success",
-   "horas_desde_ultima": 5.2
+   "horas_desde_ultima": 5.5
   },
   {
    "workflow": "agenda_diaria",
@@ -32,7 +32,7 @@
    "ultima_utc": "2026-10-23 06:00",
    "ultima_evento": "workflow_dispatch",
    "ultima_estado": "success",
-   "horas_desde_ultima": 4.3
+   "horas_desde_ultima": 4.6
   },
   {
    "workflow": "vigilar_cierre",
@@ -43,7 +43,7 @@
    "ultima_utc": "2026-10-22 22:15",
    "ultima_evento": "workflow_dispatch",
    "ultima_estado": "success",
-   "horas_desde_ultima": 12.0
+   "horas_desde_ultima": 12.4
   }
  ],
  "actualizar_parada": false,

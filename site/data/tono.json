@@ -11665,6 +11665,38 @@
     "anterior_pocos_terminos": false
    },
    {
+    "fecha": "2026-03-19",
+    "indice": -0.385,
+    "nivel": "DOVISH",
+    "cambio": 0.0,
+    "cambio_txt": "SIN CAMBIO",
+    "h": 4,
+    "d": 9,
+    "palabras": 1866,
+    "url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/k260319a.htm",
+    "tipo": "Statement on Monetary Policy",
+    "terminos": {
+     "accommodation": 1,
+     "accommodative": 2,
+     "continue to raise": 1,
+     "downward": 1,
+     "moderate": 1,
+     "resilient": 1,
+     "upward pressure": 1
+    },
+    "z": 1.18,
+    "media_2a": -0.62,
+    "sd_2a": 0.198,
+    "n_2a": 10,
+    "dz": 0.0,
+    "dz_txt": "SIN CAMBIO",
+    "pocos_terminos": false,
+    "n_terminos": 8,
+    "anterior_fecha": "2026-03-19",
+    "anterior_z": 1.18,
+    "anterior_pocos_terminos": false
+   },
+   {
     "fecha": "2026-04-28",
     "indice": -1.0,
     "nivel": "DOVISH",
@@ -11678,11 +11710,11 @@
     "terminos": {
      "accommodative": 1
     },
-    "z": -1.9,
-    "media_2a": -0.598,
-    "sd_2a": 0.212,
-    "n_2a": 10,
-    "dz": -3.08,
+    "z": -2.0,
+    "media_2a": -0.579,
+    "sd_2a": 0.211,
+    "n_2a": 11,
+    "dz": -3.18,
     "dz_txt": "MÁS DOVISH",
     "pocos_terminos": true,
     "n_terminos": 1,
@@ -11716,16 +11748,16 @@
      "support": 4,
      "upside risks": 1
     },
-    "z": 0.18,
-    "media_2a": -0.631,
-    "sd_2a": 0.247,
-    "n_2a": 10,
+    "z": 0.08,
+    "media_2a": -0.609,
+    "sd_2a": 0.246,
+    "n_2a": 11,
     "dz": null,
     "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
     "n_terminos": 21,
     "anterior_fecha": "2026-04-28",
-    "anterior_z": -1.9,
+    "anterior_z": -2.0,
     "anterior_pocos_terminos": true,
     "dz_motivo": "la intervención anterior (2026-04-28) tiene solo 1 términos del diccionario (mínimo 5)"
    },
@@ -11743,16 +11775,16 @@
     "terminos": {
      "upside risks": 1
     },
-    "z": 6.93,
-    "media_2a": -0.627,
+    "z": 6.85,
+    "media_2a": -0.607,
     "sd_2a": 0.235,
-    "n_2a": 11,
-    "dz": 6.75,
+    "n_2a": 12,
+    "dz": 6.77,
     "dz_txt": "MÁS HAWKISH",
     "pocos_terminos": true,
     "n_terminos": 1,
     "anterior_fecha": "2026-06-16",
-    "anterior_z": 0.18,
+    "anterior_z": 0.08,
     "anterior_pocos_terminos": false
    },
    {
@@ -11779,16 +11811,16 @@
      "support": 5,
      "upward pressure": 1
     },
-    "z": 0.25,
-    "media_2a": -0.514,
-    "sd_2a": 0.54,
-    "n_2a": 11,
+    "z": 0.24,
+    "media_2a": -0.503,
+    "sd_2a": 0.516,
+    "n_2a": 12,
     "dz": null,
     "dz_txt": "SIN DATO (muestra insuficiente)",
     "pocos_terminos": false,
     "n_terminos": 21,
     "anterior_fecha": "2026-07-31",
-    "anterior_z": 6.93,
+    "anterior_z": 6.85,
     "anterior_pocos_terminos": true,
     "dz_motivo": "la intervención anterior (2026-07-31) tiene solo 1 términos del diccionario (mínimo 5)"
    }
@@ -11909,22 +11941,22 @@
     "support": 5,
     "upward pressure": 1
    },
-   "z": 0.25,
-   "media_2a": -0.514,
-   "sd_2a": 0.54,
-   "n_2a": 11,
+   "z": 0.24,
+   "media_2a": -0.503,
+   "sd_2a": 0.516,
+   "n_2a": 12,
    "dz": null,
    "dz_txt": "SIN DATO (muestra insuficiente)",
    "pocos_terminos": false,
    "n_terminos": 21,
    "anterior_fecha": "2026-07-31",
-   "anterior_z": 6.93,
+   "anterior_z": 6.85,
    "anterior_pocos_terminos": true,
    "dz_motivo": "la intervención anterior (2026-07-31) tiene solo 1 términos del diccionario (mínimo 5)",
    "anterior": {
     "fecha": "2026-07-31",
     "indice": 1.0,
-    "z": 6.93
+    "z": 6.85
    }
   }
  },
@@ -12074,26 +12106,26 @@
    }
   },
   "BoJ": {
-   "n": 93,
+   "n": 94,
    "desde": "2015-01-21",
    "hasta": "2026-09-18",
-   "n_comunicados": 100,
+   "n_comunicados": 101,
    "nivel": {
-    "n": 93,
+    "n": 94,
     "aciertos": 4,
     "pct": 4.3,
     "mov_n": 6,
     "mov_aciertos": 2,
     "mov_opuestos": 4,
     "mov_pct": 33.3,
-    "dir_n": 91,
+    "dir_n": 92,
     "dir_aciertos": 2,
     "dir_pct": 2.2
    },
    "cambio": {
-    "n": 86,
-    "aciertos": 49,
-    "pct": 57.0,
+    "n": 87,
+    "aciertos": 50,
+    "pct": 57.5,
     "mov_n": 4,
     "mov_aciertos": 1,
     "mov_opuestos": 1,
@@ -12103,9 +12135,9 @@
     "dir_pct": 2.8
    },
    "base_mantiene": {
-    "n": 93,
-    "aciertos": 87,
-    "pct": 93.5,
+    "n": 94,
+    "aciertos": 88,
+    "pct": 93.6,
     "mov_n": 6,
     "mov_aciertos": 0,
     "mov_opuestos": 0,
@@ -12115,9 +12147,9 @@
     "dir_pct": null
    },
    "base_repite": {
-    "n": 93,
-    "aciertos": 81,
-    "pct": 87.1,
+    "n": 94,
+    "aciertos": 82,
+    "pct": 87.2,
     "mov_n": 6,
     "mov_aciertos": 0,
     "mov_opuestos": 0,
@@ -12127,41 +12159,41 @@
     "dir_pct": 0.0
    },
    "misma_reunion": {
-    "n": 94,
+    "n": 95,
     "aciertos": 3,
     "pct": 3.2,
     "mov_n": 7,
     "mov_aciertos": 1,
     "mov_opuestos": 6,
     "mov_pct": 14.3,
-    "dir_n": 92,
+    "dir_n": 93,
     "dir_aciertos": 1,
     "dir_pct": 1.1
    },
-   "correlacion": 0.321,
+   "correlacion": 0.314,
    "reales": {
     "sube": 5,
-    "mantiene": 87,
+    "mantiene": 88,
     "baja": 1
    }
   },
   "_total": {
    "nivel": {
-    "n": 284,
+    "n": 285,
     "aciertos": 56,
-    "pct": 19.7,
+    "pct": 19.6,
     "mov_n": 57,
     "mov_aciertos": 30,
     "mov_opuestos": 6,
     "mov_pct": 52.6,
-    "dir_n": 237,
+    "dir_n": 238,
     "dir_aciertos": 30,
-    "dir_pct": 12.7
+    "dir_pct": 12.6
    },
    "cambio": {
-    "n": 274,
-    "aciertos": 127,
-    "pct": 46.4,
+    "n": 275,
+    "aciertos": 128,
+    "pct": 46.5,
     "mov_n": 54,
     "mov_aciertos": 21,
     "mov_opuestos": 15,
@@ -12171,9 +12203,9 @@
     "dir_pct": 14.0
    },
    "base_mantiene": {
-    "n": 284,
-    "aciertos": 227,
-    "pct": 79.9,
+    "n": 285,
+    "aciertos": 228,
+    "pct": 80.0,
     "mov_n": 57,
     "mov_aciertos": 0,
     "mov_opuestos": 0,
@@ -18142,6 +18174,6 @@
  },
  "errores_total": 53,
  "ok": true,
- "generado_utc": "2026-10-23 05:30 UTC",
- "duracion_s": 20.8
+ "generado_utc": "2026-10-23 10:19 UTC",
+ "duracion_s": 27.5
 }
