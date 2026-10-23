@@ -35,7 +35,7 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 8 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 10 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
   "mié 28 oct · Resultados Alphabet (GOOGL): BPA estimado $2.94 · después del cierre"
  ],
@@ -198,10 +198,10 @@
    "fecha": "2026-10-21"
   },
   "fed": {
-   "valor": 8.0,
+   "valor": 10.0,
    "antes": 6.0,
    "reunion": "2026-10-28",
-   "delta": 2.0,
+   "delta": 4.0,
    "fecha": "2026-10-23"
   }
  },
@@ -217,9 +217,9 @@
    "valor": 7663.43
   },
   "Oro": {
-   "delta": -0.5344289157171223,
+   "delta": -0.5689058730961816,
    "fecha": "2026-10-23",
-   "valor": 4038.699951171875
+   "valor": 4037.300048828125
   },
   "Bitcoin": {
    "delta": -3.2341811041923685,
@@ -247,7 +247,7 @@
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "PREDOMINIO FAVORABLE",
-    "detalle": "4 a favor / 1 en contra de 5 datos núcleo · precio: CONFIRMA DEBILIDAD",
+    "detalle": "3 a favor / 1 en contra de 5 datos núcleo · precio: CONFIRMA DEBILIDAD",
     "favor": [
      "DXY 101.76 · 5d -0.35% · 1d +0.10% (Baja: suele favorecer al oro · velocidad normal (-0.5σ))",
      "US 2Y 4.65% · 5d -12 pb · 1d -16 pb (Baja: menor presión de tipos)"
@@ -260,7 +260,6 @@
      "DXY",
      "US 2Y",
      "10Y REAL / TIPS (PRIORIDAD ALTA)",
-     "FedWatch",
      "US 10Y"
     ],
     "contra_n": [
@@ -301,7 +300,7 @@
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "MIXTO",
-    "detalle": "5 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Nasdaq 100: 10Y real favorable · semiconductores desfavorable (Tipos reales + yields + mega-cap growth/tech)",
+    "detalle": "4 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Nasdaq 100: 10Y real favorable · semiconductores desfavorable (Tipos reales + yields + mega-cap growth/tech)",
     "favor": [
      "ADV/DECLINE (amplitud) grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones (Fortaleza interna)",
      "VIX TERM STRUCTURE VIX/VIX3M 0.946 · VIX9D/VIX 0.991 (Contango: estructura normal)"
@@ -317,7 +316,6 @@
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
-     "FedWatch",
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
@@ -358,7 +356,7 @@
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "MIXTO",
-    "detalle": "5 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del S&P 500: amplitud favorable · beneficios sin dato (Tipos + beneficios + amplitud + mega caps)",
+    "detalle": "4 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del S&P 500: amplitud favorable · beneficios sin dato (Tipos + beneficios + amplitud + mega caps)",
     "favor": [
      "ADV/DECLINE (amplitud) grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones (Fortaleza interna)",
      "VIX TERM STRUCTURE VIX/VIX3M 0.946 · VIX9D/VIX 0.991 (Contango: estructura normal)"
@@ -374,7 +372,6 @@
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
-     "FedWatch",
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
@@ -415,7 +412,7 @@
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "SEÑALES INICIALES DE GIRO",
-    "detalle": "checklist de liquidez 5/8 (drenan 1) · secuencia 1/7 pasos",
+    "detalle": "checklist de liquidez 4/8 (drenan 1) · secuencia 0/7 pasos",
     "favor": [
      "ON RRP (facilidad, RRPONTSYD) 0.4 B$ (4s -0.3 B$ (2026-10-22) · AVISO: saldo < 50 B$, colchón agotado; la dirección cumple la regla pero su efecto sobre la liquidez es despreciable)",
      "Treasury 2Y 4.65% (1d -16 pb · 1s -12 pb · 4s -22 pb (2026-10-22))"
@@ -427,7 +424,6 @@
     "favor_n": [
      "Treasury 2Y",
      "Treasury 10Y",
-     "CME FedWatch",
      "M2",
      "SOFR",
      "Emisiones / subastas Treasury",
@@ -475,7 +471,7 @@
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "MIXTO",
-    "detalle": "5 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del US30 · Dow Jones: industriales neutral · financieras favorable (Ciclo, industriales, financieros, empresas maduras)",
+    "detalle": "4 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del US30 · Dow Jones: industriales neutral · financieras favorable (Ciclo, industriales, financieros, empresas maduras)",
     "favor": [
      "ADV/DECLINE (amplitud) grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones (Fortaleza interna)",
      "VIX TERM STRUCTURE VIX/VIX3M 0.946 · VIX9D/VIX 0.991 (Contango: estructura normal)"
@@ -491,7 +487,6 @@
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
-     "FedWatch",
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
@@ -532,7 +527,7 @@
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "DESFAVORABLE",
-    "detalle": "5 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Russell 2000: NFCI desfavorable · crédito high yield desfavorable (Tipos + crédito + condiciones financieras + economía doméstica)",
+    "detalle": "4 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Russell 2000: NFCI desfavorable · crédito high yield desfavorable (Tipos + crédito + condiciones financieras + economía doméstica)",
     "favor": [
      "ADV/DECLINE (amplitud) grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones (Fortaleza interna)",
      "VIX TERM STRUCTURE VIX/VIX3M 0.946 · VIX9D/VIX 0.991 (Contango: estructura normal)"
@@ -548,7 +543,6 @@
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
-     "FedWatch",
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
@@ -601,6 +595,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin y US30 · Dow Jones; sin ventaja clara: Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-23 10:19 UTC",
- "duracion_s": 109.4
+ "generado_utc": "2026-10-23 11:07 UTC",
+ "duracion_s": 110.3
 }
