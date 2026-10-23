@@ -6,7 +6,7 @@
   {
    "activo": "Oro",
    "viento": "A FAVOR",
-   "texto": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene."
+   "texto": "A favor: baja el tipo real (lo que más les ayuda)."
   },
   {
    "activo": "Nasdaq 100",
@@ -35,7 +35,7 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 8 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 10 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
   "mié 28 oct · Resultados Alphabet (GOOGL): BPA estimado $2.94 · después del cierre"
  ],
@@ -198,10 +198,10 @@
    "fecha": "2026-10-21"
   },
   "fed": {
-   "valor": 8.0,
+   "valor": 10.0,
    "antes": 6.0,
    "reunion": "2026-10-28",
-   "delta": 2.0,
+   "delta": 4.0,
    "fecha": "2026-10-23"
   }
  },
@@ -217,9 +217,9 @@
    "valor": 7663.43
   },
   "Oro": {
-   "delta": -0.8496700036882077,
+   "delta": -0.5812199311206467,
    "fecha": "2026-10-23",
-   "valor": 4025.89990234375
+   "valor": 4036.800048828125
   },
   "Bitcoin": {
    "delta": -3.2341811041923685,
@@ -242,7 +242,7 @@
   "Oro": {
    "etiqueta": "ALCISTA",
    "tesis": "ALCISTA con confluencia: la macro de la semana (a favor) y su motor propio (PREDOMINIO FAVORABLE) apuntan igual. Lo que la rompería: que ganen peso NFCI y ETF GOLD FLOWS (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
+   "hoy": "A favor: baja el tipo real (lo que más les ayuda).",
    "semana": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
    "viento_semana": "A FAVOR",
    "propio": {
@@ -600,6 +600,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin y US30 · Dow Jones; sin ventaja clara: Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-23 08:07 UTC",
- "duracion_s": 108.5
+ "generado_utc": "2026-10-23 09:07 UTC",
+ "duracion_s": 108.6
 }
