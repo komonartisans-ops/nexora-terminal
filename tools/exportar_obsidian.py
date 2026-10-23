@@ -47,7 +47,7 @@ BOVEDA_DEF = r"C:\Users\ruizt\OneDrive\Documentos\Mi Cerebro Digital"
 BASE = os.path.join(os.environ.get("LOCALAPPDATA") or os.path.expanduser("~"), "NexoraExportador")
 MI = "60_Market_Intelligence"
 SIS = MI + "/07_Sistema_NEXORA"
-ZONAS = (MI + "/", "10_Diario/Premercado/")      # lo único donde el exportador puede escribir
+ZONAS = (MI + "/", "10_Diario/Premercado/", "10_Diario/Operaciones/")      # lo único donde el exportador puede escribir
 DESDE = "2026-10-02"
 SLOTS_LOCALES = ("08:30", "23:45")
 FILAS_REGISTRO = 30
@@ -289,7 +289,6 @@ class Datos:
         self.raiz = raiz
         self.hoy = hoy or dt.datetime.now(UTC).strftime("%Y-%m-%d")
         self._csv, self._ctx, self._commit = {}, {}, {}
-        sys.path.insert(0, os.path.join(raiz, "engine"))
 
     def p(self, *a):
         return os.path.join(self.raiz, *a)
@@ -426,11 +425,9 @@ def gamma_dia(D, d):
 def spot_oro_dia(D, d):
     for r in d.csv("data/xau_spot_contraste.csv") or []:
         if r["fecha"] == D:
-            try:
-                import spot_oro
-                fuentes = spot_oro.texto_fuentes(r)
-            except Exception:  # noqa: BLE001
-                fuentes = f"gold-api {r.get('spot_principal') or 'CAÍDA'} · GC implícito {r.get('spot_gc_implicito') or '—'} · Swissquote {r.get('swiss_precio') or '—'}"
+            # solo se leen datos del repo; nunca se importa código descargado (el exportador se ejecuta anclado, ver --aprobar)
+            fuentes = (f"gold-api {r.get('spot_principal') or 'CAÍDA'} · GC implícito {r.get('spot_gc_implicito') or '—'} (dif. {r.get('dif_gc_pct') or '—'} %) · "
+                       f"Swissquote {r.get('swiss_precio') or '—'} (dif. {r.get('dif_swiss_pct') or '—'} %)")
             return {**r, "texto_fuentes": fuentes}
     return None
 
@@ -761,6 +758,115 @@ def notas_analisis(bov, d, privado, log):
 
 
 # ============================================================================ sistema: docs, registros, bitácora
+# ============================================================================ Diario de operaciones (repo privado nexora-diario/diario/AAAA-MM.json)
+SETUP_CORTO = {"Barrido+vuelta": "A", "Ruptura+continuación": "B", "Otro": "Otro"}
+CONF_NOMBRES = {"absorcion": "Absorción", "iceberg": "Iceberg", "div_delta": "Divergencia delta", "stacked": "Stacked imbalances", "barrido_lit": "Barrido LIT", "fvg": "FVG", "vah_val_poc": "VAH/VAL/POC"}
+COLS_OP = ["Estado", "Fecha", "Hora", "Activo", "Setup", "Dirección", "R", "Resultado $", "Res.", "Confirmaciones", "Foto NEXORA", "id", "h"]
+
+
+def foto_texto(f):
+    if not isinstance(f, dict) or not f:
+        return "SIN FOTO"
+    p = [str(f.get("estado") or "SIN DATO")]
+    if isinstance(f.get("tesis"), dict):
+        p.append("tesis " + str(f["tesis"].get("etiqueta")))
+    if isinstance(f.get("gamma"), dict) and f["gamma"].get("signo"):
+        p.append("gamma " + str(f["gamma"]["signo"]))
+    if isinstance(f.get("regimen"), dict) and f["regimen"].get("cuadrante"):
+        p.append("régimen " + str(f["regimen"]["cuadrante"])[:40])
+    ev = f.get("evento_alta_2h")
+    if isinstance(ev, dict):
+        p.append("ALTA 2h: " + (", ".join(str(e.get("evento")) for e in ev.get("eventos") or [])[:60] if ev.get("si") else "no"))
+    if f.get("contexto_utc"):
+        p.append("ctx " + str(f["contexto_utc"]))
+    return " · ".join(p)
+
+
+def hash_op(t):
+    base = {k: t.get(k) for k in ("fecha", "hora", "hora_salida", "activo", "lado", "precio_entrada", "precio_salida", "pnl", "r", "nota", "setup", "conf", "foto")}
+    return hashlib.sha1(json.dumps(base, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()[:8]
+
+
+def fila_op(estado, t):
+    pnl = float(t.get("pnl") or 0)
+    r = t.get("r")
+    return "| " + " | ".join(celda(x) for x in [
+        estado, t.get("fecha"), t.get("hora") or "SIN DATO", t.get("activo"), SETUP_CORTO.get(t.get("setup"), "sin setup"), t.get("lado"),
+        (n(r, 2, True) if r not in (None, "") else "SIN DATO"), n(pnl, 2, True), "GANADA" if pnl > 0 else "PERDIDA" if pnl < 0 else "BE",
+        ", ".join(CONF_NOMBRES.get(k, k) for k in t.get("conf") or []) or "—", foto_texto(t.get("foto")), t.get("id"), hash_op(t)]) + " |"
+
+
+def pf(ts):
+    g = sum(float(t["pnl"]) for t in ts if float(t["pnl"]) > 0)
+    p = -sum(float(t["pnl"]) for t in ts if float(t["pnl"]) < 0)
+    return "SIN DATO" if not ts else ("∞ (sin pérdidas)" if p == 0 and g > 0 else "—" if p == 0 else n(g / p, 2))
+
+
+def resumen_mes(mes, ts):
+    L = [f"## Resumen del mes {mes}", "", "Se recalcula en cada pasada con el estado actual de cada operación (las filas de abajo son el historial y no se tocan).", ""]
+    if not ts:
+        return "\n".join(L + ["Sin operaciones.", ""])
+    gan = [t for t in ts if float(t["pnl"]) > 0]
+    con_r = [float(t["r"]) for t in ts if t.get("r") not in (None, "")]
+    L += [f"- Operaciones: **{len(ts)}** · acierto: **{n(100 * len(gan) / len(ts), 0)} %** ({len(gan)} ganadas)" + (" · n<20: sin conclusión" if len(ts) < 20 else ""),
+          f"- Resultado total: {n(sum(float(t['pnl']) for t in ts), 2, True)} $ · esperanza por operación: {n(sum(float(t['pnl']) for t in ts) / len(ts), 2, True)} $",
+          "- Esperanza en R: " + (f"**{n(sum(con_r) / len(con_r), 2, True)} R** ({len(con_r)} de {len(ts)} operaciones con R)" if con_r else "SIN DATO: el Diario guarda el resultado en $ y las operaciones no traen R; no se inventa."), ""]
+    filas = []
+    for nombre in ("Barrido+vuelta", "Ruptura+continuación", "Otro", None):
+        sub = [t for t in ts if t.get("setup") == nombre] if nombre else [t for t in ts if t.get("setup") not in SETUP_CORTO]
+        if sub:
+            filas.append([(f"{SETUP_CORTO[nombre]} · {nombre}" if nombre else "sin setup"), len(sub), n(100 * sum(float(t["pnl"]) > 0 for t in sub) / len(sub), 0) + " %", n(sum(float(t["pnl"]) for t in sub) / len(sub), 2, True) + " $", pf(sub)])
+    return "\n".join(L + [tabla(["Setup", "n", "Acierto", "Esperanza ($/op.)", "Profit factor"], filas)])
+
+
+def notas_diario(bov, d, privado):
+    carpeta = os.path.join(privado, "diario") if privado else None
+    if not carpeta or not os.path.isdir(carpeta):
+        return 0
+    nuevas = 0
+    for f in sorted(os.listdir(carpeta)):
+        m = re.match(r"^(\d{4}-\d{2})\.json$", f)
+        if not m:
+            continue
+        mes = m.group(1)
+        try:
+            J = json.load(open(os.path.join(carpeta, f), encoding="utf-8"))
+        except (OSError, ValueError):
+            bov.res["avisos"].append(f"diario/{f}: no se pudo leer; se omite")
+            continue
+        borrados = J.get("borrados") or {}
+        trades = {t["id"]: t for t in J.get("trades") or [] if isinstance(t, dict) and t.get("id") and t["id"] not in borrados}
+        rel = f"10_Diario/Operaciones/{mes}.md"
+        if not trades and not borrados:
+            continue
+        inicial = (frontmatter({"tipo": "diario-operaciones", "mes": mes, "origen": "nexora-diario", "tags": ["diario", "operaciones", "nexora"]}) + f"# Operaciones {mes}\n\n"
+                   "Diario de operaciones exportado desde el repo privado. **Solo se añade**: una fila por operación; si corriges una operación se añade una fila REVISADA (y ANULADA si la borras), nunca se reescribe una fila. "
+                   "`R` = SIN DATO mientras la operación no traiga R.\n\n<!-- NEXORA:auto:resumen -->\n<!-- /NEXORA:auto:resumen -->\n\n## Operaciones\n\n"
+                   "| " + " | ".join(COLS_OP) + " |\n|" + "|".join("---" for _ in COLS_OP) + "|\n")
+        bov.inmutable(rel, inicial)
+        cur = bov.leer(rel) or ""
+        ultimo = {}
+        for ln in cur.splitlines():
+            c = [x.strip() for x in re.split(r"(?<!\\)\|", ln.strip().strip("|"))]
+            if len(c) == len(COLS_OP) and c[0] in ("ALTA", "REVISADA", "ANULADA"):
+                ultimo[c[-2]] = (c[0], c[-1])
+        nuevas_filas = []
+        for t in sorted(trades.values(), key=lambda t: (t.get("fecha", ""), t.get("hora") or "", t["id"])):
+            ant = ultimo.get(t["id"])
+            if ant is None:
+                nuevas_filas.append(fila_op("ALTA", t))
+            elif ant[1] != hash_op(t) or ant[0] == "ANULADA":
+                nuevas_filas.append(fila_op("REVISADA", t))
+        for id_ in sorted(borrados):
+            if id_ in ultimo and ultimo[id_][0] != "ANULADA":
+                nuevas_filas.append(fila_op("ANULADA", {"id": id_, "fecha": "", "activo": "(operación borrada)", "pnl": 0, "conf": []}))
+        if nuevas_filas:
+            bov.anexar(rel, nuevas_filas)
+            nuevas += len(nuevas_filas)
+        bov.bloque(rel, "resumen", resumen_mes(mes, list(trades.values())))
+    return nuevas
+
+
 def notas_docs(bov, d):
     carpeta = d.p("docs")
     out = []
@@ -919,6 +1025,7 @@ def exportar(cfg, log):
             continue
         nsnap += (bov.inmutable(rel, snapshot(D, d)[0]) == "creada")
     nan = notas_analisis(bov, d, cfg.get("privado"), log)
+    nop = notas_diario(bov, d, cfg.get("privado"))
     docs = notas_docs(bov, d)
     regs = notas_registros(bov, d)
     nbit = bitacora(bov, d)
@@ -936,11 +1043,12 @@ def exportar(cfg, log):
     bov.bloque(f"{SIS}/Estado y pendientes.md", "estado", bloque_estado_pendientes(d, bov), crear=frontmatter({"tags": ["nexora", "pendientes"]}) + "# NEXORA · Estado y pendientes")
     # el MOC del sistema lista las bitácoras que existen: se recalcula tras haber escrito la bitácora (ya incluido arriba porque bitacora() corrió antes)
     estado.guardar()
-    return {"res": bov.res, "snapshots_nuevos": nsnap, "dias_cerrados": len(cerrados), "informes": nan, "bitacora_lineas": nbit}
+    return {"res": bov.res, "snapshots_nuevos": nsnap, "dias_cerrados": len(cerrados), "informes": nan, "operaciones": nop, "bitacora_lineas": nbit}
 
 
 # ============================================================================ latido y push
-def latido(publico, estado_txt, ahora, log):
+def latido(publico, estado_txt, ahora, log, extra=()):
+    archivos = ["data/obsidian_latido.csv", *extra]
     ruta = os.path.join(publico, "data", "obsidian_latido.csv")
     nuevo = not os.path.exists(ruta)
     with open(ruta, "a", encoding="utf-8", newline="") as f:
@@ -951,9 +1059,9 @@ def latido(publico, estado_txt, ahora, log):
     for intento in range(4):
         git(publico, "config", "user.name", "nexora-exportador")
         git(publico, "config", "user.email", "nexora-exportador@users.noreply.github.com")
-        git(publico, "add", "data/obsidian_latido.csv")
+        git(publico, "add", *archivos)
         if intento == 0:
-            rc, _, err = git(publico, "commit", "-m", msg, "--", "data/obsidian_latido.csv")
+            rc, _, err = git(publico, "commit", "-m", msg, "--", *archivos)
             if rc != 0:
                 log(f"latido: no se pudo hacer commit: {err.strip()[-150:]}")
                 return False
@@ -967,6 +1075,92 @@ def latido(publico, estado_txt, ahora, log):
             return True
         log(f"latido: push falló (intento {intento + 1}): {err.strip()[-150:]}")
     return False
+
+
+# ============================================================================ ejecución anclada (seguridad)
+# La tarea de Windows NO ejecuta el código que acaba de descargar: ejecuta una copia fija (aprobada por Ruiz) en ANCLADO_DIR. Los DATOS se descargan siempre;
+# el CÓDIGO del exportador solo cambia cuando Ruiz lo aprueba con `python tools/exportar_obsidian.py --aprobar`.
+REL_SCRIPT = "tools/exportar_obsidian.py"
+ANCLADO_DIR = os.path.join(BASE, "aprobado")
+ANCLADO = os.path.join(ANCLADO_DIR, "exportar_obsidian.py")
+ANCLADO_META = os.path.join(ANCLADO_DIR, "aprobado.json")
+REL_PENDIENTE = "data/obsidian_pendiente.json"
+
+
+def blob_git(ruta):
+    r = subprocess.run(["git", "hash-object", ruta], capture_output=True, text=True, encoding="utf-8")
+    return r.stdout.strip() if r.returncode == 0 else None
+
+
+def meta_anclada():
+    try:
+        return json.load(open(ANCLADO_META, encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+
+
+def resumen_diff(viejo, nuevo, maximo=30):
+    """Resumen del cambio entre dos versiones del exportador: líneas añadidas/quitadas y las primeras líneas cambiadas (sin secretos)."""
+    import difflib
+    a = open(viejo, encoding="utf-8").read().splitlines() if viejo and os.path.exists(viejo) else []
+    b = open(nuevo, encoding="utf-8").read().splitlines()
+    cambios = [x for x in difflib.unified_diff(a, b, lineterm="", n=0) if x[:1] in "+-" and not x.startswith(("+++", "---"))]
+    mas, menos = sum(x[0] == "+" for x in cambios), sum(x[0] == "-" for x in cambios)
+    return {"anade": mas, "quita": menos, "lineas": [limpiar(x[:160]) for x in cambios[:maximo]], "truncado": len(cambios) > maximo}
+
+
+def comprobar_actualizacion(publico):
+    """None si el exportador del repo es el aprobado; si no, dict con el resumen del cambio pendiente de aprobar."""
+    nuevo = os.path.join(publico, *REL_SCRIPT.split("/"))
+    if not os.path.exists(nuevo):
+        return None
+    b = blob_git(nuevo)
+    m = meta_anclada()
+    if m and m.get("blob") == b:
+        return None
+    rc, out, _ = git(publico, "log", "-1", "--format=%h", "--", REL_SCRIPT)
+    return {"pendiente": True, "blob": (b or "")[:12], "commit": out.strip(), "aprobado": (m or {}).get("commit"), "resumen": resumen_diff(ANCLADO, nuevo)}
+
+
+def escribir_pendiente(publico, info):
+    """data/obsidian_pendiente.json: lo lee integridad.py (aviso + Telegram). Solo se reescribe si cambia."""
+    ruta = os.path.join(publico, *REL_PENDIENTE.split("/"))
+    txt = json.dumps(info or {"pendiente": False}, ensure_ascii=False, indent=1) + "\n"
+    try:
+        if open(ruta, encoding="utf-8").read() == txt:
+            return False
+    except OSError:
+        if not info:
+            return False
+    os.makedirs(os.path.dirname(ruta), exist_ok=True)
+    open(ruta, "w", encoding="utf-8", newline="\n").write(txt)
+    return True
+
+
+def aprobar(publico, log):
+    """Ruiz aprueba el exportador del repo: trae el repo, muestra el cambio y fija la copia (commit anclado)."""
+    ok, _, m = preparar_clon(publico, URL_PUBLICO, log)
+    if not ok:
+        log("no se pudo actualizar el repo: " + m)
+        return 1
+    info = comprobar_actualizacion(publico)
+    nuevo = os.path.join(publico, *REL_SCRIPT.split("/"))
+    if info is None:
+        log("el exportador anclado ya es el del repo; nada que aprobar")
+        return 0
+    r = info["resumen"]
+    log(f"aprobando exportador {info['commit']} (antes: {info['aprobado'] or 'ninguno'}): +{r['anade']} −{r['quita']} líneas")
+    if sys.stdout:
+        print("\n".join(r["lineas"]) + ("\n… (diff truncado; mira `git diff` en el clon)" if r["truncado"] else ""))
+    os.makedirs(ANCLADO_DIR, exist_ok=True)
+    if os.path.exists(ANCLADO):
+        os.chmod(ANCLADO, 0o666)
+    import shutil
+    shutil.copyfile(nuevo, ANCLADO)
+    os.chmod(ANCLADO, 0o444)
+    json.dump({"commit": info["commit"], "blob": blob_git(nuevo), "aprobado_local": dt.datetime.now().isoformat(timespec="seconds")}, open(ANCLADO_META, "w", encoding="utf-8"), indent=1)
+    log(f"exportador {info['commit']} aprobado y anclado en {ANCLADO}")
+    return 0
 
 
 def debida(ahora_local):
@@ -986,7 +1180,7 @@ def registrar_tarea(script, log):
     exe = pyw if os.path.exists(pyw) else py
     ps = f"""
 $ErrorActionPreference = 'Stop'
-$a = New-ScheduledTaskAction -Execute '{exe}' -Argument '"{script}" --programado' -WorkingDirectory '{os.path.dirname(os.path.dirname(script))}'
+$a = New-ScheduledTaskAction -Execute '{exe}' -Argument '"{script}" --programado' -WorkingDirectory '{os.path.dirname(script)}'
 $t1 = New-ScheduledTaskTrigger -Daily -At 08:30
 $t2 = New-ScheduledTaskTrigger -Daily -At 23:45
 $t3 = New-ScheduledTaskTrigger -AtLogOn -User $env:USERNAME
@@ -1011,6 +1205,7 @@ def main():
     ap.add_argument("--programado", action="store_true")
     ap.add_argument("--forzar", action="store_true")
     ap.add_argument("--registrar-tarea", action="store_true")
+    ap.add_argument("--aprobar", action="store_true", help="aprueba y ancla la versión del exportador que hay en el repo (la tarea solo ejecuta la aprobada)")
     ap.add_argument("--vista-previa", default=None)
     ap.add_argument("--hoy", default=None)
     a = ap.parse_args()
@@ -1027,9 +1222,15 @@ def main():
             pass
 
     ahora = dt.datetime.now(UTC)
+    if a.aprobar:
+        return aprobar(a.publico or os.path.join(BASE, "repos", "nexora-terminal"), log)
     if a.registrar_tarea:
-        pub = a.publico or os.path.join(BASE, "repos", "nexora-terminal")
-        return 0 if registrar_tarea(os.path.abspath(os.path.join(pub, "tools", "exportar_obsidian.py")), log) else 1
+        if not os.path.exists(ANCLADO):
+            log("primero aprueba una versión: python tools/exportar_obsidian.py --aprobar")
+            return 1
+        return 0 if registrar_tarea(ANCLADO, log) else 1
+    anclado = os.path.abspath(__file__) == os.path.abspath(ANCLADO)
+    pendiente = None
     publico = a.publico or os.path.join(BASE, "repos", "nexora-terminal")
     privado = a.privado or os.path.join(BASE, "repos", "nexora-diario")
     est = Estado(a.estado)
@@ -1050,6 +1251,11 @@ def main():
                 avisos.append(f"repo privado: {m2} (se exporta sin los informes nuevos)")
             elif vacio:
                 log("repo privado vacío: todavía no hay informes")
+        if anclado and not a.sin_git:
+            pendiente = comprobar_actualizacion(publico)
+            if pendiente:
+                log(f"EXPORTADOR ACTUALIZADO en el repo ({pendiente['commit']}), pendiente de aprobar: +{pendiente['resumen']['anade']} −{pendiente['resumen']['quita']} líneas. "
+                    "Se sigue ejecutando la versión aprobada. Aprobar: python tools/exportar_obsidian.py --aprobar")
         if a.vista_previa:
             d = Datos(publico, a.hoy)
             print(snapshot(a.vista_previa, d)[0])
@@ -1078,9 +1284,12 @@ def main():
     except Exception as e:  # noqa: BLE001
         estado_final = "ERROR"
         log("ERROR " + limpiar(f"{type(e).__name__}: {e}") + " | " + limpiar(traceback.format_exc().splitlines()[-3:]))
+    if pendiente and estado_final != "ERROR":
+        estado_final = "PENDIENTE@" + str(pendiente.get("aprobado") or "ninguno")[:7]
     if not a.sin_latido and not a.sin_git:
         try:
-            ok = latido(publico, estado_final, ahora, log)
+            extra = [REL_PENDIENTE] if anclado and escribir_pendiente(publico, pendiente) else []
+            ok = latido(publico, estado_final, ahora, log, extra)
             log(f"latido {estado_final}: {'subido' if ok else 'NO subido'}")
         except Exception as e:  # noqa: BLE001
             log("latido: " + limpiar(f"{type(e).__name__}: {e}"))

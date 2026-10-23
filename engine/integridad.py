@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import csv
 import datetime as dt
+import html
 import json
 import os
 import re
@@ -301,6 +302,28 @@ def vigilar(raiz=RAIZ, ahora=None, seco=False, enviar=None, push=False):
     # Fase 20: el exportador a Obsidian corre en el PC de Ruiz; si no da señales 2 días seguidos, un aviso por racha
     try:
         ob = estado_latido_obsidian(raiz, ahora)
+        if ob.get("pendiente_aprobar"):      # el código del exportador cambió en main: el PC sigue con la versión aprobada hasta que Ruiz la apruebe
+            p = ob["pendiente_aprobar"]
+            clave = f"obsidian_pendiente|{p.get('blob')}"
+            if clave not in est["avisos"]:
+                r = p.get("resumen") or {}
+                cuerpo = "\n".join(r.get("lineas") or [])[:1500]
+                txt = (f"<b>NEXORA · Exportador actualizado, pendiente de aprobar</b>\nCommit {p.get('commit')} (aprobado: {p.get('aprobado') or 'ninguno'}): +{r.get('anade')} −{r.get('quita')} líneas en tools/exportar_obsidian.py. "
+                       "El PC sigue ejecutando la versión aprobada; los datos se siguen descargando.\n<pre>" + html.escape(cuerpo) + ("\n…" if r.get("truncado") else "") + "</pre>\n"
+                       "Revisa el cambio y apruébalo con: python tools/exportar_obsidian.py --aprobar")
+                if seco:
+                    print("[seco · no se envía]\n" + txt + "\n")
+                    out.append((clave, "SECO", txt))
+                else:
+                    import telegram
+                    ok, err = (enviar or telegram.enviar)(txt)
+                    if ok:
+                        nuevos[clave] = {"estado": "AVISADO", "avisado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "dato": "obsidian_pendiente", "periodo": str(p.get("commit")),
+                                         "evento": "exportador actualizado, pendiente de aprobar", "publicado_utc": ""}
+                        out.append((clave, "AVISADO", txt))
+                    else:
+                        print("vigilante: Telegram no aceptó el aviso (se reintenta):", err)
+                        out.append((clave, "ERROR", err or ""))
         if ob["alerta"]:
             clave = f"obsidian|{ob['racha_desde']}"
             if clave not in est["avisos"]:
@@ -581,9 +604,12 @@ def estado_latido_obsidian(raiz, ahora):
     if not filas:
         return {**base, "alerta": False, "ultimo": None, "ultimo_ok": None, "racha_dias": 0, "racha_desde": None, "historial": [],
                 "texto": "SIN DATO: el exportador a Obsidian todavía no ha enviado ningún latido."}
-    buenos = {r["fecha"] for r in filas if r["estado"] in ("OK", "AVISO")}
+    bueno = lambda e: e in ("OK", "AVISO") or e.startswith("PENDIENTE")      # PENDIENTE@<commit> = exportó con la versión aprobada y hay una versión nueva por aprobar
+    buenos = {r["fecha"] for r in filas if bueno(r["estado"])}
     ult = max(filas, key=lambda r: (r["fecha"], r["hora_utc"]))
-    ult_ok = max((r for r in filas if r["estado"] in ("OK", "AVISO")), key=lambda r: (r["fecha"], r["hora_utc"]), default=None)
+    ult_ok = max((r for r in filas if bueno(r["estado"])), key=lambda r: (r["fecha"], r["hora_utc"]), default=None)
+    pend = leer_json(P(raiz, "data", "obsidian_pendiente.json")) or {}
+    pend = pend if pend.get("pendiente") and ult["estado"].startswith("PENDIENTE") else None
     primero = min(r["fecha"] for r in filas)
     dia, racha = ahora.date() - dt.timedelta(days=1), 0
     while dia.isoformat() >= primero and dia.isoformat() not in buenos:
@@ -591,7 +617,7 @@ def estado_latido_obsidian(raiz, ahora):
         dia -= dt.timedelta(days=1)
     desde = (ahora.date() - dt.timedelta(days=racha)).isoformat() if racha else None
     alerta = racha >= UMBRAL_OBSIDIAN_DIAS
-    return {**base, "alerta": alerta, "ultimo": {"fecha": ult["fecha"], "hora_utc": ult["hora_utc"], "estado": ult["estado"]},
+    return {**base, "alerta": alerta, "pendiente_aprobar": pend, "ultimo": {"fecha": ult["fecha"], "hora_utc": ult["hora_utc"], "estado": ult["estado"]},
             "ultimo_ok": f"{ult_ok['fecha']} {ult_ok['hora_utc']} UTC" if ult_ok else None, "racha_dias": racha, "racha_desde": desde, "n_latidos": len(filas),
             "historial": [{"fecha": r["fecha"], "hora_utc": r["hora_utc"], "estado": r["estado"]} for r in filas[-12:]][::-1],
             "texto": (f"El exportador a Obsidian lleva {racha} días seguidos sin exportar (desde {desde})." if alerta else

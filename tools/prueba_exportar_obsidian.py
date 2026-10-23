@@ -319,4 +319,80 @@ assert "sin cambios" in open(log, encoding="utf-8").read() or "0 creadas" in ope
 todo = open(log, encoding="utf-8").read() + "".join(open(os.path.join(dp, f), encoding="utf-8", errors="ignore").read() for dp, _, fs in os.walk(BOV) for f in fs)
 assert "ghp_" not in todo and "github_pat_" not in todo and "Bearer " not in todo
 print("14) OK ejecución desde la línea de órdenes: 0 cambios en la pasada repetida; ni log ni notas contienen tokens")
+# 15) ejecución ANCLADA: la tarea ejecuta una copia fija; si el exportador cambia en main no se ejecuta la versión nueva, se avisa (integridad + Telegram) y se aprueba con --aprobar
+X.ANCLADO_DIR = os.path.join(TMP, "aprobado")
+X.ANCLADO = os.path.join(X.ANCLADO_DIR, "exportar_obsidian.py")
+X.ANCLADO_META = os.path.join(X.ANCLADO_DIR, "aprobado.json")
+w(os.path.join(REPO, "tools", "exportar_obsidian.py"), open(os.path.join(HERE, "exportar_obsidian.py"), encoding="utf-8").read())
+sh(REPO, "add", "-A")
+sh(REPO, "commit", "-q", "-m", "exportador v1", fecha="2026-10-22T09:00:00+00:00")
+sh(REPO, "push", "-q", "origin", "main")
+assert X.comprobar_actualizacion(REPO)["aprobado"] is None, "sin aprobación previa, todo es pendiente"
+assert X.aprobar(REPO, lambda m: None) == 0 and os.path.exists(X.ANCLADO) and X.comprobar_actualizacion(REPO) is None
+fijo = open(X.ANCLADO, "rb").read()
+with open(os.path.join(REPO, "tools", "exportar_obsidian.py"), "a", encoding="utf-8", newline="") as f:
+    f.write("\nimport os; os.system('ghp_AbCdEf1234567890AbCdEf12')\n")
+sh(REPO, "commit", "-q", "-am", "exportador v2 (cambio no aprobado)", fecha="2026-10-22T10:00:00+00:00")
+p = X.comprobar_actualizacion(REPO)
+assert p and p["pendiente"] and p["resumen"]["anade"] == 2 and any("os.system" in x for x in p["resumen"]["lineas"]), p
+assert not any("ghp_AbCdEf" in x for x in p["resumen"]["lineas"]), "el resumen del diff no lleva secretos"
+assert open(X.ANCLADO, "rb").read() == fijo, "la copia anclada no cambia sola"
+assert X.escribir_pendiente(REPO, p) is True and X.escribir_pendiente(REPO, p) is False
+T2 = tempfile.mkdtemp(prefix="nexora_int2_")
+os.makedirs(os.path.join(T2, "data"))
+os.makedirs(os.path.join(T2, "site", "data"))
+w(os.path.join(T2, "data", "obsidian_latido.csv"), "fecha,hora_utc,estado\n2026-10-26,06:30,OK\n2026-10-27,06:30,PENDIENTE@" + str(p["aprobado"])[:7] + "\n")
+shutil_copy = open(os.path.join(REPO, "data", "obsidian_pendiente.json"), encoding="utf-8").read()
+w(os.path.join(T2, "data", "obsidian_pendiente.json"), shutil_copy)
+ahora2 = dt.datetime(2026, 10, 27, 10, 0, tzinfo=UTC)
+e = I.estado_latido_obsidian(T2, ahora2)
+assert e["pendiente_aprobar"] and e["alerta"] is False and e["racha_dias"] == 0, e
+env2 = []
+I.vigilar(T2, ahora2, enviar=lambda m: (env2.append(m), (True, None))[1])
+I.vigilar(T2, ahora2 + dt.timedelta(hours=5), enviar=lambda m: (env2.append(m), (True, None))[1])
+pend_msgs = [m for m in env2 if "pendiente de aprobar" in m]
+assert len(pend_msgs) == 1 and "--aprobar" in pend_msgs[0] and "os.system" in pend_msgs[0] and "ghp_" not in pend_msgs[0], env2
+assert I.construir(T2, ahora2)["obsidian"]["pendiente_aprobar"]["blob"] == p["blob"]
+assert X.aprobar(REPO, lambda m: None) == 0 and X.comprobar_actualizacion(REPO) is None and open(X.ANCLADO, "rb").read() != fijo
+assert X.escribir_pendiente(REPO, None) is True and json.load(open(os.path.join(REPO, "data", "obsidian_pendiente.json"), encoding="utf-8")) == {"pendiente": False}
+print("15) OK ejecución anclada: copia fija aprobada; un cambio en main NO se ejecuta, queda pendiente con su diff (sin secretos), un solo Telegram «pendiente de aprobar» y banner en #/integridad; --aprobar lo ancla")
+# 16) Diario de operaciones: 10_Diario/Operaciones/AAAA-MM.md, solo añadir; corrección → fila REVISADA; borrado → ANULADA; resumen con n, acierto, esperanza y profit factor por setup
+def diario(trades, borrados=None):
+    w(os.path.join(PRIV, "diario", "2026-10.json"), json.dumps({"version": 2, "mes": "2026-10", "trades": trades, "notas": {}, "notasMod": {}, "borrados": borrados or {}}, ensure_ascii=False))
+
+
+FOTO = {"estado": "OK", "contexto_utc": "2026-10-14 13:40 UTC", "tesis": {"etiqueta": "ALCISTA DÉBIL"}, "gamma": {"signo": "NEGATIVA"}, "regimen": {"cuadrante": "REFLACIÓN"}, "evento_alta_2h": {"si": False}}
+T1 = {"id": "a1", "fecha": "2026-10-14", "hora": "13:45", "activo": "Nasdaq 100", "lado": "Largo", "pnl": 120.0, "setup": "Barrido+vuelta", "conf": ["absorcion", "fvg"], "foto": FOTO, "mod": "x"}
+T2 = {"id": "b2", "fecha": "2026-10-15", "hora": "14:10", "activo": "Oro", "lado": "Corto", "pnl": -80.0, "setup": "Ruptura+continuación", "conf": [], "mod": "x"}
+T3 = {"id": "c3", "fecha": "2026-10-16", "hora": "15:00", "activo": "Bitcoin", "lado": "Largo", "pnl": 40.0, "mod": "x"}
+OP = "10_Diario/Operaciones/2026-10.md"
+diario([T1, T2, T3])
+pasada(privado=PRIV)
+op = leer(OP)
+filas = [l for l in op.splitlines() if l.startswith("| ALTA")]
+assert len(filas) == 3 and "Barrido LIT" not in op and "Absorción, FVG" in op and "ALCISTA DÉBIL" in op and "gamma NEGATIVA" in op and "| A |" in op and "| B |" in op and "sin setup" in op, op
+assert "Operaciones: **3**" in op and "acierto: **67 %**" in op and "SIN DATO: el Diario guarda el resultado en $" in op and "n<20: sin conclusión" in op
+assert "A · Barrido+vuelta | 1 | 100 % | +120,00 $ | ∞ (sin pérdidas)" in op and "B · Ruptura+continuación | 1 | 0 % | -80,00 $ | 0,00" in op, op
+arbol = snap_arbol(BOV)
+assert cambios(pasada(privado=PRIV)) == 0 and snap_arbol(BOV) == arbol, "idempotente"
+# corrijo una operación (resultado) y añado otra: las filas anteriores no se tocan; la corrección es una fila REVISADA
+antes = [l for l in op.splitlines() if l.startswith("| ALTA")]
+T2b = dict(T2, pnl=-30.0)
+T4 = {"id": "d4", "fecha": "2026-10-19", "hora": "09:00", "activo": "Oro", "lado": "Largo", "pnl": 200.0, "setup": "Ruptura+continuación", "r": 2.0}
+diario([T1, T2b, T3, T4])
+pasada(privado=PRIV)
+op2 = leer(OP)
+assert [l for l in op2.splitlines() if l.startswith("| ALTA")][:3] == antes, "las filas ya escritas no se tocan"
+assert sum(l.startswith("| REVISADA") for l in op2.splitlines()) == 1 and "-30,00" in [l for l in op2.splitlines() if l.startswith("| REVISADA")][0]
+assert "-80,00" in op2 and op2.index("| ALTA | 2026-10-19") > op2.index("| REVISADA"), "se conserva la fila antigua y lo nuevo va al final"
+assert "Operaciones: **4**" in op2 and "+2,00 R" in op2 and "(1 de 4 operaciones con R)" in op2
+# borrado: lápida → fila ANULADA, nada se elimina
+diario([T1, T2b, T3, T4], {"c3": "2026-10-20T10:00:00.000Z"})
+pasada(privado=PRIV)
+op3 = leer(OP)
+assert any(l.startswith("| ANULADA") and "c3" in l for l in op3.splitlines()) and "| c3 |" in op2 and op3.startswith(op2.split("<!-- NEXORA:auto:resumen -->")[0])
+assert "Operaciones: **3**" in op3
+a3 = snap_arbol(BOV)
+assert cambios(pasada(privado=PRIV)) == 0 and snap_arbol(BOV) == a3
+print("16) OK Diario de operaciones: una fila por operación (setup A/B, dirección, R=SIN DATO si no hay, resultado, confirmaciones, foto NEXORA); resumen del mes con n, acierto, esperanza y profit factor por setup; solo se añade (REVISADA al corregir, ANULADA al borrar); idempotente")
 print("\nTODAS LAS PRUEBAS DEL EXPORTADOR A OBSIDIAN PASARON")

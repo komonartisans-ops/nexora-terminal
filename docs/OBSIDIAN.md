@@ -4,7 +4,7 @@ Un script que corre **en el PC de Ruiz** (no en GitHub) copia lo que sabe NEXORA
 
 ## Reglas (no se negocian)
 
-- **Solo escribe dentro de `60_Market_Intelligence/` y `10_Diario/Premercado/`** de la bóveda. Cualquier otra ruta (o con `..`) se rechaza por código.
+- **Solo escribe dentro de `60_Market_Intelligence/`, `10_Diario/Premercado/` y `10_Diario/Operaciones/`** de la bóveda. Cualquier otra ruta (o con `..`) se rechaza por código.
 - **Nunca borra.** Nunca edita un CSV del repo.
 - **Los snapshots diarios son inmutables:** si `02_Daily_Snapshots/AAAA-MM-DD.md` existe, ni se vuelve a calcular.
 - **Una nota gestionada que Ruiz ha editado no se pisa.** Cada nota escrita por el exportador guarda su hash (en `%LOCALAPPDATA%\NexoraExportador\estado.json`, fuera de la bóveda). Si el hash del archivo ya no es el de la última exportación, la versión nueva va a `… (NEXORA v2).md` (luego `v3`…), se anota un AVISO en el log y el latido sale como `AVISO`. La v2 sí se mantiene al día mientras nadie la edite.
@@ -23,6 +23,12 @@ Un script que corre **en el PC de Ruiz** (no en GitHub) copia lo que sabe NEXORA
 | `07_Sistema_NEXORA/Registros/*.md` | una nota por registro clave (marcador de señales, resultados del análisis, reacciones a eventos, discrepancias revisadas, contraste del spot del oro, vigilar_cierre) con las últimas 30 filas y enlace al CSV. | gestionada |
 | `07_Sistema_NEXORA/Bitácora NEXORA AAAA-MM.md` | una línea por commit del repo (excepto los automáticos de datos): fecha, tipo (`feat`/`fix`/`cambio`), qué y por qué; además fallos de etapas, vigilantes fallidos, discrepancias y revisiones de datos («el cerebro guarda los errores, no solo los aciertos»). No duplica. | solo añadir |
 | `01_State/Global Market State.md`, `00_MOC/Market Intelligence.md`, `07_Sistema_NEXORA/00 Sistema NEXORA (MOC).md`, `Estado y pendientes.md` | bloques propios con enlaces a todo lo anterior y tesis vigentes. | bloque delimitado |
+
+### Diario de operaciones → `10_Diario/Operaciones/AAAA-MM.md`
+
+Lee `nexora-diario/diario/AAAA-MM.json` (el repo privado) y escribe una nota por mes, **solo añadiendo**: una fila `ALTA` por operación (fecha, hora, activo, setup A = Barrido+vuelta / B = Ruptura+continuación / Otro, dirección, R, resultado en $ y GANADA/PERDIDA/BE, confirmaciones y la foto NEXORA: estado, tesis, gamma, régimen, evento ALTA a 2 h y hora del contexto). Si corriges una operación se añade una fila `REVISADA` (la antigua queda); si la borras, una fila `ANULADA`. Cada fila lleva el `id` y un hash corto para detectar cambios sin tocar lo ya escrito. Arriba, un bloque delimitado «Resumen del mes» (único trozo que se reescribe) con n, acierto, esperanza y profit factor por setup (con «n<20: sin conclusión»).
+
+**R:** el Diario guarda el resultado en $ y las operaciones no traen R, así que la columna R y la esperanza en R salen como **SIN DATO** (no se inventa); si una operación trae un campo `r`, se usa. La esperanza se da además en $ por operación.
 
 `10_Diario/Premercado/` está permitido pero **no se escribe** en esta fase (no estaba en la lista de lo que se exporta).
 
@@ -44,6 +50,16 @@ python tools/exportar_obsidian.py --vista-previa 2026-10-22   # imprime el snaps
 ### Tarea de Windows «NEXORA exportar a Obsidian»
 
 Una sola tarea con tres disparadores: diaria a las **08:30** y **23:45** (hora local) y **al iniciar sesión**; con «ejecutar lo antes posible si se perdió una ejecución». `--programado` solo trabaja si la última pasada es anterior a la última hora programada (08:30 / 23:45) ya pasada: un inicio de sesión con todo al día no hace nada. Log local: `%LOCALAPPDATA%\NexoraExportador\exportador.log` (sin secretos). Estado: `…\estado.json`.
+
+## Ejecución anclada (seguridad)
+
+La tarea de Windows **no ejecuta el código que acaba de descargar**: ejecuta una copia fija, `%LOCALAPPDATA%\NexoraExportador\aprobado\exportar_obsidian.py` (solo lectura, con su commit y hash en `aprobado.json`). Los **datos** (repos público y privado) se siguen descargando con normalidad en cada pasada; el **código del exportador** solo cambia cuando lo apruebas.
+
+- Si `tools/exportar_obsidian.py` cambia en `main`, la pasada sigue con la versión aprobada, registra el latido como `PENDIENTE@<commit aprobado>` y sube `data/obsidian_pendiente.json` (commit nuevo, hash y resumen del diff, con tokens enmascarados).
+- `#/integridad` muestra el banner ámbar «Exportador actualizado, pendiente de aprobar» con el diff resumido, y se envía **un** Telegram por versión nueva (clave `obsidian_pendiente|<hash>`).
+- Para aprobar: revisa el cambio (`git diff` en el clon `%LOCALAPPDATA%\NexoraExportador\repos\nexora-terminal`) y ejecuta `python tools/exportar_obsidian.py --aprobar`: trae el repo, muestra el diff, copia la versión nueva a la carpeta anclada y la fija. El siguiente latido limpia el aviso.
+- Regla: no aprobar sin haber leído el diff. El exportador anclado no importa ni ejecuta ningún otro código del repo (solo lee datos).
+- `--registrar-tarea` apunta a la copia anclada y exige haber aprobado una versión antes.
 
 ## Latido y aviso
 
