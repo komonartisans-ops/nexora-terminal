@@ -16,6 +16,21 @@ import analisis as A  # noqa: E402
 import publicar_analisis as PU  # noqa: E402
 
 UTC = dt.timezone.utc
+
+BARRAS = {}          # hora UTC → precio del futuro del oro (barras de 5 min de la prueba)
+
+
+def precio_en(t0):
+    """La barra de 5 min más cercana ANTERIOR al corte (como la de Yahoo); los datos posteriores existen en BARRAS para comprobar que no se usan."""
+    cand = sorted((h, v) for h, v in BARRAS.items() if A._utc(h) <= t0)
+    if not cand:
+        raise RuntimeError("sin barra anterior al corte")
+    return cand[-1][1], cand[-1][0], "GC=F (barra de 5 min de la prueba)"
+
+
+A.precio_base_yahoo = precio_en      # sin red: el precio base de los informes de prueba sale de BARRAS (vacío = sin barra → sin precio base)
+
+
 FRASE_PRIVADA = "FRASE-PRIVADA-DE-PRENSA-XYZ"
 INFORME = f"""INFORME DIARIO · 20-10-2026 · corte 09:30 (Madrid)
 
@@ -198,82 +213,138 @@ except RuntimeError as e:
     assert "no se sobrescribe" in str(e)
 print("5b) OK mismo hash no escribe; edición → _v2 y el anterior REVISADA (fila nueva, nada se borra ni se sobrescribe); visibilidad resumen: solo tesis, veredicto, K.2 y escenarios")
 
-# ---------------------------------------------------------------- 6) resultado del sesgo a T+1 y T+5 (reglas fijas) y acumulado
-V = A.veredicto
-assert V("alcista", 1, 0.3, -0.2, -5) == "CUMPLIDO" and V("alcista", 1, 0.26, 0.2, 5) == "MIXTO" and V("alcista", 1, 0.25, -0.2, -5) == "MIXTO" and V("alcista", 1, -0.26, -0.2, -5) == "FALLIDO"
-assert V("alcista", 1, 0.3, 0.2, -5) == "CUMPLIDO", "solo uno de DXY/DFII10 en contra no degrada"
-assert V("bajista", 5, -1.0, 0.1, 3) == "CUMPLIDO" and V("bajista", 5, -1.0, -0.1, -3) == "MIXTO" and V("bajista", 5, 0.5, 0, 0) == "FALLIDO"
-assert V("neutral", 1, 0.5, None, None) == "CUMPLIDO" and V("neutral", 1, 0.51, None, None) == "FALLIDO" and V("neutral", 5, -1.5, 0, 0) == "CUMPLIDO" and V("neutral", 5, 1.51, 0, 0) == "FALLIDO"
-with open(os.path.join(R, "data", "historico_precios.csv"), "a", encoding="utf-8", newline="") as fh:
-    w = csv.writer(fh)
-    for d, o, x in (("2026-10-21", 4150.0, 101.6), ("2026-10-22", 4160.0, 101.5), ("2026-10-23", 4170.0, 101.4), ("2026-10-26", 4180.0, 101.3), ("2026-10-27", 4190.0, 101.2), ("2026-10-28", 4200.0, 101.1)):
-        w.writerow(["x", "oro", o, d, 0, "t"])
-        w.writerow(["x", "dxy", x, d, 0, "t"])
-with open(os.path.join(R, "data", "historico_tipos.csv"), "a", encoding="utf-8", newline="") as fh:
-    w = csv.writer(fh)
-    for d, v in (("2026-10-21", 2.60), ("2026-10-28", 2.50)):
-        w.writerow(["x", "real10", v, d, 0, "t"])
-# el análisis vigente del 20-oct es v2 (alcista); oro 20-oct = 4142,5 (histórico propio)
-n = A.evaluar(R, ahora + dt.timedelta(days=9))
-res = A.leer_csv(os.path.join(R, "data", "analisis_resultados.csv"))
-t1 = next(x for x in res if x["horizonte"] == "1")
-t5 = next(x for x in res if x["horizonte"] == "5")
-assert n == 2 and t1["fecha_t"] == "2026-10-21" and t1["id"] == "2026-10-20_ORO_MACRO_v2|T+1" and t1["sesgo_oro"] == "alcista" and abs(float(t1["oro_pct"]) - round((4150 / 4142.5 - 1) * 100, 3)) < 1e-9
-assert t5["fecha_t"] == "2026-10-27" and t5["veredicto"] == "CUMPLIDO" and t5["dfii10_pb"] == "" and float(t5["oro_pct"]) > 1.0, "T+5 (27-oct): oro +1,15 %; sin DFII10 de esa fecha queda vacío, no se inventa"
-assert t1["dxy_var"] == str(round(101.6 - 101.76, 3)) and t1["dfii10_pb"] == str(round((2.60 - 2.64) * 100, 1)) and t1["veredicto"] == "MIXTO", "T+1: oro +0,18 % (menos de 0,25 %) → MIXTO"
-assert A.evaluar(R, ahora + dt.timedelta(days=10)) == 0 and len(A.leer_csv(os.path.join(R, "data", "analisis_resultados.csv"))) == 2, "idempotente: solo añadir"
-assert all(x["id"].split("|")[0] != "2026-10-20_ORO_MACRO" for x in res), "el análisis REVISADA no se evalúa; solo el vigente"
-ac = A.acumulado(res)
-assert ac["T+1"]["n"] == 1 and ac["T+1"]["conclusion"] == "n<20: sin conclusión" and ac["T+5"]["acierto_pct"] in (0.0, 100.0)
-J = A.etapa(R, ahora + dt.timedelta(days=10))
-assert J["acumulado"]["T+1"]["conclusion"] == "n<20: sin conclusión" and J["resultados_nuevos"] == 0 and next(e for e in J["entradas"] if e["id"].endswith("_v2"))["resultados"][0]["horizonte"] in ("1", 1)
-print("6) OK resultado del sesgo: reglas fijas en los bordes, T+1 y T+5 con oro, DXY y DFII10, solo añadir, solo el análisis vigente, acumulado «n<20: sin conclusión»")
-
-# ---------------------------------------------------------------- 7) umbral = EM del oro de ese día (T+5: EM × √5); sin EM, % fijos y umbral FIJO
+# ---------------------------------------------------------------- 6) veredicto: reglas fijas en los bordes (EM, √5, neutral con MIXTO, degradación, FIJO)
 V = A.veredicto
 r5 = 5 ** 0.5
-# EM bajo (0,8 %): umbral direccional 0,3 × 0,8 = 0,24 %
 assert V("alcista", 1, 0.24, 0, 0, 0.8) == "CUMPLIDO" and V("alcista", 1, 0.2399, 0, 0, 0.8) == "MIXTO" and V("alcista", 1, -0.24, 0, 0, 0.8) == "FALLIDO" and V("alcista", 1, -0.2399, 0, 0, 0.8) == "MIXTO"
 assert V("bajista", 1, -0.24, 0, 0, 0.8) == "CUMPLIDO" and V("bajista", 1, 0.24, 0, 0, 0.8) == "FALLIDO" and V("bajista", 1, 0.2399, 0, 0, 0.8) == "MIXTO"
-assert V("alcista", 5, 0.54, 0, 0, 0.8) == "CUMPLIDO" and V("alcista", 5, 0.53, 0, 0, 0.8) == "MIXTO" and V("alcista", 5, -0.54, 0, 0, 0.8) == "FALLIDO", "T+5: 0,3 × 0,8 × √5 = 0,5367 %"
+assert V("alcista", 5, 0.54, 0, 0, 0.8) == "CUMPLIDO" and V("alcista", 5, 0.53, 0, 0, 0.8) == "MIXTO" and V("alcista", 5, -0.54, 0, 0, 0.8) == "FALLIDO"
 assert V("neutral", 1, 0.4, 0, 0, 0.8) == "CUMPLIDO" and V("neutral", 1, 0.41, 0, 0, 0.8) == "MIXTO" and V("neutral", 1, -0.8, 0, 0, 0.8) == "MIXTO" and V("neutral", 1, 0.81, 0, 0, 0.8) == "FALLIDO"
-# EM alto (2,0 %): umbral 0,6 %; con +0,5 % el % fijo daría CUMPLIDO y con EM es MIXTO
 assert V("alcista", 1, 0.5, 0, 0, 2.0) == "MIXTO" and V("alcista", 1, 0.5, 0, 0, None) == "CUMPLIDO" and V("alcista", 1, 0.6, 0, 0, 2.0) == "CUMPLIDO" and V("alcista", 1, -0.6, 0, 0, 2.0) == "FALLIDO"
-assert V("neutral", 1, 1.0, 0, 0, 2.0) == "CUMPLIDO" and V("neutral", 1, 1.5, 0, 0, 2.0) == "MIXTO" and V("neutral", 1, 2.0, 0, 0, 2.0) == "MIXTO" and V("neutral", 1, 2.01, 0, 0, 2.0) == "FALLIDO"
-assert V("neutral", 5, 2.2, 0, 0, 2.0) == "CUMPLIDO" and V("neutral", 5, 4.4, 0, 0, 2.0) == "MIXTO" and V("neutral", 5, 4.5, 0, 0, 2.0) == "FALLIDO", "T+5 neutral: 0,5 × 2 × √5 = 2,236 %; 1 × 2 × √5 = 4,472 %"
-# se mantiene la degradación a MIXTO si DXY y DFII10 van ambos en contra
+assert V("neutral", 5, 2.2, 0, 0, 2.0) == "CUMPLIDO" and V("neutral", 5, 4.4, 0, 0, 2.0) == "MIXTO" and V("neutral", 5, 4.5, 0, 0, 2.0) == "FALLIDO"
 assert V("alcista", 1, 1.0, 0.2, 5, 0.8) == "MIXTO" and V("alcista", 1, 1.0, 0.2, -5, 0.8) == "CUMPLIDO" and V("bajista", 1, -1.0, -0.2, -5, 0.8) == "MIXTO" and V("neutral", 1, 0.1, 0.2, 5, 0.8) == "CUMPLIDO"
-# sin EM: los % fijos de siempre
 assert V("alcista", 1, 0.26, 0, 0) == "CUMPLIDO" and V("alcista", 1, 0.25, 0, 0) == "MIXTO" and V("neutral", 5, 1.5, 0, 0) == "CUMPLIDO" and V("neutral", 5, 1.51, 0, 0) == "FALLIDO"
-# de extremo a extremo: día de EM alto, día de EM bajo y día sin EM, mismo movimiento del oro (+0,5 %)
-R3 = nueva_raiz()
-with open(os.path.join(R3, "data", "historico_precios.csv"), "a", encoding="utf-8", newline="") as fh:
-    w = csv.writer(fh)
-    for d, o, x in (("2026-10-21", 4163.2, 101.6), ("2026-10-22", 4184.0, 101.5), ("2026-10-23", 4204.9, 101.4)):
-        w.writerow(["x", "oro", o, d, 0, "t"])
-        w.writerow(["x", "dxy", x, d, 0, "t"])
-with open(os.path.join(R3, "data", "historico_tipos.csv"), "a", encoding="utf-8", newline="") as fh:
-    w = csv.writer(fh)
-    for d, v in (("2026-10-21", 2.60), ("2026-10-22", 2.55), ("2026-10-23", 2.50)):
-        w.writerow(["x", "real10", v, d, 0, "t"])
-with open(os.path.join(R3, "data", "historico_gamma_oro.csv"), "w", encoding="utf-8", newline="") as fh:
-    w = csv.writer(fh)
-    w.writerow(["fecha_sesion", "gld_spot", "em_gld"])
-    w.writerow(["2026-10-20", 377.77, 7.5554])      # EM 2,0 % (alto)
-    w.writerow(["2026-10-21", 380.0, 3.04])         # EM 0,8 % (bajo)
-PRIV3 = tempfile.mkdtemp(prefix="priv3_")
-for fch in ("2026-10-20", "2026-10-21", "2026-10-22"):
-    PU.publicar(INFORME.replace("20-10-2026", fch[8:] + "-10-2026") + f"\nvariante {fch}", "alcista", "ORO_MACRO", "privado", fecha=fch, raiz=R3, solo_local=PRIV3, ahora=dt.datetime(2026, 10, 23, 8, 0, tzinfo=UTC))
-A.evaluar(R3, dt.datetime(2026, 10, 24, 8, 0, tzinfo=UTC))
-rr = {x["id"]: x for x in A.leer_csv(os.path.join(R3, "data", "analisis_resultados.csv"))}
-alto, bajo, sin = rr["2026-10-20_ORO_MACRO|T+1"], rr["2026-10-21_ORO_MACRO|T+1"], rr["2026-10-22_ORO_MACRO|T+1"]
-assert alto["umbral"] == "EM" and float(alto["umbral_pct"]) == 2.0 and float(alto["oro_pct"]) > 0.49 and alto["veredicto"] == "MIXTO", "EM alto: +0,5 % no llega a 0,3 × 2,0 = 0,6 % → MIXTO"
-assert bajo["umbral"] == "EM" and float(bajo["umbral_pct"]) == 0.8 and bajo["veredicto"] == "CUMPLIDO", "EM bajo: +0,5 % supera 0,3 × 0,8 = 0,24 % → CUMPLIDO (DXY y DFII10 a favor)"
-assert sin["umbral"] == "FIJO" and sin["umbral_pct"] == "" and sin["veredicto"] == "CUMPLIDO", "sin EM ese día: % fijos y umbral FIJO"
-assert float(A.leer_csv(os.path.join(R3, "data", "analisis_resultados.csv"))[0]["umbral_pct"] or 0) >= 0
-assert "umbral" in A.CAMPOS_RES and "0,3 × EM" in A.construir(R3)["reglas"] and "EM × √5" in A.construir(R3)["reglas"]
-print("7) OK umbral = EM del oro del día (T+5: EM × √5): día de EM alto (+0,5 % → MIXTO) y de EM bajo (+0,5 % → CUMPLIDO), neutral con MIXTO entre 0,5 y 1 × EM, degradación por DXY y DFII10, y sin EM → % fijos con umbral FIJO")
+print("6) OK veredicto: umbral 0,3 × EM (×√5 a T+5), neutral 0,5/1 × EM con MIXTO, degradación por DXY y DFII10, sin EM → % fijos")
 
-for d in (R, PRIV, R3, PRIV3):
+# ---------------------------------------------------------------- utilidades de los datos de prueba
+def raiz_con_historico(oro, em_rows, dxy=None, real=None):
+    t = nueva_raiz()
+    for nombre in ("historico_precios.csv", "historico_tipos.csv"):
+        os.remove(os.path.join(t, "data", nombre))
+    with open(os.path.join(t, "data", "historico_precios.csv"), "w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["capturado_utc", "activo", "valor", "fecha_dato", "cambio_1d_pct", "fuente"])
+        for d, v in oro.items():
+            w.writerow([f"{d} 21:07 UTC", "oro", v, d, 0, "t"])
+        for d, v in (dxy or {}).items():
+            w.writerow([f"{d} 21:07 UTC", "dxy", v, d, 0, "t"])
+    with open(os.path.join(t, "data", "historico_tipos.csv"), "w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["capturado_utc", "serie", "valor", "fecha_dato", "d1_pb", "fuente"])
+        for d, v in (real or {}).items():
+            w.writerow([f"{d} 21:07 UTC", "real10", v, d, 0, "t"])
+    with open(os.path.join(t, "data", "historico_gamma_oro.csv"), "w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["fecha_sesion", "gld_spot", "em_gld", "medido_utc"])
+        for ses, pct in em_rows.items():
+            w.writerow([ses, 400.0, round(400.0 * pct / 100, 4), f"{ses} 21:30 UTC"])
+    return t
+
+
+def pub(R, texto, sesgo, tipo, fecha, ahora, priv, corte=None):
+    return PU.publicar(texto, sesgo, tipo, "privado", fecha=fecha, corte=corte, raiz=R, solo_local=priv, ahora=ahora)
+
+
+def rrd(R):
+    return {x["id"]: x for x in A.leer_csv(os.path.join(R, "data", "analisis_resultados.csv"))}
+
+
+def informe(fecha_ddmmaaaa, corte=None, extra=""):
+    t = INFORME.replace("20-10-2026", fecha_ddmmaaaa).replace(" · corte 09:30 (Madrid)", f" · Corte: {corte}, hora de Madrid" if corte else "") + extra
+    return t
+
+
+# ---------------------------------------------------------------- 7) CORTE ≠ PUBLICACIÓN: informe del día D con corte 07:00 publicado a las 14:00
+OROS = {"2026-10-21": 4020.0, "2026-10-22": 4020.0, "2026-10-23": 4030.0, "2026-10-26": 4040.0, "2026-10-27": 4050.0, "2026-10-28": 4060.0, "2026-10-29": 4070.0, "2026-10-30": 4040.0, "2026-11-02": 4045.0}
+R4 = raiz_con_historico(OROS, {"2026-10-21": 0.8, "2026-10-22": 5.0, "2026-10-19": 3.0})        # EM de D-1 (21-oct) = 0,8 %; el de D (22-oct, 21:30 UTC) = 5,0 % es POSTERIOR al corte
+BARRAS.update({"2026-10-22 04:55": 4000.0, "2026-10-22 05:00": 4001.0, "2026-10-22 05:05": 4010.0, "2026-10-22 12:00": 4100.0, "2026-10-22 14:00": 4105.0})      # 07:00 Madrid = 05:00 UTC
+PRIV4 = tempfile.mkdtemp(prefix="priv4_")
+r = pub(R4, informe("22-10-2026", "07:00"), "alcista", "DIARIO", None, dt.datetime(2026, 10, 22, 14, 0, tzinfo=UTC), PRIV4)
+assert r["id"] == "2026-10-22_ORO_MACRO" and r["corte"] == "07:00" and r["corte_origen"] == "INFORME", "DIARIO = ORO_MACRO; el corte sale de «Corte: 07:00, hora de Madrid»"
+ind = A.leer_csv(os.path.join(R4, "data", "analisis_indice.csv"))[0]
+assert ind["corte_madrid"] == "07:00" and ind["corte_origen"] == "INFORME" and ind["publicado_utc"] == "2026-10-22 14:00 UTC" and ind["precio_base"] == "4001.0" and ind["precio_base_hora"] == "2026-10-22 05:00", "precio de las 07:00 (05:00 UTC), no el de las 14:00"
+A.evaluar(R4, dt.datetime(2026, 11, 3, 8, 0, tzinfo=UTC))
+t1 = rrd(R4)["2026-10-22_ORO_MACRO|T+1"]
+assert t1["em_sesion"] == "2026-10-21" and t1["umbral"] == "EM" and float(t1["umbral_pct"]) == 0.8, "EM del cierre de D-1, nunca el posterior al corte (5,0 %)"
+assert float(t1["precio_base"]) == 4001.0 and t1["precio_base_hora"] == "2026-10-22 05:00" and float(t1["precio_fin"]) == 4020.0 and t1["fecha_t"] == "2026-10-22", "T+1 = cierre de la primera sesión que termina después del corte (la del propio día D)"
+assert abs(float(t1["oro_pct"]) - round((4020.0 / 4001.0 - 1) * 100, 3)) < 1e-9 and t1["veredicto"] == "CUMPLIDO", "+0,475 % frente a 0,3 × 0,8 = 0,24 % → CUMPLIDO"
+t5 = rrd(R4)["2026-10-22_ORO_MACRO|T+5"]
+assert t5["fecha_t"] == "2026-10-28" and float(t5["precio_fin"]) == 4060.0 and abs(float(t5["umbral_pct"]) - round(0.8 * r5, 3)) < 1e-9
+# publicar a otra hora NO cambia nada de lo que se evalúa (mismo corte): solo cambia publicado_utc
+R5 = raiz_con_historico(OROS, {"2026-10-21": 0.8, "2026-10-22": 5.0})
+pub(R5, informe("22-10-2026", "07:00"), "alcista", "DIARIO", None, dt.datetime(2026, 10, 22, 19, 30, tzinfo=UTC), tempfile.mkdtemp(prefix="p5_"))
+A.evaluar(R5, dt.datetime(2026, 11, 3, 8, 0, tzinfo=UTC))
+a5 = rrd(R5)["2026-10-22_ORO_MACRO|T+1"]
+assert (a5["precio_base"], a5["em_sesion"], a5["oro_pct"], a5["veredicto"]) == (t1["precio_base"], t1["em_sesion"], t1["oro_pct"], t1["veredicto"]) and A.leer_csv(os.path.join(R5, "data", "analisis_indice.csv"))[0]["publicado_utc"] == "2026-10-22 19:30 UTC"
+# sin corte en el informe: la hora de publicación y corte_origen = ESTIMADO
+R6 = raiz_con_historico(OROS, {"2026-10-21": 0.8})
+r6 = pub(R6, informe("22-10-2026", None), "neutral", "DIARIO", None, dt.datetime(2026, 10, 22, 7, 10, tzinfo=UTC), tempfile.mkdtemp(prefix="p6_"))
+i6 = A.leer_csv(os.path.join(R6, "data", "analisis_indice.csv"))[0]
+assert r6["corte_origen"] == "ESTIMADO" and i6["corte_madrid"] == "09:10" and i6["corte_origen"] == "ESTIMADO" and "corte=ESTIMADO" in PU.salida(r6), "corte = hora de publicación en Madrid (07:10 UTC = 09:10)"
+# precio base ausente: no se inventa y no se evalúa
+BARRAS_COPIA = dict(BARRAS)
+BARRAS.clear()
+R7 = raiz_con_historico(OROS, {"2026-10-21": 0.8})
+r7 = pub(R7, informe("22-10-2026", "07:00"), "alcista", "DIARIO", None, dt.datetime(2026, 10, 22, 14, 0, tzinfo=UTC), tempfile.mkdtemp(prefix="p7_"))
+assert r7["precio_base"] is None and "sin precio base" in PU.salida(r7) and A.evaluar(R7, dt.datetime(2026, 11, 3, tzinfo=UTC)) == 0
+BARRAS.update(BARRAS_COPIA)
+print("7) OK corte ≠ publicación: informe del 22-oct con corte 07:00 publicado a las 14:00 usa el EM del cierre del 21-oct y el precio de las 07:00 (05:00 UTC), nunca datos posteriores; sin corte → ESTIMADO; sin precio base → no se evalúa")
+
+# ---------------------------------------------------------------- 8) EM antiguo → FIJO; EM alto y bajo
+R8 = raiz_con_historico(OROS, {"2026-10-20": 2.0, "2026-10-21": 0.8})
+BARRAS.update({"2026-10-21 05:00": 4000.0, "2026-10-29 05:00": 4000.0, "2026-10-30 05:00": 4000.0})
+PRIV8 = tempfile.mkdtemp(prefix="priv8_")
+pub(R8, informe("21-10-2026", "07:00"), "alcista", "DIARIO", None, dt.datetime(2026, 10, 21, 8, 0, tzinfo=UTC), PRIV8)       # EM 20-oct = 2,0 % (alto): +0,5 % → MIXTO
+pub(R8, informe("22-10-2026", "07:00"), "alcista", "DIARIO", None, dt.datetime(2026, 10, 22, 8, 0, tzinfo=UTC), PRIV8)       # EM 21-oct = 0,8 % (bajo): +0,5 % → CUMPLIDO
+pub(R8, informe("30-10-2026", "07:00"), "alcista", "DIARIO", None, dt.datetime(2026, 10, 30, 8, 0, tzinfo=UTC), PRIV8)       # el EM más reciente (21-oct) tiene 7 días hábiles → FIJO
+A.evaluar(R8, dt.datetime(2026, 11, 4, 8, 0, tzinfo=UTC))
+o = rrd(R8)
+alto, bajo, fijo = o["2026-10-21_ORO_MACRO|T+1"], o["2026-10-22_ORO_MACRO|T+1"], o["2026-10-30_ORO_MACRO|T+1"]
+assert alto["umbral"] == "EM" and alto["em_sesion"] == "2026-10-20" and float(alto["umbral_pct"]) == 2.0 and abs(float(alto["oro_pct"]) - 0.5) < 1e-9 and alto["veredicto"] == "MIXTO", alto
+assert bajo["umbral"] == "EM" and bajo["em_sesion"] == "2026-10-21" and float(bajo["umbral_pct"]) == 0.8 and bajo["veredicto"] == "CUMPLIDO", bajo
+assert fijo["umbral"] == "FIJO" and fijo["em_sesion"] == "" and fijo["umbral_pct"] == "", "EM con más de 3 días hábiles → umbral FIJO"
+assert A.em_oro_antes(R8, A.t0_utc("2026-10-26", "07:00"), "2026-10-26")[1] == "2026-10-21" and A.em_oro_antes(R8, A.t0_utc("2026-10-27", "07:00"), "2026-10-27") is None, "3 días hábiles de antigüedad aún valen (21→26); 4 ya no (21→27)"
+assert A.em_oro_antes(R8, A.t0_utc("2026-10-21", "07:00"), "2026-10-21")[1] == "2026-10-20", "el EM del 21-oct (medido a las 21:30 UTC) es posterior al corte de las 07:00 del propio 21-oct"
+print("8) OK EM: último guardado antes del corte; EM alto (+0,5 % → MIXTO) y bajo (→ CUMPLIDO); más de 3 días hábiles de antigüedad → umbral FIJO con em_sesion vacío")
+
+# ---------------------------------------------------------------- 9) SEMANAL: archivo _semanal, base = cierre del viernes, umbral = EM del viernes × √5, acumulado aparte, enlace «Semanal vigente»
+R9 = raiz_con_historico(OROS, {"2026-10-23": 1.0, "2026-10-22": 0.9})
+BARRAS.update({"2026-10-23 20:55": 4000.0, "2026-10-25 15:00": 4000.0})
+PRIV9 = tempfile.mkdtemp(prefix="priv9_")
+inf_sem = informe("25-10-2026", "18:00")
+rs = pub(R9, inf_sem, "alcista", "SEMANAL", None, dt.datetime(2026, 10, 25, 19, 0, tzinfo=UTC), PRIV9)
+assert rs["id"] == "2026-10-25_semanal" and os.path.exists(os.path.join(PRIV9, "analisis", "2026", "2026-10-25_semanal.md")), "archivo AAAA-MM-DD_semanal.md"
+assert "tipo: SEMANAL" in open(os.path.join(PRIV9, "analisis", "2026", "2026-10-25_semanal.md"), encoding="utf-8").read()
+# diario del martes 27-oct (sesgo bajista, diverge del semanal alcista) y del lunes 26 (alcista, coincide)
+pub(R9, informe("27-10-2026", "07:00"), "bajista", "DIARIO", None, dt.datetime(2026, 10, 27, 8, 0, tzinfo=UTC), PRIV9)
+BARRAS.update({"2026-10-26 05:00": 4000.0})
+pub(R9, informe("26-10-2026", "07:00"), "alcista", "DIARIO", None, dt.datetime(2026, 10, 26, 8, 0, tzinfo=UTC), PRIV9)
+A.evaluar(R9, dt.datetime(2026, 11, 4, 8, 0, tzinfo=UTC))
+o = rrd(R9)
+sem = [k for k in o if k.startswith("2026-10-25_semanal")]
+assert sem == ["2026-10-25_semanal|T+5"], "el semanal tiene UN resultado: la semana siguiente (sin T+1)"
+w = o["2026-10-25_semanal|T+5"]
+assert w["fecha_t"] == "2026-10-30" and float(w["precio_base"]) == 4000.0 and w["precio_base_hora"] == "2026-10-25 15:00" and float(w["precio_fin"]) == 4040.0 and abs(float(w["umbral_pct"]) - round(1.0 * r5, 3)) < 1e-9 and w["em_sesion"] == "2026-10-23"
+assert w["veredicto"] == "CUMPLIDO" and abs(float(w["oro_pct"]) - 1.0) < 1e-9, "semana lunes-viernes: +1,0 % ≥ 0,3 × 1,0 × √5 = 0,67 %"
+J = A.construir(R9, dt.datetime(2026, 11, 4, 8, 0, tzinfo=UTC))
+ent = {e["id"]: e for e in J["entradas"]}
+assert ent["2026-10-27_ORO_MACRO"]["semanal"] == {"id": "2026-10-25_semanal", "fecha": "2026-10-25", "sesgo_oro": "alcista", "coincide": False}, "diario bajista frente a semanal alcista: diverge"
+assert ent["2026-10-26_ORO_MACRO"]["semanal"]["coincide"] is True and ent["2026-10-25_semanal"]["semanal"] is None and ent["2026-10-25_semanal"]["tipo"] == "SEMANAL"
+ac = J["acumulado"]
+assert ac["semanal"]["semana"]["n"] == 1 and ac["diario"]["T+1"]["n"] == 2 and ac["diario"]["T+5"]["n"] == 1 and ac["semanal"]["semana"]["conclusion"] == "n<20: sin conclusión", "acumulado del semanal separado del diario"
+assert A.tipo_normal("diario") == "ORO_MACRO" and A.tipo_normal("SEMANAL") == "SEMANAL" and A.sufijo_tipo("SEMANAL") == "semanal" and A.sufijo_tipo("INDICES") == "INDICES"
+print("9) OK SEMANAL: archivo _semanal, un resultado a la semana siguiente (base = último precio antes del corte, umbral = EM del viernes × √5), acumulado separado, y los diarios de la semana enlazan «Semanal vigente» (coincide / diverge)")
+
+for d in (R, PRIV, R4, PRIV4, R5, R6, R7, R8, PRIV8, R9, PRIV9):
     shutil.rmtree(d, ignore_errors=True)
 print("\nTODO OK · sin red, sin GitHub, sin Telegram")

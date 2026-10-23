@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """NEXORA · publica el informe diario de Ruiz (Fase 18). Guardado SOLO AÑADIR: nunca sobrescribe.
 
-  python tools/publicar_analisis.py INFORME.txt --sesgo neutral --tipo ORO_MACRO --visibilidad privado [--fecha AAAA-MM-DD] [--corte HH:MM]
+  python tools/publicar_analisis.py INFORME.txt --sesgo neutral --tipo DIARIO|SEMANAL --visibilidad privado [--fecha AAAA-MM-DD] [--corte HH:MM]
+  (tipo DIARIO = ORO_MACRO, el defecto; INDICES = diario de índices; SEMANAL = el del domingo, archivo AAAA-MM-DD_semanal.md)
 
 Qué hace (sin IA; el texto se guarda tal cual):
   1. Calcula el hash, extrae las secciones (engine/analisis.py) y COTEJA el panel A.2, el calendario B.3 y las probabilidades de la Fed contra los datos de NEXORA de la MISMA fecha.
@@ -57,7 +58,20 @@ def escribir_privado(ruta, contenido, solo_local=None):
     return f"{REPO_PRIVADO}:{ruta}"
 
 
-def publicar(texto, sesgo, tipo, visibilidad, fecha=None, corte=None, raiz=RAIZ, solo_local=None, ahora=None):
+def precio_base(raiz, t0, precio_fn=None):
+    """(precio, hora UTC, fuente) del oro en el CORTE: la barra de 5 min de GC=F más cercana anterior a t0 (Yahoo); si no, la última captura horaria de NEXORA anterior a t0. None si no hay; nunca un dato posterior."""
+    try:
+        v, hora, fuente = (precio_fn or A.precio_base_yahoo)(t0)
+    except Exception:  # noqa: BLE001
+        u = A._ultimo_antes(raiz, "oro", t0)
+        return (u[0], u[1], "historico_precios.csv (captura horaria de NEXORA, GC=F)") if u else None
+    if A._utc(hora) is None or A._utc(hora) > t0:
+        raise ValueError("el precio base no puede ser posterior al corte")
+    return v, hora, fuente
+
+
+def publicar(texto, sesgo, tipo, visibilidad, fecha=None, corte=None, raiz=RAIZ, solo_local=None, ahora=None, precio_fn=None):
+    tipo = A.tipo_normal(tipo)
     if sesgo not in A.SESGOS or tipo not in A.TIPOS or visibilidad not in A.VISIBILIDADES:
         raise ValueError("sesgo, tipo o visibilidad no válidos")
     ahora = ahora or dt.datetime.now(UTC)
@@ -65,18 +79,27 @@ def publicar(texto, sesgo, tipo, visibilidad, fecha=None, corte=None, raiz=RAIZ,
     h = A.hash_texto(texto)
     parsed = A.parse(texto)
     fecha = fecha or parsed["fecha_detectada"] or ahora.astimezone(MAD).strftime("%Y-%m-%d")
-    corte = corte or parsed["corte_detectado"] or ahora.astimezone(MAD).strftime("%H:%M")
+    # CORTE ≠ PUBLICACIÓN: el corte es el de la cabecera del informe; la hora de publicación se guarda aparte (publicado_utc) y no se usa para evaluar. Sin corte en el informe: ESTIMADO = hora de publicación.
+    if corte:
+        corte_origen = "MANUAL"
+    elif parsed["corte_detectado"]:
+        corte, corte_origen = parsed["corte_detectado"], "INFORME"
+    else:
+        corte, corte_origen = ahora.astimezone(MAD).strftime("%H:%M"), "ESTIMADO"
+    t0 = A.t0_utc(fecha, corte)
+    pb = precio_base(raiz, t0, precio_fn)
     ruta_ind = A.P(raiz, "data", "analisis_indice.csv")
     previos = [r for r in A.indice_vigente(raiz) if r["fecha"] == fecha and r["tipo"] == tipo]
     if any(r["hash"] == h for r in previos):
         return {"estado": "YA_PUBLICADO", "id": next(r["id"] for r in previos if r["hash"] == h)}
     version = len(previos) + 1
-    id_ = f"{fecha}_{tipo}" + (f"_v{version}" if version > 1 else "")
+    id_ = f"{fecha}_{A.sufijo_tipo(tipo)}" + (f"_v{version}" if version > 1 else "")
     sello = ahora.strftime("%Y-%m-%d %H:%M UTC")
     # 1) cotejo (solo lectura de los datos de NEXORA)
     cot = A.cotejar(parsed, fecha, raiz)
     # 2) informe completo, al repo privado
-    fm = A._frontmatter({"fecha": fecha, "corte_madrid": corte, "tipo": tipo, "visibilidad": visibilidad, "sesgo_oro": sesgo, "escenarios": [e["nombre"] for e in parsed["escenarios"]], "hash": h, "version": version})
+    fm = A._frontmatter({"fecha": fecha, "corte_madrid": corte, "tipo": tipo, "visibilidad": visibilidad, "sesgo_oro": sesgo, "escenarios": [e["nombre"] for e in parsed["escenarios"]], "hash": h, "version": version,
+                         "corte_origen": corte_origen, "publicado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "precio_base": pb[0] if pb else "SIN DATO", "precio_base_hora": pb[1] if pb else ""})
     ruta_priv = f"analisis/{fecha[:4]}/{id_}.md"
     destino = escribir_privado(ruta_priv, fm + "\n\n" + texto, solo_local)
     # el informe ya extraído (secciones, escenarios…) también va al repo PRIVADO: la vista del terminal lo lee con el token del Diario; no se reanaliza en el navegador
@@ -99,7 +122,8 @@ def publicar(texto, sesgo, tipo, visibilidad, fecha=None, corte=None, raiz=RAIZ,
     for p in previos:
         if p["estado"] == "VIGENTE":
             filas.append({**p, "estado": "REVISADA", "registrada_utc": sello, "nota": f"sustituida por {id_}"})
-    filas.append({"id": id_, "fecha": fecha, "tipo": tipo, "version": version, "visibilidad": visibilidad, "sesgo_oro": sesgo, "corte_madrid": corte, "hash": h, "estado": "VIGENTE", "registrada_utc": sello, "nota": ""})
+    filas.append({"id": id_, "fecha": fecha, "tipo": tipo, "version": version, "visibilidad": visibilidad, "sesgo_oro": sesgo, "corte_madrid": corte, "corte_origen": corte_origen, "publicado_utc": sello,
+                  "precio_base": pb[0] if pb else "", "precio_base_hora": pb[1] if pb else "", "precio_base_fuente": pb[2] if pb else "SIN DATO", "hash": h, "estado": "VIGENTE", "registrada_utc": sello, "nota": ""})
     # el índice es solo-añadir con clave (id, estado): una fila REVISADA nueva no pisa la VIGENTE antigua, la sustituye como último estado
     n0 = len(A.leer_csv(ruta_ind))
     os.makedirs(os.path.dirname(ruta_ind), exist_ok=True)
@@ -115,7 +139,7 @@ def publicar(texto, sesgo, tipo, visibilidad, fecha=None, corte=None, raiz=RAIZ,
     J = A.construir(raiz, ahora)
     os.makedirs(A.P(raiz, "site", "data"), exist_ok=True)
     json.dump(J, open(A.P(raiz, "site", "data", "analisis.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    return {"estado": "PUBLICADO", "id": id_, "version": version, "ruta_privada": destino, "ruta_publica": ruta_pub, "cotejo": cot, "reconocido": parsed["reconocido"]}
+    return {"estado": "PUBLICADO", "id": id_, "version": version, "corte": corte, "corte_origen": corte_origen, "precio_base": pb, "ruta_privada": destino, "ruta_publica": ruta_pub, "cotejo": cot, "reconocido": parsed["reconocido"]}
 
 
 def salida(r):
@@ -128,6 +152,10 @@ def salida(r):
            f"Cotejo del panel A.2: {s['ok']} ✅ · {s['dif']} ⚠️ · {s['sin']} —   |   calendario B.3: {sc['ok']} ✅ · {sc['dif']} ⚠️ · {sc['sin']} —"]
     if not r["reconocido"]:
         out.append("AVISO: no se reconoció ninguna cabecera de sección; la vista mostrará el texto tal cual.")
+    if r["corte_origen"] == "ESTIMADO":
+        out.append(f"⚠️ corte=ESTIMADO ({r['corte']} Madrid = hora de publicación): el informe no trae «Corte: HH:MM»")
+    if not r["precio_base"]:
+        out.append("⚠️ sin precio base del oro en el corte: este informe no se evaluará hasta que haya datos anteriores al corte")
     ws = [f"⚠️ {f['nombre']}: informe {f['valor']:g} · NEXORA {f['nexora']:g} ({f['fuente']}, {f['fecha_nexora']}) · dif {f['dif']:+g} (tolerancia {f['tolerancia']})" for f in c["panel"] if f["estado"] == "⚠️"]
     ws += [f"⚠️ {f['fecha']} {f['hora'] or ''} {f['texto'][:50] or f['nexora']['evento']}: {f['nota']}" for f in c["calendario"] if f["estado"] == "⚠️"]
     return "\n".join(out + ws)
@@ -137,7 +165,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("archivo")
     ap.add_argument("--sesgo", required=True, choices=A.SESGOS)
-    ap.add_argument("--tipo", required=True, choices=A.TIPOS)
+    ap.add_argument("--tipo", default="DIARIO", choices=("DIARIO",) + A.TIPOS)
     ap.add_argument("--visibilidad", required=True, choices=A.VISIBILIDADES)
     ap.add_argument("--fecha")
     ap.add_argument("--corte")

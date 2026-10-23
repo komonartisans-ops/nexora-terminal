@@ -6,13 +6,19 @@ Ruiz envía cada día su informe (texto con tablas, secciones A–K; G = oro). t
   2. COTEJA cada fila del panel A.2 que NEXORA tenga con el valor de NEXORA en la MISMA fecha (históricos propios; si no hay histórico de esa fecha, el dato actual solo si es de esa fecha):
      ✅ coincide · ⚠️ difiere (ambos valores y la fuente de NEXORA) · — NEXORA no lo tiene (nunca se rellena). Tolerancias: tipos ±3 pb; DXY ±0,3; oro ±0,5 %; Brent/WTI ±1,5 %; VIX ±0,5; resto ±1 %.
      También el calendario B.3 frente a la agenda de NEXORA (eventos que faltan u horas distintas, con el cambio de hora: Europa 25-oct, EE. UU. 1-nov) y las probabilidades de la Fed lado a lado.
-  3. RESULTADO del sesgo de oro a T+1 y T+5 sesiones (data/analisis_resultados.csv, solo añadir). Reglas FIJAS:
-     UMBRAL = el EM del oro de ESE día (gamma de GLD, referencia: GLD × GVZ / 100 / √252, en %; data/historico_gamma_oro.csv). A T+5 el umbral es EM × √5. Columna `umbral` del CSV = EM.
+  3. CORTE ≠ PUBLICACIÓN. El corte sale de la cabecera del informe («Corte: 07:00, hora de Madrid»); si no lo trae se usa la hora de publicación y corte_origen = ESTIMADO. La hora a la que se publica
+     (publicado_utc) se guarda aparte y NO se usa para evaluar. Todo lo que entra en la evaluación se fija con datos ANTERIORES a fecha + corte: el precio de partida (la barra de 5 min más cercana anterior al
+     corte del futuro del oro GC=F, la misma serie con la que se mide el resultado; el spot no tiene histórico intradía gratuito) con su hora, y el EM (último EM de oro guardado antes del corte, normalmente
+     el de la sesión anterior; columna em_sesion; si tiene más de 3 días hábiles de antigüedad, umbral FIJO). Nunca datos posteriores.
+  4. RESULTADO del sesgo de oro (data/analisis_resultados.csv, solo añadir). Reglas FIJAS:
+     HORIZONTES. DIARIO (ORO_MACRO, INDICES): T+1 = cierre de la primera sesión que termina después del corte; T+5 = cierre de la quinta. SEMANAL: solo la semana siguiente (de la apertura del domingo
+     al cierre del viernes: la quinta sesión tras el corte). Precio base = el del corte; Δoro = precio de cierre de la sesión / precio base − 1.
+     UMBRAL = el EM del oro (gamma de GLD, referencia: GLD × GVZ / 100 / √252, en %; data/historico_gamma_oro.csv) guardado antes del corte. A T+5 (y en el SEMANAL) el umbral es EM × √5. Columna `umbral` = EM.
      ALCISTA: CUMPLIDO si Δoro ≥ +0,3 × EM; FALLIDO si Δoro ≤ −0,3 × EM; si no, MIXTO. BAJISTA: simétrico (CUMPLIDO si Δoro ≤ −0,3 × EM; FALLIDO si Δoro ≥ +0,3 × EM).
      NEUTRAL: CUMPLIDO si |Δoro| ≤ 0,5 × EM; FALLIDO si |Δoro| > 1 × EM; si no, MIXTO.
      Se mantiene: un CUMPLIDO direccional pasa a MIXTO si DXY y DFII10 (los dos) fueron en contra del sesgo (DXY y tipo real suben para alcista, bajan para bajista).
-     Si ese día no hay EM (sin gamma del oro guardada) se usan los % fijos anteriores y la columna `umbral` dice FIJO: alcista/bajista ±0,25 % (CUMPLIDO más allá, FALLIDO al otro lado, MIXTO dentro);
-     neutral CUMPLIDO hasta 0,5 % a T+1 o 1,5 % a T+5 y FALLIDO fuera. Con menos de 20 resultados evaluados: «n<20: sin conclusión»."""
+     Si no hay EM antes del corte (o es muy antiguo) se usan los % fijos y la columna `umbral` dice FIJO: alcista/bajista ±0,25 % (CUMPLIDO más allá, FALLIDO al otro lado, MIXTO dentro);
+     neutral CUMPLIDO hasta 0,5 % a T+1 o 1,5 % a T+5 y FALLIDO fuera. El acierto acumulado del SEMANAL va aparte del diario. Con menos de 20 resultados evaluados: «n<20: sin conclusión»."""
 from __future__ import annotations
 
 import csv
@@ -28,9 +34,22 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(HERE)
 UTC = dt.timezone.utc
 MIN_N = 20
-CAMPOS_INDICE = ["id", "fecha", "tipo", "version", "visibilidad", "sesgo_oro", "corte_madrid", "hash", "estado", "registrada_utc", "nota"]
-CAMPOS_RES = ["id", "fecha", "tipo", "sesgo_oro", "horizonte", "fecha_t", "oro_pct", "dxy_var", "dfii10_pb", "umbral", "umbral_pct", "veredicto", "evaluado_utc"]
-TIPOS = ("ORO_MACRO", "INDICES")
+CAMPOS_INDICE = ["id", "fecha", "tipo", "version", "visibilidad", "sesgo_oro", "corte_madrid", "corte_origen", "publicado_utc", "precio_base", "precio_base_hora", "precio_base_fuente", "hash", "estado", "registrada_utc", "nota"]
+CAMPOS_RES = ["id", "fecha", "tipo", "sesgo_oro", "horizonte", "fecha_t", "oro_pct", "dxy_var", "dfii10_pb", "umbral", "umbral_pct", "em_sesion", "precio_base", "precio_base_hora", "precio_fin", "veredicto", "evaluado_utc"]
+TIPOS = ("ORO_MACRO", "INDICES", "SEMANAL")
+ALIAS_TIPO = {"DIARIO": "ORO_MACRO"}          # «tipo: DIARIO» del comando = ORO_MACRO (el informe diario de oro y macro); sin tipo, DIARIO
+MAD_TZ = "Europe/Madrid"
+CIERRE_SESION_UTC = "21:00"                    # hora (UTC) a partir de la cual la sesión del día cuenta como cerrada para el oro
+MAX_ANTIGUEDAD_EM_DIAS_HABILES = 3
+
+
+def tipo_normal(t):
+    return ALIAS_TIPO.get(str(t).upper(), str(t).upper())
+
+
+def sufijo_tipo(t):
+    """Nombre de archivo: AAAA-MM-DD_<sufijo>.md → ORO_MACRO / INDICES / semanal."""
+    return "semanal" if t == "SEMANAL" else t
 SESGOS = ("alcista", "bajista", "neutral")
 VISIBILIDADES = ("privado", "resumen")
 
@@ -220,7 +239,7 @@ MESES = {"ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6, "jul": 7, "
 
 
 def detectar_fecha(texto, ano_por_defecto=None):
-    """(fecha ISO, corte HH:MM) de las primeras líneas del informe (p. ej. «20-10-2026», «20 oct 2026», «corte 09:30»). None si no aparece."""
+    """(fecha ISO, corte HH:MM) de las primeras líneas del informe (p. ej. «20-10-2026», «20 oct 2026»; corte solo de «Corte: 07:00, hora de Madrid»). None si no aparece: el corte NO se inventa."""
     cab = "\n".join(texto.split("\n")[:25])
     f = None
     m = re.search(r"(\d{1,2})[/\-.](\d{1,2})[/\-.](20\d{2})", cab)
@@ -234,7 +253,7 @@ def detectar_fecha(texto, ano_por_defecto=None):
             m = re.search(r"(\d{1,2})\s+(?:de\s+)?(ene|feb|mar|abr|may|jun|jul|ago|sep|set|oct|nov|dic)[a-z]*\.?\s+(?:de\s+)?(20\d{2})", _norm(cab))
             if m:
                 f = f"{m.group(3)}-{MESES[m.group(2)]:02d}-{int(m.group(1)):02d}"
-    c = re.search(r"(?:corte|cierre|hora|a las)\D{0,12}(\d{1,2})[:.h](\d{2})", _norm(cab))
+    c = re.search(r"\bcorte\b\W{0,8}(\d{1,2})[:.h](\d{2})", _norm(cab))
     return f, (f"{int(c.group(1)):02d}:{c.group(2)}" if c else None)
 
 
@@ -556,55 +575,131 @@ def _macro_contra(signo, dxy_var, dfii_pb):
     return (dxy_var is not None and dxy_var * signo > 0) and (dfii_pb is not None and dfii_pb * signo > 0)
 
 
-def em_oro_pct(raiz, fecha):
-    """EM del oro de esa sesión en % (em_gld / gld_spot × 100, de data/historico_gamma_oro.csv); None si ese día no hay gamma del oro guardada."""
+def t0_utc(fecha, corte):
+    """Instante (UTC) de fecha + corte (hora de Madrid)."""
+    import zoneinfo
+    h, m = int(corte[:2]), int(corte[3:5])
+    return dt.datetime.combine(dt.date.fromisoformat(fecha), dt.time(h, m), zoneinfo.ZoneInfo(MAD_TZ)).astimezone(UTC)
+
+
+def _utc(s):
+    try:
+        return dt.datetime.strptime(str(s)[:16], "%Y-%m-%d %H:%M").replace(tzinfo=UTC)
+    except ValueError:
+        return None
+
+
+def dias_habiles(d0, d1):
+    n, d = 0, d0
+    while d < d1:
+        d += dt.timedelta(days=1)
+        if d.weekday() < 5:
+            n += 1
+    return n
+
+
+def em_oro_antes(raiz, t0, fecha):
+    """Último EM del oro guardado ANTES de fecha + corte: (em_pct, sesión) de data/historico_gamma_oro.csv (em_gld / gld_spot × 100, medido en el cierre de esa sesión). None si no hay ninguno anterior
+    al corte o si el más reciente tiene más de 3 días hábiles de antigüedad respecto a la fecha del informe (entonces el umbral es FIJO)."""
+    mejor = None
     for r in leer_csv(P(raiz, "data", "historico_gamma_oro.csv")):
-        if r.get("fecha_sesion") == fecha:
-            em, sp = _f(r.get("em_gld")), _f(r.get("gld_spot"))
-            if em and sp:
-                return round(em / sp * 100, 4)
-    return None
+        ses = r.get("fecha_sesion")
+        if not ses:
+            continue
+        medido = _utc(r.get("medido_utc")) or _utc(ses + " 22:00")
+        em, sp = _f(r.get("em_gld")), _f(r.get("gld_spot"))
+        if medido is None or not em or not sp or medido >= t0:
+            continue
+        if mejor is None or ses > mejor[1]:
+            mejor = (round(em / sp * 100, 4), ses)
+    if mejor and dias_habiles(dt.date.fromisoformat(mejor[1]), dt.date.fromisoformat(fecha)) > MAX_ANTIGUEDAD_EM_DIAS_HABILES:
+        return None
+    return mejor
+
+
+def precio_base_yahoo(t0):
+    """(precio, 'AAAA-MM-DD HH:MM' UTC, fuente) de la barra de 5 min de GC=F más cercana ANTERIOR al corte (últimos 5 días). Lanza si no hay."""
+    import precios
+    r = precios._yahoo("GC=F", "5d", "5m")
+    c = r["indicators"]["quote"][0]["close"]
+    ts = t0.timestamp()
+    cand = [(t, v) for t, v in zip(r["timestamp"], c) if v is not None and t <= ts]
+    if not cand or ts - cand[-1][0] > 3 * 3600:
+        raise RuntimeError("sin barra de GC=F en las 3 h anteriores al corte")
+    t, v = cand[-1]
+    return float(v), dt.datetime.fromtimestamp(t, UTC).strftime("%Y-%m-%d %H:%M"), "GC=F (futuro del oro, barra de 5 min de Yahoo Finance; el spot no tiene histórico intradía gratuito)"
+
+
+def _ultimo_antes(raiz, activo, t0):
+    """(valor, hora UTC) de la última captura de NEXORA de `activo` con capturado_utc ≤ t0 (históricos propios, cada hora). None si no hay."""
+    mejor = None
+    for r in leer_csv(P(raiz, "data", "historico_precios.csv")):
+        if r["activo"] == activo:
+            t = _utc(r["capturado_utc"])
+            if t and t <= t0 and _f(r["valor"]) is not None and (mejor is None or t > mejor[2]):
+                mejor = (_f(r["valor"]), r["capturado_utc"][:16], t)
+    return (mejor[0], mejor[1]) if mejor and (t0 - mejor[2]).total_seconds() <= 3 * 3600 else None
+
+
+def sesiones_tras(fechas, fecha, t0):
+    """Sesiones (fechas con dato) cuyo CIERRE es posterior al corte: las posteriores a la fecha del informe y la del propio día si el corte es anterior a su cierre (21:00 UTC)."""
+    cierre_dia = _utc(fecha + " " + CIERRE_SESION_UTC)
+    return [f for f in fechas if f > fecha or (f == fecha and cierre_dia is not None and t0 < cierre_dia)]
 
 
 def evaluar(raiz=RAIZ, ahora=None):
-    """Añade a data/analisis_resultados.csv el resultado a T+1 y T+5 de cada análisis vigente con sesgo cuando ya hay esas sesiones en los históricos. Solo añadir."""
+    """Añade a data/analisis_resultados.csv el resultado de cada análisis vigente con sesgo cuando ya terminó el horizonte (DIARIO: T+1 y T+5; SEMANAL: la semana siguiente = la 5.ª sesión tras el corte).
+    Solo usa datos anteriores al corte para la base y el EM, y los cierres posteriores solo para medir. Solo añadir."""
     ahora = ahora or dt.datetime.now(UTC)
     ind = indice_vigente(raiz)
     oro, dxy, dfi = _diario(raiz, "oro"), _diario(raiz, "dxy"), _diario(raiz, "real10")
     fechas = sorted(oro)
     nuevas = []
     for e in ind:
-        if e["sesgo_oro"] not in SESGOS or e["estado"] != "VIGENTE":
+        if e["sesgo_oro"] not in SESGOS or e["estado"] != "VIGENTE" or not e.get("corte_madrid"):
             continue
         d0 = e["fecha"]
-        if d0 not in oro:
-            continue
-        for h in (1, 5):
-            sig = [f for f in fechas if f > d0]
-            if len(sig) < h:
+        t0 = t0_utc(d0, e["corte_madrid"])
+        pb, pb_hora = _f(e.get("precio_base")), e.get("precio_base_hora")
+        if pb is None:                                                    # no se pudo fijar al publicar: solo las capturas de NEXORA anteriores al corte; si no hay, no se evalúa (no se inventa)
+            u = _ultimo_antes(raiz, "oro", t0)
+            if not u:
                 continue
-            ft = sig[h - 1]
-            op = round((oro[ft] / oro[d0] - 1) * 100, 3)
-            dv = round(dxy[ft] - dxy[d0], 3) if ft in dxy and d0 in dxy else None
-            dp = round((dfi[ft] - dfi[d0]) * 100, 1) if ft in dfi and d0 in dfi else None
-            em = em_oro_pct(raiz, d0)
+            pb, pb_hora = u
+        sess = sesiones_tras(fechas, d0, t0)
+        em = em_oro_antes(raiz, t0, d0)
+        dxy_base = (_ultimo_antes(raiz, "dxy", t0) or (None,))[0]
+        previos_real = [f for f in dfi if f < d0]
+        real_base = dfi[max(previos_real)] if previos_real else None
+        for h in ((5,) if e["tipo"] == "SEMANAL" else (1, 5)):
+            if len(sess) < h + 1:                                         # hace falta que la sesión h haya terminado (existe la siguiente)
+                continue
+            ft = sess[h - 1]
+            op = round((oro[ft] / pb - 1) * 100, 3)
+            dv = round(dxy[ft] - dxy_base, 3) if ft in dxy and dxy_base is not None else None
+            dp = round((dfi[ft] - real_base) * 100, 1) if ft in dfi and real_base is not None else None
+            em_pct = em[0] if em else None
+            esc = 1.0 if h == 1 else 5 ** 0.5
             nuevas.append({"id": f"{e['id']}|T+{h}", "fecha": d0, "tipo": e["tipo"], "sesgo_oro": e["sesgo_oro"], "horizonte": h, "fecha_t": ft, "oro_pct": op, "dxy_var": "" if dv is None else dv,
-                           "dfii10_pb": "" if dp is None else dp, "umbral": "EM" if em is not None else "FIJO", "umbral_pct": round(em * (1.0 if h == 1 else 5 ** 0.5), 3) if em is not None else "",
-                           "veredicto": veredicto(e["sesgo_oro"], h, op, dv, dp, em), "evaluado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC")})
+                           "dfii10_pb": "" if dp is None else dp, "umbral": "EM" if em_pct is not None else "FIJO", "umbral_pct": round(em_pct * esc, 3) if em_pct is not None else "",
+                           "em_sesion": em[1] if em else "", "precio_base": pb, "precio_base_hora": pb_hora, "precio_fin": oro[ft],
+                           "veredicto": veredicto(e["sesgo_oro"], h, op, dv, dp, em_pct), "evaluado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC")})
     return anadir_csv(P(raiz, "data", "analisis_resultados.csv"), nuevas, CAMPOS_RES, lambda r: r["id"])
 
 
+def _bloque(rr):
+    c = sum(1 for r in rr if r["veredicto"] == "CUMPLIDO")
+    return {"n": len(rr), "cumplidos": c, "fallidos": sum(1 for r in rr if r["veredicto"] == "FALLIDO"), "mixtos": sum(1 for r in rr if r["veredicto"] == "MIXTO"),
+            "acierto_pct": round(100 * c / len(rr), 1) if rr else None, "conclusion": "n<20: sin conclusión" if len(rr) < MIN_N else "n≥20: evaluable"}
+
+
 def acumulado(res):
-    out = {}
-    for h in (1, 5):
-        rr = [r for r in res if str(r["horizonte"]) == str(h)]
-        c = sum(1 for r in rr if r["veredicto"] == "CUMPLIDO")
-        out[f"T+{h}"] = {"n": len(rr), "cumplidos": c, "fallidos": sum(1 for r in rr if r["veredicto"] == "FALLIDO"), "mixtos": sum(1 for r in rr if r["veredicto"] == "MIXTO"),
-                         "acierto_pct": round(100 * c / len(rr), 1) if rr else None, "conclusion": "n<20: sin conclusión" if len(rr) < MIN_N else "n≥20: evaluable"}
-    return out
+    """Acierto acumulado SEPARADO: el diario (T+1 y T+5) y el semanal (la semana siguiente)."""
+    d = [r for r in res if r["tipo"] != "SEMANAL"]
+    w = [r for r in res if r["tipo"] == "SEMANAL"]
+    return {"diario": {f"T+{h}": _bloque([r for r in d if str(r["horizonte"]) == str(h)]) for h in (1, 5)}, "semanal": {"semana": _bloque(w)}}
 
 
-# ---------------------------------------------------------------- índice (solo añadir), JSON de la web
 def indice_vigente(raiz=RAIZ):
     """Último estado de cada id del índice (VIGENTE o REVISADA)."""
     ult = {}
@@ -646,18 +741,26 @@ def construir(raiz=RAIZ, ahora=None):
             previo.setdefault(e["tipo"], []).append(e["id"])
     for e in ind:
         c = cot.get(e["id"]) or {}
-        item = {k: e[k] for k in ("id", "fecha", "tipo", "version", "visibilidad", "sesgo_oro", "corte_madrid", "hash", "estado")}
+        item = {k: e.get(k, "") for k in ("id", "fecha", "tipo", "version", "visibilidad", "sesgo_oro", "corte_madrid", "corte_origen", "publicado_utc", "precio_base", "precio_base_hora", "hash", "estado")}
         item["ruta_privada"] = f"analisis/{e['fecha'][:4]}/{e['id']}.md"
         item["ruta_publica"] = f"data/analisis/{e['fecha'][:4]}/{e['id']}.md" if e["visibilidad"] == "resumen" else None
         item["cotejo"] = {k: c.get(k) for k in ("panel", "calendario", "fed", "resumen", "resumen_calendario", "tolerancias")} if c else None
         item["resumen_publico"] = c.get("resumen_publico") if e["visibilidad"] == "resumen" else None
-        item["resultados"] = [{k: r[k] for k in ("horizonte", "fecha_t", "oro_pct", "dxy_var", "dfii10_pb", "umbral", "umbral_pct", "veredicto")} for r in res if r["id"].startswith(e["id"] + "|")]
+        item["resultados"] = [{k: r.get(k, "") for k in ("horizonte", "fecha_t", "oro_pct", "dxy_var", "dfii10_pb", "umbral", "umbral_pct", "em_sesion", "precio_base", "precio_base_hora", "precio_fin", "veredicto")} for r in res if r["id"].startswith(e["id"] + "|")]
         entradas.append(item)
     vig = [x for x in entradas if x["estado"] == "VIGENTE"]
     for x in vig:
         x["anterior"] = next((y["id"] for y in reversed(vig) if y["tipo"] == x["tipo"] and (y["fecha"], y["version"]) < (x["fecha"], x["version"])), None)
-    return {"version": 1, "ok": True, "generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "n": len(entradas), "entradas": entradas, "acumulado": acumulado(res), "min_n": MIN_N,
-            "reglas": __doc__.split("3. RESULTADO")[1].strip() if "3. RESULTADO" in __doc__ else "",
+    sem = [x for x in vig if x["tipo"] == "SEMANAL"]
+    for x in vig:                                      # «Semanal vigente»: el último semanal publicado hasta esa fecha y con menos de 7 días de antigüedad
+        x["semanal"] = None
+        if x["tipo"] != "SEMANAL":
+            c = [y for y in sem if y["fecha"] <= x["fecha"] and (dt.date.fromisoformat(x["fecha"]) - dt.date.fromisoformat(y["fecha"])).days < 7]
+            if c:
+                y = max(c, key=lambda z: (z["fecha"], int(z["version"] or 1)))
+                x["semanal"] = {"id": y["id"], "fecha": y["fecha"], "sesgo_oro": y["sesgo_oro"], "coincide": y["sesgo_oro"] == x["sesgo_oro"]}
+    return {"version": 2, "ok": True, "generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "n": len(entradas), "entradas": entradas, "acumulado": acumulado(res), "min_n": MIN_N,
+            "reglas": __doc__.split("3. CORTE")[1].strip() if "3. CORTE" in __doc__ else "",
             "fuente": "engine/analisis.py (data/analisis_indice.csv, data/analisis_cotejos.jsonl, data/analisis_resultados.csv; solo añadir)"}
 
 

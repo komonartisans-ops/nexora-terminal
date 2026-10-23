@@ -1,30 +1,42 @@
 {
- "version": 1,
+ "version": 2,
  "ok": true,
- "generado_utc": "2026-10-23 12:28 UTC",
+ "generado_utc": "2026-10-23 12:44 UTC",
  "n": 0,
  "entradas": [],
  "acumulado": {
-  "T+1": {
-   "n": 0,
-   "cumplidos": 0,
-   "fallidos": 0,
-   "mixtos": 0,
-   "acierto_pct": null,
-   "conclusion": "n<20: sin conclusión"
+  "diario": {
+   "T+1": {
+    "n": 0,
+    "cumplidos": 0,
+    "fallidos": 0,
+    "mixtos": 0,
+    "acierto_pct": null,
+    "conclusion": "n<20: sin conclusión"
+   },
+   "T+5": {
+    "n": 0,
+    "cumplidos": 0,
+    "fallidos": 0,
+    "mixtos": 0,
+    "acierto_pct": null,
+    "conclusion": "n<20: sin conclusión"
+   }
   },
-  "T+5": {
-   "n": 0,
-   "cumplidos": 0,
-   "fallidos": 0,
-   "mixtos": 0,
-   "acierto_pct": null,
-   "conclusion": "n<20: sin conclusión"
+  "semanal": {
+   "semana": {
+    "n": 0,
+    "cumplidos": 0,
+    "fallidos": 0,
+    "mixtos": 0,
+    "acierto_pct": null,
+    "conclusion": "n<20: sin conclusión"
+   }
   }
  },
  "min_n": 20,
- "reglas": "del sesgo de oro a T+1 y T+5 sesiones (data/analisis_resultados.csv, solo añadir). Reglas FIJAS:\n     UMBRAL = el EM del oro de ESE día (gamma de GLD, referencia: GLD × GVZ / 100 / √252, en %; data/historico_gamma_oro.csv). A T+5 el umbral es EM × √5. Columna `umbral` del CSV = EM.\n     ALCISTA: CUMPLIDO si Δoro ≥ +0,3 × EM; FALLIDO si Δoro ≤ −0,3 × EM; si no, MIXTO. BAJISTA: simétrico (CUMPLIDO si Δoro ≤ −0,3 × EM; FALLIDO si Δoro ≥ +0,3 × EM).\n     NEUTRAL: CUMPLIDO si |Δoro| ≤ 0,5 × EM; FALLIDO si |Δoro| > 1 × EM; si no, MIXTO.\n     Se mantiene: un CUMPLIDO direccional pasa a MIXTO si DXY y DFII10 (los dos) fueron en contra del sesgo (DXY y tipo real suben para alcista, bajan para bajista).\n     Si ese día no hay EM (sin gamma del oro guardada) se usan los % fijos anteriores y la columna `umbral` dice FIJO: alcista/bajista ±0,25 % (CUMPLIDO más allá, FALLIDO al otro lado, MIXTO dentro);\n     neutral CUMPLIDO hasta 0,5 % a T+1 o 1,5 % a T+5 y FALLIDO fuera. Con menos de 20 resultados evaluados: «n<20: sin conclusión».",
+ "reglas": "≠ PUBLICACIÓN. El corte sale de la cabecera del informe («Corte: 07:00, hora de Madrid»); si no lo trae se usa la hora de publicación y corte_origen = ESTIMADO. La hora a la que se publica\n     (publicado_utc) se guarda aparte y NO se usa para evaluar. Todo lo que entra en la evaluación se fija con datos ANTERIORES a fecha + corte: el precio de partida (la barra de 5 min más cercana anterior al\n     corte del futuro del oro GC=F, la misma serie con la que se mide el resultado; el spot no tiene histórico intradía gratuito) con su hora, y el EM (último EM de oro guardado antes del corte, normalmente\n     el de la sesión anterior; columna em_sesion; si tiene más de 3 días hábiles de antigüedad, umbral FIJO). Nunca datos posteriores.\n  4. RESULTADO del sesgo de oro (data/analisis_resultados.csv, solo añadir). Reglas FIJAS:\n     HORIZONTES. DIARIO (ORO_MACRO, INDICES): T+1 = cierre de la primera sesión que termina después del corte; T+5 = cierre de la quinta. SEMANAL: solo la semana siguiente (de la apertura del domingo\n     al cierre del viernes: la quinta sesión tras el corte). Precio base = el del corte; Δoro = precio de cierre de la sesión / precio base − 1.\n     UMBRAL = el EM del oro (gamma de GLD, referencia: GLD × GVZ / 100 / √252, en %; data/historico_gamma_oro.csv) guardado antes del corte. A T+5 (y en el SEMANAL) el umbral es EM × √5. Columna `umbral` = EM.\n     ALCISTA: CUMPLIDO si Δoro ≥ +0,3 × EM; FALLIDO si Δoro ≤ −0,3 × EM; si no, MIXTO. BAJISTA: simétrico (CUMPLIDO si Δoro ≤ −0,3 × EM; FALLIDO si Δoro ≥ +0,3 × EM).\n     NEUTRAL: CUMPLIDO si |Δoro| ≤ 0,5 × EM; FALLIDO si |Δoro| > 1 × EM; si no, MIXTO.\n     Se mantiene: un CUMPLIDO direccional pasa a MIXTO si DXY y DFII10 (los dos) fueron en contra del sesgo (DXY y tipo real suben para alcista, bajan para bajista).\n     Si no hay EM antes del corte (o es muy antiguo) se usan los % fijos y la columna `umbral` dice FIJO: alcista/bajista ±0,25 % (CUMPLIDO más allá, FALLIDO al otro lado, MIXTO dentro);\n     neutral CUMPLIDO hasta 0,5 % a T+1 o 1,5 % a T+5 y FALLIDO fuera. El acierto acumulado del SEMANAL va aparte del diario. Con menos de 20 resultados evaluados: «n<20: sin conclusión».",
  "fuente": "engine/analisis.py (data/analisis_indice.csv, data/analisis_cotejos.jsonl, data/analisis_resultados.csv; solo añadir)",
  "resultados_nuevos": 0,
- "duracion_s": 0.1
+ "duracion_s": 0.0
 }

@@ -1737,10 +1737,10 @@
    "La probabilidad de la Fed que cita tu informe y la de NEXORA (fedwatch.py, calculada con futuros de fondos federales), cada una con su fuente. Son métodos distintos: no se juzgan, se muestran lado a lado."
   ],
   "acierto acumulado del sesgo": [
-   "Cuántas veces el oro hizo, a T+1 y T+5 sesiones, lo que indicaba el sesgo que diste al publicar: CUMPLIDO, MIXTO o FALLIDO.",
-   "El umbral es el EM del oro de ese día (la gamma de GLD, referencia: GLD × GVZ / 100 / √252, en %); a T+5, EM × √5. Alcista: CUMPLIDO si el oro sube al menos 0,3 × EM, FALLIDO si baja 0,3 × EM o más, MIXTO en medio (bajista, simétrico). Neutral: CUMPLIDO si |Δoro| ≤ 0,5 × EM, FALLIDO si supera 1 × EM, MIXTO entre los dos.",
-   "Un CUMPLIDO direccional pasa a MIXTO si DXY y DFII10 van los dos en contra. Si ese día no hay EM se usan los % fijos de antes (±0,25 %; neutral 0,5 % a T+1 y 1,5 % a T+5) y el umbral se marca FIJO.",
-   "Con menos de 20 resultados evaluados no se concluye nada («n<20: sin conclusión»)."
+   "Cuántas veces el oro hizo lo que indicaba el sesgo que diste al publicar: CUMPLIDO, MIXTO o FALLIDO. El diario (T+1 y T+5) y el semanal (la semana siguiente) se cuentan por separado.",
+   "El corte es el del informe («Corte: 07:00, hora de Madrid»), no la hora a la que lo publicas. El precio de partida es el del oro en el corte y el umbral es el EM del oro (gamma de GLD, referencia, en %) guardado antes del corte; a T+5 y en el semanal, EM × √5. Nunca se usan datos posteriores al corte.",
+   "Alcista: CUMPLIDO si el oro sube al menos 0,3 × EM, FALLIDO si baja 0,3 × EM o más, MIXTO en medio (bajista, simétrico). Neutral: CUMPLIDO si |Δoro| ≤ 0,5 × EM, FALLIDO si supera 1 × EM, MIXTO entre los dos. Un CUMPLIDO pasa a MIXTO si DXY y DFII10 van los dos en contra.",
+   "Sin EM (o con más de 3 días hábiles de antigüedad) se usan los % fijos y el umbral se marca FIJO. Con menos de 20 resultados no se concluye nada («n<20: sin conclusión»)."
   ]
  },
  "glosario": [

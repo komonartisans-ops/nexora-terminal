@@ -26,13 +26,15 @@ function anCabecera(e, P) {
   const R = e.resultados || [], rp = e.resumen_publico, c = e.cotejo && e.cotejo.resumen;
   const tesis = (P && P.tesis_central) || (rp && rp.tesis_central) || '';
   const ver = (P && P.veredicto) || (rp && rp.veredicto) || '';
-  let h = `<div class="card"><div class="chead"><span>${esc(fdy(e.fecha))} · corte ${esc(e.corte_madrid || '—')} (Madrid) · ${esc(e.tipo)}${e.version > 1 ? ' · v' + esc(String(e.version)) : ''}</span>`
+  let h = `<div class="card"><div class="chead"><span>${esc(fdy(e.fecha))} · corte ${esc(e.corte_madrid || '—')} (Madrid${e.corte_origen === 'ESTIMADO' ? ' · <b>ESTIMADO</b>: el informe no traía corte' : ''}) · ${esc(e.tipo)}${e.version > 1 ? ' · v' + esc(String(e.version)) : ''}</span>`
     + `<span><span class="ck ${anSesgoCls(e.sesgo_oro)}">SESGO ORO · ${esc(String(e.sesgo_oro).toUpperCase())}</span> <span class="ck sd">${e.visibilidad === 'privado' ? 'PRIVADO' : 'RESUMEN PÚBLICO'}</span>${e.estado === 'REVISADA' ? ' <span class="ck par">REVISADA</span>' : ''}</span></div>`;
   h += `<p style="margin:8px 0 4px"><b>Tesis central.</b> ${tesis ? esc(tesis) : `<span class="sd-val">${P === undefined ? 'cargando…' : 'SIN DATO'}</span> <small>${e.visibilidad === 'privado' ? '(informe privado: conecta el Diario para verlo)' : ''}</small>`}</p>`;
   h += `<p style="margin:4px 0"><b>Veredicto.</b> ${ver ? esc(ver) : '<span class="sd-val">SIN DATO</span>'}</p>`;
   h += `<p style="margin:4px 0"><b>Cotejo con NEXORA.</b> ${c ? `<span class="ck ok">${c.ok} ✅</span> <span class="ck par">${c.dif} ⚠️</span> <span class="ck sd">${c.sin} —</span>` : '<span class="sd-val">SIN DATO</span>'}`
     + `${e.cotejo && e.cotejo.resumen_calendario ? ` · calendario: ${e.cotejo.resumen_calendario.ok} ✅ · ${e.cotejo.resumen_calendario.dif} ⚠️ · ${e.cotejo.resumen_calendario.sin} —` : ''}</p>`;
-  h += `<p style="margin:4px 0"><b>Resultado del sesgo.</b> ${R.length ? R.map((r) => `T+${esc(String(r.horizonte))} (${esc(fdy(r.fecha_t))}): <span class="ck ${r.veredicto === 'CUMPLIDO' ? 'ok' : r.veredicto === 'FALLIDO' ? 'no' : 'par'}">${esc(r.veredicto)}</span> <small>oro ${anN(r.oro_pct)} % · DXY ${anN(r.dxy_var, 2)} · DFII10 ${anN(r.dfii10_pb, 1)} pb · umbral ${r.umbral === 'EM' ? 'EM ' + anN(r.umbral_pct, 2) + ' %' : 'FIJO'}</small>`).join(' · ') : '<span class="sd-val">pendiente</span> <small>(T+1 y T+5 cuando haya esas sesiones)</small>'}</p></div>`;
+  h += `<p style="margin:4px 0"><small>Publicado: ${e.publicado_utc ? esc(horaAct(e.publicado_utc)) : '—'} (no se usa para evaluar) · precio base del oro en el corte: ${e.precio_base ? anN(e.precio_base, 2) + ' (' + esc(e.precio_base_hora || '') + ' UTC, GC=F)' : '<span class="sd-val">SIN DATO</span>'}</small></p>`;
+  if (e.tipo !== 'SEMANAL') h += `<p style="margin:4px 0"><b>Semanal vigente.</b> ${e.semanal ? `<a href="#/analisis" data-an="${esc(e.semanal.id)}">${esc(fdy(e.semanal.fecha))}</a>: <span class="ck ${anSesgoCls(e.semanal.sesgo_oro)}">${esc(e.semanal.sesgo_oro)}</span> · el diario <span class="ck ${anSesgoCls(e.sesgo_oro)}">${esc(e.sesgo_oro)}</span> ${e.semanal.coincide ? '<b>coincide</b>' : '<b>diverge</b>'} con el semanal` : '<span class="sd-val">no hay semanal de esta semana</span>'}</p>`;
+  h += `<p style="margin:4px 0"><b>Resultado del sesgo.</b> ${R.length ? R.map((r) => `${e.tipo === 'SEMANAL' ? 'Semana' : 'T+' + esc(String(r.horizonte))} (cierre ${esc(fdy(r.fecha_t))}): <span class="ck ${r.veredicto === 'CUMPLIDO' ? 'ok' : r.veredicto === 'FALLIDO' ? 'no' : 'par'}">${esc(r.veredicto)}</span> <small>oro ${anN(r.precio_base, 2)} → ${anN(r.precio_fin, 2)} (${anN(r.oro_pct)} %) · DXY ${anN(r.dxy_var, 2)} · DFII10 ${anN(r.dfii10_pb, 1)} pb · umbral ${r.umbral === 'EM' ? 'EM ' + anN(r.umbral_pct, 2) + ' %' : 'FIJO'}</small>`).join(' · ') : '<span class="sd-val">pendiente</span> <small>(T+1 y T+5 cuando haya esas sesiones)</small>'}</p></div>`;
   return h;
 }
 
@@ -88,19 +90,19 @@ function anJ(P) {
 
 function anHistorico(todas, e) {
   const lista = todas.filter((x) => x.tipo === AN.tipo && x.estado === 'VIGENTE' && (AN.sesgo === 'todos' || x.sesgo_oro === AN.sesgo)).slice().reverse();
-  return `<div class="sect"><h2>Histórico</h2><span class="more">por fecha · filtro por sesgo de oro</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th>Fecha</th><th>Sesgo oro</th><th>Visibilidad</th><th>Cotejo</th><th>T+1</th><th>T+5</th></tr></thead><tbody>`
+  return `<div class="sect"><h2>Histórico</h2><span class="more">por fecha · filtro por sesgo de oro</span></div><div class="card pad0 scroll"><table class="t stack"><thead><tr><th>Fecha</th><th>Sesgo oro</th><th>Visibilidad</th><th>Cotejo</th><th>T+1</th><th>T+5 / semana</th></tr></thead><tbody>`
     + (lista.length ? lista.map((x) => { const r = (h) => (x.resultados || []).find((y) => String(y.horizonte) === String(h));
       const v = (y) => (y ? `<span class="ck ${y.veredicto === 'CUMPLIDO' ? 'ok' : y.veredicto === 'FALLIDO' ? 'no' : 'par'}">${esc(y.veredicto)}</span>` : '<span class="sd-val">pendiente</span>');
       return `<tr class="${e && x.id === e.id ? 'cur' : ''}"><td data-label="Fecha"><a href="#/analisis" data-an="${esc(x.id)}">${esc(fdy(x.fecha))}</a></td><td data-label="Sesgo"><span class="ck ${anSesgoCls(x.sesgo_oro)}">${esc(x.sesgo_oro)}</span></td><td data-label="Visibilidad">${esc(x.visibilidad)}</td>`
-        + `<td data-label="Cotejo" class="mono">${x.cotejo ? `${x.cotejo.resumen.ok} ✅ · ${x.cotejo.resumen.dif} ⚠️ · ${x.cotejo.resumen.sin} —` : '—'}</td><td data-label="T+1">${v(r(1))}</td><td data-label="T+5">${v(r(5))}</td></tr>`; }).join('')
+        + `<td data-label="Cotejo" class="mono">${x.cotejo ? `${x.cotejo.resumen.ok} ✅ · ${x.cotejo.resumen.dif} ⚠️ · ${x.cotejo.resumen.sin} —` : '—'}</td><td data-label="T+1">${x.tipo === 'SEMANAL' ? '—' : v(r(1))}</td><td data-label="T+5">${v(r(5))}</td></tr>`; }).join('')
       : '<tr><td colspan="6" style="text-align:left;color:var(--dim)">Todavía no hay informes publicados de este tipo (con este filtro).</td></tr>')
     + '</tbody></table></div>';
 }
 
 function anAcumulado(A) {
-  const a = A.acumulado || {};
-  return `<div class="sect"><h2>Acierto acumulado del sesgo de oro</h2><span class="more">a T+1 y T+5 sesiones · CUMPLIDO / FALLIDO / MIXTO</span></div><div class="grid g2">`
-    + ['T+1', 'T+5'].map((k) => { const x = a[k] || {}; return `<div class="card"><div class="chead"><span>${k}</span></div><div class="big">${x.acierto_pct == null ? 'SIN DATO' : num(x.acierto_pct, 1) + ' %'}</div><div class="note" style="margin:4px 0">${esc(String(x.cumplidos || 0))} cumplidos · ${esc(String(x.mixtos || 0))} mixtos · ${esc(String(x.fallidos || 0))} fallidos de ${esc(String(x.n || 0))} · <b>${esc(x.conclusion || 'n<20: sin conclusión')}</b></div></div>`; }).join('')
+  const a = A.acumulado || {}, tarj = (t, x) => `<div class="card"><div class="chead"><span>${t}</span></div><div class="big">${!x || x.acierto_pct == null ? 'SIN DATO' : num(x.acierto_pct, 1) + ' %'}</div><div class="note" style="margin:4px 0">${esc(String((x || {}).cumplidos || 0))} cumplidos · ${esc(String((x || {}).mixtos || 0))} mixtos · ${esc(String((x || {}).fallidos || 0))} fallidos de ${esc(String((x || {}).n || 0))} · <b>${esc((x || {}).conclusion || 'n<20: sin conclusión')}</b></div></div>`;
+  return `<div class="sect"><h2>Acierto acumulado del sesgo de oro</h2><span class="more">CUMPLIDO / FALLIDO / MIXTO · el semanal va aparte del diario</span></div><div class="grid g3">`
+    + tarj('Diario · T+1', (a.diario || {})['T+1']) + tarj('Diario · T+5', (a.diario || {})['T+5']) + tarj('Semanal · semana siguiente', (a.semanal || {}).semana)
     + `</div><details class="qa card"><summary>Reglas del resultado (fijas)</summary><p class="note" style="white-space:pre-line">${esc(A.reglas || '')}</p></details>`;
 }
 
@@ -118,7 +120,7 @@ function pageAnalisis() {
     const todas = A.entradas;
     const pintar = async () => {
       if (document.getElementById('an-root') !== root) return;
-      tabs.innerHTML = A.entradas.length ? ['ORO_MACRO', 'INDICES'].map((t) => `<button class="fbtn ${AN.tipo === t ? 'on' : ''}" data-tipo="${t}">${t}</button>`).join('') : '';
+      tabs.innerHTML = A.entradas.length ? ['ORO_MACRO', 'INDICES', 'SEMANAL'].map((t) => `<button class="fbtn ${AN.tipo === t ? 'on' : ''}" data-tipo="${t}">${t}</button>`).join('') : '';
       fil.innerHTML = ['todos', 'alcista', 'bajista', 'neutral'].map((s) => `<button class="fbtn ${AN.sesgo === s ? 'on' : ''}" data-sesgo="${s}">${s === 'todos' ? 'Todos los sesgos' : s}</button>`).join('');
       const vig = todas.filter((x) => x.tipo === AN.tipo && x.estado === 'VIGENTE');
       const e = (AN.sel && todas.find((x) => x.id === AN.sel && x.tipo === AN.tipo)) || vig[vig.length - 1] || null;
