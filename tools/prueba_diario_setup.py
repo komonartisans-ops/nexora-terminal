@@ -134,7 +134,7 @@ with sync_playwright() as p:
     J = json.load(open(os.path.join(ROOT, "site", "data", "gamma.json"), encoding="utf-8"))
     py = G.linea_niveles(J)
     assert js == py, (js, py)
-    assert pg.locator("#gCopiar").count() == 1 and "Niveles para tus plataformas" in pg.text_content("#app")
+    assert pg.locator("#gCopiar").count() == 1 and "Niveles para plataformas" in pg.text_content("#app")
     print("5) OK #/gamma: la línea de niveles de la web es idéntica a la del Telegram de las 15:00 → «%s»" % js)
     b.close()
 srv.shutdown()

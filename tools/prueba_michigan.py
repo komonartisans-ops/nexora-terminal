@@ -182,6 +182,9 @@ M.actualizar(T2, en("2026-10-23", "15:05"), red(MENSUAL_F, ACTUAL_F, PORTADA_F))
 env2 = []
 assert I.vigilar(T2, en("2026-10-23", "16:30"), enviar=lambda x: (env2.append(x), (True, None))[1]) == [] and not env2
 # preliminar de noviembre: anunciado el 23-oct, sale el 13-nov a las 10:00 ET
+# El 13-nov, sin ninguna ejecución del vigilante del cierre registrada, saltaría el aviso «el vigilante del cierre no corre» (alta posterior a esta prueba): aquí se le da una ejecución reciente
+with open(os.path.join(T2, "data", "vigilar_cierre.csv"), "w", encoding="utf-8", newline="") as _f:
+    _f.write("fecha,ejecutado_utc,resultado,run_id_cierre,detalle\n2026-11-12,2026-11-12 22:15 UTC,OK,1,prueba\n")
 env3 = []
 f3 = lambda x: (env3.append(x), (True, None))[1]                            # noqa: E731
 assert I.vigilar(T2, en("2026-11-13", "14:00"), enviar=f3) == [], "a las 9:00 ET todavía no"
