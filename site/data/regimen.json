@@ -24,10 +24,10 @@
      "IPC subyacente: 3 meses anualizado 3.4 % vs 2.6 % interanual (2026-09)",
      "PCE subyacente: 3 meses anualizado 2.0 % vs 3.0 % interanual (2026-08)",
      "Inflación esperada a 10 años (breakeven) 2.32 % (-3 pb en 20 sesiones)",
-     "Expectativas de inflación a 1 año (U. Michigan) 4.0 % (-0.8 pp en 3 meses)"
+     "Expectativas de inflación a 1 año (U. Michigan) 4.6 % (+0.0 pp en 3 meses)"
     ],
     "fuente": "BLS, BEA, U. Michigan, Tesoro vía FRED",
-    "puntos": -1
+    "puntos": 0
    },
    {
     "dimension": "EMPLEO",
@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-23): reunión del 2026-10-28 subida 10 % / mantener 90 % / bajada 0 % (+4 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +30 pb vs hoy (más blanda (el mercado espera tipos más bajos) que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-23): reunión del 2026-10-28 subida 12 % / mantener 88 % / bajada 0 % (+6 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +30 pb vs hoy (más blanda (el mercado espera tipos más bajos) que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.65 % vs tipo efectivo 3.88 % → +77 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +53 pb (-8 pb en 5 sesiones)"
@@ -147,7 +147,7 @@
    }
   ],
   "cuadrante": "SIN RÉGIMEN CLARO (crecimiento o inflación sin dirección)",
-  "fuerza": "crecimiento +1 e inflación -1 votos",
+  "fuerza": "crecimiento +1 e inflación +0 votos",
   "cuadrante_simple": {
    "crecimiento": "↑",
    "inflacion": "↑",
@@ -319,7 +319,7 @@
   "preguntas": [
    {
     "pregunta": "¿En qué fase del ciclo estamos?",
-    "respuesta": "SIN RÉGIMEN CLARO (crecimiento o inflación sin dirección) (crecimiento +1 e inflación -1 votos). Crecimiento estable, inflación estable, empleo estable."
+    "respuesta": "SIN RÉGIMEN CLARO (crecimiento o inflación sin dirección) (crecimiento +1 e inflación +0 votos). Crecimiento estable, inflación estable, empleo estable."
    },
    {
     "pregunta": "¿Qué está acelerando?",
@@ -339,7 +339,7 @@
    },
    {
     "pregunta": "¿Qué hacen los bancos centrales?",
-    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 10 %, mantener 90 %, bajada 0 % (ayer subida 6 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
+    "respuesta": "Fed endureciendo; mercado descuenta subidas; FedWatch: Reunión del 2026-10-28: subida 12 %, mantener 88 %, bajada 0 % (ayer subida 6 %); próximas decisiones: Fed (FOMC) 2026-10-28, BCE 2026-10-29, Banco de Japón 2026-10-30"
    },
    {
     "pregunta": "¿Qué dice el consumo (mercado frente a datos reales)?",
@@ -1050,6 +1050,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-23 14:07 UTC",
- "duracion_s": 7.7
+ "generado_utc": "2026-10-23 15:07 UTC",
+ "duracion_s": 9.1
 }

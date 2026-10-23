@@ -1234,16 +1234,6 @@
    "url": "https://fred.stlouisfed.org/series/UMCSENT",
    "periodos": [
     {
-     "periodo": "2026-03-01",
-     "valor": 53.3,
-     "nivel_original": 53.3,
-     "nivel_actual": 53.3,
-     "revisado": false,
-     "n_revisiones": 0,
-     "visto_primera_vez": "2026-10-08",
-     "tipo_primer_registro": "HISTÓRICO (carga inicial)"
-    },
-    {
      "periodo": "2026-04-01",
      "valor": 49.8,
      "nivel_original": 49.8,
@@ -1292,6 +1282,16 @@
      "n_revisiones": 0,
      "visto_primera_vez": "2026-10-08",
      "tipo_primer_registro": "HISTÓRICO (carga inicial)"
+    },
+    {
+     "periodo": "2026-09-01",
+     "valor": 48.1,
+     "nivel_original": 48.1,
+     "nivel_actual": 48.1,
+     "revisado": false,
+     "n_revisiones": 0,
+     "visto_primera_vez": "2026-10-23",
+     "tipo_primer_registro": "PRIMERA"
     }
    ],
    "fecha_publicacion_calendario": null
@@ -1505,13 +1505,13 @@
   }
  ],
  "n_revisiones": 17,
- "filas_registro": 840,
+ "filas_registro": 841,
  "registro_desde": "2026-10-08",
- "nuevas_filas": 0,
- "nuevos": 0,
+ "nuevas_filas": 1,
+ "nuevos": 1,
  "errores": {},
  "nota": "El registro de revisiones empieza el día de la primera ejecución: antes de esa fecha no hay vintages guardados y no se inventan.",
  "ok": true,
- "generado_utc": "2026-10-23 14:07 UTC",
- "duracion_s": 5.3
+ "generado_utc": "2026-10-23 15:07 UTC",
+ "duracion_s": 7.9
 }
