@@ -3,13 +3,13 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4012.5,
+   "valor": 4011.0,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": -1.18,
-   "cambio_5d_pct": -4.03,
-   "cambio_21d_pct": -6.64,
-   "cambio_63d_pct": -1.58,
-   "sma50": 4341.96,
+   "cambio_1d_pct": -1.22,
+   "cambio_5d_pct": -4.07,
+   "cambio_21d_pct": -6.68,
+   "cambio_63d_pct": -1.62,
+   "sma50": 4341.93,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
     [
@@ -1018,20 +1018,20 @@
     ],
     [
      "2026-10-23",
-     4012.5
+     4011.0
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 81672.29,
+   "valor": 81438.52,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": 0.44,
-   "cambio_5d_pct": -0.42,
-   "cambio_21d_pct": -3.34,
-   "cambio_63d_pct": 4.26,
-   "sma50": 81790.3,
+   "cambio_1d_pct": 0.16,
+   "cambio_5d_pct": -0.71,
+   "cambio_21d_pct": -3.62,
+   "cambio_63d_pct": 3.96,
+   "sma50": 81785.63,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2496,20 +2496,20 @@
     ],
     [
      "2026-10-23",
-     81672.2891
+     81438.5234
     ]
    ]
   },
   "spx": {
    "nombre": "S&P 500",
    "simbolo": "^GSPC",
-   "valor": 7628.96,
+   "valor": 7634.29,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": -0.45,
-   "cambio_5d_pct": -0.4,
-   "cambio_21d_pct": -0.98,
-   "cambio_63d_pct": 2.91,
-   "sma50": 7699.74,
+   "cambio_1d_pct": -0.38,
+   "cambio_5d_pct": -0.33,
+   "cambio_21d_pct": -0.91,
+   "cambio_63d_pct": 2.98,
+   "sma50": 7699.85,
    "fuente": "S&P 500 (Yahoo Finance)",
    "serie": [
     [
@@ -3518,20 +3518,20 @@
     ],
     [
      "2026-10-23",
-     7628.96
+     7634.29
     ]
    ]
   },
   "ndx": {
    "nombre": "Nasdaq 100",
    "simbolo": "^NDX",
-   "valor": 28997.95,
+   "valor": 29025.0,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": 0.14,
-   "cambio_5d_pct": -0.65,
-   "cambio_21d_pct": -4.86,
-   "cambio_63d_pct": 3.42,
-   "sma50": 29830.04,
+   "cambio_1d_pct": 0.23,
+   "cambio_5d_pct": -0.56,
+   "cambio_21d_pct": -4.77,
+   "cambio_63d_pct": 3.52,
+   "sma50": 29830.58,
    "fuente": "Nasdaq 100 (Yahoo Finance)",
    "serie": [
     [
@@ -4540,20 +4540,20 @@
     ],
     [
      "2026-10-23",
-     28997.9512
+     29024.998
     ]
    ]
   },
   "dji": {
    "nombre": "US30 · Dow Jones",
    "simbolo": "^DJI",
-   "valor": 52247.63,
+   "valor": 52281.38,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": -1.17,
-   "cambio_5d_pct": 0.47,
-   "cambio_21d_pct": 1.75,
-   "cambio_63d_pct": 0.07,
-   "sma50": 52320.68,
+   "cambio_1d_pct": -1.11,
+   "cambio_5d_pct": 0.54,
+   "cambio_21d_pct": 1.81,
+   "cambio_63d_pct": 0.14,
+   "sma50": 52321.36,
    "fuente": "Dow Jones (Yahoo Finance)",
    "serie": [
     [
@@ -5562,18 +5562,18 @@
     ],
     [
      "2026-10-23",
-     52247.6289
+     52281.3789
     ]
    ]
   },
   "rut": {
    "nombre": "Russell 2000",
    "simbolo": "^RUT",
-   "valor": 2774.52,
+   "valor": 2774.44,
    "fecha": "2026-10-23",
    "cambio_1d_pct": -0.34,
    "cambio_5d_pct": 1.95,
-   "cambio_21d_pct": -2.15,
+   "cambio_21d_pct": -2.16,
    "cambio_63d_pct": -5.89,
    "sma50": 2880.79,
    "fuente": "Russell 2000 (Yahoo Finance)",
@@ -6584,19 +6584,19 @@
     ],
     [
      "2026-10-23",
-     2774.5164
+     2774.4436
     ]
    ]
   },
   "vix": {
    "nombre": "VIX",
    "simbolo": "^VIX",
-   "valor": 19.95,
+   "valor": 19.99,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": 4.83,
-   "cambio_5d_pct": -0.2,
-   "cambio_21d_pct": 27.31,
-   "cambio_63d_pct": 9.56,
+   "cambio_1d_pct": 5.04,
+   "cambio_5d_pct": 0.0,
+   "cambio_21d_pct": 27.57,
+   "cambio_63d_pct": 9.77,
    "sma50": 15.95,
    "fuente": "Cboe VIX (Yahoo Finance)",
    "serie": [
@@ -7614,19 +7614,19 @@
     ],
     [
      "2026-10-23",
-     19.95
+     19.99
     ]
    ]
   },
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.83,
+   "valor": 101.82,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": 0.22,
-   "cambio_5d_pct": -0.01,
-   "cambio_21d_pct": 0.54,
-   "cambio_63d_pct": 0.32,
+   "cambio_1d_pct": 0.2,
+   "cambio_5d_pct": -0.02,
+   "cambio_21d_pct": 0.52,
+   "cambio_63d_pct": 0.3,
    "sma50": 100.54,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
@@ -8636,19 +8636,19 @@
     ],
     [
      "2026-10-23",
-     101.832
+     101.817
     ]
    ]
   },
   "wti": {
    "nombre": "Petróleo WTI",
    "simbolo": "CL=F",
-   "valor": 102.9,
+   "valor": 103.0,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": 3.45,
-   "cambio_5d_pct": 1.47,
-   "cambio_21d_pct": 8.76,
-   "cambio_63d_pct": 24.56,
+   "cambio_1d_pct": 3.55,
+   "cambio_5d_pct": 1.57,
+   "cambio_21d_pct": 8.87,
+   "cambio_63d_pct": 24.68,
    "sma50": 92.92,
    "fuente": "Futuros WTI NYMEX, primer vencimiento (Yahoo Finance CL=F; serie empalmada)",
    "serie": [
@@ -9658,19 +9658,19 @@
     ],
     [
      "2026-10-23",
-     102.9
+     103.0
     ]
    ]
   },
   "brent": {
    "nombre": "Petróleo Brent",
    "simbolo": "BZ=F",
-   "valor": 111.48,
+   "valor": 111.44,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": -1.49,
-   "cambio_5d_pct": 1.47,
-   "cambio_21d_pct": 4.58,
-   "cambio_63d_pct": 26.17,
+   "cambio_1d_pct": -1.53,
+   "cambio_5d_pct": 1.44,
+   "cambio_21d_pct": 4.54,
+   "cambio_63d_pct": 26.12,
    "sma50": 100.73,
    "fuente": "Futuros Brent ICE, primer vencimiento (Yahoo Finance BZ=F; serie empalmada)",
    "serie": [
@@ -10680,20 +10680,20 @@
     ],
     [
      "2026-10-23",
-     111.48
+     111.44
     ]
    ]
   },
   "move": {
    "nombre": "MOVE (volatilidad de bonos)",
    "simbolo": "^MOVE",
-   "valor": 102.0,
+   "valor": 102.69,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": -4.53,
-   "cambio_5d_pct": 0.89,
-   "cambio_21d_pct": 6.86,
-   "cambio_63d_pct": 32.78,
-   "sma50": 87.77,
+   "cambio_1d_pct": -3.88,
+   "cambio_5d_pct": 1.57,
+   "cambio_21d_pct": 7.59,
+   "cambio_63d_pct": 33.68,
+   "sma50": 87.79,
    "fuente": "ICE BofA MOVE (Yahoo Finance ^MOVE)",
    "serie": [
     [
@@ -11694,13 +11694,13 @@
     ],
     [
      "2026-10-23",
-     101.9992
+     102.6916
     ]
    ]
   }
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-23 17:18 UTC",
- "duracion_s": 10.0
+ "generado_utc": "2026-10-23 18:07 UTC",
+ "duracion_s": 9.7
 }
