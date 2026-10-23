@@ -370,6 +370,14 @@
    "diez": "Mira la etiqueta de la tesis, si la curva está en escasez o sobra y cómo van los inventarios frente a su media de 5 años.",
    "frecuencia": "Los precios, cada hora; la tesis, una vez al día tras el cierre de EE. UU.; los inventarios, cada miércoles a las 10:30 de Nueva York; el COT, cada viernes.",
    "generico": "Petróleo: precio de WTI y Brent, curva de futuros, inventarios de la EIA, posicionamiento de la CFTC, gasolina y una tesis con reglas fijas."
+  },
+  {
+   "id": "analisis",
+   "titulo": "Análisis diario",
+   "pregunta": "¿Coincide mi informe de hoy con los datos de NEXORA, y acertó el sesgo de oro?",
+   "diez": "Mira cuántas cifras salen ⚠️ y por qué; y el acierto acumulado del sesgo, sin concluir nada antes de 20 resultados.",
+   "frecuencia": "Cada vez que se publica un informe; el resultado se actualiza en el cierre.",
+   "generico": "Análisis diario: tu informe cotejado con los datos de NEXORA."
   }
  ],
  "bloques": {
@@ -1712,6 +1720,25 @@
   "cómo reaccionó el precio": [
    "Cada sesión guardada frente a la sesión siguiente: si el precio tocó el Call Wall, el Put Wall o el Gamma Flip y cómo cerró (rechazado, superado, defendido, roto…).",
    "El histórico empieza con este módulo; con pocas sesiones no se concluye nada."
+  ],
+  "informe por bloques": [
+   "Tu informe diario dividido en sus secciones A–K, tal cual lo escribiste. La G (oro) está abierta; el resto se despliega al pulsar.",
+   "Es privado: solo se muestra con el Diario conectado en este navegador. En el repo público solo hay el índice, el cotejo numérico y el resultado del sesgo."
+  ],
+  "cotejo del panel": [
+   "Cada cifra del panel A.2 de tu informe frente al valor de NEXORA en la misma fecha: ✅ coincide (dentro de la tolerancia), ⚠️ difiere (se muestran ambos valores y la fuente de NEXORA), — NEXORA no lo tiene (nunca se rellena).",
+   "Tolerancias: tipos ±3 pb; DXY ±0,3; oro ±0,5 %; Brent/WTI ±1,5 %; VIX ±0,5; resto ±1 %."
+  ],
+  "calendario b.3": [
+   "El calendario de tu informe frente a la agenda de NEXORA: eventos que NEXORA no tiene, eventos de importancia alta que faltan en el informe y horas distintas.",
+   "Entre el 25-oct (Europa) y el 1-nov (EE. UU.) la diferencia de hora Nueva York–Madrid es de 5 h en vez de 6: una hora distinta en 1 h suele ser eso."
+  ],
+  "probabilidades de la fed": [
+   "La probabilidad de la Fed que cita tu informe y la de NEXORA (fedwatch.py, calculada con futuros de fondos federales), cada una con su fuente. Son métodos distintos: no se juzgan, se muestran lado a lado."
+  ],
+  "acierto acumulado del sesgo": [
+   "Cuántas veces el oro hizo, a T+1 y T+5 sesiones, lo que indicaba el sesgo que diste al publicar: CUMPLIDO, MIXTO o FALLIDO con reglas fijas.",
+   "Con menos de 20 resultados evaluados no se concluye nada («n<20: sin conclusión»)."
   ]
  },
  "glosario": [

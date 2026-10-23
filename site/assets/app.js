@@ -80,6 +80,7 @@ const PAGES = [
   { id: 'noticias', g: 'Noticias', t: 'Bancos centrales (RSS)', d: 'Comunicados y discursos oficiales, solo titular y enlace', f: 4 },
   { id: 'calendario', g: 'Noticias', t: 'Calendario económico', d: 'Semana actual y siguiente con hora de Madrid', f: 1 },
   { id: 'publicados', g: 'Noticias', t: 'Datos publicados', d: 'Últimas publicaciones y revisiones (original → revisado)', f: 2 },
+  { id: 'analisis', g: 'Personal', t: 'Análisis diario', d: 'Tu informe diario cotejado con los datos de NEXORA: sesgo de oro, escenarios y resultado a T+1 y T+5', f: 18 },
   { id: 'diario', g: 'Personal', t: 'Diario de operaciones', d: 'Calendario mensual con P&L y notas', f: 5 },
   { id: 'tesis', g: 'Personal', t: 'Registro de tesis', d: 'Histórico de tesis y su resultado', f: 5 },
   { id: 'operativa', g: 'Personal', t: 'Mi operativa', d: 'Tus resultados según lo que decía el sistema al entrar (solo con el Diario conectado)', f: 9, priv: true },
@@ -93,7 +94,7 @@ const PLAN = {
   5: 'Diario de operaciones, Watchlists y Registro de tesis (datos personales solo en tu navegador).',
 };
 const GROUPS = ['Mercados', 'Análisis', 'Noticias', 'Personal'];
-const LIVE = new Set(['diario', 'tesis', 'operativa', 'marcador', 'guia', 'integridad', 'consumo', 'petroleo', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
+const LIVE = new Set(['diario', 'tesis', 'operativa', 'marcador', 'guia', 'integridad', 'consumo', 'petroleo', 'watchlists', 'resumen', 'bancos', 'liquidez', 'calendario', 'ciclo', 'regimen', 'publicados', 'oro', 'indices', 'cripto', 'divisas', 'posicionamiento', 'noticias', 'skew', 'gamma', 'analisis', 'semis', 'mapa', 'tono', 'eventos', 'agenda']);
 const D = {};
 const MOUNT = [];
 
@@ -801,7 +802,7 @@ function route() {
 }
 
 async function cargar() {
-  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma', 'gamma_oro', 'gamma_us30', 'bancos', 'tono', 'reacciones', 'agenda', 'salud', 'etf', 'integridad', 'petroleo'].map(async (n) => {
+  await Promise.all(['meta', 'precios', 'fedwatch', 'tipos', 'calendario', 'liquidez', 'ciclo', 'publicados', 'resumen', 'regimen', 'alertas', 'oro', 'indices', 'series', 'divisas', 'cot', 'noticias', 'tesis', 'skew', 'semis', 'gamma', 'gamma_oro', 'gamma_us30', 'analisis', 'bancos', 'tono', 'reacciones', 'agenda', 'salud', 'etf', 'integridad', 'petroleo'].map(async (n) => {
     try { const r = await fetch(`data/${n}.json?v=${Date.now()}`, { cache: 'no-store' }); if (r.ok) D[n] = await r.json(); } catch (e) { /* SIN DATO */ }
   }));
 }

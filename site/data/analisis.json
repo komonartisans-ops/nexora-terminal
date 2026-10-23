@@ -1,0 +1,30 @@
+{
+ "version": 1,
+ "ok": true,
+ "generado_utc": "2026-10-23 12:12 UTC",
+ "n": 0,
+ "entradas": [],
+ "acumulado": {
+  "T+1": {
+   "n": 0,
+   "cumplidos": 0,
+   "fallidos": 0,
+   "mixtos": 0,
+   "acierto_pct": null,
+   "conclusion": "n<20: sin conclusión"
+  },
+  "T+5": {
+   "n": 0,
+   "cumplidos": 0,
+   "fallidos": 0,
+   "mixtos": 0,
+   "acierto_pct": null,
+   "conclusion": "n<20: sin conclusión"
+  }
+ },
+ "min_n": 20,
+ "reglas": "del sesgo de oro a T+1 y T+5 sesiones (data/analisis_resultados.csv, solo añadir). Reglas FIJAS:\n     ORO: alcista → sube más de un 0,25 %; bajista → baja más de un 0,25 %; neutral → se mueve como mucho un 0,5 % a T+1 o un 1,5 % a T+5.\n     CUMPLIDO = el oro hace lo esperado y DXY o DFII10 no lo contradicen a la vez; MIXTO = el oro hace lo esperado pero DXY y DFII10 (ambos) fueron en contra, o el oro se movió menos de ±0,25 % con sesgo direccional;\n     FALLIDO = el oro fue en contra (más de un 0,25 % al lado contrario) o, en neutral, se salió de la banda. DXY y DFII10 «a favor» = DXY y tipo real bajan para alcista, suben para bajista.\n     Con menos de 20 resultados evaluados: «n<20: sin conclusión».",
+ "fuente": "engine/analisis.py (data/analisis_indice.csv, data/analisis_cotejos.jsonl, data/analisis_resultados.csv; solo añadir)",
+ "resultados_nuevos": 0,
+ "duracion_s": 0.0
+}

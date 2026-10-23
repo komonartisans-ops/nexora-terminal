@@ -84,7 +84,7 @@ cod, r = V.ejecutar("2026-10-20", leer_fn=lambda: dia_ok, enviar_fn=env, avisar=
 assert cod == 0 and len(enviados) == n + 1
 filas_log = list(__import__("csv").DictReader(open(LOG, encoding="utf-8")))
 assert [x["resultado"] for x in filas_log] == ["NO_TOCA", "NO_TOCA", "ALERTA", "OK"] and filas_log[3]["run_id_cierre"] == "39500964936"
-assert V.etapas_cierre() == ESP and len(ESP) == 16
+assert V.etapas_cierre() == ESP and len(ESP) == 17 and "analisis" in ESP
 print("8) OK sábado y domingo: OK y sin aviso; lunes sin cierre: alerta; cada pasada deja su fila en el registro (NO_TOCA, NO_TOCA, ALERTA, OK)")
 
 # 9) el propio vigilante falla (excepción, sin acceso al CSV, CSV mal formado) → «vigilante sin poder comprobar» por Telegram, código 2, nunca en silencio
@@ -150,7 +150,7 @@ assert v2["ejecuciones_registradas"] == 0 and v2["ultima_fecha"] is None, "un SI
 print("11) OK simulacro: " + enviados[-1])
 
 # 7) los datos reales del repo: el cierre del 20-oct (21:30 UTC) corrió las 17 etapas
-real = V.comprobar(V.leer_local(), "2026-10-20")
+real = V.comprobar(V.leer_local(), "2026-10-20", esperadas=[e for e in ESP if e != "analisis"])      # la etapa analisis es posterior al cierre del 20-oct
 assert real["ok"] is True, real
 print("7) OK data/ejecuciones.csv real:", real["mensaje"])
 print("\nTODO OK · sin red, sin Telegram real")
