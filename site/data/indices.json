@@ -1,30 +1,30 @@
 {
  "ok": true,
- "generado_utc": "2026-10-22 10:21 UTC",
+ "generado_utc": "2026-10-23 05:30 UTC",
  "metricas": {
-  "generado_utc": "2026-10-22 10:24 UTC",
+  "generado_utc": "2026-10-23 05:34 UTC",
   "fuente_chuleta": "Chuleta completa — Cómo leer los índices (S&P 500 · Nasdaq 100 · US30 · Russell 2000)",
   "indices": {
    "S&P 500": {
-    "cierre": 7757.17,
-    "fecha": "2026-10-21",
-    "1d_pct": 0.58,
-    "5d_pct": 0.5,
-    "20d_pct": 0.66,
-    "60d_pct": 4.42,
-    "ytd_pct": 13.1,
-    "sma50": 7704.85,
-    "sma200": 7284.21,
-    "vs_max_52s_pct": -0.79,
-    "precio": "CONFIRMA FUERZA",
+    "cierre": 7663.43,
+    "fecha": "2026-10-22",
+    "1d_pct": -1.21,
+    "5d_pct": -1.04,
+    "20d_pct": -0.53,
+    "60d_pct": 4.75,
+    "ytd_pct": 11.74,
+    "sma50": 7703.15,
+    "sma200": 7287.8,
+    "vs_max_52s_pct": -1.99,
+    "precio": "CONFIRMA DEBILIDAD",
     "fuente": "Cboe SPX (cierre oficial)",
     "etf": "SPY",
-    "volumen_etf_rel": 0.77,
+    "volumen_etf_rel": 1.34,
     "niveles": {
-     "fecha": "2026-10-21",
-     "cierre": 7757.17,
-     "PDH": 7770.71587370164,
-     "PDL": 7710.110631362454,
+     "fecha": "2026-10-22",
+     "cierre": 7663.43,
+     "PDH": 7701.046972747265,
+     "PDL": 7635.392816312372,
      "PWH": 7820.253738953862,
      "PWL": 7633.247876318374,
      "PMH": 7782.3101833510045,
@@ -33,32 +33,39 @@
      "min_20s": 7228.828449772975,
      "max_52s": 7844.321024015197,
      "min_52s": 6316.71775812143,
-     "atr14": 71.35,
-     "gaps_abiertos": [],
+     "atr14": 73.88,
+     "gaps_abiertos": [
+      {
+       "fecha": "2026-10-22",
+       "tipo": "bajista",
+       "desde": 7687.61,
+       "hasta": 7710.11
+      }
+     ],
      "estructura_semanal": "LATERAL · 2/5 máximos y 2/5 mínimos crecientes",
      "fuente": "OHLC de SPY escalado al índice con el factor cierre índice/cierre ETF (máx./mín. estimados)"
     }
    },
    "Nasdaq 100": {
-    "cierre": 29822.52,
-    "fecha": "2026-10-21",
-    "1d_pct": 1.13,
-    "5d_pct": -0.43,
-    "20d_pct": -2.13,
-    "60d_pct": 7.42,
-    "ytd_pct": 18.31,
-    "sma50": 29867.45,
-    "sma200": 27802.91,
-    "vs_max_52s_pct": -4.49,
+    "cierre": 28958.69,
+    "fecha": "2026-10-22",
+    "1d_pct": -2.9,
+    "5d_pct": -3.26,
+    "20d_pct": -4.99,
+    "60d_pct": 6.5,
+    "ytd_pct": 14.89,
+    "sma50": 29851.77,
+    "sma200": 27819.5,
+    "vs_max_52s_pct": -7.26,
     "precio": "CONFIRMA DEBILIDAD",
     "fuente": "FRED NASDAQ100 (Nasdaq)",
     "etf": "QQQ",
-    "volumen_etf_rel": 0.93,
+    "volumen_etf_rel": 1.84,
     "niveles": {
-     "fecha": "2026-10-21",
-     "cierre": 29822.52,
-     "PDH": 29928.31,
-     "PDL": 29593.7,
+     "fecha": "2026-10-22",
+     "cierre": 28958.69,
+     "PDH": 29411.76,
+     "PDL": 28855.1,
      "PWH": 30813.96,
      "PWL": 29073.29,
      "PMH": 30770.63,
@@ -67,7 +74,7 @@
      "min_20s": 27176.03,
      "max_52s": 31361.37,
      "min_52s": 22841.42,
-     "atr14": 465.1,
+     "atr14": 497.35,
      "gaps_abiertos": [
       {
        "fecha": "2026-10-07",
@@ -80,6 +87,12 @@
        "tipo": "bajista",
        "desde": 30404.2,
        "hasta": 30618.64
+      },
+      {
+       "fecha": "2026-10-22",
+       "tipo": "bajista",
+       "desde": 29304.3,
+       "hasta": 29593.7
       }
      ],
      "estructura_semanal": "LATERAL · 3/5 máximos y 3/5 mínimos crecientes",
@@ -87,25 +100,25 @@
     }
    },
    "Dow Jones (US30)": {
-    "cierre": 52856.0,
-    "fecha": "2026-10-21",
-    "1d_pct": 0.69,
-    "5d_pct": 2.39,
-    "20d_pct": 2.61,
-    "60d_pct": 0.21,
-    "ytd_pct": 9.25,
-    "sma50": 52370.58,
-    "sma200": 50499.18,
-    "vs_max_52s_pct": -2.75,
+    "cierre": 52868.0,
+    "fecha": "2026-10-22",
+    "1d_pct": 0.02,
+    "5d_pct": 1.32,
+    "20d_pct": 2.96,
+    "60d_pct": 2.47,
+    "ytd_pct": 9.27,
+    "sma50": 52352.54,
+    "sma200": 50516.21,
+    "vs_max_52s_pct": -2.72,
     "precio": "CONFIRMA FUERZA",
     "fuente": "Cboe DJX × 100 (cierre)",
     "etf": "DIA",
-    "volumen_etf_rel": 0.78,
+    "volumen_etf_rel": 0.81,
     "niveles": {
-     "fecha": "2026-10-21",
-     "cierre": 52856.0,
-     "PDH": 52865.00465112752,
-     "PDL": 52400.258480197066,
+     "fecha": "2026-10-22",
+     "cierre": 52868.0,
+     "PDH": 52924.083805338225,
+     "PDL": 52507.46125139706,
      "PWH": 52602.051588903865,
      "PWL": 51353.699668366855,
      "PMH": 53754.99100441399,
@@ -114,7 +127,7 @@
      "min_20s": 49904.031784107945,
      "max_52s": 54743.49357970562,
      "min_52s": 45053.964164049015,
-     "atr14": 518.61,
+     "atr14": 516.49,
      "gaps_abiertos": [
       {
        "fecha": "2026-09-08",
@@ -128,25 +141,25 @@
     }
    },
    "Russell 2000": {
-    "cierre": 2781.02,
-    "fecha": "2026-10-21",
-    "1d_pct": 0.27,
-    "5d_pct": 1.89,
-    "20d_pct": -2.03,
-    "60d_pct": -5.85,
-    "ytd_pct": 10.88,
-    "sma50": 2891.59,
-    "sma200": 2798.36,
-    "vs_max_52s_pct": -9.37,
+    "cierre": 2784.03,
+    "fecha": "2026-10-22",
+    "1d_pct": 0.11,
+    "5d_pct": 0.61,
+    "20d_pct": -1.82,
+    "60d_pct": -4.21,
+    "ytd_pct": 11.0,
+    "sma50": 2886.36,
+    "sma200": 2799.36,
+    "vs_max_52s_pct": -9.27,
     "precio": "CONFIRMA DEBILIDAD",
     "fuente": "Cboe RUT (cierre)",
     "etf": "IWM",
-    "volumen_etf_rel": 0.61,
+    "volumen_etf_rel": 1.0,
     "niveles": {
-     "fecha": "2026-10-21",
-     "cierre": 2781.02,
-     "PDH": 2793.292376157407,
-     "PDL": 2769.1515706018517,
+     "fecha": "2026-10-22",
+     "cierre": 2784.03,
+     "PDH": 2790.16430045903,
+     "PDL": 2762.089580326743,
      "PWH": 2806.948971881972,
      "PWL": 2715.6846462708922,
      "PMH": 2978.225904603815,
@@ -155,7 +168,7 @@
      "min_20s": 2715.6846462708922,
      "max_52s": 3069.320466924514,
      "min_52s": 2302.998857011916,
-     "atr14": 39.03,
+     "atr14": 37.69,
      "gaps_abiertos": [
       {
        "fecha": "2026-08-20",
@@ -177,85 +190,85 @@
   },
   "tiempo_real": {
    "SPY": {
-    "precio": 765.7205,
-    "cambio_pct": -0.95,
-    "hora": "Oct 22, 2026 6:26 AM ET",
-    "estado_mercado": "Pre-Market"
+    "precio": 763.96,
+    "cambio_pct": -1.18,
+    "hora": "Oct 22, 2026",
+    "estado_mercado": "Closed"
    },
    "QQQ": {
-    "precio": 713.0,
-    "cambio_pct": -1.68,
-    "hora": "Oct 22, 2026 6:26 AM ET",
-    "estado_mercado": "Pre-Market"
+    "precio": 704.47,
+    "cambio_pct": -2.86,
+    "hora": "Oct 22, 2026",
+    "estado_mercado": "Closed"
    },
    "DIA": {
-    "precio": 524.29,
-    "cambio_pct": -0.65,
-    "hora": "Oct 22, 2026 6:26 AM ET",
-    "estado_mercado": "Pre-Market"
+    "precio": 527.89,
+    "cambio_pct": 0.04,
+    "hora": "Oct 22, 2026",
+    "estado_mercado": "Closed"
    },
    "IWM": {
-    "precio": 274.3064,
-    "cambio_pct": -0.79,
-    "hora": "Oct 22, 2026 6:25 AM ET",
-    "estado_mercado": "Pre-Market"
+    "precio": 276.67,
+    "cambio_pct": 0.07,
+    "hora": "Oct 22, 2026",
+    "estado_mercado": "Closed"
    },
    "NDX": {
-    "precio": 29822.52,
-    "cambio_pct": 1.13,
-    "hora": "Oct 21, 2026",
-    "estado_mercado": "Pre-Market"
+    "precio": 28958.69,
+    "cambio_pct": -2.9,
+    "hora": "Oct 22, 2026",
+    "estado_mercado": "Closed"
    }
   },
   "t2Y": {
-   "valor": 4.81,
-   "fecha": "2026-10-21",
-   "1d_pb": 2.0,
-   "5d_pb": -1.0,
-   "20d_pb": 10.0,
-   "vel_z": -0.11,
+   "valor": 4.65,
+   "fecha": "2026-10-22",
+   "1d_pb": -16.0,
+   "5d_pb": -12.0,
+   "20d_pb": -20.0,
+   "vel_z": -1.36,
    "fuente": "U.S. Treasury, Daily Par Yield Curve"
   },
   "t10Y": {
-   "valor": 5.13,
-   "fecha": "2026-10-21",
-   "1d_pb": 1.0,
-   "5d_pb": -6.0,
-   "20d_pb": 17.0,
-   "vel_z": -0.71,
+   "valor": 4.96,
+   "fecha": "2026-10-22",
+   "1d_pb": -17.0,
+   "5d_pb": -14.0,
+   "20d_pb": -15.0,
+   "vel_z": -1.66,
    "fuente": "U.S. Treasury, Daily Par Yield Curve"
   },
   "t30Y": {
-   "valor": 5.42,
-   "fecha": "2026-10-21",
-   "1d_pb": 0.0,
-   "5d_pb": -10.0,
-   "20d_pb": 13.0,
-   "vel_z": -1.29,
+   "valor": 5.29,
+   "fecha": "2026-10-22",
+   "1d_pb": -13.0,
+   "5d_pb": -14.0,
+   "20d_pb": -11.0,
+   "vel_z": -1.8,
    "fuente": "U.S. Treasury, Daily Par Yield Curve"
   },
   "real10Y": {
-   "valor": 2.76,
-   "fecha": "2026-10-21",
-   "1d_pb": -1.0,
-   "5d_pb": -8.0,
-   "20d_pb": 13.0,
-   "vel_z": -1.06,
+   "valor": 2.64,
+   "fecha": "2026-10-22",
+   "1d_pb": -12.0,
+   "5d_pb": -14.0,
+   "20d_pb": -12.0,
+   "vel_z": -1.85,
    "fuente": "U.S. Treasury, Daily Par Real Yield Curve (TIPS)"
   },
   "be10Y": {
-   "valor": 2.37,
-   "5d_pb": 2.0,
-   "20d_pb": 4.0,
+   "valor": 2.32,
+   "5d_pb": 0.0,
+   "20d_pb": -3.0,
    "fuente": "Nominal − real, U.S. Treasury"
   },
   "dxy": {
-   "valor": 101.65,
-   "fecha": "2026-10-21",
-   "1d_pct": -0.19,
-   "5d_pct": -0.56,
-   "20d_pct": 0.76,
-   "vel_z": -0.74,
+   "valor": 101.76,
+   "fecha": "2026-10-22",
+   "1d_pct": 0.1,
+   "5d_pct": -0.35,
+   "20d_pct": 0.46,
+   "vel_z": -0.46,
    "fuente": "Réplica ICE sobre tipos de referencia del BCE (14:15 CET)"
   },
   "nfci": {
@@ -267,78 +280,78 @@
   },
   "volatilidad": {
    "VIX": {
-    "valor": 16.68,
-    "fecha": "2026-10-21",
-    "1d_pct": -3.64,
-    "5d_pct": -1.13,
-    "percentil_1a": 43
+    "valor": 19.03,
+    "fecha": "2026-10-22",
+    "1d_pct": 14.09,
+    "5d_pct": 15.61,
+    "percentil_1a": 76
    },
    "VIX9D": {
-    "valor": 15.49,
-    "fecha": "2026-10-21",
-    "1d_pct": -4.79,
-    "5d_pct": 6.17,
-    "percentil_1a": 54
+    "valor": 18.86,
+    "fecha": "2026-10-22",
+    "1d_pct": 21.76,
+    "5d_pct": 35.0,
+    "percentil_1a": 81
    },
    "VIX3M": {
-    "valor": 18.72,
-    "fecha": "2026-10-21",
-    "1d_pct": -1.42,
-    "5d_pct": -0.37,
-    "percentil_1a": 23
+    "valor": 20.12,
+    "fecha": "2026-10-22",
+    "1d_pct": 7.48,
+    "5d_pct": 8.82,
+    "percentil_1a": 56
    },
    "VVIX": {
-    "valor": 94.55,
-    "fecha": "2026-10-21",
-    "1d_pct": -2.68,
-    "5d_pct": 0.11,
-    "percentil_1a": 44
+    "valor": 107.94,
+    "fecha": "2026-10-22",
+    "1d_pct": 14.16,
+    "5d_pct": 16.6,
+    "percentil_1a": 81
    },
    "SKEW": {
-    "valor": 150.36,
-    "fecha": "2026-10-21",
-    "1d_pct": -6.26,
-    "5d_pct": -4.41,
-    "percentil_1a": 82
+    "valor": 152.39,
+    "fecha": "2026-10-22",
+    "1d_pct": 1.35,
+    "5d_pct": -5.02,
+    "percentil_1a": 87
    },
    "VXN": {
-    "valor": 24.42,
-    "fecha": "2026-10-21",
-    "1d_pct": -3.17,
-    "5d_pct": 7.58,
-    "percentil_1a": 63
+    "valor": 28.72,
+    "fecha": "2026-10-22",
+    "1d_pct": 17.61,
+    "5d_pct": 25.47,
+    "percentil_1a": 90
    },
    "RVX": {
-    "valor": 21.66,
-    "fecha": "2026-10-21",
-    "1d_pct": -0.73,
-    "5d_pct": -0.14,
-    "percentil_1a": 39
+    "valor": 23.14,
+    "fecha": "2026-10-22",
+    "1d_pct": 6.83,
+    "5d_pct": 12.55,
+    "percentil_1a": 56
    },
    "estructura": {
-    "vix_vix3m": 0.891,
-    "vix9d_vix": 0.929
+    "vix_vix3m": 0.946,
+    "vix9d_vix": 0.991
    },
    "fuente": "Cboe (VIX, VIX9D, VIX3M, VVIX, SKEW, VXN, RVX)"
   },
   "tga": {
-   "valor_B": 973.7,
-   "fecha": "2026-10-20",
-   "4s_B": 16.2,
-   "3m_B": 98.7,
+   "valor_B": 945.2,
+   "fecha": "2026-10-21",
+   "4s_B": -2.2,
+   "3m_B": 109.7,
    "fuente": "U.S. Treasury, Daily Treasury Statement"
   },
   "rrp": {
-   "valor_B": 0.2,
-   "fecha": "2026-10-21",
-   "4s_B": -0.2,
+   "valor_B": 0.4,
+   "fecha": "2026-10-22",
+   "4s_B": -0.3,
    "fuente": "Fed de Nueva York, ON RRP"
   },
   "reservas": {
-   "valor_T": 3.022,
-   "fecha": "2026-10-14",
-   "4s_pct": 0.28,
-   "3m_pct": -3.84,
+   "valor_T": 2.963,
+   "fecha": "2026-10-21",
+   "4s_pct": 1.11,
+   "3m_pct": -3.25,
    "fuente": "Fed H.4.1, WRESBAL (FRED), semanal"
   },
   "m2": {
@@ -348,22 +361,22 @@
    "fuente": "Fed H.6, M2SL (FRED)"
   },
   "expectativas_letras": {
-   "1a_menos_effr_pb": 64.0,
-   "5d_pb": -1.0,
-   "20d_pb": 9.0,
+   "1a_menos_effr_pb": 53.0,
+   "5d_pb": -8.0,
+   "20d_pb": -8.0,
    "fuente": "U.S. Treasury (letra 1A) − EFFR",
    "nota": "PROXY de expectativas, no es FedWatch."
   },
   "spread_hy": {
-   "valor_pb": 333,
-   "fecha": "2026-10-20",
-   "4s_pb": 65,
+   "valor_pb": 327,
+   "fecha": "2026-10-21",
+   "4s_pb": 54,
    "fuente": "ICE BofA vía FRED (high yield)"
   },
   "spread_ig": {
-   "valor_pb": 87,
-   "fecha": "2026-10-20",
-   "4s_pb": 10,
+   "valor_pb": 88,
+   "fecha": "2026-10-21",
+   "4s_pb": 11,
    "fuente": "ICE BofA vía FRED (grado de inversión)"
   },
   "macro": {
@@ -387,10 +400,10 @@
     "fuente": "BLS vía FRED (ganancia media por hora)"
    },
    "peticiones_paro": {
-    "semana": "2026-10-10",
-    "valor": 199000,
-    "media_4s": 198500,
-    "media_4s_prev": 204000,
+    "semana": "2026-10-17",
+    "valor": 194000,
+    "media_4s": 197750,
+    "media_4s_prev": 202500,
     "fuente": "DOL vía FRED (ICSA)"
    },
    "cpi": {
@@ -440,78 +453,78 @@
   "amplitud": {
    "sesion": {
     "todas": {
-     "n": 6956,
-     "suben": 4244,
-     "bajan": 2195,
-     "pct_suben": 61.0,
-     "ad_neto": 2049,
-     "volumen_alcista_pct": 58.5
+     "n": 6998,
+     "suben": 3254,
+     "bajan": 3201,
+     "pct_suben": 46.5,
+     "ad_neto": 53,
+     "volumen_alcista_pct": 67.7
     },
     "grandes_10B": {
-     "n": 968,
-     "suben": 716,
-     "bajan": 247,
-     "pct_suben": 74.0,
-     "ad_neto": 469,
-     "volumen_alcista_pct": 55.6
+     "n": 970,
+     "suben": 540,
+     "bajan": 422,
+     "pct_suben": 55.7,
+     "ad_neto": 118,
+     "volumen_alcista_pct": 69.3
     }
    },
-   "rsp_vs_spy_20d_pp": 1.83,
-   "rsp_vs_spy_60d_pp": -4.83,
-   "qqew_vs_qqq_20d_pp": -1.1,
+   "rsp_vs_spy_20d_pp": 4.21,
+   "rsp_vs_spy_60d_pp": -3.58,
+   "qqew_vs_qqq_20d_pp": 0.3,
    "fuente": "Nasdaq Data: screener de todas las acciones USA (sesión anterior) y ETF de igual peso (RSP, QQEW) frente a los ponderados por capitalización"
   },
   "fuerza_relativa": {
    "nasdaq_vs_sp": {
-    "5d_pp": -0.97,
-    "20d_pp": -2.85,
-    "60d_pp": 3.01
+    "5d_pp": -2.22,
+    "20d_pp": -4.52,
+    "60d_pp": 1.73
    },
    "russell_vs_nasdaq": {
-    "5d_pp": 2.4,
-    "20d_pp": 0.23,
-    "60d_pp": -13.12
+    "5d_pp": 3.81,
+    "20d_pp": 3.17,
+    "60d_pp": -10.58
    },
    "us30_vs_nasdaq": {
-    "5d_pp": 2.86,
-    "20d_pp": 4.77,
-    "60d_pp": -7.21
+    "5d_pp": 4.52,
+    "20d_pp": 7.91,
+    "60d_pp": -4.04
    },
    "russell_vs_sp": {
-    "5d_pp": 1.43,
-    "20d_pp": -2.62,
-    "60d_pp": -10.11
+    "5d_pp": 1.59,
+    "20d_pp": -1.35,
+    "60d_pp": -8.85
    },
    "semis_vs_nasdaq": {
-    "5d_pp": -1.23,
-    "20d_pp": -7.63,
-    "60d_pp": -3.51
+    "5d_pp": -4.35,
+    "20d_pp": -11.02,
+    "60d_pp": -4.16
    },
    "industriales_vs_sp": {
-    "5d_pp": 0.31,
-    "20d_pp": -1.74,
-    "60d_pp": -12.12
+    "5d_pp": 0.32,
+    "20d_pp": -0.82,
+    "60d_pp": -10.35
    },
    "financieras_vs_sp": {
-    "5d_pp": 2.33,
-    "20d_pp": 2.06,
-    "60d_pp": -7.06
+    "5d_pp": 3.51,
+    "20d_pp": 4.31,
+    "60d_pp": -4.78
    },
    "fuente": "ETF (Nasdaq Data): diferencia de rendimiento en puntos porcentuales"
   },
   "consumo": {
-   "ratio": 1.3263,
-   "fecha": "2026-10-21",
-   "sma200": 1.3774,
-   "dist_sma200_pct": -3.71,
-   "20d_pct": -1.2,
-   "13s_pct": 1.47,
-   "max_52s_pct": -17.11,
+   "ratio": 1.278,
+   "fecha": "2026-10-22",
+   "sma200": 1.376,
+   "dist_sma200_pct": -7.12,
+   "20d_pct": -5.35,
+   "13s_pct": -1.73,
+   "max_52s_pct": -20.12,
    "sobre_sma200": false,
    "cruce_reciente": null,
-   "mercado": "MIXTO",
-   "xly_13s_pct": 6.22,
-   "xlp_13s_pct": 4.69,
+   "mercado": "DEFENSIVO",
+   "xly_13s_pct": 5.12,
+   "xlp_13s_pct": 6.97,
    "fuente": "Nasdaq Data (cierres de XLY y XLP; ratio de precios, igual que TradingView)",
    "consumo_real": {
     "mes": "2026-09",
@@ -519,43 +532,43 @@
     "estado": "FIRME",
     "fuente": "Census, ventas minoristas reales (FRED RRSFS), media 3 meses vs 3 anteriores"
    },
-   "confirmacion": "SIN SEÑAL CLARA DEL MERCADO (ratio mixto)",
+   "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "concentracion": {
-    "fecha_pesos": "20-Oct-2026",
+    "fecha_pesos": "21-Oct-2026",
     "pesos": [
      {
       "ticker": "AMZN",
       "nombre": "Amazon.Com Inc",
-      "peso": 23.26
+      "peso": 23.22
      },
      {
       "ticker": "TSLA",
       "nombre": "Tesla Inc",
-      "peso": 17.56
+      "peso": 18.14
      },
      {
       "ticker": "HD",
       "nombre": "Home Depot Inc",
-      "peso": 5.24
-     },
-     {
-      "ticker": "TJX",
-      "nombre": "Tjx Companies Inc",
-      "peso": 4.27
+      "peso": 5.22
      },
      {
       "ticker": "MCD",
       "nombre": "Mcdonald S Corp",
       "peso": 4.25
+     },
+     {
+      "ticker": "TJX",
+      "nombre": "Tjx Companies Inc",
+      "peso": 4.22
      }
     ],
-    "amzn_tsla_peso": 40.82,
+    "amzn_tsla_peso": 41.36,
     "fuente": "State Street SSGA, posiciones diarias de XLY",
-    "amzn_13s_pct": 12.29,
-    "tsla_13s_pct": 20.89,
-    "contribucion_pp": 6.53,
-    "xly_sin_amzn_tsla_13s_pct": -0.52,
-    "ratio_sin_amzn_tsla_13s_pct": -4.97,
+    "amzn_13s_pct": 7.87,
+    "tsla_13s_pct": 19.66,
+    "contribucion_pp": 5.39,
+    "xly_sin_amzn_tsla_13s_pct": -0.47,
+    "ratio_sin_amzn_tsla_13s_pct": -6.95,
     "lectura": "MOVIDO SOBRE TODO POR AMAZON/TESLA",
     "nota": "ESTIMACIÓN con los pesos actuales (los pesos cambian con el precio); orientativa."
    }
@@ -623,21 +636,21 @@
   },
   "relaciones": {
    "nasdaq_real10": {
-    "corr_20": 0.22,
-    "corr_60": -0.12,
-    "corr_250": -0.27,
+    "corr_20": 0.55,
+    "corr_60": -0.01,
+    "corr_250": -0.23,
     "estado": "DÉBIL"
    },
    "sp_dxy": {
-    "corr_20": 0.03,
-    "corr_60": -0.18,
+    "corr_20": 0.0,
+    "corr_60": -0.21,
     "corr_250": -0.25,
     "estado": "SE CUMPLE"
    },
    "sp_10y": {
-    "corr_20": -0.17,
-    "corr_60": -0.41,
-    "corr_250": -0.36,
+    "corr_20": 0.31,
+    "corr_60": -0.26,
+    "corr_250": -0.32,
     "estado": "SE CUMPLE"
    }
   },
@@ -649,10 +662,10 @@
     "id": "t2y",
     "dato": "US 2Y",
     "que_mirar": "Yield + dirección + velocidad",
-    "dir": "→",
-    "valor": "4.81% · 5d -1 pb · 1d +2 pb",
-    "estado": "NEUTRAL",
-    "lectura": "Estable",
+    "dir": "↓",
+    "valor": "4.65% · 5d -12 pb · 1d -16 pb",
+    "estado": "FAVORABLE",
+    "lectura": "Baja: suele aliviar presión de tipos",
     "fuente": "U.S. Treasury, Daily Par Yield Curve",
     "puntua": true
    },
@@ -661,7 +674,7 @@
     "dato": "US 10Y",
     "que_mirar": "Yield + velocidad",
     "dir": "↓",
-    "valor": "5.13% · 5d -6 pb",
+    "valor": "4.96% · 5d -14 pb",
     "estado": "FAVORABLE",
     "lectura": "Baja: suele aliviar valoraciones",
     "fuente": "U.S. Treasury, Daily Par Yield Curve",
@@ -672,7 +685,7 @@
     "dato": "10Y REAL / TIPS",
     "que_mirar": "Real yield + dirección (clave para Nasdaq)",
     "dir": "↓",
-    "valor": "2.76% · 5d -8 pb · 20d +13 pb",
+    "valor": "2.64% · 5d -14 pb · 20d -12 pb",
     "estado": "FAVORABLE",
     "lectura": "Baja: favorable para growth/Nasdaq",
     "fuente": "U.S. Treasury, Daily Par Real Yield Curve (TIPS)",
@@ -683,7 +696,7 @@
     "dato": "DXY",
     "que_mirar": "Nivel + dirección",
     "dir": "↓",
-    "valor": "101.65 · 5d -0.56%",
+    "valor": "101.76 · 5d -0.35%",
     "estado": "FAVORABLE",
     "lectura": "Baja: suele aliviar activos de riesgo",
     "fuente": "Réplica ICE sobre tipos de referencia del BCE (14:15 CET)",
@@ -704,10 +717,10 @@
     "id": "vix",
     "dato": "VIX",
     "que_mirar": "Nivel + aceleración",
-    "dir": "→",
-    "valor": "16.68 · 5d -1.1% · percentil 1 año 43%",
-    "estado": "FAVORABLE",
-    "lectura": "Estable. Riesgo, no señal automática (CH).",
+    "dir": "↑",
+    "valor": "19.03 · 5d +15.6% · percentil 1 año 76%",
+    "estado": "DESFAVORABLE",
+    "lectura": "Sube: más aversión al riesgo. Riesgo, no señal automática (CH).",
     "fuente": "Cboe (VIX, VIX9D, VIX3M, VVIX, SKEW, VXN, RVX)",
     "puntua": true
    },
@@ -718,8 +731,8 @@
     "dir": "↓",
     "valor": "2026-10-28: subida 8 % · mantener 92 % · bajada 0 %",
     "estado": "FAVORABLE",
-    "lectura": "1 sesión -8 pts de subida; tipo esperado a 3 reuniones -8 pb en 5 sesiones · Más relajación",
-    "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-22",
+    "lectura": "1 sesión +2 pts de subida; tipo esperado a 3 reuniones -6 pb en 5 sesiones · Más relajación",
+    "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-23",
     "puntua": true
    },
    {
@@ -727,7 +740,7 @@
     "dato": "TGA",
     "que_mirar": "Saldo + dirección",
     "dir": "→",
-    "valor": "973.7 B$ · 4s +16.2 B$",
+    "valor": "945.2 B$ · 4s -2.2 B$",
     "estado": "NEUTRAL",
     "lectura": "Estable",
     "fuente": "U.S. Treasury, Daily Treasury Statement",
@@ -738,7 +751,7 @@
     "dato": "RRP",
     "que_mirar": "Saldo + dirección",
     "dir": "↓",
-    "valor": "0.2 B$ · 4s -0.2 B$",
+    "valor": "0.4 B$ · 4s -0.3 B$",
     "estado": "NEUTRAL",
     "lectura": "Baja: puede liberar efectivo aparcado. Saldo < 50 B$: colchón agotado (neutral)",
     "fuente": "Fed de Nueva York, ON RRP",
@@ -749,7 +762,7 @@
     "dato": "RESERVAS",
     "que_mirar": "WRESBAL, tendencia 1M/3M",
     "dir": "→",
-    "valor": "3.022 T$ · 1M +0.28% · 3M -3.84%",
+    "valor": "2.963 T$ · 1M +1.11% · 3M -3.25%",
     "estado": "NEUTRAL",
     "lectura": "Planas",
     "fuente": "Fed H.4.1, WRESBAL (FRED), semanal",
@@ -803,10 +816,10 @@
     "id": "volumen",
     "dato": "VOLUMEN",
     "que_mirar": "Volumen relativo al promedio",
-    "dir": "↓",
-    "valor": "SPY 0.77x media 20 sesiones · QQQ 0.93x · IWM 0.61x",
+    "dir": "↑",
+    "valor": "SPY 1.34x media 20 sesiones · QQQ 1.84x · IWM 1.00x",
     "estado": "CONTEXTO",
-    "lectura": "Participación normal/baja: confirma (o no) el movimiento del día.",
+    "lectura": "Participación alta: confirma (o no) el movimiento del día.",
     "fuente": "Nasdaq Data (volumen de ETF; proxy del volumen del índice)",
     "puntua": false
    },
@@ -815,7 +828,7 @@
     "dato": "ADV/DECLINE (amplitud)",
     "que_mirar": "Amplitud del mercado",
     "dir": "↑",
-    "valor": "grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones",
+    "valor": "grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones",
     "estado": "FAVORABLE",
     "lectura": "Fortaleza interna",
     "fuente": "Nasdaq Data: screener de todas las acciones USA (sesión anterior) y ETF de igual peso (RSP, QQEW) frente a los ponderados por capitalización",
@@ -826,7 +839,7 @@
     "dato": "VIX TERM STRUCTURE",
     "que_mirar": "Contango/backwardation",
     "dir": "↓",
-    "valor": "VIX/VIX3M 0.891 · VIX9D/VIX 0.929",
+    "valor": "VIX/VIX3M 0.946 · VIX9D/VIX 0.991",
     "estado": "FAVORABLE",
     "lectura": "Contango: estructura normal",
     "fuente": "Cboe (VIX, VIX9D, VIX3M, VVIX, SKEW, VXN, RVX)",
@@ -834,16 +847,16 @@
    }
   ],
   "entorno": {
-   "lectura": "PREDOMINIO RISK-ON",
+   "lectura": "MIXTO",
    "risk_on": 5,
-   "risk_off": 1,
+   "risk_off": 2,
    "sin_dato": 0,
    "disponibles": 7,
    "condiciones": [
     {
      "id": "t2y",
      "condicion": "2Y ↓",
-     "estado": "NEUTRAL"
+     "estado": "RISK-ON"
     },
     {
      "id": "t10y",
@@ -868,7 +881,7 @@
     {
      "id": "vix",
      "condicion": "VIX ↓/estable",
-     "estado": "RISK-ON"
+     "estado": "RISK-OFF"
     },
     {
      "id": "fedwatch",
@@ -879,18 +892,18 @@
    "liquidez": "NEUTRAL",
    "breadth": "CONFIRMA"
   },
-  "chuleta_60s": "RISK-ON",
+  "chuleta_60s": "SIN CONFLUENCIA COMPLETA",
   "por_indice": [
    {
     "indice": "S&P 500",
     "que_lo_mueve": "Tipos + beneficios + amplitud + mega caps",
-    "cierre": 7757.17,
-    "fecha": "2026-10-21",
-    "5d_pct": 0.5,
-    "20d_pct": 0.66,
-    "ytd_pct": 13.1,
-    "vs_max_52s_pct": -0.79,
-    "precio": "CONFIRMA FUERZA",
+    "cierre": 7663.43,
+    "fecha": "2026-10-22",
+    "5d_pct": -1.04,
+    "20d_pct": -0.53,
+    "ytd_pct": 11.74,
+    "vs_max_52s_pct": -1.99,
+    "precio": "CONFIRMA DEBILIDAD",
     "factores": [
      {
       "factor": "amplitud",
@@ -901,19 +914,19 @@
       "estado": "SIN DATO"
      }
     ],
-    "entorno": "FAVORABLE",
-    "puntos": 2,
+    "entorno": "MIXTO",
+    "puntos": 1,
     "estructura": "LATERAL · 2/5 máximos y 2/5 mínimos crecientes"
    },
    {
     "indice": "Nasdaq 100",
     "que_lo_mueve": "Tipos reales + yields + mega-cap growth/tech",
-    "cierre": 29822.52,
-    "fecha": "2026-10-21",
-    "5d_pct": -0.43,
-    "20d_pct": -2.13,
-    "ytd_pct": 18.31,
-    "vs_max_52s_pct": -4.49,
+    "cierre": 28958.69,
+    "fecha": "2026-10-22",
+    "5d_pct": -3.26,
+    "20d_pct": -4.99,
+    "ytd_pct": 14.89,
+    "vs_max_52s_pct": -7.26,
     "precio": "CONFIRMA DEBILIDAD",
     "factores": [
      {
@@ -926,23 +939,23 @@
      }
     ],
     "entorno": "MIXTO",
-    "puntos": 1,
+    "puntos": 0,
     "estructura": "LATERAL · 3/5 máximos y 3/5 mínimos crecientes"
    },
    {
     "indice": "Dow Jones (US30)",
     "que_lo_mueve": "Ciclo, industriales, financieros, empresas maduras",
-    "cierre": 52856.0,
-    "fecha": "2026-10-21",
-    "5d_pct": 2.39,
-    "20d_pct": 2.61,
-    "ytd_pct": 9.25,
-    "vs_max_52s_pct": -2.75,
+    "cierre": 52868.0,
+    "fecha": "2026-10-22",
+    "5d_pct": 1.32,
+    "20d_pct": 2.96,
+    "ytd_pct": 9.27,
+    "vs_max_52s_pct": -2.72,
     "precio": "CONFIRMA FUERZA",
     "factores": [
      {
       "factor": "industriales",
-      "estado": "DESFAVORABLE"
+      "estado": "NEUTRAL"
      },
      {
       "factor": "financieras",
@@ -956,12 +969,12 @@
    {
     "indice": "Russell 2000",
     "que_lo_mueve": "Tipos + crédito + condiciones financieras + economía doméstica",
-    "cierre": 2781.02,
-    "fecha": "2026-10-21",
-    "5d_pct": 1.89,
-    "20d_pct": -2.03,
-    "ytd_pct": 10.88,
-    "vs_max_52s_pct": -9.37,
+    "cierre": 2784.03,
+    "fecha": "2026-10-22",
+    "5d_pct": 0.61,
+    "20d_pct": -1.82,
+    "ytd_pct": 11.0,
+    "vs_max_52s_pct": -9.27,
     "precio": "CONFIRMA DEBILIDAD",
     "factores": [
      {
@@ -973,8 +986,8 @@
       "estado": "DESFAVORABLE"
      }
     ],
-    "entorno": "MIXTO",
-    "puntos": -1,
+    "entorno": "DESFAVORABLE",
+    "puntos": -2,
     "estructura": "BAJISTA (máximos y mínimos decrecientes) · 1/5 máximos y 0/5 mínimos crecientes"
    }
   ],
@@ -982,64 +995,64 @@
    {
     "par": "2Y ↔ FedWatch",
     "busca": "2Y ↓ + más recortes descontados",
-    "estado": "NO SE CUMPLE",
-    "detalle": "2Y -1 pb · FedWatch FAVORABLE",
+    "estado": "CUMPLE",
+    "detalle": "2Y -12 pb · FedWatch FAVORABLE",
     "lectura": "Relajación de expectativas de tipos"
    },
    {
     "par": "10Y REAL ↔ Nasdaq",
     "busca": "Real yield ↓ + Nasdaq ↑",
     "estado": "NO SE CUMPLE",
-    "detalle": "10Y real -8 pb · Nasdaq -0.43% · correlación 60d -0.12",
+    "detalle": "10Y real -14 pb · Nasdaq -3.26% · correlación 60d -0.01",
     "lectura": "Entorno favorable para growth"
    },
    {
     "par": "DXY ↔ índices",
     "busca": "DXY ↓ + índices ↑",
-    "estado": "CUMPLE",
-    "detalle": "DXY -0.56% · S&P +0.50%",
+    "estado": "NO SE CUMPLE",
+    "detalle": "DXY -0.35% · S&P -1.04%",
     "lectura": "Condiciones generalmente más suaves"
    },
    {
     "par": "NFCI ↔ índices",
     "busca": "NFCI ↓ + índices ↑",
-    "estado": "NO SE CUMPLE",
-    "detalle": "NFCI 4s +0.032 · S&P +0.50%",
+    "estado": "NEUTRAL",
+    "detalle": "NFCI 4s +0.032 · S&P -1.04%",
     "lectura": "Liquidez/financiación acompañan"
    },
    {
     "par": "VIX ↔ precio",
     "busca": "VIX ↓ + índices ↑",
-    "estado": "PARCIAL",
-    "detalle": "VIX -1.1% · S&P +0.50%",
+    "estado": "INVERSA EN CONTRA",
+    "detalle": "VIX +15.6% · S&P -1.04%",
     "lectura": "Risk-on más limpio; confirmar breadth"
    },
    {
     "par": "ADV/DECLINE ↔ S&P",
     "busca": "Índice ↑ + breadth ↑",
-    "estado": "CUMPLE",
-    "detalle": "grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones",
+    "estado": "DIVERGENCIA POSITIVA (el índice cae pero la amplitud aguanta)",
+    "detalle": "grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones",
     "lectura": "Movimiento más amplio y sano internamente"
    },
    {
     "par": "Russell ↔ Nasdaq",
     "busca": "Russell supera a Nasdaq",
-    "estado": "NO SE CUMPLE",
-    "detalle": "IWM vs QQQ +0.23 pp (20 ses.) · +2.40 pp (5 ses.)",
+    "estado": "CUMPLE",
+    "detalle": "IWM vs QQQ +3.17 pp (20 ses.) · +3.81 pp (5 ses.)",
     "lectura": "Puede indicar rotación hacia ciclo/small caps"
    },
    {
     "par": "US30 ↔ Nasdaq",
     "busca": "Uno supera claramente al otro",
     "estado": "US30 LIDERA",
-    "detalle": "DIA vs QQQ +4.77 pp (20 ses.)",
+    "detalle": "DIA vs QQQ +7.91 pp (20 ses.)",
     "lectura": "Rotación sectorial/estilo"
    },
    {
     "par": "TGA/RRP/reservas ↔ índices",
     "busca": "Liquidez mejora + riesgo sube",
     "estado": "NEUTRAL",
-    "detalle": "Liquidez NEUTRAL · S&P +0.50%",
+    "detalle": "Liquidez NEUTRAL · S&P -1.04%",
     "lectura": "Confirma régimen, no entrada"
    }
   ],
@@ -1047,15 +1060,15 @@
    {
     "id": "vvix",
     "dato": "VVIX (volatilidad del VIX)",
-    "valor": "94.55 · percentil 1 año 44%",
-    "estado": "NEUTRAL",
-    "lectura": "En rango",
+    "valor": "107.94 · percentil 1 año 81%",
+    "estado": "DESFAVORABLE",
+    "lectura": "Alto respecto al último año",
     "fuente": "Cboe"
    },
    {
     "id": "skew",
     "dato": "SKEW (riesgo de cola)",
-    "valor": "150.36 · percentil 1 año 82%",
+    "valor": "152.39 · percentil 1 año 87%",
     "estado": "DESFAVORABLE",
     "lectura": "Alto respecto al último año",
     "fuente": "Cboe"
@@ -1063,15 +1076,15 @@
    {
     "id": "vxn",
     "dato": "VXN (volatilidad Nasdaq)",
-    "valor": "24.42 · percentil 1 año 63%",
-    "estado": "NEUTRAL",
-    "lectura": "En rango",
+    "valor": "28.72 · percentil 1 año 90%",
+    "estado": "DESFAVORABLE",
+    "lectura": "Alto respecto al último año",
     "fuente": "Cboe"
    },
    {
     "id": "rvx",
     "dato": "RVX (volatilidad Russell)",
-    "valor": "21.66 · percentil 1 año 39%",
+    "valor": "23.14 · percentil 1 año 56%",
     "estado": "NEUTRAL",
     "lectura": "En rango",
     "fuente": "Cboe"
@@ -1079,15 +1092,15 @@
    {
     "id": "vix9d",
     "dato": "VIX9D (volatilidad 9 días)",
-    "valor": "15.49 · percentil 1 año 54%",
-    "estado": "NEUTRAL",
-    "lectura": "En rango",
+    "valor": "18.86 · percentil 1 año 81%",
+    "estado": "DESFAVORABLE",
+    "lectura": "Alto respecto al último año",
     "fuente": "Cboe"
    },
    {
     "id": "spread_hy",
     "dato": "Spread high yield",
-    "valor": "333 pb · 4s +65 pb",
+    "valor": "327 pb · 4s +54 pb",
     "estado": "DESFAVORABLE",
     "lectura": "Se amplía: estrés de crédito (clave para Russell)",
     "fuente": "ICE BofA vía FRED (high yield)"
@@ -1095,7 +1108,7 @@
    {
     "id": "spread_ig",
     "dato": "Spread grado de inversión",
-    "valor": "87 pb · 4s +10 pb",
+    "valor": "88 pb · 4s +11 pb",
     "estado": "NEUTRAL",
     "lectura": "Estable",
     "fuente": "ICE BofA vía FRED (grado de inversión)"
@@ -1103,9 +1116,9 @@
    {
     "id": "letras",
     "dato": "Expectativas de tipos (proxy letras)",
-    "valor": "1A − EFFR +64 pb · 5d -1 pb",
+    "valor": "1A − EFFR +53 pb · 5d -8 pb",
     "estado": "CONTEXTO",
-    "lectura": "Sin cambio. PROXY de expectativas, no es FedWatch.",
+    "lectura": "Más recortes descontados. PROXY de expectativas, no es FedWatch.",
     "fuente": "U.S. Treasury (letra 1A) − EFFR"
    },
    {
@@ -1143,7 +1156,7 @@
    {
     "id": "rel_nasdaq_real10",
     "dato": "¿SE CUMPLE Nasdaq ↔ 10Y real?",
-    "valor": "corr. 20d 0.22 · 60d -0.12 · 250d -0.27",
+    "valor": "corr. 20d 0.55 · 60d -0.01 · 250d -0.23",
     "estado": "DÉBIL",
     "lectura": "Relación débil: dar menos peso a este factor.",
     "fuente": "Cálculo NEXORA con cambios diarios"
@@ -1151,7 +1164,7 @@
    {
     "id": "rel_sp_dxy",
     "dato": "¿SE CUMPLE S&P ↔ DXY?",
-    "valor": "corr. 20d 0.03 · 60d -0.18 · 250d -0.25",
+    "valor": "corr. 20d 0.0 · 60d -0.21 · 250d -0.25",
     "estado": "SE CUMPLE",
     "lectura": "Relación vigente: la chuleta es fiable para este factor.",
     "fuente": "Cálculo NEXORA con cambios diarios"
@@ -1159,7 +1172,7 @@
    {
     "id": "rel_sp_10y",
     "dato": "Correlación S&P ↔ 10Y (bolsa-bonos)",
-    "valor": "corr. 20d -0.17 · 60d -0.41 · 250d -0.36",
+    "valor": "corr. 20d 0.31 · 60d -0.26 · 250d -0.32",
     "estado": "CONTEXTO",
     "lectura": "Correlación negativa: suben yields y cae la bolsa (régimen de miedo a tipos/inflación)",
     "fuente": "Cálculo NEXORA con cambios diarios"
@@ -1167,7 +1180,7 @@
    {
     "id": "peticiones_paro",
     "dato": "Peticiones de paro semanales",
-    "valor": "199,000 (2026-10-10) · media 4s 198,500 vs 204,000",
+    "valor": "194,000 (2026-10-17) · media 4s 197,750 vs 202,500",
     "estado": "NEUTRAL",
     "lectura": "Estables",
     "fuente": "DOL vía FRED (ICSA)"
@@ -1183,9 +1196,9 @@
    {
     "id": "consumo",
     "dato": "Consumo: XLY/XLP (discrecional vs básico)",
-    "valor": "XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores)",
+    "valor": "XLY/XLP 1,2780 (2026-10-22) · -7,1 % frente a su media de 200 sesiones · 13 semanas -1,7 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores)",
     "estado": "CONTEXTO",
-    "lectura": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto). Contexto de ciclo: no vota en el entorno.",
+    "lectura": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Contexto de ciclo: no vota en el entorno.",
     "fuente": "Nasdaq Data (cierres de XLY y XLP; ratio de precios, igual que TradingView); Census, ventas minoristas reales (FRED RRSFS), media 3 meses vs 3 anteriores"
    }
   ],
@@ -1195,8 +1208,8 @@
     "n": 1,
     "paso": "MACRO",
     "que": "2Y → 10Y → 10Y real → DXY → NFCI → FedWatch → VIX",
-    "estado": "FAVORABLE",
-    "detalle": "PREDOMINIO RISK-ON: 5 risk-on, 1 risk-off, 0 sin dato de 7"
+    "estado": "NEUTRAL",
+    "detalle": "MIXTO: 5 risk-on, 2 risk-off, 0 sin dato de 7"
    },
    {
     "n": 2,
@@ -1210,7 +1223,7 @@
     "paso": "CRECIMIENTO",
     "que": "CPI/PCE + empleo + ISM/PMI + calendario",
     "estado": "CONTEXTO",
-    "detalle": "CPI / PCE: Sube: puede retrasar recortes · NFP / EMPLEO: Hay que interpretar el motivo (CH): fuerte puede retrasar recortes pero apoya crecimiento; débil puede traer recortes pero también recesión · PMI / ISM (proxy Fed regionales): Expansión y estable · Consumo XLY/XLP: MIXTO (sin señal clara del mercado (ratio mixto))"
+    "detalle": "CPI / PCE: Sube: puede retrasar recortes · NFP / EMPLEO: Hay que interpretar el motivo (CH): fuerte puede retrasar recortes pero apoya crecimiento; débil puede traer recortes pero también recesión · PMI / ISM (proxy Fed regionales): Expansión y estable · Consumo XLY/XLP: DEFENSIVO (no confirmado)"
    },
    {
     "n": 4,
@@ -1224,14 +1237,14 @@
     "paso": "RELATIVE STRENGTH",
     "que": "Nasdaq vs S&P, Russell vs Nasdaq, US30 vs Nasdaq",
     "estado": "CONTEXTO",
-    "detalle": "Nasdaq vs S&P -2.85 pp · Russell vs Nasdaq +0.23 pp · US30 vs Nasdaq +4.77 pp (20 sesiones)"
+    "detalle": "Nasdaq vs S&P -4.52 pp · Russell vs Nasdaq +3.17 pp · US30 vs Nasdaq +7.91 pp (20 sesiones)"
    },
    {
     "n": 6,
     "paso": "PRECIO (HTF)",
     "que": "Tendencia, máximos/mínimos, gaps, zonas",
     "estado": "CONTEXTO",
-    "detalle": "S&P 500: CONFIRMA FUERZA · Nasdaq 100: CONFIRMA DEBILIDAD · Dow Jones (US30): CONFIRMA FUERZA · Russell 2000: CONFIRMA DEBILIDAD"
+    "detalle": "S&P 500: CONFIRMA DEBILIDAD · Nasdaq 100: CONFIRMA DEBILIDAD · Dow Jones (US30): CONFIRMA FUERZA · Russell 2000: CONFIRMA DEBILIDAD"
    },
    {
     "n": 7,
@@ -1259,17 +1272,17 @@
    {
     "n": 1,
     "pregunta": "¿Qué están haciendo 2Y, 10Y y 10Y real?",
-    "respuesta": "US 2Y → (5d -1 pb) · US 10Y ↓ (5d -6 pb) · 10Y REAL / TIPS ↓ (5d -8 pb)"
+    "respuesta": "US 2Y ↓ (5d -12 pb) · US 10Y ↓ (5d -14 pb) · 10Y REAL / TIPS ↓ (5d -14 pb)"
    },
    {
     "n": 2,
     "pregunta": "¿DXY confirma o contradice el movimiento?",
-    "respuesta": "CUMPLE · DXY -0.56% · S&P +0.50%"
+    "respuesta": "NO SE CUMPLE · DXY -0.35% · S&P -1.04%"
    },
    {
     "n": 3,
     "pregunta": "¿FedWatch está relajándose o endureciéndose?",
-    "respuesta": "1 sesión -8 pts de subida; tipo esperado a 3 reuniones -8 pb en 5 sesiones · Más relajación Proxy letras: -1 pb en 5 sesiones."
+    "respuesta": "1 sesión +2 pts de subida; tipo esperado a 3 reuniones -6 pb en 5 sesiones · Más relajación Proxy letras: -8 pb en 5 sesiones."
    },
    {
     "n": 4,
@@ -1279,7 +1292,7 @@
    {
     "n": 5,
     "pregunta": "¿VIX está cayendo, estable o acelerándose?",
-    "respuesta": "16.68 · 5d -1.1% · percentil 1 año 43% · Estable. Riesgo, no señal automática (CH)."
+    "respuesta": "19.03 · 5d +15.6% · percentil 1 año 76% · Sube: más aversión al riesgo. Riesgo, no señal automática (CH)."
    },
    {
     "n": 6,
@@ -1294,12 +1307,12 @@
    {
     "n": 8,
     "pregunta": "¿Hay amplitud o solo unas pocas mega caps?",
-    "respuesta": "Fortaleza interna · grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones"
+    "respuesta": "Fortaleza interna · grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones"
    },
    {
     "n": 9,
     "pregunta": "¿Qué índice muestra relative strength?",
-    "respuesta": "Líder a 20 sesiones: Dow Jones (US30). S&P 500 +0.7% · Nasdaq 100 -2.1% · Dow Jones (US30) +2.6% · Russell 2000 -2.0%"
+    "respuesta": "Líder a 20 sesiones: Dow Jones (US30). S&P 500 -0.5% · Nasdaq 100 -5.0% · Dow Jones (US30) +3.0% · Russell 2000 -1.8%"
    },
    {
     "n": 10,
@@ -1309,173 +1322,167 @@
   ],
   "niveles": {
    "S&P 500": {
-    "referencia": 7757.17,
-    "atr14": 71.35,
+    "referencia": 7663.43,
+    "atr14": 73.88,
     "encima": [
      {
+      "nombre": "gap bajista 2026-10-22",
+      "nivel": 7698.86,
+      "dist_pct": 0.46,
+      "dist_atr": 0.5
+     },
+     {
       "nombre": "máx. día anterior",
-      "nivel": 7770.72,
-      "dist_pct": 0.17,
-      "dist_atr": 0.2
+      "nivel": 7701.05,
+      "dist_pct": 0.49,
+      "dist_atr": 0.5
      },
      {
       "nombre": "máx. mes anterior",
       "nivel": 7782.31,
-      "dist_pct": 0.32,
-      "dist_atr": 0.4
+      "dist_pct": 1.55,
+      "dist_atr": 1.6
      },
      {
       "nombre": "máx. semana anterior",
       "nivel": 7820.25,
-      "dist_pct": 0.81,
-      "dist_atr": 0.9
+      "dist_pct": 2.05,
+      "dist_atr": 2.1
      },
      {
       "nombre": "máx. 20 semanas",
       "nivel": 7844.32,
-      "dist_pct": 1.12,
-      "dist_atr": 1.2
-     },
-     {
-      "nombre": "máx. 52 semanas",
-      "nivel": 7844.32,
-      "dist_pct": 1.12,
-      "dist_atr": 1.2
+      "dist_pct": 2.36,
+      "dist_atr": 2.4
      }
     ],
     "debajo": [
      {
       "nombre": "mín. día anterior",
-      "nivel": 7710.11,
-      "dist_pct": -0.61,
-      "dist_atr": -0.7
+      "nivel": 7635.39,
+      "dist_pct": -0.37,
+      "dist_atr": -0.4
      },
      {
       "nombre": "mín. semana anterior",
       "nivel": 7633.25,
-      "dist_pct": -1.6,
-      "dist_atr": -1.7
+      "dist_pct": -0.39,
+      "dist_atr": -0.4
      },
      {
       "nombre": "mín. mes anterior",
       "nivel": 7507.24,
-      "dist_pct": -3.22,
-      "dist_atr": -3.5
+      "dist_pct": -2.04,
+      "dist_atr": -2.1
      },
      {
       "nombre": "mín. 20 semanas",
       "nivel": 7228.83,
-      "dist_pct": -6.81,
-      "dist_atr": -7.4
+      "dist_pct": -5.67,
+      "dist_atr": -5.9
      },
      {
       "nombre": "mín. 52 semanas",
       "nivel": 6316.72,
-      "dist_pct": -18.57,
-      "dist_atr": -20.2
+      "dist_pct": -17.57,
+      "dist_atr": -18.2
      }
     ]
    },
    "Nasdaq 100": {
-    "referencia": 29822.52,
-    "atr14": 465.1,
+    "referencia": 28958.69,
+    "atr14": 497.35,
     "encima": [
      {
-      "nombre": "máx. día anterior",
-      "nivel": 29928.31,
-      "dist_pct": 0.35,
+      "nombre": "mín. semana anterior",
+      "nivel": 29073.29,
+      "dist_pct": 0.4,
       "dist_atr": 0.2
+     },
+     {
+      "nombre": "máx. día anterior",
+      "nivel": 29411.76,
+      "dist_pct": 1.56,
+      "dist_atr": 0.9
+     },
+     {
+      "nombre": "gap bajista 2026-10-22",
+      "nivel": 29449.0,
+      "dist_pct": 1.69,
+      "dist_atr": 1.0
      },
      {
       "nombre": "gap bajista 2026-10-13",
       "nivel": 30511.42,
-      "dist_pct": 2.31,
-      "dist_atr": 1.5
+      "dist_pct": 5.36,
+      "dist_atr": 3.1
      },
      {
       "nombre": "máx. mes anterior",
       "nivel": 30770.63,
-      "dist_pct": 3.18,
-      "dist_atr": 2.0
-     },
-     {
-      "nombre": "máx. semana anterior",
-      "nivel": 30813.96,
-      "dist_pct": 3.32,
-      "dist_atr": 2.1
-     },
-     {
-      "nombre": "gap bajista 2026-10-07",
-      "nivel": 31092.22,
-      "dist_pct": 4.26,
-      "dist_atr": 2.7
+      "dist_pct": 6.26,
+      "dist_atr": 3.6
      }
     ],
     "debajo": [
      {
       "nombre": "mín. día anterior",
-      "nivel": 29593.7,
-      "dist_pct": -0.77,
-      "dist_atr": -0.5
-     },
-     {
-      "nombre": "mín. semana anterior",
-      "nivel": 29073.29,
-      "dist_pct": -2.51,
-      "dist_atr": -1.6
+      "nivel": 28855.1,
+      "dist_pct": -0.36,
+      "dist_atr": -0.2
      },
      {
       "nombre": "mín. mes anterior",
       "nivel": 28753.29,
-      "dist_pct": -3.59,
-      "dist_atr": -2.3
+      "dist_pct": -0.71,
+      "dist_atr": -0.4
      },
      {
       "nombre": "mín. 20 semanas",
       "nivel": 27176.03,
-      "dist_pct": -8.87,
-      "dist_atr": -5.7
+      "dist_pct": -6.16,
+      "dist_atr": -3.6
      },
      {
       "nombre": "mín. 52 semanas",
       "nivel": 22841.42,
-      "dist_pct": -23.41,
-      "dist_atr": -15.0
+      "dist_pct": -21.12,
+      "dist_atr": -12.3
      }
     ]
    },
    "Dow Jones (US30)": {
-    "referencia": 52856.0,
-    "atr14": 518.61,
+    "referencia": 52868.0,
+    "atr14": 516.49,
     "encima": [
      {
       "nombre": "máx. día anterior",
-      "nivel": 52865.0,
-      "dist_pct": 0.02,
-      "dist_atr": 0.0
+      "nivel": 52924.08,
+      "dist_pct": 0.11,
+      "dist_atr": 0.1
      },
      {
       "nombre": "gap bajista 2026-09-08",
       "nivel": 53151.96,
-      "dist_pct": 0.56,
-      "dist_atr": 0.6
+      "dist_pct": 0.54,
+      "dist_atr": 0.5
      },
      {
       "nombre": "máx. mes anterior",
       "nivel": 53754.99,
-      "dist_pct": 1.7,
+      "dist_pct": 1.68,
       "dist_atr": 1.7
      },
      {
       "nombre": "máx. 20 semanas",
       "nivel": 54743.49,
-      "dist_pct": 3.57,
+      "dist_pct": 3.55,
       "dist_atr": 3.6
      },
      {
       "nombre": "máx. 52 semanas",
       "nivel": 54743.49,
-      "dist_pct": 3.57,
+      "dist_pct": 3.55,
       "dist_atr": 3.6
      }
     ],
@@ -1483,94 +1490,94 @@
      {
       "nombre": "máx. semana anterior",
       "nivel": 52602.05,
-      "dist_pct": -0.48,
+      "dist_pct": -0.5,
       "dist_atr": -0.5
      },
      {
       "nombre": "mín. día anterior",
-      "nivel": 52400.26,
-      "dist_pct": -0.86,
-      "dist_atr": -0.9
+      "nivel": 52507.46,
+      "dist_pct": -0.68,
+      "dist_atr": -0.7
      },
      {
       "nombre": "mín. semana anterior",
       "nivel": 51353.7,
-      "dist_pct": -2.84,
+      "dist_pct": -2.86,
       "dist_atr": -2.9
      },
      {
       "nombre": "mín. mes anterior",
       "nivel": 50884.98,
-      "dist_pct": -3.73,
+      "dist_pct": -3.75,
       "dist_atr": -3.8
      },
      {
       "nombre": "mín. 20 semanas",
       "nivel": 49904.03,
-      "dist_pct": -5.58,
+      "dist_pct": -5.61,
       "dist_atr": -5.7
      }
     ]
    },
    "Russell 2000": {
-    "referencia": 2781.02,
-    "atr14": 39.03,
+    "referencia": 2784.03,
+    "atr14": 37.69,
     "encima": [
+     {
+      "nombre": "máx. día anterior",
+      "nivel": 2790.16,
+      "dist_pct": 0.22,
+      "dist_atr": 0.2
+     },
      {
       "nombre": "mín. mes anterior",
       "nivel": 2791.82,
-      "dist_pct": 0.39,
-      "dist_atr": 0.3
-     },
-     {
-      "nombre": "máx. día anterior",
-      "nivel": 2793.29,
-      "dist_pct": 0.44,
-      "dist_atr": 0.3
+      "dist_pct": 0.28,
+      "dist_atr": 0.2
      },
      {
       "nombre": "máx. semana anterior",
       "nivel": 2806.95,
-      "dist_pct": 0.93,
-      "dist_atr": 0.7
+      "dist_pct": 0.82,
+      "dist_atr": 0.6
      },
      {
       "nombre": "gap bajista 2026-10-07",
       "nivel": 2811.6,
-      "dist_pct": 1.1,
-      "dist_atr": 0.8
+      "dist_pct": 0.99,
+      "dist_atr": 0.7
      },
      {
       "nombre": "máx. mes anterior",
       "nivel": 2978.23,
-      "dist_pct": 7.09,
-      "dist_atr": 5.1
+      "dist_pct": 6.98,
+      "dist_atr": 5.2
      }
     ],
     "debajo": [
      {
       "nombre": "mín. día anterior",
-      "nivel": 2769.15,
-      "dist_pct": -0.43,
-      "dist_atr": -0.3
+      "nivel": 2762.09,
+      "dist_pct": -0.79,
+      "dist_atr": -0.6
      },
      {
       "nombre": "mín. semana anterior",
       "nivel": 2715.68,
-      "dist_pct": -2.35,
-      "dist_atr": -1.7
+      "dist_pct": -2.45,
+      "dist_atr": -1.8
      },
      {
       "nombre": "mín. 20 semanas",
       "nivel": 2715.68,
-      "dist_pct": -2.35,
-      "dist_atr": -1.7
+      "dist_pct": -2.45,
+      "dist_atr": -1.8
      },
      {
       "nombre": "mín. 52 semanas",
       "nivel": 2303.0,
-      "dist_pct": -17.19,
-      "dist_atr": -12.2
+      "dist_pct": -17.28,
+      "dist_atr": -12.8
      }
     ]
    }
@@ -3283,17 +3290,17 @@
    }
   },
   "consumo": {
-   "valor": "XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores)",
-   "lectura": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto)",
+   "valor": "XLY/XLP 1,2780 (2026-10-22) · -7,1 % frente a su media de 200 sesiones · 13 semanas -1,7 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores)",
+   "lectura": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme",
    "historico": "Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %).",
    "aviso": "Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
-   "concentracion": "Amazon + Tesla pesan el 40,8 % de XLY (20-Oct-2026); en 13 semanas Amazon +12,3 %, Tesla +20,9 %. Sin ellas, el ratio habría variado -5,0 % (estimación): lo mueven sobre todo Amazon y Tesla.",
-   "tesis": "XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto). Amazon + Tesla pesan el 40,8 % de XLY (20-Oct-2026); en 13 semanas Amazon +12,3 %, Tesla +20,9 %. Sin ellas, el ratio habría variado -5,0 % (estimación): lo mueven sobre todo Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
-   "estado_mercado": "MIXTO",
-   "confirmacion": "SIN SEÑAL CLARA DEL MERCADO (ratio mixto)"
+   "concentracion": "Amazon + Tesla pesan el 41,4 % de XLY (21-Oct-2026); en 13 semanas Amazon +7,9 %, Tesla +19,7 %. Sin ellas, el ratio habría variado -7,0 % (estimación): lo mueven sobre todo Amazon y Tesla.",
+   "tesis": "XLY/XLP 1,2780 (2026-10-22) · -7,1 % frente a su media de 200 sesiones · 13 semanas -1,7 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores). DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme. Amazon + Tesla pesan el 41,4 % de XLY (21-Oct-2026); en 13 semanas Amazon +7,9 %, Tesla +19,7 %. Sin ellas, el ratio habría variado -7,0 % (estimación): lo mueven sobre todo Amazon y Tesla. Histórico 1999-10-08 → 2026-09-29 en situación comparable (ratio bajo su media pero consumo real firme (no confirmado); 306 semanas): S&P 500 a 13 semanas mediana +3,39 % y positivo el 72 % (referencia +3,10 % y 67 %); caída típica en 13 semanas -2,30 % (referencia -2,45 %). Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada.",
+   "estado_mercado": "DEFENSIVO",
+   "confirmacion": "NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme"
   },
   "reacciones": null
  },
- "evaluado_utc": "2026-10-22 23:57 UTC",
- "fedwatch_fecha_precios": "2026-10-22"
+ "evaluado_utc": "2026-10-23 05:30 UTC",
+ "fedwatch_fecha_precios": "2026-10-23"
 }

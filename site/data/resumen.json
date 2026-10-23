@@ -1,7 +1,7 @@
 {
  "periodo": "hoy",
- "corte": "Datos entre el 2026-10-21 y el 2026-10-22 (cada fuente publica a su hora)",
- "movido": "El bono a 2 años baja 16 pb (hasta 4,65 %); el tipo real a 10 años baja 12 pb. En conjunto: el dinero se abarata.",
+ "corte": "Datos entre el 2026-10-21 y el 2026-10-23 (cada fuente publica a su hora)",
+ "movido": "El bono a 2 años baja 16 pb (hasta 4,65 %); el tipo real a 10 años baja 12 pb; el miedo (VIX) sube 14 %. En conjunto: el dinero se abarata.",
  "significa": [
   {
    "activo": "Oro",
@@ -11,27 +11,27 @@
   {
    "activo": "Nasdaq 100",
    "viento": "A FAVOR",
-   "texto": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro."
+   "texto": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene."
   },
   {
    "activo": "S&P 500",
    "viento": "A FAVOR",
-   "texto": "A favor: bajan los tipos a corto plazo."
+   "texto": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene."
   },
   {
    "activo": "Bitcoin",
    "viento": "A FAVOR",
-   "texto": "A favor: bajan los tipos a corto plazo. Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene."
+   "texto": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene."
   },
   {
    "activo": "US30 · Dow Jones",
    "viento": "A FAVOR",
-   "texto": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro."
+   "texto": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo)."
   },
   {
    "activo": "Russell 2000",
    "viento": "A FAVOR",
-   "texto": "A favor: bajan los tipos a corto plazo."
+   "texto": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo)."
   }
  ],
  "vigilar": [
@@ -43,7 +43,8 @@
  "sencillo": "El bono a 2 años es la apuesta del mercado sobre lo que hará la Fed. Si baja, el mercado espera dinero más barato y eso ayuda a la bolsa, al oro y a cripto; si sube, los frena.",
  "motores_significativos": [
   "t2y",
-  "real"
+  "real",
+  "vix"
  ],
  "errores": {
   "lbma": "HTTPError: HTTP Error 403: Forbidden"
@@ -61,6 +62,12 @@
     "sube": false,
     "peso": 6.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "vix",
+    "sube": true,
+    "peso": -1.76,
+    "razon": "sube el miedo"
    }
   ],
   "S&P 500": [
@@ -75,6 +82,12 @@
     "sube": false,
     "peso": 3.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "vix",
+    "sube": true,
+    "peso": -1.76,
+    "razon": "sube el miedo"
    }
   ],
   "Oro": [
@@ -89,6 +102,12 @@
     "sube": false,
     "peso": 6.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "vix",
+    "sube": true,
+    "peso": 0.88,
+    "razon": "sube el miedo"
    }
   ],
   "Bitcoin": [
@@ -103,6 +122,12 @@
     "sube": false,
     "peso": 3.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "vix",
+    "sube": true,
+    "peso": -1.76,
+    "razon": "sube el miedo"
    }
   ],
   "US30 · Dow Jones": [
@@ -117,6 +142,12 @@
     "sube": false,
     "peso": 3.0,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "vix",
+    "sube": true,
+    "peso": -1.76,
+    "razon": "sube el miedo"
    }
   ],
   "Russell 2000": [
@@ -131,6 +162,12 @@
     "sube": false,
     "peso": 4.5,
     "razon": "baja el tipo real (lo que más les ayuda)"
+   },
+   {
+    "motor": "vix",
+    "sube": true,
+    "peso": -1.76,
+    "razon": "sube el miedo"
    }
   ]
  },
@@ -151,9 +188,9 @@
    "fecha": "2026-10-22"
   },
   "vix": {
-   "valor": 16.68,
-   "delta": -3.6395147313691423,
-   "fecha": "2026-10-21"
+   "valor": 19.03,
+   "delta": 14.088729016786573,
+   "fecha": "2026-10-22"
   },
   "hy": {
    "valor": 327.0,
@@ -162,27 +199,27 @@
   },
   "fed": {
    "valor": 8.0,
-   "antes": 16.0,
+   "antes": 6.0,
    "reunion": "2026-10-28",
-   "delta": -8.0,
-   "fecha": "2026-10-22"
+   "delta": 2.0,
+   "fecha": "2026-10-23"
   }
  },
  "activos": {
   "Nasdaq 100": {
-   "delta": 1.1266084960875222,
-   "fecha": "2026-10-21",
-   "valor": 29822.52
+   "delta": -2.896569438129315,
+   "fecha": "2026-10-22",
+   "valor": 28958.69
   },
   "S&P 500": {
-   "delta": 0.5782767611833606,
-   "fecha": "2026-10-21",
-   "valor": 7757.17
+   "delta": -1.2084303940741226,
+   "fecha": "2026-10-22",
+   "valor": 7663.43
   },
   "Oro": {
-   "delta": -2.734939759036148,
-   "fecha": "2026-10-22",
-   "valor": 4036.5
+   "delta": -0.8225766709449189,
+   "fecha": "2026-10-23",
+   "valor": 4027.0
   },
   "Bitcoin": {
    "delta": -3.2341811041923685,
@@ -190,43 +227,45 @@
    "valor": 81307.16
   },
   "US30 · Dow Jones": {
-   "delta": 0.6857665345930908,
-   "fecha": "2026-10-21",
-   "valor": 52855.99999999999
+   "delta": 0.02270319358257389,
+   "fecha": "2026-10-22",
+   "valor": 52867.99999999999
   },
   "Russell 2000": {
-   "delta": 0.27406958997227004,
-   "fecha": "2026-10-21",
-   "valor": 2781.0208
+   "delta": 0.10806463583443726,
+   "fecha": "2026-10-22",
+   "valor": 2784.0261
   }
  },
  "fuente": "Tesoro de EE. UU. (2Y, 10Y real), BCE (réplica del dólar), Cboe (VIX, S&P 500), Nasdaq (Nasdaq 100), LBMA o COMEX GC=F (Yahoo) si LBMA falla (oro), Coinbase (bitcoin), ICE BofA vía FRED (crédito), FedWatch NEXORA (futuros ZQ).",
  "tesis_activos": {
   "Oro": {
    "etiqueta": "ALCISTA",
-   "tesis": "ALCISTA con confluencia: la macro de la semana (a favor) y su motor propio (PREDOMINIO FAVORABLE) apuntan igual. Lo que la rompería: que ganen peso NFCI (hoy ya empujan en sentido contrario).",
+   "tesis": "ALCISTA con confluencia: la macro de la semana (a favor) y su motor propio (PREDOMINIO FAVORABLE) apuntan igual. Lo que la rompería: que ganen peso NFCI y ETF GOLD FLOWS (hoy ya empujan en sentido contrario).",
    "hoy": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
    "semana": "A favor: baja el tipo real (lo que más les ayuda). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "PREDOMINIO FAVORABLE",
-    "detalle": "3 a favor / 1 en contra de 5 datos núcleo · precio: CONFIRMA DEBILIDAD",
+    "detalle": "4 a favor / 1 en contra de 5 datos núcleo · precio: CONFIRMA DEBILIDAD",
     "favor": [
-     "DXY 101.65 · 5d -0.56% · 1d -0.19% (Baja: suele favorecer al oro · velocidad normal (-0.7σ))",
-     "10Y REAL / TIPS (PRIORIDAD ALTA) 2.76% · 5d -8 pb · 20d +13 pb (Baja: generalmente favorable (menor coste de oportunidad))"
+     "DXY 101.76 · 5d -0.35% · 1d +0.10% (Baja: suele favorecer al oro · velocidad normal (-0.5σ))",
+     "US 2Y 4.65% · 5d -12 pb · 1d -16 pb (Baja: menor presión de tipos)"
     ],
     "contra": [
-     "NFCI -0.496 · 4s +0.032 · 1s +0.006 (Sube: condiciones más tensas)"
+     "NFCI -0.496 · 4s +0.032 · 1s +0.006 (Sube: condiciones más tensas)",
+     "ETF GOLD FLOWS GLD 1,045.6 t · 5d -8.3 t · 20d -8.9 t · año -19.5 t (Salidas: menor demanda financiera)"
     ],
     "favor_n": [
      "DXY",
+     "US 2Y",
      "10Y REAL / TIPS (PRIORIDAD ALTA)",
      "FedWatch",
-     "US 10Y",
-     "ETF GOLD FLOWS"
+     "US 10Y"
     ],
     "contra_n": [
-     "NFCI"
+     "NFCI",
+     "ETF GOLD FLOWS"
     ],
     "avisos": [
      "DIVERGENCIA: la macro acompaña pero el precio no confirma. CH §7: esperar a que el precio confirme."
@@ -245,30 +284,36 @@
      "sube": false,
      "peso": 6.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "vix",
+     "sube": true,
+     "peso": 0.88,
+     "razon": "sube el miedo"
     }
    ]
   },
   "Nasdaq 100": {
    "etiqueta": "ALCISTA DÉBIL",
-   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro.",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda).",
+   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso VIX y NFCI (hoy ya empujan en sentido contrario).",
+   "hoy": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
+   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "MIXTO",
-    "detalle": "5 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Nasdaq 100: 10Y real favorable · semiconductores desfavorable (Tipos reales + yields + mega-cap growth/tech)",
+    "detalle": "5 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Nasdaq 100: 10Y real favorable · semiconductores desfavorable (Tipos reales + yields + mega-cap growth/tech)",
     "favor": [
-     "VIX 16.68 · 5d -1.1% · percentil 1 año 43% (Estable. Riesgo, no señal automática (CH).)",
-     "ADV/DECLINE (amplitud) grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones (Fortaleza interna)"
+     "ADV/DECLINE (amplitud) grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones (Fortaleza interna)",
+     "VIX TERM STRUCTURE VIX/VIX3M 0.946 · VIX9D/VIX 0.991 (Contango: estructura normal)"
     ],
     "contra": [
-     "NFCI -0.496 · 4s +0.032 (Sube: condiciones más tensas)",
-     "CPI / PCE IPC subyacente +0.33% m/m · 2.6% a/a (2026-09) · PCE subyacente 3.0% a/a (2026-08) · PCE subyacente 3m anualizado 2.0% (Sube: puede retrasar recortes)"
+     "VIX 19.03 · 5d +15.6% · percentil 1 año 76% (Sube: más aversión al riesgo. Riesgo, no señal automática (CH).)",
+     "NFCI -0.496 · 4s +0.032 (Sube: condiciones más tensas)"
     ],
     "favor_n": [
-     "VIX",
      "ADV/DECLINE (amplitud)",
      "VIX TERM STRUCTURE",
+     "US 2Y",
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
@@ -276,11 +321,12 @@
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
+     "VIX",
      "NFCI",
      "CPI / PCE"
     ],
     "avisos": [],
-    "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
+    "rotacion": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme · XLY/XLP 1,2780 (2026-10-22) · -7,1 % frente a su media de 200 sesiones · 13 semanas -1,7 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "tipos, amplitud, beneficios y volatilidad",
    "motores": [
@@ -295,30 +341,36 @@
      "sube": false,
      "peso": 6.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "vix",
+     "sube": true,
+     "peso": -1.76,
+     "razon": "sube el miedo"
     }
    ]
   },
   "S&P 500": {
-   "etiqueta": "ALCISTA",
-   "tesis": "ALCISTA con confluencia: la macro de la semana (a favor) y su motor propio (FAVORABLE) apuntan igual. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: bajan los tipos a corto plazo.",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda).",
+   "etiqueta": "ALCISTA DÉBIL",
+   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso VIX y NFCI (hoy ya empujan en sentido contrario).",
+   "hoy": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
+   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo).",
    "viento_semana": "A FAVOR",
    "propio": {
-    "veredicto": "FAVORABLE",
-    "detalle": "5 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del S&P 500: amplitud favorable · beneficios sin dato (Tipos + beneficios + amplitud + mega caps)",
+    "veredicto": "MIXTO",
+    "detalle": "5 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del S&P 500: amplitud favorable · beneficios sin dato (Tipos + beneficios + amplitud + mega caps)",
     "favor": [
-     "VIX 16.68 · 5d -1.1% · percentil 1 año 43% (Estable. Riesgo, no señal automática (CH).)",
-     "ADV/DECLINE (amplitud) grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones (Fortaleza interna)"
+     "ADV/DECLINE (amplitud) grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones (Fortaleza interna)",
+     "VIX TERM STRUCTURE VIX/VIX3M 0.946 · VIX9D/VIX 0.991 (Contango: estructura normal)"
     ],
     "contra": [
-     "NFCI -0.496 · 4s +0.032 (Sube: condiciones más tensas)",
-     "CPI / PCE IPC subyacente +0.33% m/m · 2.6% a/a (2026-09) · PCE subyacente 3.0% a/a (2026-08) · PCE subyacente 3m anualizado 2.0% (Sube: puede retrasar recortes)"
+     "VIX 19.03 · 5d +15.6% · percentil 1 año 76% (Sube: más aversión al riesgo. Riesgo, no señal automática (CH).)",
+     "NFCI -0.496 · 4s +0.032 (Sube: condiciones más tensas)"
     ],
     "favor_n": [
-     "VIX",
      "ADV/DECLINE (amplitud)",
      "VIX TERM STRUCTURE",
+     "US 2Y",
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
@@ -326,11 +378,12 @@
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
+     "VIX",
      "NFCI",
      "CPI / PCE"
     ],
     "avisos": [],
-    "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
+    "rotacion": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme · XLY/XLP 1,2780 (2026-10-22) · -7,1 % frente a su media de 200 sesiones · 13 semanas -1,7 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "tipos, amplitud, beneficios y volatilidad",
    "motores": [
@@ -345,27 +398,34 @@
      "sube": false,
      "peso": 3.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "vix",
+     "sube": true,
+     "peso": -1.76,
+     "razon": "sube el miedo"
     }
    ]
   },
   "Bitcoin": {
    "etiqueta": "ALCISTA DÉBIL",
    "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso Chicago Fed NFCI y Daily Treasury Statement (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: bajan los tipos a corto plazo. Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
-   "semana": "A favor: la Fed se ve menos dura.",
+   "hoy": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
+   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo).",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "SEÑALES INICIALES DE GIRO",
     "detalle": "checklist de liquidez 5/8 (drenan 1) · secuencia 1/7 pasos",
     "favor": [
-     "ON RRP (facilidad, RRPONTSYD) 0.2 B$ (4s -0.2 B$ (2026-10-21) · AVISO: saldo < 50 B$, colchón agotado; la dirección cumple la regla pero su efecto sobre la liquidez es despreciable)",
-     "Treasury 10Y 5.13% (1d +1 pb · 1s -6 pb · 4s +2 pb (2026-10-21))"
+     "ON RRP (facilidad, RRPONTSYD) 0.4 B$ (4s -0.3 B$ (2026-10-22) · AVISO: saldo < 50 B$, colchón agotado; la dirección cumple la regla pero su efecto sobre la liquidez es despreciable)",
+     "Treasury 2Y 4.65% (1d -16 pb · 1s -12 pb · 4s -22 pb (2026-10-22))"
     ],
     "contra": [
      "Chicago Fed NFCI -0.496 (4s +0.032 (semana al 2026-10-16); nivel <0 = más laxo que la media histórica)",
-     "Daily Treasury Statement gasta 804 / ingresa 858 B$ (5 días hábiles 2026-10-14 → 2026-10-20: el Tesoro acumula caja)"
+     "Daily Treasury Statement gasta 803 / ingresa 862 B$ (5 días hábiles 2026-10-15 → 2026-10-21: el Tesoro acumula caja)"
     ],
     "favor_n": [
+     "Treasury 2Y",
      "Treasury 10Y",
      "CME FedWatch",
      "M2",
@@ -377,7 +437,6 @@
      "Chicago Fed NFCI",
      "Daily Treasury Statement",
      "Liquidez global G3 (Fed + BCE + BoJ)",
-     "Tipo real 10Y (TIPS)",
      "Diferencial high yield",
      "Oferta USDC"
     ],
@@ -398,30 +457,36 @@
      "sube": false,
      "peso": 3.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "vix",
+     "sube": true,
+     "peso": -1.76,
+     "razon": "sube el miedo"
     }
    ]
   },
   "US30 · Dow Jones": {
    "etiqueta": "ALCISTA DÉBIL",
-   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro.",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda). Su movimiento lo explica la macro.",
+   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso VIX y NFCI (hoy ya empujan en sentido contrario).",
+   "hoy": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo).",
+   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo). Su movimiento lo explica la macro.",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "MIXTO",
-    "detalle": "5 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del US30 · Dow Jones: industriales desfavorable · financieras favorable (Ciclo, industriales, financieros, empresas maduras)",
+    "detalle": "5 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del US30 · Dow Jones: industriales neutral · financieras favorable (Ciclo, industriales, financieros, empresas maduras)",
     "favor": [
-     "VIX 16.68 · 5d -1.1% · percentil 1 año 43% (Estable. Riesgo, no señal automática (CH).)",
-     "ADV/DECLINE (amplitud) grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones (Fortaleza interna)"
+     "ADV/DECLINE (amplitud) grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones (Fortaleza interna)",
+     "VIX TERM STRUCTURE VIX/VIX3M 0.946 · VIX9D/VIX 0.991 (Contango: estructura normal)"
     ],
     "contra": [
-     "NFCI -0.496 · 4s +0.032 (Sube: condiciones más tensas)",
-     "CPI / PCE IPC subyacente +0.33% m/m · 2.6% a/a (2026-09) · PCE subyacente 3.0% a/a (2026-08) · PCE subyacente 3m anualizado 2.0% (Sube: puede retrasar recortes)"
+     "VIX 19.03 · 5d +15.6% · percentil 1 año 76% (Sube: más aversión al riesgo. Riesgo, no señal automática (CH).)",
+     "NFCI -0.496 · 4s +0.032 (Sube: condiciones más tensas)"
     ],
     "favor_n": [
-     "VIX",
      "ADV/DECLINE (amplitud)",
      "VIX TERM STRUCTURE",
+     "US 2Y",
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
@@ -429,11 +494,12 @@
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
+     "VIX",
      "NFCI",
      "CPI / PCE"
     ],
     "avisos": [],
-    "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
+    "rotacion": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme · XLY/XLP 1,2780 (2026-10-22) · -7,1 % frente a su media de 200 sesiones · 13 semanas -1,7 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "ciclo, industriales, financieras y empresas maduras",
    "motores": [
@@ -448,30 +514,36 @@
      "sube": false,
      "peso": 3.0,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "vix",
+     "sube": true,
+     "peso": -1.76,
+     "razon": "sube el miedo"
     }
    ]
   },
   "Russell 2000": {
-   "etiqueta": "ALCISTA DÉBIL",
-   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso NFCI y CPI / PCE (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: bajan los tipos a corto plazo.",
-   "semana": "A favor: la Fed se ve menos dura.",
+   "etiqueta": "SIN TESIS",
+   "tesis": "SIN TESIS: choque de fuerzas. La macro de la semana va a favor, pero su motor propio dice DESFAVORABLE. Hasta que una gane, no hay ventaja.",
+   "hoy": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo).",
+   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo).",
    "viento_semana": "A FAVOR",
    "propio": {
-    "veredicto": "MIXTO",
-    "detalle": "5 risk-on / 1 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Russell 2000: NFCI desfavorable · crédito high yield desfavorable (Tipos + crédito + condiciones financieras + economía doméstica)",
+    "veredicto": "DESFAVORABLE",
+    "detalle": "5 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del Russell 2000: NFCI desfavorable · crédito high yield desfavorable (Tipos + crédito + condiciones financieras + economía doméstica)",
     "favor": [
-     "VIX 16.68 · 5d -1.1% · percentil 1 año 43% (Estable. Riesgo, no señal automática (CH).)",
-     "ADV/DECLINE (amplitud) grandes compañías: 716 suben / 247 bajan (74.0% al alza; volumen alcista 55.6%) · igual peso vs S&P +1.83 pp en 20 sesiones (Fortaleza interna)"
+     "ADV/DECLINE (amplitud) grandes compañías: 540 suben / 422 bajan (55.7% al alza; volumen alcista 69.3%) · igual peso vs S&P +4.21 pp en 20 sesiones (Fortaleza interna)",
+     "VIX TERM STRUCTURE VIX/VIX3M 0.946 · VIX9D/VIX 0.991 (Contango: estructura normal)"
     ],
     "contra": [
-     "NFCI -0.496 · 4s +0.032 (Sube: condiciones más tensas)",
-     "CPI / PCE IPC subyacente +0.33% m/m · 2.6% a/a (2026-09) · PCE subyacente 3.0% a/a (2026-08) · PCE subyacente 3m anualizado 2.0% (Sube: puede retrasar recortes)"
+     "VIX 19.03 · 5d +15.6% · percentil 1 año 76% (Sube: más aversión al riesgo. Riesgo, no señal automática (CH).)",
+     "NFCI -0.496 · 4s +0.032 (Sube: condiciones más tensas)"
     ],
     "favor_n": [
-     "VIX",
      "ADV/DECLINE (amplitud)",
      "VIX TERM STRUCTURE",
+     "US 2Y",
      "US 10Y",
      "10Y REAL / TIPS",
      "DXY",
@@ -479,11 +551,12 @@
      "PMI / ISM (proxy Fed regionales)"
     ],
     "contra_n": [
+     "VIX",
      "NFCI",
      "CPI / PCE"
     ],
     "avisos": [],
-    "rotacion": "MIXTO · SIN SEÑAL CLARA DEL MERCADO (ratio mixto) · XLY/XLP 1,3263 (2026-10-21) · -3,7 % frente a su media de 200 sesiones · 13 semanas +1,5 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
+    "rotacion": "DEFENSIVO · NO CONFIRMADO: el mercado se pone defensivo pero el consumo real sigue firme · XLY/XLP 1,2780 (2026-10-22) · -7,1 % frente a su media de 200 sesiones · 13 semanas -1,7 % · consumo real firme (2026-09, +0,76 % media 3 meses vs 3 anteriores) · Aviso: el ratio bajo su media CON el consumo real enfriándose solo anticipó caídas en 2000-2009 (recesiones de 2001 y 2008: 2000-2009 mediana 13 sem. -2,71 %, 2010-2019 mediana 13 sem. +3,45 %, 2020-hoy mediana 13 sem. +5,62 %). Es señal de riesgo de ciclo, no de momento de entrada."
    },
    "motor_propio_nombre": "tipos, crédito high yield, condiciones financieras y economía doméstica",
    "motores": [
@@ -498,29 +571,35 @@
      "sube": false,
      "peso": 4.5,
      "razon": "baja el tipo real (lo que más les ayuda)"
+    },
+    {
+     "motor": "vix",
+     "sube": true,
+     "peso": -1.76,
+     "razon": "sube el miedo"
     }
    ]
   }
  },
  "motores_propios": {
   "oro_xau": {
-   "calculado_utc": "2026-10-22 10:21 UTC",
+   "calculado_utc": "2026-10-23 05:30 UTC",
    "ok": true,
    "disponible": true
   },
   "indices": {
-   "calculado_utc": "2026-10-22 10:21 UTC",
+   "calculado_utc": "2026-10-23 05:30 UTC",
    "ok": true,
    "disponible": true
   },
   "liquidez_cripto": {
-   "calculado_utc": "2026-10-22 10:21 UTC",
+   "calculado_utc": "2026-10-23 05:30 UTC",
    "ok": true,
    "disponible": true
   }
  },
- "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000. Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
+ "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin y US30 · Dow Jones; sin ventaja clara: Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-22 23:57 UTC",
- "duracion_s": 110.0
+ "generado_utc": "2026-10-23 05:30 UTC",
+ "duracion_s": 103.1
 }

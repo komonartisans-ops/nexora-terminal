@@ -190,7 +190,10 @@
    "capturado_utc": "2026-10-21 23:58 UTC",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret_pct": -2.71,
+     "fecha": "2026-10-23",
+     "precio": 4029.8999
     },
     "5": {
      "estado": "PENDIENTE"
@@ -311,9 +314,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -2.42,
+     "ret_pct": -1.9,
      "fecha": "2026-10-22",
-     "precio": 4038.8
+     "precio": 4060.3999
     },
     "5": {
      "estado": "PENDIENTE"
@@ -336,7 +339,7 @@
      "estado": "FALLO",
      "ret_pct": -1.8,
      "fecha": "2026-10-22",
-     "precio": 28958.6875
+     "precio": 28958.6895
     },
     "5": {
      "estado": "PENDIENTE"
@@ -357,9 +360,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -1.83,
-     "fecha": "2026-10-22",
-     "precio": 81307.0625
+     "ret_pct": -1.55,
+     "fecha": "2026-10-23",
+     "precio": 81543.8281
     },
     "5": {
      "estado": "PENDIENTE"
@@ -903,9 +906,9 @@
     },
     "5": {
      "estado": "ACIERTO",
-     "ret_pct": -0.32,
-     "fecha": "2026-10-22",
-     "precio": 81307.0625
+     "ret_pct": -0.03,
+     "fecha": "2026-10-23",
+     "precio": 81543.8281
     },
     "20": {
      "estado": "PENDIENTE"
@@ -994,7 +997,10 @@
      "precio": 4160.1001
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret_pct": -4.02,
+     "fecha": "2026-10-23",
+     "precio": 4029.8999
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1115,7 +1121,7 @@
      "estado": "FALLO",
      "ret_pct": 2.0,
      "fecha": "2026-10-22",
-     "precio": 2784.0261
+     "precio": 2784.03
     },
     "20": {
      "estado": "PENDIENTE"
@@ -2042,11 +2048,11 @@
   "Oro": {
    "1": {
     "aciertos": 0,
-    "evaluadas": 7
+    "evaluadas": 8
    },
    "5": {
     "aciertos": 0,
-    "evaluadas": 1
+    "evaluadas": 2
    }
   },
   "Russell 2000": {
@@ -2088,6 +2094,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-22 23:57 UTC",
+ "generado_utc": "2026-10-23 05:30 UTC",
  "duracion_s": 0.0
 }

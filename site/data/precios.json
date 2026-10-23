@@ -3,19 +3,15 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4039.0,
-   "fecha": "2026-10-22",
-   "cambio_1d_pct": -2.67,
-   "cambio_5d_pct": -3.14,
-   "cambio_21d_pct": -6.47,
-   "cambio_63d_pct": -0.78,
-   "sma50": 4349.69,
+   "valor": 4029.9,
+   "fecha": "2026-10-23",
+   "cambio_1d_pct": -0.75,
+   "cambio_5d_pct": -3.62,
+   "cambio_21d_pct": -6.24,
+   "cambio_63d_pct": -1.16,
+   "sma50": 4342.31,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-22",
-     4065.3999
-    ],
     [
      "2025-10-23",
      4145.6001
@@ -1018,20 +1014,24 @@
     ],
     [
      "2026-10-22",
-     4039.0
+     4060.3999
+    ],
+    [
+     "2026-10-23",
+     4029.8999
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 81170.35,
+   "valor": 81543.83,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": -3.38,
-   "cambio_5d_pct": -0.26,
-   "cambio_21d_pct": -4.34,
-   "cambio_63d_pct": 11.14,
-   "sma50": 81779.46,
+   "cambio_1d_pct": -2.94,
+   "cambio_5d_pct": 0.2,
+   "cambio_21d_pct": -3.9,
+   "cambio_63d_pct": 11.65,
+   "sma50": 81786.93,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2492,7 +2492,7 @@
     ],
     [
      "2026-10-23",
-     81170.3516
+     81543.8281
     ]
    ]
   },
@@ -4528,7 +4528,7 @@
     ],
     [
      "2026-10-22",
-     28958.6875
+     28958.6895
     ]
    ]
   },
@@ -6564,7 +6564,7 @@
     ],
     [
      "2026-10-22",
-     2784.0261
+     2784.03
     ]
    ]
   },
@@ -7601,19 +7601,15 @@
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.57,
-   "fecha": "2026-10-22",
-   "cambio_1d_pct": -0.21,
-   "cambio_5d_pct": -0.42,
-   "cambio_21d_pct": 0.46,
-   "cambio_63d_pct": 0.1,
-   "sma50": 100.5,
+   "valor": 101.69,
+   "fecha": "2026-10-23",
+   "cambio_1d_pct": 0.08,
+   "cambio_5d_pct": -0.15,
+   "cambio_21d_pct": 0.39,
+   "cambio_63d_pct": 0.17,
+   "sma50": 100.54,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-22",
-     98.9
-    ],
     [
      "2025-10-23",
      98.94
@@ -8616,26 +8612,26 @@
     ],
     [
      "2026-10-22",
-     101.568
+     101.61
+    ],
+    [
+     "2026-10-23",
+     101.687
     ]
    ]
   },
   "wti": {
    "nombre": "Petróleo WTI",
    "simbolo": "CL=F",
-   "valor": 99.3,
-   "fecha": "2026-10-22",
-   "cambio_1d_pct": 2.21,
-   "cambio_5d_pct": 1.36,
-   "cambio_21d_pct": 7.75,
-   "cambio_63d_pct": 11.19,
-   "sma50": 92.49,
+   "valor": 100.37,
+   "fecha": "2026-10-23",
+   "cambio_1d_pct": 0.9,
+   "cambio_5d_pct": -1.03,
+   "cambio_21d_pct": 6.09,
+   "cambio_63d_pct": 21.5,
+   "sma50": 92.87,
    "fuente": "Futuros WTI NYMEX, primer vencimiento (Yahoo Finance CL=F; serie empalmada)",
    "serie": [
-    [
-     "2025-10-22",
-     58.5
-    ],
     [
      "2025-10-23",
      61.79
@@ -9638,26 +9634,26 @@
     ],
     [
      "2026-10-22",
-     99.3
+     99.47
+    ],
+    [
+     "2026-10-23",
+     100.37
     ]
    ]
   },
   "brent": {
    "nombre": "Petróleo Brent",
    "simbolo": "BZ=F",
-   "valor": 113.08,
-   "fecha": "2026-10-22",
-   "cambio_1d_pct": 3.91,
-   "cambio_5d_pct": 6.76,
-   "cambio_21d_pct": 9.7,
-   "cambio_63d_pct": 16.84,
-   "sma50": 100.24,
+   "valor": 113.96,
+   "fecha": "2026-10-23",
+   "cambio_1d_pct": 0.7,
+   "cambio_5d_pct": 3.73,
+   "cambio_21d_pct": 6.9,
+   "cambio_63d_pct": 28.97,
+   "sma50": 100.78,
    "fuente": "Futuros Brent ICE, primer vencimiento (Yahoo Finance BZ=F; serie empalmada)",
    "serie": [
-    [
-     "2025-10-22",
-     62.59
-    ],
     [
      "2025-10-23",
      65.99
@@ -10660,7 +10656,11 @@
     ],
     [
      "2026-10-22",
-     113.08
+     113.17
+    ],
+    [
+     "2026-10-23",
+     113.96
     ]
    ]
   },
@@ -11670,13 +11670,13 @@
     ],
     [
      "2026-10-22",
-     106.8388
+     106.84
     ]
    ]
   }
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-23 00:09 UTC",
- "duracion_s": 10.5
+ "generado_utc": "2026-10-23 05:30 UTC",
+ "duracion_s": 9.6
 }

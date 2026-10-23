@@ -161,12 +161,23 @@
    "l4": "El tipo real es lo que paga un bono después de descontar la inflación. Si sube, guardar el dinero en bonos se vuelve atractivo y pierden atractivo lo que no paga intereses (oro, bitcoin) y las tecnológicas.",
    "enviada": true,
    "error": null
+  },
+  {
+   "fecha_utc": "2026-10-23 05:40 UTC",
+   "clave": "etf_btc",
+   "titulo": "ETF de BTC",
+   "l1": "Los ETF de bitcoin de EE. UU. registran salidas netas de 636 M$ el jue 22 oct (Farside Investors).",
+   "l2": "Salidas fuertes de ETF restan demanda al BTC; no afectan directamente a oro ni a índices (interpretación).",
+   "l3": "mié 28 oct · 19:00 (hora de Madrid) · Decisión FOMC (Fed)",
+   "l4": "Los ETF son la vía por la que entra y sale el dinero institucional en bitcoin: si salen cantidades grandes, falta demanda.",
+   "enviada": true,
+   "error": null
   }
  ],
  "candidatas": [
   "t2y",
   "real",
-  "oro"
+  "etf_btc"
  ],
  "no_evaluables": {},
  "telegram_configurado": true,
@@ -195,12 +206,13 @@
   "fed_confirmaciones": 2
  },
  "enviadas_hoy": [
+  "etf_btc",
   "oro",
   "real",
   "t2y"
  ],
- "ultima_evaluacion_utc": "2026-10-23 00:11 UTC",
+ "ultima_evaluacion_utc": "2026-10-23 05:40 UTC",
  "ok": true,
- "generado_utc": "2026-10-23 00:09 UTC",
- "duracion_s": 1.5
+ "generado_utc": "2026-10-23 05:30 UTC",
+ "duracion_s": 0.4
 }

@@ -5907,30 +5907,30 @@
   ]
  },
  "balance": {
-  "valor_T": 17.3143,
-  "fecha": "2026-10-14",
-  "ref_fecha": "2025-10-14",
-  "var_12m_pct": -3.36,
-  "var_12m_usd_pct": -7.0,
+  "valor_T": 17.3253,
+  "fecha": "2026-10-21",
+  "ref_fecha": "2025-10-21",
+  "var_12m_pct": -3.41,
+  "var_12m_usd_pct": -6.49,
   "base": "moneda local, ponderada por tamaño en USD a la fecha de referencia (sin efecto divisa)",
   "componentes": {
    "fed": {
-    "fecha": "2026-10-14",
-    "ref_fecha": "2025-10-08",
-    "var_local_pct": 2.5,
-    "peso_ref_T": 6.591,
-    "valor_T": 6.756,
-    "var_usd_pct": 2.5,
-    "peso": 0.356
+    "fecha": "2026-10-21",
+    "ref_fecha": "2025-10-15",
+    "var_local_pct": 2.38,
+    "peso_ref_T": 6.596,
+    "valor_T": 6.754,
+    "var_usd_pct": 2.38,
+    "peso": 0.355
    },
    "bce": {
-    "fecha": "2026-10-09",
-    "ref_fecha": "2025-10-03",
-    "var_local_pct": -4.27,
-    "peso_ref_T": 7.199,
-    "valor_T": 6.653,
-    "var_usd_pct": -7.59,
-    "peso": 0.389
+    "fecha": "2026-10-16",
+    "ref_fecha": "2025-10-10",
+    "var_local_pct": -4.26,
+    "peso_ref_T": 7.229,
+    "valor_T": 6.666,
+    "var_usd_pct": -7.79,
+    "peso": 0.39
    },
    "boj": {
     "fecha": "2026-09-01",
@@ -5948,7 +5948,7 @@
  "lectura": {
   "etiqueta": "LIQUIDEZ GLOBAL ALGO RESTRICTIVA",
   "revision": "Regla revisada el 15-10-2026; con la anterior (un voto por banco y balance medido en USD) salía ALGO RESTRICTIVA.",
-  "texto": "tipos: 13 suben y 16 bajan de 38 bancos (por número: mixta; ponderado por PIB: 28 % del PIB sube, 47 % baja → mixta); balance Fed+BCE+BoJ se contrae (-3,4 % a 12 meses en moneda local; -7,0 % medido en USD).",
+  "texto": "tipos: 13 suben y 16 bajan de 38 bancos (por número: mixta; ponderado por PIB: 28 % del PIB sube, 47 % baja → mixta); balance Fed+BCE+BoJ se contrae (-3,4 % a 12 meses en moneda local; -6,5 % medido en USD).",
   "regla": "Dos patas que se combinan con una tabla fija. (1) TIPOS: movimiento de cada banco = tipo hoy − tipo hace 365 días, en puntos porcentuales NOMINALES (no se descuenta la inflación, es decir, no son tipos reales). SUBE ≥ +0,10 pp, BAJA ≤ −0,10 pp. Amplitud = (peso que sube − peso que baja) / peso total con dato, con cada banco ponderado por el PIB NOMINAL en USD de su economía (FMI WEO; zona euro = suma de sus países): una Fed o un BCE pesan mucho más que Macedonia o Islandia. ≥ +0,20 ENDURECIMIENTO, ≤ −0,20 RELAJACIÓN, entre medias MIXTA. Los bancos sin cambios cuentan en el denominador y diluyen la amplitud. El recuento por número (un voto por banco) se muestra al lado y se usa solo si falta algún PIB. (2) BALANCE: Fed + BCE + BoJ; variación a 12 meses de cada balance en su MONEDA LOCAL (sin efecto divisa), ponderada por su tamaño en USD a la fecha de referencia. ≥ +2 % EXPANDE, ≤ −2 % SE CONTRAE, entre medias PLANO. El PBoC no entra. (3) COMBINACIÓN: tabla de abajo. Con tipos MIXTA y balance que se contrae, la lectura es «ALGO RESTRICTIVA»: el balance desempata cuando los tipos no tienen dirección clara. Es una convención fija de NEXORA, no un modelo ajustado ni validado contra mercado. CAMBIO respecto a la versión anterior: antes un voto por banco y balance medido en USD.",
   "combinacion": [
    {
@@ -11080,6 +11080,6 @@
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-23 00:09 UTC",
- "duracion_s": 10.9
+ "generado_utc": "2026-10-23 05:30 UTC",
+ "duracion_s": 10.8
 }
