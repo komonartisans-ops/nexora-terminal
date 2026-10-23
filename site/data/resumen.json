@@ -35,7 +35,7 @@
   }
  ],
  "vigilar": [
-  "Fed mié 28 oct: hoy 12 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
+  "Fed mié 28 oct: hoy 10 % de subida. Si esta cifra se mueve más de 15 puntos, cambia el viento para todo.",
   "mié 28 oct · Resultados Microsoft (MSFT): BPA estimado $4.71 · después del cierre",
   "mié 28 oct · Resultados Alphabet (GOOGL): BPA estimado $2.94 · después del cierre"
  ],
@@ -229,10 +229,10 @@
    "fecha": "2026-10-22"
   },
   "fed": {
-   "valor": 12.0,
+   "valor": 10.0,
    "antes": 6.0,
    "reunion": "2026-10-28",
-   "delta": 6.0,
+   "delta": 4.0,
    "fecha": "2026-10-23"
   }
  },
@@ -248,9 +248,9 @@
    "valor": 7663.43
   },
   "Oro": {
-   "delta": -1.1575214542998702,
+   "delta": -1.071323048128603,
    "fecha": "2026-10-23",
-   "valor": 4013.39990234375
+   "valor": 4016.89990234375
   },
   "Bitcoin": {
    "delta": -3.2341811041923685,
@@ -662,6 +662,6 @@
  },
  "sencillo_activos": "Empujan a favor: Oro y Nasdaq 100; sin ventaja clara: S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-23 15:07 UTC",
- "duracion_s": 104.5
+ "generado_utc": "2026-10-23 16:07 UTC",
+ "duracion_s": 107.8
 }
