@@ -1099,6 +1099,20 @@ def meta_anclada():
         return None
 
 
+def visible(s):
+    """Hace visibles los caracteres de control y los de dirección/invisibles de Unicode (para que lo mostrado sea lo que hay)."""
+    import unicodedata
+    return "".join(c if (c == "\t" or (c.isprintable() and unicodedata.category(c) not in ("Cf", "Zl", "Zp"))) else f"\\u{{{ord(c):x}}}" for c in s)
+
+
+def diff_completo(viejo, nuevo):
+    """El diff real y completo entre la versión anclada y la nueva, sin recortar ni enmascarar nada; lo no imprimible se muestra como \\u{..}. Se usa solo en la terminal de Ruiz."""
+    import difflib
+    a = open(viejo, encoding="utf-8").read().split("\n") if viejo and os.path.exists(viejo) else []
+    b = open(nuevo, encoding="utf-8").read().split("\n")
+    return [visible(x) for x in difflib.unified_diff(a, b, "anclado", "nuevo", lineterm="", n=2)]
+
+
 def resumen_diff(viejo, nuevo, maximo=30):
     """Resumen del cambio entre dos versiones del exportador: líneas añadidas/quitadas y las primeras líneas cambiadas (sin secretos)."""
     import difflib
@@ -1106,7 +1120,7 @@ def resumen_diff(viejo, nuevo, maximo=30):
     b = open(nuevo, encoding="utf-8").read().splitlines()
     cambios = [x for x in difflib.unified_diff(a, b, lineterm="", n=0) if x[:1] in "+-" and not x.startswith(("+++", "---"))]
     mas, menos = sum(x[0] == "+" for x in cambios), sum(x[0] == "-" for x in cambios)
-    return {"anade": mas, "quita": menos, "lineas": [limpiar(x[:160]) for x in cambios[:maximo]], "truncado": len(cambios) > maximo}
+    return {"anade": mas, "quita": menos, "lineas": [visible(limpiar(x if len(x) <= 160 else x[:160] + f" […LÍNEA LARGA: {len(x)} caracteres, ver el diff completo]")) for x in cambios[:maximo]], "truncado": len(cambios) > maximo}
 
 
 def comprobar_actualizacion(publico, maximo=30):
@@ -1157,7 +1171,7 @@ def aprobar(publico, log, blob_esperado=None, confirmar=None):
     r = info["resumen"]
     log(f"exportador pendiente {info['commit']} (aprobado hasta ahora: {info['aprobado'] or 'ninguno'}): +{r['anade']} −{r['quita']} líneas · hash {b[:12]}")
     if sys.stdout:
-        print("\n".join(r["lineas"]))
+        print("\n".join(diff_completo(ANCLADO, nuevo)))      # el diff real y completo, sin recortes ni enmascarado; lo no imprimible, visible
     if not blob_esperado:
         log(f"Revisa el diff y repite con el hash: --aprobar {b[:12]}")
         return 2

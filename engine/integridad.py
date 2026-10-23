@@ -304,13 +304,16 @@ def vigilar(raiz=RAIZ, ahora=None, seco=False, enviar=None, push=False):
         ob = estado_latido_obsidian(raiz, ahora)
         if ob.get("pendiente_aprobar"):      # el código del exportador cambió en main: el PC sigue con la versión aprobada hasta que Ruiz la apruebe
             p = ob["pendiente_aprobar"]
-            clave = f"obsidian_pendiente|{p.get('blob')}"
+            hexa = lambda s: s if re.fullmatch(r"[0-9a-f]{7,40}", str(s or "")) else "?"      # lo que viene del repo no se interpola sin validar
+            clave = f"obsidian_pendiente|{hexa(p.get('blob'))}"
             if clave not in est["avisos"]:
                 r = p.get("resumen") or {}
-                cuerpo = "\n".join(r.get("lineas") or [])[:1500]
-                txt = (f"<b>NEXORA · Exportador actualizado, pendiente de aprobar</b>\nCommit {p.get('commit')} (aprobado: {p.get('aprobado') or 'ninguno'}): +{r.get('anade')} −{r.get('quita')} líneas en tools/exportar_obsidian.py. "
-                       "El PC sigue ejecutando la versión aprobada; los datos se siguen descargando.\n<pre>" + html.escape(cuerpo) + ("\n…" if r.get("truncado") else "") + "</pre>\n"
-                       f"Revisa el diff completo y apruébalo con la copia ya anclada: python %LOCALAPPDATA%\\NexoraExportador\\aprobado\\exportar_obsidian.py --aprobar {p.get('blob')} (pedirá escribir APROBAR).")
+                cuerpo = "\n".join(str(x) for x in (r.get("lineas") or []))[:1500]
+                num_ = lambda v: v if isinstance(v, int) else "?"
+                txt = (f"<b>NEXORA · Exportador actualizado, pendiente de aprobar</b>\nCommit {hexa(p.get('commit'))} (aprobado: {hexa(p.get('aprobado')) if p.get('aprobado') else 'ninguno'}): +{num_(r.get('anade'))} −{num_(r.get('quita'))} líneas en tools/exportar_obsidian.py. "
+                       "El PC sigue ejecutando la versión aprobada; los datos se siguen descargando. Resumen orientativo (NO sustituye al diff completo):\n<pre>" + html.escape(cuerpo) + ("\n…" if r.get("truncado") else "") + "</pre>\n"
+                       "Para aprobar no uses ningún hash de este mensaje: en tu PC ejecuta la copia anclada sin argumentos, lee el diff completo y el hash que imprime ahí, y repite con ese hash: "
+                       "python %LOCALAPPDATA%\\NexoraExportador\\aprobado\\exportar_obsidian.py --aprobar (pedirá escribir APROBAR).")
                 if seco:
                     print("[seco · no se envía]\n" + txt + "\n")
                     out.append((clave, "SECO", txt))
