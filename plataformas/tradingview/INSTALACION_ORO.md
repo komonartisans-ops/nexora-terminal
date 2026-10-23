@@ -33,6 +33,10 @@ Versión de Pine Script: **v6**. Funciona con una cuenta gratuita de TradingView
 | **ETF GLD (5 sesiones)** | Variación de toneladas del trust GLD en 5 sesiones. |
 | **Evento ALTA (Madrid)** | Eventos de importancia ALTA del día con hora de Madrid; `na` si la hora no está publicada. |
 | **GLD ref.** | Ratio XAU/GLD usado y su fecha. Si la línea tiene más de 4 días, aparece «ANTIGUA». |
+| **SPOT DUDOSO** (fila ámbar, la última) | Solo aparece si la línea ORO acaba en `;spot=dudoso` (Fase 19: el spot del oro difirió más de un 0,3 % entre fuentes de la misma hora). Significa «niveles con ratio anterior»: el ratio XAU/GLD de ese día no se actualizó y los niveles usan el último ratio verificado. Si la línea no trae la clave `spot`, no se muestra nada. |
+
+> **Actualización de la Fase 20 (clave `spot`): hay que volver a pegar el indicador.** Abre el Editor de Pine con tu script «NEXORA Oro», borra todo el texto, pega de nuevo el contenido de [`NexoraOro.pine`](NexoraOro.pine) y pulsa **Guardar** (el gráfico se actualiza solo; la línea ORO que tienes en «Datos de entrada» se conserva). Si no lo repegas, el indicador funciona igual pero no mostrará la fila ámbar de spot dudoso.
+> Ejemplo de línea con la clave: `XAU tesis=alcista;int=debil;flip=4167.1;cw=4144.2;pw=3762.5;em=57.8;maxg=4253.2;ratio=10.9057;rf=2026-10-19;cot=largo-bajo_p27;etf=+3.1;evento=no;spot=dudoso`
 
 ## 4. Ajustes útiles
 

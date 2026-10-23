@@ -298,6 +298,29 @@ def vigilar(raiz=RAIZ, ahora=None, seco=False, enviar=None, push=False):
                 out.append((clave, "ERROR", err or ""))
     except Exception as e:  # noqa: BLE001
         print("vigilante spot_oro:", type(e).__name__, str(e)[:100])
+    # Fase 20: el exportador a Obsidian corre en el PC de Ruiz; si no da señales 2 días seguidos, un aviso por racha
+    try:
+        ob = estado_latido_obsidian(raiz, ahora)
+        if ob["alerta"]:
+            clave = f"obsidian|{ob['racha_desde']}"
+            if clave not in est["avisos"]:
+                txt = (f"<b>NEXORA · Integridad</b>\nEl exportador a Obsidian lleva {ob['racha_dias']} días seguidos sin exportar (desde {ob['racha_desde']}; último latido correcto: {ob['ultimo_ok'] or 'ninguno'}). "
+                       "Revisa el PC de Ruiz: tarea «NEXORA exportar a Obsidian» del Programador de tareas y el log en %LOCALAPPDATA%\\NexoraExportador\\exportador.log.")
+                if seco:
+                    print("[seco · no se envía]\n" + txt + "\n")
+                    out.append((clave, "SECO", txt))
+                else:
+                    import telegram
+                    ok, err = (enviar or telegram.enviar)(txt)
+                    if ok:
+                        nuevos[clave] = {"estado": "AVISADO", "avisado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "dato": "obsidian", "periodo": ob["racha_desde"],
+                                         "evento": "el exportador a Obsidian no da señales", "publicado_utc": ""}
+                        out.append((clave, "AVISADO", txt))
+                    else:
+                        print("vigilante: Telegram no aceptó el aviso (se reintenta):", err)
+                        out.append((clave, "ERROR", err or ""))
+    except Exception as e:  # noqa: BLE001
+        print("vigilante obsidian:", type(e).__name__, str(e)[:100])
     if nuevos and not seco:
         _guardar_v(raiz, est, nuevos)
         if push and os.environ.get("GITHUB_ACTIONS"):
@@ -543,6 +566,36 @@ def estado_vigilante_cierre(raiz, ahora):
             "texto": (f"El vigilante del cierre lleva {sin} días hábiles sin correr (último: {ult['fecha'] if ult else 'ninguno todavía'})." if alerta else
                       (f"El vigilante del cierre corrió el {ult['fecha']}: {ult['resultado']}." if ult else "El vigilante del cierre todavía no ha corrido (primera ejecución: 22-oct a las 22:15 UTC).")),
             "fuente": "data/vigilar_cierre.csv · workflow vigilar_cierre (cron-job.org 22:15 UTC)"}
+
+
+# ---------------------------------------------------------------- Fase 20: ¿el exportador a Obsidian (en el PC de Ruiz) da señales?
+UMBRAL_OBSIDIAN_DIAS = 2
+
+
+def estado_latido_obsidian(raiz, ahora):
+    """Lee data/obsidian_latido.csv (fecha, hora_utc, estado: OK | AVISO | ERROR; una fila por pasada, la sube el propio exportador).
+    Un día cuenta si tiene alguna pasada OK o AVISO. Alerta si los 2 últimos días COMPLETOS (hasta ayer) no tienen ninguna; el aviso es único por racha.
+    Los días anteriores al primer latido no cuentan. Sin ningún latido todavía: SIN DATO, sin alerta."""
+    filas = leer_csv(P(raiz, "data", "obsidian_latido.csv"))
+    base = {"umbral_dias": UMBRAL_OBSIDIAN_DIAS, "fuente": "data/obsidian_latido.csv · tools/exportar_obsidian.py (Programador de tareas de Windows: 08:30, 23:45 y al iniciar sesión)"}
+    if not filas:
+        return {**base, "alerta": False, "ultimo": None, "ultimo_ok": None, "racha_dias": 0, "racha_desde": None, "historial": [],
+                "texto": "SIN DATO: el exportador a Obsidian todavía no ha enviado ningún latido."}
+    buenos = {r["fecha"] for r in filas if r["estado"] in ("OK", "AVISO")}
+    ult = max(filas, key=lambda r: (r["fecha"], r["hora_utc"]))
+    ult_ok = max((r for r in filas if r["estado"] in ("OK", "AVISO")), key=lambda r: (r["fecha"], r["hora_utc"]), default=None)
+    primero = min(r["fecha"] for r in filas)
+    dia, racha = ahora.date() - dt.timedelta(days=1), 0
+    while dia.isoformat() >= primero and dia.isoformat() not in buenos:
+        racha += 1
+        dia -= dt.timedelta(days=1)
+    desde = (ahora.date() - dt.timedelta(days=racha)).isoformat() if racha else None
+    alerta = racha >= UMBRAL_OBSIDIAN_DIAS
+    return {**base, "alerta": alerta, "ultimo": {"fecha": ult["fecha"], "hora_utc": ult["hora_utc"], "estado": ult["estado"]},
+            "ultimo_ok": f"{ult_ok['fecha']} {ult_ok['hora_utc']} UTC" if ult_ok else None, "racha_dias": racha, "racha_desde": desde, "n_latidos": len(filas),
+            "historial": [{"fecha": r["fecha"], "hora_utc": r["hora_utc"], "estado": r["estado"]} for r in filas[-12:]][::-1],
+            "texto": (f"El exportador a Obsidian lleva {racha} días seguidos sin exportar (desde {desde})." if alerta else
+                      f"Último latido: {ult['fecha']} {ult['hora_utc']} UTC · {ult['estado']}" + (f" · {racha} día(s) sin exportar (aviso a partir de {UMBRAL_OBSIDIAN_DIAS})." if racha else "."))}
 
 
 def cotejar_bls(raiz=RAIZ, ahora=None, red=None, forzar=False):
@@ -968,6 +1021,7 @@ def construir(raiz=RAIZ, ahora=None):
             "discrepancias_revisadas": revisadas,
             "vigilante_cierre": estado_vigilante_cierre(raiz, ahora),
             "spot_oro": _resumen_spot(raiz),
+            "obsidian": estado_latido_obsidian(raiz, ahora),
             "segunda_fuente": {"BLS": "API pública v1, sin clave (IPC, IPC subyacente, IPP): umbral 0,05 % en el índice o periodo distinto; manda BLS",
                                "BEA": ("API de BEA activa (secreto BEA_API_KEY): PCE y PIB real con el mismo umbral; manda BEA" if os.environ.get("BEA_API_KEY") else BEA_SIN_DATO),
                                "bea_activa": bool(os.environ.get("BEA_API_KEY")), "bls_consultas_hoy": est["bls"].get("n", 0), "bls_ultimo_error": est["bls"].get("ultimo_error"),

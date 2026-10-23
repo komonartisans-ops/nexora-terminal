@@ -4,6 +4,7 @@
 // Parte DIARIA: pega en el campo de texto la línea ORO que NEXORA envía por Telegram a las 15:00 (Madrid), p. ej.:
 //   XAU tesis=alcista;int=debil;flip=4167.1;cw=4144.2;pw=3762.5;em=57.8;maxg=4253.2;ratio=10.9057;rf=2026-10-19;cot=largo-bajo_p27;etf=+3.1;evento=no
 // Los niveles de gamma son los de GLD (ETF de oro) pasados a precio XAU/USD con el ratio XAU/GLD de la fecha «rf»: son una REFERENCIA («GLD ref.»), no niveles de opciones sobre el oro al contado.
+// Fase 19/20: si la línea acaba en «;spot=dudoso» (el spot del oro no coincidió entre fuentes) el panel muestra una fila ámbar «SPOT DUDOSO · niveles con ratio anterior». Sin esa clave, no se muestra nada.
 // Además dibuja PDH/PDL y los máximos/mínimos de Asia y Londres. Si un valor es «na», no se dibuja.
 indicator("NEXORA · Oro", shorttitle = "NEXORA Oro", overlay = true, max_lines_count = 60, max_labels_count = 60)
 
@@ -91,6 +92,7 @@ rf = valido ? f_texto(seg, "rf") : ""
 cot = valido ? f_texto(seg, "cot") : ""
 etf = valido ? f_texto(seg, "etf") : ""
 evento = valido ? f_texto(seg, "evento") : ""
+spotDudoso = valido and f_texto(seg, "spot") == "dudoso"
 diasLinea = na(f_fecha(rf)) ? na : (timenow - f_fecha(rf)) / 86400000.0
 
 // ---------------------------------------------------------------- parte en vivo: dólar y tipo real
@@ -177,7 +179,7 @@ if barstate.islast
         banda := na
 
 // ---------------------------------------------------------------- panel
-var table tbl = table.new(position.top_right, 2, 11, border_width = 1)
+var table tbl = table.new(position.top_right, 2, 12, border_width = 1)
 f_fila(int fila, string a, string b, color cb) =>
     table.cell(tbl, 0, fila, a, text_color = color.silver, bgcolor = color.new(color.black, 30), text_size = size.small, text_halign = text.align_left)
     table.cell(tbl, 1, fila, b, text_color = cb, bgcolor = color.new(color.black, 30), text_size = size.small, text_halign = text.align_left)
@@ -201,3 +203,10 @@ if barstate.islast
     else
         for i = 5 to 10
             f_fila(i, "", "", cGris)
+    // fila 11 (solo si la línea trae spot=dudoso): ámbar; sin la clave la celda queda vacía y transparente
+    if spotDudoso
+        table.cell(tbl, 0, 11, "SPOT DUDOSO", text_color = color.black, bgcolor = color.new(#E0B040, 0), text_size = size.small, text_halign = text.align_left)
+        table.cell(tbl, 1, 11, "niveles con ratio anterior", text_color = color.black, bgcolor = color.new(#E0B040, 0), text_size = size.small, text_halign = text.align_left)
+    else
+        table.cell(tbl, 0, 11, "", bgcolor = na)
+        table.cell(tbl, 1, 11, "", bgcolor = na)

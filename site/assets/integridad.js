@@ -70,6 +70,7 @@ function pageIntegridad() {
   h += integMichigan(I.michigan);
   h += integEia(I.eia);
   h += integSpotOro(I.spot_oro);
+  h += integObsidian(I.obsidian);
   const V = I.vigilante || {}, S = I.segunda_fuente || {};
   h += '<div class="sect"><h2>Vigilante y segunda fuente</h2><span class="more">cómo se comprueba cada dato</span></div><div class="grid g3"><div class="card"><div class="chead"><span>Vigilante de publicaciones</span></div>'
     + `<p class="note" style="margin:6px 0">Regla: ${esc(V.regla || '')}. Un aviso por dato.</p><p class="note" style="margin:0">${V.avisos ? V.avisos + ' aviso(s) enviado(s) hasta ahora.' : 'Ningún aviso enviado todavía: no ha faltado ningún dato.'}</p></div>`
@@ -95,6 +96,20 @@ function integSpotOro(B) {
   h += '<div class="card pad0 scroll" style="margin-top:12px"><table class="t stack"><thead><tr><th style="text-align:left">Sesión</th><th>gold-api</th><th>GC implícito <small>informativo (retraso ~10 min)</small></th><th>Dif. GC</th><th>Swissquote</th><th>Dif. Swiss</th><th>Estado</th><th>Ratio</th></tr></thead><tbody>'
     + (B.historial || []).map((r) => `<tr><td data-label="Sesión" style="text-align:left">${esc(fdy(r.fecha))}</td><td data-label="gold-api">${esc(r.spot_principal || 'CAÍDA')}</td><td data-label="GC implícito">${esc(r.spot_gc_implicito || '—')}</td><td data-label="Dif. GC">${r.spot_gc_implicito && (r.dif_gc_pct === '' || r.dif_gc_pct == null) ? 'informativo' : dp(r.dif_gc_pct)}</td><td data-label="Swissquote">${esc(r.swiss_precio || '—')}</td><td data-label="Dif. Swiss">${dp(r.dif_swiss_pct)}</td><td data-label="Estado"><span class="ck ${cls(r.estado)}">${esc(r.estado)}</span></td><td data-label="Ratio">${esc(r.ratio_fuente)}</td></tr>`).join('')
     + `</tbody></table>${footIn(B.fuente, u.fecha, null, '2 sesiones seguidas en DUDOSO → un aviso por Telegram')}</div>`;
+  return h;
+}
+
+/* exportador a Obsidian (Fase 20): corre en el PC de Ruiz y sube un latido (data/obsidian_latido.csv); aviso si falla 2 días seguidos */
+function integObsidian(B) {
+  let h = '<div class="sect"><h2>Exportador a Obsidian · latido</h2><span class="more">PC de Ruiz · 08:30, 23:45 y al iniciar sesión · aviso si falla 2 días seguidos</span></div>';
+  if (!B || !B.ultimo) return h + `<div class="card"><p class="note" style="margin:0">${esc(B ? B.texto : 'SIN DATO')}</p></div>`;
+  const cls = (e) => (e === 'OK' ? 'ok' : e === 'AVISO' ? 'par' : 'no');
+  if (B.alerta) h += `<div class="banner red" style="margin:0 0 14px;border-radius:6px"><b>Exportador a Obsidian parado:</b> ${esc(B.texto)} Último latido correcto: ${esc(B.ultimo_ok || 'ninguno')}. Revisa la tarea «NEXORA exportar a Obsidian» y el log del PC.</div>`;
+  h += `<div class="card"><div class="chead"><span>Último latido · ${esc(fdy(B.ultimo.fecha))} ${esc(B.ultimo.hora_utc)} UTC</span><span class="ck ${cls(B.ultimo.estado)}">${esc(B.ultimo.estado)}</span></div>`
+    + `<p class="note" style="margin:6px 0">${esc(B.texto)}</p><p class="note" style="margin:0">OK = exportó sin novedades · AVISO = exportó, con algún aviso (por ejemplo una nota editada a mano, guardada como «NEXORA v2») · ERROR = no pudo exportar. Solo se registran fecha, hora y estado.</p></div>`;
+  h += '<div class="card pad0 scroll" style="margin-top:12px"><table class="t stack"><thead><tr><th style="text-align:left">Fecha</th><th>Hora (UTC)</th><th>Estado</th></tr></thead><tbody>'
+    + (B.historial || []).map((r) => `<tr><td data-label="Fecha" style="text-align:left">${esc(fdy(r.fecha))}</td><td data-label="Hora (UTC)">${esc(r.hora_utc)}</td><td data-label="Estado"><span class="ck ${cls(r.estado)}">${esc(r.estado)}</span></td></tr>`).join('')
+    + `</tbody></table>${footIn(B.fuente, B.ultimo.fecha, null, '2 días seguidos sin una pasada OK/AVISO → un aviso por Telegram')}</div>`;
   return h;
 }
 
