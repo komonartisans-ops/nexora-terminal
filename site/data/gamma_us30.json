@@ -1329,6 +1329,7 @@
  "fuente": "Cboe · cadena de opciones de DIA con 15 min de retraso (cdn-api.cboe.com), DJI, DIA, YM=F y VXD de Yahoo Finance",
  "metodo": "(el mismo que SPX/NDX en gamma.py, con una sola cadena): GEX$ = gamma × OI × 100 × S² × 1 %, calls +, puts − (hipótesis), tramos de 1 $ de DIA, Call/Put Wall, Gamma Flip (barrido ±12 %), Max Gamma (tramo con más gamma absoluta; «pin» si su gamma neta es positiva, «acelera» si es negativa) y EM = precio × VXD / 100 / √252 (VXD = volatilidad implícita del Dow de Cboe). Conversión: nivel DJI = nivel DIA × (cierre de DJI / cierre de DIA de la misma sesión, ambos a las 16:00 ET); nivel YM = nivel DJI + base del día (YM − DJI en el mismo minuto, barras de 5 min de Yahoo). Sin datos suficientes (menos de 200 grupos de opciones válidos, sin cierre de DJI o de DIA) → SIN DATO: no se inventa nada. Histórico: data/historico_gamma.csv con indice «YM» (solo el cierre de Nueva York, ejecución de cierre); su revisión a T+1 es la misma que la de ES/NQ, sobre la barra del futuro YM=F.",
  "ok": true,
- "generado_utc": "2026-10-22 21:30 UTC",
- "duracion_s": 1.4
+ "generado_utc": "2026-10-23 00:09 UTC",
+ "duracion_s": 0.8,
+ "error_ultimo": "RuntimeError: sin cierre de DIA de 2026-10-22"
 }

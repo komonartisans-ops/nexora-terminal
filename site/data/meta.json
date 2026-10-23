@@ -1,27 +1,27 @@
 {
- "actualizado_utc": "2026-10-22 23:57 UTC",
- "modo": "horario",
+ "actualizado_utc": "2026-10-23 00:09 UTC",
+ "modo": "cierre",
  "etapas": {
   "precios": {
    "ok": true,
-   "duracion_s": 9.8,
+   "duracion_s": 10.5,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "fedwatch": {
    "ok": true,
-   "duracion_s": 8.1,
+   "duracion_s": 8.0,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-22 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "calendario": {
    "ok": true,
-   "duracion_s": 39.6,
+   "duracion_s": 44.1,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-22 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "liquidez": {
    "ok": true,
@@ -32,17 +32,17 @@
   },
   "resumen": {
    "ok": true,
-   "duracion_s": 110.0,
+   "duracion_s": 107.7,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-22 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "tipos": {
    "ok": true,
-   "duracion_s": 74.8,
+   "duracion_s": 74.9,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-22 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "ciclo": {
    "ok": true,
@@ -53,24 +53,24 @@
   },
   "publicados": {
    "ok": true,
-   "duracion_s": 5.6,
+   "duracion_s": 10.4,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-22 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "regimen": {
    "ok": true,
-   "duracion_s": 21.7,
+   "duracion_s": 6.5,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-22 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "alertas": {
    "ok": true,
-   "duracion_s": 1.1,
+   "duracion_s": 1.5,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "monitores": {
    "ok": true,
@@ -102,59 +102,59 @@
   },
   "noticias": {
    "ok": true,
-   "duracion_s": 6.0,
+   "duracion_s": 6.2,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-22 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "skew": {
    "ok": true,
-   "duracion_s": 1.4,
+   "duracion_s": 3.2,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "semis": {
    "ok": true,
-   "duracion_s": 17.7,
+   "duracion_s": 19.7,
    "error": null,
-   "ejecutada_utc": "2026-10-22 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "gamma": {
    "ok": true,
-   "duracion_s": 6.4,
+   "duracion_s": 7.3,
    "error": null,
-   "ejecutada_utc": "2026-10-22 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "contexto": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "tesis": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-22 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "bancos": {
    "ok": true,
-   "duracion_s": 11.1,
+   "duracion_s": 10.9,
    "error": null,
-   "ejecutada_utc": "2026-10-22 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "tono": {
    "ok": true,
-   "duracion_s": 21.6,
+   "duracion_s": 27.9,
    "error": null,
-   "ejecutada_utc": "2026-10-22 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "reacciones": {
    "ok": true,
@@ -167,72 +167,72 @@
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-22 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "etf": {
    "ok": true,
-   "duracion_s": 1.4,
+   "duracion_s": 1.7,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-22 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-22 22:07 UTC"
   },
   "marcador": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "integridad": {
    "ok": true,
-   "duracion_s": 400.9,
+   "duracion_s": 402.6,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "gamma_intradia": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-22 23:57 UTC",
-   "ultimo_ok_utc": "2026-10-22 23:57 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "consumo": {
    "ok": true,
-   "duracion_s": 7.5,
+   "duracion_s": 8.2,
    "error": null,
-   "ejecutada_utc": "2026-10-22 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "petroleo": {
    "ok": true,
-   "duracion_s": 11.1,
+   "duracion_s": 8.3,
    "error": null,
-   "ejecutada_utc": "2026-10-22 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "gamma_oro": {
    "ok": true,
-   "duracion_s": 1.1,
+   "duracion_s": 0.8,
    "error": null,
-   "ejecutada_utc": "2026-10-22 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "consumo_ratio": {
    "ok": true,
-   "duracion_s": 12.5,
+   "duracion_s": 15.5,
    "error": null,
-   "ejecutada_utc": "2026-10-22 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   },
   "gamma_us30": {
    "ok": true,
-   "duracion_s": 1.4,
+   "duracion_s": 0.8,
    "error": null,
-   "ejecutada_utc": "2026-10-22 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-22 21:30 UTC"
+   "ejecutada_utc": "2026-10-23 00:09 UTC",
+   "ultimo_ok_utc": "2026-10-23 00:09 UTC"
   }
  },
- "duracion_total_s": 680.5
+ "duracion_total_s": 517.4
 }
