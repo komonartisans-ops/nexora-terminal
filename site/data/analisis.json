@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-23 12:12 UTC",
+ "generado_utc": "2026-10-23 12:28 UTC",
  "n": 0,
  "entradas": [],
  "acumulado": {
@@ -23,8 +23,8 @@
   }
  },
  "min_n": 20,
- "reglas": "del sesgo de oro a T+1 y T+5 sesiones (data/analisis_resultados.csv, solo añadir). Reglas FIJAS:\n     ORO: alcista → sube más de un 0,25 %; bajista → baja más de un 0,25 %; neutral → se mueve como mucho un 0,5 % a T+1 o un 1,5 % a T+5.\n     CUMPLIDO = el oro hace lo esperado y DXY o DFII10 no lo contradicen a la vez; MIXTO = el oro hace lo esperado pero DXY y DFII10 (ambos) fueron en contra, o el oro se movió menos de ±0,25 % con sesgo direccional;\n     FALLIDO = el oro fue en contra (más de un 0,25 % al lado contrario) o, en neutral, se salió de la banda. DXY y DFII10 «a favor» = DXY y tipo real bajan para alcista, suben para bajista.\n     Con menos de 20 resultados evaluados: «n<20: sin conclusión».",
+ "reglas": "del sesgo de oro a T+1 y T+5 sesiones (data/analisis_resultados.csv, solo añadir). Reglas FIJAS:\n     UMBRAL = el EM del oro de ESE día (gamma de GLD, referencia: GLD × GVZ / 100 / √252, en %; data/historico_gamma_oro.csv). A T+5 el umbral es EM × √5. Columna `umbral` del CSV = EM.\n     ALCISTA: CUMPLIDO si Δoro ≥ +0,3 × EM; FALLIDO si Δoro ≤ −0,3 × EM; si no, MIXTO. BAJISTA: simétrico (CUMPLIDO si Δoro ≤ −0,3 × EM; FALLIDO si Δoro ≥ +0,3 × EM).\n     NEUTRAL: CUMPLIDO si |Δoro| ≤ 0,5 × EM; FALLIDO si |Δoro| > 1 × EM; si no, MIXTO.\n     Se mantiene: un CUMPLIDO direccional pasa a MIXTO si DXY y DFII10 (los dos) fueron en contra del sesgo (DXY y tipo real suben para alcista, bajan para bajista).\n     Si ese día no hay EM (sin gamma del oro guardada) se usan los % fijos anteriores y la columna `umbral` dice FIJO: alcista/bajista ±0,25 % (CUMPLIDO más allá, FALLIDO al otro lado, MIXTO dentro);\n     neutral CUMPLIDO hasta 0,5 % a T+1 o 1,5 % a T+5 y FALLIDO fuera. Con menos de 20 resultados evaluados: «n<20: sin conclusión».",
  "fuente": "engine/analisis.py (data/analisis_indice.csv, data/analisis_cotejos.jsonl, data/analisis_resultados.csv; solo añadir)",
  "resultados_nuevos": 0,
- "duracion_s": 0.0
+ "duracion_s": 0.1
 }

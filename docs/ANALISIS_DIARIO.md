@@ -34,7 +34,14 @@ Cada fila del panel A.2 que NEXORA tiene (2Y, 5Y, 10Y, 30Y, DFII10, breakeven 10
 
 ## Resultado del sesgo
 
-La etapa `analisis` (modos cierre y diario de `actualizar.yml`) añade a `data/analisis_resultados.csv` el resultado a T+1 y T+5 sesiones con la variación del oro, de DXY y de DFII10: CUMPLIDO / FALLIDO / MIXTO (reglas fijas en `engine/analisis.py`). Hasta 20 resultados evaluados la página muestra «n<20: sin conclusión».
+La etapa `analisis` (modos cierre y diario de `actualizar.yml`) añade a `data/analisis_resultados.csv` el resultado a T+1 y T+5 sesiones con la variación del oro, de DXY y de DFII10 (columnas `umbral` = EM o FIJO y `umbral_pct`). **Umbral = EM del oro de ese día** (gamma de GLD, referencia, en %; a T+5, EM × √5):
+
+- **Alcista:** CUMPLIDO si Δoro ≥ +0,3 × EM; FALLIDO si Δoro ≤ −0,3 × EM; si no, MIXTO. **Bajista:** simétrico.
+- **Neutral:** CUMPLIDO si |Δoro| ≤ 0,5 × EM; FALLIDO si |Δoro| > 1 × EM; si no, MIXTO.
+- Un CUMPLIDO direccional pasa a MIXTO si DXY y DFII10 van los dos en contra.
+- Sin EM ese día: los % fijos de antes (alcista/bajista ±0,25 %; neutral 0,5 % a T+1 y 1,5 % a T+5) y `umbral = FIJO`.
+
+Hasta 20 resultados evaluados la página muestra «n<20: sin conclusión».
 
 ## Vista `#/analisis`
 

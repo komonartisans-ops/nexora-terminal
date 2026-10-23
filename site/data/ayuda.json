@@ -1737,7 +1737,9 @@
    "La probabilidad de la Fed que cita tu informe y la de NEXORA (fedwatch.py, calculada con futuros de fondos federales), cada una con su fuente. Son métodos distintos: no se juzgan, se muestran lado a lado."
   ],
   "acierto acumulado del sesgo": [
-   "Cuántas veces el oro hizo, a T+1 y T+5 sesiones, lo que indicaba el sesgo que diste al publicar: CUMPLIDO, MIXTO o FALLIDO con reglas fijas.",
+   "Cuántas veces el oro hizo, a T+1 y T+5 sesiones, lo que indicaba el sesgo que diste al publicar: CUMPLIDO, MIXTO o FALLIDO.",
+   "El umbral es el EM del oro de ese día (la gamma de GLD, referencia: GLD × GVZ / 100 / √252, en %); a T+5, EM × √5. Alcista: CUMPLIDO si el oro sube al menos 0,3 × EM, FALLIDO si baja 0,3 × EM o más, MIXTO en medio (bajista, simétrico). Neutral: CUMPLIDO si |Δoro| ≤ 0,5 × EM, FALLIDO si supera 1 × EM, MIXTO entre los dos.",
+   "Un CUMPLIDO direccional pasa a MIXTO si DXY y DFII10 van los dos en contra. Si ese día no hay EM se usan los % fijos de antes (±0,25 %; neutral 0,5 % a T+1 y 1,5 % a T+5) y el umbral se marca FIJO.",
    "Con menos de 20 resultados evaluados no se concluye nada («n<20: sin conclusión»)."
   ]
  },

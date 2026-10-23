@@ -7,10 +7,12 @@ Ruiz envía cada día su informe (texto con tablas, secciones A–K; G = oro). t
      ✅ coincide · ⚠️ difiere (ambos valores y la fuente de NEXORA) · — NEXORA no lo tiene (nunca se rellena). Tolerancias: tipos ±3 pb; DXY ±0,3; oro ±0,5 %; Brent/WTI ±1,5 %; VIX ±0,5; resto ±1 %.
      También el calendario B.3 frente a la agenda de NEXORA (eventos que faltan u horas distintas, con el cambio de hora: Europa 25-oct, EE. UU. 1-nov) y las probabilidades de la Fed lado a lado.
   3. RESULTADO del sesgo de oro a T+1 y T+5 sesiones (data/analisis_resultados.csv, solo añadir). Reglas FIJAS:
-     ORO: alcista → sube más de un 0,25 %; bajista → baja más de un 0,25 %; neutral → se mueve como mucho un 0,5 % a T+1 o un 1,5 % a T+5.
-     CUMPLIDO = el oro hace lo esperado y DXY o DFII10 no lo contradicen a la vez; MIXTO = el oro hace lo esperado pero DXY y DFII10 (ambos) fueron en contra, o el oro se movió menos de ±0,25 % con sesgo direccional;
-     FALLIDO = el oro fue en contra (más de un 0,25 % al lado contrario) o, en neutral, se salió de la banda. DXY y DFII10 «a favor» = DXY y tipo real bajan para alcista, suben para bajista.
-     Con menos de 20 resultados evaluados: «n<20: sin conclusión»."""
+     UMBRAL = el EM del oro de ESE día (gamma de GLD, referencia: GLD × GVZ / 100 / √252, en %; data/historico_gamma_oro.csv). A T+5 el umbral es EM × √5. Columna `umbral` del CSV = EM.
+     ALCISTA: CUMPLIDO si Δoro ≥ +0,3 × EM; FALLIDO si Δoro ≤ −0,3 × EM; si no, MIXTO. BAJISTA: simétrico (CUMPLIDO si Δoro ≤ −0,3 × EM; FALLIDO si Δoro ≥ +0,3 × EM).
+     NEUTRAL: CUMPLIDO si |Δoro| ≤ 0,5 × EM; FALLIDO si |Δoro| > 1 × EM; si no, MIXTO.
+     Se mantiene: un CUMPLIDO direccional pasa a MIXTO si DXY y DFII10 (los dos) fueron en contra del sesgo (DXY y tipo real suben para alcista, bajan para bajista).
+     Si ese día no hay EM (sin gamma del oro guardada) se usan los % fijos anteriores y la columna `umbral` dice FIJO: alcista/bajista ±0,25 % (CUMPLIDO más allá, FALLIDO al otro lado, MIXTO dentro);
+     neutral CUMPLIDO hasta 0,5 % a T+1 o 1,5 % a T+5 y FALLIDO fuera. Con menos de 20 resultados evaluados: «n<20: sin conclusión»."""
 from __future__ import annotations
 
 import csv
@@ -27,7 +29,7 @@ RAIZ = os.path.dirname(HERE)
 UTC = dt.timezone.utc
 MIN_N = 20
 CAMPOS_INDICE = ["id", "fecha", "tipo", "version", "visibilidad", "sesgo_oro", "corte_madrid", "hash", "estado", "registrada_utc", "nota"]
-CAMPOS_RES = ["id", "fecha", "tipo", "sesgo_oro", "horizonte", "fecha_t", "oro_pct", "dxy_var", "dfii10_pb", "veredicto", "evaluado_utc"]
+CAMPOS_RES = ["id", "fecha", "tipo", "sesgo_oro", "horizonte", "fecha_t", "oro_pct", "dxy_var", "dfii10_pb", "umbral", "umbral_pct", "veredicto", "evaluado_utc"]
 TIPOS = ("ORO_MACRO", "INDICES")
 SESGOS = ("alcista", "bajista", "neutral")
 VISIBILIDADES = ("privado", "resumen")
@@ -522,19 +524,46 @@ def _diario(raiz, activo):
     return {k: v for k, v in d.items() if v is not None}
 
 
-def veredicto(sesgo, h, oro_pct, dxy_var, dfii_pb):
-    """CUMPLIDO / FALLIDO / MIXTO con las reglas fijas del docstring."""
+def veredicto(sesgo, h, oro_pct, dxy_var, dfii_pb, em_pct=None):
+    """CUMPLIDO / FALLIDO / MIXTO con las reglas fijas del docstring. `em_pct` = EM del oro de ese día en % (umbral); sin él, los % fijos."""
+    if em_pct is None:                                    # umbral FIJO
+        if sesgo == "neutral":
+            banda = 0.5 if h == 1 else 1.5
+            return "CUMPLIDO" if round(abs(oro_pct), 6) <= banda else "FALLIDO"
+        signo = 1 if sesgo == "alcista" else -1
+        mov = round(oro_pct * signo, 6)
+        if mov < -0.25:
+            return "FALLIDO"
+        if mov <= 0.25:
+            return "MIXTO"
+        return "MIXTO" if _macro_contra(signo, dxy_var, dfii_pb) else "CUMPLIDO"
+    E = em_pct * (1.0 if h == 1 else 5 ** 0.5)           # EM × √5 a T+5
     if sesgo == "neutral":
-        banda = 0.5 if h == 1 else 1.5
-        return "CUMPLIDO" if round(abs(oro_pct), 6) <= banda else "FALLIDO"
+        a = round(abs(oro_pct), 6)
+        return "CUMPLIDO" if a <= round(0.5 * E, 6) else "FALLIDO" if a > round(1.0 * E, 6) else "MIXTO"
     signo = 1 if sesgo == "alcista" else -1
     mov = round(oro_pct * signo, 6)
-    if mov < -0.25:
+    u = round(0.3 * E, 6)
+    if mov <= -u:
         return "FALLIDO"
-    if mov <= 0.25:
+    if mov < u:
         return "MIXTO"
-    contra = (dxy_var is not None and dxy_var * signo > 0) and (dfii_pb is not None and dfii_pb * signo > 0)      # DXY y tipo real suben para alcista (o bajan para bajista): ambos en contra
-    return "MIXTO" if contra else "CUMPLIDO"
+    return "MIXTO" if _macro_contra(signo, dxy_var, dfii_pb) else "CUMPLIDO"
+
+
+def _macro_contra(signo, dxy_var, dfii_pb):
+    """DXY y tipo real suben para alcista (o bajan para bajista): los dos en contra."""
+    return (dxy_var is not None and dxy_var * signo > 0) and (dfii_pb is not None and dfii_pb * signo > 0)
+
+
+def em_oro_pct(raiz, fecha):
+    """EM del oro de esa sesión en % (em_gld / gld_spot × 100, de data/historico_gamma_oro.csv); None si ese día no hay gamma del oro guardada."""
+    for r in leer_csv(P(raiz, "data", "historico_gamma_oro.csv")):
+        if r.get("fecha_sesion") == fecha:
+            em, sp = _f(r.get("em_gld")), _f(r.get("gld_spot"))
+            if em and sp:
+                return round(em / sp * 100, 4)
+    return None
 
 
 def evaluar(raiz=RAIZ, ahora=None):
@@ -558,8 +587,10 @@ def evaluar(raiz=RAIZ, ahora=None):
             op = round((oro[ft] / oro[d0] - 1) * 100, 3)
             dv = round(dxy[ft] - dxy[d0], 3) if ft in dxy and d0 in dxy else None
             dp = round((dfi[ft] - dfi[d0]) * 100, 1) if ft in dfi and d0 in dfi else None
+            em = em_oro_pct(raiz, d0)
             nuevas.append({"id": f"{e['id']}|T+{h}", "fecha": d0, "tipo": e["tipo"], "sesgo_oro": e["sesgo_oro"], "horizonte": h, "fecha_t": ft, "oro_pct": op, "dxy_var": "" if dv is None else dv,
-                           "dfii10_pb": "" if dp is None else dp, "veredicto": veredicto(e["sesgo_oro"], h, op, dv, dp), "evaluado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC")})
+                           "dfii10_pb": "" if dp is None else dp, "umbral": "EM" if em is not None else "FIJO", "umbral_pct": round(em * (1.0 if h == 1 else 5 ** 0.5), 3) if em is not None else "",
+                           "veredicto": veredicto(e["sesgo_oro"], h, op, dv, dp, em), "evaluado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC")})
     return anadir_csv(P(raiz, "data", "analisis_resultados.csv"), nuevas, CAMPOS_RES, lambda r: r["id"])
 
 
@@ -620,7 +651,7 @@ def construir(raiz=RAIZ, ahora=None):
         item["ruta_publica"] = f"data/analisis/{e['fecha'][:4]}/{e['id']}.md" if e["visibilidad"] == "resumen" else None
         item["cotejo"] = {k: c.get(k) for k in ("panel", "calendario", "fed", "resumen", "resumen_calendario", "tolerancias")} if c else None
         item["resumen_publico"] = c.get("resumen_publico") if e["visibilidad"] == "resumen" else None
-        item["resultados"] = [{k: r[k] for k in ("horizonte", "fecha_t", "oro_pct", "dxy_var", "dfii10_pb", "veredicto")} for r in res if r["id"].startswith(e["id"] + "|")]
+        item["resultados"] = [{k: r[k] for k in ("horizonte", "fecha_t", "oro_pct", "dxy_var", "dfii10_pb", "umbral", "umbral_pct", "veredicto")} for r in res if r["id"].startswith(e["id"] + "|")]
         entradas.append(item)
     vig = [x for x in entradas if x["estado"] == "VIGENTE"]
     for x in vig:

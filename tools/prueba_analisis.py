@@ -229,6 +229,51 @@ J = A.etapa(R, ahora + dt.timedelta(days=10))
 assert J["acumulado"]["T+1"]["conclusion"] == "n<20: sin conclusión" and J["resultados_nuevos"] == 0 and next(e for e in J["entradas"] if e["id"].endswith("_v2"))["resultados"][0]["horizonte"] in ("1", 1)
 print("6) OK resultado del sesgo: reglas fijas en los bordes, T+1 y T+5 con oro, DXY y DFII10, solo añadir, solo el análisis vigente, acumulado «n<20: sin conclusión»")
 
-for d in (R, PRIV):
+# ---------------------------------------------------------------- 7) umbral = EM del oro de ese día (T+5: EM × √5); sin EM, % fijos y umbral FIJO
+V = A.veredicto
+r5 = 5 ** 0.5
+# EM bajo (0,8 %): umbral direccional 0,3 × 0,8 = 0,24 %
+assert V("alcista", 1, 0.24, 0, 0, 0.8) == "CUMPLIDO" and V("alcista", 1, 0.2399, 0, 0, 0.8) == "MIXTO" and V("alcista", 1, -0.24, 0, 0, 0.8) == "FALLIDO" and V("alcista", 1, -0.2399, 0, 0, 0.8) == "MIXTO"
+assert V("bajista", 1, -0.24, 0, 0, 0.8) == "CUMPLIDO" and V("bajista", 1, 0.24, 0, 0, 0.8) == "FALLIDO" and V("bajista", 1, 0.2399, 0, 0, 0.8) == "MIXTO"
+assert V("alcista", 5, 0.54, 0, 0, 0.8) == "CUMPLIDO" and V("alcista", 5, 0.53, 0, 0, 0.8) == "MIXTO" and V("alcista", 5, -0.54, 0, 0, 0.8) == "FALLIDO", "T+5: 0,3 × 0,8 × √5 = 0,5367 %"
+assert V("neutral", 1, 0.4, 0, 0, 0.8) == "CUMPLIDO" and V("neutral", 1, 0.41, 0, 0, 0.8) == "MIXTO" and V("neutral", 1, -0.8, 0, 0, 0.8) == "MIXTO" and V("neutral", 1, 0.81, 0, 0, 0.8) == "FALLIDO"
+# EM alto (2,0 %): umbral 0,6 %; con +0,5 % el % fijo daría CUMPLIDO y con EM es MIXTO
+assert V("alcista", 1, 0.5, 0, 0, 2.0) == "MIXTO" and V("alcista", 1, 0.5, 0, 0, None) == "CUMPLIDO" and V("alcista", 1, 0.6, 0, 0, 2.0) == "CUMPLIDO" and V("alcista", 1, -0.6, 0, 0, 2.0) == "FALLIDO"
+assert V("neutral", 1, 1.0, 0, 0, 2.0) == "CUMPLIDO" and V("neutral", 1, 1.5, 0, 0, 2.0) == "MIXTO" and V("neutral", 1, 2.0, 0, 0, 2.0) == "MIXTO" and V("neutral", 1, 2.01, 0, 0, 2.0) == "FALLIDO"
+assert V("neutral", 5, 2.2, 0, 0, 2.0) == "CUMPLIDO" and V("neutral", 5, 4.4, 0, 0, 2.0) == "MIXTO" and V("neutral", 5, 4.5, 0, 0, 2.0) == "FALLIDO", "T+5 neutral: 0,5 × 2 × √5 = 2,236 %; 1 × 2 × √5 = 4,472 %"
+# se mantiene la degradación a MIXTO si DXY y DFII10 van ambos en contra
+assert V("alcista", 1, 1.0, 0.2, 5, 0.8) == "MIXTO" and V("alcista", 1, 1.0, 0.2, -5, 0.8) == "CUMPLIDO" and V("bajista", 1, -1.0, -0.2, -5, 0.8) == "MIXTO" and V("neutral", 1, 0.1, 0.2, 5, 0.8) == "CUMPLIDO"
+# sin EM: los % fijos de siempre
+assert V("alcista", 1, 0.26, 0, 0) == "CUMPLIDO" and V("alcista", 1, 0.25, 0, 0) == "MIXTO" and V("neutral", 5, 1.5, 0, 0) == "CUMPLIDO" and V("neutral", 5, 1.51, 0, 0) == "FALLIDO"
+# de extremo a extremo: día de EM alto, día de EM bajo y día sin EM, mismo movimiento del oro (+0,5 %)
+R3 = nueva_raiz()
+with open(os.path.join(R3, "data", "historico_precios.csv"), "a", encoding="utf-8", newline="") as fh:
+    w = csv.writer(fh)
+    for d, o, x in (("2026-10-21", 4163.2, 101.6), ("2026-10-22", 4184.0, 101.5), ("2026-10-23", 4204.9, 101.4)):
+        w.writerow(["x", "oro", o, d, 0, "t"])
+        w.writerow(["x", "dxy", x, d, 0, "t"])
+with open(os.path.join(R3, "data", "historico_tipos.csv"), "a", encoding="utf-8", newline="") as fh:
+    w = csv.writer(fh)
+    for d, v in (("2026-10-21", 2.60), ("2026-10-22", 2.55), ("2026-10-23", 2.50)):
+        w.writerow(["x", "real10", v, d, 0, "t"])
+with open(os.path.join(R3, "data", "historico_gamma_oro.csv"), "w", encoding="utf-8", newline="") as fh:
+    w = csv.writer(fh)
+    w.writerow(["fecha_sesion", "gld_spot", "em_gld"])
+    w.writerow(["2026-10-20", 377.77, 7.5554])      # EM 2,0 % (alto)
+    w.writerow(["2026-10-21", 380.0, 3.04])         # EM 0,8 % (bajo)
+PRIV3 = tempfile.mkdtemp(prefix="priv3_")
+for fch in ("2026-10-20", "2026-10-21", "2026-10-22"):
+    PU.publicar(INFORME.replace("20-10-2026", fch[8:] + "-10-2026") + f"\nvariante {fch}", "alcista", "ORO_MACRO", "privado", fecha=fch, raiz=R3, solo_local=PRIV3, ahora=dt.datetime(2026, 10, 23, 8, 0, tzinfo=UTC))
+A.evaluar(R3, dt.datetime(2026, 10, 24, 8, 0, tzinfo=UTC))
+rr = {x["id"]: x for x in A.leer_csv(os.path.join(R3, "data", "analisis_resultados.csv"))}
+alto, bajo, sin = rr["2026-10-20_ORO_MACRO|T+1"], rr["2026-10-21_ORO_MACRO|T+1"], rr["2026-10-22_ORO_MACRO|T+1"]
+assert alto["umbral"] == "EM" and float(alto["umbral_pct"]) == 2.0 and float(alto["oro_pct"]) > 0.49 and alto["veredicto"] == "MIXTO", "EM alto: +0,5 % no llega a 0,3 × 2,0 = 0,6 % → MIXTO"
+assert bajo["umbral"] == "EM" and float(bajo["umbral_pct"]) == 0.8 and bajo["veredicto"] == "CUMPLIDO", "EM bajo: +0,5 % supera 0,3 × 0,8 = 0,24 % → CUMPLIDO (DXY y DFII10 a favor)"
+assert sin["umbral"] == "FIJO" and sin["umbral_pct"] == "" and sin["veredicto"] == "CUMPLIDO", "sin EM ese día: % fijos y umbral FIJO"
+assert float(A.leer_csv(os.path.join(R3, "data", "analisis_resultados.csv"))[0]["umbral_pct"] or 0) >= 0
+assert "umbral" in A.CAMPOS_RES and "0,3 × EM" in A.construir(R3)["reglas"] and "EM × √5" in A.construir(R3)["reglas"]
+print("7) OK umbral = EM del oro del día (T+5: EM × √5): día de EM alto (+0,5 % → MIXTO) y de EM bajo (+0,5 % → CUMPLIDO), neutral con MIXTO entre 0,5 y 1 × EM, degradación por DXY y DFII10, y sin EM → % fijos con umbral FIJO")
+
+for d in (R, PRIV, R3, PRIV3):
     shutil.rmtree(d, ignore_errors=True)
 print("\nTODO OK · sin red, sin GitHub, sin Telegram")

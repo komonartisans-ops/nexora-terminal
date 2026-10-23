@@ -32,7 +32,7 @@ function anCabecera(e, P) {
   h += `<p style="margin:4px 0"><b>Veredicto.</b> ${ver ? esc(ver) : '<span class="sd-val">SIN DATO</span>'}</p>`;
   h += `<p style="margin:4px 0"><b>Cotejo con NEXORA.</b> ${c ? `<span class="ck ok">${c.ok} ✅</span> <span class="ck par">${c.dif} ⚠️</span> <span class="ck sd">${c.sin} —</span>` : '<span class="sd-val">SIN DATO</span>'}`
     + `${e.cotejo && e.cotejo.resumen_calendario ? ` · calendario: ${e.cotejo.resumen_calendario.ok} ✅ · ${e.cotejo.resumen_calendario.dif} ⚠️ · ${e.cotejo.resumen_calendario.sin} —` : ''}</p>`;
-  h += `<p style="margin:4px 0"><b>Resultado del sesgo.</b> ${R.length ? R.map((r) => `T+${esc(String(r.horizonte))} (${esc(fdy(r.fecha_t))}): <span class="ck ${r.veredicto === 'CUMPLIDO' ? 'ok' : r.veredicto === 'FALLIDO' ? 'no' : 'par'}">${esc(r.veredicto)}</span> <small>oro ${anN(r.oro_pct)} % · DXY ${anN(r.dxy_var, 2)} · DFII10 ${anN(r.dfii10_pb, 1)} pb</small>`).join(' · ') : '<span class="sd-val">pendiente</span> <small>(T+1 y T+5 cuando haya esas sesiones)</small>'}</p></div>`;
+  h += `<p style="margin:4px 0"><b>Resultado del sesgo.</b> ${R.length ? R.map((r) => `T+${esc(String(r.horizonte))} (${esc(fdy(r.fecha_t))}): <span class="ck ${r.veredicto === 'CUMPLIDO' ? 'ok' : r.veredicto === 'FALLIDO' ? 'no' : 'par'}">${esc(r.veredicto)}</span> <small>oro ${anN(r.oro_pct)} % · DXY ${anN(r.dxy_var, 2)} · DFII10 ${anN(r.dfii10_pb, 1)} pb · umbral ${r.umbral === 'EM' ? 'EM ' + anN(r.umbral_pct, 2) + ' %' : 'FIJO'}</small>`).join(' · ') : '<span class="sd-val">pendiente</span> <small>(T+1 y T+5 cuando haya esas sesiones)</small>'}</p></div>`;
   return h;
 }
 
