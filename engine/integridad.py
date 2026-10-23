@@ -310,7 +310,7 @@ def vigilar(raiz=RAIZ, ahora=None, seco=False, enviar=None, push=False):
                 cuerpo = "\n".join(r.get("lineas") or [])[:1500]
                 txt = (f"<b>NEXORA · Exportador actualizado, pendiente de aprobar</b>\nCommit {p.get('commit')} (aprobado: {p.get('aprobado') or 'ninguno'}): +{r.get('anade')} −{r.get('quita')} líneas en tools/exportar_obsidian.py. "
                        "El PC sigue ejecutando la versión aprobada; los datos se siguen descargando.\n<pre>" + html.escape(cuerpo) + ("\n…" if r.get("truncado") else "") + "</pre>\n"
-                       "Revisa el cambio y apruébalo con: python tools/exportar_obsidian.py --aprobar")
+                       f"Revisa el diff completo y apruébalo con la copia ya anclada: python %LOCALAPPDATA%\\NexoraExportador\\aprobado\\exportar_obsidian.py --aprobar {p.get('blob')} (pedirá escribir APROBAR).")
                 if seco:
                     print("[seco · no se envía]\n" + txt + "\n")
                     out.append((clave, "SECO", txt))

@@ -328,7 +328,20 @@ sh(REPO, "add", "-A")
 sh(REPO, "commit", "-q", "-m", "exportador v1", fecha="2026-10-22T09:00:00+00:00")
 sh(REPO, "push", "-q", "origin", "main")
 assert X.comprobar_actualizacion(REPO)["aprobado"] is None, "sin aprobación previa, todo es pendiente"
-assert X.aprobar(REPO, lambda m: None) == 0 and os.path.exists(X.ANCLADO) and X.comprobar_actualizacion(REPO) is None
+def aprobar_ok(confirmar="APROBAR"):
+    return X.aprobar(REPO, lambda m: None, X.blob_git(os.path.join(REPO, "tools", "exportar_obsidian.py"))[:12], confirmar)
+
+
+b0 = X.blob_git(os.path.join(REPO, "tools", "exportar_obsidian.py"))
+assert X.aprobar(REPO, lambda m: None) == 2 and not os.path.exists(X.ANCLADO), "sin hash solo muestra el diff"
+assert X.aprobar(REPO, lambda m: None, "0" * 12, "APROBAR") == 1 and not os.path.exists(X.ANCLADO), "hash distinto: rechazado"
+assert X.aprobar(REPO, lambda m: None, b0[:12], "") == 1 and not os.path.exists(X.ANCLADO), "sin escribir APROBAR no se ancla"
+with open(os.path.join(REPO, "tools", "exportar_obsidian.py"), "a", encoding="utf-8", newline="") as f:
+    f.write("# manipulado en el árbol de trabajo")
+assert X.aprobar(REPO, lambda m: None, X.blob_git(os.path.join(REPO, "tools", "exportar_obsidian.py"))[:12], "APROBAR") == 1, "el archivo del clon no coincide con HEAD"
+sh(REPO, "checkout", "--", "tools/exportar_obsidian.py")
+assert aprobar_ok() == 0 and os.path.exists(X.ANCLADO) and X.comprobar_actualizacion(REPO) is None
+assert X.blob_git(X.ANCLADO) == b0, "la copia anclada es exactamente el objeto git"
 fijo = open(X.ANCLADO, "rb").read()
 with open(os.path.join(REPO, "tools", "exportar_obsidian.py"), "a", encoding="utf-8", newline="") as f:
     f.write("\nimport os; os.system('ghp_AbCdEf1234567890AbCdEf12')\n")
@@ -353,7 +366,7 @@ I.vigilar(T2, ahora2 + dt.timedelta(hours=5), enviar=lambda m: (env2.append(m), 
 pend_msgs = [m for m in env2 if "pendiente de aprobar" in m]
 assert len(pend_msgs) == 1 and "--aprobar" in pend_msgs[0] and "os.system" in pend_msgs[0] and "ghp_" not in pend_msgs[0], env2
 assert I.construir(T2, ahora2)["obsidian"]["pendiente_aprobar"]["blob"] == p["blob"]
-assert X.aprobar(REPO, lambda m: None) == 0 and X.comprobar_actualizacion(REPO) is None and open(X.ANCLADO, "rb").read() != fijo
+assert aprobar_ok() == 0 and X.comprobar_actualizacion(REPO) is None and open(X.ANCLADO, "rb").read() != fijo
 assert X.escribir_pendiente(REPO, None) is True and json.load(open(os.path.join(REPO, "data", "obsidian_pendiente.json"), encoding="utf-8")) == {"pendiente": False}
 print("15) OK ejecución anclada: copia fija aprobada; un cambio en main NO se ejecuta, queda pendiente con su diff (sin secretos), un solo Telegram «pendiente de aprobar» y banner en #/integridad; --aprobar lo ancla")
 # 16) Diario de operaciones: 10_Diario/Operaciones/AAAA-MM.md, solo añadir; corrección → fila REVISADA; borrado → ANULADA; resumen con n, acierto, esperanza y profit factor por setup

@@ -1109,7 +1109,7 @@ def resumen_diff(viejo, nuevo, maximo=30):
     return {"anade": mas, "quita": menos, "lineas": [limpiar(x[:160]) for x in cambios[:maximo]], "truncado": len(cambios) > maximo}
 
 
-def comprobar_actualizacion(publico):
+def comprobar_actualizacion(publico, maximo=30):
     """None si el exportador del repo es el aprobado; si no, dict con el resumen del cambio pendiente de aprobar."""
     nuevo = os.path.join(publico, *REL_SCRIPT.split("/"))
     if not os.path.exists(nuevo):
@@ -1119,7 +1119,7 @@ def comprobar_actualizacion(publico):
     if m and m.get("blob") == b:
         return None
     rc, out, _ = git(publico, "log", "-1", "--format=%h", "--", REL_SCRIPT)
-    return {"pendiente": True, "blob": (b or "")[:12], "commit": out.strip(), "aprobado": (m or {}).get("commit"), "resumen": resumen_diff(ANCLADO, nuevo)}
+    return {"pendiente": True, "blob": (b or "")[:12], "commit": out.strip(), "aprobado": (m or {}).get("commit"), "resumen": resumen_diff(ANCLADO, nuevo, maximo)}
 
 
 def escribir_pendiente(publico, info):
@@ -1137,29 +1137,57 @@ def escribir_pendiente(publico, info):
     return True
 
 
-def aprobar(publico, log):
-    """Ruiz aprueba el exportador del repo: trae el repo, muestra el cambio y fija la copia (commit anclado)."""
-    ok, _, m = preparar_clon(publico, URL_PUBLICO, log)
-    if not ok:
-        log("no se pudo actualizar el repo: " + m)
-        return 1
-    info = comprobar_actualizacion(publico)
+def aprobar(publico, log, blob_esperado=None, confirmar=None):
+    r"""Ruiz aprueba el exportador del repo y se ancla esa versión. Medidas contra aprobar código no revisado:
+    · NO hace pull: usa lo que la última pasada ya trajo al clon (el diff que viste en #/integridad o en Telegram).
+    · Hay que repetir el hash que se vio: `--aprobar <blob>`; si el del clon es otro, se rechaza.
+    · El contenido se copia del objeto git (git cat-file), no del árbol de trabajo (sin carrera), y debe coincidir con HEAD del clon.
+    · Muestra el diff COMPLETO y pide escribir APROBAR (solo con terminal interactiva).
+    Recomendado: ejecutarlo con la copia ya anclada (`python %LOCALAPPDATA%\NexoraExportador\aprobado\exportar_obsidian.py --aprobar <blob>`), nunca con el archivo recién descargado."""
     nuevo = os.path.join(publico, *REL_SCRIPT.split("/"))
+    info = comprobar_actualizacion(publico, maximo=100000)
     if info is None:
         log("el exportador anclado ya es el del repo; nada que aprobar")
         return 0
+    b = blob_git(nuevo)
+    rc, head, _ = git(publico, "rev-parse", f"HEAD:{REL_SCRIPT}")
+    if rc != 0 or head.strip() != b:
+        log("el archivo del clon no coincide con HEAD (¿modificado a mano?): no se aprueba")
+        return 1
     r = info["resumen"]
-    log(f"aprobando exportador {info['commit']} (antes: {info['aprobado'] or 'ninguno'}): +{r['anade']} −{r['quita']} líneas")
+    log(f"exportador pendiente {info['commit']} (aprobado hasta ahora: {info['aprobado'] or 'ninguno'}): +{r['anade']} −{r['quita']} líneas · hash {b[:12]}")
     if sys.stdout:
-        print("\n".join(r["lineas"]) + ("\n… (diff truncado; mira `git diff` en el clon)" if r["truncado"] else ""))
+        print("\n".join(r["lineas"]))
+    if not blob_esperado:
+        log(f"Revisa el diff y repite con el hash: --aprobar {b[:12]}")
+        return 2
+    if not b.startswith(blob_esperado.strip().lower()) or len(blob_esperado.strip()) < 8:
+        log(f"el hash indicado no es el del clon ({b[:12]}): lo que ibas a aprobar no es lo que hay ahora; no se aprueba")
+        return 1
+    if confirmar is None:
+        if not (sys.stdin and sys.stdin.isatty()):
+            log("sin terminal interactiva: la aprobación exige escribir APROBAR a mano")
+            return 1
+        confirmar = input("Escribe APROBAR para anclar esta versión: ").strip()
+    if confirmar != "APROBAR":
+        log("no confirmado")
+        return 1
+    r2 = subprocess.run(["git", "-C", publico, "cat-file", "blob", b], capture_output=True)
+    if r2.returncode != 0:
+        log("no se pudo leer el objeto git")
+        return 1
     os.makedirs(ANCLADO_DIR, exist_ok=True)
     if os.path.exists(ANCLADO):
         os.chmod(ANCLADO, 0o666)
-    import shutil
-    shutil.copyfile(nuevo, ANCLADO)
+    with open(ANCLADO, "wb") as f:
+        f.write(r2.stdout)
+    if blob_git(ANCLADO) != b:
+        os.remove(ANCLADO)
+        log("la copia no coincide con el objeto git; abortado")
+        return 1
     os.chmod(ANCLADO, 0o444)
-    json.dump({"commit": info["commit"], "blob": blob_git(nuevo), "aprobado_local": dt.datetime.now().isoformat(timespec="seconds")}, open(ANCLADO_META, "w", encoding="utf-8"), indent=1)
-    log(f"exportador {info['commit']} aprobado y anclado en {ANCLADO}")
+    json.dump({"commit": info["commit"], "blob": b, "aprobado_local": dt.datetime.now().isoformat(timespec="seconds")}, open(ANCLADO_META, "w", encoding="utf-8"), indent=1)
+    log(f"exportador {info['commit']} ({b[:12]}) aprobado y anclado en {ANCLADO}")
     return 0
 
 
@@ -1205,7 +1233,7 @@ def main():
     ap.add_argument("--programado", action="store_true")
     ap.add_argument("--forzar", action="store_true")
     ap.add_argument("--registrar-tarea", action="store_true")
-    ap.add_argument("--aprobar", action="store_true", help="aprueba y ancla la versión del exportador que hay en el repo (la tarea solo ejecuta la aprobada)")
+    ap.add_argument("--aprobar", nargs="?", const="", default=None, metavar="BLOB", help="aprueba y ancla la versión del exportador que hay en el repo (la tarea solo ejecuta la aprobada)")
     ap.add_argument("--vista-previa", default=None)
     ap.add_argument("--hoy", default=None)
     a = ap.parse_args()
@@ -1222,8 +1250,8 @@ def main():
             pass
 
     ahora = dt.datetime.now(UTC)
-    if a.aprobar:
-        return aprobar(a.publico or os.path.join(BASE, "repos", "nexora-terminal"), log)
+    if a.aprobar is not None:
+        return aprobar(a.publico or os.path.join(BASE, "repos", "nexora-terminal"), log, a.aprobar or None)
     if a.registrar_tarea:
         if not os.path.exists(ANCLADO):
             log("primero aprueba una versión: python tools/exportar_obsidian.py --aprobar")
@@ -1255,7 +1283,7 @@ def main():
             pendiente = comprobar_actualizacion(publico)
             if pendiente:
                 log(f"EXPORTADOR ACTUALIZADO en el repo ({pendiente['commit']}), pendiente de aprobar: +{pendiente['resumen']['anade']} −{pendiente['resumen']['quita']} líneas. "
-                    "Se sigue ejecutando la versión aprobada. Aprobar: python tools/exportar_obsidian.py --aprobar")
+                    "Se sigue ejecutando la versión aprobada. Aprobar tras revisar el diff: python tools/exportar_obsidian.py --aprobar <hash>")
         if a.vista_previa:
             d = Datos(publico, a.hoy)
             print(snapshot(a.vista_previa, d)[0])
