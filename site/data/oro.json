@@ -339,10 +339,10 @@
     "id": "fedwatch",
     "dato": "FedWatch",
     "que_mirar": "Probabilidades de recortes/subidas",
-    "dir": "→",
+    "dir": "↓",
     "valor": "2026-10-28: subida 10 % · mantener 90 % · bajada 0 %",
-    "estado": "NEUTRAL",
-    "lectura": "1 sesión +4 pts de subida; tipo esperado a 3 reuniones -4 pb en 5 sesiones · Sin cambio",
+    "estado": "FAVORABLE",
+    "lectura": "1 sesión +4 pts de subida; tipo esperado a 3 reuniones -6 pb en 5 sesiones · Más relajación descontada",
     "fuente": "FedWatch NEXORA (futuros ZQ, método CME) 2026-10-23",
     "puntua": true
    },
@@ -486,8 +486,8 @@
    {
     "par": "2Y ↔ FedWatch",
     "busca": "2Y ↓ + más recortes descontados",
-    "estado": "NO SE CUMPLE",
-    "detalle": "2Y -12 pb · FedWatch NEUTRAL",
+    "estado": "CUMPLE",
+    "detalle": "2Y -12 pb · FedWatch FAVORABLE",
     "lectura": "Expectativas de tipos más relajadas"
    },
    {
@@ -528,7 +528,7 @@
   ],
   "confluencia": {
    "lectura": "PREDOMINIO FAVORABLE",
-   "favorables": 3,
+   "favorables": 4,
    "contrarias": 1,
    "sin_dato": 0,
    "disponibles": 5,
@@ -554,8 +554,8 @@
     {
      "id": "fedwatch",
      "dato": "FedWatch",
-     "dir": "→",
-     "estado": "NEUTRAL"
+     "dir": "↓",
+     "estado": "FAVORABLE"
     },
     {
      "id": "nfci",
@@ -690,7 +690,7 @@
     "paso": "MACRO",
     "que": "DXY → 2Y → 10Y → 10Y real → FedWatch → NFCI",
     "estado": "FAVORABLE",
-    "detalle": "PREDOMINIO FAVORABLE: 3 a favor, 1 en contra, 0 sin dato de 5"
+    "detalle": "PREDOMINIO FAVORABLE: 4 a favor, 1 en contra, 0 sin dato de 5"
    },
    {
     "n": 2,
@@ -761,7 +761,7 @@
    {
     "n": 4,
     "pregunta": "¿FedWatch se mueve hacia recortes o subidas?",
-    "respuesta": "1 sesión +4 pts de subida; tipo esperado a 3 reuniones -4 pb en 5 sesiones · Sin cambio"
+    "respuesta": "1 sesión +4 pts de subida; tipo esperado a 3 reuniones -6 pb en 5 sesiones · Más relajación descontada"
    },
    {
     "n": 5,
@@ -5011,6 +5011,6 @@
    ]
   ]
  },
- "evaluado_utc": "2026-10-23 12:07 UTC",
+ "evaluado_utc": "2026-10-23 13:07 UTC",
  "fedwatch_fecha_precios": "2026-10-23"
 }
