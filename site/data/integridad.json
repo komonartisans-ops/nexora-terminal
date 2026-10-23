@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-23 21:07 UTC",
+ "generado_utc": "2026-10-23 21:30 UTC",
  "resumen": {
   "al_dia": 27,
   "total": 28,
@@ -18,7 +18,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-23",
-   "registrado_utc": "2026-10-23 21:07 UTC",
+   "registrado_utc": "2026-10-23 21:30 UTC",
    "proximo_utc": "2026-10-23 22:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -138,7 +138,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-22",
-   "registrado_utc": "2026-10-23 21:07 UTC",
+   "registrado_utc": "2026-10-23 21:30 UTC",
    "proximo_utc": "2026-10-23 22:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -150,7 +150,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-23",
-   "registrado_utc": "2026-10-23 21:07 UTC",
+   "registrado_utc": "2026-10-23 21:30 UTC",
    "proximo_utc": "2026-10-23 22:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -174,7 +174,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-23",
-   "registrado_utc": "2026-10-23 21:07 UTC",
+   "registrado_utc": "2026-10-23 21:30 UTC",
    "proximo_utc": "2026-10-23 22:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -186,7 +186,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": null,
-   "registrado_utc": "2026-10-23 20:19 UTC",
+   "registrado_utc": "2026-10-23 21:07 UTC",
    "proximo_utc": "2026-10-23 22:07 UTC",
    "discrepancias_abiertas": 0
   },
@@ -210,7 +210,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-22",
-   "registrado_utc": "2026-10-23 10:19 UTC",
+   "registrado_utc": "2026-10-23 21:30 UTC",
    "proximo_utc": "2026-10-24 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -222,7 +222,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-23",
-   "registrado_utc": "2026-10-23 10:19 UTC",
+   "registrado_utc": "2026-10-23 21:30 UTC",
    "proximo_utc": "2026-10-24 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -306,7 +306,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-22",
-   "registrado_utc": "2026-10-23 10:19 UTC",
+   "registrado_utc": "2026-10-23 21:30 UTC",
    "proximo_utc": "2026-10-24 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -318,7 +318,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-23",
-   "registrado_utc": "2026-10-23 10:19 UTC",
+   "registrado_utc": "2026-10-23 21:30 UTC",
    "proximo_utc": "2026-10-24 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -330,7 +330,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-23",
-   "registrado_utc": "2026-10-23 10:19 UTC",
+   "registrado_utc": "2026-10-23 21:30 UTC",
    "proximo_utc": "2026-10-24 05:30 UTC",
    "discrepancias_abiertas": 0
   },
@@ -342,7 +342,7 @@
    "color": "verde",
    "motivo": "al día",
    "ultimo_dato": "2026-10-22",
-   "registrado_utc": "2026-10-23 10:19 UTC",
+   "registrado_utc": "2026-10-23 21:30 UTC",
    "proximo_utc": "2026-10-24 05:30 UTC",
    "discrepancias_abiertas": 0
   }
@@ -1598,14 +1598,53 @@
   "fuente": "data/vigilar_cierre.csv · workflow vigilar_cierre (cron-job.org 22:15 UTC)"
  },
  "spot_oro": {
-  "ultimo": null,
+  "ultimo": {
+   "fecha": "2026-10-23",
+   "hora_utc": "2026-10-23 21:32",
+   "spot_principal": "3996.9",
+   "principal_hora_utc": "2026-10-23 21:32",
+   "gc_precio": "4010.0",
+   "gc_barra_utc": "2026-10-23 20:59",
+   "base_usada": "14.5",
+   "base_fecha": "2026-10-22",
+   "spot_gc_implicito": "3995.5",
+   "gc_sinc": "NO",
+   "dif_gc_pct": "",
+   "swiss_precio": "3997.89",
+   "swiss_hora_utc": "2026-10-23 21:00",
+   "swiss_sinc": "NO",
+   "dif_swiss_pct": "",
+   "estado": "NO_SINCRONIZADO",
+   "spot_fuente": "GOLD_API",
+   "spot_usado": "3996.9",
+   "ratio_fuente": "SESION",
+   "nota": "GC=F de las 2026-10-23 20:59 frente a la principal de las 2026-10-23 21:32: más de 5 min · Swissquote de las 2026-10-23 21:00 frente a la principal de las 2026-10-23 21:32: más de 5 min",
+   "medido_utc": "2026-10-23 21:30 UTC",
+   "texto_fuentes": "gold-api 3996.9 (21:32 UTC) · GC=F 4010.0 − base 14.5 = 3995.5 implícito (20:59 UTC; informativo (retraso ~10 min)) · Swissquote 3997.89 (21:00 UTC; NO SINCRONIZADO)",
+   "verificado": false,
+   "dudoso": false,
+   "umbral_pct": 0.3
+  },
   "racha_dudoso": 0,
   "racha_desde": null,
   "racha_swiss_caido": 0,
   "racha_swiss_desde": null,
   "sesiones_swiss_aviso": 3,
-  "sesiones_registradas": 0,
-  "historial": [],
+  "sesiones_registradas": 1,
+  "historial": [
+   {
+    "fecha": "2026-10-23",
+    "hora_utc": "2026-10-23 21:32",
+    "spot_principal": "3996.9",
+    "spot_gc_implicito": "3995.5",
+    "swiss_precio": "3997.89",
+    "dif_gc_pct": "",
+    "dif_swiss_pct": "",
+    "estado": "NO_SINCRONIZADO",
+    "spot_fuente": "GOLD_API",
+    "ratio_fuente": "SESION"
+   }
+  ],
   "regla": "OK si la diferencia entre fuentes de la misma hora (±5 min) es ≤ 0,3 %; DUDOSO si la supera (el ratio no se actualiza); GC_IMPLICITO si la principal cae (SWISSQUOTE si tampoco hay GC: último recurso, ratio y base sin actualizar); NO_SINCRONIZADO si las fuentes no son de la misma hora. El GC=F es informativo (Yahoo lo da con ≈ 10 min de retraso) y respaldo si cae la principal.",
   "fuente": "data/xau_spot_contraste.csv · engine/spot_oro.py (gold-api, GC=F − base, Swissquote)"
  },
@@ -1656,5 +1695,5 @@
   "regla": "aviso si a la hora de publicación + 2 h el periodo nuevo no está en publicados.json"
  },
  "errores": {},
- "duracion_s": 401.0
+ "duracion_s": 400.7
 }
