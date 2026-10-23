@@ -171,9 +171,9 @@
    "horizontes": {
     "1": {
      "estado": "ACIERTO",
-     "ret_pct": -0.24,
+     "ret_pct": -0.25,
      "fecha": "2026-10-23",
-     "precio": 2774.4436
+     "precio": 2774.0583
     },
     "5": {
      "estado": "PENDIENTE"
@@ -194,9 +194,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -3.16,
+     "ret_pct": -3.18,
      "fecha": "2026-10-23",
-     "precio": 4011.0
+     "precio": 4010.1001
     },
     "5": {
      "estado": "PENDIENTE"
@@ -217,9 +217,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -2.67,
+     "ret_pct": -2.85,
      "fecha": "2026-10-23",
-     "precio": 29024.998
+     "precio": 28972.0215
     },
     "5": {
      "estado": "PENDIENTE"
@@ -777,9 +777,9 @@
     },
     "5": {
      "estado": "ACIERTO",
-     "ret_pct": -0.77,
+     "ret_pct": -0.94,
      "fecha": "2026-10-23",
-     "precio": 81438.5234
+     "precio": 81295.7031
     },
     "20": {
      "estado": "PENDIENTE"
@@ -941,9 +941,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": 0.2,
+     "ret_pct": 0.18,
      "fecha": "2026-10-23",
-     "precio": 52281.3789
+     "precio": 52270.3516
     },
     "20": {
      "estado": "PENDIENTE"
@@ -987,9 +987,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": 0.26,
+     "ret_pct": 0.25,
      "fecha": "2026-10-23",
-     "precio": 2774.4436
+     "precio": 2774.0583
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1013,9 +1013,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": -4.47,
+     "ret_pct": -4.49,
      "fecha": "2026-10-23",
-     "precio": 4011.0
+     "precio": 4010.1001
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1039,9 +1039,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": -3.04,
+     "ret_pct": -3.22,
      "fecha": "2026-10-23",
-     "precio": 29024.998
+     "precio": 28972.0215
     },
     "20": {
      "estado": "PENDIENTE"
@@ -2112,6 +2112,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-23 18:07 UTC",
+ "generado_utc": "2026-10-23 19:07 UTC",
  "duracion_s": 0.0
 }
