@@ -1,6 +1,6 @@
 {
  "periodo": "hoy",
- "corte": "Datos entre el 2026-10-21 y el 2026-10-23 (cada fuente publica a su hora)",
+ "corte": "Datos entre el 2026-10-22 y el 2026-10-23 (cada fuente publica a su hora)",
  "movido": "El bono a 2 años baja 16 pb (hasta 4,65 %); el tipo real a 10 años baja 12 pb; el miedo (VIX) sube 14 %. En conjunto: el dinero se abarata.",
  "significa": [
   {
@@ -16,7 +16,7 @@
   {
    "activo": "S&P 500",
    "viento": "A FAVOR",
-   "texto": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene."
+   "texto": "A favor: bajan los tipos a corto plazo (pesa más que: el crédito se encarece). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene."
   },
   {
    "activo": "Bitcoin",
@@ -25,13 +25,13 @@
   },
   {
    "activo": "US30 · Dow Jones",
-   "viento": "A FAVOR",
-   "texto": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo)."
+   "viento": "SIN VIENTO CLARO",
+   "texto": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero el crédito se encarece."
   },
   {
    "activo": "Russell 2000",
    "viento": "A FAVOR",
-   "texto": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo)."
+   "texto": "A favor: bajan los tipos a corto plazo (pesa más que: el crédito se encarece)."
   }
  ],
  "vigilar": [
@@ -44,7 +44,8 @@
  "motores_significativos": [
   "t2y",
   "real",
-  "vix"
+  "vix",
+  "hy"
  ],
  "errores": {
   "lbma": "HTTPError: HTTP Error 403: Forbidden"
@@ -68,6 +69,12 @@
     "sube": true,
     "peso": -1.76,
     "razon": "sube el miedo"
+   },
+   {
+    "motor": "hy",
+    "sube": true,
+    "peso": -1.62,
+    "razon": "el crédito se encarece"
    }
   ],
   "S&P 500": [
@@ -88,6 +95,12 @@
     "sube": true,
     "peso": -1.76,
     "razon": "sube el miedo"
+   },
+   {
+    "motor": "hy",
+    "sube": true,
+    "peso": -2.44,
+    "razon": "el crédito se encarece"
    }
   ],
   "Oro": [
@@ -128,6 +141,12 @@
     "sube": true,
     "peso": -1.76,
     "razon": "sube el miedo"
+   },
+   {
+    "motor": "hy",
+    "sube": true,
+    "peso": -1.62,
+    "razon": "el crédito se encarece"
    }
   ],
   "US30 · Dow Jones": [
@@ -148,6 +167,12 @@
     "sube": true,
     "peso": -1.76,
     "razon": "sube el miedo"
+   },
+   {
+    "motor": "hy",
+    "sube": true,
+    "peso": -2.03,
+    "razon": "el crédito se encarece"
    }
   ],
   "Russell 2000": [
@@ -168,6 +193,12 @@
     "sube": true,
     "peso": -1.76,
     "razon": "sube el miedo"
+   },
+   {
+    "motor": "hy",
+    "sube": true,
+    "peso": -3.25,
+    "razon": "el crédito se encarece"
    }
   ]
  },
@@ -183,9 +214,9 @@
    "fecha": "2026-10-22"
   },
   "dxy": {
-   "valor": 101.75549585076955,
-   "delta": 0.10045650552439334,
-   "fecha": "2026-10-22"
+   "valor": 101.80050371836064,
+   "delta": 0.04423138742020161,
+   "fecha": "2026-10-23"
   },
   "vix": {
    "valor": 19.03,
@@ -193,9 +224,9 @@
    "fecha": "2026-10-22"
   },
   "hy": {
-   "valor": 327.0,
-   "delta": -6.000000000000005,
-   "fecha": "2026-10-21"
+   "valor": 340.0,
+   "delta": 12.99999999999999,
+   "fecha": "2026-10-22"
   },
   "fed": {
    "valor": 10.0,
@@ -217,9 +248,9 @@
    "valor": 7663.43
   },
   "Oro": {
-   "delta": -0.49256232097867336,
+   "delta": -0.6600286999325022,
    "fecha": "2026-10-23",
-   "valor": 4040.39990234375
+   "valor": 4033.60009765625
   },
   "Bitcoin": {
    "delta": -3.2341811041923685,
@@ -347,15 +378,21 @@
      "sube": true,
      "peso": -1.76,
      "razon": "sube el miedo"
+    },
+    {
+     "motor": "hy",
+     "sube": true,
+     "peso": -1.62,
+     "razon": "el crédito se encarece"
     }
    ]
   },
   "S&P 500": {
-   "etiqueta": "ALCISTA DÉBIL",
-   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso VIX y NFCI (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo).",
-   "viento_semana": "A FAVOR",
+   "etiqueta": "SIN TESIS",
+   "tesis": "SIN TESIS: ni la macro ni su motor propio (MIXTO) marcan dirección.",
+   "hoy": "A favor: bajan los tipos a corto plazo (pesa más que: el crédito se encarece). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
+   "semana": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero el crédito se encarece.",
+   "viento_semana": "SIN VIENTO CLARO",
    "propio": {
     "veredicto": "MIXTO",
     "detalle": "5 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del S&P 500: amplitud favorable · beneficios sin dato (Tipos + beneficios + amplitud + mega caps)",
@@ -404,15 +441,21 @@
      "sube": true,
      "peso": -1.76,
      "razon": "sube el miedo"
+    },
+    {
+     "motor": "hy",
+     "sube": true,
+     "peso": -2.44,
+     "razon": "el crédito se encarece"
     }
    ]
   },
   "Bitcoin": {
-   "etiqueta": "ALCISTA DÉBIL",
-   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso Chicago Fed NFCI y Daily Treasury Statement (hoy ya empujan en sentido contrario).",
+   "etiqueta": "SIN TESIS",
+   "tesis": "SIN TESIS: ni la macro ni su motor propio (SEÑALES INICIALES DE GIRO) marcan dirección.",
    "hoy": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo). Se mueve EN CONTRA de la macro: el motor es propio (flujos, noticias), vigilar si se sostiene.",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo).",
-   "viento_semana": "A FAVOR",
+   "semana": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero sube el miedo.",
+   "viento_semana": "SIN VIENTO CLARO",
    "propio": {
     "veredicto": "SEÑALES INICIALES DE GIRO",
     "detalle": "checklist de liquidez 5/8 (drenan 1) · secuencia 1/7 pasos",
@@ -464,15 +507,21 @@
      "sube": true,
      "peso": -1.76,
      "razon": "sube el miedo"
+    },
+    {
+     "motor": "hy",
+     "sube": true,
+     "peso": -1.62,
+     "razon": "el crédito se encarece"
     }
    ]
   },
   "US30 · Dow Jones": {
-   "etiqueta": "ALCISTA DÉBIL",
-   "tesis": "ALCISTA DÉBIL: solo lo empuja la macro de la semana (a favor); lo otro está neutral. Lo que la rompería: que ganen peso VIX y NFCI (hoy ya empujan en sentido contrario).",
-   "hoy": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo).",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo). Su movimiento lo explica la macro.",
-   "viento_semana": "A FAVOR",
+   "etiqueta": "SIN TESIS",
+   "tesis": "SIN TESIS: ni la macro ni su motor propio (MIXTO) marcan dirección.",
+   "hoy": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero el crédito se encarece.",
+   "semana": "Sin viento claro: fuerzas opuestas: baja el tipo real (lo que más les ayuda), pero el crédito se encarece. Se mueve por motivos propios, no por la macro.",
+   "viento_semana": "SIN VIENTO CLARO",
    "propio": {
     "veredicto": "MIXTO",
     "detalle": "5 risk-on / 2 risk-off de 7 · liquidez NEUTRAL · amplitud CONFIRMA · lo propio del US30 · Dow Jones: industriales neutral · financieras favorable (Ciclo, industriales, financieros, empresas maduras)",
@@ -521,14 +570,20 @@
      "sube": true,
      "peso": -1.76,
      "razon": "sube el miedo"
+    },
+    {
+     "motor": "hy",
+     "sube": true,
+     "peso": -2.03,
+     "razon": "el crédito se encarece"
     }
    ]
   },
   "Russell 2000": {
    "etiqueta": "SIN TESIS",
    "tesis": "SIN TESIS: choque de fuerzas. La macro de la semana va a favor, pero su motor propio dice DESFAVORABLE. Hasta que una gane, no hay ventaja.",
-   "hoy": "A favor: bajan los tipos a corto plazo (pesa más que: sube el miedo).",
-   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: sube el miedo).",
+   "hoy": "A favor: bajan los tipos a corto plazo (pesa más que: el crédito se encarece).",
+   "semana": "A favor: baja el tipo real (lo que más les ayuda) (pesa más que: el crédito se encarece).",
    "viento_semana": "A FAVOR",
    "propio": {
     "veredicto": "DESFAVORABLE",
@@ -578,6 +633,12 @@
      "sube": true,
      "peso": -1.76,
      "razon": "sube el miedo"
+    },
+    {
+     "motor": "hy",
+     "sube": true,
+     "peso": -3.25,
+     "razon": "el crédito se encarece"
     }
    ]
   }
@@ -599,8 +660,8 @@
    "disponible": true
   }
  },
- "sencillo_activos": "Empujan a favor: Oro, Nasdaq 100, S&P 500, Bitcoin y US30 · Dow Jones; sin ventaja clara: Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
+ "sencillo_activos": "Empujan a favor: Oro y Nasdaq 100; sin ventaja clara: S&P 500, Bitcoin, US30 · Dow Jones y Russell 2000 (sus fuerzas se anulan; mejor esperar a que una gane). Cada activo tiene su propio motor: el oro mira al dólar y al tipo real, la bolsa a los beneficios y a cuántas empresas suben, y bitcoin a si entra o sale dinero del sistema.",
  "ok": true,
- "generado_utc": "2026-10-23 13:07 UTC",
- "duracion_s": 102.1
+ "generado_utc": "2026-10-23 14:07 UTC",
+ "duracion_s": 110.9
 }

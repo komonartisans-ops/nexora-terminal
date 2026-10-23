@@ -57,15 +57,15 @@
    },
    {
     "dimension": "CRÉDITO",
-    "estado": "SE ENDURECE (menos crédito, diferenciales ↑) · ESTRÉS EN HIGH YIELD",
-    "dir": "↓",
+    "estado": "ESTABLE · ESTRÉS EN HIGH YIELD",
+    "dir": "→",
     "evidencia": [
-     "Diferencial high yield 327 pb (+54 pb en 20 sesiones)",
-     "Diferencial grado de inversión 88 pb (+11 pb en 20 sesiones)",
+     "Diferencial high yield 340 pb (+60 pb en 20 sesiones)",
+     "Diferencial grado de inversión 89 pb (+10 pb en 20 sesiones)",
      "Crédito bancario 13 semanas anualizado +5.6 % vs +6.2 % interanual (H.8)"
     ],
     "fuente": "ICE BofA y Fed H.8 vía FRED",
-    "puntos": -2
+    "puntos": -1
    },
    {
     "dimension": "POLÍTICA MONETARIA",
@@ -73,7 +73,7 @@
     "dir": "↑",
     "evidencia": [
      "Tipo objetivo de la Fed (techo) 4.00 % (+25 pb en 6 meses)",
-     "FedWatch NEXORA (2026-10-23): reunión del 2026-10-28 subida 10 % / mantener 90 % / bajada 0 % (+4 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +29 pb vs hoy (más blanda (el mercado espera tipos más bajos) que hace 5 sesiones) → el mercado descuenta subidas",
+     "FedWatch NEXORA (2026-10-23): reunión del 2026-10-28 subida 10 % / mantener 90 % / bajada 0 % (+4 pts en 1 sesión); tipo esperado tras la reunión del 2027-01-27 +30 pb vs hoy (más blanda (el mercado espera tipos más bajos) que hace 5 sesiones) → el mercado descuenta subidas",
      "Bono a 2 años 4.65 % vs tipo efectivo 3.88 % → +77 pb: el mercado descuenta subidas (proxy; no es FedWatch)",
      "Tipo real de la Fed (efectivo − PCE subyacente) +0.87 %",
      "Letra 1 año − tipo efectivo +53 pb (-8 pb en 5 sesiones)"
@@ -140,7 +140,7 @@
      "10Y real: semana -14.0 · mes -12.0 pb",
      "DXY: semana -0.3 · mes +0.5 %",
      "VIX: semana +15.6 · mes — %",
-     "High yield: semana — · mes +54.0 pb"
+     "High yield: semana — · mes +60.0 pb"
     ],
     "fuente": "Cboe, FRED, Coinbase, Tesoro, BCE; oro: COMEX GC=F (Yahoo Finance), respaldo: LBMA no respondió (datos de los tres monitores)",
     "puntos": null
@@ -267,7 +267,7 @@
    },
    "High yield": {
     "semana": null,
-    "mes": 54.0,
+    "mes": 60.00000000000001,
     "unidad": "pb"
    }
   },
@@ -327,7 +327,7 @@
    },
    {
     "pregunta": "¿Qué está desacelerando?",
-    "respuesta": "crédito"
+    "respuesta": "Nada con claridad."
    },
    {
     "pregunta": "¿Dónde aparece estrés?",
@@ -1050,6 +1050,6 @@
   "indices": "calculado en esta ejecución"
  },
  "ok": true,
- "generado_utc": "2026-10-23 13:07 UTC",
- "duracion_s": 8.5
+ "generado_utc": "2026-10-23 14:07 UTC",
+ "duracion_s": 7.7
 }

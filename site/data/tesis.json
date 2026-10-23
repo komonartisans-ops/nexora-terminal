@@ -170,7 +170,10 @@
    "capturado_utc": "2026-10-21 23:58 UTC",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "ACIERTO",
+     "ret_pct": -0.59,
+     "fecha": "2026-10-23",
+     "precio": 2764.7119
     },
     "5": {
      "estado": "PENDIENTE"
@@ -191,9 +194,9 @@
    "horizontes": {
     "1": {
      "estado": "FALLO",
-     "ret_pct": -2.39,
+     "ret_pct": -2.49,
      "fecha": "2026-10-23",
-     "precio": 4043.2
+     "precio": 4038.8
     },
     "5": {
      "estado": "PENDIENTE"
@@ -213,7 +216,10 @@
    "capturado_utc": "2026-10-21 23:58 UTC",
    "horizontes": {
     "1": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret_pct": -2.8,
+     "fecha": "2026-10-23",
+     "precio": 28988.4844
     },
     "5": {
      "estado": "PENDIENTE"
@@ -771,9 +777,9 @@
     },
     "5": {
      "estado": "ACIERTO",
-     "ret_pct": -0.6,
+     "ret_pct": -0.36,
      "fecha": "2026-10-23",
-     "precio": 81577.4297
+     "precio": 81772.3672
     },
     "20": {
      "estado": "PENDIENTE"
@@ -934,7 +940,10 @@
      "precio": 51966.0312
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret_pct": 0.14,
+     "fecha": "2026-10-23",
+     "precio": 52252.8086
     },
     "20": {
      "estado": "PENDIENTE"
@@ -977,7 +986,10 @@
      "precio": 2728.3
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "ACIERTO",
+     "ret_pct": -0.09,
+     "fecha": "2026-10-23",
+     "precio": 2764.7119
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1001,9 +1013,9 @@
     },
     "5": {
      "estado": "FALLO",
-     "ret_pct": -3.7,
+     "ret_pct": -3.81,
      "fecha": "2026-10-23",
-     "precio": 4043.2
+     "precio": 4038.8
     },
     "20": {
      "estado": "PENDIENTE"
@@ -1026,7 +1038,10 @@
      "precio": 29529.3496
     },
     "5": {
-     "estado": "PENDIENTE"
+     "estado": "FALLO",
+     "ret_pct": -3.16,
+     "fecha": "2026-10-23",
+     "precio": 28988.4844
     },
     "20": {
      "estado": "PENDIENTE"
@@ -2041,11 +2056,11 @@
   "Nasdaq 100": {
    "1": {
     "aciertos": 0,
-    "evaluadas": 4
+    "evaluadas": 5
    },
    "5": {
     "aciertos": 0,
-    "evaluadas": 2
+    "evaluadas": 3
    }
   },
   "Oro": {
@@ -2060,12 +2075,12 @@
   },
   "Russell 2000": {
    "1": {
-    "aciertos": 7,
-    "evaluadas": 11
+    "aciertos": 8,
+    "evaluadas": 12
    },
    "5": {
-    "aciertos": 4,
-    "evaluadas": 6
+    "aciertos": 5,
+    "evaluadas": 7
    }
   },
   "S&P 500": {
@@ -2085,7 +2100,7 @@
    },
    "5": {
     "aciertos": 1,
-    "evaluadas": 6
+    "evaluadas": 7
    }
   }
  },
@@ -2097,6 +2112,6 @@
  "regla": "ALCISTA acierta si el precio a 1, 5 o 20 sesiones está por encima del precio de referencia del día de la tesis; BAJISTA si está por debajo. «SIN TESIS» no se evalúa. Sin sesiones suficientes: PENDIENTE.",
  "fuente": "data/registro_tesis.csv (solo se añade) + cierres de Yahoo Finance de precios.json",
  "ok": true,
- "generado_utc": "2026-10-23 13:07 UTC",
+ "generado_utc": "2026-10-23 14:07 UTC",
  "duracion_s": 0.0
 }
