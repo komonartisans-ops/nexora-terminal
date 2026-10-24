@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-24 09:39 UTC",
+ "generado_utc": "2026-10-24 12:36 UTC",
  "fecha_datos": "2026-10-23",
  "precios": {
   "wti": {
@@ -16037,5 +16037,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (CL=F, BZ=F, contratos CL<mes><año>.NYM, XLE, DXY) · FRED (DCOILWTICO, DCOILBRENTEU, GASREGW, T5YIE) · EIA (Weekly Petroleum Status Report) · CFTC (WTI-PHYSICAL)",
- "duracion_s": 16.3
+ "duracion_s": 8.4
 }

@@ -5,26 +5,26 @@
   "GC": {
    "sesion": "2026-10-23",
    "regimen": "NEGATIVA",
-   "flip": 4175.6,
-   "call_wall": 4156.0,
-   "put_wall": 3774.4,
-   "max_gamma": 3774.4,
+   "flip": 4177.6,
+   "call_wall": 4158.0,
+   "put_wall": 3776.2,
+   "max_gamma": 3776.2,
    "max_gamma_tipo": "acelera",
    "em": 61.1,
    "spot_estado": "no_verificado",
-   "generado_utc": "2026-10-24 09:39 UTC"
+   "generado_utc": "2026-10-24 12:36 UTC"
   },
   "MGC": {
    "sesion": "2026-10-23",
    "regimen": "NEGATIVA",
-   "flip": 4175.6,
-   "call_wall": 4156.0,
-   "put_wall": 3774.4,
-   "max_gamma": 3774.4,
+   "flip": 4177.6,
+   "call_wall": 4158.0,
+   "put_wall": 3776.2,
+   "max_gamma": 3776.2,
    "max_gamma_tipo": "acelera",
    "em": 61.1,
    "spot_estado": "no_verificado",
-   "generado_utc": "2026-10-24 09:39 UTC",
+   "generado_utc": "2026-10-24 12:36 UTC",
    "alias_de": "GC"
   },
   "ES": {
@@ -37,7 +37,7 @@
    "max_gamma_tipo": "acelera",
    "em": 93.9,
    "spot_estado": "verificado",
-   "generado_utc": "2026-10-24 09:39 UTC"
+   "generado_utc": "2026-10-24 12:36 UTC"
   },
   "MES": {
    "sesion": "2026-10-23",
@@ -49,7 +49,7 @@
    "max_gamma_tipo": "acelera",
    "em": 93.9,
    "spot_estado": "verificado",
-   "generado_utc": "2026-10-24 09:39 UTC",
+   "generado_utc": "2026-10-24 12:36 UTC",
    "alias_de": "ES"
   },
   "NQ": {
@@ -62,7 +62,7 @@
    "max_gamma_tipo": "acelera",
    "em": 519.2,
    "spot_estado": "verificado",
-   "generado_utc": "2026-10-24 09:39 UTC"
+   "generado_utc": "2026-10-24 12:36 UTC"
   },
   "MNQ": {
    "sesion": "2026-10-23",
@@ -74,7 +74,7 @@
    "max_gamma_tipo": "acelera",
    "em": 519.2,
    "spot_estado": "verificado",
-   "generado_utc": "2026-10-24 09:39 UTC",
+   "generado_utc": "2026-10-24 12:36 UTC",
    "alias_de": "NQ"
   },
   "YM": {
@@ -87,7 +87,7 @@
    "max_gamma_tipo": "acelera",
    "em": 567.4,
    "spot_estado": "verificado",
-   "generado_utc": "2026-10-24 09:39 UTC"
+   "generado_utc": "2026-10-24 12:36 UTC"
   },
   "MYM": {
    "sesion": "2026-10-23",
@@ -99,7 +99,7 @@
    "max_gamma_tipo": "acelera",
    "em": 567.4,
    "spot_estado": "verificado",
-   "generado_utc": "2026-10-24 09:39 UTC",
+   "generado_utc": "2026-10-24 12:36 UTC",
    "alias_de": "YM"
   }
  },
@@ -107,6 +107,6 @@
  "fuente": "NEXORA (CRITERIO NEXORA, método propio) con la cadena de opciones de Cboe (15 min de retraso) de la sesión indicada; GC, YM y el EM del oro son de ETF de referencia (GLD, DIA)",
  "aviso": "Contexto de mercado, no una entrada. Si «sesion» no es la última sesión de mercado, los niveles están caducados.",
  "ok": true,
- "generado_utc": "2026-10-24 11:54 UTC",
+ "generado_utc": "2026-10-24 12:36 UTC",
  "duracion_s": 0.0
 }
