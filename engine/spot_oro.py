@@ -232,6 +232,8 @@ def racha_swiss_caido(raiz):
     """Sesiones consecutivas, hasta la última registrada, en las que Swissquote no respondió: (n, fecha de inicio de la racha)."""
     n, ini = 0, None
     for r in reversed(filas(raiz)):
+        if dt.date.fromisoformat(r["fecha"][:10]).weekday() >= 5:       # el cierre tardío (00:01 UTC) deja filas en sábado/domingo con el mercado cerrado: no son sesiones y no alargan ni cortan la racha
+            continue
         if r.get("swiss_precio") != "":
             break
         n, ini = n + 1, r["fecha"]

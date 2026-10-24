@@ -172,6 +172,11 @@ assert len(sw) == 1 and "3 sesiones seguidas" in sw[0] and "desde 2026-10-21" in
 assert SO.racha_swiss_caido(T)[0] == 4 and IG._resumen_spot(T)["racha_swiss_caido"] == 4
 dec(T, F(), "2026-10-27")
 assert SO.racha_swiss_caido(T)[0] == 0, "una respuesta de Swissquote corta la racha"
+T = raiz()      # filas de sábado/domingo (cierre tardío de las 00:01 UTC con el mercado cerrado) no cuentan como sesiones
+dec(T, F(swiss=None), "2026-10-23")
+for ses in ("2026-10-24", "2026-10-25"):
+    dec(T, F(swiss=None), ses)
+assert SO.racha_swiss_caido(T) == (1, "2026-10-23"), SO.racha_swiss_caido(T)
 d = dec(raiz(), F(swiss=None, gc=None))
 assert d["estado"] == "SIN_CONTRASTE" and GO.anotar_ratio(raiz(), "2026-10-23", F(swiss=None, gc=None), "t") is not None, "SIN_CONTRASTE no frena el ratio"
 d = dec(raiz(), F(hg="2026-10-23 12:40", swiss=None))

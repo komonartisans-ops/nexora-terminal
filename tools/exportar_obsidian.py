@@ -784,23 +784,33 @@ def foto_texto(f):
 
 
 def hash_op(t):
-    base = {k: t.get(k) for k in ("fecha", "hora", "hora_salida", "activo", "lado", "precio_entrada", "precio_salida", "pnl", "r", "nota", "setup", "conf", "foto")}
+    base = {k: t.get(k) for k in ("fecha", "hora", "hora_salida", "activo", "lado", "instrumento", "tamano", "valor_punto", "precio_entrada", "precio_stop", "precio_objetivo", "precio_salida", "pnl", "r", "r_plan",
+                                  "nota", "setup", "conf", "foto")}
     return hashlib.sha1(json.dumps(base, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()[:8]
+
+
+def r_de(t):
+    """R de la operación o None. Solo el que calcula el Diario (resultado $ / riesgo $ con stop); sin stop es None y no se inventa."""
+    try:
+        return float(t["r"]) if t.get("r") not in (None, "") else None
+    except (TypeError, ValueError):
+        return None
 
 
 def fila_op(estado, t):
     pnl = float(t.get("pnl") or 0)
-    r = t.get("r")
+    r = r_de(t)
     return "| " + " | ".join(celda(x) for x in [
         estado, t.get("fecha"), t.get("hora") or "SIN DATO", t.get("activo"), SETUP_CORTO.get(t.get("setup"), "sin setup"), t.get("lado"),
-        (n(r, 2, True) if r not in (None, "") else "SIN DATO"), n(pnl, 2, True), "GANADA" if pnl > 0 else "PERDIDA" if pnl < 0 else "BE",
+        (n(r, 2, True) if r is not None else "SIN DATO"), n(pnl, 2, True), "GANADA" if pnl > 0 else "PERDIDA" if pnl < 0 else "BE",
         ", ".join(CONF_NOMBRES.get(k, k) for k in t.get("conf") or []) or "—", foto_texto(t.get("foto")), t.get("id"), hash_op(t)]) + " |"
 
 
-def pf(ts):
-    g = sum(float(t["pnl"]) for t in ts if float(t["pnl"]) > 0)
-    p = -sum(float(t["pnl"]) for t in ts if float(t["pnl"]) < 0)
-    return "SIN DATO" if not ts else ("∞ (sin pérdidas)" if p == 0 and g > 0 else "—" if p == 0 else n(g / p, 2))
+def pf(valores):
+    """Profit factor de una lista de resultados (en $ o en R): ganancias brutas / pérdidas brutas."""
+    g = sum(v for v in valores if v > 0)
+    p = -sum(v for v in valores if v < 0)
+    return "SIN DATO" if not valores else ("∞ (sin pérdidas)" if p == 0 and g > 0 else "—" if p == 0 else n(g / p, 2))
 
 
 def resumen_mes(mes, ts):
@@ -808,16 +818,20 @@ def resumen_mes(mes, ts):
     if not ts:
         return "\n".join(L + ["Sin operaciones.", ""])
     gan = [t for t in ts if float(t["pnl"]) > 0]
-    con_r = [float(t["r"]) for t in ts if t.get("r") not in (None, "")]
+    con_r = [r_de(t) for t in ts if r_de(t) is not None]
     L += [f"- Operaciones: **{len(ts)}** · acierto: **{n(100 * len(gan) / len(ts), 0)} %** ({len(gan)} ganadas)" + (" · n<20: sin conclusión" if len(ts) < 20 else ""),
           f"- Resultado total: {n(sum(float(t['pnl']) for t in ts), 2, True)} $ · esperanza por operación: {n(sum(float(t['pnl']) for t in ts) / len(ts), 2, True)} $",
-          "- Esperanza en R: " + (f"**{n(sum(con_r) / len(con_r), 2, True)} R** ({len(con_r)} de {len(ts)} operaciones con R)" if con_r else "SIN DATO: el Diario guarda el resultado en $ y las operaciones no traen R; no se inventa."), ""]
+          "- Esperanza en R: " + (f"**{n(sum(con_r) / len(con_r), 2, True)} R** ({len(con_r)} de {len(ts)} operaciones con R) · profit factor en R: {pf(con_r)}" if con_r else
+                                 "SIN DATO: ninguna operación del mes tiene stop (R = resultado $ / riesgo $); no se inventa."), ""]
     filas = []
     for nombre in ("Barrido+vuelta", "Ruptura+continuación", "Otro", None):
         sub = [t for t in ts if t.get("setup") == nombre] if nombre else [t for t in ts if t.get("setup") not in SETUP_CORTO]
         if sub:
-            filas.append([(f"{SETUP_CORTO[nombre]} · {nombre}" if nombre else "sin setup"), len(sub), n(100 * sum(float(t["pnl"]) > 0 for t in sub) / len(sub), 0) + " %", n(sum(float(t["pnl"]) for t in sub) / len(sub), 2, True) + " $", pf(sub)])
-    return "\n".join(L + [tabla(["Setup", "n", "Acierto", "Esperanza ($/op.)", "Profit factor"], filas)])
+            rs = [r_de(t) for t in sub if r_de(t) is not None]
+            filas.append([(f"{SETUP_CORTO[nombre]} · {nombre}" if nombre else "sin setup"), len(sub), n(100 * sum(float(t["pnl"]) > 0 for t in sub) / len(sub), 0) + " %",
+                          n(sum(float(t["pnl"]) for t in sub) / len(sub), 2, True) + " $", pf([float(t["pnl"]) for t in sub]),
+                          (n(sum(rs) / len(rs), 2, True) + f" R ({len(rs)}/{len(sub)})") if rs else "SIN DATO", pf(rs) if rs else "SIN DATO"])
+    return "\n".join(L + [tabla(["Setup", "n", "Acierto", "Esperanza ($/op.)", "Profit factor ($)", "Esperanza (R/op.)", "Profit factor (R)"], filas)])
 
 
 def notas_diario(bov, d, privado):

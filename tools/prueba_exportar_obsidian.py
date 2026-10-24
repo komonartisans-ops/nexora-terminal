@@ -384,7 +384,7 @@ pasada(privado=PRIV)
 op = leer(OP)
 filas = [l for l in op.splitlines() if l.startswith("| ALTA")]
 assert len(filas) == 3 and "Barrido LIT" not in op and "Absorción, FVG" in op and "ALCISTA DÉBIL" in op and "gamma NEGATIVA" in op and "| A |" in op and "| B |" in op and "sin setup" in op, op
-assert "Operaciones: **3**" in op and "acierto: **67 %**" in op and "SIN DATO: el Diario guarda el resultado en $" in op and "n<20: sin conclusión" in op
+assert "Operaciones: **3**" in op and "acierto: **67 %**" in op and "SIN DATO: ninguna operación del mes tiene stop" in op and "n<20: sin conclusión" in op
 assert "A · Barrido+vuelta | 1 | 100 % | +120,00 $ | ∞ (sin pérdidas)" in op and "B · Ruptura+continuación | 1 | 0 % | -80,00 $ | 0,00" in op, op
 arbol = snap_arbol(BOV)
 assert cambios(pasada(privado=PRIV)) == 0 and snap_arbol(BOV) == arbol, "idempotente"
@@ -399,6 +399,7 @@ assert [l for l in op2.splitlines() if l.startswith("| ALTA")][:3] == antes, "la
 assert sum(l.startswith("| REVISADA") for l in op2.splitlines()) == 1 and "-30,00" in [l for l in op2.splitlines() if l.startswith("| REVISADA")][0]
 assert "-80,00" in op2 and op2.index("| ALTA | 2026-10-19") > op2.index("| REVISADA"), "se conserva la fila antigua y lo nuevo va al final"
 assert "Operaciones: **4**" in op2 and "+2,00 R" in op2 and "(1 de 4 operaciones con R)" in op2
+assert "+2,00 R (1/2)" in op2 and "Esperanza (R/op.)" in op2 and "profit factor en R: ∞ (sin pérdidas)" in op2, op2
 # borrado: lápida → fila ANULADA, nada se elimina
 diario([T1, T2b, T3, T4], {"c3": "2026-10-20T10:00:00.000Z"})
 pasada(privado=PRIV)

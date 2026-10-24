@@ -132,11 +132,35 @@ const CONFIRMACIONES = [['absorcion', 'Absorción'], ['iceberg', 'Iceberg'], ['d
 const CONF_NOMBRE = Object.fromEntries(CONFIRMACIONES);
 const setupChip = (t) => (t.setup || (t.conf && t.conf.length) ? `<span class="ck sd" title="${esc((t.conf || []).map((k) => CONF_NOMBRE[k] || k).join(', ') || 'sin confirmaciones')}">${esc(t.setup || 'sin setup')}${t.conf && t.conf.length ? ' · ' + t.conf.length + ' conf.' : ''}</span>` : '');
 const decNum = (v) => { const x = parseFloat(String(v ?? '').replace(/\s/g, '').replace(',', '.')); return Number.isFinite(x) ? x : null; };
+/* ---- R de la operación (Fase 20): riesgo en $ = |entrada − stop| × valor del punto × tamaño; R = resultado $ / riesgo $ (con signo);
+   R planeado = |objetivo − entrada| / |entrada − stop| (ámbar si < 2 R, regla del método). Todo se calcula; nada se inventa: sin stop, R = SIN DATO. */
+const INSTRUMENTOS = [['GC', 'GC · oro (futuro)', 100], ['MGC', 'MGC · micro oro', 10], ['ES', 'ES · E-mini S&P 500', 50], ['MES', 'MES · micro S&P 500', 5], ['NQ', 'NQ · E-mini Nasdaq 100', 20], ['MNQ', 'MNQ · micro Nasdaq 100', 2],
+  ['YM', 'YM · E-mini Dow', 5], ['MYM', 'MYM · micro Dow', 0.5], ['CFD XAU', 'CFD XAU/USD (valor del punto propio)', null], ['CFD US500', 'CFD US500 (valor del punto propio)', null], ['CFD US100', 'CFD US100 (valor del punto propio)', null], ['CFD US30', 'CFD US30 (valor del punto propio)', null]];
+const R_MIN = 2;
+const redond = (x, d) => Math.round(x * 10 ** d) / 10 ** d;
+const valorPuntoFijo = (ins) => { const i = INSTRUMENTOS.find((x) => x[0] === ins); return i ? i[2] : null; };
+const vpRecordado = (ins) => { try { const v = parseFloat(localStorage.getItem('nexora_vp_' + ins)); return Number.isFinite(v) && v > 0 ? v : null; } catch (e) { return null; } };
+const vpRecordar = (ins, v) => { try { localStorage.setItem('nexora_vp_' + ins, String(v)); } catch (e) { /* sin almacenamiento: se pedirá otra vez */ } };
+/* d: {lado, entrada, stop, salida, objetivo, vp, tam, pnl}. Devuelve {error} o {riesgo_usd, pnl, r, r_plan, aviso}. */
+function calcR(d) {
+  const pos = (x) => x != null && Number.isFinite(x);
+  if (![d.entrada, d.stop, d.salida].every(pos) || !pos(d.vp) || !pos(d.tam)) return { error: 'Faltan datos para calcular el R (entrada, stop, salida, tamaño y valor del punto).' };
+  if (d.vp <= 0 || d.tam <= 0) return { error: 'El valor del punto y el tamaño deben ser mayores que 0.' };
+  const dir = d.lado === 'Corto' ? -1 : 1, dist = Math.abs(d.entrada - d.stop);
+  if (dist === 0) return { error: 'El stop no puede ser igual a la entrada.' };
+  if ((d.entrada - d.stop) * dir < 0) return { error: `En una operación ${d.lado === 'Corto' ? 'corta' : 'larga'} el stop debe estar ${d.lado === 'Corto' ? 'por encima' : 'por debajo'} de la entrada.` };
+  if (pos(d.objetivo) && (d.objetivo - d.entrada) * dir <= 0) return { error: `El objetivo debe estar ${d.lado === 'Corto' ? 'por debajo' : 'por encima'} de la entrada.` };
+  const riesgo = dist * d.vp * d.tam, calc = (d.salida - d.entrada) * dir * d.vp * d.tam, pnl = pos(d.pnl) ? d.pnl : calc;
+  const r_plan = pos(d.objetivo) ? Math.abs(d.objetivo - d.entrada) / dist : null;
+  return { riesgo_usd: redond(riesgo, 2), pnl_calc: redond(calc, 2), pnl: redond(pnl, 2), r: redond(pnl / riesgo, 2), r_plan: r_plan == null ? null : redond(r_plan, 2), aviso: r_plan != null && r_plan < R_MIN };
+}
+const rTxt = (t) => (t.r == null || !Number.isFinite(+t.r) ? 'SIN DATO' : (+t.r > 0 ? '+' : '') + (+t.r).toFixed(2).replace('.', ',') + ' R');
 /* saneado de una operación leída de un JSON importado: conserva los campos nuevos (hora, precios, foto del sistema, mod) */
 function tradeNorm(t) {
   const o = { id: String(t.id || f5.uid()), fecha: t.fecha, activo: String(t.activo || 'Otro').slice(0, 40), lado: t.lado === 'Corto' ? 'Corto' : 'Largo', pnl: +t.pnl, nota: String(t.nota || '').slice(0, 240) };
   ['hora', 'hora_salida'].forEach((k) => { if (/^\d{1,2}:\d{2}$/.test(String(t[k] || ''))) o[k] = String(t[k]); });
-  ['precio_entrada', 'precio_salida'].forEach((k) => { if (t[k] != null && Number.isFinite(+t[k])) o[k] = +t[k]; });
+  ['precio_entrada', 'precio_salida', 'precio_stop', 'precio_objetivo', 'tamano', 'valor_punto', 'riesgo_usd', 'r', 'r_plan'].forEach((k) => { if (t[k] != null && Number.isFinite(+t[k])) o[k] = +t[k]; });
+  if (INSTRUMENTOS.some((i) => i[0] === t.instrumento)) o.instrumento = t.instrumento;
   if (t.foto && typeof t.foto === 'object' && !Array.isArray(t.foto)) o.foto = t.foto;
   if (SETUPS.includes(t.setup)) o.setup = t.setup;
   if (Array.isArray(t.conf)) { const c = [...new Set(t.conf.filter((k) => CONF_NOMBRE[k]))]; if (c.length) o.conf = c; }
@@ -180,7 +204,8 @@ function diarioStats(trs) {
   const n = trs.length, g = trs.filter((t) => t.pnl > 0), p = trs.filter((t) => t.pnl < 0);
   const tot = trs.reduce((a, t) => a + t.pnl, 0);
   const bruto = g.reduce((a, t) => a + t.pnl, 0), perd = -p.reduce((a, t) => a + t.pnl, 0);
-  return { n, g: g.length, p: p.length, tot, win: n ? g.length / n * 100 : null, pf: perd > 0 ? bruto / perd : null, medG: g.length ? bruto / g.length : null, medP: p.length ? -perd / p.length : null };
+  const conR = trs.filter((t) => t.r != null && Number.isFinite(+t.r));
+  return { nR: conR.length, esperR: conR.length ? conR.reduce((a, t) => a + (+t.r), 0) / conR.length : null, n, g: g.length, p: p.length, tot, win: n ? g.length / n * 100 : null, pf: perd > 0 ? bruto / perd : null, medG: g.length ? bruto / g.length : null, medP: p.length ? -perd / p.length : null };
 }
 function diarioHtml() {
   const S = dVista(), [Y, M] = diario.mes;
@@ -218,6 +243,7 @@ function diarioHtml() {
   const act = diario.dia || hoy;
   const delDia = S.trades.filter((t) => t.fecha === act).sort((a, b) => String(a.hora || '').localeCompare(String(b.hora || '')));
   const ed = diario.edit ? S.trades.find((t) => t.id === diario.edit) : null;
+  const jReq = !ed || ed.precio_stop != null ? ' required' : '';      // operación nueva (o ya con stop): stop, entrada, salida, tamaño e instrumento son obligatorios; una antigua sin stop se puede editar sin ellos
   const mejor = diasMes.map((f) => [f, porDia[f].reduce((a, t) => a + t.pnl, 0)]).sort((a, b) => b[1] - a[1]);
   const kp = (lab, val, sub, c) => `<div class="card kpi"><div class="lab">${lab}</div><div class="big ${c || ''}">${val}</div><div class="chg" style="color:var(--dim)">${sub}</div></div>`;
   let h = essential(S.trades.length ? `${MESES_L[M]}: ${st.n} operaciones, P&amp;L ${f5.usd(st.tot)}${st.win != null ? ', win rate ' + num(st.win, 0) + ' %' : ''}.` : `Sin operaciones cargadas en ${MESES_L[M]}.`,
@@ -228,7 +254,7 @@ function diarioHtml() {
   h += `<div class="grid g4" style="margin-top:12px">
     ${kp('P&amp;L del mes', st.n ? f5.usd(st.tot) : '0,00 $', st.n ? `${st.n} operaciones · ${st.g} ganadoras · ${st.p} perdedoras` : 'sin operaciones este mes', st.tot > 0 ? 'up' : st.tot < 0 ? 'down' : '')}
     ${kp('Win rate del mes', st.win == null ? '—' : num(st.win, 0) + ' %', st.n ? `media ganadora ${st.medG == null ? '—' : f5.usd(st.medG, 0)} · perdedora ${st.medP == null ? '—' : f5.usd(st.medP, 0)}` : 'sin resultado')}
-    ${kp('Factor de beneficio', st.pf == null ? '—' : num(st.pf, 2), 'ganancias brutas / pérdidas brutas del mes')}
+    ${kp('Factor de beneficio', st.pf == null ? '—' : num(st.pf, 2), 'ganancias brutas / pérdidas brutas del mes · esperanza ' + (st.esperR == null ? 'en R: SIN DATO (ninguna operación con stop)' : (st.esperR > 0 ? '+' : '') + num(st.esperR, 2) + ' R (' + st.nR + ' de ' + st.n + ' con R)'))}
     ${kp('Acumulado (meses cargados)', all.n ? f5.usd(all.tot) : '0,00 $', all.n ? `${all.n} operaciones · win rate ${all.win == null ? '—' : num(all.win, 0) + ' %'} · ${DSYNC.mesesCargados().length} de ${Math.max(DSYNC.mesesConocidos().length, DSYNC.mesesCargados().length)} meses` : 'registro vacío', all.tot > 0 ? 'up' : all.tot < 0 ? 'down' : '')}</div>`;
   h += `<div class="grid g21 stretch" style="margin-top:12px"><div class="card pad0"><div style="padding:12px 16px 4px" class="chead"><span>Calendario · ${MESES_L[M]} ${Y}</span><span class="more">clic en un día para añadir operaciones y notas</span></div><div style="padding:0 12px 12px">${cal}</div></div>
     <div class="col"><div class="card"><div class="chead"><span>${esc(fdd(act))}</span><span class="more">${delDia.length} ${delDia.length === 1 ? 'operación' : 'operaciones'}</span></div>
@@ -237,16 +263,22 @@ function diarioHtml() {
         <label>Hora de entrada (Madrid)<input type="time" name="hora" value="${esc(ed && ed.hora ? ed.hora.padStart(5, '0') : '')}" required></label>
         <label>Activo<select name="activo">${[...ACT_BASE, ...(ed && !ACT_BASE.includes(ed.activo) ? [ed.activo] : [])].map((a) => `<option${ed && ed.activo === a ? ' selected' : ''}>${esc(a)}</option>`).join('')}</select></label>
         <label>Lado<select name="lado"><option${ed && ed.lado === 'Largo' ? ' selected' : ''}>Largo</option><option${ed && ed.lado === 'Corto' ? ' selected' : ''}>Corto</option></select></label>
-        <label>Precio de entrada<input name="precio_entrada" inputmode="decimal" value="${ed && ed.precio_entrada != null ? esc(String(ed.precio_entrada).replace('.', ',')) : ''}" placeholder="opcional"></label>
-        <label>Precio de salida<input name="precio_salida" inputmode="decimal" value="${ed && ed.precio_salida != null ? esc(String(ed.precio_salida).replace('.', ',')) : ''}" placeholder="opcional"></label>
+        <label>Instrumento<select name="instrumento"${jReq}><option value="">Elige…</option>${INSTRUMENTOS.map(([k, n]) => `<option value="${esc(k)}"${ed && ed.instrumento === k ? ' selected' : ''}>${esc(n)}</option>`).join('')}</select></label>
+        <label>Valor del punto ($)<input name="valor_punto" inputmode="decimal" value="${ed && ed.valor_punto != null ? esc(String(ed.valor_punto).replace('.', ',')) : ''}" placeholder="fijo en futuros; en CFD, una vez"${jReq}></label>
+        <label>Tamaño (contratos / lotes)<input name="tamano" inputmode="decimal" value="${ed && ed.tamano != null ? esc(String(ed.tamano).replace('.', ',')) : ''}"${jReq}></label>
+        <label>Precio de entrada<input name="precio_entrada" inputmode="decimal" value="${ed && ed.precio_entrada != null ? esc(String(ed.precio_entrada).replace('.', ',')) : ''}"${jReq}></label>
+        <label>Stop (precio)<input name="precio_stop" inputmode="decimal" value="${ed && ed.precio_stop != null ? esc(String(ed.precio_stop).replace('.', ',')) : ''}"${jReq}></label>
+        <label>Precio de salida<input name="precio_salida" inputmode="decimal" value="${ed && ed.precio_salida != null ? esc(String(ed.precio_salida).replace('.', ',')) : ''}"${jReq}></label>
+        <label>Objetivo (precio, opcional)<input name="precio_objetivo" inputmode="decimal" value="${ed && ed.precio_objetivo != null ? esc(String(ed.precio_objetivo).replace('.', ',')) : ''}" placeholder="opcional"></label>
+        <div id="jr" class="note full" style="margin:0" aria-live="polite"${jReq ? '' : ' data-legado="1"'}>${jReq ? 'Con entrada, stop, salida, tamaño y valor del punto se calculan solos el riesgo en $, el resultado y el R.' : 'Operación anterior sin stop: su R es SIN DATO (no se inventa). Añade stop, tamaño e instrumento si quieres calcularlo.'}</div>
         <label>Hora de salida (Madrid)<input type="time" name="hora_salida" value="${esc(ed && ed.hora_salida ? ed.hora_salida.padStart(5, '0') : '')}"></label>
-        <label>Resultado (P&amp;L en $)<input name="pnl" inputmode="decimal" placeholder="p. ej. 125,50 o -80" value="${ed ? esc(String(ed.pnl).replace('.', ',')) : ''}" required></label>
+        <label>Resultado (P&amp;L en $)<input name="pnl" inputmode="decimal" placeholder="${jReq ? 'se calcula solo; escribe el neto si hay comisiones' : 'p. ej. 125,50 o -80'}" value="${ed ? esc(String(ed.pnl).replace('.', ',')) : ''}"${jReq ? '' : ' required'}></label>
         <label>Setup<select name="setup"><option value="">Sin setup</option>${SETUPS.map((s) => `<option${ed && ed.setup === s ? ' selected' : ''}>${esc(s)}</option>`).join('')}</select></label>
         <div class="full conf" role="group" aria-label="Confirmaciones" style="display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center"><span class="note" style="margin:0">Confirmaciones:</span>${CONFIRMACIONES.map(([k, n]) => `<label style="display:inline-flex;gap:5px;align-items:center;flex-direction:row;text-transform:none;letter-spacing:0"><input type="checkbox" name="conf" value="${k}"${ed && (ed.conf || []).includes(k) ? ' checked' : ''}> ${esc(n)}</label>`).join('')}</div>
         <label class="full">Motivo / nota<input name="nota" maxlength="240" placeholder="Qué tesis había y qué pasó" value="${ed ? esc(ed.nota || '') : ''}"></label>
         <button class="fbtn on full" type="submit">${ed ? 'Guardar cambios' : 'Añadir operación'}</button>${ed ? '<button class="fbtn full" type="button" data-a="cancelar-edicion">Cancelar edición</button>' : ''}
         <div class="note full" style="margin:0">Al guardar se adjunta la foto del sistema NEXORA (tesis, régimen, liquidez, ciclo, FedWatch, gamma, SKEW, eventos) del último contexto publicado antes de tu hora de entrada. Se guarda solo en tu diario.</div></form>
-      ${delDia.length ? '<div class="jlist">' + delDia.map((t) => `<div class="jop${ed && ed.id === t.id ? ' editando' : ''}"><span class="tag ${t.pnl > 0 ? 'alc' : t.pnl < 0 ? 'baj' : 'sin'}">${esc(t.lado)}</span><span class="nm">${t.hora ? `<span class="mono" style="color:var(--dim)">${esc(t.hora.padStart(5, '0'))}</span> ` : ''}${esc(t.activo)} ${fotoChip(t)} ${setupChip(t)}</span><span class="mono ${f5.cls(t.pnl)}">${f5.usd(t.pnl)}</span><button class="x" data-edit="${esc(t.id)}" aria-label="Editar operación" title="Editar">✎</button><button class="x" data-del="${esc(t.id)}" aria-label="Borrar operación">×</button>${t.nota ? `<span class="nt">${esc(t.nota)}</span>` : ''}<div class="nt">${fotoHtml(t)}</div></div>`).join('') + '</div>' : '<div class="note">Sin operaciones este día.</div>'}
+      ${delDia.length ? '<div class="jlist">' + delDia.map((t) => `<div class="jop${ed && ed.id === t.id ? ' editando' : ''}"><span class="tag ${t.pnl > 0 ? 'alc' : t.pnl < 0 ? 'baj' : 'sin'}">${esc(t.lado)}</span><span class="nm">${t.hora ? `<span class="mono" style="color:var(--dim)">${esc(t.hora.padStart(5, '0'))}</span> ` : ''}${esc(t.activo)} ${fotoChip(t)} ${setupChip(t)}</span><span class="mono ${f5.cls(t.pnl)}">${f5.usd(t.pnl)}<small style="display:block;color:var(--dim)" title="Resultado en $ / riesgo en $ (entrada − stop × valor del punto × tamaño)">${esc(rTxt(t))}${t.r_plan != null && t.r_plan < R_MIN ? ' <span class="ck par" title="El R planeado (objetivo) es menor que 2 R: la regla del método pide al menos 2 R">plan ' + esc(String(t.r_plan).replace('.', ',')) + ' R &lt; 2</span>' : ''}</small></span><button class="x" data-edit="${esc(t.id)}" aria-label="Editar operación" title="Editar">✎</button><button class="x" data-del="${esc(t.id)}" aria-label="Borrar operación">×</button>${t.nota ? `<span class="nt">${esc(t.nota)}</span>` : ''}<div class="nt">${fotoHtml(t)}</div></div>`).join('') + '</div>' : '<div class="note">Sin operaciones este día.</div>'}
       <label class="full" style="display:block;margin-top:10px"><span class="note">Nota del día</span><textarea id="jnota" rows="3" maxlength="600" placeholder="Estado de ánimo, errores, lo que repetirías…">${esc(S.notas[act] || '')}</textarea></label>
       <button class="fbtn" data-a="nota" style="margin-top:6px">Guardar nota</button></div></div></div>`;
   h += '<div class="grid g2" style="margin-top:12px"><div class="card chartcard"><h3>Curva de P&amp;L acumulado</h3><div class="sub">Suma de los resultados de los meses cargados, por fecha (usa «Cargar todos los meses» para la curva completa)</div>';
@@ -257,17 +289,43 @@ function diarioHtml() {
     : '<div class="chart fill"><div class="empty">SIN OPERACIONES ESTE MES</div></div>';
   h += `${foot(diarioFuente(), false, null, mejor.length ? 'mejor día ' + esc(fd(mejor[0][0])) + ' ' + f5.usd(mejor[0][1], 0) : 'sin días registrados')}</div></div>`;
   h += '<div class="sect"><h2>Operaciones del mes</h2><span class="more">más recientes primero</span></div><div class="card pad0 scroll">';
-  h += mesTr.length ? `<table class="t"><thead><tr><th>Fecha</th><th>Hora</th><th>Activo</th><th>Lado</th><th>P&amp;L</th><th>Foto</th><th style="text-align:left">Nota</th><th></th></tr></thead><tbody>${mesTr.slice().sort((a, b) => (b.fecha + (b.hora || '')).localeCompare(a.fecha + (a.hora || ''))).map((t) => `<tr><td>${esc(fdd(t.fecha))}</td><td class="mono">${esc(t.hora ? t.hora.padStart(5, '0') : '—')}</td><td>${esc(t.activo)}</td><td>${esc(t.lado)}</td><td class="${f5.cls(t.pnl)}">${f5.usd(t.pnl)}</td><td style="white-space:nowrap">${fotoChip(t)}</td><td style="text-align:left;color:var(--muted);white-space:normal">${esc(t.nota || '')}</td><td style="white-space:nowrap"><button class="x" data-edit="${esc(t.id)}" aria-label="Editar" title="Editar">✎</button> <button class="x" data-del="${esc(t.id)}" aria-label="Borrar">×</button></td></tr>`).join('')}</tbody></table>`
+  h += mesTr.length ? `<table class="t"><thead><tr><th>Fecha</th><th>Hora</th><th>Activo</th><th>Lado</th><th>P&amp;L</th><th>R</th><th>Foto</th><th style="text-align:left">Nota</th><th></th></tr></thead><tbody>${mesTr.slice().sort((a, b) => (b.fecha + (b.hora || '')).localeCompare(a.fecha + (a.hora || ''))).map((t) => `<tr><td>${esc(fdd(t.fecha))}</td><td class="mono">${esc(t.hora ? t.hora.padStart(5, '0') : '—')}</td><td>${esc(t.activo)}</td><td>${esc(t.lado)}</td><td class="${f5.cls(t.pnl)}">${f5.usd(t.pnl)}</td><td class="mono" style="white-space:nowrap">${esc(rTxt(t))}</td><td style="white-space:nowrap">${fotoChip(t)}</td><td style="text-align:left;color:var(--muted);white-space:normal">${esc(t.nota || '')}</td><td style="white-space:nowrap"><button class="x" data-edit="${esc(t.id)}" aria-label="Editar" title="Editar">✎</button> <button class="x" data-del="${esc(t.id)}" aria-label="Borrar">×</button></td></tr>`).join('')}</tbody></table>`
     : '<div class="empty" style="height:110px;border:0">SIN OPERACIONES ESTE MES · usa el formulario de arriba</div>';
   h += '</div>';
   h += `<div class="note">Todo lo que escribes aquí se guarda en este navegador (IndexedDB). Con «Conectar GitHub» además se copia, en cada cambio, a tu repo privado nexora-diario (el token se queda solo en este navegador). El diario se guarda en un archivo por mes (diario/AAAA-MM.json), sin límite de tamaño; aquí solo se cargan los meses que miras y «Mi operativa» los lee todos. Sin conexión se usa la copia local y se sincroniza después. Exportar JSON sigue siendo una copia extra. Importar sustituye el diario actual (y la copia de GitHub). El diario es tuyo y no forma parte de las tesis ni de las alertas de NEXORA.${DSYNC.conectado() ? ' Con GitHub conectado, <a href="#/operativa">Mi operativa</a> agrupa tus resultados según la foto del sistema.' : ''}</div>`;
   return h;
 }
+/* vista previa viva de riesgo en $, resultado, R y R planeado en el formulario; fija el valor del punto de los futuros y recuerda el de cada CFD */
+function jrActualizar(fm, cambioInstrumento) {
+  if (!fm) return;
+  const q = (n) => fm.elements[n], v = (n) => decNum(q(n) && q(n).value), ins = q('instrumento') ? q('instrumento').value : '', vpEl = q('valor_punto'), out = document.getElementById('jr');
+  if (!vpEl || !out) return;
+  const fijo = valorPuntoFijo(ins);
+  if (fijo != null) { vpEl.value = String(fijo).replace('.', ','); vpEl.readOnly = true; }
+  else { vpEl.readOnly = false; if (cambioInstrumento && ins) { const r = vpRecordado(ins); vpEl.value = r == null ? '' : String(r).replace('.', ','); } }
+  const c = calcR({ lado: q('lado').value === 'Corto' ? 'Corto' : 'Largo', entrada: v('precio_entrada'), stop: v('precio_stop'), salida: v('precio_salida'), objetivo: v('precio_objetivo'), vp: v('valor_punto'), tam: v('tamano'), pnl: v('pnl') == null ? undefined : v('pnl') });
+  const f2 = (x) => String(x).replace('.', ',');
+  if (c.error) { if (out.dataset.legado && v('precio_stop') == null) { if (!out.dataset.ini) out.dataset.ini = out.textContent; out.textContent = out.dataset.ini; } else out.textContent = c.error; return; }
+  out.innerHTML = `Riesgo <b>${f2(c.riesgo_usd)} $</b> · resultado ${v('pnl') == null ? 'calculado' : 'indicado'} <b>${f2(c.pnl)} $</b> · <b>R = ${(c.r > 0 ? '+' : '') + f2(c.r)}</b>`
+    + (c.r_plan == null ? ' · sin objetivo (R planeado SIN DATO)' : ` · R planeado <b>${f2(c.r_plan)}</b>${c.aviso ? ' <span class="ck par">por debajo de 2 R: la regla del método pide al menos 2 R</span>' : ' <span class="ck ok">≥ 2 R</span>'}`);
+}
 /* alta o edición de una operación. La foto del sistema se toma al crear y, al editar, solo si cambian fecha, hora o activo (o si no estaba completa). */
 async function guardarOperacion(form, repaint) {
   const f = new FormData(form), btn = form.querySelector('button[type=submit]');
-  const pnl = decNum(f.get('pnl'));
-  if (pnl == null) { alert('El resultado debe ser un número (p. ej. 125,50 o -80).'); return; }
+  const id0 = form.dataset.editando || '', prev0 = id0 ? DSYNC.estado().trades.find((t) => t.id === id0) : null;
+  const legado = !!prev0 && prev0.precio_stop == null;           // operación antigua sin stop: su R es SIN DATO y se puede seguir editando sin él
+  const dn = (k) => { const v = decNum(f.get(k)); return v == null ? undefined : v; };
+  const ins = String(f.get('instrumento') || ''), lado0 = String(f.get('lado')) === 'Corto' ? 'Corto' : 'Largo';
+  let calc = null, vp = dn('valor_punto'), pnl = decNum(f.get('pnl'));
+  if (!legado || dn('precio_stop') != null) {
+    if (!ins) { alert('Elige el instrumento: el valor del punto sale de él.'); return; }
+    const fijo = valorPuntoFijo(ins);
+    if (fijo != null) vp = fijo; else if (!(vp > 0)) { alert('En un CFD indica el valor del punto en $ (se recordará para la próxima vez).'); return; }
+    calc = calcR({ lado: lado0, entrada: dn('precio_entrada'), stop: dn('precio_stop'), salida: dn('precio_salida'), objetivo: dn('precio_objetivo'), vp, tam: dn('tamano'), pnl: pnl == null ? undefined : pnl });
+    if (calc.error) { alert(calc.error); return; }
+    if (fijo == null) vpRecordar(ins, vp);
+    pnl = calc.pnl;
+  } else if (pnl == null) { alert('El resultado debe ser un número (p. ej. 125,50 o -80).'); return; }
   const fecha = String(f.get('fecha') || ''), hora = String(f.get('hora') || '');
   const ms = FOTO.madridMs(fecha, hora);
   if (ms == null) { alert('Indica la fecha y la hora de entrada (hora de Madrid): con ellas se elige la foto del sistema.'); return; }
@@ -275,6 +333,8 @@ async function guardarOperacion(form, repaint) {
   const num2 = (k) => { const v = decNum(f.get(k)); return v == null ? undefined : v; };
   const campos = { fecha, hora, activo: String(f.get('activo')), lado: String(f.get('lado')) === 'Corto' ? 'Corto' : 'Largo', pnl: Math.round(pnl * 100) / 100, nota: String(f.get('nota') || '').trim(),
     precio_entrada: num2('precio_entrada'), precio_salida: num2('precio_salida'), hora_salida: String(f.get('hora_salida') || '') || undefined,
+    precio_stop: calc ? num2('precio_stop') : undefined, precio_objetivo: num2('precio_objetivo'), tamano: calc ? num2('tamano') : undefined, instrumento: calc ? ins : undefined, valor_punto: calc ? vp : undefined,
+    riesgo_usd: calc ? calc.riesgo_usd : undefined, r: calc ? calc.r : undefined, r_plan: calc && calc.r_plan != null ? calc.r_plan : undefined,
     setup: SETUPS.includes(String(f.get('setup'))) ? String(f.get('setup')) : undefined, conf: f.getAll('conf').filter((k) => CONF_NOMBRE[k]).length ? f.getAll('conf').filter((k) => CONF_NOMBRE[k]) : undefined };
   const id = form.dataset.editando || '';
   const previa = id ? DSYNC.estado().trades.find((t) => t.id === id) : null;
@@ -297,7 +357,10 @@ function pageDiario() {
     const root = document.getElementById('dia-root');
     if (!root) return;
     const vivo = () => document.getElementById('dia-root') === root;
-    const repaint = () => { if (vivo()) f5.paint(root, diarioHtml); };
+    const repaint = () => { if (vivo()) { f5.paint(root, diarioHtml); jrActualizar(document.getElementById('jform')); } };
+    const jrEv = (e) => { const fm = e.target && e.target.closest ? e.target.closest('#jform') : null; if (fm) jrActualizar(fm, e.target.name === 'instrumento'); };
+    root.addEventListener('input', jrEv);
+    root.addEventListener('change', jrEv);
     const cargar = async (meses) => { try { await DSYNC.asegurar(meses); } catch (e) { /* sin red: copia local */ } dVista(); };
     /* guarda las fotos que estaban pendientes por falta de red (solo de los meses cargados) */
     const fotos = async () => { const ch = await FOTO.completarPendientes(DSYNC.estado().trades); if (ch.length) { ch.forEach((t) => DSYNC.guardarTrade(t)); dVista(); repaint(); } };
@@ -336,7 +399,7 @@ function pageDiario() {
       else if (k === 'exp-json') { await cargar('todos'); const s = DSYNC.estado(); f5.descarga(`nexora-diario-${hoyISO()}.json`, JSON.stringify({ trades: s.trades, notas: s.notas, notasMod: s.notasMod, borrados: s.borrados }, null, 1), 'application/json'); }
       else if (k === 'exp-csv') {
         await cargar('todos');
-        const cab = ['fecha', 'hora', 'hora_salida', 'activo', 'lado', 'precio_entrada', 'precio_salida', 'pnl', 'nota', 'setup', 'confirmaciones', 'regimen_gamma', 'foto_estado', 'foto_contexto_utc', 'alineacion_tesis', 'tesis', 'regimen', 'liquidez', 'ciclo', 'evento_alta_2h'];
+        const cab = ['fecha', 'hora', 'hora_salida', 'activo', 'lado', 'instrumento', 'tamano', 'valor_punto', 'precio_entrada', 'precio_stop', 'precio_objetivo', 'precio_salida', 'riesgo_usd', 'r', 'r_plan', 'pnl', 'nota', 'setup', 'confirmaciones', 'regimen_gamma', 'foto_estado', 'foto_contexto_utc', 'alineacion_tesis', 'tesis', 'regimen', 'liquidez', 'ciclo', 'evento_alta_2h'];
         const fila = (t) => { const f = t.foto || {}; return Object.assign({}, t, { confirmaciones: (t.conf || []).map((k) => CONF_NOMBRE[k] || k).join(' | '), regimen_gamma: f.gamma ? f.gamma.signo : '', foto_estado: f.estado || 'SIN FOTO', foto_contexto_utc: f.contexto_utc || '', alineacion_tesis: FOTO.alineacion(t) || '', tesis: f.tesis ? f.tesis.etiqueta : '', regimen: f.regimen ? f.regimen.cuadrante : '', liquidez: f.liquidez ? f.liquidez.lectura : '', ciclo: f.ciclo ? f.ciclo.fase : '', evento_alta_2h: f.evento_alta_2h ? (f.evento_alta_2h.si ? f.evento_alta_2h.eventos.map((e) => e.evento).join(' | ') : 'no') : '' }); };
         f5.descarga(`nexora-diario-${hoyISO()}.csv`, [cab.join(','), ...DSYNC.estado().trades.slice().sort((a, b) => (a.fecha + (a.hora || '')).localeCompare(b.fecha + (b.hora || ''))).map((t) => { const r = fila(t); return cab.map((c) => f5.csvCelda(r[c])).join(','); })].join('\n'), 'text/csv');
       } else if (k === 'imp') $('#jimp', root).click();
