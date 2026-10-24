@@ -1,24 +1,24 @@
 {
- "fecha": "2026-10-23",
+ "fecha": "2026-10-22",
  "ratio": {
-  "valor": 4.7672,
-  "fecha": "2026-10-23",
-  "sma50": 5.4122,
-  "sma200": 5.4959,
-  "vs_sma50_pct": -11.92,
-  "vs_sma200_pct": -13.26,
+  "valor": 4.8137,
+  "fecha": "2026-10-22",
+  "sma50": 5.4278,
+  "sma200": 5.4901,
+  "vs_sma50_pct": -11.31,
+  "vs_sma200_pct": -12.32,
   "tendencia": "LIDERAZGO SOFTWARE",
   "cruce_medias": {
    "fecha": "2026-10-19",
    "tipo": "BAJISTA (media 50 cruza por debajo de la 200)"
   },
   "cambios_pct": {
-   "1m": -14.94,
-   "3m": -20.99,
-   "6m": -19.8,
-   "12m": 57.48
+   "1m": -13.48,
+   "3m": -24.53,
+   "6m": -16.51,
+   "12m": 60.26
   },
-  "percentil_1a": 35,
+  "percentil_1a": 37,
   "serie": [
    [
     "2024-10-24",
@@ -2019,10 +2019,6 @@
    [
     "2026-10-22",
     4.81374
-   ],
-   [
-    "2026-10-23",
-    4.76716
    ]
   ],
   "sma50_serie": [
@@ -3829,10 +3825,6 @@
    [
     "2026-10-22",
     5.42775
-   ],
-   [
-    "2026-10-23",
-    5.41224
    ]
   ],
   "sma200_serie": [
@@ -5039,80 +5031,76 @@
    [
     "2026-10-22",
     5.49014
-   ],
-   [
-    "2026-10-23",
-    5.49586
    ]
   ]
  },
  "hoy": {
-  "smh_pct": 0.74,
-  "igv_pct": 1.72,
-  "fecha": "2026-10-23",
-  "smh": 527.2,
-  "igv": 110.59
+  "smh_pct": -5.99,
+  "igv_pct": -0.09,
+  "fecha": "2026-10-22",
+  "smh": 523.35,
+  "igv": 108.72
  },
  "semana": {
-  "smh_pct": -2.33,
-  "igv_pct": 5.99,
+  "smh_pct": -6.35,
+  "igv_pct": -0.8,
   "escenario": {
-   "etiqueta": "ROTACIÓN HACIA SOFTWARE",
-   "tono": "amb",
-   "texto": "SMH -2,33 % frente a IGV +5,99 % (diferencial -8,32 pp): el dinero se mueve dentro de tecnología hacia el software (menos intensivo en capital).",
-   "diferencial_pp": -8.32
+   "etiqueta": "DEBILIDAD TECNOLÓGICA",
+   "tono": "neg",
+   "texto": "Semis (-6,35 %) y software (-0,80 %) caen a la vez: no hay compensación dentro del sector. Hipótesis: venta de la tecnología en bloque (tipos, beneficios o riesgo macro) más que una rotación.",
+   "diferencial_pp": -5.55
   }
  },
  "escenario": {
-  "etiqueta": "CONFIRMACIÓN",
-  "tono": "pos",
-  "texto": "Semis (+0,74 %) y software (+1,72 %) suben a la vez: la subida tiene participación amplia en tecnología. Lidera el software.",
-  "diferencial_pp": -0.98
+  "etiqueta": "ROTACIÓN HACIA SOFTWARE",
+  "tono": "amb",
+  "texto": "SMH -5,99 % frente a IGV -0,09 % (diferencial -5,90 pp): el dinero se mueve dentro de tecnología hacia el software (menos intensivo en capital).",
+  "diferencial_pp": -5.9
  },
  "impacto": {
   "NQ": {
    "nombre": "Nasdaq-100",
    "indice": "^NDX",
-   "fecha": "2026-10-23",
+   "fecha": "2026-10-22",
    "beta_semis": 0.423,
-   "beta_software": 0.186,
-   "r2": 0.909,
+   "beta_software": 0.187,
+   "r2": 0.91,
    "n": 250,
-   "real_pct": -0.0,
-   "contrib_semis_pp": 0.31,
-   "contrib_software_pp": 0.32,
-   "explicado_pp": 0.63,
-   "efecto_diferencial_pp": 0.237,
+   "real_pct": -2.9,
+   "contrib_semis_pp": -2.53,
+   "contrib_software_pp": -0.02,
+   "explicado_pp": -2.55,
+   "efecto_diferencial_pp": 0.236,
    "fuente": "Yahoo Finance"
   },
   "ES": {
    "nombre": "S&P 500",
    "indice": "^GSPC",
-   "fecha": "2026-10-23",
+   "fecha": "2026-10-22",
    "beta_semis": 0.221,
-   "beta_software": 0.14,
-   "r2": 0.707,
+   "beta_software": 0.142,
+   "r2": 0.712,
    "n": 250,
-   "real_pct": -0.52,
-   "contrib_semis_pp": 0.16,
-   "contrib_software_pp": 0.24,
-   "explicado_pp": 0.4,
-   "efecto_diferencial_pp": 0.081,
+   "real_pct": -1.21,
+   "contrib_semis_pp": -1.33,
+   "contrib_software_pp": -0.01,
+   "explicado_pp": -1.34,
+   "efecto_diferencial_pp": 0.08,
    "fuente": "Yahoo Finance"
   },
   "YM": {
    "nombre": "Dow Jones",
    "indice": "^DJI",
-   "fecha": "2026-10-23",
-   "beta_semis": 0.127,
-   "beta_software": 0.107,
-   "r2": 0.278,
+   "fecha": "2026-10-22",
+   "beta_semis": 0.128,
+   "beta_software": 0.11,
+   "r2": 0.287,
    "n": 250,
-   "real_pct": -1.23,
-   "contrib_semis_pp": 0.09,
-   "contrib_software_pp": 0.18,
-   "explicado_pp": 0.28,
-   "efecto_diferencial_pp": 0.02,
+   "real_pct": 0.02,
+   "contrib_semis_pp": -0.76,
+   "contrib_software_pp": -0.01,
+   "explicado_pp": -0.77,
+   "efecto_diferencial_pp": 0.017,
    "fuente": "Yahoo Finance"
   }
  },
@@ -5167,17 +5155,21 @@
    "nombre": "NVIDIA",
    "sector": "Semis",
    "peso_pct": 8.14,
-   "precio": 210.96,
-   "fecha": "2026-10-23",
-   "d1_pct": -0.59,
-   "d5_pct": -1.48,
-   "d21_pct": -6.06,
-   "d63_pct": 7.35,
-   "vs_sma50_pct": -5.2,
-   "vs_sma200_pct": 3.6,
-   "rs21_vs_qqq_pp": -1.11,
-   "contrib_hoy_pp": -0.048,
+   "precio": 212.21,
+   "fecha": "2026-10-22",
+   "d1_pct": -4.4,
+   "d5_pct": -2.31,
+   "d21_pct": -5.9,
+   "d63_pct": 2.6,
+   "vs_sma50_pct": -4.7,
+   "vs_sma200_pct": 4.3,
+   "rs21_vs_qqq_pp": -0.94,
+   "contrib_hoy_pp": -0.358,
    "serie": [
+    [
+     "2026-06-16",
+     207.41
+    ],
     [
      "2026-06-17",
      204.65
@@ -5533,10 +5525,6 @@
     [
      "2026-10-22",
      212.21
-    ],
-    [
-     "2026-10-23",
-     210.96
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -5546,17 +5534,21 @@
    "nombre": "Apple",
    "sector": "Hardware",
    "peso_pct": 8.09,
-   "precio": 347.73,
-   "fecha": "2026-10-23",
-   "d1_pct": -0.14,
-   "d5_pct": 1.24,
-   "d21_pct": 3.51,
-   "d63_pct": 3.21,
-   "vs_sma50_pct": 5.5,
-   "vs_sma200_pct": 18.1,
-   "rs21_vs_qqq_pp": 8.46,
-   "contrib_hoy_pp": -0.011,
+   "precio": 348.22,
+   "fecha": "2026-10-22",
+   "d1_pct": 1.23,
+   "d5_pct": 1.82,
+   "d21_pct": 3.32,
+   "d63_pct": 4.56,
+   "vs_sma50_pct": 6.0,
+   "vs_sma200_pct": 18.5,
+   "rs21_vs_qqq_pp": 8.28,
+   "contrib_hoy_pp": 0.1,
    "serie": [
+    [
+     "2026-06-16",
+     299.24
+    ],
     [
      "2026-06-17",
      295.95
@@ -5912,10 +5904,6 @@
     [
      "2026-10-22",
      348.22
-    ],
-    [
-     "2026-10-23",
-     347.73
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -5925,17 +5913,21 @@
    "nombre": "Microsoft",
    "sector": "Software",
    "peso_pct": 6.16,
-   "precio": 524.51,
-   "fecha": "2026-10-23",
-   "d1_pct": 0.66,
-   "d5_pct": -0.86,
-   "d21_pct": 5.34,
-   "d63_pct": 34.8,
-   "vs_sma50_pct": 3.2,
-   "vs_sma200_pct": 20.2,
-   "rs21_vs_qqq_pp": 10.29,
-   "contrib_hoy_pp": 0.041,
+   "precio": 521.08,
+   "fecha": "2026-10-22",
+   "d1_pct": -2.23,
+   "d5_pct": -3.4,
+   "d21_pct": 4.09,
+   "d63_pct": 36.52,
+   "vs_sma50_pct": 2.6,
+   "vs_sma200_pct": 19.4,
+   "rs21_vs_qqq_pp": 9.05,
+   "contrib_hoy_pp": -0.137,
    "serie": [
+    [
+     "2026-06-16",
+     393.83
+    ],
     [
      "2026-06-17",
      378.91
@@ -6291,10 +6283,6 @@
     [
      "2026-10-22",
      521.08
-    ],
-    [
-     "2026-10-23",
-     524.51
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -6304,17 +6292,21 @@
    "nombre": "Amazon",
    "sector": "Consumo",
    "peso_pct": 4.3,
-   "precio": 248.0,
-   "fecha": "2026-10-23",
-   "d1_pct": -0.95,
-   "d5_pct": -0.8,
-   "d21_pct": -0.55,
-   "d63_pct": 7.18,
-   "vs_sma50_pct": -3.0,
-   "vs_sma200_pct": 1.9,
-   "rs21_vs_qqq_pp": 4.4,
-   "contrib_hoy_pp": -0.041,
+   "precio": 250.38,
+   "fecha": "2026-10-22",
+   "d1_pct": -4.57,
+   "d5_pct": -1.72,
+   "d21_pct": 0.45,
+   "d63_pct": 7.87,
+   "vs_sma50_pct": -2.2,
+   "vs_sma200_pct": 2.9,
+   "rs21_vs_qqq_pp": 5.41,
+   "contrib_hoy_pp": -0.197,
    "serie": [
+    [
+     "2026-06-16",
+     246.0
+    ],
     [
      "2026-06-17",
      237.5
@@ -6670,10 +6662,6 @@
     [
      "2026-10-22",
      250.38
-    ],
-    [
-     "2026-10-23",
-     248.0
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -6683,17 +6671,21 @@
    "nombre": "Broadcom",
    "sector": "Semis",
    "peso_pct": 2.45,
-   "precio": 321.68,
-   "fecha": "2026-10-23",
-   "d1_pct": -0.48,
-   "d5_pct": -2.15,
-   "d21_pct": -8.19,
-   "d63_pct": -16.06,
-   "vs_sma50_pct": -9.8,
-   "vs_sma200_pct": -12.5,
-   "rs21_vs_qqq_pp": -3.24,
-   "contrib_hoy_pp": -0.012,
+   "precio": 323.24,
+   "fecha": "2026-10-22",
+   "d1_pct": -4.31,
+   "d5_pct": -6.12,
+   "d21_pct": -8.94,
+   "d63_pct": -15.36,
+   "vs_sma50_pct": -9.9,
+   "vs_sma200_pct": -12.1,
+   "rs21_vs_qqq_pp": -3.98,
+   "contrib_hoy_pp": -0.106,
    "serie": [
+    [
+     "2026-06-16",
+     376.71
+    ],
     [
      "2026-06-17",
      392.9
@@ -7049,10 +7041,6 @@
     [
      "2026-10-22",
      323.24
-    ],
-    [
-     "2026-10-23",
-     321.68
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -7062,17 +7050,21 @@
    "nombre": "Alphabet (A)",
    "sector": "Comunicación",
    "peso_pct": 3.03,
-   "precio": 320.21,
-   "fecha": "2026-10-23",
-   "d1_pct": -1.24,
-   "d5_pct": -5.98,
-   "d21_pct": -6.47,
-   "d63_pct": -1.94,
-   "vs_sma50_pct": -6.6,
-   "vs_sma200_pct": -6.2,
-   "rs21_vs_qqq_pp": -1.52,
-   "contrib_hoy_pp": -0.038,
+   "precio": 324.22,
+   "fecha": "2026-10-22",
+   "d1_pct": -3.15,
+   "d5_pct": -7.16,
+   "d21_pct": -4.03,
+   "d63_pct": 1.4,
+   "vs_sma50_pct": -5.6,
+   "vs_sma200_pct": -5.0,
+   "rs21_vs_qqq_pp": 0.93,
+   "contrib_hoy_pp": -0.095,
    "serie": [
+    [
+     "2026-06-16",
+     373.25
+    ],
     [
      "2026-06-17",
      363.79
@@ -7428,10 +7420,6 @@
     [
      "2026-10-22",
      324.22
-    ],
-    [
-     "2026-10-23",
-     320.21
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -7441,17 +7429,21 @@
    "nombre": "Meta",
    "sector": "Comunicación",
    "peso_pct": 3.07,
-   "precio": 642.62,
-   "fecha": "2026-10-23",
-   "d1_pct": -0.96,
-   "d5_pct": -9.4,
-   "d21_pct": -17.36,
-   "d63_pct": 8.21,
-   "vs_sma50_pct": -3.2,
-   "vs_sma200_pct": 1.6,
-   "rs21_vs_qqq_pp": -12.41,
-   "contrib_hoy_pp": -0.029,
+   "precio": 648.85,
+   "fecha": "2026-10-22",
+   "d1_pct": -6.98,
+   "d5_pct": -11.93,
+   "d21_pct": -12.8,
+   "d63_pct": 9.02,
+   "vs_sma50_pct": -2.1,
+   "vs_sma200_pct": 2.6,
+   "rs21_vs_qqq_pp": -7.84,
+   "contrib_hoy_pp": -0.214,
    "serie": [
+    [
+     "2026-06-16",
+     600.21
+    ],
     [
      "2026-06-17",
      567.58
@@ -7807,10 +7799,6 @@
     [
      "2026-10-22",
      648.85
-    ],
-    [
-     "2026-10-23",
-     642.62
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -7820,17 +7808,21 @@
    "nombre": "Tesla",
    "sector": "Consumo",
    "peso_pct": 3.13,
-   "precio": 372.22,
-   "fecha": "2026-10-23",
-   "d1_pct": -0.63,
-   "d5_pct": 4.93,
-   "d21_pct": -1.51,
-   "d63_pct": 20.37,
-   "vs_sma50_pct": 2.3,
-   "vs_sma200_pct": -3.7,
-   "rs21_vs_qqq_pp": 3.44,
-   "contrib_hoy_pp": -0.02,
+   "precio": 374.58,
+   "fecha": "2026-10-22",
+   "d1_pct": -3.08,
+   "d5_pct": 3.35,
+   "d21_pct": -1.46,
+   "d63_pct": 19.66,
+   "vs_sma50_pct": 3.2,
+   "vs_sma200_pct": -3.1,
+   "rs21_vs_qqq_pp": 3.5,
+   "contrib_hoy_pp": -0.097,
    "serie": [
+    [
+     "2026-06-16",
+     404.66
+    ],
     [
      "2026-06-17",
      396.38
@@ -8186,10 +8178,6 @@
     [
      "2026-10-22",
      374.58
-    ],
-    [
-     "2026-10-23",
-     372.22
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -8199,17 +8187,21 @@
    "nombre": "Netflix",
    "sector": "Comunicación",
    "peso_pct": 1.23,
-   "precio": 65.85,
-   "fecha": "2026-10-23",
-   "d1_pct": -1.79,
-   "d5_pct": -6.64,
-   "d21_pct": -8.18,
-   "d63_pct": -6.46,
-   "vs_sma50_pct": -11.3,
-   "vs_sma200_pct": -20.0,
-   "rs21_vs_qqq_pp": -3.23,
-   "contrib_hoy_pp": -0.022,
+   "precio": 67.05,
+   "fecha": "2026-10-22",
+   "d1_pct": 3.09,
+   "d5_pct": -7.66,
+   "d21_pct": -6.04,
+   "d63_pct": -4.34,
+   "vs_sma50_pct": -10.0,
+   "vs_sma200_pct": -18.6,
+   "rs21_vs_qqq_pp": -1.08,
+   "contrib_hoy_pp": 0.038,
    "serie": [
+    [
+     "2026-06-16",
+     78.72
+    ],
     [
      "2026-06-17",
      76.96
@@ -8565,10 +8557,6 @@
     [
      "2026-10-22",
      67.05
-    ],
-    [
-     "2026-10-23",
-     65.85
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -8578,17 +8566,21 @@
    "nombre": "Costco",
    "sector": "Consumo básico",
    "peso_pct": 1.98,
-   "precio": 1003.32,
-   "fecha": "2026-10-23",
-   "d1_pct": -1.46,
-   "d5_pct": 1.44,
-   "d21_pct": 11.92,
-   "d63_pct": 5.44,
-   "vs_sma50_pct": 6.9,
-   "vs_sma200_pct": 3.5,
-   "rs21_vs_qqq_pp": 16.87,
-   "contrib_hoy_pp": -0.029,
+   "precio": 1018.21,
+   "fecha": "2026-10-22",
+   "d1_pct": 1.99,
+   "d5_pct": 4.11,
+   "d21_pct": 12.55,
+   "d63_pct": 8.9,
+   "vs_sma50_pct": 8.5,
+   "vs_sma200_pct": 5.1,
+   "rs21_vs_qqq_pp": 17.51,
+   "contrib_hoy_pp": 0.04,
    "serie": [
+    [
+     "2026-06-16",
+     986.68
+    ],
     [
      "2026-06-17",
      965.59
@@ -8944,10 +8936,6 @@
     [
      "2026-10-22",
      1018.21
-    ],
-    [
-     "2026-10-23",
-     1003.32
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -8957,17 +8945,21 @@
    "nombre": "AMD",
    "sector": "Semis",
    "peso_pct": 3.64,
-   "precio": 516.79,
-   "fecha": "2026-10-23",
-   "d1_pct": 1.74,
-   "d5_pct": -2.26,
-   "d21_pct": -17.87,
-   "d63_pct": 4.41,
-   "vs_sma50_pct": -4.7,
-   "vs_sma200_pct": 28.5,
-   "rs21_vs_qqq_pp": -12.92,
-   "contrib_hoy_pp": 0.063,
+   "precio": 507.93,
+   "fecha": "2026-10-22",
+   "d1_pct": -8.1,
+   "d5_pct": -9.66,
+   "d21_pct": -17.36,
+   "d63_pct": -2.69,
+   "vs_sma50_pct": -6.2,
+   "vs_sma200_pct": 26.8,
+   "rs21_vs_qqq_pp": -12.4,
+   "contrib_hoy_pp": -0.295,
    "serie": [
+    [
+     "2026-06-16",
+     507.29
+    ],
     [
      "2026-06-17",
      512.48
@@ -9323,10 +9315,6 @@
     [
      "2026-10-22",
      507.93
-    ],
-    [
-     "2026-10-23",
-     516.79
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -9336,17 +9324,21 @@
    "nombre": "Palantir",
    "sector": "Software",
    "peso_pct": 1.98,
-   "precio": 196.75,
-   "fecha": "2026-10-23",
-   "d1_pct": 0.29,
-   "d5_pct": 5.76,
-   "d21_pct": 2.16,
-   "d63_pct": 49.59,
-   "vs_sma50_pct": 6.5,
-   "vs_sma200_pct": 28.5,
-   "rs21_vs_qqq_pp": 7.11,
-   "contrib_hoy_pp": 0.006,
+   "precio": 196.19,
+   "fecha": "2026-10-22",
+   "d1_pct": -2.74,
+   "d5_pct": -2.15,
+   "d21_pct": 2.29,
+   "d63_pct": 59.61,
+   "vs_sma50_pct": 6.4,
+   "vs_sma200_pct": 28.2,
+   "rs21_vs_qqq_pp": 7.25,
+   "contrib_hoy_pp": -0.054,
    "serie": [
+    [
+     "2026-06-16",
+     133.25
+    ],
     [
      "2026-06-17",
      130.63
@@ -9702,10 +9694,6 @@
     [
      "2026-10-22",
      196.19
-    ],
-    [
-     "2026-10-23",
-     196.75
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -9715,17 +9703,21 @@
    "nombre": "Adobe",
    "sector": "Software",
    "peso_pct": 0.47,
-   "precio": 263.82,
-   "fecha": "2026-10-23",
-   "d1_pct": -2.49,
-   "d5_pct": 7.59,
-   "d21_pct": 10.42,
-   "d63_pct": 10.97,
-   "vs_sma50_pct": 3.1,
-   "vs_sma200_pct": 4.6,
-   "rs21_vs_qqq_pp": 15.37,
-   "contrib_hoy_pp": -0.012,
+   "precio": 270.55,
+   "fecha": "2026-10-22",
+   "d1_pct": 6.07,
+   "d5_pct": 7.5,
+   "d21_pct": 12.41,
+   "d63_pct": 20.19,
+   "vs_sma50_pct": 5.7,
+   "vs_sma200_pct": 7.1,
+   "rs21_vs_qqq_pp": 17.37,
+   "contrib_hoy_pp": 0.029,
    "serie": [
+    [
+     "2026-06-16",
+     207.32
+    ],
     [
      "2026-06-17",
      196.28
@@ -10081,10 +10073,6 @@
     [
      "2026-10-22",
      270.55
-    ],
-    [
-     "2026-10-23",
-     263.82
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -10094,17 +10082,21 @@
    "nombre": "Qualcomm",
    "sector": "Semis",
    "peso_pct": 0.8,
-   "precio": 175.91,
-   "fecha": "2026-10-23",
-   "d1_pct": 1.78,
-   "d5_pct": 2.21,
-   "d21_pct": -9.45,
-   "d63_pct": 3.45,
-   "vs_sma50_pct": -0.1,
-   "vs_sma200_pct": 3.9,
-   "rs21_vs_qqq_pp": -4.5,
-   "contrib_hoy_pp": 0.014,
+   "precio": 172.83,
+   "fecha": "2026-10-22",
+   "d1_pct": -2.88,
+   "d5_pct": -3.12,
+   "d21_pct": -12.38,
+   "d63_pct": 3.51,
+   "vs_sma50_pct": -1.7,
+   "vs_sma200_pct": 2.1,
+   "rs21_vs_qqq_pp": -7.42,
+   "contrib_hoy_pp": -0.023,
    "serie": [
+    [
+     "2026-06-16",
+     214.07
+    ],
     [
      "2026-06-17",
      212.97
@@ -10460,10 +10452,6 @@
     [
      "2026-10-22",
      172.83
-    ],
-    [
-     "2026-10-23",
-     175.91
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -10473,17 +10461,21 @@
    "nombre": "Micron",
    "sector": "Semis",
    "peso_pct": 4.25,
-   "precio": 877.55,
-   "fecha": "2026-10-23",
-   "d1_pct": 2.46,
-   "d5_pct": -0.15,
-   "d21_pct": -18.79,
-   "d63_pct": -2.52,
-   "vs_sma50_pct": -10.7,
-   "vs_sma200_pct": 19.9,
-   "rs21_vs_qqq_pp": -13.84,
-   "contrib_hoy_pp": 0.105,
+   "precio": 856.49,
+   "fecha": "2026-10-22",
+   "d1_pct": -6.26,
+   "d5_pct": -8.03,
+   "d21_pct": -20.09,
+   "d63_pct": -7.0,
+   "vs_sma50_pct": -13.0,
+   "vs_sma200_pct": 17.4,
+   "rs21_vs_qqq_pp": -15.13,
+   "contrib_hoy_pp": -0.266,
    "serie": [
+    [
+     "2026-06-16",
+     1020.76
+    ],
     [
      "2026-06-17",
      1043.19
@@ -10839,10 +10831,6 @@
     [
      "2026-10-22",
      856.49
-    ],
-    [
-     "2026-10-23",
-     877.55
     ]
    ],
    "fuente": "Yahoo Finance"
@@ -10852,17 +10840,21 @@
    "nombre": "Applied Materials",
    "sector": "Semis",
    "peso_pct": 1.31,
-   "precio": 377.24,
-   "fecha": "2026-10-23",
-   "d1_pct": 0.44,
-   "d5_pct": -7.83,
-   "d21_pct": -20.46,
-   "d63_pct": -27.02,
-   "vs_sma50_pct": -19.5,
-   "vs_sma200_pct": -14.6,
-   "rs21_vs_qqq_pp": -15.51,
-   "contrib_hoy_pp": 0.006,
+   "precio": 375.58,
+   "fecha": "2026-10-22",
+   "d1_pct": -8.16,
+   "d5_pct": -12.66,
+   "d21_pct": -20.83,
+   "d63_pct": -29.96,
+   "vs_sma50_pct": -20.4,
+   "vs_sma200_pct": -14.9,
+   "rs21_vs_qqq_pp": -15.87,
+   "contrib_hoy_pp": -0.107,
    "serie": [
+    [
+     "2026-06-16",
+     568.23
+    ],
     [
      "2026-06-17",
      592.92
@@ -11218,18 +11210,14 @@
     [
      "2026-10-22",
      375.58
-    ],
-    [
-     "2026-10-23",
-     377.24
     ]
    ],
    "fuente": "Yahoo Finance"
   }
  ],
  "esencial": {
-  "cambio": "Ratio SMH/IGV 4,767 (23/10/2026): -11,92 % sobre su media de 50 sesiones y -13,26 % sobre la de 200 → LIDERAZGO SOFTWARE. Hoy: SMH +0,74 %, IGV +1,72 % → CONFIRMACIÓN.",
-  "significa": "Semis (+0,74 %) y software (+1,72 %) suben a la vez: la subida tiene participación amplia en tecnología. Lidera el software. Sensibilidad histórica del Nasdaq-100 (250 sesiones): β semis 0,42, β software 0,19 (R² 0,91); con los movimientos de hoy los dos ETF explican +0,63 pp de los -0,00 % del índice. Peso en el Nasdaq-100 (Invesco, 22/10/2026): semis 29,4 % · software 14,0 %.",
+  "cambio": "Ratio SMH/IGV 4,814 (22/10/2026): -11,31 % sobre su media de 50 sesiones y -12,32 % sobre la de 200 → LIDERAZGO SOFTWARE. Hoy: SMH -5,99 %, IGV -0,09 % → ROTACIÓN HACIA SOFTWARE.",
+  "significa": "SMH -5,99 % frente a IGV -0,09 % (diferencial -5,90 pp): el dinero se mueve dentro de tecnología hacia el software (menos intensivo en capital). Sensibilidad histórica del Nasdaq-100 (250 sesiones): β semis 0,42, β software 0,19 (R² 0,91); con los movimientos de hoy los dos ETF explican -2,55 pp de los -2,90 % del índice. Peso en el Nasdaq-100 (Invesco, 22/10/2026): semis 29,4 % · software 14,0 %.",
   "vigilar": "Cierre diario de SMH e IGV: un diferencial ≥ 1 pp mantenido varios días consolida la rotación; si el ratio recupera su media de 50 sesiones cambia la lectura de tendencia. Último cruce de medias del ratio: BAJISTA (media 50 cruza por debajo de la 200) el 19/10/2026."
  },
  "reglas": [
@@ -11251,6 +11239,6 @@
  "url": "https://finance.yahoo.com/quote/SMH",
  "etiqueta": "CRITERIO NEXORA",
  "ok": true,
- "generado_utc": "2026-10-23 21:30 UTC",
- "duracion_s": 18.0
+ "generado_utc": "2026-10-24 00:01 UTC",
+ "duracion_s": 17.5
 }

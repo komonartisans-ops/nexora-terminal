@@ -1,7 +1,7 @@
 {
  "version": 1,
  "ok": true,
- "generado_utc": "2026-10-23 21:30 UTC",
+ "generado_utc": "2026-10-24 00:01 UTC",
  "fecha_datos": "2026-10-23",
  "precios": {
   "wti": {
@@ -19,10 +19,6 @@
    "aviso_empalme": null
   },
   "wti_spot_serie": [
-   [
-    "2024-08-14",
-    78.47
-   ],
    [
     "2024-08-15",
     79.66
@@ -15972,7 +15968,7 @@
   "consumo": {
    "tesis": "DIVERGENCIA MERCADO DEFENSIVO",
    "intensidad": "FUERTE",
-   "fecha": "2026-10-23"
+   "fecha": "2026-10-22"
   }
  },
  "relaciones": {
@@ -16001,11 +15997,11 @@
    {
     "clave": "xle",
     "nombre": "Energía EE. UU. (ETF XLE)",
-    "valor": 69.33,
-    "fecha": "2026-10-23",
-    "cambio_3m": 18.8,
+    "valor": 67.57,
+    "fecha": "2026-10-22",
+    "cambio_3m": 13.33,
     "unidad_cambio": "%",
-    "correlacion_60d": 0.56,
+    "correlacion_60d": 0.54,
     "lectura": "se mueven juntos"
    }
   ]
@@ -16065,5 +16061,5 @@
  ],
  "errores": {},
  "fuentes": "Yahoo Finance (CL=F, BZ=F, contratos CL<mes><año>.NYM, XLE, DXY) · FRED (DCOILWTICO, DCOILBRENTEU, GASREGW, T5YIE) · EIA (Weekly Petroleum Status Report) · CFTC (WTI-PHYSICAL)",
- "duracion_s": 13.3
+ "duracion_s": 8.7
 }

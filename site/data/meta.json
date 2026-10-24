@@ -1,27 +1,27 @@
 {
- "actualizado_utc": "2026-10-23 23:49 UTC",
- "modo": "horario",
+ "actualizado_utc": "2026-10-24 00:01 UTC",
+ "modo": "cierre",
  "etapas": {
   "precios": {
    "ok": true,
-   "duracion_s": 10.5,
+   "duracion_s": 9.7,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "fedwatch": {
    "ok": true,
-   "duracion_s": 9.3,
+   "duracion_s": 9.8,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-23 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-23 22:07 UTC"
   },
   "calendario": {
    "ok": true,
-   "duracion_s": 38.7,
+   "duracion_s": 38.4,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-23 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-23 22:07 UTC"
   },
   "liquidez": {
    "ok": true,
@@ -32,17 +32,17 @@
   },
   "resumen": {
    "ok": true,
-   "duracion_s": 110.8,
+   "duracion_s": 109.2,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-23 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-23 22:07 UTC"
   },
   "tipos": {
    "ok": true,
-   "duracion_s": 73.4,
+   "duracion_s": 72.3,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-23 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-23 22:07 UTC"
   },
   "ciclo": {
    "ok": true,
@@ -53,24 +53,24 @@
   },
   "publicados": {
    "ok": true,
-   "duracion_s": 4.0,
+   "duracion_s": 12.0,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-23 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-23 22:07 UTC"
   },
   "regimen": {
    "ok": true,
-   "duracion_s": 7.9,
+   "duracion_s": 13.5,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-23 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-23 22:07 UTC"
   },
   "alertas": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "monitores": {
    "ok": true,
@@ -102,59 +102,59 @@
   },
   "noticias": {
    "ok": true,
-   "duracion_s": 7.9,
+   "duracion_s": 6.4,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-23 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-23 22:07 UTC"
   },
   "skew": {
    "ok": true,
-   "duracion_s": 1.6,
+   "duracion_s": 2.3,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "semis": {
    "ok": true,
-   "duracion_s": 18.0,
+   "duracion_s": 17.5,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "gamma": {
    "ok": true,
    "duracion_s": 6.2,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "contexto": {
    "ok": true,
-   "duracion_s": 0.1,
+   "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "tesis": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-23 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-23 22:07 UTC"
   },
   "bancos": {
    "ok": true,
-   "duracion_s": 15.5,
+   "duracion_s": 17.6,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "tono": {
    "ok": true,
-   "duracion_s": 26.5,
+   "duracion_s": 18.6,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "reacciones": {
    "ok": true,
@@ -167,86 +167,86 @@
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-23 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-23 22:07 UTC"
   },
   "etf": {
    "ok": true,
-   "duracion_s": 1.9,
+   "duracion_s": 1.1,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-23 22:07 UTC",
+   "ultimo_ok_utc": "2026-10-23 22:07 UTC"
   },
   "marcador": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "integridad": {
    "ok": true,
-   "duracion_s": 401.4,
+   "duracion_s": 401.0,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "gamma_intradia": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-23 23:49 UTC",
-   "ultimo_ok_utc": "2026-10-23 23:49 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "consumo": {
    "ok": true,
-   "duracion_s": 11.4,
+   "duracion_s": 5.6,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "petroleo": {
    "ok": true,
-   "duracion_s": 13.3,
+   "duracion_s": 8.7,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "gamma_oro": {
    "ok": true,
-   "duracion_s": 0.7,
+   "duracion_s": 0.5,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "consumo_ratio": {
    "ok": true,
-   "duracion_s": 14.1,
+   "duracion_s": 14.4,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "gamma_us30": {
    "ok": true,
-   "duracion_s": 1.6,
+   "duracion_s": 0.3,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "spot_oro": {
    "ok": true,
-   "duracion_s": 1.3,
+   "duracion_s": 0.9,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   },
   "analisis": {
    "ok": true,
    "duracion_s": 0.0,
    "error": null,
-   "ejecutada_utc": "2026-10-23 21:30 UTC",
-   "ultimo_ok_utc": "2026-10-23 21:30 UTC"
+   "ejecutada_utc": "2026-10-24 00:01 UTC",
+   "ultimo_ok_utc": "2026-10-24 00:01 UTC"
   }
  },
- "duracion_total_s": 667.7
+ "duracion_total_s": 503.6
 }
