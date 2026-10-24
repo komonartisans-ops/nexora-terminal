@@ -207,9 +207,9 @@ print("8) OK marcador: MFE 8,0 pts / MAE 1,0 pts a 15 min (en múltiplos del EM:
 
 # ---------------------------------------------------------------- 9) línea de niveles de las 15:00 Madrid
 l = G.linea_niveles({"indices": {**J["indices"]}})
-assert l == "ES flip=7800.0;cw=7850.0;pw=7700.0;em=80.0;maxg=7750.0 | NQ flip=29900.0;cw=30100.0;pw=29000.0;em=400.0;maxg=29400.0", l
-assert re.fullmatch(r"(ES|NQ) flip=[\d.]+;cw=[\d.]+;pw=[\d.]+;em=[\d.]+;maxg=[\d.]+ \| (ES|NQ) flip=[\d.]+;cw=[\d.]+;pw=[\d.]+;em=[\d.]+;maxg=[\d.]+", l)
-assert "NQ flip=na;cw=na;pw=na;em=na;maxg=na" in G.linea_niveles({"indices": {"ES": J["indices"]["ES"]}}), "índice sin niveles → na"
+assert l == "ES flip=7800.0;cw=7850.0;pw=7700.0;em=80.0;maxg=7750.0;rf=2026-10-16 | NQ flip=29900.0;cw=30100.0;pw=29000.0;em=400.0;maxg=29400.0;rf=2026-10-16", l
+assert re.fullmatch(r"(ES|NQ) flip=[\d.]+;cw=[\d.]+;pw=[\d.]+;em=[\d.]+;maxg=[\d.]+;rf=\d{4}-\d\d-\d\d \| (ES|NQ) flip=[\d.]+;cw=[\d.]+;pw=[\d.]+;em=[\d.]+;maxg=[\d.]+;rf=\d{4}-\d\d-\d\d", l)
+assert "NQ flip=na;cw=na;pw=na;em=na;maxg=na;rf=na" in G.linea_niveles({"indices": {"ES": J["indices"]["ES"]}}), "índice sin niveles → na"
 ahora15 = dt.datetime(2026, 10, 19, 13, 0, tzinfo=UTC)                 # 15:00 Madrid en octubre (UTC+2)
 m = G.mensaje_niveles(J, ahora15)
 assert "<code>ES flip=7800.0" in m and "15:00 Madrid" in m and "FUTURO" in m and "16-10" in m and "VIX" in m and "Yahoo" in m and "no una entrada" in m and "AVISO" not in m, m

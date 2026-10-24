@@ -181,7 +181,7 @@ J_es = {"indices": {"ES": {"sesion": "2026-10-19", "flip": {"fut": 7804.0}, "cal
 base = GI.mensaje_niveles(J_es, ahora)
 assert "XAU" not in base and "ES flip=7804.0" in base, "sin oro, el mensaje de ES/NQ no cambia"
 con = GI.mensaje_niveles(J_es, ahora, txt)
-assert con.count("<code>") == 2 and "ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6 | NQ flip=29920.4" in con and "XAU tesis=" in con and "compra" not in con.lower()
+assert con.count("<code>") == 2 and "ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6;rf=2026-10-19 | NQ flip=29920.4" in con and "XAU tesis=" in con and "compra" not in con.lower()
 enviados = []
 os.makedirs(os.path.join(T, "data"), exist_ok=True)
 escribir(T, "gamma.json", J_es)

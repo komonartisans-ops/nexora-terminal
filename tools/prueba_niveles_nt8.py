@@ -367,6 +367,57 @@ assert pine_estado(L.format(rf="na", extra=""), u("2026-10-24T12:00"))["fila_roj
 fuente_pine = open(os.path.join(RAIZ, "plataformas", "tradingview", "NexoraOro.pine"), encoding="utf-8").read()
 for clave in ("f_relevo", "f_previo_laborable", "AMEX:SPY", "CADUCADOS, pega la línea de hoy", "SPOT DUDOSO", "line.style_dashed", "Europe/Madrid", "15, 30"):
     assert clave in fuente_pine, clave
+
+
+# ---------------------------------------------------------------- 5) NexoraNiveles.pine (ES/NQ): misma regla del relevo; la línea de Telegram trae rf= por índice
+def pine_estado_gex(linea, ahora, raiz):
+    """Lo que muestra NexoraNiveles.pine: el segmento es el del índice del gráfico (MES → ES, MNQ → NQ); rf = sesión de los niveles de ese índice."""
+    indice = "ES" if raiz in ("ES", "MES") else "NQ" if raiz in ("NQ", "MNQ") else ""
+    seg = next((s.strip() for s in linea.split("|") if indice and s.strip().split(" ")[0].upper() == indice), "")
+    rf = f_texto(seg, "rf")
+    try:
+        y, m, d = (int(x) for x in rf.split("-"))
+        rf_ymd = y * 10000 + m * 100 + d
+    except ValueError:
+        rf_ymd = None
+    caducada = bool(seg) and rf_ymd is not None and rf_ymd < pine_esperada(ahora)
+    return {"fila_roja": ROJA.format(f"{rf[8:10]}-{rf[5:7]}") if caducada else None, "lineas": "gris discontinuo" if caducada else "colores"}
+
+
+sys.path.insert(0, os.path.join(RAIZ, "engine"))
+import gamma_intradia as GI  # noqa: E402
+
+LG = "ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6;rf={es} | NQ flip=29920.4;cw=29892.0;pw=28592.0;em=502.1;maxg=29392.0;rf={nq}"
+ESC2 = [  # (ahora UTC, rf ES, rf NQ, gráfico, fila roja esperada (dd-mm) o None)
+    ("2026-10-24T12:00", "2026-10-22", "2026-10-22", "ES", None),                  # sábado: vale la última línea recibida
+    ("2026-10-24T12:00", "2026-10-22", "2026-10-22", "MNQ", None),
+    ("2026-10-26T14:45", "2026-10-22", "2026-10-22", "ES", "22-10"),               # lunes tras el relevo: toca rf = viernes
+    ("2026-10-26T14:45", "2026-10-22", "2026-10-22", "MNQ", "22-10"),
+    ("2026-10-26T14:45", "2026-10-23", "2026-10-23", "MES", None),                 # línea de hoy pegada
+    ("2026-10-26T14:45", "2026-10-23", "2026-10-20", "ES", None),                  # cada gráfico mira SU segmento
+    ("2026-10-26T14:45", "2026-10-23", "2026-10-20", "NQ", "20-10"),
+    ("2026-11-27T16:00", "2026-11-25", "2026-11-25", "ES", None),                  # tras el festivo de Acción de Gracias
+    ("2026-11-30T15:00", "2026-11-25", "2026-11-25", "ES", "25-11"),
+]
+for ahora, a, b, g, roja in ESC2:
+    r = pine_estado_gex(LG.format(es=a, nq=b), u(ahora), g)
+    assert r == {"fila_roja": ROJA.format(roja) if roja else None, "lineas": "gris discontinuo" if roja else "colores"}, (ahora, a, b, g, r)
+assert pine_estado_gex("ES flip=7804.0;cw=1;pw=2;em=3;maxg=4 | NQ flip=1;cw=2;pw=3;em=4;maxg=5", u("2026-10-26T14:45"), "ES")["fila_roja"] is None, "línea antigua sin rf=: no se evalúa"
+assert pine_estado_gex(LG.format(es="na", nq="na"), u("2026-10-26T14:45"), "ES")["fila_roja"] is None, "rf = na: sin alarma"
+assert pine_estado_gex("", u("2026-10-26T14:45"), "ES")["fila_roja"] is None and pine_estado_gex(LG.format(es="2026-10-01", nq="2026-10-01"), u("2026-10-26T14:45"), "CL")["fila_roja"] is None
+# la línea que genera NEXORA lleva rf= por índice, y la del Telegram y la de la web son la misma
+lin = GI.linea_niveles({"indices": {"ES": {"sesion": "2026-10-23", "flip": {"fut": 7782.1}, "call_wall": {"fut": 7837.3}, "put_wall": {"fut": 7637.3}, "max_gamma": {"fut": 7737.3}, "em": {"puntos": 93.9}},
+                                   "NQ": {"sesion": "2026-10-22", "flip": {"fut": 30106.2}, "call_wall": {"fut": 29865.0}, "put_wall": {"fut": 28915.0}, "max_gamma": {"fut": 29392.0}, "em": {"puntos": 519.2}}}})
+assert lin == "ES flip=7782.1;cw=7837.3;pw=7637.3;em=93.9;maxg=7737.3;rf=2026-10-23 | NQ flip=30106.2;cw=29865.0;pw=28915.0;em=519.2;maxg=29392.0;rf=2026-10-22", lin
+assert "rf=na" in GI.linea_niveles({"indices": {}}) and pine_estado_gex(lin, u("2026-10-26T14:45"), "NQ")["fila_roja"] == ROJA.format("22-10")
+src = open(os.path.join(RAIZ, "plataformas", "tradingview", "NexoraNiveles.pine"), encoding="utf-8").read()
+for clave in ("f_relevo", "f_previo_laborable", "AMEX:SPY", "CADUCADOS, pega la línea de hoy", "line.style_dashed", "Europe/Madrid", "15, 30", "[calT0, calT1, calT2]", 'f_texto(seg, "rf")'):
+    assert clave in src, clave
+for f in ("f_relevo", "f_previo_laborable", "f_ymd", "f_ymd_txt"):      # las funciones de calendario son idénticas en los dos Pine
+    ini = lambda t: t[t.index(f + "("):]  # noqa: E731
+    cuerpo = lambda t: ini(t)[:ini(t).index("\n\n")]  # noqa: E731
+    assert cuerpo(src) == cuerpo(fuente_pine), f
+print(f"4b) OK NexoraNiveles.pine (ES/NQ): misma regla; {len(ESC2)} escenarios (cada gráfico lee su segmento rf=), línea sin rf = sin alarma, línea de NEXORA con rf= por índice, funciones de calendario idénticas a las del Pine del oro")
 print(f"4) OK Pine: la lógica portada coincide con la definición independiente en {n} instantes (1 año, cada 20 min, con festivos y cambios de hora) y {len(ESC)} escenarios (fila roja, líneas en gris, fila ámbar)")
 print(f"   (respaldo sin calendario de la bolsa: acierta en {n - sin_cal} de {n} instantes; solo falla justo después de un festivo, por eso el calendario de SPY es lo principal)")
 print("OK · Fase 21: JSON, build, lógica C# de NexoraNiveles y lógica de caducidad de NexoraOro.pine")

@@ -16,13 +16,21 @@ Versión de Pine Script: **v6**. Funciona con una cuenta gratuita de TradingView
 ## 2. Pega la línea de niveles (cada día)
 
 1. En Telegram, copia la línea del mensaje de las 15:00, por ejemplo:  
-   `ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6 | NQ flip=29920.4;cw=29892.0;pw=28592.0;em=502.1;maxg=29392.0`
+   `ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6;rf=2026-10-19 | NQ flip=29920.4;cw=29892.0;pw=28592.0;em=502.1;maxg=29392.0;rf=2026-10-19`
 2. En el gráfico, haz clic en el engranaje del indicador (**Ajustes**) → pestaña **Datos de entrada**.
 3. Pega la línea en **«Línea de niveles»**. Puedes pegar la línea completa con ES y NQ: el indicador elige el tramo que corresponde al instrumento del gráfico.
 4. **Aceptar**. Verás las líneas: **dorada** = Gamma Flip, **roja** = Call Wall, **verde** = Put Wall, **azul discontinua** = Max Gamma, y una **banda azul tenue** = cierre anterior ± EM.
 5. Arriba a la derecha, un pequeño cuadro indica el régimen: gamma **positiva** si el precio está sobre el flip y **negativa** si está bajo.
 
 > Si el cuadro dice «pega la línea de niveles de Telegram», el campo está vacío; si dice «la línea no trae niveles de ES/NQ», revisa que has pegado la línea completa.
+
+## Cuándo caduca la línea (Fase 21)
+
+Desde la Fase 21 cada tramo de la línea acaba en `rf=AAAA-MM-DD`: la sesión de la cadena de opciones de la que salen sus niveles. Si el `rf=` de tu línea es anterior al de la línea que **toca hoy**, el indicador pone una fila **roja y grande** «NIVELES DEL dd-mm · CADUCADOS, pega la línea de hoy» y dibuja las líneas en **gris discontinuo** (con «· CADUCADO» en sus etiquetas). Pega la línea nueva y desaparece.
+
+La regla es la misma que la del indicador de oro: la línea que toca es la de la última sesión de la bolsa cerrada antes del último «relevo» (lunes a viernes, **15:30 de Madrid**, media hora después del Telegram). En fin de semana y en festivos de la bolsa **no** salta la alarma (no hay línea nueva que pegar). Los días de sesión salen de las barras diarias de `AMEX:SPY` (ajuste «Símbolo del calendario de la bolsa»); sin datos de SPY se usan lunes a viernes. Una línea antigua sin `rf=` no se evalúa. Detalle y tabla de ejemplos: [`INSTALACION_ORO.md`](INSTALACION_ORO.md).
+
+> **Actualización de la Fase 21: hay que volver a pegar el indicador (una sola vez).** Abre el Editor de Pine con tu script, borra todo el texto, pega de nuevo el contenido de [`NexoraNiveles.pine`](NexoraNiveles.pine) y pulsa **Guardar**. Las líneas que ya tenías pegadas (sin `rf=`) siguen funcionando, pero sin aviso de caducidad hasta que pegues la de hoy. Si usas NinjaTrader 8, [`NexoraNiveles.cs`](../ninjatrader/NexoraNiveles.cs) lo hace todo solo ([`docs/INSTALACION_NT8.md`](../../docs/INSTALACION_NT8.md)).
 
 ## 3. Ajustes útiles
 

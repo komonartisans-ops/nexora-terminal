@@ -312,9 +312,9 @@ function gmActivo(a) {
 function lineaNivelesGamma(G) {
   return ['ES', 'NQ'].map((k) => {
     const x = ((G || {}).indices || {})[k];
-    if (!x || !x.flip || x.flip.fut == null) return `${k} flip=na;cw=na;pw=na;em=na;maxg=na`;
+    if (!x || !x.flip || x.flip.fut == null) return `${k} flip=na;cw=na;pw=na;em=na;maxg=na;rf=na`;
     const v = (o) => (o && o.fut != null ? Number(o.fut).toFixed(1) : 'na');
-    return `${k} flip=${v(x.flip)};cw=${v(x.call_wall)};pw=${v(x.put_wall)};em=${x.em && x.em.puntos != null ? Number(x.em.puntos).toFixed(1) : 'na'};maxg=${v(x.max_gamma)}`;
+    return `${k} flip=${v(x.flip)};cw=${v(x.call_wall)};pw=${v(x.put_wall)};em=${x.em && x.em.puntos != null ? Number(x.em.puntos).toFixed(1) : 'na'};maxg=${v(x.max_gamma)};rf=${x.sesion || 'na'}`;
   }).join(' | ');
 }
 function plataformasHtml(G) {

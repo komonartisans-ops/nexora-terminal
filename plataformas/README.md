@@ -26,7 +26,7 @@ Dos indicadores **de contexto** (no de entradas): dibujan en tu gráfico los niv
 Cada día laborable a las **15:00 de Madrid** llega un mensaje con una línea como esta (precios de futuro, punto decimal, `na` si falta un nivel):
 
 ```
-ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6 | NQ flip=29920.4;cw=29892.0;pw=28592.0;em=502.1;maxg=29392.0
+ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6;rf=2026-10-19 | NQ flip=29920.4;cw=29892.0;pw=28592.0;em=502.1;maxg=29392.0;rf=2026-10-19
 ```
 
 El mensaje indica también la sesión de la cadena de Cboe de la que salen los niveles, la fuente y, si los niveles tienen más de 4 días, un aviso de antigüedad.

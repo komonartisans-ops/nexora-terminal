@@ -1,9 +1,12 @@
 //@version=6
 // NEXORA · Niveles gamma + sesiones (TradingView). Indicador de CONTEXTO, no de entradas.
 // Pega en el campo de texto la línea que NEXORA envía por Telegram a las 15:00 (Madrid), p. ej.:
-//   ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6 | NQ flip=29920.4;cw=29892.0;pw=28592.0;em=502.1;maxg=29392.0
+//   ES flip=7804.0;cw=7843.6;pw=7693.6;em=97.0;maxg=7743.6;rf=2026-10-19 | NQ flip=29920.4;cw=29892.0;pw=28592.0;em=502.1;maxg=29392.0;rf=2026-10-19
 // Dibuja Gamma Flip, Call Wall, Put Wall, Max Gamma y la banda EM del instrumento del gráfico (ES/MES o NQ/MNQ), más PDH/PDL y los máximos/mínimos de Asia y Londres.
 // Los niveles son precios de FUTURO. Si el valor es «na», ese nivel no se dibuja.
+// Fase 21: CADUCIDAD. Compara el «rf=» (sesión de los niveles) de la línea pegada con la línea que toca hoy: si es de otra sesión, fila ROJA grande «NIVELES DEL dd-mm · CADUCADOS, pega la línea de hoy» y las líneas pasan a gris discontinuo.
+//   La línea que toca es la de la última sesión de la bolsa cerrada antes del último «relevo» (lunes a viernes, 15:30 de Madrid = media hora después del Telegram de las 15:00). Fines de semana y festivos no cambian el relevo.
+//   El calendario de la bolsa sale de las barras diarias de AMEX:SPY (con sus festivos); sin datos se usan lunes a viernes. Una línea antigua sin «rf=» no se evalúa.
 indicator("NEXORA · Niveles gamma + sesiones", shorttitle = "NEXORA GEX", overlay = true, max_lines_count = 60, max_labels_count = 60)
 
 // ---------------------------------------------------------------- entradas
@@ -17,6 +20,10 @@ colCW = input.color(color.new(#E05A4F, 0), "Call Wall", group = grpN)
 colPW = input.color(color.new(#35B26F, 0), "Put Wall", group = grpN)
 colMG = input.color(color.new(#3A8FE0, 0), "Max Gamma", group = grpN)
 colEM = input.color(color.new(#6FA8DC, 85), "Banda EM", group = grpN)
+
+grpC = "Caducidad de la línea"
+simCal = input.symbol("AMEX:SPY", "Símbolo del calendario de la bolsa", group = grpC, tooltip = "Solo sirve para saber qué días hay sesión (festivos incluidos). Si no tiene datos se usan lunes a viernes.")
+colCad = input.color(color.new(color.gray, 0), "Líneas con niveles caducados", group = grpC)
 
 grpS = "Sesiones y día anterior"
 verPD = input.bool(true, "PDH / PDL (máximo y mínimo del día anterior)", group = grpS)
@@ -38,6 +45,19 @@ f_valor(string seg, string clave) =>
         kv = str.split(ultimo, "=")
         if array.size(kv) == 2 and str.trim(array.get(kv, 0)) == clave
             r := str.tonumber(str.trim(array.get(kv, 1)))
+    r
+
+// texto asociado a «clave» dentro de «ES clave=valor;clave=valor»; "" si falta
+f_texto(string seg, string clave) =>
+    string r = ""
+    pares = str.split(seg, ";")
+    for p in pares
+        t = str.trim(p)
+        palabras = str.split(t, " ")
+        ultimo = array.get(palabras, array.size(palabras) - 1)
+        kv = str.split(ultimo, "=")
+        if array.size(kv) == 2 and str.trim(array.get(kv, 0)) == clave
+            r := str.trim(array.get(kv, 1))
     r
 
 // segmento del índice que corresponde al instrumento del gráfico (MES → ES, MNQ → NQ)
@@ -62,6 +82,56 @@ cw = valido ? f_valor(seg, "cw") : na
 pw = valido ? f_valor(seg, "pw") : na
 em = valido ? f_valor(seg, "em") : na
 maxg = valido ? f_valor(seg, "maxg") : na
+rf = valido ? f_texto(seg, "rf") : ""
+
+// ---------------------------------------------------------------- caducidad: ¿es la línea pegada la que toca hoy?
+// aaaammdd de un instante en una zona horaria
+f_ymd(int ts, string zona) =>
+    year(ts, zona) * 10000 + month(ts, zona) * 100 + dayofmonth(ts, zona)
+
+// «AAAA-MM-DD» → aaaammdd; na si no es una fecha
+f_ymd_txt(string s) =>
+    p = str.split(s, "-")
+    array.size(p) == 3 ? int(str.tonumber(array.get(p, 0))) * 10000 + int(str.tonumber(array.get(p, 1))) * 100 + int(str.tonumber(array.get(p, 2))) : na
+
+// último «relevo» ya pasado: lunes a viernes a las 15:30 de Madrid (se parte del mediodía para que el cambio de hora no cambie el día)
+f_relevo(int ahora) =>
+    int mediodia = timestamp("Europe/Madrid", year(ahora, "Europe/Madrid"), month(ahora, "Europe/Madrid"), dayofmonth(ahora, "Europe/Madrid"), 12, 0)
+    int r = na
+    for k = 0 to 6
+        d = mediodia - k * 86400000
+        cand = timestamp("Europe/Madrid", year(d, "Europe/Madrid"), month(d, "Europe/Madrid"), dayofmonth(d, "Europe/Madrid"), 15, 30)
+        dw = dayofweek(d, "Europe/Madrid")
+        if na(r) and dw != dayofweek.saturday and dw != dayofweek.sunday and cand <= ahora
+            r := cand
+    r
+
+// respaldo sin calendario de la bolsa: el lunes-viernes anterior al día de Nueva York del relevo (aaaammdd)
+f_previo_laborable(int relevo) =>
+    int mediodia = timestamp("America/New_York", year(relevo, "America/New_York"), month(relevo, "America/New_York"), dayofmonth(relevo, "America/New_York"), 12, 0)
+    int r = na
+    for k = 1 to 5
+        d = mediodia - k * 86400000
+        dw = dayofweek(d, "America/New_York")
+        if na(r) and dw != dayofweek.saturday and dw != dayofweek.sunday
+            r := f_ymd(d, "America/New_York")
+    r
+
+// apertura de las tres últimas barras diarias de la bolsa (la fecha de sesión sale de ellas, festivos incluidos; hacen falta tres porque entre la apertura de EE. UU. y las 15:30 de Madrid
+// —en las semanas en que Europa y EE. UU. cambian la hora en fechas distintas— la barra de hoy ya existe y es posterior al relevo)
+[calT0, calT1, calT2] = request.security(simCal, "D", [time, time[1], time[2]])
+var int esperada = na
+var bool caducada = false
+if barstate.islast
+    relevo = f_relevo(timenow)
+    ymdR = f_ymd(relevo, "America/New_York")
+    ymd0 = na(calT0) ? na : f_ymd(calT0, "America/New_York")
+    ymd1 = na(calT1) ? na : f_ymd(calT1, "America/New_York")
+    ymd2 = na(calT2) ? na : f_ymd(calT2, "America/New_York")
+    // la última sesión con fecha anterior al día (en Nueva York) del relevo
+    esperada := not na(ymd0) and not na(ymd1) and not na(ymd2) ? (ymd0 < ymdR ? ymd0 : ymd1 < ymdR ? ymd1 : ymd2) : f_previo_laborable(relevo)
+    rfYmd = f_ymd_txt(rf)
+    caducada := valido and not na(rfYmd) and rfYmd < esperada
 
 // ---------------------------------------------------------------- referencias diarias y sesiones
 pdh = request.security(syminfo.tickerid, "D", high[1], lookahead = barmerge.lookahead_on)
@@ -110,35 +180,43 @@ f_linea(line l, float y, color c, int ancho, string estilo) =>
 
 f_etq(label e, float y, string txt, color c) =>
     label.delete(e)
-    verEtq and not na(y) ? label.new(bar_index, y, txt + " " + str.tostring(y, "#.##"), style = label.style_label_left, color = color.new(c, 80), textcolor = c, size = size.small) : na
+    verEtq and not na(y) ? label.new(bar_index, y, txt + " " + str.tostring(y, "#.##") + (caducada ? " · CADUCADO" : ""), style = label.style_label_left, color = color.new(c, 80), textcolor = c, size = size.small) : na
 
 if barstate.islast
-    lFlip := f_linea(lFlip, flip, colFlip, 2, line.style_solid)
-    lCW := f_linea(lCW, cw, colCW, 2, line.style_solid)
-    lPW := f_linea(lPW, pw, colPW, 2, line.style_solid)
-    lMG := f_linea(lMG, verMaxG ? maxg : na, colMG, 1, line.style_dashed)
-    eFlip := f_etq(eFlip, flip, "Gamma Flip", colFlip)
-    eCW := f_etq(eCW, cw, "Call Wall", colCW)
-    ePW := f_etq(ePW, pw, "Put Wall", colPW)
-    eMG := f_etq(eMG, verMaxG ? maxg : na, "Max Gamma", colMG)
+    estSol = caducada ? line.style_dashed : line.style_solid
+    lFlip := f_linea(lFlip, flip, caducada ? colCad : colFlip, 2, estSol)
+    lCW := f_linea(lCW, cw, caducada ? colCad : colCW, 2, estSol)
+    lPW := f_linea(lPW, pw, caducada ? colCad : colPW, 2, estSol)
+    lMG := f_linea(lMG, verMaxG ? maxg : na, caducada ? colCad : colMG, 1, line.style_dashed)
+    eFlip := f_etq(eFlip, flip, "Gamma Flip", caducada ? colCad : colFlip)
+    eCW := f_etq(eCW, cw, "Call Wall", caducada ? colCad : colCW)
+    ePW := f_etq(ePW, pw, "Put Wall", caducada ? colCad : colPW)
+    eMG := f_etq(eMG, verMaxG ? maxg : na, "Max Gamma", caducada ? colCad : colMG)
     linefill.delete(banda)
     line.delete(lUp)
     line.delete(lDn)
     if verEM and not na(em) and not na(cierreAnt)
-        lUp := line.new(bar_index - 1, cierreAnt + em, bar_index, cierreAnt + em, extend = extend.both, color = color.new(colEM, 40), width = 1, style = line.style_dotted)
-        lDn := line.new(bar_index - 1, cierreAnt - em, bar_index, cierreAnt - em, extend = extend.both, color = color.new(colEM, 40), width = 1, style = line.style_dotted)
-        banda := linefill.new(lUp, lDn, colEM)
+        colBanda = caducada ? color.new(colCad, 85) : colEM
+        lUp := line.new(bar_index - 1, cierreAnt + em, bar_index, cierreAnt + em, extend = extend.both, color = color.new(colBanda, 40), width = 1, style = line.style_dotted)
+        lDn := line.new(bar_index - 1, cierreAnt - em, bar_index, cierreAnt - em, extend = extend.both, color = color.new(colBanda, 40), width = 1, style = line.style_dotted)
+        banda := linefill.new(lUp, lDn, colBanda)
     else
         lUp := na
         lDn := na
         banda := na
 
 // ---------------------------------------------------------------- tabla de estado (régimen y errores)
-var table tbl = table.new(position.top_right, 1, 3, border_width = 1)
+var table tbl = table.new(position.top_right, 1, 4, border_width = 1)
 if barstate.islast
+    // fila 0 (solo si la línea pegada NO es la que toca hoy): roja y grande; si no, la celda queda vacía y transparente
+    if caducada
+        txtCad = "NIVELES DEL " + str.substring(rf, 8, 10) + "-" + str.substring(rf, 5, 7) + " · CADUCADOS, pega la línea de hoy"
+        table.cell(tbl, 0, 0, txtCad, text_color = color.white, bgcolor = color.new(#E02020, 0), text_size = size.large, text_halign = text.align_left)
+    else
+        table.cell(tbl, 0, 0, "", bgcolor = na)
     string r1 = indice == "" ? "NEXORA: instrumento no admitido (solo ES, MES, NQ, MNQ)" : not hayLinea ? "NEXORA: pega la línea de niveles de Telegram" : not valido ? "NEXORA: la línea no trae niveles de " + indice : "NEXORA GEX · " + indice
     string r2 = na(flip) ? "" : close > flip ? "Gamma POSITIVA (precio sobre el flip)" : close < flip ? "Gamma NEGATIVA (precio bajo el flip)" : "Precio en el flip"
     color cf = na(flip) ? color.gray : close > flip ? color.new(#35B26F, 0) : color.new(#E05A4F, 0)
-    table.cell(tbl, 0, 0, r1, text_color = color.white, bgcolor = color.new(color.black, 30), text_size = size.small)
-    table.cell(tbl, 0, 1, r2, text_color = cf, bgcolor = color.new(color.black, 30), text_size = size.small)
-    table.cell(tbl, 0, 2, "Contexto de mercado, no una entrada", text_color = color.gray, bgcolor = color.new(color.black, 30), text_size = size.tiny)
+    table.cell(tbl, 0, 1, r1, text_color = color.white, bgcolor = color.new(color.black, 30), text_size = size.small)
+    table.cell(tbl, 0, 2, r2, text_color = cf, bgcolor = color.new(color.black, 30), text_size = size.small)
+    table.cell(tbl, 0, 3, "Contexto de mercado, no una entrada", text_color = color.gray, bgcolor = color.new(color.black, 30), text_size = size.tiny)

@@ -539,14 +539,15 @@ def _v(x, d=1):
 
 
 def linea_niveles(J):
-    """«ES flip=…;cw=…;pw=…;em=…;maxg=… | NQ …» en precio de FUTURO, punto decimal, sin separadores de miles (la lee el indicador de TradingView)."""
+    """«ES flip=…;cw=…;pw=…;em=…;maxg=…;rf=AAAA-MM-DD | NQ …» en precio de FUTURO, punto decimal, sin separadores de miles (la lee el indicador de TradingView). rf = sesión de la cadena de
+    opciones de la que salen los niveles (Fase 21: el indicador la compara con la línea que toca hoy y avisa si está caducada)."""
     seg = []
     for clave in INDICES:
         n = niveles(J, clave)
         if not n:
-            seg.append(f"{clave} flip=na;cw=na;pw=na;em=na;maxg=na")
+            seg.append(f"{clave} flip=na;cw=na;pw=na;em=na;maxg=na;rf=na")
             continue
-        seg.append(f"{clave} flip={_v(n['flip'])};cw={_v(n['cw'])};pw={_v(n['pw'])};em={_v(n['em'])};maxg={_v(n['maxg'])}")
+        seg.append(f"{clave} flip={_v(n['flip'])};cw={_v(n['cw'])};pw={_v(n['pw'])};em={_v(n['em'])};maxg={_v(n['maxg'])};rf={n.get('sesion') or 'na'}")
     return " | ".join(seg)
 
 
