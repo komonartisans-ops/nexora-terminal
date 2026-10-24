@@ -172,9 +172,22 @@
    "l4": "Los ETF son la vía por la que entra y sale el dinero institucional en bitcoin: si salen cantidades grandes, falta demanda.",
    "enviada": true,
    "error": null
+  },
+  {
+   "fecha_utc": "2026-10-24 09:49 UTC",
+   "clave": "ciclo_ccc:2026-10-22",
+   "titulo": "Crédito",
+   "l1": "Crédito CCC (las empresas más frágiles): +62 pb en 5 días hasta 1340 pb (2026-10-22, ICE BofA vía FRED). Las empresas pagan más por financiarse: suele adelantarse a la bolsa.",
+   "l2": "Oro neutro, Índices en contra, BTC en contra (interpretación según sensibilidades fijas, no hecho).",
+   "l3": "mié 28 oct · 19:00 (hora de Madrid) · Decisión FOMC (Fed)",
+   "l4": "Es lo que pagan las empresas más endeudadas por financiarse. Si se encarece, el mercado de crédito se preocupa, y suele adelantarse a la bolsa.",
+   "enviada": true,
+   "error": null
   }
  ],
- "candidatas": [],
+ "candidatas": [
+  "ciclo_ccc:2026-10-22"
+ ],
  "no_evaluables": {},
  "telegram_configurado": true,
  "umbrales": {
@@ -201,9 +214,11 @@
   "fed_dic_pb": 10,
   "fed_confirmaciones": 2
  },
- "enviadas_hoy": [],
- "ultima_evaluacion_utc": "2026-10-24 00:03 UTC",
+ "enviadas_hoy": [
+  "ciclo_ccc:2026-10-22"
+ ],
+ "ultima_evaluacion_utc": "2026-10-24 09:49 UTC",
  "ok": true,
- "generado_utc": "2026-10-24 00:01 UTC",
- "duracion_s": 0.0
+ "generado_utc": "2026-10-24 09:39 UTC",
+ "duracion_s": 0.6
 }

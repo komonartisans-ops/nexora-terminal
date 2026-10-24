@@ -31,14 +31,16 @@
    "oro": "00:11",
    "etf_btc": "05:40"
   },
-  "2026-10-24": {}
+  "2026-10-24": {
+   "ciclo_ccc:2026-10-22": "09:49"
+  }
  },
  "fed_ultimo": {
   "reunion": "2026-10-28",
   "subida": 28.0
  },
  "ciclo": {
-  "fecha": "2026-10-23",
+  "fecha": "2026-10-24",
   "fase": "EXPANSIÓN · RIESGO BAJO",
   "senales": {
    "curva": false,
@@ -53,7 +55,8 @@
    "sahm": false
   },
   "avisado": [
-   "ccc:2026-10-20"
+   "ccc:2026-10-20",
+   "ccc:2026-10-22"
   ]
  },
  "skew_avisados": [

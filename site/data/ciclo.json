@@ -1,55 +1,55 @@
 {
- "fecha": "2026-10-23",
+ "fecha": "2026-10-24",
  "fase": "EXPANSIÓN · RIESGO BAJO",
  "senales_adelantadas_encendidas": 0,
  "senales_adelantadas_total": 8,
- "prob_recesion_curva_nyfed": 15.8,
- "curva_10y3m": 0.74,
+ "prob_recesion_curva_nyfed": 15.2,
+ "curva_10y3m": 0.78,
  "prob_recesion_ebp_fed": 9.1,
  "prob_ebp_mes": "2026-09",
  "credito": {
   "ig": {
    "nombre": "Grado de inversión (IG)",
-   "fecha": "2026-10-21",
-   "pb": 88,
-   "5d_pb": 4,
-   "1m_pb": 11,
+   "fecha": "2026-10-22",
+   "pb": 89,
+   "5d_pb": 5,
+   "1m_pb": 12,
    "3m_pb": 10,
    "percentil_1a": 97,
    "min_1a_pb": 73
   },
   "bbb": {
    "nombre": "BBB (el escalón más bajo del grado de inversión)",
-   "fecha": "2026-10-21",
-   "pb": 109,
-   "5d_pb": 5,
-   "1m_pb": 14,
+   "fecha": "2026-10-22",
+   "pb": 111,
+   "5d_pb": 6,
+   "1m_pb": 16,
    "3m_pb": 13,
-   "percentil_1a": 95,
+   "percentil_1a": 97,
    "min_1a_pb": 92
   },
   "hy": {
    "nombre": "High yield (HY)",
-   "fecha": "2026-10-21",
-   "pb": 327,
-   "5d_pb": 2,
-   "1m_pb": 61,
-   "3m_pb": 59,
-   "percentil_1a": 98,
+   "fecha": "2026-10-22",
+   "pb": 340,
+   "5d_pb": 17,
+   "1m_pb": 72,
+   "3m_pb": 63,
+   "percentil_1a": 99,
    "min_1a_pb": 260
   },
   "ccc": {
    "nombre": "CCC (las empresas más frágiles)",
-   "fecha": "2026-10-21",
-   "pb": 1307,
-   "5d_pb": 25,
-   "1m_pb": 230,
-   "3m_pb": 326,
-   "percentil_1a": 99,
+   "fecha": "2026-10-22",
+   "pb": 1340,
+   "5d_pb": 62,
+   "1m_pb": 265,
+   "3m_pb": 349,
+   "percentil_1a": 100,
    "min_1a_pb": 822
   }
  },
- "estado_credito": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +230 pb en 1 mes",
+ "estado_credito": "TENSIÓN DE CRÉDITO: CCC (las empresas más frágiles) +62 pb en 5 días",
  "senales": [
   {
    "id": "curva",
@@ -320,10 +320,6 @@
  "series": {
   "oas": {
    "ig": [
-    [
-     "2025-09-18",
-     75.0
-    ],
     [
      "2025-09-19",
      74.0
@@ -1467,13 +1463,13 @@
     [
      "2026-10-21",
      88.0
+    ],
+    [
+     "2026-10-22",
+     89.0
     ]
    ],
    "bbb": [
-    [
-     "2025-09-18",
-     94.0
-    ],
     [
      "2025-09-19",
      93.0
@@ -2617,13 +2613,13 @@
     [
      "2026-10-21",
      109.0
+    ],
+    [
+     "2026-10-22",
+     111.0
     ]
    ],
    "hy": [
-    [
-     "2025-09-18",
-     271.0
-    ],
     [
      "2025-09-19",
      272.0
@@ -3767,13 +3763,13 @@
     [
      "2026-10-21",
      327.0
+    ],
+    [
+     "2026-10-22",
+     340.0
     ]
    ],
    "ccc": [
-    [
-     "2025-09-18",
-     795.0
-    ],
     [
      "2025-09-19",
      797.0
@@ -4917,6 +4913,10 @@
     [
      "2026-10-21",
      1307.0
+    ],
+    [
+     "2026-10-22",
+     1340.0
     ]
    ]
   },
@@ -8770,10 +8770,6 @@
   ],
   "curva_diaria": [
    [
-    "2026-06-25",
-    0.56
-   ],
-   [
     "2026-06-26",
     0.55
    ],
@@ -9100,6 +9096,10 @@
    [
     "2026-10-22",
     0.74
+   ],
+   [
+    "2026-10-23",
+    0.78
    ]
   ],
   "nfci": [
@@ -11689,6 +11689,6 @@
  },
  "tono": "pos",
  "ok": true,
- "generado_utc": "2026-10-23 10:19 UTC",
- "duracion_s": 7.7
+ "generado_utc": "2026-10-24 09:39 UTC",
+ "duracion_s": 5.8
 }

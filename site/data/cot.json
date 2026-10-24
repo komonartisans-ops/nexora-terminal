@@ -1,5 +1,5 @@
 {
- "fecha_informe": "2026-10-13",
+ "fecha_informe": "2026-10-20",
  "publicado": "viernes siguiente, 15:30 ET (datos del martes)",
  "contratos": [
   {
@@ -9,16 +9,16 @@
    "codigo": "098662",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": 12919,
-    "largos": 32596,
-    "cortos": 19677,
-    "cambio_semana": 908,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 73,
+    "fecha": "2026-10-20",
+    "neto": 15044,
+    "largos": 32422,
+    "cortos": 17378,
+    "cambio_semana": 2125,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 78,
     "min_3a": -16347,
     "max_3a": 22499,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -647,22 +647,26 @@
      [
       "2026-10-13",
       12919
+     ],
+     [
+      "2026-10-20",
+      15044
      ]
     ],
     "estado": "LARGO ALTO",
-    "etiqueta": "largo alto, percentil 73"
+    "etiqueta": "largo alto, percentil 78"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 18164,
-    "largos": 20486,
-    "cortos": 2322,
-    "cambio_semana": -932,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 89,
+    "fecha": "2026-10-20",
+    "neto": 17020,
+    "largos": 19273,
+    "cortos": 2253,
+    "cambio_semana": -1144,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 82,
     "min_3a": -11063,
     "max_3a": 22246,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -1291,23 +1295,27 @@
      [
       "2026-10-13",
       18164
+     ],
+     [
+      "2026-10-20",
+      17020
      ]
     ],
     "estado": "LARGO ALTO",
-    "etiqueta": "largo alto, percentil 89",
+    "etiqueta": "largo alto, percentil 82",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": 2076,
-    "largos": 19008,
-    "cortos": 16932,
-    "cambio_semana": 1212,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 69,
+    "fecha": "2026-10-20",
+    "neto": 3183,
+    "largos": 18063,
+    "cortos": 14880,
+    "cambio_semana": 1107,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 73,
     "min_3a": -24785,
     "max_3a": 26733,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -1936,10 +1944,14 @@
      [
       "2026-10-13",
       2076
+     ],
+     [
+      "2026-10-20",
+      3183
      ]
     ],
-    "estado": "LARGO MEDIO",
-    "etiqueta": "largo medio, percentil 69"
+    "estado": "LARGO ALTO",
+    "etiqueta": "largo alto, percentil 73"
    }
   },
   {
@@ -1949,16 +1961,16 @@
    "codigo": "099741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -137573,
-    "largos": 222929,
-    "cortos": 360502,
-    "cambio_semana": -38241,
-    "fecha_previa": "2026-10-06",
+    "fecha": "2026-10-20",
+    "neto": -134524,
+    "largos": 226421,
+    "cortos": 360945,
+    "cambio_semana": 3049,
+    "fecha_previa": "2026-10-13",
     "percentil_3a": 1,
     "min_3a": -137573,
     "max_3a": 180305,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -2587,22 +2599,26 @@
      [
       "2026-10-13",
       -137573
+     ],
+     [
+      "2026-10-20",
+      -134524
      ]
     ],
     "estado": "CORTO EXTREMO BAJO",
     "etiqueta": "corto extremo bajo, percentil 1"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 199918,
-    "largos": 502676,
-    "cortos": 302758,
-    "cambio_semana": 10037,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 12,
+    "fecha": "2026-10-20",
+    "neto": 190421,
+    "largos": 499827,
+    "cortos": 309406,
+    "cambio_semana": -9497,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 10,
     "min_3a": 150321,
     "max_3a": 413713,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -3231,23 +3247,27 @@
      [
       "2026-10-13",
       199918
+     ],
+     [
+      "2026-10-20",
+      190421
      ]
     ],
-    "estado": "LARGO BAJO",
-    "etiqueta": "largo bajo, percentil 12",
+    "estado": "LARGO EXTREMO BAJO",
+    "etiqueta": "largo extremo bajo, percentil 10",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -68001,
-    "largos": 120021,
-    "cortos": 188022,
-    "cambio_semana": -23740,
-    "fecha_previa": "2026-10-06",
+    "fecha": "2026-10-20",
+    "neto": -68840,
+    "largos": 124951,
+    "cortos": 193791,
+    "cambio_semana": -839,
+    "fecha_previa": "2026-10-13",
     "percentil_3a": 1,
-    "min_3a": -68001,
+    "min_3a": -68840,
     "max_3a": 56107,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -3876,6 +3896,10 @@
      [
       "2026-10-13",
       -68001
+     ],
+     [
+      "2026-10-20",
+      -68840
      ]
     ],
     "estado": "CORTO EXTREMO BAJO",
@@ -3889,16 +3913,16 @@
    "codigo": "097741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": 50207,
-    "largos": 191256,
-    "cortos": 141049,
-    "cambio_semana": -12118,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 71,
+    "fecha": "2026-10-20",
+    "neto": 69878,
+    "largos": 200186,
+    "cortos": 130308,
+    "cambio_semana": 19671,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 79,
     "min_3a": -184223,
     "max_3a": 179212,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -4527,22 +4551,26 @@
      [
       "2026-10-13",
       50207
+     ],
+     [
+      "2026-10-20",
+      69878
      ]
     ],
     "estado": "LARGO ALTO",
-    "etiqueta": "largo alto, percentil 71"
+    "etiqueta": "largo alto, percentil 79"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 65819,
-    "largos": 146227,
-    "cortos": 80408,
-    "cambio_semana": -1976,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 74,
+    "fecha": "2026-10-20",
+    "neto": 79103,
+    "largos": 151477,
+    "cortos": 72374,
+    "cambio_semana": 13284,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 87,
     "min_3a": -100036,
     "max_3a": 127275,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -5171,23 +5199,27 @@
      [
       "2026-10-13",
       65819
+     ],
+     [
+      "2026-10-20",
+      79103
      ]
     ],
     "estado": "LARGO ALTO",
-    "etiqueta": "largo alto, percentil 74",
+    "etiqueta": "largo alto, percentil 87",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -33673,
-    "largos": 65309,
-    "cortos": 98982,
-    "cambio_semana": -8630,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 66,
+    "fecha": "2026-10-20",
+    "neto": -22890,
+    "largos": 69351,
+    "cortos": 92241,
+    "cambio_semana": 10783,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 75,
     "min_3a": -115400,
     "max_3a": 38497,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -5816,10 +5848,14 @@
      [
       "2026-10-13",
       -33673
+     ],
+     [
+      "2026-10-20",
+      -22890
      ]
     ],
-    "estado": "CORTO MEDIO",
-    "etiqueta": "corto medio, percentil 66"
+    "estado": "CORTO ALTO",
+    "etiqueta": "corto alto, percentil 75"
    }
   },
   {
@@ -5829,16 +5865,16 @@
    "codigo": "096742",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -106964,
-    "largos": 44185,
-    "cortos": 151149,
-    "cambio_semana": -9353,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 1,
+    "fecha": "2026-10-20",
+    "neto": -80420,
+    "largos": 54228,
+    "cortos": 134648,
+    "cambio_semana": 26544,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 7,
     "min_3a": -106964,
     "max_3a": 142183,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -6467,22 +6503,26 @@
      [
       "2026-10-13",
       -106964
+     ],
+     [
+      "2026-10-20",
+      -80420
      ]
     ],
     "estado": "CORTO EXTREMO BAJO",
-    "etiqueta": "corto extremo bajo, percentil 1"
+    "etiqueta": "corto extremo bajo, percentil 7"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": -145735,
-    "largos": 18995,
-    "cortos": 164730,
-    "cambio_semana": -293,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 2,
+    "fecha": "2026-10-20",
+    "neto": -134621,
+    "largos": 21818,
+    "cortos": 156439,
+    "cambio_semana": 11114,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 4,
     "min_3a": -156307,
     "max_3a": 24646,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -7111,23 +7151,27 @@
      [
       "2026-10-13",
       -145735
+     ],
+     [
+      "2026-10-20",
+      -134621
      ]
     ],
     "estado": "CORTO EXTREMO BAJO",
-    "etiqueta": "corto extremo bajo, percentil 2",
+    "etiqueta": "corto extremo bajo, percentil 4",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": 10313,
-    "largos": 55726,
-    "cortos": 45413,
-    "cambio_semana": -2119,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 10,
+    "fecha": "2026-10-20",
+    "neto": 24104,
+    "largos": 59534,
+    "cortos": 35430,
+    "cambio_semana": 13791,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 28,
     "min_3a": -12063,
     "max_3a": 83168,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -7756,10 +7800,14 @@
      [
       "2026-10-13",
       10313
+     ],
+     [
+      "2026-10-20",
+      24104
      ]
     ],
-    "estado": "LARGO EXTREMO BAJO",
-    "etiqueta": "largo extremo bajo, percentil 10"
+    "estado": "LARGO BAJO",
+    "etiqueta": "largo bajo, percentil 28"
    }
   },
   {
@@ -7769,16 +7817,16 @@
    "codigo": "092741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -22078,
-    "largos": 27447,
-    "cortos": 49525,
-    "cambio_semana": 1662,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 78,
+    "fecha": "2026-10-20",
+    "neto": -18150,
+    "largos": 29938,
+    "cortos": 48088,
+    "cambio_semana": 3928,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 87,
     "min_3a": -49793,
     "max_3a": -3445,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -8407,22 +8455,26 @@
      [
       "2026-10-13",
       -22078
+     ],
+     [
+      "2026-10-20",
+      -18150
      ]
     ],
     "estado": "CORTO ALTO",
-    "etiqueta": "corto alto, percentil 78"
+    "etiqueta": "corto alto, percentil 87"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": -31456,
-    "largos": 22676,
-    "cortos": 54132,
-    "cambio_semana": 5923,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 55,
+    "fecha": "2026-10-20",
+    "neto": -25535,
+    "largos": 26680,
+    "cortos": 52215,
+    "cambio_semana": 5921,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 65,
     "min_3a": -55687,
     "max_3a": -211,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -9051,23 +9103,27 @@
      [
       "2026-10-13",
       -31456
+     ],
+     [
+      "2026-10-20",
+      -25535
      ]
     ],
     "estado": "CORTO MEDIO",
-    "etiqueta": "corto medio, percentil 55",
+    "etiqueta": "corto medio, percentil 65",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -14941,
-    "largos": 9935,
-    "cortos": 24876,
-    "cambio_semana": -3591,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 11,
+    "fecha": "2026-10-20",
+    "neto": -13607,
+    "largos": 10101,
+    "cortos": 23708,
+    "cambio_semana": 1334,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 17,
     "min_3a": -22902,
     "max_3a": 4488,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -9696,10 +9752,14 @@
      [
       "2026-10-13",
       -14941
+     ],
+     [
+      "2026-10-20",
+      -13607
      ]
     ],
     "estado": "CORTO BAJO",
-    "etiqueta": "corto bajo, percentil 11"
+    "etiqueta": "corto bajo, percentil 17"
    }
   },
   {
@@ -9709,16 +9769,16 @@
    "codigo": "090741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -94765,
-    "largos": 89986,
-    "cortos": 184751,
-    "cambio_semana": -4602,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 45,
+    "fecha": "2026-10-20",
+    "neto": -74709,
+    "largos": 101653,
+    "cortos": 176362,
+    "cambio_semana": 20056,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 58,
     "min_3a": -196263,
     "max_3a": 36159,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -10347,22 +10407,26 @@
      [
       "2026-10-13",
       -94765
+     ],
+     [
+      "2026-10-20",
+      -74709
      ]
     ],
     "estado": "CORTO MEDIO",
-    "etiqueta": "corto medio, percentil 45"
+    "etiqueta": "corto medio, percentil 58"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": -30804,
-    "largos": 102895,
-    "cortos": 133699,
-    "cambio_semana": 5002,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 73,
+    "fecha": "2026-10-20",
+    "neto": -5399,
+    "largos": 115723,
+    "cortos": 121122,
+    "cambio_semana": 25405,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 85,
     "min_3a": -162229,
     "max_3a": 69512,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -10991,23 +11055,27 @@
      [
       "2026-10-13",
       -30804
+     ],
+     [
+      "2026-10-20",
+      -5399
      ]
     ],
     "estado": "CORTO ALTO",
-    "etiqueta": "corto alto, percentil 73",
+    "etiqueta": "corto alto, percentil 85",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -88112,
-    "largos": 23811,
-    "cortos": 111923,
-    "cambio_semana": -8487,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 10,
+    "fecha": "2026-10-20",
+    "neto": -91113,
+    "largos": 28341,
+    "cortos": 119454,
+    "cambio_semana": -3001,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 7,
     "min_3a": -103134,
     "max_3a": -12452,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -11636,10 +11704,14 @@
      [
       "2026-10-13",
       -88112
+     ],
+     [
+      "2026-10-20",
+      -91113
      ]
     ],
     "estado": "CORTO EXTREMO BAJO",
-    "etiqueta": "corto extremo bajo, percentil 10"
+    "etiqueta": "corto extremo bajo, percentil 7"
    }
   },
   {
@@ -11649,16 +11721,16 @@
    "codigo": "232741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -117299,
-    "largos": 98389,
-    "cortos": 215688,
-    "cambio_semana": -18711,
-    "fecha_previa": "2026-10-06",
+    "fecha": "2026-10-20",
+    "neto": -127292,
+    "largos": 98419,
+    "cortos": 225711,
+    "cambio_semana": -9993,
+    "fecha_previa": "2026-10-13",
     "percentil_3a": 1,
-    "min_3a": -117299,
+    "min_3a": -127292,
     "max_3a": 85644,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -12287,22 +12359,26 @@
      [
       "2026-10-13",
       -117299
+     ],
+     [
+      "2026-10-20",
+      -127292
      ]
     ],
     "estado": "CORTO EXTREMO BAJO",
     "etiqueta": "corto extremo bajo, percentil 1"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": -115920,
-    "largos": 84332,
-    "cortos": 200252,
-    "cambio_semana": -14492,
-    "fecha_previa": "2026-10-06",
+    "fecha": "2026-10-20",
+    "neto": -128739,
+    "largos": 80700,
+    "cortos": 209439,
+    "cambio_semana": -12819,
+    "fecha_previa": "2026-10-13",
     "percentil_3a": 1,
-    "min_3a": -115920,
+    "min_3a": -128739,
     "max_3a": 47551,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -12931,6 +13007,10 @@
      [
       "2026-10-13",
       -115920
+     ],
+     [
+      "2026-10-20",
+      -128739
      ]
     ],
     "estado": "CORTO EXTREMO BAJO",
@@ -12938,16 +13018,16 @@
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": 50591,
-    "largos": 87632,
-    "cortos": 37041,
-    "cambio_semana": -3542,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 89,
+    "fecha": "2026-10-20",
+    "neto": 52497,
+    "largos": 88761,
+    "cortos": 36264,
+    "cambio_semana": 1906,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 90,
     "min_3a": -44281,
     "max_3a": 70260,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -13576,10 +13656,14 @@
      [
       "2026-10-13",
       50591
+     ],
+     [
+      "2026-10-20",
+      52497
      ]
     ],
-    "estado": "LARGO ALTO",
-    "etiqueta": "largo alto, percentil 89"
+    "estado": "LARGO EXTREMO ALTO",
+    "etiqueta": "largo extremo alto, percentil 90"
    }
   },
   {
@@ -13589,16 +13673,16 @@
    "codigo": "112741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -47001,
-    "largos": 24619,
-    "cortos": 71620,
-    "cambio_semana": -17655,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 18,
+    "fecha": "2026-10-20",
+    "neto": -58149,
+    "largos": 21725,
+    "cortos": 79874,
+    "cambio_semana": -11148,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 3,
     "min_3a": -65189,
     "max_3a": 30743,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -14227,22 +14311,26 @@
      [
       "2026-10-13",
       -47001
+     ],
+     [
+      "2026-10-20",
+      -58149
      ]
     ],
-    "estado": "CORTO BAJO",
-    "etiqueta": "corto bajo, percentil 18"
+    "estado": "CORTO EXTREMO BAJO",
+    "etiqueta": "corto extremo bajo, percentil 3"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": -44139,
-    "largos": 12106,
-    "cortos": 56245,
-    "cambio_semana": -11605,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 11,
+    "fecha": "2026-10-20",
+    "neto": -49313,
+    "largos": 11643,
+    "cortos": 60956,
+    "cambio_semana": -5174,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 9,
     "min_3a": -63543,
     "max_3a": 14024,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -14871,23 +14959,27 @@
      [
       "2026-10-13",
       -44139
+     ],
+     [
+      "2026-10-20",
+      -49313
      ]
     ],
-    "estado": "CORTO BAJO",
-    "etiqueta": "corto bajo, percentil 11",
+    "estado": "CORTO EXTREMO BAJO",
+    "etiqueta": "corto extremo bajo, percentil 9",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -11619,
-    "largos": 17668,
-    "cortos": 29287,
-    "cambio_semana": -10832,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 27,
+    "fecha": "2026-10-20",
+    "neto": -19280,
+    "largos": 13783,
+    "cortos": 33063,
+    "cambio_semana": -7661,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 11,
     "min_3a": -33461,
     "max_3a": 18126,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -15516,10 +15608,14 @@
      [
       "2026-10-13",
       -11619
+     ],
+     [
+      "2026-10-20",
+      -19280
      ]
     ],
     "estado": "CORTO BAJO",
-    "etiqueta": "corto bajo, percentil 27"
+    "etiqueta": "corto bajo, percentil 11"
    }
   },
   {
@@ -15529,16 +15625,16 @@
    "codigo": "088691",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": 207879,
-    "largos": 245300,
-    "cortos": 37421,
-    "cambio_semana": -2456,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 51,
+    "fecha": "2026-10-20",
+    "neto": 199865,
+    "largos": 237142,
+    "cortos": 37277,
+    "cambio_semana": -8014,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 35,
     "min_3a": 112738,
     "max_3a": 315390,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -16167,22 +16263,26 @@
      [
       "2026-10-13",
       207879
+     ],
+     [
+      "2026-10-20",
+      199865
      ]
     ],
     "estado": "LARGO MEDIO",
-    "etiqueta": "largo medio, percentil 51"
+    "etiqueta": "largo medio, percentil 35"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 107089,
-    "largos": 124747,
-    "cortos": 17658,
-    "cambio_semana": -3898,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 27,
+    "fecha": "2026-10-20",
+    "neto": 104206,
+    "largos": 120970,
+    "cortos": 16764,
+    "cambio_semana": -2883,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 25,
     "min_3a": 15103,
     "max_3a": 219029,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -16811,10 +16911,14 @@
      [
       "2026-10-13",
       107089
+     ],
+     [
+      "2026-10-20",
+      104206
      ]
     ],
     "estado": "LARGO BAJO",
-    "etiqueta": "largo bajo, percentil 27",
+    "etiqueta": "largo bajo, percentil 25",
     "informe": "Dinero gestionado (Disaggregated)"
    },
    "apalancados": null
@@ -16826,16 +16930,16 @@
    "codigo": "067651",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": 100343,
-    "largos": 344653,
-    "cortos": 244310,
-    "cambio_semana": 1283,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 16,
+    "fecha": "2026-10-20",
+    "neto": 89325,
+    "largos": 335112,
+    "cortos": 245787,
+    "cambio_semana": -11018,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 13,
     "min_3a": 39800,
     "max_3a": 306388,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -17464,22 +17568,26 @@
      [
       "2026-10-13",
       100343
+     ],
+     [
+      "2026-10-20",
+      89325
      ]
     ],
     "estado": "LARGO BAJO",
-    "etiqueta": "largo bajo, percentil 16"
+    "etiqueta": "largo bajo, percentil 13"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 40574,
-    "largos": 171973,
-    "cortos": 131399,
-    "cambio_semana": -13024,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 14,
+    "fecha": "2026-10-20",
+    "neto": 36187,
+    "largos": 163413,
+    "cortos": 127226,
+    "cambio_semana": -4387,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 13,
     "min_3a": -38154,
     "max_3a": 253879,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -18108,10 +18216,14 @@
      [
       "2026-10-13",
       40574
+     ],
+     [
+      "2026-10-20",
+      36187
      ]
     ],
     "estado": "LARGO BAJO",
-    "etiqueta": "largo bajo, percentil 14",
+    "etiqueta": "largo bajo, percentil 13",
     "informe": "Dinero gestionado (Disaggregated)"
    },
    "apalancados": null
@@ -18123,16 +18235,16 @@
    "codigo": "13874+",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -142709,
-    "largos": 224888,
-    "cortos": 367597,
-    "cambio_semana": 12942,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 29,
+    "fecha": "2026-10-20",
+    "neto": -143277,
+    "largos": 216163,
+    "cortos": 359440,
+    "cambio_semana": -568,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 28,
     "min_3a": -231862,
     "max_3a": 120581,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -18761,22 +18873,26 @@
      [
       "2026-10-13",
       -142709
+     ],
+     [
+      "2026-10-20",
+      -143277
      ]
     ],
     "estado": "CORTO BAJO",
-    "etiqueta": "corto bajo, percentil 29"
+    "etiqueta": "corto bajo, percentil 28"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 918097,
-    "largos": 1112656,
-    "cortos": 194559,
-    "cambio_semana": 8795,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 41,
+    "fecha": "2026-10-20",
+    "neto": 904019,
+    "largos": 1104304,
+    "cortos": 200285,
+    "cambio_semana": -14078,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 31,
     "min_3a": 606338,
     "max_3a": 1105609,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -19405,23 +19521,27 @@
      [
       "2026-10-13",
       918097
+     ],
+     [
+      "2026-10-20",
+      904019
      ]
     ],
     "estado": "LARGO MEDIO",
-    "etiqueta": "largo medio, percentil 41",
+    "etiqueta": "largo medio, percentil 31",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -410518,
-    "largos": 121198,
-    "cortos": 531716,
-    "cambio_semana": 5391,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 22,
+    "fecha": "2026-10-20",
+    "neto": -372869,
+    "largos": 134552,
+    "cortos": 507421,
+    "cambio_semana": 37649,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 35,
     "min_3a": -523882,
     "max_3a": -184892,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -20050,10 +20170,14 @@
      [
       "2026-10-13",
       -410518
+     ],
+     [
+      "2026-10-20",
+      -372869
      ]
     ],
-    "estado": "CORTO BAJO",
-    "etiqueta": "corto bajo, percentil 22"
+    "estado": "CORTO MEDIO",
+    "etiqueta": "corto medio, percentil 35"
    }
   },
   {
@@ -20063,16 +20187,16 @@
    "codigo": "20974+",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": 42334,
-    "largos": 79759,
-    "cortos": 37425,
-    "cambio_semana": -11777,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 92,
+    "fecha": "2026-10-20",
+    "neto": 46885,
+    "largos": 83173,
+    "cortos": 36288,
+    "cambio_semana": 4551,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 95,
     "min_3a": -42905,
     "max_3a": 54111,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -20701,22 +20825,26 @@
      [
       "2026-10-13",
       42334
+     ],
+     [
+      "2026-10-20",
+      46885
      ]
     ],
     "estado": "LARGO EXTREMO ALTO",
-    "etiqueta": "largo extremo alto, percentil 92"
+    "etiqueta": "largo extremo alto, percentil 95"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 76402,
-    "largos": 113679,
-    "cortos": 37277,
-    "cambio_semana": 1546,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 53,
+    "fecha": "2026-10-20",
+    "neto": 78767,
+    "largos": 110983,
+    "cortos": 32216,
+    "cambio_semana": 2365,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 61,
     "min_3a": 33754,
     "max_3a": 100037,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -21345,23 +21473,27 @@
      [
       "2026-10-13",
       76402
+     ],
+     [
+      "2026-10-20",
+      78767
      ]
     ],
     "estado": "LARGO MEDIO",
-    "etiqueta": "largo medio, percentil 53",
+    "etiqueta": "largo medio, percentil 61",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -21891,
-    "largos": 43778,
-    "cortos": 65669,
-    "cambio_semana": 4847,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 73,
+    "fecha": "2026-10-20",
+    "neto": -7688,
+    "largos": 48053,
+    "cortos": 55741,
+    "cambio_semana": 14203,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 91,
     "min_3a": -100640,
     "max_3a": 15648,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -21990,10 +22122,14 @@
      [
       "2026-10-13",
       -21891
+     ],
+     [
+      "2026-10-20",
+      -7688
      ]
     ],
-    "estado": "CORTO ALTO",
-    "etiqueta": "corto alto, percentil 73"
+    "estado": "CORTO EXTREMO ALTO",
+    "etiqueta": "corto extremo alto, percentil 91"
    }
   },
   {
@@ -22003,16 +22139,16 @@
    "codigo": "12460+",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": 9721,
-    "largos": 19679,
-    "cortos": 9958,
-    "cambio_semana": -2082,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 68,
+    "fecha": "2026-10-20",
+    "neto": 7856,
+    "largos": 20872,
+    "cortos": 13016,
+    "cambio_semana": -1865,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 62,
     "min_3a": -37076,
     "max_3a": 25831,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -22641,22 +22777,26 @@
      [
       "2026-10-13",
       9721
+     ],
+     [
+      "2026-10-20",
+      7856
      ]
     ],
     "estado": "LARGO MEDIO",
-    "etiqueta": "largo medio, percentil 68"
+    "etiqueta": "largo medio, percentil 62"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 10871,
-    "largos": 17111,
-    "cortos": 6240,
-    "cambio_semana": -8724,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 75,
+    "fecha": "2026-10-20",
+    "neto": 13040,
+    "largos": 18435,
+    "cortos": 5395,
+    "cambio_semana": 2169,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 81,
     "min_3a": -12950,
     "max_3a": 22972,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -23285,23 +23425,27 @@
      [
       "2026-10-13",
       10871
+     ],
+     [
+      "2026-10-20",
+      13040
      ]
     ],
     "estado": "LARGO ALTO",
-    "etiqueta": "largo alto, percentil 75",
+    "etiqueta": "largo alto, percentil 81",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": 4327,
-    "largos": 14832,
-    "cortos": 10505,
-    "cambio_semana": 6221,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 75,
+    "fecha": "2026-10-20",
+    "neto": -725,
+    "largos": 13685,
+    "cortos": 14410,
+    "cambio_semana": -5052,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 54,
     "min_3a": -26697,
     "max_3a": 20355,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -23930,10 +24074,14 @@
      [
       "2026-10-13",
       4327
+     ],
+     [
+      "2026-10-20",
+      -725
      ]
     ],
-    "estado": "LARGO ALTO",
-    "etiqueta": "largo alto, percentil 75"
+    "estado": "CORTO MEDIO",
+    "etiqueta": "corto medio, percentil 54"
    }
   },
   {
@@ -23943,16 +24091,16 @@
    "codigo": "239742",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -61003,
-    "largos": 112145,
-    "cortos": 173148,
-    "cambio_semana": 26842,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 15,
+    "fecha": "2026-10-20",
+    "neto": -41909,
+    "largos": 115794,
+    "cortos": 157703,
+    "cambio_semana": 19094,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 29,
     "min_3a": -95231,
     "max_3a": 26337,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -24581,22 +24729,26 @@
      [
       "2026-10-13",
       -61003
+     ],
+     [
+      "2026-10-20",
+      -41909
      ]
     ],
     "estado": "CORTO BAJO",
-    "etiqueta": "corto bajo, percentil 15"
+    "etiqueta": "corto bajo, percentil 29"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 29528,
-    "largos": 143186,
-    "cortos": 113658,
-    "cambio_semana": -15967,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 45,
+    "fecha": "2026-10-20",
+    "neto": 30960,
+    "largos": 148470,
+    "cortos": 117510,
+    "cambio_semana": 1432,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 47,
     "min_3a": -20910,
     "max_3a": 176132,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -25225,23 +25377,27 @@
      [
       "2026-10-13",
       29528
+     ],
+     [
+      "2026-10-20",
+      30960
      ]
     ],
     "estado": "LARGO MEDIO",
-    "etiqueta": "largo medio, percentil 45",
+    "etiqueta": "largo medio, percentil 47",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -91647,
-    "largos": 101532,
-    "cortos": 193179,
-    "cambio_semana": 13670,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 13,
+    "fecha": "2026-10-20",
+    "neto": -53035,
+    "largos": 125748,
+    "cortos": 178783,
+    "cambio_semana": 38612,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 50,
     "min_3a": -117122,
     "max_3a": 18269,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -25870,10 +26026,14 @@
      [
       "2026-10-13",
       -91647
+     ],
+     [
+      "2026-10-20",
+      -53035
      ]
     ],
-    "estado": "CORTO BAJO",
-    "etiqueta": "corto bajo, percentil 13"
+    "estado": "CORTO MEDIO",
+    "etiqueta": "corto medio, percentil 50"
    }
   },
   {
@@ -25883,16 +26043,16 @@
    "codigo": "042601",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -911579,
-    "largos": 711317,
-    "cortos": 1622896,
-    "cambio_semana": -58675,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 96,
+    "fecha": "2026-10-20",
+    "neto": -856783,
+    "largos": 748437,
+    "cortos": 1605220,
+    "cambio_semana": 54796,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 98,
     "min_3a": -1743353,
     "max_3a": -792024,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -26521,22 +26681,26 @@
      [
       "2026-10-13",
       -911579
+     ],
+     [
+      "2026-10-20",
+      -856783
      ]
     ],
     "estado": "CORTO EXTREMO ALTO",
-    "etiqueta": "corto extremo alto, percentil 96"
+    "etiqueta": "corto extremo alto, percentil 98"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 1795866,
-    "largos": 2532974,
-    "cortos": 737108,
-    "cambio_semana": 116779,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 32,
+    "fecha": "2026-10-20",
+    "neto": 1723580,
+    "largos": 2461884,
+    "cortos": 738304,
+    "cambio_semana": -72286,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 28,
     "min_3a": 1127517,
     "max_3a": 2602967,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -27165,23 +27329,27 @@
      [
       "2026-10-13",
       1795866
+     ],
+     [
+      "2026-10-20",
+      1723580
      ]
     ],
-    "estado": "LARGO MEDIO",
-    "etiqueta": "largo medio, percentil 32",
+    "estado": "LARGO BAJO",
+    "etiqueta": "largo bajo, percentil 28",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -1367408,
-    "largos": 715286,
-    "cortos": 2082694,
-    "cambio_semana": -109924,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 91,
+    "fecha": "2026-10-20",
+    "neto": -1285548,
+    "largos": 771136,
+    "cortos": 2056684,
+    "cambio_semana": 81860,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 96,
     "min_3a": -2692373,
     "max_3a": -1165980,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -27810,10 +27978,14 @@
      [
       "2026-10-13",
       -1367408
+     ],
+     [
+      "2026-10-20",
+      -1285548
      ]
     ],
     "estado": "CORTO EXTREMO ALTO",
-    "etiqueta": "corto extremo alto, percentil 91"
+    "etiqueta": "corto extremo alto, percentil 96"
    }
   },
   {
@@ -27823,16 +27995,16 @@
    "codigo": "043602",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -988102,
-    "largos": 649216,
-    "cortos": 1637318,
-    "cambio_semana": -91621,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 5,
+    "fecha": "2026-10-20",
+    "neto": -964293,
+    "largos": 721537,
+    "cortos": 1685830,
+    "cambio_semana": 23809,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 6,
     "min_3a": -1143889,
     "max_3a": -307692,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -28461,22 +28633,26 @@
      [
       "2026-10-13",
       -988102
+     ],
+     [
+      "2026-10-20",
+      -964293
      ]
     ],
     "estado": "CORTO EXTREMO BAJO",
-    "etiqueta": "corto extremo bajo, percentil 5"
+    "etiqueta": "corto extremo bajo, percentil 6"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 2898562,
-    "largos": 3672796,
-    "cortos": 774234,
-    "cambio_semana": 70423,
-    "fecha_previa": "2026-10-06",
+    "fecha": "2026-10-20",
+    "neto": 2925416,
+    "largos": 3675600,
+    "cortos": 750184,
+    "cambio_semana": 26854,
+    "fecha_previa": "2026-10-13",
     "percentil_3a": 100,
     "min_3a": 1117271,
-    "max_3a": 2898562,
-    "semanas": 157,
+    "max_3a": 2925416,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -29105,6 +29281,10 @@
      [
       "2026-10-13",
       2898562
+     ],
+     [
+      "2026-10-20",
+      2925416
      ]
     ],
     "estado": "LARGO EXTREMO ALTO",
@@ -29112,16 +29292,16 @@
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -2205937,
-    "largos": 489362,
-    "cortos": 2695299,
-    "cambio_semana": -66152,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 17,
+    "fecha": "2026-10-20",
+    "neto": -2107224,
+    "largos": 567553,
+    "cortos": 2674777,
+    "cambio_semana": 98713,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 23,
     "min_3a": -2534616,
     "max_3a": -1066372,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -29750,10 +29930,14 @@
      [
       "2026-10-13",
       -2205937
+     ],
+     [
+      "2026-10-20",
+      -2107224
      ]
     ],
     "estado": "CORTO BAJO",
-    "etiqueta": "corto bajo, percentil 17"
+    "etiqueta": "corto bajo, percentil 23"
    }
   },
   {
@@ -29763,16 +29947,16 @@
    "codigo": "020601",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": -126438,
-    "largos": 199232,
-    "cortos": 325670,
-    "cambio_semana": -6626,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 25,
+    "fecha": "2026-10-20",
+    "neto": -68419,
+    "largos": 218627,
+    "cortos": 287046,
+    "cambio_semana": 58019,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 47,
     "min_3a": -219012,
     "max_3a": 47781,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -30401,22 +30585,26 @@
      [
       "2026-10-13",
       -126438
+     ],
+     [
+      "2026-10-20",
+      -68419
      ]
     ],
-    "estado": "CORTO BAJO",
-    "etiqueta": "corto bajo, percentil 25"
+    "estado": "CORTO MEDIO",
+    "etiqueta": "corto medio, percentil 47"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 391534,
-    "largos": 1072776,
-    "cortos": 681242,
-    "cambio_semana": -14094,
-    "fecha_previa": "2026-10-06",
+    "fecha": "2026-10-20",
+    "neto": 388007,
+    "largos": 1087469,
+    "cortos": 699462,
+    "cambio_semana": -3527,
+    "fecha_previa": "2026-10-13",
     "percentil_3a": 4,
     "min_3a": 371474,
     "max_3a": 655965,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -31045,6 +31233,10 @@
      [
       "2026-10-13",
       391534
+     ],
+     [
+      "2026-10-20",
+      388007
      ]
     ],
     "estado": "LARGO EXTREMO BAJO",
@@ -31052,16 +31244,16 @@
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -154020,
-    "largos": 173217,
-    "cortos": 327237,
-    "cambio_semana": 35658,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 100,
+    "fecha": "2026-10-20",
+    "neto": -162757,
+    "largos": 169144,
+    "cortos": 331901,
+    "cambio_semana": -8737,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 99,
     "min_3a": -595139,
     "max_3a": -154020,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -31690,10 +31882,14 @@
      [
       "2026-10-13",
       -154020
+     ],
+     [
+      "2026-10-20",
+      -162757
      ]
     ],
     "estado": "CORTO EXTREMO ALTO",
-    "etiqueta": "corto extremo alto, percentil 100"
+    "etiqueta": "corto extremo alto, percentil 99"
    }
   },
   {
@@ -31703,16 +31899,16 @@
    "codigo": "133741",
    "sin_dato": false,
    "no_comerciales": {
-    "fecha": "2026-10-13",
-    "neto": 2534,
-    "largos": 17320,
-    "cortos": 14786,
-    "cambio_semana": -6,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 91,
+    "fecha": "2026-10-20",
+    "neto": 2418,
+    "largos": 16962,
+    "cortos": 14544,
+    "cambio_semana": -116,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 89,
     "min_3a": -2486,
     "max_3a": 3904,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -32341,22 +32537,26 @@
      [
       "2026-10-13",
       2534
+     ],
+     [
+      "2026-10-20",
+      2418
      ]
     ],
-    "estado": "LARGO EXTREMO ALTO",
-    "etiqueta": "largo extremo alto, percentil 91"
+    "estado": "LARGO ALTO",
+    "etiqueta": "largo alto, percentil 89"
    },
    "gestores": {
-    "fecha": "2026-10-13",
-    "neto": 3642,
-    "largos": 5079,
-    "cortos": 1437,
-    "cambio_semana": 110,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 11,
+    "fecha": "2026-10-20",
+    "neto": 2999,
+    "largos": 4851,
+    "cortos": 1852,
+    "cambio_semana": -643,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 9,
     "min_3a": 2000,
     "max_3a": 19802,
-    "semanas": 157,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -32985,23 +33185,27 @@
      [
       "2026-10-13",
       3642
+     ],
+     [
+      "2026-10-20",
+      2999
      ]
     ],
-    "estado": "LARGO BAJO",
-    "etiqueta": "largo bajo, percentil 11",
+    "estado": "LARGO EXTREMO BAJO",
+    "etiqueta": "largo extremo bajo, percentil 9",
     "informe": "Gestores de activos (TFF)"
    },
    "apalancados": {
-    "fecha": "2026-10-13",
-    "neto": -5844,
-    "largos": 5520,
-    "cortos": 11364,
-    "cambio_semana": 1008,
-    "fecha_previa": "2026-10-06",
-    "percentil_3a": 99,
+    "fecha": "2026-10-20",
+    "neto": -4942,
+    "largos": 5466,
+    "cortos": 10408,
+    "cambio_semana": 902,
+    "fecha_previa": "2026-10-13",
+    "percentil_3a": 100,
     "min_3a": -23197,
-    "max_3a": -5313,
-    "semanas": 157,
+    "max_3a": -4942,
+    "semanas": 158,
     "serie": [
      [
       "2023-10-17",
@@ -33630,10 +33834,14 @@
      [
       "2026-10-13",
       -5844
+     ],
+     [
+      "2026-10-20",
+      -4942
      ]
     ],
     "estado": "CORTO EXTREMO ALTO",
-    "etiqueta": "corto extremo alto, percentil 99"
+    "etiqueta": "corto extremo alto, percentil 100"
    }
   }
  ],
@@ -33642,6 +33850,6 @@
  "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
  "metodo": "Neto = largos − cortos. Percentil = posición del neto actual entre las ~156 semanas anteriores Etiqueta = lado por el SIGNO del neto + zona del percentil (extremo alto ≥ 90, alto ≥ 70, medio, bajo ≤ 30, extremo bajo ≤ 10). Criterio único de NEXORA: solo los extremos (≥ 90 / ≤ 10) puntúan, a la contra.",
  "ok": true,
- "generado_utc": "2026-10-23 10:19 UTC",
- "duracion_s": 7.1
+ "generado_utc": "2026-10-24 09:39 UTC",
+ "duracion_s": 4.1
 }

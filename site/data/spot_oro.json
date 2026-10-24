@@ -1,15 +1,15 @@
 {
- "generado_utc": "2026-10-24 00:01 UTC",
+ "generado_utc": "2026-10-24 09:39 UTC",
  "sesion": "2026-10-24",
- "registra": true,
+ "registra": false,
  "decision": {
   "fecha": "2026-10-24",
   "hora_utc": "2026-10-24 00:02",
-  "spot_principal": 3996.9,
+  "spot_principal": "3996.9",
   "principal_hora_utc": "2026-10-24 00:02",
   "gc_precio": "",
   "gc_barra_utc": "",
-  "base_usada": 13.1,
+  "base_usada": "13.1",
   "base_fecha": "2026-10-23",
   "spot_gc_implicito": "",
   "gc_sinc": "",
@@ -20,7 +20,7 @@
   "dif_swiss_pct": "",
   "estado": "SIN_CONTRASTE",
   "spot_fuente": "GOLD_API",
-  "spot_usado": 3996.9,
+  "spot_usado": "3996.9",
   "ratio_fuente": "SESION",
   "nota": "Swissquote sin dato: ValueError Swissquote XAU/USD sin actualizar en más de 3 h · GC=F sin barra: RuntimeError sin barra de GC=F en los 90 min previos (el futuro del oro p",
   "medido_utc": "2026-10-24 00:01 UTC",
@@ -96,5 +96,5 @@
  "tolerancia_min": 5,
  "metodo": "todas con su hora, y solo se comparan si son de la misma hora ±5 min; si no, NO_SINCRONIZADO):\n  · PRINCIPAL  gold-api.com (XAU/USD al contado), la de siempre.\n  · A          GC=F (futuro COMEX, barra de 5 min de Yahoo) − base GC−XAU de la sesión anterior (data/xau_gc_base.csv) = spot implícito.\n  · B          Swissquote (feed público de cotizaciones de bróker, XAU/USD; bid/ask con marca de tiempo propia): se usa el punto medio. Stooq se descartó: su CSV está\n               tras un desafío JavaScript anti-bot y no responde a un script.\n\nRegla (umbral FIJO 0,3 %, no se ajusta):\n  · Diferencia ≤ 0,3 % con las fuentes sincronizadas → OK, se usa la principal.\n  · Diferencia > 0,3 % con alguna → DUDOSO (⚠️): el ratio XAU/GLD y la base GC−XAU de ese día NO se actualizan (se usa el último ratio OK, ratio_fuente=ANTERIOR) y la línea ORO añade ;spot=dudoso.\n  · Si la principal falla → se usa el contraste A (spot_fuente=GC_IMPLICITO); en ese caso no se anota la base del día (sería circular).\n  · Ninguna fuente de contraste utilizable → SIN_CONTRASTE (hay datos de contraste pero ninguno de la misma hora → NO_SINCRONIZADO): se usa la principal y se dice que no se pudo verificar.\nNota: el futuro GC para de 21:00 a 22:00 UTC, así que a las 21:30 UTC (cierre) el contraste A casi siempre sale NO_SINCRONIZADO y verifica B.",
  "ok": true,
- "duracion_s": 0.9
+ "duracion_s": 0.0
 }

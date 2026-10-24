@@ -3,19 +3,15 @@
   "oro": {
    "nombre": "Oro",
    "simbolo": "GC=F",
-   "valor": 4010.0,
+   "valor": 4007.9,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": -1.24,
-   "cambio_5d_pct": -4.09,
-   "cambio_21d_pct": -6.7,
-   "cambio_63d_pct": -1.64,
-   "sma50": 4341.91,
+   "cambio_1d_pct": -1.29,
+   "cambio_5d_pct": -4.14,
+   "cambio_21d_pct": -6.75,
+   "cambio_63d_pct": -1.69,
+   "sma50": 4341.87,
    "fuente": "Futuros oro COMEX (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-23",
-     4145.6001
-    ],
     [
      "2025-10-24",
      4137.7998
@@ -1018,20 +1014,20 @@
     ],
     [
      "2026-10-23",
-     4010.0
+     4007.8999
     ]
    ]
   },
   "btc": {
    "nombre": "Bitcoin",
    "simbolo": "BTC-USD",
-   "valor": 81060.19,
+   "valor": 80403.69,
    "fecha": "2026-10-24",
-   "cambio_1d_pct": -0.31,
-   "cambio_5d_pct": -1.17,
-   "cambio_21d_pct": -4.07,
-   "cambio_63d_pct": 3.48,
-   "sma50": 81778.06,
+   "cambio_1d_pct": -0.83,
+   "cambio_5d_pct": -1.77,
+   "cambio_21d_pct": -5.14,
+   "cambio_63d_pct": 4.31,
+   "sma50": 81792.98,
    "fuente": "BTC-USD (Yahoo Finance)",
    "serie": [
     [
@@ -2491,8 +2487,12 @@
      81311.8906
     ],
     [
+     "2026-10-23",
+     81074.1875
+    ],
+    [
      "2026-10-24",
-     81060.1875
+     80403.6875
     ]
    ]
   },
@@ -4528,7 +4528,7 @@
     ],
     [
      "2026-10-23",
-     28957.5273
+     28957.5293
     ]
    ]
   },
@@ -6564,7 +6564,7 @@
     ],
     [
      "2026-10-23",
-     2775.8987
+     2775.8999
     ]
    ]
   },
@@ -7601,19 +7601,15 @@
   "dxy": {
    "nombre": "Índice dólar (DXY)",
    "simbolo": "DX-Y.NYB",
-   "valor": 101.75,
+   "valor": 101.81,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": 0.14,
-   "cambio_5d_pct": -0.09,
-   "cambio_21d_pct": 0.46,
-   "cambio_63d_pct": 0.24,
+   "cambio_1d_pct": 0.2,
+   "cambio_5d_pct": -0.03,
+   "cambio_21d_pct": 0.51,
+   "cambio_63d_pct": 0.3,
    "sma50": 100.54,
    "fuente": "ICE DXY (Yahoo Finance)",
    "serie": [
-    [
-     "2025-10-23",
-     98.94
-    ],
     [
      "2025-10-24",
      98.95
@@ -8616,26 +8612,22 @@
     ],
     [
      "2026-10-23",
-     101.752
+     101.81
     ]
    ]
   },
   "wti": {
    "nombre": "Petróleo WTI",
    "simbolo": "CL=F",
-   "valor": 103.44,
+   "valor": 103.27,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": 3.99,
-   "cambio_5d_pct": 2.0,
-   "cambio_21d_pct": 9.33,
-   "cambio_63d_pct": 25.21,
+   "cambio_1d_pct": 3.82,
+   "cambio_5d_pct": 1.83,
+   "cambio_21d_pct": 9.15,
+   "cambio_63d_pct": 25.01,
    "sma50": 92.93,
    "fuente": "Futuros WTI NYMEX, primer vencimiento (Yahoo Finance CL=F; serie empalmada)",
    "serie": [
-    [
-     "2025-10-23",
-     61.79
-    ],
     [
      "2025-10-24",
      61.5
@@ -9638,26 +9630,22 @@
     ],
     [
      "2026-10-23",
-     103.44
+     103.27
     ]
    ]
   },
   "brent": {
    "nombre": "Petróleo Brent",
    "simbolo": "BZ=F",
-   "valor": 111.66,
+   "valor": 116.72,
    "fecha": "2026-10-23",
-   "cambio_1d_pct": -1.33,
-   "cambio_5d_pct": 1.64,
-   "cambio_21d_pct": 4.75,
-   "cambio_63d_pct": 26.37,
-   "sma50": 100.73,
+   "cambio_1d_pct": 3.14,
+   "cambio_5d_pct": 6.24,
+   "cambio_21d_pct": 9.49,
+   "cambio_63d_pct": 32.1,
+   "sma50": 100.83,
    "fuente": "Futuros Brent ICE, primer vencimiento (Yahoo Finance BZ=F; serie empalmada)",
    "serie": [
-    [
-     "2025-10-23",
-     65.99
-    ],
     [
      "2025-10-24",
      65.94
@@ -10660,7 +10648,7 @@
     ],
     [
      "2026-10-23",
-     111.66
+     116.72
     ]
    ]
   },
@@ -10671,8 +10659,8 @@
    "fecha": "2026-10-23",
    "cambio_1d_pct": -3.3,
    "cambio_5d_pct": 2.19,
-   "cambio_21d_pct": 8.24,
-   "cambio_63d_pct": 34.49,
+   "cambio_21d_pct": 8.23,
+   "cambio_63d_pct": 34.48,
    "sma50": 87.8,
    "fuente": "ICE BofA MOVE (Yahoo Finance ^MOVE)",
    "serie": [
@@ -11670,13 +11658,13 @@
     ],
     [
      "2026-10-23",
-     103.3123
+     103.31
     ]
    ]
   }
  },
  "errores": {},
  "ok": true,
- "generado_utc": "2026-10-24 00:01 UTC",
- "duracion_s": 9.7
+ "generado_utc": "2026-10-24 09:39 UTC",
+ "duracion_s": 10.3
 }
