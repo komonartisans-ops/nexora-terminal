@@ -539,7 +539,7 @@ def snapshot(D, d):
     linea = O.get("linea")
     L += [f"- Línea ORO: `{linea}`" + ("" if (O.get("sesion") == D) else f" (de la sesión {O.get('sesion')})") if linea else "- Línea ORO: SIN DATO (no guardada en el repo para este día)"]
     if sp:
-        L += [f"- Spot del oro: **{sp['estado']}**" + (" (verificado)" if sp["estado"] == "OK" else " (dudoso: ratio y base no se actualizaron)" if sp["estado"] == "DUDOSO" else "")
+        L += [f"- Spot del oro: **{sp['estado']}**" + (" (verificado)" if sp["estado"] == "OK" else " (dudoso: ratio y base no se actualizaron)" if sp["estado"] == "DUDOSO" else " (NO verificado: no hubo fuente de contraste de la misma hora; se usó la principal)" if sp["estado"] in ("NO_SINCRONIZADO", "SIN_CONTRASTE") else " (respaldo: la principal falló)" if sp["estado"] in ("GC_IMPLICITO", "SWISSQUOTE") else "")
               + f" · usado {sp.get('spot_usado')} ({sp.get('spot_fuente')}) · ratio {sp.get('ratio_fuente')}", f"- Fuentes: {sp.get('texto_fuentes')}"]
     else:
         L += ["- Spot del oro: SIN DATO (el contraste de fuentes del spot se registra desde el cierre del 2026-10-23, Fase 19)"]
