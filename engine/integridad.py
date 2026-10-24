@@ -313,7 +313,7 @@ def vigilar(raiz=RAIZ, ahora=None, seco=False, enviar=None, push=False):
                 txt = (f"<b>NEXORA · Exportador actualizado, pendiente de aprobar</b>\nCommit {hexa(p.get('commit'))} (aprobado: {hexa(p.get('aprobado')) if p.get('aprobado') else 'ninguno'}): +{num_(r.get('anade'))} −{num_(r.get('quita'))} líneas en tools/exportar_obsidian.py. "
                        "El PC sigue ejecutando la versión aprobada; los datos se siguen descargando. Resumen orientativo (NO sustituye al diff completo):\n<pre>" + html.escape(cuerpo) + ("\n…" if r.get("truncado") else "") + "</pre>\n"
                        "Para aprobar no uses ningún hash de este mensaje: en tu PC ejecuta la copia anclada sin argumentos, lee el diff completo y el hash que imprime ahí, y repite con ese hash: "
-                       "python %LOCALAPPDATA%\\NexoraExportador\\aprobado\\exportar_obsidian.py --aprobar (pedirá escribir APROBAR).")
+                       "python %USERPROFILE%\\NexoraExportador\\aprobado\\exportar_obsidian.py --aprobar (pedirá escribir APROBAR).")
                 if seco:
                     print("[seco · no se envía]\n" + txt + "\n")
                     out.append((clave, "SECO", txt))
@@ -331,7 +331,7 @@ def vigilar(raiz=RAIZ, ahora=None, seco=False, enviar=None, push=False):
             clave = f"obsidian|{ob['racha_desde']}"
             if clave not in est["avisos"]:
                 txt = (f"<b>NEXORA · Integridad</b>\nEl exportador a Obsidian lleva {ob['racha_dias']} días seguidos sin exportar (desde {ob['racha_desde']}; último latido correcto: {ob['ultimo_ok'] or 'ninguno'}). "
-                       "Revisa el PC de Ruiz: tarea «NEXORA exportar a Obsidian» del Programador de tareas y el log en %LOCALAPPDATA%\\NexoraExportador\\exportador.log.")
+                       "Revisa el PC de Ruiz: tarea «NEXORA exportar a Obsidian» del Programador de tareas y el log en %USERPROFILE%\\NexoraExportador\\exportador.log.")
                 if seco:
                     print("[seco · no se envía]\n" + txt + "\n")
                     out.append((clave, "SECO", txt))

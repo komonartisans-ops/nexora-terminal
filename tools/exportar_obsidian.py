@@ -44,7 +44,8 @@ URL_PUBLICO = "https://github.com/komonartisans-ops/nexora-terminal.git"
 URL_PRIVADO = "https://github.com/komonartisans-ops/nexora-diario.git"
 WEB_CSV = "https://github.com/komonartisans-ops/nexora-terminal/blob/main/data/"
 BOVEDA_DEF = r"C:\Users\ruizt\OneDrive\Documentos\Mi Cerebro Digital"
-BASE = os.path.join(os.environ.get("LOCALAPPDATA") or os.path.expanduser("~"), "NexoraExportador")
+# Fuera de %LOCALAPPDATA%: las apps empaquetadas (MSIX, como Claude) virtualizan AppData y el Programador de tareas no vería los archivos.
+BASE = os.environ.get("NEXORA_BASE") or os.path.join(os.path.expanduser("~"), "NexoraExportador")
 MI = "60_Market_Intelligence"
 SIS = MI + "/07_Sistema_NEXORA"
 ZONAS = (MI + "/", "10_Diario/Premercado/", "10_Diario/Operaciones/")      # lo único donde el exportador puede escribir
@@ -1157,7 +1158,7 @@ def aprobar(publico, log, blob_esperado=None, confirmar=None):
     · Hay que repetir el hash que se vio: `--aprobar <blob>`; si el del clon es otro, se rechaza.
     · El contenido se copia del objeto git (git cat-file), no del árbol de trabajo (sin carrera), y debe coincidir con HEAD del clon.
     · Muestra el diff COMPLETO y pide escribir APROBAR (solo con terminal interactiva).
-    Recomendado: ejecutarlo con la copia ya anclada (`python %LOCALAPPDATA%\NexoraExportador\aprobado\exportar_obsidian.py --aprobar <blob>`), nunca con el archivo recién descargado."""
+    Recomendado: ejecutarlo con la copia ya anclada (`python %USERPROFILE%\NexoraExportador\aprobado\exportar_obsidian.py --aprobar <blob>`), nunca con el archivo recién descargado."""
     nuevo = os.path.join(publico, *REL_SCRIPT.split("/"))
     info = comprobar_actualizacion(publico, maximo=100000)
     if info is None:
@@ -1222,7 +1223,7 @@ def registrar_tarea(script, log):
     exe = pyw if os.path.exists(pyw) else py
     ps = f"""
 $ErrorActionPreference = 'Stop'
-$a = New-ScheduledTaskAction -Execute '{exe}' -Argument '"{script}" --programado' -WorkingDirectory '{os.path.dirname(script)}'
+$a = New-ScheduledTaskAction -Execute '{exe}' -Argument '"{script}" --programado'
 $t1 = New-ScheduledTaskTrigger -Daily -At 08:30
 $t2 = New-ScheduledTaskTrigger -Daily -At 23:45
 $t3 = New-ScheduledTaskTrigger -AtLogOn -User $env:USERNAME

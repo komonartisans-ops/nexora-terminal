@@ -7,7 +7,7 @@ Un script que corre **en el PC de Ruiz** (no en GitHub) copia lo que sabe NEXORA
 - **Solo escribe dentro de `60_Market_Intelligence/`, `10_Diario/Premercado/` y `10_Diario/Operaciones/`** de la bóveda. Cualquier otra ruta (o con `..`) se rechaza por código.
 - **Nunca borra.** Nunca edita un CSV del repo.
 - **Los snapshots diarios son inmutables:** si `02_Daily_Snapshots/AAAA-MM-DD.md` existe, ni se vuelve a calcular.
-- **Una nota gestionada que Ruiz ha editado no se pisa.** Cada nota escrita por el exportador guarda su hash (en `%LOCALAPPDATA%\NexoraExportador\estado.json`, fuera de la bóveda). Si el hash del archivo ya no es el de la última exportación, la versión nueva va a `… (NEXORA v2).md` (luego `v3`…), se anota un AVISO en el log y el latido sale como `AVISO`. La v2 sí se mantiene al día mientras nadie la edite.
+- **Una nota gestionada que Ruiz ha editado no se pisa.** Cada nota escrita por el exportador guarda su hash (en `%USERPROFILE%\NexoraExportador\estado.json`, fuera de la bóveda). Si el hash del archivo ya no es el de la última exportación, la versión nueva va a `… (NEXORA v2).md` (luego `v3`…), se anota un AVISO en el log y el latido sale como `AVISO`. La v2 sí se mantiene al día mientras nadie la edite.
 - **Las notas escritas a mano solo se amplían:** `Bitácora NEXORA AAAA-MM`, `Estado y pendientes`, `00 Sistema NEXORA (MOC)`, `Global Market State` y `Market Intelligence` conservan todo lo que ya tenían; el exportador añade al final un bloque propio entre `<!-- NEXORA:auto:… -->` y `<!-- /NEXORA:auto:… -->` (solo se reescribe lo que hay entre esas marcas) o, en la bitácora, líneas nuevas al final.
 - **Idempotente:** una pasada sin novedades no cambia ni un byte de la bóveda.
 - **Sin secretos:** usa los clones y las credenciales de git que ya existen en el PC (`gh`/Git Credential Manager). El log y los mensajes pasan por un filtro que enmascara tokens (`ghp_…`, `github_pat_…`, `https://usuario:clave@…`, `Bearer …`).
@@ -38,7 +38,7 @@ Un día se escribe cuando **ya pasó** (UTC) o, si es el de hoy, cuando existe u
 
 ## Cómo se ejecuta
 
-El exportador trabaja con **clones propios** en `%LOCALAPPDATA%\NexoraExportador\repos\` (`nexora-terminal` y `nexora-diario`), para no interferir con la carpeta donde se desarrolla. En cada pasada: `git pull --rebase --autostash` de ambos (si uno falla, se exporta con lo que haya y la pasada sale como `AVISO`), exportación y latido.
+El exportador trabaja con **clones propios** en `%USERPROFILE%\NexoraExportador\repos\` (`nexora-terminal` y `nexora-diario`), para no interferir con la carpeta donde se desarrolla. En cada pasada: `git pull --rebase --autostash` de ambos (si uno falla, se exporta con lo que haya y la pasada sale como `AVISO`), exportación y latido.
 
 ```bash
 python tools/exportar_obsidian.py                  # pasada completa
@@ -49,15 +49,15 @@ python tools/exportar_obsidian.py --vista-previa 2026-10-22   # imprime el snaps
 
 ### Tarea de Windows «NEXORA exportar a Obsidian»
 
-Una sola tarea con tres disparadores: diaria a las **08:30** y **23:45** (hora local) y **al iniciar sesión**; con «ejecutar lo antes posible si se perdió una ejecución». `--programado` solo trabaja si la última pasada es anterior a la última hora programada (08:30 / 23:45) ya pasada: un inicio de sesión con todo al día no hace nada. Log local: `%LOCALAPPDATA%\NexoraExportador\exportador.log` (sin secretos). Estado: `…\estado.json`.
+Una sola tarea con tres disparadores: diaria a las **08:30** y **23:45** (hora local) y **al iniciar sesión**; con «ejecutar lo antes posible si se perdió una ejecución». `--programado` solo trabaja si la última pasada es anterior a la última hora programada (08:30 / 23:45) ya pasada: un inicio de sesión con todo al día no hace nada. Log local: `%USERPROFILE%\NexoraExportador\exportador.log` (sin secretos). Estado: `…\estado.json`.
 
 ## Ejecución anclada (seguridad)
 
-La tarea de Windows **no ejecuta el código que acaba de descargar**: ejecuta una copia fija, `%LOCALAPPDATA%\NexoraExportador\aprobado\exportar_obsidian.py` (solo lectura, con su commit y hash en `aprobado.json`). Los **datos** (repos público y privado) se siguen descargando con normalidad en cada pasada; el **código del exportador** solo cambia cuando lo apruebas.
+La tarea de Windows **no ejecuta el código que acaba de descargar**: ejecuta una copia fija, `%USERPROFILE%\NexoraExportador\aprobado\exportar_obsidian.py` (solo lectura, con su commit y hash en `aprobado.json`). Los **datos** (repos público y privado) se siguen descargando con normalidad en cada pasada; el **código del exportador** solo cambia cuando lo apruebas.
 
 - Si `tools/exportar_obsidian.py` cambia en `main`, la pasada sigue con la versión aprobada, registra el latido como `PENDIENTE@<commit aprobado>` y sube `data/obsidian_pendiente.json` (commit nuevo, hash y resumen del diff, con tokens enmascarados).
 - `#/integridad` muestra el banner ámbar «Exportador actualizado, pendiente de aprobar» con el diff resumido, y se envía **un** Telegram por versión nueva (clave `obsidian_pendiente|<hash>`).
-- Para aprobar (a prueba de aprobar código no revisado): revisa el diff completo (`git diff` en el clon `%LOCALAPPDATA%\NexoraExportador\repos\nexora-terminal`, o el que muestra `--aprobar` sin argumento) y ejecuta, **con la copia ya anclada**, no con el archivo recién descargado: `python %LOCALAPPDATA%\NexoraExportador\aprobado\exportar_obsidian.py --aprobar <hash>`. Sin hash muestra el diff **completo y real** (sin recortes ni enmascarado; los caracteres de control o invisibles salen como `\u{..}`) y el hash; **el hash se lee en tu terminal, no en el aviso** (el aviso y el banner solo traen un resumen orientativo, sin datos copiables). Con el hash: no hace `pull` (usa lo que la última pasada trajo), rechaza si el hash no es el del clon o si el archivo del clon difiere de `HEAD`, copia el contenido del objeto git (no del árbol de trabajo), exige terminal interactiva y que escribas `APROBAR`. El siguiente latido limpia el aviso.
+- Para aprobar (a prueba de aprobar código no revisado): revisa el diff completo (`git diff` en el clon `%USERPROFILE%\NexoraExportador\repos\nexora-terminal`, o el que muestra `--aprobar` sin argumento) y ejecuta, **con la copia ya anclada**, no con el archivo recién descargado: `python %USERPROFILE%\NexoraExportador\aprobado\exportar_obsidian.py --aprobar <hash>`. Sin hash muestra el diff **completo y real** (sin recortes ni enmascarado; los caracteres de control o invisibles salen como `\u{..}`) y el hash; **el hash se lee en tu terminal, no en el aviso** (el aviso y el banner solo traen un resumen orientativo, sin datos copiables). Con el hash: no hace `pull` (usa lo que la última pasada trajo), rechaza si el hash no es el del clon o si el archivo del clon difiere de `HEAD`, copia el contenido del objeto git (no del árbol de trabajo), exige terminal interactiva y que escribas `APROBAR`. El siguiente latido limpia el aviso.
 - Regla: no aprobar sin haber leído el diff. El exportador anclado no importa ni ejecuta ningún otro código del repo (solo lee datos).
 - `--registrar-tarea` apunta a la copia anclada y exige haber aprobado una versión antes.
 
@@ -71,3 +71,7 @@ Cada pasada añade una fila a **`data/obsidian_latido.csv`** (`fecha,hora_utc,es
 
 - *El aviso de Telegram llegó:* abre el log, mira la última línea `ERROR`/`AVISO`. Causas típicas: PC apagado, sin internet, credencial de git caducada (`gh auth login`), la bóveda movida de sitio (`--boveda RUTA` o variable `NEXORA_BOVEDA`).
 - *Una nota «(NEXORA v2)»:* editaste la original. Si quieres volver a la automática, mueve tu versión a otro nombre; el exportador dejará la v2 como está y no volverá a tocar la editada.
+
+## Nota técnica: dónde viven los archivos del exportador
+
+Todo (clones, `estado.json`, log y la copia anclada) está en **`%USERPROFILE%\NexoraExportador`**, no en `%LOCALAPPDATA%`. Motivo: las aplicaciones empaquetadas (MSIX), como la app de Claude, tienen `AppData` virtualizado: lo que escriben allí solo lo ven ellas (queda en `…\Packages\<app>\LocalCache\Local\`) y el Programador de tareas de Windows no lo encuentra (la tarea fallaba con 0x8007010B / 2 sin dejar rastro). Fuera de `AppData` no hay virtualización. Se puede cambiar con la variable `NEXORA_BASE`.
