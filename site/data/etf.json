@@ -61,15 +61,17 @@
     ],
     [
      "2026-10-23",
-     0.0
+     4.2
     ]
    ],
    "ultimo": {
     "fecha": "2026-10-23",
-    "total_musd": 0.0,
-    "por_etf": {}
+    "total_musd": 4.2,
+    "por_etf": {
+     "MSBT": 4.2
+    }
    },
-   "acum_5d_musd": 439.1,
+   "acum_5d_musd": 443.3,
    "acum_dias": 15,
    "filas_descartadas": 0,
    "tickers": [
@@ -150,15 +152,17 @@
     ],
     [
      "2026-10-23",
-     0.0
+     0.8
     ]
    ],
    "ultimo": {
     "fecha": "2026-10-23",
-    "total_musd": 0.0,
-    "por_etf": {}
+    "total_musd": 0.8,
+    "por_etf": {
+     "MSSE": 0.8
+    }
    },
-   "acum_5d_musd": -225.1,
+   "acum_5d_musd": -224.3,
    "acum_dias": 15,
    "filas_descartadas": 0,
    "tickers": [
@@ -182,6 +186,6 @@
  "fuente": "Farside Investors (tabla HTML, validada fila a fila)",
  "corte": "Día de negociación D hasta el cierre de EE. UU. (16:00 ET); Farside no fija hora de publicación; las correcciones se guardan como filas nuevas en data/historico_etf_flujos.csv",
  "ok": true,
- "generado_utc": "2026-10-23 22:07 UTC",
- "duracion_s": 1.1
+ "generado_utc": "2026-10-23 23:49 UTC",
+ "duracion_s": 1.9
 }
