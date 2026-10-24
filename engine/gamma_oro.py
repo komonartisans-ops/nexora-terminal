@@ -25,6 +25,7 @@ import json
 import math
 import os
 import re
+import csv
 import statistics
 import unicodedata
 
@@ -73,10 +74,10 @@ def gld_cierre(sesion):
     raise RuntimeError(f"sin cierre de GLD de {sesion}")
 
 
-def gc_en(hora_utc):
+def gc_en(hora_utc, rango="5d"):
     """(precio, 'AAAA-MM-DD HH:MM' UTC) de la barra de 5 min de GC=F (futuro del oro de COMEX) más cercana, sin pasarse, a `hora_utc` ('AAAA-MM-DD HH:MM')."""
     objetivo = dt.datetime.strptime(hora_utc, "%Y-%m-%d %H:%M").replace(tzinfo=UTC).timestamp()
-    r = precios._yahoo("GC=F", "5d", "5m")
+    r = precios._yahoo("GC=F", rango, "5m")
     c = r["indicators"]["quote"][0]["close"]
     cand = [(t, v) for t, v in zip(r["timestamp"], c) if v is not None and t <= objetivo]
     if not cand or objetivo - cand[-1][0] > 5400:
@@ -127,7 +128,47 @@ def base_para(raiz, sesion):
 
 
 def leer_ratios(raiz=RAIZ):
-    return sorted((r for r in GI._leer_csv(P(raiz, "data", "xau_gld_ratio.csv")) if r.get("ratio")), key=lambda r: r["fecha"])
+    """Ratio de cada fecha. Si una fecha tiene varias filas manda la ÚLTIMA (una fila REVISADA corrige a la anterior sin borrarla)."""
+    ult = {}
+    for r in GI._leer_csv(P(raiz, "data", "xau_gld_ratio.csv")):
+        if r.get("ratio"):
+            ult[r["fecha"]] = r
+    return sorted(ult.values(), key=lambda r: r["fecha"])
+
+
+def _campos_ratio(raiz):
+    """Cabecera real del CSV del ratio (puede tener la columna «estado» añadida por una revisión)."""
+    ruta = P(raiz, "data", "xau_gld_ratio.csv")
+    if os.path.exists(ruta):
+        with open(ruta, encoding="utf-8", newline="") as f:
+            cab = f.readline().strip().split(",")
+        if cab and cab[0] == "fecha":
+            return cab
+    return CAMPOS_RATIO
+
+
+def revisar_ratio(raiz, fecha, xau, xau_hora, fuente, gld_cierre, medido_utc=""):
+    """Añade (solo añadir) una fila REVISADA con el ratio corregido de una fecha; la fila antigua queda. La columna «estado» se añade al final de la cabecera la primera vez
+    (las filas antiguas no se tocan). Devuelve la fila o None si el ratio no cambia."""
+    ruta = P(raiz, "data", "xau_gld_ratio.csv")
+    viejo = next((r for r in reversed(GI._leer_csv(ruta)) if r["fecha"] == fecha and r.get("ratio")), None)
+    nuevo = round(float(xau) / float(gld_cierre), 5)
+    if viejo and abs(float(viejo["ratio"]) - nuevo) < 0.000005:
+        return None
+    cab = _campos_ratio(raiz)
+    if "estado" not in cab:
+        with open(ruta, "rb") as f:
+            datos = f.read()
+        i = datos.find(b"\n")
+        fin = b"\r\n" if datos[i - 1:i] == b"\r" else b"\n"
+        with open(ruta, "wb") as f:
+            f.write(datos[:i].rstrip(b"\r") + b",estado" + fin + datos[i + 1:])
+        cab = cab + ["estado"]
+    fila = {"fecha": fecha, "gld_cierre": round(float(gld_cierre), 4), "xau_spot": round(float(xau), 2), "ratio": nuevo, "xau_hora_utc": xau_hora,
+            "fuente_xau": fuente + (f" · antes {viejo['ratio']} con el spot de las {viejo['xau_hora_utc'][11:]} UTC" if viejo else ""), "medido_utc": medido_utc, "estado": "REVISADA"}
+    with open(ruta, "a", encoding="utf-8", newline="") as f:
+        csv.DictWriter(f, fieldnames=cab, extrasaction="ignore").writerow({c: fila.get(c, "") for c in cab})
+    return fila
 
 
 def ratio_para(raiz, sesion):
@@ -143,25 +184,27 @@ def ratio_para(raiz, sesion):
             "xau_hora_utc": r["xau_hora_utc"], "fuente_xau": r["fuente_xau"]}
 
 
-def anotar_ratio(raiz, sesion, fuentes_=None, medido_utc=""):
-    """Anota (solo añadir) el ratio de la sesión. Devuelve la fila o None si falta algún cierre (sin inventar) o si el spot de hoy es DUDOSO (Fase 19: el ratio no se actualiza ese día)."""
+def anotar_ratio(raiz, sesion, fuentes_=None, medido_utc="", ventana=None):
+    """Anota (solo añadir) el ratio de la sesión. Devuelve la fila o None si falta algún cierre (sin inventar) o si el spot de hoy es DUDOSO (Fase 19: el ratio no se actualiza ese día).
+    ventana (Fase 20, por defecto solo en producción): el spot es el de la hora del cierre del GLD (16:00 ET); si no se capturó entonces se reconstruye con el GC=F de esa hora."""
+    ventana = (fuentes_ is None) if ventana is None else ventana
     try:
         g = ((fuentes_ or {}).get("gld_cierre") or gld_cierre)(dt.date.fromisoformat(sesion))
         fs = fuentes_spot(fuentes_)
-        d = SO.decidir(raiz, sesion, fs["principal"], fs["gc"], fs["swiss"], medido_utc=medido_utc)
+        d = SO.decidir(raiz, sesion, fs["principal"], fs["gc"], fs["swiss"], medido_utc=medido_utc, ventana=ventana)
         if d is None:
             raise RuntimeError("sin spot del oro (principal caída y sin GC implícito)")
     except Exception as e:  # noqa: BLE001
         print("ratio XAU/GLD sin anotar:", type(e).__name__, str(e)[:100])
         return None
-    if d["estado"] in ("DUDOSO", "SWISSQUOTE"):
-        print(f"ratio XAU/GLD NO actualizado: spot {'dudoso' if d['estado'] == 'DUDOSO' else 'solo de Swissquote, último recurso'} ({SO.texto_fuentes(d)}); se usa el último ratio OK (ratio_fuente=ANTERIOR)")
+    if d["estado"] in ("DUDOSO", "SWISSQUOTE") or d.get("ratio_fuente") == "ANTERIOR":
+        print(f"ratio XAU/GLD NO actualizado: spot {'dudoso' if d['estado'] == 'DUDOSO' else 'solo de Swissquote, último recurso' if d['estado'] == 'SWISSQUOTE' else 'fuera de la ventana del cierre del GLD'} ({SO.texto_fuentes(d)}); se usa el último ratio OK (ratio_fuente=ANTERIOR)")
         return None
     x, hora = float(d["spot_usado"]), d["hora_utc"] if d["spot_fuente"] == "GC_IMPLICITO" else d["principal_hora_utc"]
     fuente = ("gold-api.com (XAU/USD al contado)" if d["spot_fuente"] == "GOLD_API"
               else f"GC_IMPLICITO: GC=F {d['gc_precio']} − base {d['base_usada']} del {d['base_fecha']} (principal caída)")
     fila = {"fecha": sesion, "gld_cierre": round(float(g), 4), "xau_spot": round(x, 2), "ratio": round(x / float(g), 5), "xau_hora_utc": hora, "fuente_xau": fuente, "medido_utc": medido_utc}
-    GI._anadir_csv(P(raiz, "data", "xau_gld_ratio.csv"), [fila], CAMPOS_RATIO, lambda r: r["fecha"])
+    GI._anadir_csv(P(raiz, "data", "xau_gld_ratio.csv"), [fila], _campos_ratio(raiz), lambda r: r["fecha"])
     return fila
 
 

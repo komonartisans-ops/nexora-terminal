@@ -37,6 +37,11 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
+      - name: Spot del oro a la hora del cierre del GLD (Fase 20; solo actúa de lun a vie dentro de ±5 min de las 16:00 ET, 20:00 UTC hasta el 1-nov y 21:00 UTC después; la primera captura válida manda)
+        continue-on-error: true
+        env:
+          PYTHONUTF8: "1"
+        run: python engine/spot_oro.py --capturar
       - name: Aviso previo por Telegram (evento ALTA que empieza en 25-35 min; el monitor repite la comprobación mientras espera)
         continue-on-error: true
         env:

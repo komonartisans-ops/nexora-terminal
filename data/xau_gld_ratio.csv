@@ -1,6 +1,10 @@
-fecha,gld_cierre,xau_spot,ratio,xau_hora_utc,fuente_xau,medido_utc
+fecha,gld_cierre,xau_spot,ratio,xau_hora_utc,fuente_xau,medido_utc,estado
 2026-10-19,379.69,4140.8,10.90574,2026-10-19 21:00,"PROVISIONAL: proxy XAUT-USDT (OKX) a las 21:00 UTC, no es el spot; sustituir por el spot de gold-api desde el cierre del 20-oct",2026-10-20 07:00 UTC
 2026-10-20,377.65,4126.1,10.92573,2026-10-20 21:32,gold-api.com (XAU/USD al contado),2026-10-20 21:30 UTC
 2026-10-21,378.95,4142.3,10.93099,2026-10-21 21:32,gold-api.com (XAU/USD al contado),2026-10-21 21:30 UTC
 2026-10-22,369.0,4025.3,10.90867,2026-10-22 21:31,gold-api.com (XAU/USD al contado),2026-10-22 21:30 UTC
 2026-10-23,366.61,3996.9,10.90232,2026-10-23 21:32,gold-api.com (XAU/USD al contado),2026-10-23 21:30 UTC
+2026-10-20,377.65,4124.2,10.92069,2026-10-20 20:00,"GC=F de las 2026-10-20 20:00 UTC (cierre del GLD, 16:00 ET) 4140.6 − base 16.4 del 2026-10-20 · antes 10.92573 con el spot de las 21:32 UTC",2026-10-24 11:30 UTC,REVISADA
+2026-10-21,378.95,4135.0,10.91173,2026-10-21 20:00,"GC=F de las 2026-10-21 20:00 UTC (cierre del GLD, 16:00 ET) 4152.2 − base 17.2 del 2026-10-21 · antes 10.93099 con el spot de las 21:32 UTC",2026-10-24 11:30 UTC,REVISADA
+2026-10-22,369.0,4029.6,10.92033,2026-10-22 20:00,"GC=F de las 2026-10-22 20:00 UTC (cierre del GLD, 16:00 ET) 4044.1 − base 14.5 del 2026-10-22 · antes 10.90867 con el spot de las 21:31 UTC",2026-10-24 11:30 UTC,REVISADA
+2026-10-23,366.61,3998.8,10.9075,2026-10-23 20:00,"GC=F de las 2026-10-23 20:00 UTC (cierre del GLD, 16:00 ET) 4011.9 − base 13.1 del 2026-10-23 · antes 10.90232 con el spot de las 21:32 UTC",2026-10-24 11:30 UTC,REVISADA

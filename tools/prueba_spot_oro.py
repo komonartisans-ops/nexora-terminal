@@ -205,6 +205,101 @@ except RuntimeError as e:
     assert "sin spot" in str(e)
 print("8) OK etapa: cierre registra, fuera del cierre no; sin ninguna fuente → error (fallo visible en el vigilante)")
 
+# 9) Fase 20 · el spot es el de la hora del cierre del GLD (16:00 America/New_York): 20:00 UTC antes del 1-nov y 21:00 UTC después; ±5 min; el futuro sigue abierto
+assert SO.cierre_gld_utc("2026-10-30") == dt.datetime(2026, 10, 30, 20, 0, tzinfo=UTC), SO.cierre_gld_utc("2026-10-30")
+assert SO.cierre_gld_utc("2026-10-23") == dt.datetime(2026, 10, 23, 20, 0, tzinfo=UTC) and SO.cierre_gld_utc("2026-11-02") == dt.datetime(2026, 11, 2, 21, 0, tzinfo=UTC)
+assert SO.cierre_gld_utc("2026-11-27") == dt.datetime(2026, 11, 27, 18, 0, tzinfo=UTC), "cierre anticipado de la NYSE (13:00 ET)"
+assert SO.cierre_gld_utc("2026-03-06") == dt.datetime(2026, 3, 6, 21, 0, tzinfo=UTC) and SO.cierre_gld_utc("2026-03-10") == dt.datetime(2026, 3, 10, 20, 0, tzinfo=UTC), "el cambio de marzo también"
+print("9a) OK hora del cierre del GLD con America/New_York: 20:00 UTC hasta el 31-oct, 21:00 UTC desde el 2-nov (cambio del 1-nov), 18:00 UTC el 27-nov (cierre anticipado); también marzo")
+
+
+def FF(hora, principal=4030.0, swiss=4031.0, gc=4044.5, hora_swiss=None, hora_gc=None):
+    h = lambda m: hora if m is None else m  # noqa: E731
+    return {"xau": lambda: (principal, hora, "gold-api"), "swiss": lambda: (swiss, h(hora_swiss), "Swissquote"), "gc": lambda t: (gc, h(hora_gc)), "gld_cierre": lambda d: 379.69}
+
+
+def U(s):
+    return dt.datetime.strptime(s, "%Y-%m-%d %H:%M").replace(tzinfo=UTC)
+
+
+# 9b) captura dentro de la ventana: verano (20:00 UTC) e invierno (21:00 UTC); fuera de ella no hace nada; fin de semana tampoco
+T = raiz()
+assert SO.capturar(T, U("2026-10-30 19:40"), FF("2026-10-30 19:40")) == "FUERA_DE_VENTANA" and not csv_(T, "xau_spot_contraste.csv")
+assert SO.capturar(T, U("2026-10-30 20:07"), FF("2026-10-30 20:07")) == "FUERA_DE_VENTANA"
+assert SO.capturar(T, U("2026-10-31 20:00"), FF("2026-10-31 20:00")) == "FIN_DE_SEMANA"
+r = SO.capturar(T, U("2026-10-30 19:56"), FF("2026-10-30 19:56"), "s")
+f = csv_(T, "xau_spot_contraste.csv")
+assert r == "REGISTRADA OK" and len(f) == 1 and f[0]["fecha"] == "2026-10-30" and f[0]["nota"].startswith("VENTANA_GLD") and "20:00 UTC" in f[0]["nota"] and f[0]["estado"] == "OK" and f[0]["swiss_sinc"] == "SI", f
+assert SO.capturar(T, U("2026-10-30 20:03"), FF("2026-10-30 20:03", principal=3000.0)) == "YA_REGISTRADA" and len(csv_(T, "xau_spot_contraste.csv")) == 1, "la primera captura válida manda"
+assert SO.capturar(T, U("2026-11-02 20:00"), FF("2026-11-02 20:00")) == "FUERA_DE_VENTANA", "tras el 1-nov las 20:00 UTC ya no son el cierre del GLD"
+assert SO.capturar(T, U("2026-11-02 21:03"), FF("2026-11-02 21:03"), "s") == "REGISTRADA OK" and csv_(T, "xau_spot_contraste.csv")[1]["fecha"] == "2026-11-02"
+assert SO.capturar(T, U("2026-11-03 21:00"), FF("2026-11-03 20:20")) == "SIN_PRINCIPAL_EN_VENTANA" and len(csv_(T, "xau_spot_contraste.csv")) == 2, "si la hora del spot no está en la ventana no se registra"
+print("9b) OK captura: 19:56 UTC (30-oct, verano) y 21:03 UTC (2-nov, invierno) se registran con nota VENTANA_GLD y estado OK (Swissquote de la misma hora); 19:40, 20:07, sábado y 20:00 UTC tras el cambio de hora no; la primera captura manda; spot de otra hora no se registra")
+
+# 9c) sin captura en la ventana: el cierre (21:30 UTC) reconstruye el spot de esa hora con el GC=F de entonces menos la base anterior; y el ratio usa ESE spot
+for sesion, hora_c in (("2026-10-30", "2026-10-30 20:00"), ("2026-11-02", "2026-11-02 21:00")):
+    T = raiz()
+    with open(os.path.join(T, "data", "xau_gc_base.csv"), "a", encoding="utf-8", newline="") as fh:      # base de la sesión anterior dentro de los 5 días
+        csv.writer(fh).writerow(["2026-10-30" if sesion == "2026-11-02" else "2026-10-29", 4000.0, 4014.5, BASE_ANTERIOR, "x", "GC=F", "x"])
+    gc_cierre = lambda t, hc=hora_c: (4044.5, hc)  # noqa: E731
+    f2 = {"xau": lambda: (4100.0, sesion + " 21:31", "gold-api"), "swiss": lambda: (4101.0, sesion + " 21:31", "Swissquote"), "gc": gc_cierre, "gld_cierre": lambda d: 379.69}
+    fr = GO.anotar_ratio(T, sesion, f2, "t", ventana=True)
+    f = csv_(T, "xau_spot_contraste.csv")[0]
+    esperado = round(4044.5 - BASE_ANTERIOR, 2)
+    assert f["estado"] == "GC_IMPLICITO" and f["nota"].startswith("FUERA_DE_VENTANA") and float(f["spot_usado"]) == esperado and f["hora_utc"] == hora_c and f["spot_principal"] == "", f
+    assert fr and fr["xau_spot"] == esperado and fr["xau_hora_utc"] == hora_c and fr["ratio"] == round(esperado / 379.69, 5), fr
+    assert 4100.0 != fr["xau_spot"], "el spot de las 21:31 UTC no se usa para el ratio"
+print("9c) OK sin captura en la ventana: spot = GC=F de las 20:00 UTC (30-oct) / 21:00 UTC (2-nov) − base anterior (GC_IMPLICITO, FUERA_DE_VENTANA) y el ratio usa ese spot, no el de las 21:31")
+T = raiz()
+f3 = {"xau": lambda: (4100.0, "2026-10-30 21:31", "gold-api"), "swiss": lambda: (4101.0, "2026-10-30 21:31", "Swissquote"), "gc": None, "gld_cierre": lambda d: 379.69}
+n_r = len(csv_(T, "xau_gld_ratio.csv"))
+assert GO.anotar_ratio(T, "2026-10-30", f3, "t", ventana=True) is None and len(csv_(T, "xau_gld_ratio.csv")) == n_r
+g = csv_(T, "xau_spot_contraste.csv")[0]
+assert g["ratio_fuente"] == "ANTERIOR" and g["nota"].startswith("FUERA_DE_VENTANA"), g
+print("9d) OK sin captura y sin GC=F para reconstruir: el ratio NO se actualiza (ANTERIOR, nota FUERA_DE_VENTANA); nunca se usa el spot de otra hora")
+
+# 9e) corrección hacia atrás: solo se AÑADEN filas REVISADA (la cabecera gana «estado» al final); las lecturas usan la última fila; idempotente; antes y después del 1-nov
+sys.path.insert(0, HERE)
+import revisar_ratio_cierre_gld as RV  # noqa: E402
+T = tempfile.mkdtemp(prefix="spot_")
+os.makedirs(os.path.join(T, "data"))
+with open(os.path.join(T, "data", "xau_gld_ratio.csv"), "w", encoding="utf-8", newline="") as fh:
+    w_ = csv.writer(fh)
+    w_.writerow(GO.CAMPOS_RATIO)
+    w_.writerow(["2026-10-29", 380.0, 4100.0, 10.78947, "2026-10-29 21:31", "gold-api.com (XAU/USD al contado)", "x"])
+    w_.writerow(["2026-11-03", 370.0, 4070.0, 11.0, "2026-11-03 21:31", "gold-api.com (XAU/USD al contado)", "x"])
+    w_.writerow(["2026-10-19", 379.69, 4140.8, 10.90574, "2026-10-19 21:00", "PROVISIONAL: proxy", "x"])
+with open(os.path.join(T, "data", "xau_gc_base.csv"), "w", encoding="utf-8", newline="") as fh:
+    w_ = csv.writer(fh)
+    w_.writerow(GO.CAMPOS_BASE)
+    w_.writerow(["2026-10-29", 4100.0, 4114.0, 14.0, "2026-10-29 20:59", "GC=F", "x"])
+    w_.writerow(["2026-11-03", 4070.0, 4082.0, 12.0, "2026-11-03 20:59", "GC=F", "x"])
+barras = {}
+def gc_hist(h):  # noqa: E306
+    barras.setdefault("pedidas", []).append(h)
+    return {"2026-10-29 20:00": (4090.0, "2026-10-29 20:00"), "2026-11-03 21:00": (4075.0, "2026-11-03 21:00")}[h]
+antes = open(os.path.join(T, "data", "xau_gld_ratio.csv"), "rb").read()
+sim = RV.revisar(T, False, gc_hist)
+assert open(os.path.join(T, "data", "xau_gld_ratio.csv"), "rb").read() == antes, "la simulación no escribe"
+assert barras["pedidas"] == ["2026-10-29 20:00", "2026-11-03 21:00"], barras
+res = RV.revisar(T, True, gc_hist, "t")
+d_ = {x["fecha"]: x for x in res}
+assert d_["2026-10-29"]["estado"] == "REVISADA" and d_["2026-11-03"]["estado"] == "REVISADA" and d_["2026-10-19"]["estado"] == "OMITIDA", res
+despues = open(os.path.join(T, "data", "xau_gld_ratio.csv"), "rb").read()
+cab, _, resto = despues.partition(b"\n")
+assert cab.decode().strip().endswith(",estado") and resto.startswith(antes.partition(b"\n")[2]), "las filas antiguas no se tocan; solo se añade al final y a la cabecera"
+filas_r = csv_(T, "xau_gld_ratio.csv")
+assert len(filas_r) == 5 and [x["estado"] for x in filas_r if x["estado"]] == ["REVISADA", "REVISADA"]
+vig = {x["fecha"]: x for x in GO.leer_ratios(T)}
+assert vig["2026-10-29"]["ratio"] == str(round((4090.0 - 14.0) / 380.0, 5)) and vig["2026-11-03"]["ratio"] == str(round((4075.0 - 12.0) / 370.0, 5)) and GO.ratio_para(T, "2026-11-03")["valor"] == float(vig["2026-11-03"]["ratio"])
+assert "antes 10.78947" in vig["2026-10-29"]["fuente_xau"] and vig["2026-10-29"]["xau_hora_utc"] == "2026-10-29 20:00"
+res2 = RV.revisar(T, True, gc_hist, "t")
+assert len(csv_(T, "xau_gld_ratio.csv")) == 5 and all(x["estado"] in ("OMITIDA",) for x in res2), res2
+assert GO.anotar_ratio(T, "2026-11-04", {"gld_cierre": lambda d: 372.0, "xau": lambda: (4080.0, "2026-11-04 21:01", "g"), "swiss": lambda: (4081.0, "2026-11-04 21:01", "s"), "gc": lambda h: (4093.0, "2026-11-04 21:00")}, "t", ventana=False) is not None
+nuevas = csv_(T, "xau_gld_ratio.csv")
+assert len(nuevas) == 6 and nuevas[-1]["fecha"] == "2026-11-04" and nuevas[-1]["estado"] == "", nuevas[-1]
+print("9e) OK corrección hacia atrás: usa GC=F de las 20:00 UTC (29-oct) y de las 21:00 UTC (3-nov); solo AÑADE filas REVISADA (cabecera +estado al final, filas antiguas intactas); lo provisional no se toca; las lecturas usan la última fila; repetirla no añade nada; las filas nuevas siguen con la cabecera ampliada")
+
 for d in os.listdir(tempfile.gettempdir()):
     if d.startswith("spot_"):
         shutil.rmtree(os.path.join(tempfile.gettempdir(), d), ignore_errors=True)

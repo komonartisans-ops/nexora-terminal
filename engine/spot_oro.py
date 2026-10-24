@@ -21,6 +21,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import os
+from zoneinfo import ZoneInfo
 
 import fuentes
 
@@ -202,15 +203,96 @@ def fila_de(raiz, sesion):
     return filas[-1] if filas else None
 
 
-def decidir(raiz, sesion, principal=None, gc=None, swiss_fn=None, ahora=None, medido_utc="", escribir=True):
-    """La decisión del día: si ya hay fila de esa sesión manda la primera (solo añadir); si no, contrasta y, con escribir=True, la registra. None si no hay spot."""
+# ---------------------------------------------------------------- hora del cierre del GLD (Fase 20)
+# El ratio XAU/GLD = spot del oro / cierre de GLD, así que el spot debe ser el de la hora del cierre de GLD: 16:00 hora de Nueva York (America/New_York: 20:00 UTC con horario
+# de verano de EE. UU., 21:00 UTC sin él; el cambio de 2026 es el 1-nov). Cierres anticipados de la NYSE (13:00 ET) conocidos; el resto de festivos no tiene sesión.
+NY = ZoneInfo("America/New_York")
+VENTANA_S = 300
+CIERRES_ANTICIPADOS = {"2026-11-27": (13, 0), "2026-12-24": (13, 0)}
+
+
+def cierre_gld_utc(sesion):
+    """Instante (UTC) del cierre de GLD de la sesión 'AAAA-MM-DD'."""
+    h, m = CIERRES_ANTICIPADOS.get(sesion, (16, 0))
+    d = dt.date.fromisoformat(sesion)
+    return dt.datetime(d.year, d.month, d.day, h, m, tzinfo=NY).astimezone(UTC)
+
+
+def en_ventana(instante, sesion):
+    return abs((instante - cierre_gld_utc(sesion)).total_seconds()) <= VENTANA_S
+
+
+def _con_marca(f, marca):
+    f["nota"] = marca + (" · " + f["nota"] if f.get("nota") else "")
+    return f
+
+
+def reconstruir_en_cierre(raiz, sesion, principal, gc, swiss_fn, ahora, medido_utc=""):
+    """No hubo captura en la ventana del cierre del GLD: el spot de esa hora se reconstruye con el GC=F de entonces (barra de 5 min, el futuro sigue abierto) menos la base de la sesión
+    anterior (GC_IMPLICITO, sin verificar). Sin barra o sin base: contraste de «ahora» marcado y con el ratio SIN actualizar. Nunca se usa el spot de otra hora para el ratio."""
+    cierre = cierre_gld_utc(sesion)
+    hora_c = cierre.strftime("%Y-%m-%d %H:%M")
+    base = base_previa(raiz, sesion)
+    if gc and base:
+        try:
+            gp, hg = gc(hora_c)
+            if abs((_t(hg) - cierre).total_seconds()) <= 2 * VENTANA_S:
+                impl = round(float(gp) - base[0], 2)
+                return {"fecha": sesion, "hora_utc": hg, "spot_principal": "", "principal_hora_utc": "", "gc_precio": round(float(gp), 2), "gc_barra_utc": hg, "base_usada": base[0], "base_fecha": base[1],
+                        "spot_gc_implicito": impl, "swiss_precio": "", "swiss_hora_utc": "", "spot_fuente": "GC_IMPLICITO", "spot_usado": impl, "ratio_fuente": "SESION", "estado": "GC_IMPLICITO",
+                        "nota": f"FUERA_DE_VENTANA: no se capturó el spot a la hora del cierre del GLD ({hora_c} UTC); spot = GC=F de las {hg} − base {base[0]} del {base[1]}, sin verificar",
+                        "medido_utc": medido_utc}
+        except Exception as e:  # noqa: BLE001
+            err = f"{type(e).__name__} {str(e)[:60]}"
+        else:
+            err = "barra de GC=F lejos de la hora del cierre"
+    else:
+        err = "sin GC=F o sin base de la sesión anterior"
+    f = contrastar(raiz, sesion, principal, gc, swiss_fn, ahora, medido_utc)
+    if f:
+        f["ratio_fuente"] = "ANTERIOR"
+        _con_marca(f, f"FUERA_DE_VENTANA: no se capturó el spot a la hora del cierre del GLD ({hora_c} UTC) y no se pudo reconstruir ({err}); ratio y base sin actualizar")
+    return f
+
+
+def decidir(raiz, sesion, principal=None, gc=None, swiss_fn=None, ahora=None, medido_utc="", escribir=True, ventana=False):
+    """La decisión del día: si ya hay fila de esa sesión manda la primera (solo añadir); si no, contrasta y, con escribir=True, la registra. None si no hay spot.
+    ventana=True (producción): el spot debe ser el de la hora del cierre del GLD (±5 min); fuera de ella se reconstruye con GC=F (ver reconstruir_en_cierre)."""
     ex = fila_de(raiz, sesion)
     if ex:
         return ex
-    f = contrastar(raiz, sesion, principal, gc, swiss_fn, ahora, medido_utc)
+    ahora = ahora or dt.datetime.now(UTC)
+    if ventana and not en_ventana(ahora, sesion):
+        f = reconstruir_en_cierre(raiz, sesion, principal, gc, swiss_fn, ahora, medido_utc)
+    else:
+        f = contrastar(raiz, sesion, principal, gc, swiss_fn, ahora, medido_utc)
+        if f and ventana:
+            _con_marca(f, f"VENTANA_GLD: captura a las {ahora.strftime('%H:%M')} UTC, dentro de ±{VENTANA_S // 60} min del cierre del GLD ({cierre_gld_utc(sesion).strftime('%H:%M')} UTC)")
     if f and escribir:
         _anadir(P(raiz, "data", "xau_spot_contraste.csv"), f)
     return f
+
+
+def capturar(raiz=None, ahora=None, fuentes_=None, stamp=""):
+    """Captura del spot a la hora del cierre del GLD, para llamarla cada pocos minutos (reacciones.yml): solo actúa en días de semana y dentro de ±5 min de ese cierre, y solo si el día aún no
+    tiene fila (la primera captura válida manda). La hora del spot (la de la principal) también debe estar en la ventana. Devuelve un texto de estado."""
+    import gamma_oro as GO
+    raiz = raiz or GO.RAIZ
+    ahora = ahora or dt.datetime.now(UTC)
+    sesion = ahora.astimezone(NY).date().isoformat()
+    if dt.date.fromisoformat(sesion).weekday() >= 5:
+        return "FIN_DE_SEMANA"
+    if not en_ventana(ahora, sesion):
+        return "FUERA_DE_VENTANA"
+    if fila_de(raiz, sesion):
+        return "YA_REGISTRADA"
+    fn = GO.fuentes_spot(fuentes_)
+    f = contrastar(raiz, sesion, fn["principal"], fn["gc"], fn["swiss"], ahora, stamp)
+    if not f or not f.get("principal_hora_utc") or not en_ventana(_t(f["principal_hora_utc"]), sesion):
+        return "SIN_PRINCIPAL_EN_VENTANA"          # no se registra: otra ejecución dentro de la ventana puede conseguirlo; si no, el cierre reconstruye
+    _con_marca(f, f"VENTANA_GLD: captura a las {ahora.strftime('%H:%M')} UTC, dentro de ±{VENTANA_S // 60} min del cierre del GLD ({cierre_gld_utc(sesion).strftime('%H:%M')} UTC)")
+    _anadir(P(raiz, "data", "xau_spot_contraste.csv"), f)
+    return f"REGISTRADA {f['estado']}"
 
 
 # ---------------------------------------------------------------- lectura para la web, la línea y el aviso
@@ -308,7 +390,7 @@ def etapa(escribir_cierre=False, hoy=None, stamp="", raiz=None, fuentes_=None, a
     hoy = hoy or ahora.strftime("%Y-%m-%d")
     f = fuentes_
     fn = GO.fuentes_spot(f)
-    dec = decidir(raiz, hoy, fn["principal"], fn["gc"], fn["swiss"], ahora, stamp, escribir=escribir_cierre)
+    dec = decidir(raiz, hoy, fn["principal"], fn["gc"], fn["swiss"], ahora, stamp, escribir=escribir_cierre, ventana=fuentes_ is None)
     R = resumen(raiz)
     out = {"generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "sesion": hoy, "registra": bool(escribir_cierre),
            "decision": resumen_fila(dec), "resumen": R, "umbral_pct": UMBRAL_PCT, "tolerancia_min": TOL_SINC_S // 60, "metodo": __doc__.split("Fuentes (")[1].split("Registro de solo")[0].strip()}
@@ -318,4 +400,8 @@ def etapa(escribir_cierre=False, hoy=None, stamp="", raiz=None, fuentes_=None, a
 
 
 if __name__ == "__main__":
-    print(json.dumps(etapa(escribir_cierre=False), ensure_ascii=False, indent=1))
+    import sys
+    if "--capturar" in sys.argv:
+        print("captura del spot a la hora del cierre del GLD:", capturar(stamp=dt.datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")))
+    else:
+        print(json.dumps(etapa(escribir_cierre=False), ensure_ascii=False, indent=1))
