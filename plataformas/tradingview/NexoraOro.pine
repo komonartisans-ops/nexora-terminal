@@ -5,6 +5,9 @@
 //   XAU tesis=alcista;int=debil;flip=4167.1;cw=4144.2;pw=3762.5;em=57.8;maxg=4253.2;ratio=10.9057;rf=2026-10-19;cot=largo-bajo_p27;etf=+3.1;evento=no
 // Los niveles de gamma son los de GLD (ETF de oro) pasados a precio XAU/USD con el ratio XAU/GLD de la fecha «rf»: son una REFERENCIA («GLD ref.»), no niveles de opciones sobre el oro al contado.
 // Fase 19/20: si la línea acaba en «;spot=dudoso» (el spot del oro no coincidió entre fuentes) el panel muestra una fila ámbar «SPOT DUDOSO · niveles con ratio anterior». Sin esa clave, no se muestra nada.
+// Fase 21: CADUCIDAD. Compara el «rf=» de la línea pegada con la línea que toca hoy: si es de otra sesión, fila ROJA grande «NIVELES DEL dd-mm · CADUCADOS, pega la línea de hoy» y las líneas de gamma pasan a gris discontinuo.
+//   La línea que toca es la de la última sesión de la bolsa cerrada antes del último «relevo» (lunes a viernes, 15:30 de Madrid = media hora después del Telegram de las 15:00). Fines de semana y festivos no cambian el relevo:
+//   sigue valiendo la última línea recibida. El calendario de la bolsa sale de las barras diarias de AMEX:SPY (con sus festivos); sin datos se usan lunes a viernes.
 // Además dibuja PDH/PDL y los máximos/mínimos de Asia y Londres. Si un valor es «na», no se dibuja.
 indicator("NEXORA · Oro", shorttitle = "NEXORA Oro", overlay = true, max_lines_count = 60, max_labels_count = 60)
 
@@ -20,6 +23,10 @@ colCW = input.color(color.new(#E05A4F, 0), "GLD ref. · Call Wall", group = grpN
 colPW = input.color(color.new(#35B26F, 0), "GLD ref. · Put Wall", group = grpN)
 colMG = input.color(color.new(#3A8FE0, 0), "GLD ref. · Max Gamma", group = grpN)
 colEM = input.color(color.new(#6FA8DC, 85), "Banda EM", group = grpN)
+
+grpC = "Caducidad de la línea"
+simCal = input.symbol("AMEX:SPY", "Símbolo del calendario de la bolsa", group = grpC, tooltip = "Solo sirve para saber qué días hay sesión (festivos incluidos). Si no tiene datos se usan lunes a viernes.")
+colCad = input.color(color.new(color.gray, 0), "Líneas con niveles caducados", group = grpC)
 
 grpL = "Parte en vivo (dólar y tipo real)"
 simDXY = input.symbol("TVC:DXY", "Índice del dólar", group = grpL)
@@ -95,6 +102,55 @@ evento = valido ? f_texto(seg, "evento") : ""
 spotDudoso = valido and f_texto(seg, "spot") == "dudoso"
 diasLinea = na(f_fecha(rf)) ? na : (timenow - f_fecha(rf)) / 86400000.0
 
+// ---------------------------------------------------------------- caducidad: ¿es la línea pegada la que toca hoy?
+// aaaammdd de un instante en una zona horaria
+f_ymd(int ts, string zona) =>
+    year(ts, zona) * 10000 + month(ts, zona) * 100 + dayofmonth(ts, zona)
+
+// «AAAA-MM-DD» → aaaammdd; na si no es una fecha
+f_ymd_txt(string s) =>
+    p = str.split(s, "-")
+    array.size(p) == 3 ? int(str.tonumber(array.get(p, 0))) * 10000 + int(str.tonumber(array.get(p, 1))) * 100 + int(str.tonumber(array.get(p, 2))) : na
+
+// último «relevo» ya pasado: lunes a viernes a las 15:30 de Madrid (se parte del mediodía para que el cambio de hora no cambie el día)
+f_relevo(int ahora) =>
+    int mediodia = timestamp("Europe/Madrid", year(ahora, "Europe/Madrid"), month(ahora, "Europe/Madrid"), dayofmonth(ahora, "Europe/Madrid"), 12, 0)
+    int r = na
+    for k = 0 to 6
+        d = mediodia - k * 86400000
+        cand = timestamp("Europe/Madrid", year(d, "Europe/Madrid"), month(d, "Europe/Madrid"), dayofmonth(d, "Europe/Madrid"), 15, 30)
+        dw = dayofweek(d, "Europe/Madrid")
+        if na(r) and dw != dayofweek.saturday and dw != dayofweek.sunday and cand <= ahora
+            r := cand
+    r
+
+// respaldo sin calendario de la bolsa: el lunes-viernes anterior al día de Nueva York del relevo (aaaammdd)
+f_previo_laborable(int relevo) =>
+    int mediodia = timestamp("America/New_York", year(relevo, "America/New_York"), month(relevo, "America/New_York"), dayofmonth(relevo, "America/New_York"), 12, 0)
+    int r = na
+    for k = 1 to 5
+        d = mediodia - k * 86400000
+        dw = dayofweek(d, "America/New_York")
+        if na(r) and dw != dayofweek.saturday and dw != dayofweek.sunday
+            r := f_ymd(d, "America/New_York")
+    r
+
+// apertura de las tres últimas barras diarias de la bolsa (la fecha de sesión sale de ellas, festivos incluidos; hacen falta tres porque entre la apertura de EE. UU. y las 15:30 de Madrid
+// —en las semanas en que Europa y EE. UU. cambian la hora en fechas distintas— la barra de hoy ya existe y es posterior al relevo)
+[calT0, calT1, calT2] = request.security(simCal, "D", [time, time[1], time[2]])
+var int esperada = na
+var bool caducada = false
+if barstate.islast
+    relevo = f_relevo(timenow)
+    ymdR = f_ymd(relevo, "America/New_York")
+    ymd0 = na(calT0) ? na : f_ymd(calT0, "America/New_York")
+    ymd1 = na(calT1) ? na : f_ymd(calT1, "America/New_York")
+    ymd2 = na(calT2) ? na : f_ymd(calT2, "America/New_York")
+    // la última sesión con fecha anterior al día (en Nueva York) del relevo
+    esperada := not na(ymd0) and not na(ymd1) and not na(ymd2) ? (ymd0 < ymdR ? ymd0 : ymd1 < ymdR ? ymd1 : ymd2) : f_previo_laborable(relevo)
+    rfYmd = f_ymd_txt(rf)
+    caducada := esOro and valido and not na(rfYmd) and rfYmd < esperada
+
 // ---------------------------------------------------------------- parte en vivo: dólar y tipo real
 [dxy, dxyMa] = request.security(simDXY, "D", [close, ta.sma(close, nMedia)])
 [real, real5, realMa] = request.security(simReal, "D", [close, close[nAviso], ta.sma(close, nMedia)])
@@ -155,39 +211,51 @@ f_linea(line l, float y, color c, string estilo) =>
 
 f_etq(label e, float y, string txt, color c) =>
     label.delete(e)
-    verEtq and not na(y) ? label.new(bar_index, y, "GLD ref. · " + txt + " " + str.tostring(y, "#.#"), style = label.style_label_left, color = color.new(c, 85), textcolor = c, size = size.small) : na
+    verEtq and not na(y) ? label.new(bar_index, y, "GLD ref. · " + txt + " " + str.tostring(y, "#.#") + (caducada ? " · CADUCADO" : ""), style = label.style_label_left, color = color.new(c, 85), textcolor = c, size = size.small) : na
 
 if barstate.islast
-    lFlip := f_linea(lFlip, flip, colFlip, line.style_solid)
-    lCW := f_linea(lCW, cw, colCW, line.style_solid)
-    lPW := f_linea(lPW, pw, colPW, line.style_solid)
-    lMG := f_linea(lMG, verMaxG ? maxg : na, colMG, line.style_dashed)
-    eFlip := f_etq(eFlip, flip, "Gamma Flip", colFlip)
-    eCW := f_etq(eCW, cw, "Call Wall", colCW)
-    ePW := f_etq(ePW, pw, "Put Wall", colPW)
-    eMG := f_etq(eMG, verMaxG ? maxg : na, "Max Gamma", colMG)
+    estSol = caducada ? line.style_dashed : line.style_solid
+    lFlip := f_linea(lFlip, flip, caducada ? colCad : colFlip, estSol)
+    lCW := f_linea(lCW, cw, caducada ? colCad : colCW, estSol)
+    lPW := f_linea(lPW, pw, caducada ? colCad : colPW, estSol)
+    lMG := f_linea(lMG, verMaxG ? maxg : na, caducada ? colCad : colMG, line.style_dashed)
+    eFlip := f_etq(eFlip, flip, "Gamma Flip", caducada ? colCad : colFlip)
+    eCW := f_etq(eCW, cw, "Call Wall", caducada ? colCad : colCW)
+    ePW := f_etq(ePW, pw, "Put Wall", caducada ? colCad : colPW)
+    eMG := f_etq(eMG, verMaxG ? maxg : na, "Max Gamma", caducada ? colCad : colMG)
     linefill.delete(banda)
     line.delete(lUp)
     line.delete(lDn)
     if verEM and not na(em) and not na(cierreAnt)
-        lUp := line.new(bar_index - 1, cierreAnt + em, bar_index, cierreAnt + em, extend = extend.both, color = color.new(colEM, 40), width = 1, style = line.style_dotted)
-        lDn := line.new(bar_index - 1, cierreAnt - em, bar_index, cierreAnt - em, extend = extend.both, color = color.new(colEM, 40), width = 1, style = line.style_dotted)
-        banda := linefill.new(lUp, lDn, colEM)
+        colBanda = caducada ? color.new(colCad, 85) : colEM
+        lUp := line.new(bar_index - 1, cierreAnt + em, bar_index, cierreAnt + em, extend = extend.both, color = color.new(colBanda, 40), width = 1, style = line.style_dotted)
+        lDn := line.new(bar_index - 1, cierreAnt - em, bar_index, cierreAnt - em, extend = extend.both, color = color.new(colBanda, 40), width = 1, style = line.style_dotted)
+        banda := linefill.new(lUp, lDn, colBanda)
     else
         lUp := na
         lDn := na
         banda := na
 
 // ---------------------------------------------------------------- panel
-var table tbl = table.new(position.top_right, 2, 12, border_width = 1)
+var table tbl = table.new(position.top_right, 2, 13, border_width = 1)
+// la fila 0 es la alarma roja de caducidad; las demás filas (numeradas desde 0 en las llamadas) quedan una posición más abajo
 f_fila(int fila, string a, string b, color cb) =>
-    table.cell(tbl, 0, fila, a, text_color = color.silver, bgcolor = color.new(color.black, 30), text_size = size.small, text_halign = text.align_left)
-    table.cell(tbl, 1, fila, b, text_color = cb, bgcolor = color.new(color.black, 30), text_size = size.small, text_halign = text.align_left)
+    table.cell(tbl, 0, fila + 1, a, text_color = color.silver, bgcolor = color.new(color.black, 30), text_size = size.small, text_halign = text.align_left)
+    table.cell(tbl, 1, fila + 1, b, text_color = cb, bgcolor = color.new(color.black, 30), text_size = size.small, text_halign = text.align_left)
 
 if barstate.islast
     cVerde = color.new(#35B26F, 0)
     cRojo = color.new(#E05A4F, 0)
     cGris = color.gray
+    // fila 0 (solo si la línea pegada NO es la que toca hoy): roja y grande; si no, la celda queda vacía y transparente
+    if caducada
+        fechaRf = f_texto(seg, "rf")
+        txtCad = "NIVELES DEL " + str.substring(fechaRf, 8, 10) + "-" + str.substring(fechaRf, 5, 7) + " · CADUCADOS, pega la línea de hoy"
+        table.cell(tbl, 0, 0, txtCad, text_color = color.white, bgcolor = color.new(#E02020, 0), text_size = size.large, text_halign = text.align_left)
+        table.cell(tbl, 1, 0, "", bgcolor = color.new(#E02020, 0), text_size = size.large)
+    else
+        table.cell(tbl, 0, 0, "", bgcolor = na)
+        table.cell(tbl, 1, 0, "", bgcolor = na)
     f_fila(0, "NEXORA Oro", "en vivo (cierre diario)", color.white)
     f_fila(1, "Dólar (DXY)", na(dxy) ? "SIN DATO" : str.tostring(dxy, "#.##") + (dxySube ? " · ↑ sobre su media de " : " · ↓ bajo su media de ") + str.tostring(nMedia), na(dxy) ? cGris : dxySube ? cRojo : cVerde)
     f_fila(2, "Tipo real 10A", na(real) ? "SIN DATO" : str.tostring(real, "#.##") + "% · " + (realSube ? "↑ sobre su media de " : "↓ bajo su media de ") + str.tostring(nMedia), na(real) ? cGris : realSube ? cRojo : cVerde)
@@ -203,10 +271,10 @@ if barstate.islast
     else
         for i = 5 to 10
             f_fila(i, "", "", cGris)
-    // fila 11 (solo si la línea trae spot=dudoso): ámbar; sin la clave la celda queda vacía y transparente
+    // fila 12 (solo si la línea trae spot=dudoso): ámbar; sin la clave la celda queda vacía y transparente
     if spotDudoso
-        table.cell(tbl, 0, 11, "SPOT DUDOSO", text_color = color.black, bgcolor = color.new(#E0B040, 0), text_size = size.small, text_halign = text.align_left)
-        table.cell(tbl, 1, 11, "niveles con ratio anterior", text_color = color.black, bgcolor = color.new(#E0B040, 0), text_size = size.small, text_halign = text.align_left)
+        table.cell(tbl, 0, 12, "SPOT DUDOSO", text_color = color.black, bgcolor = color.new(#E0B040, 0), text_size = size.small, text_halign = text.align_left)
+        table.cell(tbl, 1, 12, "niveles con ratio anterior", text_color = color.black, bgcolor = color.new(#E0B040, 0), text_size = size.small, text_halign = text.align_left)
     else
-        table.cell(tbl, 0, 11, "", bgcolor = na)
-        table.cell(tbl, 1, 11, "", bgcolor = na)
+        table.cell(tbl, 0, 12, "", bgcolor = na)
+        table.cell(tbl, 1, 12, "", bgcolor = na)

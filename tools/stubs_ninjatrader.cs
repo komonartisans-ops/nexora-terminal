@@ -1,10 +1,23 @@
-// Declaraciones MÍNIMAS de la API de NinjaTrader 8 que usa NexoraGex.cs, solo para comprobar que el indicador compila (sintaxis y uso de tipos). NO es NinjaTrader:
+// Declaraciones MÍNIMAS de la API de NinjaTrader 8 que usan NexoraGex.cs y NexoraNiveles.cs, solo para comprobar que el indicador compila (sintaxis y uso de tipos). NO es NinjaTrader:
 // la prueba definitiva es compilarlo dentro de NinjaTrader 8 (Nuevo > Editor de NinjaScript > Compilar). Las firmas siguen la documentación pública de NT8.
 using System;
 using System.Windows.Media;
 
+namespace NinjaTrader.Gui
+{
+}
+
 namespace NinjaTrader.Gui.Chart
 {
+}
+
+namespace NinjaTrader.Gui.Tools
+{
+    // NT8: NinjaTrader.Gui.Tools.SimpleFont(string family, int size)
+    public class SimpleFont
+    {
+        public SimpleFont(string family, int size) { }
+    }
 }
 
 namespace NinjaTrader.NinjaScript
@@ -43,6 +56,8 @@ namespace NinjaTrader.NinjaScript
         protected virtual void OnBarUpdate() { }
         public void Print(string s) { }
         public void RemoveDrawObject(string tag) { }
+        // NT8: TriggerCustomEvent(Action<object> customEvent, object state): ejecuta el delegado en el hilo de NinjaScript
+        protected void TriggerCustomEvent(Action<object> customEvent, object state) { }
     }
 }
 
@@ -58,6 +73,8 @@ namespace NinjaTrader.NinjaScript.DrawingTools
         public static object HorizontalLine(NinjaScript.NinjaScriptBase owner, string tag, double y, Brush brush, NinjaScript.DashStyleHelper dashStyle, int width) { return null; }
         public static object Text(NinjaScript.NinjaScriptBase owner, string tag, string text, int barsAgo, double y, Brush textBrush) { return null; }
         public static object TextFixed(NinjaScript.NinjaScriptBase owner, string tag, string text, NinjaScript.TextPosition textPosition) { return null; }
+        public static object TextFixed(NinjaScript.NinjaScriptBase owner, string tag, string text, NinjaScript.TextPosition textPosition, Brush textBrush, NinjaTrader.Gui.Tools.SimpleFont font, Brush outlineBrush, Brush areaBrush, int areaOpacity) { return null; }
+        public static object Text(NinjaScript.NinjaScriptBase owner, string tag, bool isAutoScale, string text, int barsAgo, double y, int yPixelOffset, Brush textBrush, NinjaTrader.Gui.Tools.SimpleFont font, System.Windows.TextAlignment alignment, Brush outlineBrush, Brush areaBrush, int areaOpacity) { return null; }
         public static object Rectangle(NinjaScript.NinjaScriptBase owner, string tag, bool isAutoScale, int startBarsAgo, double startY, int endBarsAgo, double endY, Brush outlineBrush, Brush areaBrush, int areaOpacity) { return null; }
     }
 }

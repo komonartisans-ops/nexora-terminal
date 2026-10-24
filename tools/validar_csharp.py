@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Valida NexoraGex.cs: (1) sintaxis con tree-sitter (modo C#), (2) compilación con el compilador C# 5 de .NET Framework 4 (el mismo nivel de lenguaje que NinjaTrader 8) contra una
+"""Valida NexoraGex.cs (o el .cs que se pase, p. ej. NexoraNiveles.cs): (1) sintaxis con tree-sitter (modo C#), (2) compilación con el compilador C# 5 de .NET Framework 4 (el mismo nivel de lenguaje que NinjaTrader 8) contra una
 declaración mínima de la API de NinjaTrader (tools/stubs_ninjatrader.cs). NO sustituye a compilar dentro de NinjaTrader 8.
 Uso:  python tools/validar_csharp.py [ruta.cs]"""
 import glob
@@ -9,7 +9,7 @@ import sys
 import tempfile
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FUENTE = sys.argv[1] if len(sys.argv) > 1 else os.path.join(RAIZ, "plataformas", "ninjatrader", "NexoraGex.cs")
+FUENTE = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.join(RAIZ, "plataformas", "ninjatrader", "NexoraGex.cs")
 
 
 def sintaxis(ruta):

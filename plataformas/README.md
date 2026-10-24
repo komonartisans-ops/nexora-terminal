@@ -17,6 +17,7 @@ Dos indicadores **de contexto** (no de entradas): dibujan en tu gráfico los niv
 | Plataforma | Cómo recibe los niveles | Carpeta | Instalación |
 |---|---|---|---|
 | **NinjaTrader 8** | Lee solo `https://komonartisans-ops.github.io/nexora-terminal/data/gamma.json` cada 15 minutos | [`ninjatrader/`](ninjatrader/) | [`INSTALACION.md`](ninjatrader/INSTALACION.md) |
+| **NinjaTrader 8 · NexoraNiveles** (Fase 21, recomendado) | Descarga solo `…/data/niveles_nt8.json` cada 15 minutos: GC, ES, NQ, YM y micros, en precio de futuro, con aviso rojo de «CADUCADO dd-mm» y ámbar de «SPOT DUDOSO» | [`ninjatrader/NexoraNiveles.cs`](ninjatrader/NexoraNiveles.cs) | [`docs/INSTALACION_NT8.md`](../docs/INSTALACION_NT8.md) |
 | **TradingView** | Tú pegas la línea que NEXORA te envía por Telegram a las 15:00 (Madrid) | [`tradingview/`](tradingview/) | [`INSTALACION.md`](tradingview/INSTALACION.md) |
 | **TradingView · Oro** | Tú pegas la línea `XAU …` que llega en el mismo Telegram de las 15:00 (niveles de GLD, referencia, en precio XAU/USD) | [`tradingview/`](tradingview/) | [`INSTALACION_ORO.md`](tradingview/INSTALACION_ORO.md) |
 

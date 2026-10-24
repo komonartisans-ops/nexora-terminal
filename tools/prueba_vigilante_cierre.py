@@ -8,7 +8,7 @@ sys.path.insert(0, HERE)
 import vigilar_cierre as V  # noqa: E402
 
 ESP = V.etapas_cierre()
-assert "spot_oro" in ESP and "petroleo" in ESP and "gamma_oro" in ESP and "gamma_us30" in ESP and "consumo_ratio" in ESP, ESP
+assert "spot_oro" in ESP and "petroleo" in ESP and "gamma_oro" in ESP and "gamma_us30" in ESP and "niveles_nt8" in ESP and "consumo_ratio" in ESP, ESP
 HORARIO = "precios,fedwatch,tipos,calendario,etf,publicados,reevaluar,resumen,tesis,regimen,noticias,skew,alertas,gamma_intradia,marcador,integridad,contexto"
 
 
@@ -84,7 +84,7 @@ cod, r = V.ejecutar("2026-10-20", leer_fn=lambda: dia_ok, enviar_fn=env, avisar=
 assert cod == 0 and len(enviados) == n + 1
 filas_log = list(__import__("csv").DictReader(open(LOG, encoding="utf-8")))
 assert [x["resultado"] for x in filas_log] == ["NO_TOCA", "NO_TOCA", "ALERTA", "OK"] and filas_log[3]["run_id_cierre"] == "39500964936"
-assert V.etapas_cierre() == ESP and len(ESP) == 18 and "analisis" in ESP
+assert V.etapas_cierre() == ESP and len(ESP) == 19 and "analisis" in ESP and "niveles_nt8" in ESP
 print("8) OK sábado y domingo: OK y sin aviso; lunes sin cierre: alerta; cada pasada deja su fila en el registro (NO_TOCA, NO_TOCA, ALERTA, OK)")
 
 # 9) el propio vigilante falla (excepción, sin acceso al CSV, CSV mal formado) → «vigilante sin poder comprobar» por Telegram, código 2, nunca en silencio
@@ -150,7 +150,7 @@ assert v2["ejecuciones_registradas"] == 0 and v2["ultima_fecha"] is None, "un SI
 print("11) OK simulacro: " + enviados[-1])
 
 # 7) los datos reales del repo: el cierre del 20-oct (21:30 UTC) corrió las etapas que existían entonces
-real = V.comprobar(V.leer_local(), "2026-10-20", esperadas=[e for e in ESP if e not in ("analisis", "spot_oro")])      # analisis (Fase 18) y spot_oro (Fase 19) son posteriores al cierre del 20-oct
+real = V.comprobar(V.leer_local(), "2026-10-20", esperadas=[e for e in ESP if e not in ("analisis", "spot_oro", "niveles_nt8")])      # analisis (Fase 18), spot_oro (Fase 19) y niveles_nt8 (Fase 21) son posteriores al cierre del 20-oct
 assert real["ok"] is True, real
 print("7) OK data/ejecuciones.csv real:", real["mensaje"])
 print("\nTODO OK · sin red, sin Telegram real")

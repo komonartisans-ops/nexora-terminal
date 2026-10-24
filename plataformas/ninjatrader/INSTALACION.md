@@ -2,6 +2,8 @@
 
 **Qué hace:** en gráficos de **ES, MES, NQ y MNQ** dibuja Gamma Flip, Call Wall, Put Wall, Max Gamma y la banda EM, con una etiqueta de régimen arriba a la izquierda. Lee los niveles de `https://komonartisans-ops.github.io/nexora-terminal/data/gamma.json` cada 15 minutos (configurable). Es contexto, **no** da entradas.
 
+> **Fase 21:** el indicador nuevo [**NexoraNiveles**](../../docs/INSTALACION_NT8.md) cubre además GC, YM y los micros, avisa cuando los niveles están caducados y tiene modos de dibujo para el gráfico de 1 y 5 minutos. NexoraGex sigue funcionando; no pongas los dos en el mismo gráfico.
+
 **Requisitos:** NinjaTrader 8 (8.0.x o 8.1.x), conexión a internet desde el equipo y acceso a `komonartisans-ops.github.io` (HTTPS).
 
 ## 1. Copia el archivo

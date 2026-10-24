@@ -1,0 +1,112 @@
+{
+ "version": 1,
+ "unidad": "puntos de precio del contrato de futuro (GC, ES, NQ, YM; los micros usan los mismos niveles)",
+ "instrumentos": {
+  "GC": {
+   "sesion": "2026-10-23",
+   "regimen": "NEGATIVA",
+   "flip": 4175.6,
+   "call_wall": 4156.0,
+   "put_wall": 3774.4,
+   "max_gamma": 3774.4,
+   "max_gamma_tipo": "acelera",
+   "em": 61.1,
+   "spot_estado": "no_verificado",
+   "generado_utc": "2026-10-24 09:39 UTC"
+  },
+  "MGC": {
+   "sesion": "2026-10-23",
+   "regimen": "NEGATIVA",
+   "flip": 4175.6,
+   "call_wall": 4156.0,
+   "put_wall": 3774.4,
+   "max_gamma": 3774.4,
+   "max_gamma_tipo": "acelera",
+   "em": 61.1,
+   "spot_estado": "no_verificado",
+   "generado_utc": "2026-10-24 09:39 UTC",
+   "alias_de": "GC"
+  },
+  "ES": {
+   "sesion": "2026-10-23",
+   "regimen": "NEGATIVA",
+   "flip": 7782.1,
+   "call_wall": 7837.3,
+   "put_wall": 7637.3,
+   "max_gamma": 7737.3,
+   "max_gamma_tipo": "acelera",
+   "em": 93.9,
+   "spot_estado": "verificado",
+   "generado_utc": "2026-10-24 09:39 UTC"
+  },
+  "MES": {
+   "sesion": "2026-10-23",
+   "regimen": "NEGATIVA",
+   "flip": 7782.1,
+   "call_wall": 7837.3,
+   "put_wall": 7637.3,
+   "max_gamma": 7737.3,
+   "max_gamma_tipo": "acelera",
+   "em": 93.9,
+   "spot_estado": "verificado",
+   "generado_utc": "2026-10-24 09:39 UTC",
+   "alias_de": "ES"
+  },
+  "NQ": {
+   "sesion": "2026-10-23",
+   "regimen": "NEGATIVA",
+   "flip": 30106.2,
+   "call_wall": 29865.0,
+   "put_wall": 28915.0,
+   "max_gamma": 28915.0,
+   "max_gamma_tipo": "acelera",
+   "em": 519.2,
+   "spot_estado": "verificado",
+   "generado_utc": "2026-10-24 09:39 UTC"
+  },
+  "MNQ": {
+   "sesion": "2026-10-23",
+   "regimen": "NEGATIVA",
+   "flip": 30106.2,
+   "call_wall": 29865.0,
+   "put_wall": 28915.0,
+   "max_gamma": 28915.0,
+   "max_gamma_tipo": "acelera",
+   "em": 519.2,
+   "spot_estado": "verificado",
+   "generado_utc": "2026-10-24 09:39 UTC",
+   "alias_de": "NQ"
+  },
+  "YM": {
+   "sesion": "2026-10-23",
+   "regimen": "POSITIVA",
+   "flip": 52240.7,
+   "call_wall": 54263.8,
+   "put_wall": 51760.0,
+   "max_gamma": 51760.0,
+   "max_gamma_tipo": "acelera",
+   "em": 567.4,
+   "spot_estado": "verificado",
+   "generado_utc": "2026-10-24 09:39 UTC"
+  },
+  "MYM": {
+   "sesion": "2026-10-23",
+   "regimen": "POSITIVA",
+   "flip": 52240.7,
+   "call_wall": 54263.8,
+   "put_wall": 51760.0,
+   "max_gamma": 51760.0,
+   "max_gamma_tipo": "acelera",
+   "em": 567.4,
+   "spot_estado": "verificado",
+   "generado_utc": "2026-10-24 09:39 UTC",
+   "alias_de": "YM"
+  }
+ },
+ "errores": {},
+ "fuente": "NEXORA (CRITERIO NEXORA, método propio) con la cadena de opciones de Cboe (15 min de retraso) de la sesión indicada; GC, YM y el EM del oro son de ETF de referencia (GLD, DIA)",
+ "aviso": "Contexto de mercado, no una entrada. Si «sesion» no es la última sesión de mercado, los niveles están caducados.",
+ "ok": true,
+ "generado_utc": "2026-10-24 11:54 UTC",
+ "duracion_s": 0.0
+}

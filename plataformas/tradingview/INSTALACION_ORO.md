@@ -33,10 +33,27 @@ Versión de Pine Script: **v6**. Funciona con una cuenta gratuita de TradingView
 | **ETF GLD (5 sesiones)** | Variación de toneladas del trust GLD en 5 sesiones. |
 | **Evento ALTA (Madrid)** | Eventos de importancia ALTA del día con hora de Madrid; `na` si la hora no está publicada. |
 | **GLD ref.** | Ratio XAU/GLD usado y su fecha. Si la línea tiene más de 4 días, aparece «ANTIGUA». |
+| **NIVELES DEL dd-mm · CADUCADOS, pega la línea de hoy** (fila **roja y grande**, la primera) | Fase 21. Aparece cuando el `rf=` de la línea que has pegado es de una sesión anterior a la que toca hoy (ver «Cuándo caduca la línea»). Mientras esté, las líneas de gamma van en **gris discontinuo** y sus etiquetas añaden «· CADUCADO». Pega la línea nueva y desaparece. |
 | **SPOT DUDOSO** (fila ámbar, la última) | Solo aparece si la línea ORO acaba en `;spot=dudoso` (Fase 19: el spot del oro difirió más de un 0,3 % entre fuentes de la misma hora). Significa «niveles con ratio anterior»: el ratio XAU/GLD de ese día no se actualizó y los niveles usan el último ratio verificado. Si la línea no trae la clave `spot`, no se muestra nada. |
 
 > **Actualización de la Fase 20 (clave `spot`): hay que volver a pegar el indicador.** Abre el Editor de Pine con tu script «NEXORA Oro», borra todo el texto, pega de nuevo el contenido de [`NexoraOro.pine`](NexoraOro.pine) y pulsa **Guardar** (el gráfico se actualiza solo; la línea ORO que tienes en «Datos de entrada» se conserva). Si no lo repegas, el indicador funciona igual pero no mostrará la fila ámbar de spot dudoso.
 > Ejemplo de línea con la clave: `XAU tesis=alcista;int=debil;flip=4167.1;cw=4144.2;pw=3762.5;em=57.8;maxg=4253.2;ratio=10.9057;rf=2026-10-19;cot=largo-bajo_p27;etf=+3.1;evento=no;spot=dudoso`
+
+## Cuándo caduca la línea (Fase 21)
+
+El Telegram de las 15:00 (Madrid) llega de lunes a viernes. La línea que **toca** hoy es la de la **última sesión de la bolsa cerrada antes del último «relevo»**; el relevo es el último lunes a viernes a las **15:30 de Madrid** (media hora después del Telegram). Si el `rf=` de tu línea es anterior, sale la fila roja.
+
+| Cuándo miras | Qué `rf=` debe tener tu línea | Ejemplo |
+|---|---|---|
+| Entre semana **antes** de las 15:30 (Madrid) | la del Telegram de ayer | martes 10:00: vale la del lunes 15:00 (`rf` = viernes) |
+| Entre semana **después** de las 15:30 | la del Telegram de hoy | martes 16:00: `rf` = lunes |
+| **Fin de semana** | la última recibida (viernes) | sábado: vale la del viernes (`rf` = jueves); **no** salta la alarma |
+| **Festivo de la bolsa** (p. ej. Acción de Gracias, jueves 26-nov) | la última sesión anterior al festivo | jueves y viernes: `rf` = miércoles 25 |
+
+La alarma **no** salta por tener un día más de antigüedad en fin de semana o festivo (sería una falsa alarma: no hay línea nueva que pegar). Los días de sesión se leen de las barras diarias de **AMEX:SPY** (con los festivos de la bolsa); si TradingView no da datos de SPY, se usan lunes a viernes y un festivo puede tardar un día en reconocerse. Esa referencia se cambia en **Ajustes → Datos de entrada → «Símbolo del calendario de la bolsa»**. Si la línea no trae `rf` (sin ratio XAU/GLD) no se evalúa y no hay alarma.
+
+> **Actualización de la Fase 21: hay que volver a pegar el indicador (una sola vez).** Es el código definitivo y **incluye** el cambio de la Fase 20 (fila ámbar de spot dudoso): abre el Editor de Pine con tu script «NEXORA Oro», borra todo el texto, pega de nuevo el contenido de [`NexoraOro.pine`](NexoraOro.pine) y pulsa **Guardar**. La línea ORO que tienes en «Datos de entrada» se conserva. Compila sin errores ni advertencias con el compilador de TradingView.
+> **Alternativa sin pegar nada cada día:** si usas NinjaTrader 8, [`NexoraNiveles`](../ninjatrader/NexoraNiveles.cs) descarga los niveles solo (GC, ES, NQ, YM y micros) y avisa de la caducidad: ver [`docs/INSTALACION_NT8.md`](../../docs/INSTALACION_NT8.md). Este indicador de TradingView queda como respaldo.
 
 ## 4. Ajustes útiles
 
@@ -48,6 +65,7 @@ Versión de Pine Script: **v6**. Funciona con una cuenta gratuita de TradingView
 | Media / Ventana del aviso | 50 / 5 sesiones | Sesiones de la media y del aviso. |
 | PDH / PDL, Asia, Londres | sí | Gris = día anterior, naranja = Asia, turquesa = Londres. |
 | Zona horaria y sesiones | America/New_York, Asia 20:00–02:00, Londres 02:00–05:00 | Cámbialas si usas otra definición. |
+| Símbolo del calendario de la bolsa / Líneas con niveles caducados | `AMEX:SPY` / gris | Días de sesión para la alarma de caducidad y color de las líneas caducadas. |
 
 ## Notas importantes
 
