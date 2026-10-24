@@ -123,6 +123,16 @@ with sync_playwright() as p:
     assert "esperanza" in kpi and "R (2 de 3 con R)" in kpi.replace("\n", " "), kpi
     print("5) OK operación antigua sin stop: R = SIN DATO, se edita sin pedir stop y no se inventa nada; la esperanza del mes cuenta solo las operaciones con R (2 de 3)")
 
+    # ---- 6) «Mi operativa»: esperanza en R y factor de beneficio en R por setup × régimen (los $ se mantienen); las operaciones sin R no entran
+    fila = pg.evaluate("""(hoy) => { const mk = (id, pnl, extra) => Object.assign({ id, fecha: hoy, hora: '00:02', activo: 'Nasdaq 100', lado: 'Largo', pnl, setup: 'Barrido+vuelta' }, extra || {});
+      const T = [mk('r1', 400, { r: 2 }), mk('r2', -200, { r: -1 }), mk('r3', 300, { r: 1.5 }), mk('r4', 50)];
+      const d = document.createElement('div'); d.innerHTML = operativaHtml({ trades: T, notas: {} });
+      const f = [...d.querySelectorAll('tr')].find((r) => r.textContent.includes('Barrido+vuelta · sin régimen gamma'));
+      return { fila: f.textContent.replace(/\s+/g, ' '), cab: d.querySelector('thead').textContent.replace(/\s+/g, ' ') }; }""", hoy)
+    f_, cab = fila["fila"], fila["cab"]
+    assert "3 / 4" in f_ and "+0,83 R" in f_ and "3,50" in f_ and "550" in f_, f_
+    assert "Esperanza (R)" in cab and "Factor benef. (R)" in cab and "Factor benef." in cab and "P&L total" in cab, cab
+    print("6) OK Mi operativa: columnas «con R», «Esperanza (R)» y «Factor benef. (R)» junto a las de $; Barrido+vuelta con 3 de 4 operaciones con R → esperanza +0,83 R y factor 3,5 (la operación sin R no entra)")
     b.close()
 assert not errs, errs
 print("\nTODO OK · sin red externa, sin envíos reales")

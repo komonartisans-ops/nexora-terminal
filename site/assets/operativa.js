@@ -180,16 +180,21 @@ const FOTO = (() => {
 const MIN_N = 20;
 function statsGrupo(trs) {
   const s = diarioStats(trs);
-  return Object.assign(s, { medio: s.n ? s.tot / s.n : null });
+  /* R (Fase 20): solo las operaciones con stop (r calculado por el Diario); las antiguas sin stop no entran (R = SIN DATO). Profit factor en R = ganancias brutas en R / pérdidas brutas en R. */
+  const rs = trs.filter((t) => t.r != null && Number.isFinite(+t.r)).map((t) => +t.r);
+  const gR = rs.filter((x) => x > 0).reduce((a, x) => a + x, 0), pR = -rs.filter((x) => x < 0).reduce((a, x) => a + x, 0);
+  return Object.assign(s, { medio: s.n ? s.tot / s.n : null, pfR: !rs.length ? null : pR > 0 ? gR / pR : gR > 0 ? Infinity : null });
 }
+const rFmt = (x) => (x == null ? 'SIN DATO' : (x > 0 ? '+' : '') + num(x, 2) + ' R');
 function tablaGrupos(titulo, sub, filas, idGraf) {
   /* filas: [[nombre, trades]] en el orden deseado */
   const calc = filas.map(([nom, trs]) => [nom, statsGrupo(trs)]);
-  let h = `<div class="sect"><h2>${esc(titulo)}</h2><span class="more">${esc(sub)}</span></div><div class="grid g21" style="align-items:start"><div class="card pad0 scroll"><table class="t stack"><thead><tr><th>Grupo</th><th>n</th><th>Ganadoras</th><th>Win rate</th><th>P&amp;L total</th><th>P&amp;L medio</th><th>Factor benef.</th><th style="text-align:left">Fiabilidad</th></tr></thead><tbody>`;
+  let h = `<div class="sect"><h2>${esc(titulo)}</h2><span class="more">${esc(sub)}</span></div><div class="grid g21" style="align-items:start"><div class="card pad0 scroll"><table class="t stack"><thead><tr><th>Grupo</th><th>n</th><th>Ganadoras</th><th>Win rate</th><th>P&amp;L total</th><th>P&amp;L medio</th><th>Factor benef.</th><th title="Operaciones con R / n">con R</th><th>Esperanza (R)</th><th>Factor benef. (R)</th><th style="text-align:left">Fiabilidad</th></tr></thead><tbody>`;
   h += calc.map(([nom, s]) => {
     const corto = s.n < MIN_N;
     return `<tr class="${corto ? 'poca' : ''}"><td data-label="Grupo" style="text-align:left"><b>${esc(nom)}</b></td><td data-label="n" class="mono">${s.n}</td><td data-label="Ganadoras">${s.n ? `${s.g} / ${s.n}` : '—'}</td><td data-label="Win rate">${s.win == null ? '—' : num(s.win, 0) + ' %'}</td>
       <td data-label="P&L total" class="${f5.cls(s.tot)}">${s.n ? f5.usd(s.tot) : '—'}</td><td data-label="P&L medio" class="${f5.cls(s.medio)}">${s.n ? f5.usd(s.medio) : '—'}</td><td data-label="Factor benef.">${s.pf == null ? '—' : num(s.pf, 2)}</td>
+      <td data-label="con R" class="mono">${s.nR} / ${s.n}</td><td data-label="Esperanza (R)" class="${f5.cls(s.esperR)}">${rFmt(s.esperR)}</td><td data-label="Factor benef. (R)">${s.pfR == null ? 'SIN DATO' : s.pfR === Infinity ? '∞ (sin pérdidas)' : num(s.pfR, 2)}</td>
       <td data-label="Fiabilidad" style="text-align:left;white-space:normal;min-width:150px">${s.n === 0 ? '<span class="ck sd">sin operaciones</span>' : corto ? `<span class="ck par" title="Con menos de ${MIN_N} operaciones la diferencia entre grupos no se distingue del azar">muestra insuficiente (n &lt; ${MIN_N})</span>` : '<span class="ck ok">n ≥ ' + MIN_N + '</span>'}</td></tr>`;
   }).join('');
   h += '</tbody></table></div><div class="card chartcard"><h3>P&amp;L medio por operación</h3><div class="sub">Barras apagadas = muestra insuficiente</div>';
@@ -255,6 +260,7 @@ function operativaHtml(S) {
   const acts = [...new Set(T.map((t) => t.activo))].sort();
   h += tablaGrupos('Por activo', 'todas las operaciones, con o sin foto', acts.map((a) => [a, T.filter((t) => t.activo === a)]), 'opAct');
   h += `<div class="note">Regla de «a favor / en contra»: se toma la etiqueta de tesis del activo en la foto (ALCISTA o BAJISTA, débil o no) y se compara con tu lado (Largo = alcista). Los activos sin tesis NEXORA (EUR/USD, USD/JPY, Otro) y las etiquetas SIN TESIS cuentan como «sin tesis». La foto es la del último contexto publicado antes de tu hora de entrada (hora de Madrid); el desfase aparece en cada operación del Diario. Win rate y P&amp;L son los que anotaste, sin ajustar por tamaño de posición.</div>`;
+  h += `<div class="note">R (Diario con R): riesgo = |entrada − stop| × valor del punto × tamaño; R = resultado $ / riesgo $, con signo. «con R» cuenta las operaciones que traen stop; las antiguas sin stop tienen R = SIN DATO y no entran en la esperanza ni en el factor de beneficio en R (no se inventa nada). Los $ se mantienen tal como los anotaste.</div>`;
   return h;
 }
 
